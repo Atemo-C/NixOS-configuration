@@ -15,6 +15,9 @@
 
 		./GPU/AMD.nix
 		./GPU/Intel.nix
+
+		./Packages/Unfree.nix
+		./Packages/Unstable.nix
 	];
 
 }
