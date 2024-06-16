@@ -12,7 +12,7 @@
 
 		# Additional packages to add to OpenGL drivers. This is for AMD's ROCM.
 		# https://search.nixos.org/options?channel=24.05&show=hardware.opengl.extraPackages
-		extraPackages = with pkgs; [ pkgs.rocmPackages.clr.icd ];
+		extraPackages = with pkgs; [ rocmPackages.clr ];
 
 		# Whether to enable accelerated OpenGL rendering through DRI.
 		# https://search.nixos.org/options?channel=24.05&show=hardware.opengl.driSupport
