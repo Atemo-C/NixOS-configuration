@@ -9,8 +9,8 @@
 		./Boot/SystemD-boot.nix
 		./Boot/Timeout.nix
 
-		./GPU/AMD.nix
-		./GPU/Intel.nix
+#		./GPU/AMD.nix
+#		./GPU/Intel.nix
 
 		./Input/Drawing/OpenTabletDriver.nix
 		./Input/Keyboard/Layout.nix
