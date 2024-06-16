@@ -1,5 +1,7 @@
 { config, ... }: {
 
+	# Allow unfree packages.
+	# https://search.nixos.org/options?channel=24.05&show=nixpkgs.config
 	nixpgs.config.allowUnfree = true;
 
 }
