@@ -18,6 +18,10 @@
 
 		./Packages/Unfree.nix
 		./Packages/Unstable.nix
+
+		./SSH/OpenSSH.nix
+		./SSH/Permission.nix
+		./SSH/Ports.nix
 	];
 
 }
