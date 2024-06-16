@@ -16,6 +16,8 @@
 		./Input/Keyboard/Layout.nix
 		./Input/Keyboard/ZSA.nix
 
+		./Networking/Hostname.nix
+
 		./Packages/Unfree.nix
 		./Packages/Unstable.nix
 
