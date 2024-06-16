@@ -27,11 +27,6 @@
 		./Packages/Unfree.nix
 		./Packages/Unstable.nix
 
-		./Packages/Text/Clipboard.nix
-		./Packages/Text/Editor.nix
-		./Packages/Text/Pickers.nix
-		./Packages/Text/Spelling.nix
-
 		./SSH/OpenSSH.nix
 		./SSH/Permission.nix
 		./SSH/Ports.nix
@@ -42,6 +37,11 @@
 		./System/Configuration-backup.nix
 		./System/State-version.nix
 		./System/Store-optimisation.nix
+
+		./Text/Clipboard.nix
+		./Text/Editor.nix
+		./Text/Pickers.nix
+		./Text/Spelling.nix
 
 		./Time/Hardware-clock.nix
 		./Time/Timezone.nix
