@@ -10,4 +10,8 @@
 	# Disable NetworkManager's "wait-online" service.
 	systemd.services.NetworkManager-wait-online.enable = false;
 
+	# User's auxilary groups for NetworkManager.
+	# https://search.nixos.org/options?channel=24.05&show=users.users.%3Cname%3E.extraGroups
+	users.users.username.extragroups = [ "networkmanager" ];
+
 }
