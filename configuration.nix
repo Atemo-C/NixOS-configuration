@@ -14,6 +14,13 @@
 		./Boot/SystemD-boot.nix
 		./Boot/Timeout.nix
 
+		./Fonts/Emoji.nix
+		./Fonts/Monospace.nix
+		./Fonts/Packages.nix
+		./Fonts/SansSerif.nix
+		./Fonts/Serif.nix
+		./Fonts/Settings.nix
+
 #		./GPU/AMD.nix
 #		./GPU/Intel.nix
 
