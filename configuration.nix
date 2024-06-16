@@ -19,6 +19,11 @@
 		./Packages/Unfree.nix
 		./Packages/Unstable.nix
 
+		./Packages/Text/Clipboard.nix
+		./Packages/Text/Editor.nix
+		./Packages/Text/Pickers.nix
+		./Packages/Text/Spelling.nix
+
 		./SSH/OpenSSH.nix
 		./SSH/Permission.nix
 		./SSH/Ports.nix
