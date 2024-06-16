@@ -3,6 +3,11 @@
 	imports = [
 		./hardware-configuration.nix
 
+		./Audio/Editing.nix
+		./Audio/Music.nix
+		./Audio/Settings.nix
+		./Audio/Utilities.nix
+
 		./Boot/EFI.nix
 		./Boot/Entries.nix
 		./Boot/Security.nix

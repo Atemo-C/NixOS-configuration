@@ -2,10 +2,10 @@
 
 	environment.systemPackages = with pkgs; [
 
-		# GUI flashing utility for ZSA keyboards
+		# GUI flashing utility for ZSA keyboards.
 		keymapp
 
-		# CLI flashing utility for ZSA keyboards
+		# CLI flashing utility for ZSA keyboards.
 		wally-cli
 	];
 
