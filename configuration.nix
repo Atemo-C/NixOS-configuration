@@ -39,6 +39,7 @@
 		./SSH/Ports.nix
 
 		./Storage/Additional-filesystems.nix
+		./Storage/SSD-TRIM.nix
 #		./Storage/Mounts.nix
 
 		./System/Configuration-backup.nix
