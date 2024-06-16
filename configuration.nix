@@ -35,6 +35,9 @@
 		./System/State-version.nix
 		./System/Store-optimisation.nix
 
+		./Time/Hardware-clock.nix
+		./Time/Timezone.nix
+
 		./User/Groups.nix
 		./User/Name.nix
 		./User/Settings.nix
