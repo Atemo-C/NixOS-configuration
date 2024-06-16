@@ -12,6 +12,9 @@
 		./Input/Drawing/OpenTabletDriver.nix
 		./Input/Keyboard/Layout.nix
 		./Input/Keyboard/ZSA.nix
+
+		./GPU/AMD.nix
+		./GPU/Intel.nix
 	];
 
 }
