@@ -28,6 +28,10 @@
 		./SSH/Permission.nix
 		./SSH/Ports.nix
 
+		./System/Configuration-backup.nix
+		./System/State-version.nix
+		./System/Store-optimisation.nix
+
 		./User/Groups.nix
 		./User/Name.nix
 		./User/Settings.nix

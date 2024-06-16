@@ -13,7 +13,10 @@
 		# If true, the user's shell will be set to `users.defaultUserShell`.
 		# https://search.nixos.org/options?channel=24.05&show=users.users.%3Cname%3E.useDefaultShell
 		useDefaultShell = true;
-
 	};
+
+	# Users that have additional rights when connecting to the Nix daemon.
+	# https://search.nixos.org/options?channel=24.05&show=nix.settings.trusted-users
+	nix.settings.trusted-users = [ "username" ];
 
 }
