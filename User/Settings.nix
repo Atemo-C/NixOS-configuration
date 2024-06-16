@@ -2,17 +2,17 @@
 
 	users.users.username = {
 
-		# Whether to create the home directory and manage necessary permissions.
-		# https://search.nixos.org/options?channel=24.05&show=users.users.%3Cname%3E.createHome
-		createHome = true;
-
 		# The user's home directory.
 		# https://search.nixos.org/options?channel=24.05&show=users.users.%3Cname%3E.home
 		home = "/Path/To/Directory";
 
-		# If true, the user's shell will be set to `users.defaultUserShell`.
-		# https://search.nixos.org/options?channel=24.05&show=users.users.%3Cname%3E.useDefaultShell
-		useDefaultShell = true;
+		# Initial password for the user; Can be changed once logged in with the `passwd` command.
+		# https://search.nixos.org/options?channel=24.05&show=users.users.%3Cname%3E.initialPassword
+		initialPassword = "GetRickRolled";
+
+		# This is disabled for more granual control. Read more at the link below.
+		# https://search.nixos.org/options?channel=24.05&show=users.users.%3Cname%3E.isNormalUser
+		isNormalUser = true;
 	};
 
 	# Users that have additional rights when connecting to the Nix daemon.
