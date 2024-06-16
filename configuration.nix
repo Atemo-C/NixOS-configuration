@@ -9,12 +9,12 @@
 		./Boot/SystemD-boot.nix
 		./Boot/Timeout.nix
 
+		./GPU/AMD.nix
+		./GPU/Intel.nix
+
 		./Input/Drawing/OpenTabletDriver.nix
 		./Input/Keyboard/Layout.nix
 		./Input/Keyboard/ZSA.nix
-
-		./GPU/AMD.nix
-		./GPU/Intel.nix
 
 		./Packages/Unfree.nix
 		./Packages/Unstable.nix
@@ -27,6 +27,11 @@
 		./SSH/OpenSSH.nix
 		./SSH/Permission.nix
 		./SSH/Ports.nix
+
+		./User/Groups.nix
+		./User/Name.nix
+		./User/Settings.nix
+		./User/Shell.nix
 	];
 
 }
