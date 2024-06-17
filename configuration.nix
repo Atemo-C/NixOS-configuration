@@ -3,6 +3,9 @@
 	imports = [
 		./hardware-configuration.nix
 
+		./Android/ADB.nix
+		./Android/Tools.nix
+
 		./Audio/Editing.nix
 		./Audio/Music.nix
 		./Audio/Settings.nix
@@ -33,6 +36,10 @@
 
 		./Packages/Unfree.nix
 		./Packages/Unstable.nix
+
+		./Printing/General.nix
+		./Printing/HP.nix
+		./Printing/Packages.nix
 
 		./SSH/OpenSSH.nix
 		./SSH/Permission.nix
