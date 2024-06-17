@@ -29,6 +29,8 @@
 #		./GPU/Nvidia.nix
 #		./GPU/Nvidia-nouveau.nix
 
+		./Kernel/Version.nix
+
 		./Input/Drawing/OpenTabletDriver.nix
 		./Input/Keyboard/Layout.nix
 		./Input/Keyboard/ZSA.nix
