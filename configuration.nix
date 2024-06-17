@@ -66,6 +66,9 @@
 		./Time/Hardware-clock.nix
 		./Time/Timezone.nix
 
+		./TTY/Colors.nix
+		./TTY/Settings.nix
+
 		./User/Groups.nix
 		./User/Name.nix
 		./User/Settings.nix
