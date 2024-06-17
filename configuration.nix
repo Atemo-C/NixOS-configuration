@@ -35,6 +35,9 @@
 		./Input/Keyboard/Layout.nix
 		./Input/Keyboard/ZSA.nix
 
+		./Locale/Locale.nix
+		./Locale/Extra-settings.nix
+
 		./Networking/Hostname.nix
 		./Networking/NetworkManager.nix
 
