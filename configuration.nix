@@ -26,6 +26,8 @@
 
 #		./GPU/AMD.nix
 #		./GPU/Intel.nix
+#		./GPU/Nvidia.nix
+#		./GPU/Nvidia-nouveau.nix
 
 		./Input/Drawing/OpenTabletDriver.nix
 		./Input/Keyboard/Layout.nix
