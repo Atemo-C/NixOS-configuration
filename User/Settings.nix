@@ -2,10 +2,6 @@
 
 	users.users.username = {
 
-		# The user's home directory.
-		# https://search.nixos.org/options?channel=24.05&show=users.users.%3Cname%3E.home
-		home = "/Path/To/Directory";
-
 		# Initial password for the user; Can be changed once logged in with the `passwd` command.
 		# https://search.nixos.org/options?channel=24.05&show=users.users.%3Cname%3E.initialPassword
 		initialPassword = "GetRickRolled";
