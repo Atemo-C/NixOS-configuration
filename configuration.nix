@@ -44,6 +44,12 @@
 		./Input/Keyboard/Layout.nix
 		./Input/Keyboard/ZSA.nix
 
+		./Internet/Social.nix
+		./Internet/Downloading.nix
+		./Internet/Gemini.nix
+		./Internet/Email.nix
+		./Internet/Web.nix
+
 		./Kernel/Version.nix
 
 		./Locale/Locale.nix
