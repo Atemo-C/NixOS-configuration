@@ -2,7 +2,7 @@
 
 	# User's auxilary groups for accessing Docker.
 	# https://search.nixos.org/options?channel=24.05&show=users.users.%3Cname%3E.extraGroups
-	users.users.username.extraGroups = [ "docker" ];
+	users.users.${config.Custom.Name}.extraGroups = [ "docker" ];
 
 	virtualisation.docker = {
 

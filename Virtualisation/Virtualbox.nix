@@ -13,6 +13,6 @@
 
 	# User's auxilary groups for accessing VirtualBox.
 	# https://search.nixos.org/options?channel=24.05&show=users.users.%3Cname%3E.extraGroups
-	users.extraGroups.vboxusers.members = [ "username" ];
+	users.extraGroups.vboxusers.members = [ "${config.Custom.Name}" ];
 
 }

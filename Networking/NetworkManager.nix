@@ -12,6 +12,6 @@
 
 	# User's auxilary groups for NetworkManager.
 	# https://search.nixos.org/options?channel=24.05&show=users.users.%3Cname%3E.extraGroups
-	users.users.username.extraGroups = [ "networkmanager" ];
+	users.users.${config.Custom.Name}.extraGroups = [ "networkmanager" ];
 
 }

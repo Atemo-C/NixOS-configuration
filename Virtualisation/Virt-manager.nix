@@ -6,7 +6,7 @@
 
 	# User's auxilary groups for accessing libvirtd and using Virt Manager.
 	# https://search.nixos.org/options?channel=24.05&show=users.users.%3Cname%3E.extraGroups
-	users.users.username.extraGroups = [ "libvirtd" ];
+	users.users.${config.Custom.Name}.extraGroups = [ "libvirtd" ];
 
 	# Whether to enable libvirtd, a dameon that manages virtual machines.
 	# https://search.nixos.org/options?channel=24.05&show=virtualisation.libvirtd.enable

@@ -26,7 +26,7 @@
 
 	# User's auxilary groups for printing and scanning.
 	# https://search.nixos.org/options?channel=24.05&show=users.users.%3Cname%3E.extraGroups
-	users.users.username.extraGroups = [
+	users.users.${config.Custom.Name}.extraGroups = [
 		"lp"
 		"scanner"
 	];

@@ -80,6 +80,7 @@
 
 		./User/Groups.nix
 		./User/Name.nix
+		./User/Name-module.nix
 		./User/Settings.nix
 		./User/Shell.nix
 
