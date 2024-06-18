@@ -5,7 +5,6 @@
 	users.users.${config.Custom.Name}.shell = pkgs.fish;
 
 	programs.fish = {
-
 		# Enabling the user's shell.
 		# https://search.nixos.org/options?channel=24.05&show=programs.fish.enable
 		enable = true;

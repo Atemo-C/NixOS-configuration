@@ -1,7 +1,6 @@
 { config, pkgs, ... }: {
 
 	environment = {
-
 		# Micro text editor.
 		systemPackages = with pkgs; [ micro ];
 

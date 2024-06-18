@@ -1,7 +1,6 @@
 { config, ... }: {
 
 	services.openssh = {
-
 		# Whether to enable the OpenSSH daemon.
 		# https://search.nixos.org/options?channel=24.05&show=services.openssh.enable
 		enable = true;

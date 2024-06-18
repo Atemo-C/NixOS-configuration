@@ -1,7 +1,6 @@
 { config, pkgs, ... }: {
 
 	hardware.opengl = {
-
 		# Whether to enable OpenGL drivers.
 		# https://search.nixos.org/options?channel=24.05&show=hardware.opengl.enable
 		enable = true;

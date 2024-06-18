@@ -7,7 +7,6 @@
 		fontDir.enable = true;
 
 		fontconfig = {
-
 			# Generate system fonts cache for 32-bit applications.
 			cache32Bit = true;
 

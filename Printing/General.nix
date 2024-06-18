@@ -2,7 +2,6 @@
 
 	services = {
 		avahi = {
-
 			# Whether to run the Avahi daemon.
 			# https://search.nixos.org/options?channel=24.05&show=services.avahi.enable
 			enable = true;

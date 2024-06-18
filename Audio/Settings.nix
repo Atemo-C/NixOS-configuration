@@ -2,7 +2,6 @@
 
 	services.pipewire = {
 		alsa = {
-
 			# Whether to enable ALSA support.
 			# https://search.nixos.org/options?channel=24.05&show=services.pipewire.alsa.enable
 			enable = true;

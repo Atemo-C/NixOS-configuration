@@ -1,7 +1,6 @@
 { config, pkgs, ... }: {
 
 	environment.systemPackages = with pkgs; [
-
 		# GUI flashing utility for ZSA keyboards.
 		keymapp
 

@@ -1,7 +1,6 @@
 { config, ... }: {
 
 	services.tlp = {
-
 		# Whether to enable the TLP power management daemon.
 		# https://search.nixos.org/options?channel=24.05&show=services.tlp.enable
 		enable = true;

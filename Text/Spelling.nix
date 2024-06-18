@@ -1,7 +1,6 @@
 { config, pkgs, ... }: {
 
 	environment.systemPackages = with pkgs; [
-
 		# Aspell dictionaries
 		aspell
 		aspellDicts.uk

@@ -1,7 +1,6 @@
 { config, ... }: {
 
 	virtualisation.virtualbox.host = {
-
 		# Whether to enable VirtualBox.
 		# https://search.nixos.org/options?channel=24.05&show=virtualisation.virtualbox.host.enable
 		enable = true

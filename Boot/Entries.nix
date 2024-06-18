@@ -1,7 +1,6 @@
 { config, ... }: {
 
 	boot.loader.systemd-boot = {
-
 		# Menu system that allows booting an OS installer over the network.
 		# https://search.nixos.org/options?channel=24.05&show=boot.loader.systemd-boot.netbootxyz.enable
 		netbootxyz.enable = true;

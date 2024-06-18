@@ -1,7 +1,6 @@
 { config, ... }: {
 
 	users.users.${config.Custom.Name} = {
-
 		# The user's primary group.
 		# https://search.nixos.org/options?channel=24.05&show=users.users.%3Cname%3E.group
 		group = "users";

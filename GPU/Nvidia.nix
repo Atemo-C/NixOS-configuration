@@ -11,7 +11,6 @@
 
 	hardware = {
 		nvidia = {
-
 			# Whether to enable kernel modesetting when using the NVIDIA proprietary driver.
 			# https://search.nixos.org/options?channel=24.05&show=hardware.nvidia.modesetting.enable
 			modesetting.enable = true;
@@ -29,8 +28,8 @@
 			# https://search.nixos.org/options?channel=24.05&show=hardware.nvidia.powerManagement.enable
 			powerManagement.enable = true;
 		};
-		opengl = {
 
+		opengl = {
 			# Whether to enable OpenGL drivers.
 			# https://search.nixos.org/options?channel=24.05&show=hardware.opengl.enable
 			enable = true;
