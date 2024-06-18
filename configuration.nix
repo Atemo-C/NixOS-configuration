@@ -100,10 +100,11 @@
 		./User/Home-manager/Module.nix
 		./User/Home-manager/Settings.nix
 
-		./Video/Player.nix
-		./Video/Editor.nix
-		./Video/Utilities.nix
 		./Video/Capture.nix
+		./Video/Editor.nix
+		./Video/Player.nix
+		./Video/Utilities.nix
+		./Video/V4L2.nix
 
 #		./Virtualisation/Docker.nix
 #		./Virtualisation/Virt-manager.nix
