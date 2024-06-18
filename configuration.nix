@@ -1,4 +1,5 @@
-{...}: {
+{ ... }: {
+
 	imports = [
 		./hardware-configuration.nix
 
@@ -33,6 +34,10 @@
 #		./GPU/Intel.nix
 #		./GPU/Nvidia.nix
 #		./GPU/Nvidia-nouveau.nix
+
+		./Hyprland/Settings.nix
+		./Hyprland/Tools.nix
+		./Hyprland/XDG-portal.nix
 
 		./Input/Buttons/Power.nix
 		./Input/Drawing/OpenTabletDriver.nix
@@ -90,7 +95,8 @@
 		./User/Home-manager/Settings.nix
 
 #		./Virtualisation/Docker.nix
-		./Virtualisation/Virt-manager.nix
+#		./Virtualisation/Virt-manager.nix
 #		./Virtualisation/Virtualbox.nix
 	];
+
 }
