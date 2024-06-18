@@ -11,6 +11,9 @@
 		./Audio/Settings.nix
 		./Audio/Utilities.nix
 
+#		./Bluetooth/Blueman.nix
+#		./Bluetooth/Settings.nix
+
 		./Boot/EFI.nix
 		./Boot/Entries.nix
 		./Boot/Security.nix
