@@ -47,6 +47,7 @@
 		./Networking/Hostname.nix
 		./Networking/NetworkManager.nix
 
+		./Packages/Flatpak.nix
 		./Packages/Unfree.nix
 		./Packages/Unstable.nix
 
