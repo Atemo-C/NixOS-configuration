@@ -17,6 +17,8 @@
 		./Boot/SystemD-boot.nix
 		./Boot/Timeout.nix
 
+#		./Computer/Laptop.nix
+
 		./Fonts/Emoji.nix
 		./Fonts/Monospace.nix
 		./Fonts/Packages.nix
