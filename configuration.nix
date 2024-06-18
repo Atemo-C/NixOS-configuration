@@ -84,6 +84,9 @@
 		./User/Settings.nix
 		./User/Shell.nix
 
+		./User/Home-manager/Module.nix
+		./User/Home-manager/Settings.nix
+
 #		./Virtualisation/Docker.nix
 		./Virtualisation/Virt-manager.nix
 #		./Virtualisation/Virtualbox.nix
