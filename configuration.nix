@@ -52,10 +52,10 @@
 		./Networking/Hostname.nix
 		./Networking/NetworkManager.nix
 
-		./Packages/AppImage.nix
-		./Packages/Flatpak.nix
-		./Packages/Unfree.nix
-		./Packages/Unstable.nix
+		./Packaging/AppImage.nix
+		./Packaging/Flatpak.nix
+		./Packaging/Unfree.nix
+		./Packaging/Unstable.nix
 
 		./Printing/General.nix
 		./Printing/HP.nix
