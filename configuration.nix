@@ -1,5 +1,4 @@
-{ config, ... }: {
-
+{
 	imports = [
 		./hardware-configuration.nix
 
@@ -88,5 +87,4 @@
 		./Virtualisation/Virt-manager.nix
 #		./Virtualisation/Virtualbox.nix
 	];
-
 }
