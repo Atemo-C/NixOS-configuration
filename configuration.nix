@@ -34,6 +34,7 @@
 
 		./Kernel/Version.nix
 
+		./Input/Buttons/Power.nix
 		./Input/Drawing/OpenTabletDriver.nix
 		./Input/Keyboard/Layout.nix
 		./Input/Keyboard/ZSA.nix
