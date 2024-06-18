@@ -35,12 +35,12 @@
 #		./GPU/Nvidia.nix
 #		./GPU/Nvidia-nouveau.nix
 
-		./Kernel/Version.nix
-
 		./Input/Buttons/Power.nix
 		./Input/Drawing/OpenTabletDriver.nix
 		./Input/Keyboard/Layout.nix
 		./Input/Keyboard/ZSA.nix
+
+		./Kernel/Version.nix
 
 		./Locale/Locale.nix
 		./Locale/Extra-settings.nix
@@ -83,6 +83,10 @@
 		./User/Name.nix
 		./User/Settings.nix
 		./User/Shell.nix
+
+#		./Virtualisation/Docker.nix
+		./Virtualisation/Virt-manager.nix
+#		./Virtualisation/Virtualbox.nix
 	];
 
 }
