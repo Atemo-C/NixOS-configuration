@@ -17,6 +17,7 @@
 		./Boot/SystemD-boot.nix
 		./Boot/Timeout.nix
 
+#		./Computer/KVM-guest.nix
 #		./Computer/Laptop.nix
 
 		./Fonts/Emoji.nix
