@@ -113,7 +113,9 @@
 #		./Storage/SSD-TRIM.nix
 #		./Storage/Mounts.nix
 
+		./System/Benchmarking-and-information.nix
 		./System/Configuration-backup.nix
+		./System/Monitoring.nix
 		./System/State-version.nix
 		./System/Store-optimisation.nix
 
