@@ -36,7 +36,7 @@ If you have installed a NixOS version higher/lower than the value currently used
 ## [2.5] Home Manager version
 The version of Home Manager used should match the version of NixOS you are currently using. Its value can be changed in the `User/Home-manager.nix` module. \
 &nbsp;
-# [3] Use cases and other functionalities
+# [3] Use cases and feature implementation
 
 ## [3.1] Targeted use case
 - Single user
