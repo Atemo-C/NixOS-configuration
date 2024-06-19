@@ -30,6 +30,14 @@
 		./Fonts/Serif.nix
 		./Fonts/Settings.nix
 
+		./Gaming/Driving.nix
+		./Gaming/Emulators
+		./Gaming/Gamemode
+		./Gaming/Gamescope
+		./Gaming/Minecrafty
+		./Gaming/Steam
+		./Gaming/System-tweaks.nix
+
 #		./GPU/AMD.nix
 #		./GPU/Intel.nix
 #		./GPU/Nvidia.nix
@@ -39,6 +47,7 @@
 		./Hyprland/Tools.nix
 		./Hyprland/XDG-portal.nix
 
+		./Input/Controllers.nix
 		./Input/Utilities.nix
 
 		./Input/Buttons/Power.nix
