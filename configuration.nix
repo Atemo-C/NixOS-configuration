@@ -81,7 +81,7 @@
 		./Media/Image/Formats.nix
 		./Media/Image/Picker.nix
 		./Media/Image/Utilities.nix
-		./Media/Image/Viewier.nix
+		./Media/Image/Viewer.nix
 
 		./Media/Video/Capture.nix
 		./Media/Video/Editor.nix
