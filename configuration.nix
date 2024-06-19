@@ -86,6 +86,9 @@
 		./Networking/Hostname.nix
 		./Networking/NetworkManager.nix
 
+		./Office/Suite.nix
+		./Office/Reader.nix
+
 		./Packaging/AppImage.nix
 		./Packaging/Flatpak.nix
 		./Packaging/Unfree.nix
