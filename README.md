@@ -1,15 +1,7 @@
-# \[NEXT\] - NixOS configuration
-This is an overhaul of my existing NixOS configuration. I plan to take my time to complete and tweak it before eventually transitioning over to it. \
-
-My current NixOS configuration can be found here: \
-https://github.com/Atemo-C/NixOS-Configuration/
-
----
-
 # [1] General information
 This is an almost identical version of the NixOS configuration that I use. It is made for single-user use on a desktop or laptop system. \
-It does not use Flakes and never, ever will, but it does make use of Home Manager and some unstable packages whilst on a stable version.
-
+It does not use Flakes and never, ever will, but it does make use of Home Manager and some unstable packages whilst on a stable version. \
+It is an overhaul of my previous NixOS configuration, which can still be found [here](https://github.com/Atemo-C/OLD-NixOS-Configuration). \
 If you want to use this configuration (or rather, a version of it), on your own system, it is hightly recommended that you read what each module does and edit them if needed. \
 &nbsp;
 # [2] To do when using this configuration
