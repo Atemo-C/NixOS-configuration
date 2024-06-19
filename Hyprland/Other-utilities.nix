@@ -2,7 +2,7 @@
 
 	environment.systemPackages = with pkgs; [
 		# GNOME's clock program.
-		gnome.gnome-clock
+		gnome.gnome-clocks
 
 		# Calculator.
 		galculator
