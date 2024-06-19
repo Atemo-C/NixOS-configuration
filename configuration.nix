@@ -43,7 +43,7 @@
 #		./GPU/Nvidia.nix
 #		./GPU/Nvidia-nouveau.nix
 
-		./Hyprland/Other-utilties.nix
+		./Hyprland/Other-utilities.nix
 		./Hyprland/Settings.nix
 		./Hyprland/Tools.nix
 		./Hyprland/XDG-portal.nix
