@@ -101,7 +101,7 @@
 		./Packaging/Unstable.nix
 
 		./Printing/General.nix
-		./Printing/HP.nix
+#		./Printing/HP.nix
 		./Printing/Packages.nix
 
 		./SSH/OpenSSH.nix
