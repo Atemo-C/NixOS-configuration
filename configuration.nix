@@ -59,13 +59,13 @@
 		./Input/Mouse/Autoclicker.nix
 		./Input/Mouse/Utilities.nix
 
-		./Internet/Social.nix
 		./Internet/Downloading.nix
-		./Internet/Gemini.nix
 		./Internet/Email.nix
+		./Internet/Gemini.nix
+		./Internet/Social.nix
 		./Internet/Web.nix
 
-		./Kernel/Version.nix
+#		./Kernel/Version.nix
 
 		./Locale/Locale.nix
 		./Locale/Extra-settings.nix
