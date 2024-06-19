@@ -6,11 +6,6 @@
 		./Android/ADB.nix
 		./Android/Tools.nix
 
-		./Audio/Editing.nix
-		./Audio/Music.nix
-		./Audio/Settings.nix
-		./Audio/Utilities.nix
-
 #		./Bluetooth/Blueman.nix
 #		./Bluetooth/Settings.nix
 
@@ -68,6 +63,25 @@
 		./Locale/Locale.nix
 		./Locale/Extra-settings.nix
 
+		./Media/Gstreamer.nix
+
+		./Media/Audio/Editing.nix
+		./Media/Audio/Music.nix
+		./Media/Audio/Settings.nix
+		./Media/Audio/Utilities.nix
+
+		./Media/Image/Editing.nix
+		./Media/Image/Formats.nix
+		./Media/Image/Picker.nix
+		./Media/Image/Utilities.nix
+		./Media/Image/Viewier.nix
+
+		./Media/Video/Capture.nix
+		./Media/Video/Editor.nix
+		./Media/Video/Player.nix
+		./Media/Video/Utilities.nix
+		./Media/Video/V4L2.nix
+
 		./Networking/Hostname.nix
 		./Networking/NetworkManager.nix
 
@@ -112,12 +126,6 @@
 
 		./User/Home-manager/Module.nix
 		./User/Home-manager/Settings.nix
-
-		./Video/Capture.nix
-		./Video/Editor.nix
-		./Video/Player.nix
-		./Video/Utilities.nix
-		./Video/V4L2.nix
 
 #		./Virtualisation/Docker.nix
 #		./Virtualisation/Virt-manager.nix
