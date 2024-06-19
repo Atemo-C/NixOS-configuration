@@ -31,11 +31,11 @@
 		./Fonts/Settings.nix
 
 		./Gaming/Driving.nix
-		./Gaming/Emulators
-		./Gaming/Gamemode
-		./Gaming/Gamescope
-		./Gaming/Minecrafty
-		./Gaming/Steam
+		./Gaming/Emulators.nix
+		./Gaming/Gamemode.nix
+		./Gaming/Gamescope.nix
+		./Gaming/Minecrafty.nix
+		./Gaming/Steam.nix
 		./Gaming/System-tweaks.nix
 
 #		./GPU/AMD.nix
