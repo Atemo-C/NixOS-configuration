@@ -119,6 +119,9 @@
 		./System/State-version.nix
 		./System/Store-optimisation.nix
 
+		./Terminal/Emulator.nix
+		./Terminal/Utilities.nix
+
 		./Text/Clipboard.nix
 		./Text/Editor.nix
 		./Text/Pickers.nix
