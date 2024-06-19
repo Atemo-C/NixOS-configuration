@@ -5,7 +5,7 @@
 		gst-editing-services
 		gst-libav
 		gst-plugins-bad
-		gst-blugins-base
+		gst-plugins-base
 		gst-plugins-good
 		gst-plugins-rs
 		gst-plugins-ugly
