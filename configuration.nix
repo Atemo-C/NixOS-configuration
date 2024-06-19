@@ -46,6 +46,7 @@
 		./Hyprland/Other-utilities.nix
 		./Hyprland/Settings.nix
 		./Hyprland/Tools.nix
+		./Hyprland/X11.nix
 		./Hyprland/XDG-portal.nix
 
 		./Input/Controllers.nix
