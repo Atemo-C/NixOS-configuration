@@ -39,10 +39,14 @@
 		./Hyprland/Tools.nix
 		./Hyprland/XDG-portal.nix
 
+		./Input/Utilities.nix
+
 		./Input/Buttons/Power.nix
 		./Input/Drawing/OpenTabletDriver.nix
 		./Input/Keyboard/Layout.nix
 		./Input/Keyboard/ZSA.nix
+		./Input/Mouse/Autoclicker.nix
+		./Input/Mouse/Utilities.nix
 
 		./Internet/Social.nix
 		./Internet/Downloading.nix
