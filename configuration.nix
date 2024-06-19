@@ -18,6 +18,11 @@
 #		./Computer/KVM-guest.nix
 #		./Computer/Laptop.nix
 
+		./Files/Archiving.nix
+		./Files/Disks.nix
+		./Files/Management-and-thumbnails.nix
+		./Files/Utilities.nix
+
 		./Fonts/Emoji.nix
 		./Fonts/Monospace.nix
 		./Fonts/Packages.nix
