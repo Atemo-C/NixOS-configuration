@@ -9,6 +9,6 @@
 	};
 
 	# Video4Linux2 utilties.
-	environment.systemPackages = with pkgs; [ v4l2-utils ];
+	environment.systemPackages = with pkgs; [ v4l-utils ];
 
 }
