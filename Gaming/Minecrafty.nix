@@ -9,6 +9,9 @@
 
 		# Infinite-world block sandbox game.
 		minetest
+
+		# Java.
+		jdk
 	];
 
 }
