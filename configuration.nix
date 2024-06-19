@@ -63,6 +63,7 @@
 		./Locale/Locale.nix
 		./Locale/Extra-settings.nix
 
+		./Media/3D.nix
 		./Media/Gstreamer.nix
 
 		./Media/Audio/Editing.nix
