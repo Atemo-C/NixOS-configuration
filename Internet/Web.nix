@@ -6,6 +6,6 @@
 
 		# TOR web and onion browser.
 		tor-browser-bundle-bin
-	]
+	];
 
 }
