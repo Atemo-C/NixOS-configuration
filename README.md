@@ -59,7 +59,7 @@ Help is available in:
 	[Online manual](https://nixos.org/manual/nixos/stable/index.html)
 - The NixOS Wiki \
   	[NixOS Wiki](https://wiki.nixos.org)
-- The Nix.dev documentation for the Nix ecosystem.
+- The Nix.dev documentation for the Nix ecosystem. \
 	[Nix.dev](https://nix.dev/)
 
 A searchable list of available packages for NixOS can be found here. \
