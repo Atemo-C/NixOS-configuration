@@ -23,7 +23,7 @@ flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/fl
 ```
 
 ## [2.4] NixOS state version
-If you have installed a NixOS version higher/lower than the value currently used here (`24.05`), you must change the value of `system.stateVersion` in the `System/State-version.nix` module to it. After that, you should never need to change it, unless you install NixOS from scratch with a different version. You do not and should not change this number if you keep the same installation, even when upgrading NixOS version.
+If you have installed a NixOS version higher/lower than the value currently used here (`24.05`), you must change the value of `system.stateVersion` in the `System/State-version.nix` module to it. After that, you should never need to change it, unless you install NixOS from scratch with a different version. You do not have to nor should not change this number if you keep the same installation, even when upgrading NixOS version.
 
 ## [2.5] Home Manager version
 The version of Home Manager used should match the version of NixOS you are currently using. Its value can be changed in the `User/Home-manager.nix` module. \
