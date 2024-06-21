@@ -21,7 +21,7 @@
 			x = "exit";
 
 			# NixOS abreviations.
-			clean = "sudo nix-collect-garbade -d";
+			clean = "sudo nix-collect-garbage -d";
 			update-boot = "sudo nixos-rebuild boot";
 			update-now = "sudo nixos-rebuild switch";
 			upgrade-boot = "sudo nixos-rebuild boot --upgrade";
