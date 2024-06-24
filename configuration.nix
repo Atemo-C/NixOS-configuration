@@ -28,7 +28,11 @@
 		./Fonts/Packages.nix
 		./Fonts/SansSerif.nix
 		./Fonts/Serif.nix
-		./Fonts/Settings.nix
+
+		./Fonts/Settings/Cache.nix
+		./Fonts/Settings/FontDir.nix
+		./Fonts/Settings/Hinting.nix
+		./Fonts/Settings/Size.nix
 
 		./Gaming/Driving.nix
 		./Gaming/Emulators.nix
