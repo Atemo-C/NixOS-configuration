@@ -128,6 +128,12 @@
 		./Text/Pickers.nix
 		./Text/Spelling.nix
 
+		./Theme/Cursor.nix
+		./Theme/GTK.nix
+		./Theme/Icons.nix
+		./Theme/QT.nix
+		./Theme/Settings.nix
+
 		./Time/Hardware-clock.nix
 		./Time/Timezone.nix
 
