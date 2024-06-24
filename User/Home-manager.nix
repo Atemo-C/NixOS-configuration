@@ -7,5 +7,14 @@ let
 in {
 	imports = [ "${home-manager}/nixos" ];
 
-	home-manager.users.${config.Custom.Name}.home.stateVersion = "24.05";
+	home-manager = {
+		# Automatic backup of conflicting configuration files.
+		# Documentation missing in https://nix-community.github.io/home-manager/options.xhtml
+		backupFileExtension = "backup";
+
+		# Home Manager version.
+		# https://nix-community.github.io/home-manager/options.xhtml#opt-home.stateVersion
+		users.${config.Custom.Name}.home.stateVersion = "24.05";
+	};
+
 }
