@@ -8,7 +8,7 @@
 
 			# Package providing the cursor theme.
 			# https://nix-community.github.io/home-manager/options.xhtml#opt-home.pointerCursor.package
-			package = pkgs.libsForQt5.breeze-qt5;
+			package = pkgs.kdePackages.breeze;
 
 			# The cursor narme within the package.
 			# https://nix-community.github.io/home-manager/options.xhtml#opt-home.pointerCursor.name
@@ -18,7 +18,7 @@
 		gtk.cursorTheme = {
 			# Package providing the cursor theme.
 			# https://nix-community.github.io/home-manager/options.xhtml#opt-gtk.cursorTheme.package
-			package = pkgs.libsForQt5.breeze-qt5;
+			package = pkgs.kdePackages.breeze;
 
 			# The name of the cursor theme within the package.
 			# https://nix-community.github.io/home-manager/options.xhtml#opt-gtk.cursorTheme.name
