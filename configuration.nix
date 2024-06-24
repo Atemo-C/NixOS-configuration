@@ -116,6 +116,7 @@
 
 		./System/Benchmarking-and-information.nix
 		./System/Configuration-backup.nix
+		./System/Dconf.nix
 		./System/Monitoring.nix
 		./System/State-version.nix
 		./System/Store-optimisation.nix
