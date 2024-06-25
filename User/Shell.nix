@@ -29,6 +29,7 @@
 
 			# Online music abbreviations.
 			lofi-escape = ''mpv --no-video "https://www.youtube.com/watch?v=S_MOd40zlYU"'';
+			lofi-medieval = ''mpv --no-video "https://www.youtube.com/watch?v=_uMuuHk_KkQ"'';
 			lofi-piano = ''mpv --no-video "https://www.youtube.com/watch?v=nWjC1RnLYbM"'';
 			lofi-sleep = ''mpv --no-video "https://www.youtube.com/watch?v=rUxyKA_-grg"'';
 			lofi-study = ''mpv --no-video "https://www.youtube.com/watch?v=jfKfPfyJRdk"'';
