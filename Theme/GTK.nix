@@ -1,5 +1,12 @@
 { config, pkgs, ... }: {
 
+	# Environment variables.
+	# https://search.nixos.org/options?channel=24.05&show=environment.sessionVariables
+	environment.sessionVariables = {
+		ADW_DEBUG_COLOR_SCHEME = "prefer-dark";
+		HDY_DEBUG_COLOR_SCHEME = "prefer-dark";
+	};
+
 	home-manager.users.${config.Custom.Name} = {
 		gtk = {
 			theme = {
