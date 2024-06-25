@@ -31,10 +31,6 @@
 		# https://search.nixos.org/options?channel=24.05&show=users.users.%3Cname%3E.description
 		description = "${config.Custom.Title}";
 
-		# The user's primary group.
-		# https://search.nixos.org/options?channel=24.05&show=users.users.%3Cname%3E.group
-		group = "users";
-
 		# The user's home directory
 		# https://search.nixos.org/options?channel=24.05&show=users.users.%3Cname%3E.home
 		home = "/User/${config.Custom.Title}";
