@@ -12,22 +12,28 @@
 				name = "Breeze-Dark";
 			};
 
-			# Extra configuration options.
+			# Extra configuration options and CSS styling.
 			# https://nix-community.github.io/home-manager/options.xhtml#opt-gtk.gtk3.extraConfig
-			gtk3.extraConfig = {
-				gtk-application-prefer-dark-theme = true;
-				gtk-button-images = true;
-				gtk-decoration-layout = "";
-				gtk-menu-images = true;
+			gtk3 = {
+				extraConfig = {
+					gtk-application-prefer-dark-theme = true;
+					gtk-button-images = true;
+					gtk-decoration-layout = "";
+					gtk-menu-images = true;
+				};
+				extraCss = "@import 'colors.css';";
 			};
 
-			# Extra conifguration options.
+			# Extra conifguration options and CSS styling.
 			# https://nix-community.github.io/home-manager/options.xhtml#opt-gtk.gtk4.extraConfig
-			gtk4.extraConfig = {
-				gtk-application-prefer-dark-theme = true;
-				gtk-button-images = true;
-				gtk-decoration-layout = "";
-				gtk-menu-images = true;
+			gtk4 = {
+				extraConfig = {
+					gtk-application-prefer-dark-theme = true;
+					gtk-button-images = true;
+					gtk-decoration-layout = "";
+					gtk-menu-images = true;
+				};
+				extraCss = "@import 'colors.css';";
 			};
 		};
 	};
