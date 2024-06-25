@@ -4,6 +4,9 @@
 		# Matrix client.
 		element-desktop
 
+		# Revolt client.
+		revolt-desktop
+
 		# Discord client.
 		unstable.vesktop
 	];
