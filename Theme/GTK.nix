@@ -1,11 +1,12 @@
 { config, pkgs, ... }: {
 
 	# Environment variables.
+	# These are mostly useful to define in Flatpak programs.
 	# https://search.nixos.org/options?channel=24.05&show=environment.sessionVariables
-	environment.sessionVariables = {
-		ADW_DEBUG_COLOR_SCHEME = "prefer-dark";
-		HDY_DEBUG_COLOR_SCHEME = "prefer-dark";
-	};
+#	environment.sessionVariables = {
+#		ADW_DEBUG_COLOR_SCHEME = "prefer-dark";
+#		HDY_DEBUG_COLOR_SCHEME = "prefer-dark";
+#	};
 
 	home-manager.users.${config.Custom.Name} = {
 		gtk = {
