@@ -22,6 +22,7 @@
 		nufraw-thumbnailer
 		gnome-epub-thumbnailer
 		kdePackages.kimageformats
+		kdePackages.qtsvg
 
 		# XFCE's exo tool.
 		xfce.exo
