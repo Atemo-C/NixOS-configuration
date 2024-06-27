@@ -40,7 +40,7 @@ The version of Home Manager used should match the version of NixOS you are curre
 - Secure Boot
 - Accessibility
 - Touchscreen
-- NVIDIA PRIME
+- Non-offload Nvidia PRIME
 - Remote desktop
 - Snap packaging system
 - Use in most virtual machines (with Hyprland)
