@@ -23,11 +23,11 @@
 			# Extra configuration lines to add verbatim to ~/.gtkrc-2.0
 			# https://nix-community.github.io/home-manager/options.xhtml#opt-gtk.gtk2.extraConfig
 			gtk2.extraConfig =
-				"gtk-enable-animations = 0"
-			"gtk-primary-button-wraps-slider = 1"
-			"gtk-toolbar-style = 3"
-			"gtk-menu-images = 1"
-			"gtk-button-images = 1";
+				"gtk-enable-animations = 0
+			gtk-primary-button-wraps-slider = 1
+			gtk-toolbar-style = 3
+			gtk-menu-images = 1
+			gtk-button-images = 1";
 
 			gtk3 = {
 				# Extra configuration options to add to $XDG_CONFIG_HOME/gtk-3.0/settings.ini.
