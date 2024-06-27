@@ -20,27 +20,49 @@
 				name = "Breeze-Dark";
 			};
 
-			# Extra configuration options and CSS styling.
-			# https://nix-community.github.io/home-manager/options.xhtml#opt-gtk.gtk3.extraConfig
+			# Extra configuration lines to add verbatim to ~/.gtkrc-2.0
+			# https://nix-community.github.io/home-manager/options.xhtml#opt-gtk.gtk2.extraConfig
+			gtk2.extraConfig =
+				"gtk-enable-animations = 0"
+			"gtk-primary-button-wraps-slider = 1"
+			"gtk-toolbar-style = 3"
+			"gtk-menu-images = 1"
+			"gtk-button-images = 1";
+
 			gtk3 = {
+				# Extra configuration options to add to $XDG_CONFIG_HOME/gtk-3.0/settings.ini.
+				# https://nix-community.github.io/home-manager/options.xhtml#opt-gtk.gtk3.extraConfig
 				extraConfig = {
 					gtk-application-prefer-dark-theme = true;
 					gtk-button-images = true;
 					gtk-decoration-layout = "icon:";
 					gtk-menu-images = true;
+					gtk-enable-animations = 0;
+					gtk-modules = "colorreload-gtk-module:window-decoration-gtk-module";
+					gtk-primary-wraps-slider = true;
+					gtk-toolbar-style = 3;
 				};
+
+				# Extra configuration lines to add verbatim to $XDG_CONFIG_HOME/gtk-3.0/gtk.css
+				# https://nix-community.github.io/home-manager/options.xhtml#opt-gtk.gtk3.extraCss
 				extraCss = "@import 'colors.css';";
 			};
 
-			# Extra conifguration options and CSS styling.
-			# https://nix-community.github.io/home-manager/options.xhtml#opt-gtk.gtk4.extraConfig
 			gtk4 = {
+				# Extra configuration options to add to $XDG_CONFIG_HOME/gtk-4.0/settings.ini.
+				# https://nix-community.github.io/home-manager/options.xhtml#opt-gtk.gtk4.extraConfig
 				extraConfig = {
 					gtk-application-prefer-dark-theme = true;
 					gtk-button-images = true;
 					gtk-decoration-layout = "icon:";
 					gtk-menu-images = true;
+					gtk-enable-animations = 0;
+					gtk-modules = "colorreload-gtk-module:window-decoration-gtk-module";
+					gtk-primary-wraps-slider = true;
+					gtk-toolbar-style = 3;
 				};
+				# Extra configuration lines to add verbatim to $XDG_CONFIG_HOME/gtk-4.0/gtk.css
+				# https://nix-community.github.io/home-manager/options.xhtml#opt-gtk.gtk4.extraCss
 				extraCss = "@import 'colors.css';";
 			};
 		};
