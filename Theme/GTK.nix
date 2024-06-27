@@ -26,7 +26,7 @@
 				extraConfig = {
 					gtk-application-prefer-dark-theme = true;
 					gtk-button-images = true;
-					gtk-decoration-layout = "";
+					gtk-decoration-layout = "icon:";
 					gtk-menu-images = true;
 				};
 				extraCss = "@import 'colors.css';";
@@ -38,7 +38,7 @@
 				extraConfig = {
 					gtk-application-prefer-dark-theme = true;
 					gtk-button-images = true;
-					gtk-decoration-layout = "";
+					gtk-decoration-layout = "icon:";
 					gtk-menu-images = true;
 				};
 				extraCss = "@import 'colors.css';";
