@@ -39,7 +39,6 @@
 					gtk-menu-images = true;
 					gtk-enable-animations = 0;
 					gtk-modules = "colorreload-gtk-module:window-decoration-gtk-module";
-					gtk-primary-wraps-slider = true;
 					gtk-toolbar-style = 3;
 				};
 
