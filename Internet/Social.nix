@@ -2,7 +2,7 @@
 
 	environment.systemPackages = with pkgs; [
 		# Matrix client.
-		element-desktop
+		element-desktop-wayland
 
 		# Revolt client.
 		revolt-desktop
