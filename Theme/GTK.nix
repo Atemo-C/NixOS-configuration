@@ -53,13 +53,8 @@
 				# https://nix-community.github.io/home-manager/options.xhtml#opt-gtk.gtk4.extraConfig
 				extraConfig = {
 					gtk-application-prefer-dark-theme = true;
-					gtk-button-images = true;
 					gtk-decoration-layout = "icon:";
-					gtk-menu-images = true;
 					gtk-enable-animations = 0;
-					gtk-modules = "colorreload-gtk-module:window-decoration-gtk-module";
-					gtk-primary-wraps-slider = true;
-					gtk-toolbar-style = 3;
 				};
 				# Extra configuration lines to add verbatim to $XDG_CONFIG_HOME/gtk-4.0/gtk.css
 				# https://nix-community.github.io/home-manager/options.xhtml#opt-gtk.gtk4.extraCss
