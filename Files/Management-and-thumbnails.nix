@@ -1,10 +1,12 @@
 { config, pkgs, ... }: {
 
 	programs.thunar = {
-		# Whether to enable XFCE's file manager, Thunar
+		# Whether to enable XFCE's file manager, Thunar.
+		# https://search.nixos.org/options?channel=24.05&show=programs.thunar.enable
 		enable = true;
 
 		# List of Thunar plugins to install.
+		# https://search.nixos.org/options?channel=24.05&show=programs.thunar.plugins
 		plugins = with pkgs.xfce; [
 			thunar-archive-plugin
 			thunar-volman
@@ -34,6 +36,7 @@
 		gvfs.enable = true;
 
 		# Whether to enable the Tumbler D-Bus thumbnailer service.
+		# https://search.nixos.org/options?channel=24.05&show=services.tumbler.enable
 		tumbler.enable = true;
 	};
 
