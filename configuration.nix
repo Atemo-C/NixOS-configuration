@@ -44,8 +44,8 @@
 
 #		./GPU/AMD.nix
 #		./GPU/Intel.nix
-#		./GPU/Nvidia.nix
-#		./GPU/Nvidia-nouveau.nix
+#		./GPU/NVIDIA.nix
+#		./GPU/NVIDIA-Nouveau.nix
 
 		./Hyprland/Other-utilities.nix
 		./Hyprland/Settings.nix
