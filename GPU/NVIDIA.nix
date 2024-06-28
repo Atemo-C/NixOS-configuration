@@ -12,13 +12,8 @@
 		kernelParams = [ "nvidia.NVreg_PreserveVideoMemoryAllocations=1" ];
 	};
 
-	environment.systemPackages = with pkgs; [
-		# NVIDIA package.
-		linuxPackages.nvidia_x11
-
-		# CUDA package.
-#		cudaPackages.cudatoolkit
-	];
+	# CUDA toolkit.
+#	environment.systemPackages = with pkgs; [ cudaPackages.cudatoolkit ];
 
 	hardware = {
 		nvidia = {
