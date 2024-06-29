@@ -89,21 +89,21 @@
 			", XF86AudioNext, exec, playerctl next"
 
 			# Power buttons.
-			'', XF86PowerOff, exec, bash "$HOME/Programs/Scripts/Desktop scripts/Power menu.sh"''
-			'', XF86PowerDown, exec, bash "$HOME/Programs/Scripts/Desktop scripts/Power menu.sh"''
-			'', XF86Sleep, exec, bash "$HOME/Programs/Scripts/Desktop scripts/Power menu.sh"''
-			'', XF86Suspend, exec, bash "$HOME/Programs/Scripts/Desktop scripts/Power menu.sh"''
+			'', XF86PowerOff, exec, bash "/etc/nixos/Hyprland/Scripts/Power menu.sh"''
+			'', XF86PowerDown, exec, bash "/etc/nixos/Hyprland/Scripts/Power menu.sh"''
+			'', XF86Sleep, exec, bash "/etc/nixos/Hyprland/Scripts/Power menu.sh"''
+			'', XF86Suspend, exec, bash "/etc/nixos/Hyprland/Scripts/Power menu.sh"''
 
 			# Program launching
-			''ALT, RETURN, exec, bash "$HOME/Programs/Scripts/Desktop scripts/Program launcher.sh"''
+			''ALT, RETURN, exec, bash "/etc/nixos/Hyprland/Scripts/Program launcher.sh"''
 			"ALT SHIFT, RETURN, exec, tofi-drun --drun-launch=true"
 
 			# Screenshot
-			'', PRINT, exec, bash "$HOME/Programs/Scripts/Desktop scripts/Hyprshot single.sh"''
-			''SHIFT, PRINT, exec, bash "$HOME/Programs/Scripts/Desktop scripts/Hyprshot.sh"''
+			'', PRINT, exec, bash "/etc/nixos/Hyprland/Scripts/Hyprshot single.sh"''
+			''SHIFT, PRINT, exec, bash "/etc/nixos/Hyprland/Scripts/Hyprshot.sh"''
 
 			# Emoji picking
-			''ALT SHIFT, E, exec, st -e bash "$HOME/Programs/Scripts/Desktop scripts/Emoji.sh"''
+			''ALT SHIFT, E, exec, st -e bash "/etc/nixos/Hyprland/Scripts/Emoji.sh"''
 
 			# Clipboard managing
 			"SUPER SHIFT, V, exec, clipman pick -t CUSTOM -T tofi"
