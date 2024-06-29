@@ -26,8 +26,12 @@ flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/fl
 If you have installed a NixOS version higher/lower than the value currently used here (`24.05`), you must change the value of `system.stateVersion` in the `System/State-version.nix` module to it. After that, you should never need to change it, unless you install NixOS from scratch with a different version. You do not have to nor should not change this number if you keep the same installation, even when upgrading NixOS version.
 
 ## [2.5] Home Manager version
-The version of Home Manager used should match the version of NixOS you are currently using. Its value can be changed in the `User/Home-manager.nix` module. \
+The version of Home Manager used should match the version of NixOS you are currently using. Its value can be changed in the `User/Home-manager.nix` module.
+
+## [2.6] Values for NVIDIA PRIME
+If you are using NVIDIA PRIME, you will need to edit the appropriate Bus IDs and which vendor your other GPU is made by in the `GPU/NVIDIA.nix` module. \
 &nbsp;
+
 # [3] Use cases and feature implementation
 
 ## [3.1] Targeted use case
