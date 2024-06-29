@@ -23,7 +23,7 @@ Choice=$(
 )
 
 if [ "$Choice" = " " ]; then
-	bash "$HOME/Programs/Scripts/Desktop scripts/Hyprshot.sh"
+	bash "/etc/nixos/Hyprland/Scripts/Hyprshot.sh"
 
 
 elif [ "$Choice" = "󰆓  Save and copy an image of the entire screen" ]; then

@@ -32,7 +32,7 @@ Choice=$(
 )
 
 if [ "$Choice" = " " ]; then
-	bash "$HOME/Programs/Scripts/Desktop scripts/Power menu.sh"
+	bash "/etc/nixos/Hyprland/Scripts/Power menu.sh"
 
 elif [ "$Choice" = "󰍹  Turn off display/s" ]; then
 	sleep 0.2 && hyprctl dispatcher dpms off
@@ -51,7 +51,7 @@ elif [ "$Choice" = "󰒲  Suspend" ]; then
 	elif [ "$Choice" = "  Yes" ]; then
 		systemctl suspend
 	elif [ "$Choice" = "  Back" ]; then
-		bash "$HOME/Programs/Scripts/Desktop scripts/Power menu.sh"
+		bash "/etc/nixos/Hyprland/Scripts/Power menu.sh"
 	fi
 
 elif [ "$Choice" = "󰒲  Hibernate" ]; then
@@ -68,7 +68,7 @@ elif [ "$Choice" = "󰒲  Hibernate" ]; then
 	elif [ "$Choice" = "  Yes" ]; then
 		systemctl hibernate
 	elif [ "$Choice" = "  Back" ]; then
-		bash "$HOME/Programs/Scripts/Desktop scripts/Power menu.sh"
+		bash "/etc/nixos/Hyprland/Scripts/Power menu.sh"
 	fi
 
 elif [ "$Choice" = "󱌂  Hybrid sleep" ]; then
@@ -85,7 +85,7 @@ elif [ "$Choice" = "󱌂  Hybrid sleep" ]; then
 	elif [ "$Choice" = "  Yes" ]; then
 		systemctl hybrid-sleep
 	elif [ "$Choice" = "  Back" ]; then
-		bash "$HOME/Programs/Scripts/Desktop scripts/Power menu.sh"
+		bash "/etc/nixos/Hyprland/Scripts/Power menu.sh"
 	fi
 
 elif [ "$Choice" = "󰜉  Reboot" ]; then
@@ -102,7 +102,7 @@ elif [ "$Choice" = "󰜉  Reboot" ]; then
 	elif [ "$Choice" = "  Yes" ]; then
 		systemctl reboot
 	elif [ "$Choice" = "  Back" ]; then
-		bash "$HOME/Programs/Scripts/Desktop scripts/Power menu.sh"
+		bash "/etc/nixos/Hyprland/Scripts/Power menu.sh"
 	fi
 
 elif [ "$Choice" = "  Reboot to UEFI firmware" ]; then
@@ -119,7 +119,7 @@ elif [ "$Choice" = "  Reboot to UEFI firmware" ]; then
 	elif [ "$Choice" = "  Yes" ]; then
 		systemctl reboot --firmware-setup
 	elif [ "$Choice" = "  Back" ]; then
-		bash "$HOME/Programs/Scripts/Desktop scripts/Power menu.sh"
+		bash "/etc/nixos/Hyprland/Scripts/Power menu.sh"
 	fi
 
 elif [ "$Choice" = "  Power off" ]; then
@@ -136,7 +136,7 @@ elif [ "$Choice" = "  Power off" ]; then
 	elif [ "$Choice" = "  Yes" ]; then
 		systemctl poweroff
 	elif [ "$Choice" = "  Back" ]; then
-		bash "$HOME/Programs/Scripts/Desktop scripts/Power menu.sh"
+		bash "/etc/nixos/Hyprland/Scripts/Power menu.sh"
 	fi
 
 elif [ "$Choice" = "󰺟  Halt" ]; then
@@ -154,7 +154,7 @@ elif [ "$Choice" = "󰺟  Halt" ]; then
 	elif [ "$Choice" = "  Yes" ]; then
 		systemctl poweroff
 	elif [ "$Choice" = "  Back" ]; then
-		bash "$HOME/Programs/Scripts/Desktop scripts/Power menu.sh"
+		bash "/etc/nixos/Hyprland/Scripts/Power menu.sh"
 	fi
 
 elif [ "$Choice" = "󰗼  Exit" ]; then
