@@ -53,6 +53,18 @@
 		./Hyprland/X11.nix
 		./Hyprland/XDG-portal.nix
 
+		./Hyprland/Configuration/Animations.nix
+		./Hyprland/Configuration/Autostart.nix
+		./Hyprland/Configuration/Bindings.nix
+		./Hyprland/Configuration/Decoration.nix
+		./Hyprland/Configuration/Environment-variables.nix
+		./Hyprland/Configuration/General.nix
+		./Hyprland/Configuration/Input.nix
+		./Hyprland/Configuration/Layout.nix
+		./Hyprland/Configuration/Miscellaneous.nix
+		./Hyprland/Configuration/Monitor.nix
+		./Hyprland/Configuration/Window-rules.nix
+
 		./Input/Controllers.nix
 		./Input/Utilities.nix
 
