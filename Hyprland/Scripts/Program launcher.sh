@@ -87,7 +87,7 @@ Programs=(
 	"  LibreWolf - private  Web browser (private window)"
 	"󰗹  Torbrowser launcher  Tor browser"
 	" "
-	"󰛳  Network Manager      Manage Wi and Ethernet"
+	"󰛳  Network Manager      Manage WiFi and Ethernet"
 	"󰛳  NM-applet            NetworkManager applet"
 	" "
 	"  qBittorrent          Torrent manager"
@@ -319,7 +319,7 @@ Program=$(
 [ "$Program" = "󰗹  Torbrowser launcher  Tor browser" ] &&
 	tor-browser & disown
 
-[ "$Program" = "󰛳  Network Manager      Manage Wi and Ethernet" ] &&
+[ "$Program" = "󰛳  Network Manager      Manage WiFi and Ethernet" ] &&
 	st -e nmtui & disown
 
 [ "$Program" = "󰛳  NM-applet            NetworkManager applet" ] &&
