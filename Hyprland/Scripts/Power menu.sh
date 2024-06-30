@@ -31,115 +31,133 @@ Choice=$(
 		"${@}"
 )
 
-if [ "$Choice" = " " ]; then
-	bash "/etc/nixos/Hyprland/Scripts/Power menu.sh"
+[ "$Choice" = " " ] &&
+	bash "/etc/nixos/Hyprland/Scripts/Power menu.sh" & disown
 
-elif [ "$Choice" = "󰍹  Turn off display/s" ]; then
+[ "$Choice" = "󰍹  Turn off display/s" ] &&
 	sleep 0.2 && hyprctl dispatcher dpms off
 
-elif [ "$Choice" = "󰒲  Suspend" ]; then
+[ "$Choice" = "󰒲  Suspend" ] &&
 	Choice=$(
 		printf '%s\n' "${Confirmations[@]}" | tofi \
 			--width 145 \
 			--height 165 \
 			--prompt-text "Suspend?"
 	)
-	if [ "$Choice" = " " ]; then
+	[ "$Choice" = " " ] &&
 		exit
-	elif [ "$Choice" = "  No" ]; then
-		exit
-	elif [ "$Choice" = "  Yes" ]; then
-		systemctl suspend
-	elif [ "$Choice" = "  Back" ]; then
-		bash "/etc/nixos/Hyprland/Scripts/Power menu.sh"
-	fi
 
-elif [ "$Choice" = "󰒲  Hibernate" ]; then
+	[ "$Choice" = "  No" ] &&
+		exit
+
+	[ "$Choice" = "  Yes" ] &&
+		systemctl suspend
+
+	[ "$Choice" = "  Back" ] &&
+		bash "/etc/nixos/Hyprland/Scripts/Power menu.sh" & disown
+
+
+[ "$Choice" = "󰒲  Hibernate" ] &&
 	Choice=$(
 		printf '%s\n' "${Confirmations[@]}" | tofi \
 			--width 170 \
 			--height 165 \
 			--prompt-text "Hibernate? "
 	)
-	if [ "$Choice" = " " ]; then
+	[ "$Choice" = " " ] &&
 		exit
-	elif [ "$Choice" = "  No" ]; then
-		exit
-	elif [ "$Choice" = "  Yes" ]; then
-		systemctl hibernate
-	elif [ "$Choice" = "  Back" ]; then
-		bash "/etc/nixos/Hyprland/Scripts/Power menu.sh"
-	fi
 
-elif [ "$Choice" = "󱌂  Hybrid sleep" ]; then
+	[ "$Choice" = "  No" ] &&
+		exit
+
+	[ "$Choice" = "  Yes" ] &&
+		systemctl hibernate
+
+	[ "$Choice" = "  Back" ] &&
+		bash "/etc/nixos/Hyprland/Scripts/Power menu.sh" & disown
+
+
+[ "$Choice" = "󱌂  Hybrid sleep" ] &&
 	Choice=$(
 		printf '%s\n' "${Confirmations[@]}" | tofi \
 			--width 190 \
 			--height 165 \
 			--prompt-text "Hybrid sleep? "
 	)
-	if [ "$Choice" = " " ]; then
+	[ "$Choice" = " " ] &&
 		exit
-	elif [ "$Choice" = "  No" ]; then
-		exit
-	elif [ "$Choice" = "  Yes" ]; then
-		systemctl hybrid-sleep
-	elif [ "$Choice" = "  Back" ]; then
-		bash "/etc/nixos/Hyprland/Scripts/Power menu.sh"
-	fi
 
-elif [ "$Choice" = "󰜉  Reboot" ]; then
+	[ "$Choice" = "  No" ] &&
+		exit
+
+	[ "$Choice" = "  Yes" ] &&
+		systemctl hybrid-sleep
+
+	[ "$Choice" = "  Back" ] &&
+		bash "/etc/nixos/Hyprland/Scripts/Power menu.sh" & disown
+
+
+[ "$Choice" = "󰜉  Reboot" ] &&
 	Choice=$(
 		printf '%s\n' "${Confirmations[@]}" | tofi \
 			--width 145 \
 			--height 165 \
 			--prompt-text "Reboot? "
 	)
-	if [ "$Choice" = " " ]; then
+	[ "$Choice" = " " ] &&
 		exit
-	elif [ "$Choice" = "  No" ]; then
-		exit
-	elif [ "$Choice" = "  Yes" ]; then
-		systemctl reboot
-	elif [ "$Choice" = "  Back" ]; then
-		bash "/etc/nixos/Hyprland/Scripts/Power menu.sh"
-	fi
 
-elif [ "$Choice" = "  Reboot to UEFI firmware" ]; then
+	[ "$Choice" = "  No" ] &&
+		exit
+
+	[ "$Choice" = "  Yes" ] &&
+		systemctl reboot
+
+	[ "$Choice" = "  Back" ] &&
+		bash "/etc/nixos/Hyprland/Scripts/Power menu.sh" & disown
+
+
+[ "$Choice" = "  Reboot to UEFI firmware" ] &&
 	Choice=$(
 		printf '%s\n' "${Confirmations[@]}" | tofi \
 			--width 280 \
 			--height 165 \
 			--prompt-text "Reboot to UEFI firmware? "
 	)
-	if [ "$Choice" = " " ]; then
+	[ "$Choice" = " " ] &&
 		exit
-	elif [ "$Choice" = "  No" ]; then
-		exit
-	elif [ "$Choice" = "  Yes" ]; then
-		systemctl reboot --firmware-setup
-	elif [ "$Choice" = "  Back" ]; then
-		bash "/etc/nixos/Hyprland/Scripts/Power menu.sh"
-	fi
 
-elif [ "$Choice" = "  Power off" ]; then
+	[ "$Choice" = "  No" ] &&
+		exit
+
+	[ "$Choice" = "  Yes" ] &&
+		systemctl reboot --firmware-setup
+
+	[ "$Choice" = "  Back" ] &&
+		bash "/etc/nixos/Hyprland/Scripts/Power menu.sh" & disown
+
+
+[ "$Choice" = "  Power off" ] &&
 	Choice=$(
 		printf '%s\n' "${Confirmations[@]}" | tofi \
 			--width 170 \
 			--height 165 \
 			--prompt-text "Power off? "
 	)
-	if [ "$Choice" = " " ]; then
+	[ "$Choice" = " " ] &&
 		exit
-	elif [ "$Choice" = "  No" ]; then
-		exit
-	elif [ "$Choice" = "  Yes" ]; then
-		systemctl poweroff
-	elif [ "$Choice" = "  Back" ]; then
-		bash "/etc/nixos/Hyprland/Scripts/Power menu.sh"
-	fi
 
-elif [ "$Choice" = "󰺟  Halt" ]; then
+	[ "$Choice" = "  No" ] &&
+		exit
+
+	[ "$Choice" = "  Yes" ] &&
+		systemctl poweroff
+
+	[ "$Choice" = "  Back" ] &&
+		bash "/etc/nixos/Hyprland/Scripts/Power menu.sh" & disown
+
+
+[ "$Choice" = "󰺟  Halt" ] &&
 	Choice=$(
 		printf '%s\n' "${Confirmations[@]}" | tofi \
 			--width 215 \
@@ -147,17 +165,18 @@ elif [ "$Choice" = "󰺟  Halt" ]; then
 			--prompt-text "Halt the system? " & \
 			notify-send "Manually turn off power once the system halts. This is archaic."
 	)
-	if [ "$Choice" = " " ]; then
+	[ "$Choice" = " " ] &&
 		exit
-	elif [ "$Choice" = "  No" ]; then
+
+	[ "$Choice" = "  No" ] &&
 		exit
-	elif [ "$Choice" = "  Yes" ]; then
+
+	[ "$Choice" = "  Yes" ] &&
 		systemctl poweroff
-	elif [ "$Choice" = "  Back" ]; then
-		bash "/etc/nixos/Hyprland/Scripts/Power menu.sh"
-	fi
 
-elif [ "$Choice" = "󰗼  Exit" ]; then
+	[ "$Choice" = "  Back" ] &&
+		bash "/etc/nixos/Hyprland/Scripts/Power menu.sh" & disown
+
+
+[ "$Choice" = "󰗼  Exit" ] &&
 	exit
-
-fi
