@@ -3,7 +3,7 @@
 set -euo pipefail
 
 hyprshot \
-	--current \
 	--mode output \
+	--mode active \
 	--output-folder "$HOME/Images/Screenshots" \
-	--filename Screenshot_"$(date +'%d-%m-%Y_%H-%M-%S')".png
+	--filename Screenshot"$(echo ' ')""$(date +'%d-%m-%Y %H-%M-%S')".png

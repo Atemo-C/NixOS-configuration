@@ -22,46 +22,45 @@ Choice=$(
 		"${@}"
 )
 
-if [ "$Choice" = " " ]; then
+[ "$Choice" = " " ] &&
 	bash "/etc/nixos/Hyprland/Scripts/Hyprshot.sh"
 
-
-elif [ "$Choice" = "󰆓  Save and copy an image of the entire screen" ]; then
+[ "$Choice" = "󰆓  Save and copy an image of the entire screen" ] &&
 	sleep 0.3 &&
 	hyprshot \
-		--current \
 		--mode output \
+		--mode active \
 		--output-folder "$HOME/Images/Screenshots" \
-		--filename Screenshot_"$(date +'%d-%m-%Y_%H-%M-%S')".png
+		--filename Screenshot"$(echo ' ')""$(date +'%d-%m-%Y %H-%M-%S')".png
 
-elif [ "$Choice" = "󰆓  Save and copy an image of an open window" ]; then
+[ "$Choice" = "󰆓  Save and copy an image of an open window" ] &&
 	hyprshot \
 		--mode window \
 		--output-folder "$HOME/Images/Screenshots" \
-		--filename Screenshot_"$(date +'%d-%m-%Y_%H-%M-%S')".png
+		--filename Screenshot"$(echo ' ')""$(date +'%d-%m-%Y %H-%M-%S')".png
 
-elif [ "$Choice" = "󰆓  Save and copy an image of a selected region" ]; then
+[ "$Choice" = "󰆓  Save and copy an image of a selected region" ] &&
 	hyprshot \
 		--mode region \
 		--output-folder "$HOME/Images/Screenshots" \
-		--filename Screenshot_"$(date +'%d-%m-%Y_%H-%M-%S')".png
+		--filename Screenshot"$(echo ' ')""$(date +'%d-%m-%Y %H-%M-%S')".png
 
-elif [ "$Choice" = "󰅍  Copy an image of the entire screen" ]; then
+[ "$Choice" = "󰅍  Copy an image of the entire screen" ] &&
+	sleep 0.3 &&
 	hyprshot \
 		--mode output \
+		--mode active \
 		--clipboard-only
 
-elif [ "$Choice" = "󰅍  Copy an image of an open window" ]; then
+[ "$Choice" = "󰅍  Copy an image of an open window" ] &&
 	hyprshot \
 		--mode window \
 		--clipboard-only
 
-elif [ "$Choice" = "󰅍  Copy an image of a selected region" ]; then
+[ "$Choice" = "󰅍  Copy an image of a selected region" ] &&
 	hyprshot \
 		--mode region \
 		--clipboard-only
 
-elif [ "$Choice" = "󰗼  Exit" ]; then
+[ "$Choice" = "󰗼  Exit" ] &&
 	exit
-
-fi

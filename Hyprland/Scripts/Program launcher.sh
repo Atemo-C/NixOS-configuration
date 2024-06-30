@@ -87,7 +87,7 @@ Programs=(
 	"  LibreWolf - private  Web browser (private window)"
 	"󰗹  Torbrowser launcher  Tor browser"
 	" "
-	"󰛳  Network Manager      Manage WiFi and Ethernet"
+	"󰛳  Network Manager      Manage Wi and Ethernet"
 	"󰛳  NM-applet            NetworkManager applet"
 	" "
 	"  qBittorrent          Torrent manager"
@@ -107,248 +107,244 @@ Programs=(
 
 Program=$(
 	printf '%s\n' "${Programs[@]}" | tofi \
-		--font /run/current-system/sw/share/X11/fonts/UbuntuMonoNerdFontMono-Regular.ttf \
-		--font-size 14 \
-		--width 545 \
+		--width 480 \
 		--height 720 \
 		--prompt-text " " \
 		"${@}"
 )
 
-if [ "$Program" = " " ]; then
+[ "$Program" = " " ] &&
 	bash "/etc/nixos/Hyprland/Scripts/Program launcher.sh"
 
-elif [ "$Program" = "                     󰌧  Run launcher                     " ]; then
+[ "$Program" = "                     󰌧  Run launcher                     " ] &&
 	tofi-drun --drun-launch=true & disown
 
-elif [ "$Program" = "  Amfora               CLI Gemini client" ]; then
+[ "$Program" = "  Amfora               CLI Gemini client" ] &&
 	st -e amfora & disown
 
-elif [ "$Program" = "  Lagrange             GUI Gemini client" ]; then
+[ "$Program" = "  Lagrange             GUI Gemini client" ] &&
 	lagrange & disown
 
-elif [ "$Program" = "  Audacious            Music player" ]; then
+[ "$Program" = "  Audacious            Music player" ] &&
 	audacious & disown
 
-elif [ "$Program" = "  Audacity             Audio editor" ]; then
+[ "$Program" = "  Audacity             Audio editor" ] &&
 	GDK_BACKEND=x11 audacity & disown
 #	audacity & disown
 
-elif [ "$Program" = "  EasyEffects          Effects to inputs or outputs" ]; then
+[ "$Program" = "  EasyEffects          Effects to inputs or outputs" ] &&
 	easyeffects & disown
 
-elif [ "$Program" = "  EasyTAG              Audio tag editor" ]; then
+[ "$Program" = "  EasyTAG              Audio tag editor" ] &&
 	easytag & disown
 
-elif [ "$Program" = "  Pavucontrol          Audio volume manager" ]; then
+[ "$Program" = "  Pavucontrol          Audio volume manager" ] &&
 	pavucontrol & disown
 
-elif [ "$Program" = "󰤽  qpwgraph             Audio patchbay" ]; then
+[ "$Program" = "󰤽  qpwgraph             Audio patchbay" ] &&
 	qpwgraph & disown
 
-elif [ "$Program" = "󰂫  Blender              3D modeling" ]; then
+[ "$Program" = "󰂫  Blender              3D modeling" ] &&
 	blender & disown
 
-elif [ "$Program" = "  Cura                 3D printing" ]; then
+[ "$Program" = "  Cura                 3D printing" ] &&
 	QT_QPA_PLATFORM=xcb QT_STYLE_OVERRIDE="" com.ultimaker.cura & disown
 
-elif [ "$Program" = "󰻬  OpenSCAD             3D CAD modeling" ]; then
+[ "$Program" = "󰻬  OpenSCAD             3D CAD modeling" ] &&
 	openscad & disown
 
-elif [ "$Program" = "  BTOP                 Terminal-based system monitor" ]; then
+[ "$Program" = "  BTOP                 Terminal-based system monitor" ] &&
 	st -e btop & disown
 
-elif [ "$Program" = "  CPU-X                Detailed processor information" ]; then
+[ "$Program" = "  CPU-X                Detailed processor information" ] &&
 	st -c CPU-X -g=81x28 -e cpu-x & disown
 
-elif [ "$Program" = "  Mission Center       GUI-based system monitor" ]; then
+[ "$Program" = "  Mission Center       GUI-based system monitor" ] &&
 	missioncenter & disown
 
-elif [ "$Program" = "󱌐  Bottles              Run Windows programs in Bottles" ]; then
+[ "$Program" = "󱌐  Bottles              Run Windows programs in Bottles" ] &&
 	com.usebottles.bottles & disown
 
-elif [ "$Program" = "  Calcurse             Calendar" ]; then
+[ "$Program" = "  Calcurse             Calendar" ] &&
 	st -e calcurse & disown
 
-elif [ "$Program" = "  Clock                GNOME's clock" ]; then
+[ "$Program" = "  Clock                GNOME's clock" ] &&
 	gnome-clocks & disown
 
-elif [ "$Program" = "  CUPS                 Printer configuration" ]; then
+[ "$Program" = "  CUPS                 Printer configuration" ] &&
 	xdg-open "https://localhost:631/" & disown
 
-elif [ "$Program" = "  DeSmuME              Nintendo DS/I emulator" ]; then
+[ "$Program" = "  DeSmuME              Nintendo DS/I emulator" ] &&
 	desmume & disown
 
-elif [ "$Program" = "  Jstest               Gamepad tester" ]; then
+[ "$Program" = "  Jstest               Gamepad tester" ] &&
 	jstest-gtk & disown
 
-elif [ "$Program" = "󰍳  PrismLauncher        Minecraft Launcher" ]; then
+[ "$Program" = "󰍳  PrismLauncher        Minecraft Launcher" ] &&
 	prismlauncher & disown
 
-elif [ "$Program" = "󰍳  Minetest             Minecraft-inspired engine" ]; then
+[ "$Program" = "󰍳  Minetest             Minecraft-inspired engine" ] &&
 #	minetest & disown
 	nvidia-offload minetest & disown
 
-elif [ "$Program" = "󰍳  NBT Explorer         NBT Explorer and editor" ]; then
+[ "$Program" = "󰍳  NBT Explorer         NBT Explorer and editor" ] &&
 	page.codeberg.JakobDev.jdNBTExplorer & disown
 
-elif [ "$Program" = "  RetroPlus            ROM downloader" ]; then
+[ "$Program" = "  RetroPlus            ROM downloader" ] &&
 	com.vysp3r.RetroPlus & disown
 
-elif [ "$Program" = "  Roblox               Launch the desktop Roblox app" ]; then
+[ "$Program" = "  Roblox               Launch the desktop Roblox app" ] &&
 	org.vinegarhq.Vinegar player run & disown
 
-elif [ "$Program" = "  Vinegar              Configure how Roblox works" ]; then
+[ "$Program" = "  Vinegar              Configure how Roblox works" ] &&
 	st -e org.vinegarhq.Vinegar edit & disown
 
-elif [ "$Program" = "  RPCS3                PlayStation 3 emulator" ]; then
+[ "$Program" = "  RPCS3                PlayStation 3 emulator" ] &&
 	net.rpcs3.RPCS3 & disown
 
-elif [ "$Program" = "  PCSX2                PlayStation 2/1 emulator" ]; then
+[ "$Program" = "  PCSX2                PlayStation 2/1 emulator" ] &&
 	net.pcsx2.PCSX2 & disown
 
-elif [ "$Program" = "  Steam                Needs a description ?" ]; then
+[ "$Program" = "  Steam                Needs a description ?" ] &&
 #	steam & disown
 	nvidia-offload steam & disown
 
-elif [ "$Program" = "󰵹  SuperTuxKart         FOSS Mario-Kart like game" ]; then
+[ "$Program" = "󰵹  SuperTuxKart         FOSS Mario-Kart like game" ] &&
 #	supertuxkart & disown
 	nvidia-offload supertuxkart & disown
 
-elif [ "$Program" = "  D.D.D                That's not my neighbor" ]; then
+[ "$Program" = "  D.D.D                That's not my neighbor" ] &&
 #	steam-run "$HOME/Programs/Games/That's not my neighbor/That's not my neighbor.x86_64" & disown
 	nvidia-offload steam-run "$HOME/Programs/That's not my neighbor/That's not my neighbor.x86_64" & disown
 
-elif [ "$Program" = "󰙯  Vesktop              Discord, but Vencorded" ]; then
+[ "$Program" = "󰙯  Vesktop              Discord, but Vencorded" ] &&
 #	vesktop --ozone-platform=x11 & disown
 	vesktop & disown
 
-elif [ "$Program" = "󰭻  Element              Actually, no need for spyware" ]; then
+[ "$Program" = "󰭻  Element              Actually, no need for spyware" ] &&
 	element-desktop --ozone-platform=x11 & disown
 #	element-desktop & disown
 
-elif [ "$Program" = "󰭻  Revolt               FOSS alternative to Discord" ]; then
+[ "$Program" = "󰭻  Revolt               FOSS alternative to Discord" ] &&
 #	revolt-desktop --ozone-platform=x11 & disown
 	revolt-desktop & disown
 
-elif [ "$Program" = "  Freetube             Watch YouTube videos" ]; then
+[ "$Program" = "  Freetube             Watch YouTube videos" ] &&
 #	freetube --ozone-platform=x11 & disown
 	freetube & disown
 
-elif [ "$Program" = "󰋊  Gnome disk utility   GNOME's disk utility" ]; then
+[ "$Program" = "󰋊  Gnome disk utility   GNOME's disk utility" ] &&
 	gnome-disks & disown
 
-elif [ "$Program" = "󰋊  Gparted              Partition manager" ]; then
+[ "$Program" = "󰋊  Gparted              Partition manager" ] &&
 	pkexec gparted & disown
 
-elif [ "$Program" = "󰋊  ncdu                 Disk usage" ]; then
+[ "$Program" = "󰋊  ncdu                 Disk usage" ] &&
 	st -e ncdu & disown
 
-elif [ "$Program" = "  Ventoy               Bootable USB creation tool" ]; then
+[ "$Program" = "  Ventoy               Bootable USB creation tool" ] &&
 	st -e sudo ventoy-web & disown
 
-elif [ "$Program" = "  File roller          Archive manager" ]; then
+[ "$Program" = "  File roller          Archive manager" ] &&
 	file-roller & disown
 
-elif [ "$Program" = "  Thunar               File manager" ]; then
+[ "$Program" = "  Thunar               File manager" ] &&
 	thunar & disown
 
-elif [ "$Program" = "  Flatseal             Manage flatpak permissions" ]; then
+[ "$Program" = "  Flatseal             Manage flatpak permissions" ] &&
 	com.github.tchx84.Flatseal & disown
 
-elif [ "$Program" = "  Galculator           Calculator" ]; then
+[ "$Program" = "  Galculator           Calculator" ] &&
 	galculator & disown
 
-elif [ "$Program" = "  Gcolor               Advanced color picker" ]; then
+[ "$Program" = "  Gcolor               Advanced color picker" ] &&
 	gcolor3 & disown
 
-elif [ "$Program" = "  Hyprpicker           Screen color picker" ]; then
+[ "$Program" = "  Hyprpicker           Screen color picker" ] &&
 	sleep 1 && \
 	Color=$(hyprpicker -f hex --autocopy & disown) &&
-	notify-send -t 1000 "$Color copied to clipboard"
+	noty-send -t 1000 "$Color copied to clipboard"
 
-elif [ "$Program" = "  GIMP                 GNU Image Manipulation Program" ]; then
+[ "$Program" = "  GIMP                 GNU Image Manipulation Program" ] &&
 	gimp & disown
 
-elif [ "$Program" = "  Hyprpaper            Set desktop background/wallpaper" ]; then
+[ "$Program" = "  Hyprpaper            Set desktop background/wallpaper" ] &&
 	bash "/etc/nixos/Hyprland/Scripts/Hyprpaper.sh" & disown
 
-elif [ "$Program" = "  Inkscape             Vector image manipulation" ]; then
+[ "$Program" = "  Inkscape             Vector image manipulation" ] &&
 	inkscape & disown
 
-elif [ "$Program" = "  Krita                Digital painting" ]; then
+[ "$Program" = "  Krita                Digital painting" ] &&
 	krita & disown
 
-elif [ "$Program" = "  OpenTabletDriver     Configure your drawing tablet" ]; then
+[ "$Program" = "  OpenTabletDriver     Configure your drawing tablet" ] &&
 	otd-gui & disown
 
-elif [ "$Program" = "  Pixelorama           Pixelart tool" ]; then
+[ "$Program" = "  Pixelorama           Pixelart tool" ] &&
 	pixelorama & disown
 
-elif [ "$Program" = "  Upscayl              Upscale images" ]; then
+[ "$Program" = "  Upscayl              Upscale images" ] &&
 	upscayl & disown
 
-elif [ "$Program" = "  Keymapp              Layout tool for ZSA keyboards" ]; then
+[ "$Program" = "  Keymapp              Layout tool for ZSA keyboards" ] &&
 	keymapp & disown
 
-elif [ "$Program" = "󰍽  Xclicker             X11 autocliker (for XWayland)" ]; then
+[ "$Program" = "󰍽  Xclicker             X11 autocliker (for XWayland)" ] &&
 	xclicker & disown
 
-elif [ "$Program" = "  Kurso de Esperanto   Esperanto learning program" ]; then
+[ "$Program" = "  Kurso de Esperanto   Esperanto learning program" ] &&
 	steam-run "$HOME/Programs/Kurso de Esperanto/kursokape" & disown
 
-elif [ "$Program" = "  KeePassXC            Password manager" ]; then
+[ "$Program" = "  KeePassXC            Password manager" ] &&
 	keepassxc & disown
 
-elif [ "$Program" = "  Kdenlive             Video editor" ]; then
+[ "$Program" = "  Kdenlive             Video editor" ] &&
 	kdenlive & disown
 
-elif [ "$Program" = "󰑋  OBS studio           Recording and streaming" ]; then
+[ "$Program" = "󰑋  OBS studio           Recording and streaming" ] &&
 	obs & disown
 
-elif [ "$Program" = "󰏆  LibreOffice          Office suite" ]; then
+[ "$Program" = "󰏆  LibreOffice          Office suite" ] &&
 	soffice & disown
 
-elif [ "$Program" = "󰚫  Simple scan          Document scanner" ]; then
+[ "$Program" = "󰚫  Simple scan          Document scanner" ] &&
 	simple-scan & disown
 
-elif [ "$Program" = "  LibreWolf            Web browser" ]; then
+[ "$Program" = "  LibreWolf            Web browser" ] &&
 	librewolf & disown
 
-elif [ "$Program" = "  LibreWolf - private  Web browser (private window)" ]; then
+[ "$Program" = "  LibreWolf - private  Web browser (private window)" ] &&
 	librewolf --private-window & disown
 
-elif [ "$Program" = "󰗹  Torbrowser launcher  Tor browser" ]; then
+[ "$Program" = "󰗹  Torbrowser launcher  Tor browser" ] &&
 	tor-browser & disown
 
-elif [ "$Program" = "󰛳  Network Manager      Manage WiFi and Ethernet" ]; then
+[ "$Program" = "󰛳  Network Manager      Manage Wi and Ethernet" ] &&
 	st -e nmtui & disown
 
-elif [ "$Program" = "󰛳  NM-applet            NetworkManager applet" ]; then
+[ "$Program" = "󰛳  NM-applet            NetworkManager applet" ] &&
 	nm-applet & disown
 
-elif [ "$Program" = "  qBittorrent          Torrent manager" ]; then
+[ "$Program" = "  qBittorrent          Torrent manager" ] &&
 	qbittorrent & disown
 
-elif [ "$Program" = "  Xfburn               Disc burning" ]; then
+[ "$Program" = "  Xfburn               Disc burning" ] &&
 	xfburn & disown
 
-elif [ "$Program" = "󰓅  Speedtest            Test internet speed" ]; then
+[ "$Program" = "󰓅  Speedtest            Test internet speed" ] &&
 	xyz.ketok.Speedtest & disown
 
-elif [ "$Program" = "  ST                   Suckless terminal emulator" ]; then
+[ "$Program" = "  ST                   Suckless terminal emulator" ] &&
 	st & disown
 
-elif [ "$Program" = "  Thunderbird          E-mail client" ]; then
+[ "$Program" = "  Thunderbird          E-mail client" ] &&
 	thunderbird & disown
 
-elif [ "$Program" = "󰪫  Virtualbox           Virtual machines, the classic way" ]; then
+[ "$Program" = "󰪫  Virtualbox           Virtual machines, the classic way" ] &&
 	VirtualBox & disown
 
-elif [ "$Program" = "󰪫  Virt Manager         Virtual machines using QEMU/KVM" ]; then
+[ "$Program" = "󰪫  Virt Manager         Virtual machines using QEMU/KVM" ] &&
 	virt-manager & disown
 
-elif [ "$Program" = "󰗼  Exit" ]; then
+[ "$Program" = "󰗼  Exit" ] &&
 	exit
-
-fi
