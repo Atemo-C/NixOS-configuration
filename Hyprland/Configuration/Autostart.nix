@@ -12,9 +12,6 @@
 		# File manager as a background daemon.
 		"thunar --daemon"
 
-		# Bar.
-		''waybar -c "$HOME/.config/waybar/config.json"''
-
 		# Clipboard.
 		"wl-paste -t text --watch clipman store --no-persist --max-items=30"
 

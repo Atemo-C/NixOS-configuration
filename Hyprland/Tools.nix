@@ -12,9 +12,6 @@
 
 		# Policykit agent.
 		lxqt.lxqt-policykit
-
-		# Bar.
-		unstable.waybar
 	];
 
 }

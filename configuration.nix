@@ -68,6 +68,11 @@
 		./Hyprland/Tools/Notifications.nix
 		./Hyprland/Tools/Tofi.nix
 
+		./Hyprland/Tools/Waybar/Modules.nix
+		./Hyprland/Tools/Waybar/Modules-configuration.nix
+		./Hyprland/Tools/Waybar/Settings.nix
+		./Hyprland/Tools/Waybar/Style.nix
+
 		./Input/Controllers.nix
 		./Input/Utilities.nix
 
