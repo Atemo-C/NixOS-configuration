@@ -131,7 +131,7 @@
 		"image#Reload" = {
 			path = "/etc/nixos/Hyprland/Icons/Reload.png";
 			size = 22;
-			on-click-right = "hyprctl reload";
+			on-click = "hyprctl reload";
 		};
 
 		"image#Exit" = {
