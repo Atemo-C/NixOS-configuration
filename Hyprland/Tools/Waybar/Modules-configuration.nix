@@ -28,7 +28,7 @@
 		};
 
 		"tray" = {
-			size = 22;
+			icon-size = 22;
 			spacing = 8;
 			reverse-direction = false;
 		};
