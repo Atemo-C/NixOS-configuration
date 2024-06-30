@@ -3,9 +3,6 @@
 	# # List of commands to execute at Hyprland's startup.
 	# https://wiki.hyprland.org/FAQ/#how-do-i-autostart-my-favorite-apps
 	home-manager.users.${config.Custom.Name}.wayland.windowManager.hyprland.settings.exec-once = [
-		# Notification daemon.
-		''dunst -conf "$HOME/.config/dunst/dunst.conf"''
-
 		# Wallpaper.
 		"hyprpaper"
 
