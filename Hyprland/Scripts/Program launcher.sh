@@ -217,7 +217,7 @@ elif [ "$Program" = "󰵹  SuperTuxKart         FOSS Mario-Kart like game" ]; th
 
 elif [ "$Program" = "  D.D.D                That's not my neighbor" ]; then
 #	steam-run "$HOME/Programs/Games/That's not my neighbor/That's not my neighbor.x86_64" & disown
-	nvidia-offload steam-run "$HOME/Programs/Games/That's not my neighbor/That's not my neighbor.x86_64" & disown
+	nvidia-offload steam-run "$HOME/Programs/That's not my neighbor/That's not my neighbor.x86_64" & disown
 
 elif [ "$Program" = "󰙯  Vesktop              Discord, but Vencorded" ]; then
 #	vesktop --ozone-platform=x11 & disown
