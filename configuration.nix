@@ -65,6 +65,8 @@
 		./Hyprland/Configuration/Monitor.nix
 		./Hyprland/Configuration/Window-rules.nix
 
+		./Hyprland/Tools/Notifications.nix
+
 		./Input/Controllers.nix
 		./Input/Utilities.nix
 

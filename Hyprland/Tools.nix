@@ -4,10 +4,6 @@
 		# Wallpaper.
 		unstable.hyprpaper
 
-		# Notifications.
-		dunst
-		libnotify
-
 		# Menus and scripts.
 		gnome.zenity
 		tofi
