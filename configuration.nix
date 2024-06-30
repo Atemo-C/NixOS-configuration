@@ -66,6 +66,7 @@
 		./Hyprland/Configuration/Window-rules.nix
 
 		./Hyprland/Tools/Notifications.nix
+		./Hyprland/Tools/Tofi.nix
 
 		./Input/Controllers.nix
 		./Input/Utilities.nix

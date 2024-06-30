@@ -4,9 +4,8 @@
 		# Wallpaper.
 		unstable.hyprpaper
 
-		# Menus and scripts.
+		# GTK menu thingy for scripts.
 		gnome.zenity
-		tofi
 
 		# Brightness control.
 		brightnessctl
