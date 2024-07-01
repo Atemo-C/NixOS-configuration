@@ -26,12 +26,12 @@
 
 			# Extra configuration lines to add verbatim to ~/.gtkrc-2.0
 			# https://nix-community.github.io/home-manager/options.xhtml#opt-gtk.gtk2.extraConfig
-			gtk2.extraConfig =
-				"gtk-enable-animations = 0
-			gtk-primary-button-wraps-slider = 1
-			gtk-toolbar-style = 3
-			gtk-menu-images = 1
-			gtk-button-images = 1";
+			gtk2.extraConfig = "
+				gtk-primary-button-wraps-slider = 1
+				gtk-toolbar-style = 3
+				gtk-menu-images = 1
+				gtk-button-images = 1
+			";
 
 			gtk3 = {
 				# Extra configuration options to add to $XDG_CONFIG_HOME/gtk-3.0/settings.ini.
@@ -39,9 +39,8 @@
 				extraConfig = {
 					gtk-application-prefer-dark-theme = true;
 					gtk-button-images = true;
-					gtk-decoration-layout = "icon:";
+					gtk-decoration-layout = "menu:close";
 					gtk-menu-images = true;
-					gtk-enable-animations = 0;
 					gtk-modules = "colorreload-gtk-module:window-decoration-gtk-module";
 					gtk-toolbar-style = 3;
 				};
@@ -56,9 +55,9 @@
 				# https://nix-community.github.io/home-manager/options.xhtml#opt-gtk.gtk4.extraConfig
 				extraConfig = {
 					gtk-application-prefer-dark-theme = true;
-					gtk-decoration-layout = "icon:";
-					gtk-enable-animations = 0;
+					gtk-decoration-layout = "menu:close";
 				};
+
 				# Extra configuration lines to add verbatim to $XDG_CONFIG_HOME/gtk-4.0/gtk.css
 				# https://nix-community.github.io/home-manager/options.xhtml#opt-gtk.gtk4.extraCss
 				extraCss = "@import 'colors.css';";
