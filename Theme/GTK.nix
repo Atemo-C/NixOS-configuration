@@ -9,6 +9,10 @@
 	};
 
 	home-manager.users.${config.Custom.Name} = {
+		# Settings to write to the dconf configuration system. Here, to remove the close button on GTK4 apps.
+		# https://nix-community.github.io/home-manager/options.xhtml#opt-dconf.settings
+		dconf.settings = { "org/gnome/desktop/wm/preferences" = { button-layout = "icon,appmenu:"; }; };
+
 		gtk = {
 			theme = {
 				# Package providing the theme.
