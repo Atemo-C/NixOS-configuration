@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ pkgs, ... }: {
 
 	environment.systemPackages = with pkgs; [
 		# XFCE's disc burner and project creator.

@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ pkgs, ... }: {
 
 	environment.systemPackages = with pkgs; [
 		# Utility for mapping events from Linux event devices.

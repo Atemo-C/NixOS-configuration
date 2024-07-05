@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ pkgs, ... }: {
 
 	# Legacy X11 tools.
 	environment.systemPackages = with pkgs; [

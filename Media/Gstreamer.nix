@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ pkgs, ... }: {
 
 	# Open source multimedia framework.
 	environment.systemPackages = with pkgs.gst_all_1; [
