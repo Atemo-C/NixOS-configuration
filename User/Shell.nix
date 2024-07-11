@@ -20,6 +20,10 @@
 			m = "micro";
 			x = "exit";
 
+			# Finding files.
+			fd = "fd -u";
+			find = "fd -u";
+
 			# NixOS abreviations.
 			clean = "sudo nix-collect-garbage -d";
 			update-boot = "sudo nixos-rebuild boot";
