@@ -5,6 +5,9 @@ set -euo pipefail
 Programs=(
 	"                     󰌧  Run launcher                     "
 	" "
+	"  Alacritty            GPU-accelerated terminal emulator"
+	""
+	" "
 	"  Amfora               CLI Gemini client"
 	"  Lagrange             GUI Gemini client"
 	" "
@@ -95,8 +98,6 @@ Programs=(
 	" "
 	"󰓅  Speedtest            Test internet speed"
 	" "
-	"  ST                   Suckless terminal emulator"
-	" "
 	"  Thunderbird          E-mail client"
 	" "
 #    "󰪫  Virtualbox           Virtual machines, the classic way"
@@ -118,6 +119,10 @@ Program=$(
 
 [ "$Program" = "                     󰌧  Run launcher                     " ] &&
 	tofi-drun --drun-launch=true & disown
+
+[ "$Program" = "  Alacritty            GPU-accelerated terminal emulator" ] &&
+#	alacritty & disown
+	nvidia-offload alacritty & disown
 
 [ "$Program" = "  Amfora               CLI Gemini client" ] &&
 	st -e amfora & disown
@@ -333,9 +338,6 @@ Program=$(
 
 [ "$Program" = "󰓅  Speedtest            Test internet speed" ] &&
 	xyz.ketok.Speedtest & disown
-
-[ "$Program" = "  ST                   Suckless terminal emulator" ] &&
-	st & disown
 
 [ "$Program" = "  Thunderbird          E-mail client" ] &&
 	thunderbird & disown
