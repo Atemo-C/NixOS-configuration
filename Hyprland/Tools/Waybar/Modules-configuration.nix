@@ -46,7 +46,7 @@
 			path = "/etc/nixos/Hyprland/Icons/Clipboard.png";
 			size = 22;
 			on-click = "clipman pick -t CUSTOM -T tofi";
-			on-click-right = "st -e micro $HOME/Documents/Clipboard.txt";
+			on-click-right = "alacritty -e micro $HOME/Documents/Clipboard.txt";
 			on-click-middle = "clipman clear --all & notify-send -t 1000 'Clipboard cleared'";
 		};
 
@@ -58,20 +58,20 @@
 
 		"clock" = {
 			format = "{:%d/%m/%Y %H:%M}";
-			on-click = "st -e calcurse";
+			on-click = "alacritty -e calcurse";
 		};
 
 		"image#CPU" = {
 			path = "/etc/nixos/Hyprland/Icons/CPU.png";
 			size = 22;
-			on-click = "st -e btop";
+			on-click = "alacritty -e btop";
 			on-click-right = "missioncenter";
 		};
 
 		"cpu" = {
 			interval = 2;
 			format = "{usage}% ";
-			on-click = "st -e btop";
+			on-click = "alacritty -e btop";
 			on-click-right = "missioncenter";
 		};
 
@@ -81,21 +81,21 @@
 			hwmon-path = "/sys/class/hwmon/hwmon1/temp1_input";
 			format = "{temperatureC}°C";
 			format-critical = "[!!!] {temperatureC}°C";
-			on-click = "st -e btop";
+			on-click = "alacritty -e btop";
 			on-click-right = "missioncenter";
 		};
 
 		"image#RAM" = {
 			path = "/etc/nixos/Hyprland/Icons/RAM.png";
 			size = 22;
-			on-click = "st -e btop";
+			on-click = "alacritty -e btop";
 			on-click-right = "missioncenter";
 		};
 
 		"memory" = {
 			interval = 1;
 			format = "{percentage}%";
-			on-click = "st -e btop";
+			on-click = "alacritty -e btop";
 			on-click-right = "missioncenter";
 		};
 
