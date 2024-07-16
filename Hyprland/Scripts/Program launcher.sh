@@ -125,7 +125,7 @@ Program=$(
 	nvidia-offload alacritty & disown
 
 [ "$Program" = "  Amfora               CLI Gemini client" ] &&
-	st -e amfora & disown
+	alacritty -e amfora & disown
 
 [ "$Program" = "  Lagrange             GUI Gemini client" ] &&
 	lagrange & disown
@@ -159,7 +159,7 @@ Program=$(
 	openscad & disown
 
 [ "$Program" = "  BTOP                 Terminal-based system monitor" ] &&
-	st -e btop & disown
+	alacritty -e btop & disown
 
 [ "$Program" = "  CPU-X                Detailed processor information" ] &&
 	st -c CPU-X -g=81x28 -e cpu-x & disown
@@ -171,7 +171,7 @@ Program=$(
 	com.usebottles.bottles & disown
 
 [ "$Program" = "  Calcurse             Calendar" ] &&
-	st -e calcurse & disown
+	alacritty -e calcurse & disown
 
 [ "$Program" = "  Clock                GNOME's clock" ] &&
 	gnome-clocks & disown
@@ -202,7 +202,7 @@ Program=$(
 	org.vinegarhq.Vinegar player run & disown
 
 [ "$Program" = "  Vinegar              Configure how Roblox works" ] &&
-	st -e org.vinegarhq.Vinegar edit & disown
+	alacritty -e org.vinegarhq.Vinegar edit & disown
 
 [ "$Program" = "  RPCS3                PlayStation 3 emulator" ] &&
 	net.rpcs3.RPCS3 & disown
@@ -245,10 +245,10 @@ Program=$(
 	pkexec gparted & disown
 
 [ "$Program" = "󰋊  ncdu                 Disk usage" ] &&
-	st -e ncdu & disown
+	alacritty -e ncdu & disown
 
 [ "$Program" = "  Ventoy               Bootable USB creation tool" ] &&
-	st -e sudo ventoy-web & disown
+	alacritty -e sudo ventoy-web & disown
 
 [ "$Program" = "  File roller          Archive manager" ] &&
 	file-roller & disown
@@ -325,7 +325,7 @@ Program=$(
 	tor-browser & disown
 
 [ "$Program" = "󰛳  Network Manager      Manage WiFi and Ethernet" ] &&
-	st -e nmtui & disown
+	alacritty -e nmtui & disown
 
 [ "$Program" = "󰛳  NM-applet            NetworkManager applet" ] &&
 	nm-applet & disown
