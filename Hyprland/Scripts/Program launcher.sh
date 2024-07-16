@@ -119,8 +119,7 @@ Program=$(
 	tofi-drun --drun-launch=true & disown
 
 [ "$Program" = "  Alacritty            GPU-accelerated terminal emulator" ] &&
-#	alacritty & disown
-	nvidia-offload alacritty & disown
+	alacritty & disown
 
 [ "$Program" = "  Amfora               CLI Gemini client" ] &&
 	alacritty -e amfora & disown
