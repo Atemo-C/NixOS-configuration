@@ -20,7 +20,6 @@ Programs=(
 	" "
 	"󰂫  Blender              3D modeling"
 	"  Cura                 3D printing"
-	"󰻬  OpenSCAD             3D CAD modeling"
 	" "
 	"  BTOP                 Terminal-based system monitor"
 	"  CPU-X                Detailed processor information"
@@ -43,7 +42,6 @@ Programs=(
 	"  RPCS3                PlayStation 3 emulator"
 	"  PCSX2                PlayStation 2/1 emulator"
 	"  Steam                Needs a description ?"
-	"󰵹  SuperTuxKart         FOSS Mario-Kart like game"
 	"  D.D.D                That's not my neighbor"
 	" "
 	"󰙯  Vesktop              Discord, but Vencorded"
@@ -155,9 +153,6 @@ Program=$(
 [ "$Program" = "  Cura                 3D printing" ] &&
 	QT_QPA_PLATFORM=xcb QT_STYLE_OVERRIDE="" com.ultimaker.cura & disown
 
-[ "$Program" = "󰻬  OpenSCAD             3D CAD modeling" ] &&
-	openscad & disown
-
 [ "$Program" = "  BTOP                 Terminal-based system monitor" ] &&
 	alacritty -e btop & disown
 
@@ -213,10 +208,6 @@ Program=$(
 [ "$Program" = "  Steam                Needs a description ?" ] &&
 #	steam & disown
 	nvidia-offload steam & disown
-
-[ "$Program" = "󰵹  SuperTuxKart         FOSS Mario-Kart like game" ] &&
-#	supertuxkart & disown
-	nvidia-offload supertuxkart & disown
 
 [ "$Program" = "  D.D.D                That's not my neighbor" ] &&
 #	steam-run "$HOME/Programs/Games/That's not my neighbor/That's not my neighbor.x86_64" & disown
