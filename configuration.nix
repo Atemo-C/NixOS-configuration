@@ -34,7 +34,6 @@
 		./Fonts/Settings/Hinting.nix
 		./Fonts/Settings/Size.nix
 
-		./Gaming/Driving.nix
 		./Gaming/Emulators.nix
 		./Gaming/Gamemode.nix
 		./Gaming/Gamescope.nix
