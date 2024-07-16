@@ -108,7 +108,7 @@ Programs=(
 
 Program=$(
 	printf '%s\n' "${Programs[@]}" | tofi \
-		--width 480 \
+		--width 485 \
 		--height 720 \
 		--prompt-text " " \
 		"${@}"
