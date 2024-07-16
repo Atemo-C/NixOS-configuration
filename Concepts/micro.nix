@@ -133,7 +133,7 @@
 		];
 
 		# Custom Micro colorschemes written to XDG_CONFIG_HOME/micro/colorschemes/<name>.micro.
-		# https://search.nixos.org/options?channel=24.05&show=programs.micro.colorschemes
+		# https://search.nixos.org/options?channel=24.05&show=programs.micro.colorschemes.<name>
 		colorschemes.Atemos-colours = {
 			comment = "brightblue";
 			statement = "yellow";
