@@ -179,10 +179,6 @@
 			gutter-warning = "red";
 		};
 
-		# Which colorscheme to be used my Micro.
-		# https://search.nixos.org/options?channel=24.05&show=programs.micro.colors
-		colors = "Atemos-colours";
-
 		# Which plugins to install with Micro.
 		# https://search.nixos.org/options?channel=24.05&show=programs.micro.plugins
 		plugins = with pkgs.micro-plugins; [ wc ];
