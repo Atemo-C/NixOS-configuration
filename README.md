@@ -78,5 +78,5 @@ A (slow) list of available options for Home Manager can be found here. \
 &nbsp;
 
 # [5] Bonus: Concepts
-In the [`Concepts`](https://github.com/Atemo-C/NixOS-configuration/Concepts) directory, you may find some concepts of NixOS modules that I would love to be implemented into NixOS proper somehow. \
+In the [`Concepts`](https://github.com/Atemo-C/NixOS-configuration/tree/main/Concepts) directory, you may find some concepts of NixOS modules that I would love to be implemented into NixOS proper somehow. \
 They are non-functional and thus not imported into `configuration.nix`; Their presence does not interfere with anything.
