@@ -103,7 +103,7 @@
 			''SHIFT, PRINT, exec, bash "/etc/nixos/Hyprland/Scripts/Hyprshot.sh"''
 
 			# Emoji picking
-			''ALT SHIFT, E, exec, alacritty -e bash "/etc/nixos/Hyprland/Scripts/Emoji.sh"''
+			''ALT SHIFT, E, exec, alacritty -T "Emoji picker" -e bash "/etc/nixos/Hyprland/Scripts/Emoji.sh"''
 
 			# Clipboard managing
 			"SUPER SHIFT, V, exec, clipman pick -t CUSTOM -T tofi"
