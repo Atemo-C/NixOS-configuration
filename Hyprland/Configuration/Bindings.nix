@@ -103,15 +103,15 @@
 			''SHIFT, PRINT, exec, bash "/etc/nixos/Hyprland/Scripts/Hyprshot.sh"''
 
 			# Emoji picking
-			''ALT SHIFT, E, exec, st -e bash "/etc/nixos/Hyprland/Scripts/Emoji.sh"''
+			''ALT SHIFT, E, exec, alacritty -e bash "/etc/nixos/Hyprland/Scripts/Emoji.sh"''
 
 			# Clipboard managing
 			"SUPER SHIFT, V, exec, clipman pick -t CUSTOM -T tofi"
 			"SUPER CONTROL, V, exec, clipman clear --all & notify-send -t 1000 'Clipboard cleared'"
-			''ALT, V, exec, st -e micro "$HOME/Documents/Clipboard.txt"''
+			''ALT, V, exec, alacritty -e micro "$HOME/Documents/Clipboard.txt"''
 
 			# Terminal emulator
-			"SUPER, RETURN, exec, st"
+			"SUPER, RETURN, exec, alacritty"
 
 			# Screen shaders
 			''ALT SHIFT, R, exec, hyprctl keyword decoration:screen_shader "$HOME/.config/hypr/shaders/crt.frag"''
