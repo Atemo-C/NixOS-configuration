@@ -1,13 +1,13 @@
 { config, pkgs, ... }: {
 
-	# Micro text editor (all users).
-	programs.micro = {
+	# Micro text editor.
+	home-manager.users.${config.Custom.Name}.programs.micro = {
 		# Whether to enable the Micro text editor.
-		# https://search.nixos.org/options?channel=24.05&show=programs.micro.enable
+		# https://nix-community.github.io/home-manager/options.xhtml#programs.micro.enable
 		enable = true;
 
 		# Keyboard and mouse bindings.
-		# https://search.nixos.org/options?channel=24.05&show=programs.micro.bindings
+		# https://nix-community.github.io/home-manager/options.xhtml#programs.micro.bindings
 		bindings = [
 			# Plugins
 			"Alt-/" = "lua:comment.comment"
@@ -133,7 +133,7 @@
 		];
 
 		# Custom Micro colorschemes written to XDG_CONFIG_HOME/micro/colorschemes/<name>.micro.
-		# https://search.nixos.org/options?channel=24.05&show=programs.micro.colorschemes.<name>
+		# https://nix-community.github.io/home-manager/options.xhtml#programs.micro.colorschemes.<name>
 		colorschemes.Atemos-colours = {
 			comment = "brightblue";
 			statement = "yellow";
@@ -180,11 +180,11 @@
 		};
 
 		# Which plugins to install with Micro.
-		# https://search.nixos.org/options?channel=24.05&show=programs.micro.plugins
+		# https://nix-community.github.io/home-manager/options.xhtml#programs.micro.plugins
 		plugins = with pkgs.micro-plugins; [ wc ];
 
 		# Settings written to XDG_CONFIG_HOME/micro/settings.json.
-		# https://search.nixos.org/options?channel=24.05&show=programs.micro.settings
+		# https://nix-community.github.io/home-manager/options.xhtml#programs.micro.settings
 		settings = {
 			"*.conf" = { filetype = "shell"; };
 			"*.dirs" = { filetype = "shell"; };
