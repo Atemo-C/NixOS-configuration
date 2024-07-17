@@ -54,7 +54,6 @@ If you are using NVIDIA PRIME, you will need to edit the appropriate Bus IDs and
 	- Less than 4 GiB of RAM (Swap will be heavily used with less, 8-16 GiB is recommended)
 	- Less than 128 GiB of storage (Some Nix storage optimizations are already enabled) \
 &nbsp;
-&nbsp;
 
 # [4] Other NixOS resources
 Help is available in:
@@ -75,7 +74,7 @@ A searchable list of available options for NixOS can be found here. \
 [NixOS options search](https://search.nixos.org/options)
 
 A (slow) list of available options for Home Manager can be found here. \
-[Home Manager search](https://nix-community.github.io/home-manager/options.xhtml)
+[Home Manager search](https://nix-community.github.io/home-manager/options.xhtml) \
 &nbsp;
 
 # [5] Bonus: Concepts
