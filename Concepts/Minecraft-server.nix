@@ -62,24 +62,31 @@
 		# https://search.nixos.org/options?channel=24.05&show=services.minecraft-server.%3Cname%3E.jvmOpts
 		jvmOpts = "-Xms4G -Xmx10G";
 
-		# Mods from Modrinth for the fabric Minecraft server, sourced from modrinth.com.
-		# https://search.nixos.org/options?channel=24.05&show=services.minecraft-server.%3Cname%3E.mods.fabric.modrinth
-		mods.fabric.modrinth = [
-			"gvQqBUqZ" # Lithium
-			"uXXizFIs" # Ferrite Core
-			"nmDcB62a" # Modern Fix
-			"fQEb0iXm" # Krypton
-			"QwxR6Gcd" # Debugify
-			"VSNURh3q" # Concurrent Chunk Management Engine
-			"vE2FN5qn" # Let Me Despawn
-			"KuNKN7d2" # Noisium
-			"4WWQxlQP" # ServerCore
-			"r0v8vy1s" # Alternate Current
-			"RfFxanNh" # Faster Random
-			"T0OUgf8P" # Get It Together,Drops!
-			"7LEWYKTV" # RecipeCooldown
-			"Ps1zyz6x" # ScalableLux
-		];
+		# Mods for the Minecraft server.
+		mods = {
+			# Whether to automatically update mods before server startup.
+			# https://search.nixos.org/options?channel=24.05&show=services.minecraft-server.%3Cname%3E.mods.autoUpdate
+			autoUpdate = true;
+
+			# Mods from Modrinth for the fabric Minecraft server.
+			# https://search.nixos.org/options?channel=24.05&show=services.minecraft-server.%3Cname%3E.mods.fabric.modrinth
+			fabric.modrinth = [
+				"gvQqBUqZ" # Lithium
+				"uXXizFIs" # Ferrite Core
+				"nmDcB62a" # Modern Fix
+				"fQEb0iXm" # Krypton
+				"QwxR6Gcd" # Debugify
+				"VSNURh3q" # Concurrent Chunk Management Engine
+				"vE2FN5qn" # Let Me Despawn
+				"KuNKN7d2" # Noisium
+				"4WWQxlQP" # ServerCore
+				"r0v8vy1s" # Alternate Current
+				"RfFxanNh" # Faster Random
+				"T0OUgf8P" # Get It Together,Drops!
+				"7LEWYKTV" # RecipeCooldown
+				"Ps1zyz6x" # ScalableLux
+			];
+		};
 
 		# Whether to open ports in the firewall for the server.
 		# Which port is used can be defined in services.minecraft-server.<name>.serverProperties.
