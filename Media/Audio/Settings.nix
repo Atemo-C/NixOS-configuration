@@ -19,6 +19,10 @@
 		# https://search.nixos.org/options?channel=24.05&show=services.pipewire.jack.enable
 		jack.enable = true;
 
+		# The PipeWire package to use.
+		# https://search.nixos.org/options?channel=24.05&show=services.pipewire.package
+		package = pkgs.unstable.pipewire;
+
 		# Whether to enable PulseAudio server emulation.
 		# https://search.nixos.org/options?channel=24.05&show=services.pipewire.pulse.enable
 		pulse.enable = true;
