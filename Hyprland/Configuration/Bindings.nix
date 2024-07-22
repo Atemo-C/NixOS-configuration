@@ -82,6 +82,12 @@
 			"SUPER SHIFT, f, fullscreen, 0"
 			"SUPER CONTROL, f, fullscreen, 1"
 
+			# Window switching with ALT+(SHIFT+)TAB.
+			"ALT, Tab, cyclenext"
+			"ALT, Tab, bringactivetotop"
+			"ALT SHIFT, Tab, cyclenext, prev"
+			"ALT SHIFT, Tab, bringactivetotop"
+
 			# Media control.
 			", XF86AudioPlay, exec, playerctl play-pause"
 			", XF86AudioStop, exec, playerctl stop"
