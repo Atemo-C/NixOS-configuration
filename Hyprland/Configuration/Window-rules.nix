@@ -29,6 +29,9 @@
 		"float, class: (xfburn)"
 		"float, class: (zenity)"
 
+		# Flotaing [By classa and title].
+		"float, class: (UltiMaker-Cura), title: (Preferences)"
+
 		# Tilling windows [By title].
 		"tile, title: (Select an image)"
 		"tile, title: (Kurso de Esperanto Kape)"
