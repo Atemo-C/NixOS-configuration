@@ -1,14 +1,15 @@
 { pkgs, ... }: {
 
-	environment.systemPackages = with pkgs; [
+	environment.systemPackages = with pkgs.unstable; [
 		# Screenshots.
-		unstable.hyprshot
+		hyprshot
 
 		# Image optimisation.
-		unstable.oxipng
+		oxipng
+		jpegoptim
 
 		# AI upscailing.
-		unstable.upscayl
+		upscayl
 	];
 
 }
