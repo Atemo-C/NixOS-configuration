@@ -25,6 +25,7 @@
 		"float, class: (gcolor*)"
 		"float, class: (lxqt-policykit-agent)"
 		"float, class: (scrcpy)"
+		"float, class: (waydroid.org)"
 		"float, class: (xdg-desktop-portal-gtk)"
 		"float, class: (xfburn)"
 		"float, class: (zenity)"
