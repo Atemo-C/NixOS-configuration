@@ -174,6 +174,7 @@
 #		./Virtualisation/Docker.nix
 #		./Virtualisation/Virt-manager.nix
 #		./Virtualisation/Virtualbox.nix
+#		./Virtualisation/Waydroid.nix
 	];
 
 }
