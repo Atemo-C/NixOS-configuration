@@ -26,6 +26,7 @@
 		"float, class: (lxqt-policykit-agent)"
 		"float, class: (scrcpy)"
 		"float, class: (waydroid.)"
+		"float, class: (Waydroid)"
 		"float, class: (xdg-desktop-portal-gtk)"
 		"float, class: (xfburn)"
 		"float, class: (zenity)"
