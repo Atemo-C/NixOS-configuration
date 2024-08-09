@@ -35,29 +35,29 @@
 			powerManagement.enable = true;
 
 			# NVIDIA PRIME.
-			prime = {
-				# Bus ID of the desired AMD GPU.
-				# https://search.nixos.org/options?channel=24.05&show=hardware.nvidia.prime.amdgpuBusId
-				amdgpuBusId = "PCI:42:0:0";
-
-				# Bus ID of the desired Intel GPU.
-				# https://search.nixos.org/options?channel=24.05&show=hardware.nvidia.prime.intelBusId
+#			prime = {
+#				# Bus ID of the desired AMD GPU.
+#				# https://search.nixos.org/options?channel=24.05&show=hardware.nvidia.prime.amdgpuBusId
+#				amdgpuBusId = "PCI:42:0:0";
+#
+#				# Bus ID of the desired Intel GPU.
+#				# https://search.nixos.org/options?channel=24.05&show=hardware.nvidia.prime.intelBusId
 #				intelBusId = "";
-
-				# Bus ID of the desired NVIDIA GPU.
-				# https://search.nixos.org/options?channel=24.05&show=hardware.nvidia.prime.nvidiaBusId
-				nvidiaBusId = "PCI:16:0:0";
-
-				offload = {
-					# Whether to enable render offload support for NVIDIA PRIME.
-					# https://search.nixos.org/options?channel=24.05&show=hardware.nvidia.prime.offload.enable
-					enable = true;
-
-					# Whether to enable adding a `nvidia-offload` script to offload programs to the NVIDIA GPU.
-					# https://search.nixos.org/options?channel=24.05&show=hardware.nvidia.prime.offload.enableOffloadCmd
-					enableOffloadCmd = true;
-				};
-			};
+#
+#				# Bus ID of the desired NVIDIA GPU.
+#				# https://search.nixos.org/options?channel=24.05&show=hardware.nvidia.prime.nvidiaBusId
+#				nvidiaBusId = "PCI:16:0:0";
+#
+#				offload = {
+#					# Whether to enable render offload support for NVIDIA PRIME.
+#					# https://search.nixos.org/options?channel=24.05&show=hardware.nvidia.prime.offload.enable
+#					enable = true;
+#
+#					# Whether to enable adding a `nvidia-offload` script to offload programs to the NVIDIA GPU.
+#					# https://search.nixos.org/options?channel=24.05&show=hardware.nvidia.prime.offload.enableOffloadCmd
+#					enableOffloadCmd = true;
+#				};
+#			};
 		};
 
 		opengl = {

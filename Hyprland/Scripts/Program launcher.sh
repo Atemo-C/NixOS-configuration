@@ -200,12 +200,12 @@ Program=$(
 	net.pcsx2.PCSX2 & disown
 
 [ "$Program" = "  Steam                Needs a description ?" ] &&
-#	steam & disown
-	nvidia-offload steam & disown
+	steam & disown
+#	nvidia-offload steam & disown
 
 [ "$Program" = "  D.D.D                That's not my neighbor" ] &&
-#	steam-run "$HOME/Programs/Games/That's not my neighbor/That's not my neighbor.x86_64" & disown
-	nvidia-offload steam-run "$HOME/Programs/That's not my neighbor/That's not my neighbor.x86_64" & disown
+	steam-run "$HOME/Programs/Games/That's not my neighbor/That's not my neighbor.x86_64" & disown
+#	nvidia-offload steam-run "$HOME/Programs/That's not my neighbor/That's not my neighbor.x86_64" & disown
 
 [ "$Program" = "󰙯  Vesktop              Discord, but Vencorded" ] &&
 #	vesktop --ozone-platform=x11 & disown

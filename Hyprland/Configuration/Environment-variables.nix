@@ -20,7 +20,7 @@
 		"WLR_DRM_NO_ATOMIC, 1"
 
 		# Graphics adapter to use for Hyprland
-		"WLR_DRM_DEVICES, /dev/dri/card1"
+#		"WLR_DRM_DEVICES, /dev/dri/card1"
 	];
 
 }
