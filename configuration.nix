@@ -21,6 +21,7 @@
 		./Files/Archiving.nix
 		./Files/Disks.nix
 		./Files/Management-and-thumbnails.nix
+		./Files/Sharing.nix
 		./Files/Utilities.nix
 
 		./Fonts/Emoji.nix
