@@ -36,8 +36,6 @@ Programs=(
 	"󰍳  PrismLauncher        Minecraft Launcher"
 	"󰍳  NBT Explorer         NBT Explorer and editor"
 	"  RetroPlus            ROM downloader"
-#	"  Roblox               Launch the desktop Roblox app"
-#	"  Vinegar              Configure how Roblox works"
 	"  RPCS3                PlayStation 3 emulator"
 	"  PCSX2                PlayStation 2/1 emulator"
 	"  Steam                Needs a description ?"
@@ -56,6 +54,7 @@ Programs=(
 	" "
 	"  File roller          Archive manager"
 	"  Thunar               File manager"
+	"󰒖  Warpinator           Local file sharing"
 	" "
 	"  Flatseal             Manage flatpak permissions"
 	"  Galculator           Calculator"
@@ -187,12 +186,6 @@ Program=$(
 [ "$Program" = "  RetroPlus            ROM downloader" ] &&
 	com.vysp3r.RetroPlus & disown
 
-[ "$Program" = "  Roblox               Launch the desktop Roblox app" ] &&
-	org.vinegarhq.Vinegar player run & disown
-
-[ "$Program" = "  Vinegar              Configure how Roblox works" ] &&
-	alacritty -e org.vinegarhq.Vinegar edit & disown
-
 [ "$Program" = "  RPCS3                PlayStation 3 emulator" ] &&
 	net.rpcs3.RPCS3 & disown
 
@@ -240,6 +233,9 @@ Program=$(
 
 [ "$Program" = "  Thunar               File manager" ] &&
 	thunar & disown
+
+[ "$Program" = "󰒖  Warpinator           Local file sharing" ] &&
+	warpinator & disown
 
 [ "$Program" = "  Flatseal             Manage flatpak permissions" ] &&
 	com.github.tchx84.Flatseal & disown
