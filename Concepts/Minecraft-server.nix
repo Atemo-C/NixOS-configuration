@@ -95,7 +95,7 @@
 
 		# The minecraft-server package to use.
 		# https://search.nixos.org/options?channel=24.05&show=services.minecraft-server.%3Cname%3E.package
-		package = pkgs.minecraftServer.fabric-1-21;
+		package = pkgs.minecraftServer.fabric-1-21.1;
 
 		# Minecraft server properites for the server.properties file.
 		# https://search.nixos.org/options?channel=24.05&show=services.minecraft-server.%3Cname%3E.serverProperties
