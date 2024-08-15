@@ -63,6 +63,7 @@
 		./Hyprland/Configuration/Layout.nix
 		./Hyprland/Configuration/Miscellaneous.nix
 		./Hyprland/Configuration/Monitor.nix
+		./Hyprland/Configuration/Render.nix
 		./Hyprland/Configuration/Window-rules.nix
 
 		./Hyprland/Tools/Notifications.nix
