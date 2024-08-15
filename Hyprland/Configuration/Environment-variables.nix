@@ -17,7 +17,8 @@
 		"LIBVA_DRIVER_NAME, nvidia"
 		"__GL_GSYNC_ALLOWED, 1"
 		"__GL_VRR_ALLOWED, 1"
-		"WLR_DRM_NO_ATOMIC, 1"
+		"NVD_BACKEND, direct"
+#		"WLR_DRM_NO_ATOMIC, 1"
 
 		# Graphics adapter to use for Hyprland
 #		"WLR_DRM_DEVICES, /dev/dri/card1"
