@@ -17,6 +17,7 @@
 
 #		./Computer/KVM-guest.nix
 #		./Computer/Laptop.nix
+		./Computer/Power.nix
 
 		./Files/Archiving.nix
 		./Files/Disks.nix
