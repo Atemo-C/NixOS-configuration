@@ -35,7 +35,7 @@
 			lofi-asian = ''mpv --no-video "https://www.youtube.com/watch?v=Na0w3Mz46GA"'';
 			lofi-escape = ''mpv --no-video "https://www.youtube.com/watch?v=S_MOd40zlYU"'';
 			lofi-medieval = ''mpv --no-video "https://www.youtube.com/watch?v=_uMuuHk_KkQ"'';
-			lofi-piano = ''mpv --no-video "https://www.youtube.com/watch?v=nWjC1RnLYbM"'';
+			lofi-piano = ''mpv --no-video "https://www.youtube.com/watch?v=4oStw0r33so"'';
 			lofi-sleep = ''mpv --no-video "https://www.youtube.com/watch?v=rUxyKA_-grg"'';
 			lofi-study = ''mpv --no-video "https://www.youtube.com/watch?v=jfKfPfyJRdk"'';
 			lofi-synthwave = ''mpv --no-video "https://www.youtube.com/watch?v=4xDzrJKXOOY"'';
