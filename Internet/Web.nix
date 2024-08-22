@@ -2,7 +2,7 @@
 
 	environment.systemPackages = with pkgs; [
 		# Web browser.
-		unstable.librewolf
+		librewolf
 
 		# TOR web and onion browser.
 		tor-browser
