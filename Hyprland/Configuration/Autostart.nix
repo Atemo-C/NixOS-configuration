@@ -7,7 +7,7 @@
 		"hyprpaper"
 
 		# Policykit agent.
-		"exec-once = lxqt-policykit-agent"
+		"lxqt-policykit-agent"
 
 		# File manager as a background daemon.
 		"thunar --daemon"
