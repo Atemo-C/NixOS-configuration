@@ -220,7 +220,7 @@ Program=$(
 	gnome-disks & disown
 
 [ "$Program" = "󰋊  Gparted              Partition manager" ] &&
-	pkexec gparted & disown
+	alacritty -e sudo -E gparted & disown
 
 [ "$Program" = "󰋊  ncdu                 Disk usage" ] &&
 	alacritty -e ncdu & disown
