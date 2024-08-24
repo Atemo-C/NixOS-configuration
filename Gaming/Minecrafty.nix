@@ -2,10 +2,13 @@
 
 	environment.systemPackages = with pkgs; [
 		# Mod manager.
-		ferium
+		unstable.ferium
+
+		# Minetest.
+		unstable.minetest
 
 		# Prism launcher Minecraft launcher.
-		prismlauncher
+		unstable.prismlauncher
 
 		# Java.
 		jdk
