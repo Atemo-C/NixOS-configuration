@@ -34,6 +34,7 @@ Programs=(
 	"  DeSmuME              Nintendo DS/I emulator"
 	"  Jstest               Gamepad tester"
 	"󰍳  PrismLauncher        Minecraft Launcher"
+	"󰍳  Minetest             Open source voxel game engine"
 	"󰍳  NBT Explorer         NBT Explorer and editor"
 	"  RetroPlus            ROM downloader"
 	"  RPCS3                PlayStation 3 emulator"
@@ -179,6 +180,9 @@ Program=$(
 
 [ "$Program" = "󰍳  PrismLauncher        Minecraft Launcher" ] &&
 	prismlauncher & disown
+
+[ "$Program" = "󰍳  Minetest             Open source voxel game engine" ] &&
+	minetest & disown
 
 [ "$Program" = "󰍳  NBT Explorer         NBT Explorer and editor" ] &&
 	page.codeberg.JakobDev.jdNBTExplorer & disown
