@@ -39,6 +39,7 @@ Programs=(
 	"  RetroPlus            ROM downloader"
 	"  RPCS3                PlayStation 3 emulator"
 	"  PCSX2                PlayStation 2/1 emulator"
+	"  Sober                Roblox client"
 	"  Steam                Needs a description ?"
 	"  D.D.D                That's not my neighbor"
 	" "
@@ -195,6 +196,9 @@ Program=$(
 
 [ "$Program" = "  PCSX2                PlayStation 2/1 emulator" ] &&
 	net.pcsx2.PCSX2 & disown
+
+[ "$Program" = "  Sober                Roblox client" ] &&
+	org.vinegarhq.Sober & disown
 
 [ "$Program" = "  Steam                Needs a description ?" ] &&
 	steam & disown
