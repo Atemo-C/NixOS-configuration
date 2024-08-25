@@ -37,6 +37,7 @@
 		# Tilling windows [By title].
 		"tile, title: (Select an image)"
 		"tile, title: (Kurso de Esperanto Kape)"
+		"tile, title: (Sober)"
 
 		# Event suppression [By title].
 		"suppressevent maximize, title: (Revolt)"
