@@ -14,7 +14,7 @@ case $? in
 	0) echo -e \
 		"preload = $Wallpaper\nwallpaper = ,$Wallpaper\nsplash = false\nipc = off" \
 		> "$HOME/.config/hypr/hyprpaper.conf" ;
-		killall hyprpaper || true ;
+		ps aux | grep -w "\bhyprpaper\b" | awk '{print $2}' | xargs kill || true ;
 		sleep 1 &&
 		hyprpaper & disown;;
 	1) notify-send "No wallpaper has been selected.";;
