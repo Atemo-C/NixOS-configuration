@@ -7,18 +7,25 @@
 # • [lxterminal]
 #   https://wiki.lxde.org/en/LXTerminal
 #
+# Used NixOS options:
+#────────────────────
+# • https://search.nixos.org/options?channel=24.05&show=environment.variables
+#
 # Used Home Manager options:
 #───────────────────────────
 # • https://nix-community.github.io/home-manager/options.xhtml#opt-programs.alacritty.enable
 # • https://nix-community.github.io/home-manager/options.xhtml#opt-programs.alacritty.package
 # • https://nix-community.github.io/home-manager/options.xhtml#opt-programs.alacritty.settings
 
-
-
 { config, pkgs, ... }: {
 
-	# The standard terminal emulator of LXDE.
-	environment.systemPackages = [ pkgs.lxterminal ];
+	environment = {
+		# Set the default terminal emulator through an environment variable.
+		variables = { TERMINAL = "alacritty"; };
+
+		# The standard terminal emulator of LXDE.
+		systemPackages = [ pkgs.lxterminal ];
+	};
 
 	# A cross-platform, GPU-accelerated terminal emulator.
 	home-manager.users.${config.custom.name}.programs.alacritty = {
