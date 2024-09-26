@@ -6,13 +6,13 @@
 #
 # Used Home Manager options:
 #───────────────────────────
-# • ttps://nix-community.github.io/home-manager/options.xhtml#dconf.settings
-# • ttps://nix-community.github.io/home-manager/options.xhtml#gtk.enable
-# • ttps://nix-community.github.io/home-manager/options.xhtml#gtk.gtk2.extraConfig
-# • ttps://nix-community.github.io/home-manager/options.xhtml#gtk.gtk3.extraConfig
-# • ttps://nix-community.github.io/home-manager/options.xhtml#qt.enable
-# • ttps://nix-community.github.io/home-manager/options.xhtml#qt.style
-# • ttps://nix-community.github.io/home-manager/options.xhtml#qt.platformTheme
+# • ttps://nix-community.github.io/home-manager/options.xhtml#opt-dconf.settings
+# • ttps://nix-community.github.io/home-manager/options.xhtml#opt-gtk.enable
+# • ttps://nix-community.github.io/home-manager/options.xhtml#opt-gtk.gtk2.extraConfig
+# • ttps://nix-community.github.io/home-manager/options.xhtml#opt-gtk.gtk3.extraConfig
+# • ttps://nix-community.github.io/home-manager/options.xhtml#opt-qt.enable
+# • ttps://nix-community.github.io/home-manager/options.xhtml#opt-qt.style
+# • ttps://nix-community.github.io/home-manager/options.xhtml#opt-qt.platformTheme
 
 
 { config, ... }: {

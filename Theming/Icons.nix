@@ -1,14 +1,14 @@
 # Used Home Manager options:
 #───────────────────────────
-# • https://nix-community.github.io/home-manager/options.xhtml#home.pointerCursor.gtk.enable
-# • https://nix-community.github.io/home-manager/options.xhtml#home.pointerCursor.package
-# • https://nix-community.github.io/home-manager/options.xhtml#home.pointerCursor.name
-# • https://nix-community.github.io/home-manager/options.xhtml#home.pointerCursor.size
-# • https://nix-community.github.io/home-manager/options.xhtml#gtk.cusorTheme.package
-# • https://nix-community.github.io/home-manager/options.xhtml#gtk.cusorTheme.name
-# • https://nix-community.github.io/home-manager/options.xhtml#gtk.cusorTheme.size
-# • https://nix-community.github.io/home-manager/options.xhtml#gtk.iconTheme.package
-# • https://nix-community.github.io/home-manager/options.xhtml#gtk.iconTheme.name
+# • https://nix-community.github.io/home-manager/options.xhtml#opt-home.pointerCursor.gtk.enable
+# • https://nix-community.github.io/home-manager/options.xhtml#opt-home.pointerCursor.package
+# • https://nix-community.github.io/home-manager/options.xhtml#opt-home.pointerCursor.name
+# • https://nix-community.github.io/home-manager/options.xhtml#opt-home.pointerCursor.size
+# • https://nix-community.github.io/home-manager/options.xhtml#opt-gtk.cusorTheme.package
+# • https://nix-community.github.io/home-manager/options.xhtml#opt-gtk.cusorTheme.name
+# • https://nix-community.github.io/home-manager/options.xhtml#opt-gtk.cusorTheme.size
+# • https://nix-community.github.io/home-manager/options.xhtml#opt-gtk.iconTheme.package
+# • https://nix-community.github.io/home-manager/options.xhtml#opt-gtk.iconTheme.name
 
 { config, pkgs, ... }: { home-manager.users.${config.custom.name} = {
 

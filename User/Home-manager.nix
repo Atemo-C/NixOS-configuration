@@ -4,7 +4,7 @@
 #
 # Used Home Manager options:
 #───────────────────────────
-# • https://nix-community.github.io/home-manager/options.xhtml#backupFileExtension
+# • [Link doesn't exist] https://nix-community.github.io/home-manager/options.xhtml#opt-backupFileExtension
 # • https://nix-community.github.io/home-manager/options.xhtml#opt-home.stateVersion
 
 { config, pkgs, ... }:
