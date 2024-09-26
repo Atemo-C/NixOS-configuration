@@ -255,7 +255,7 @@
 		"size 320 410, class: (it.mijorus.smile)"
 
 		# Sober-specific settings.
-		"fullscreen, 1, class: (sober)"
+		"tile, class: (sober)"
 		"immediate, class: (sober)"
 	];
 
