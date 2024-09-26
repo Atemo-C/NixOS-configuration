@@ -121,6 +121,10 @@
 
 	# General configuration options.
 	general = {
+		# Whether to allow screen tearing.
+		# Add an `immediate` window rule to the programs of choice. They have to be full-screen for it to work.
+		allow_tearing = true;
+
 		# Border color for the active window.
 		"col.active_border" = "rgb(0080ff)";
 
