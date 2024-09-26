@@ -1,22 +1,50 @@
 #!/usr/bin/env bash
+#
+# Documentation:
+#───────────────
+# • https://github.com/hyprwm/hyprpaper?tab=readme-ov-file#usage
+#
+# Relevant issues:
+#─────────────────
+# • https://github.com/hyprwm/hyprpaper/issues/85
+#
+# Depedencies:
+#─────────────
+# • [zenity]
+#   https://gitlab.gnome.org/GNOME/zenity
+#
+# • [libnotify]
+#   https://gitlab.gnome.org/GNOME/libnotify
+#
+# • [hyprpaper]
+#   https://github.com/hyprwm/hyprpaper
 
+# Closes on error.
 set -euo pipefail
 
+# Wallpaper selection menu
 Wallpaper=$(zenity \
 	--file-selection \
 	--filename="$HOME/Images/Backgrounds/ /" \
-	--file-filter="*.png *.jpg *.jpg *.jpeg *.webp" \
+	--file-filter="*.png *.jpg *.jpeg *.webp" \
 	--title="Select an image")
-# Removed the "*.jxl" extension support, for now.
-# See https://github.com/hyprwm/hyprpaper/issues/85
 
 case $? in
 	0) echo -e \
+		# Put the selected wallpaper into hyprpaper's configuration file.
 		"preload = $Wallpaper\nwallpaper = ,$Wallpaper\nsplash = false\nipc = off" \
 		> "$HOME/.config/hypr/hyprpaper.conf" ;
-		ps aux | grep -w "\bhyprpaper\b" | awk '{print $2}' | xargs kill || true ;
-		sleep 1 &&
-		hyprpaper & disown;;
+
+		# Kills hyprpaper if it is already running or not, then continues.
+		pkill --exact "hyprpaper" || true ;
+
+		# Buffer wait, then launch hyprpaper with the desired wallpaper.
+		sleep 0.5 && hyprpaper & disown;;
+
+	# Send a message if not wallpaper has been selected.
 	1) notify-send "No wallpaper has been selected.";;
-	-1) notify-send "An unexpected error has occured - Run this program from the terminal.";;
+
+	# Send a message if another error occurs.
+	-1) notify-send "An unexpected error occured. Run this script from a terminal emulator for further output.";;
+
 esac
