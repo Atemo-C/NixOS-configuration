@@ -30,8 +30,8 @@ Wallpaper=$(zenity \
 	--title="Select an image")
 
 case $? in
+	# Put the selected wallpaper into hyprpaper's configuration file.
 	0) echo -e \
-		# Put the selected wallpaper into hyprpaper's configuration file.
 		"preload = $Wallpaper\nwallpaper = ,$Wallpaper\nsplash = false\nipc = off" \
 		> "$HOME/.config/hypr/hyprpaper.conf" ;
 
@@ -39,7 +39,7 @@ case $? in
 		pkill --exact "hyprpaper" || true ;
 
 		# Buffer wait, then launch hyprpaper with the desired wallpaper.
-		sleep 0.5 && hyprpaper & disown;;
+		sleep 0.1 && hyprpaper & disown;;
 
 	# Send a message if not wallpaper has been selected.
 	1) notify-send "No wallpaper has been selected.";;
