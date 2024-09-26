@@ -1,183 +1,123 @@
-{ ... }: {
+{ ... }: { imports = [
 
-	imports = [
-		./hardware-configuration.nix
+	# Automatically generated hardware configuration module.
+	./hardware-configuration.nix
 
-		./Android/ADB.nix
-		./Android/Tools.nix
+	# Android modules.
+	./Android/ADB.nix
+	./Android/Utilities.nix
 
-#		./Bluetooth/Blueman.nix
-#		./Bluetooth/Settings.nix
+	# Audio module.
+	./Audio.nix
 
-		./Boot/EFI.nix
-		./Boot/Entries.nix
-		./Boot/Security.nix
-		./Boot/SystemD-boot.nix
-		./Boot/Timeout.nix
+	# Bluetooth module.
+#	./Bluetooth.nix
 
-#		./Computer/KVM-guest.nix
-#		./Computer/Laptop.nix
-		./Computer/Power.nix
+	# Boot modules.
+	./Boot/Autostart.nix
+	./Boot/EFI.nix
+#	./Boot/BIOS.nix
 
-		./Files/Archiving.nix
-		./Files/Disks.nix
-		./Files/Management-and-thumbnails.nix
-		./Files/Sharing.nix
-		./Files/Utilities.nix
+	# Desktop modules.
+	./Desktop/Bar.nix
+	./Desktop/Dconf.nix
+	./Desktop/Hyprland-settings.nix
+	./Desktop/Hyprland.nix
+	./Desktop/Menus.nix
+	./Desktop/Notifications.nix
+	./Desktop/Utilities.nix
+	./Desktop/XDG.nix
 
-		./Fonts/Emoji.nix
-		./Fonts/Monospace.nix
-		./Fonts/Packages.nix
-		./Fonts/SansSerif.nix
-		./Fonts/Serif.nix
+	# Driver modules.
+#	./Drivers/NVIDIA.nix
+	./Drivers/General-graphics.nix
 
-		./Fonts/Settings/Cache.nix
-		./Fonts/Settings/FontDir.nix
-		./Fonts/Settings/Hinting.nix
-		./Fonts/Settings/Size.nix
+	# File management modules.
+	./Files/Management.nix
+	./Files/Services.nix
+	./Files/Sharing.nix
+	./Files/Utilities.nix
 
-		./Gaming/Emulators.nix
-		./Gaming/Gamemode.nix
-		./Gaming/Gamescope.nix
-		./Gaming/Minecrafty.nix
-		./Gaming/Steam.nix
-		./Gaming/System-tweaks.nix
+	# Time module.
+	./Time.nix
 
-#		./GPU/AMD.nix
-#		./GPU/Intel.nix
-#		./GPU/NVIDIA.nix
-#		./GPU/NVIDIA-Nouveau.nix
+	# Fonts module.
+	./Fonts.nix
 
-		./Hyprland/Other-utilities.nix
-		./Hyprland/Settings.nix
-		./Hyprland/Tools.nix
-		./Hyprland/X11.nix
-		./Hyprland/XDG-portal.nix
+	# Gaming modules.
+	./Gaming/Emulation.nix
+	./Gaming/Games.nix
+	./Gaming/Settings.nix
+	./Gaming/Steam.nix
+	./Gaming/Utilities.nix
 
-		./Hyprland/Configuration/Animations.nix
-		./Hyprland/Configuration/Autostart.nix
-		./Hyprland/Configuration/Bindings.nix
-		./Hyprland/Configuration/Decoration.nix
-		./Hyprland/Configuration/Environment-variables.nix
-		./Hyprland/Configuration/General.nix
-		./Hyprland/Configuration/Input.nix
-		./Hyprland/Configuration/Layout.nix
-		./Hyprland/Configuration/Miscellaneous.nix
-		./Hyprland/Configuration/Monitor.nix
-		./Hyprland/Configuration/Render.nix
-		./Hyprland/Configuration/Window-rules.nix
+	# Input modules.
+	./Input/Bindings.nix
+	./Input/Controller.nix
+	./Input/Keyboard.nix
+	./Input/Mouse-and-touchpad.nix
+	./Input/Power.nix
+	./Input/Tablet.nix
+	./Input/Utilities.nix
 
-		./Hyprland/Tools/Notifications.nix
-		./Hyprland/Tools/Tofi.nix
+	# Linux Kernel module.
+	./Kernel.nix
 
-		./Hyprland/Tools/Waybar/Modules.nix
-		./Hyprland/Tools/Waybar/Modules-configuration.nix
-		./Hyprland/Tools/Waybar/Settings.nix
-		./Hyprland/Tools/Waybar/Style.nix
+	# Networking module.
+	./Networking.nix
 
-		./Input/Controllers.nix
-		./Input/Utilities.nix
+	# Packaging modules.
+	# System.nix also contains the state version.
+	./Packaging/System.nix
+	./Packaging/System-unstable.nix
+	./Packaging/Universal.nix
 
-		./Input/Buttons/Power.nix
-		./Input/Drawing/OpenTabletDriver.nix
-		./Input/Keyboard/Layout.nix
-		./Input/Keyboard/ZSA.nix
-		./Input/Mouse/Autoclicker.nix
-		./Input/Mouse/Utilities.nix
+	# Power modules.
+	./Power/Powersaving.nix
+	./Power/Utilities.nix
 
-		./Internet/Downloading.nix
-		./Internet/Email.nix
-		./Internet/Gemini.nix
-		./Internet/Social.nix
-		./Internet/Web.nix
+	# Printing & scanning modules.
+	./Printing/General.nix
+	./Printing/HP.nix
 
-#		./Kernel/Version.nix
+	# Programs modules.
+	./Programs/3D.nix
+	./Programs/Accessories.nix
+	./Programs/Audio.nix
+	./Programs/Gstreamer.nix
+	./Programs/Images.nix
+	./Programs/Internet.nix
+	./Programs/Office.nix
+	./Programs/Sysinfo.nix
+	./Programs/Terminal-emulators.nix
+	./Programs/Terminal-utilities.nix
+	./Programs/Text.nix
+	./Programs/Video.nix
 
-		./Locale/Locale.nix
-		./Locale/Extra-settings.nix
+	# SSH module.
+	./SSH.nix
 
-		./Media/3D.nix
-		./Media/Gstreamer.nix
+	# Storage modules.
+	./Storage/Filesystems.nix
+	./Storage/Mounts.nix
+	./Storage/Optical.nix
+	./Storage/Settings.nix
 
-		./Media/Audio/Editing.nix
-		./Media/Audio/Music.nix
-		./Media/Audio/Settings.nix
-		./Media/Audio/Utilities.nix
+	# Theming modules.
+	./Theming/Icons.nix
+	./Theming/Settings.nix
+	./Theming/TTY.nix
 
-		./Media/Image/Editing.nix
-		./Media/Image/Formats.nix
-		./Media/Image/Picker.nix
-		./Media/Image/Utilities.nix
-		./Media/Image/Viewer.nix
+	# User modules.
+	./User/Home-manager.nix
+	./User/Name.nix
+	./User/Settings.nix
+	./User/Shell.nix
 
-		./Media/Video/Capture.nix
-		./Media/Video/Editor.nix
-		./Media/Video/Player.nix
-		./Media/Video/Utilities.nix
-		./Media/Video/V4L2.nix
+	# Virtualisation modules.
+#	./Virtualisation/Docker.nix
+	./Virtualisation/Virt-manager.nix
+#	./Virtualisation/Virtualbox.nix
+#	./Virtualisation/Waydroid.nix
 
-		./Networking/Hostname.nix
-		./Networking/NetworkManager.nix
-
-		./Office/Suite.nix
-		./Office/Reader.nix
-
-		./Packaging/AppImage.nix
-		./Packaging/Flatpak.nix
-		./Packaging/Unfree.nix
-		./Packaging/Unstable.nix
-
-		./Printing/General.nix
-#		./Printing/HP.nix
-		./Printing/Packages.nix
-
-		./SSH/OpenSSH.nix
-		./SSH/Permission.nix
-		./SSH/Ports.nix
-
-		./Storage/Additional-filesystems.nix
-		./Storage/BTRFS-autoscrub.nix
-#		./Storage/SSD-TRIM.nix
-#		./Storage/Mounts.nix
-
-		./System/Benchmarking-and-information.nix
-		./System/Configuration-backup.nix
-		./System/Dconf.nix
-		./System/Monitoring.nix
-		./System/State-version.nix
-		./System/Store-optimisation.nix
-
-		./Terminal/Emulator.nix
-		./Terminal/Utilities.nix
-
-		./Text/Clipboard.nix
-		./Text/Editor.nix
-		./Text/Pickers.nix
-		./Text/Spelling.nix
-
-		./Theme/Cursor.nix
-		./Theme/GTK.nix
-		./Theme/Icons.nix
-		./Theme/QT.nix
-		./Theme/Settings.nix
-
-		./Time/Hardware-clock.nix
-		./Time/Timezone.nix
-
-		./TTY/Colors.nix
-		./TTY/Settings.nix
-
-		./User/Groups.nix
-		./User/Home-manager.nix
-		./User/Name.nix
-		./User/Name-module.nix
-		./User/Settings.nix
-		./User/Shell.nix
-
-#		./Virtualisation/Docker.nix
-#		./Virtualisation/Virt-manager.nix
-#		./Virtualisation/Virtualbox.nix
-#		./Virtualisation/Waydroid.nix
-	];
-
-}
+]; }

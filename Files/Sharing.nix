@@ -1,12 +1,25 @@
+# Documentation:
+#───────────────
+# • https://github.com/linuxmint/warpinator/blob/master/README.md
+#
+# Used NixOS options:
+#────────────────────
+# • https://search.nixos/org/options?channel=24.05&show=networking.firewall.allowedTCPPorts
+#
+# Used NixOS packages:
+#─────────────────────
+# • [warpinator]
+#   https://github.com/linuxmint/warpinator
+
 { config, pkgs, ... }: {
 
-	# Linux Mint's Warpinator local file sharing utility.
-	environment.systemPackages = with pkgs.unstable; [ warpinator ];
+	# Share files across the LAN.
+	environment.systemPackages = [ pkgs.unstable.warpinator ];
 
-	# Firewall port to open for firesharing.
+	# List of TCP ports on which incoming connections are accepted.
 	networking.firewall.allowedTCPPorts = [
-		42000 # Incoming port for transfers.
-		42001 # Incoming port for registration.
+		42000 # Incoming port for Warpinator transfers.
+		42001 # Incoming port for Warpinator registrations.
 	];
 
 }

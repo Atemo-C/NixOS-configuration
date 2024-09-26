@@ -1,11 +1,17 @@
-{ pkgs, ... }: {
+# Used NixOS packages:
+#─────────────────────
+# • [evsieve]
+#   https://github.com/KarsMulder/evsieve
+#
+# • [usbutils]
+#   http://www.linux-usb.org/
 
-	environment.systemPackages = with pkgs; [
-		# Utility for mapping events from Linux event devices.
-		evsieve
+{ pkgs, ... }: { environment.systemPackages = [
 
-		# Tools for working with USB devices, such as lsusb.
-		usbutils
-	];
+	# A utility for mapping events from Linux event devices.
+	pkgs.evsieve
 
-}
+	# Tools for working with USB devices, such as lsusb.
+	pkgs.usbutils
+
+]; }

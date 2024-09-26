@@ -1,16 +1,24 @@
+# Documentation:
+#───────────────
+# • https://wiki.nixos.org/wiki/Fish
+#
+# Used NixOS options:
+#────────────────────
+# • https://search.nixos.org/options?channel=24.05&show=users.users.%3Cname%3E.shell
+# • https://search.nixos.org/options?channel=24.05&show=programs.fish.enable
+# • https://search.nixos.org/options?channel=24.05&show=programs.fish.shellAbbrs
+
 { config, pkgs, ... }: {
 
-	# The user's shell.
-	# https://search.nixos.org/options?channel=24.05&show=users.users.%3Cname%3E.shell
-	users.users.${config.Custom.Name}.shell = pkgs.fish;
+	# The path to the user’s shell. Can use shell derivations, like pkgs.bashInteractive.
+	# Don’t forget to enable your shell in programs if necessary, like programs.fish.enable = true;.
+	users.users.${config.custom.name}.shell = pkgs.fish;
 
 	programs.fish = {
-		# Enabling the user's shell.
-		# https://search.nixos.org/options?channel=24.05&show=programs.fish.enable
+		# Whether to configure fish as an interactive shell.
 		enable = true;
 
-		# Shell abbreviations (not to be confused with aliases).
-		# https://search.nixos.org/options?channel=24.05&show=programs.fish.shellAbbrs
+		# Set of fish abbreviations.
 		shellAbbrs = {
 
 			# Short abbreviations.
@@ -36,7 +44,7 @@
 			lofi-escape = ''mpv --no-video "https://www.youtube.com/watch?v=S_MOd40zlYU"'';
 			lofi-medieval = ''mpv --no-video "https://www.youtube.com/watch?v=_uMuuHk_KkQ"'';
 			lofi-piano = ''mpv --no-video "https://www.youtube.com/watch?v=4oStw0r33so"'';
-			lofi-sleep = ''mpv --no-video "https://www.youtube.com/watch?v=rUxyKA_-grg"'';
+			lofi-sleep = ''mpv --no-video "https://www.youtube.com/watch?v=28KRPhVzCus"'';
 			lofi-study = ''mpv --no-video "https://www.youtube.com/watch?v=jfKfPfyJRdk"'';
 			lofi-synthwave = ''mpv --no-video "https://www.youtube.com/watch?v=4xDzrJKXOOY"'';
 			nightinthewoods = ''mpv --no-video "https://www.youtube.com/watch?v=AsLKfqA73uE"'';
@@ -103,7 +111,7 @@
 			list-long-recursive = "lsd --group-dirs first -l --recursive";
 			list-recursive-long = "lsd --group-dirs first -l --recursive";
 
-			# [List all+long+tree]
+			# [List all+long+tree] abbrvations.
 			lalt = "lsd --goup-dirs first -Al --tree";
 			latl = "lsd --goup-dirs first -Al --tree";
 			llta = "lsd --goup-dirs first -Al --tree";
@@ -117,7 +125,7 @@
 			list-tree-long-all = "lsd --goup-dirs first -Al --tree";
 			list-tree-all-long = "lsd --goup-dirs first -Al --tree";
 
-			# [List all+long+recursive]
+			# [List all+long+recursive] abbrvations.
 			lalr = "lsd --goup-dirs first -Al --recursive";
 			larl = "lsd --goup-dirs first -Al --recursive";
 			llra = "lsd --goup-dirs first -Al --recursive";

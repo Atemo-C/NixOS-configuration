@@ -1,7 +1,12 @@
+# Documentation:
+#───────────────
+# • https://wiki.nixos.org/wiki/Filesystems
+
 { config, ... }: {
 
-	fileSystems."/path/to/mount" = {
-		device = "/dev/disk/by-uuid/drive-uuid";
+	# Mount for an internal 1TB SATA SSD.
+	fileSystems."/run/media/your-name/1TB-SSD-INT" = {
+		device = "/dev/disk/by-label/1TB-SSD-INT";
 		fsType = "btrfs";
 		options = [
 			"defaults"

@@ -2,15 +2,16 @@
 This is an almost identical version of the NixOS configuration that I use. It is made for single-user use on a desktop or laptop system. \
 It does not use Flakes and never, ever will, but it does make use of Home Manager and some unstable packages whilst on a stable version. \
 It is an overhaul of my previous NixOS configuration, which can still be found [here](https://github.com/Atemo-C/OLD-NixOS-Configuration). \
+(Amajor update on the 16th of September 2024 overhauled the structure again, though most things are still working the same way under the hood.) \
 If you want to use this configuration (or rather, a version of it), on your own system, it is hightly recommended that you read what each module does and edit them if needed. \
 &nbsp;
 # [2] To do when using this configuration
 
 ## [2.1] User name and title
-You can set your user's name and title in the `User/Name.nix` module. They will automatically be applied to the modules that need them; They will use the `${config.Custom.Name}` and `${config.Custom.Title}` values that are defined by you in `User/Name.nix`.
+You can set your user's name and title in the `User/Name.nix` module. They will automatically be applied to the modules that need them; They will use the `${config.custom.name}` and `${config.custom.title}` values that are defined by you in `User/Name.nix`.
 
 ## [2.2] Hostname
-You can set your computer's name on the network in the `Networking/Hostname.nix` module.
+You can set your computer's name on the network in the `Networking/Settings.nix` module.
 
 ## [2.3] Flatpaks with Flathub
 Currently, the Flathub Flatpak repository cannot be declaratively defined in NixOS nor Home Manager without using a custom Nix Flake. As such, you have to manually add it with a shell command after installation.
@@ -23,14 +24,13 @@ flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/fl
 ```
 
 ## [2.4] NixOS state version
-If you have installed a NixOS version higher/lower than the value currently used here (`24.05`), you must change the value of `system.stateVersion` in the `System/State-version.nix` module to it. After that, you should never need to change it, unless you install NixOS from scratch with a different version. You do not have to nor should not change this number if you keep the same installation, even when upgrading NixOS version.
+If you have installed a NixOS version higher/lower than the value currently used here (`24.05`), you must change the value of `system.stateVersion` in the `Packaging/System.nix` module to it. After that, you should never need to change it, unless you install NixOS from scratch with a different version. You do not have to nor should not change this number if you keep the same installation, even when upgrading NixOS version.
 
 ## [2.5] Home Manager version
-The version of Home Manager used should match the version of NixOS you are currently using. Its value can be changed in the `User/Home-manager.nix` module.
+The `User/Home-manager.nix` module fetches the tarball of the desired Home Manager version, which should ideally be the same version as the NixOS version currently running. In it, if needed, change the `24.05` part in `"https://github.com/nix-community/home-manager/archive/release-24.05.tar.gz"` to the appropriate version.
 
-## [2.6] Values for NVIDIA PRIME
-If you are using NVIDIA PRIME, you will need to edit the appropriate Bus IDs and which vendor your other GPU is made by in the `GPU/NVIDIA.nix` module. \
-&nbsp;
+## [2.6] BIOS or EFI boot
+In `configuration.nix`, comment/uncomment the desired boot mode. You can tweak the `Boot/EFI` and `Boot/BIOS` modules on their own for futher configuration if needed.
 
 # [3] Use cases and feature implementation
 
@@ -51,8 +51,9 @@ If you are using NVIDIA PRIME, you will need to edit the appropriate Bus IDs and
 - Computers with:
 	- A non-x86_64 (AMD64) CPU architecture
 	- No adequate GPU acceleration (Hyprland)
-	- Less than 4 GiB of RAM (Swap will be heavily used with less, 8-16 GiB is recommended)
-	- Less than 128 GiB of storage (Some Nix storage optimizations are already enabled) \
+	- Hybrid GPU setup (NVIDIA PRIME, etc)
+	- Less than 2 GiB of RAM (Swap will be heavily used with less than 4, 8-16 GiB is recommended)
+	- Less than 64 GiB of storage (Some Nix storage optimizations are already enabled) \
 &nbsp;
 
 # [4] Other NixOS resources
