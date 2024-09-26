@@ -4,7 +4,7 @@
 #
 # Used NixOS options:
 #────────────────────
-# • https://search.nixos.org/options?channel=24.05&show=users.users.%3Cname%3E.shell
+# • https://search.nixos.org/options?channel=24.05&show=users.users.<name>.shell
 # • https://search.nixos.org/options?channel=24.05&show=programs.fish.enable
 # • https://search.nixos.org/options?channel=24.05&show=programs.fish.shellAbbrs
 

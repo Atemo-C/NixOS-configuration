@@ -6,7 +6,7 @@
 #────────────────────
 # • https://search.nixos.org/options?channel=24.05&show=virtualisation.virtualbox.host.enable
 # • https://search.nixos.org/options?channel=24.05&show=virtualisation.virtualbox.host.enableExtensionPack
-# • https://search.nixos.org/options?channel=24.05&show=users.users.%3Cname%3E.extraGroups
+# • https://search.nixos.org/options?channel=24.05&show=users.users.<name>.extraGroups
 
 { config, ... }: {
 
