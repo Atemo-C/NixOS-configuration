@@ -200,7 +200,6 @@
 		"float, title: (Authentication Required)"
 		"float, title: (Blender Preferences)"
 		"float, title: (Close LibreWolf)"
-		"float, title: (Emoji picker)"
 		"float, title: (File Operation Progress)"
 		"float, title: (Opening *), class:(librewolf)"
 		"float, title: (PCSX2 Settings)"
@@ -246,6 +245,11 @@
 		"center, class: (CPU-X)"
 		"float, class: (CPU-X)"
 		"size 600 425, class: (CPU-X)"
+
+		# Smile-specific settings.
+		"center, class: (it.mijorus.smile)"
+		"float, class: (it.mijorus.smile)"
+		"size 320 410, class: (it.mijorus.smile)"
 	];
 
 }; }
