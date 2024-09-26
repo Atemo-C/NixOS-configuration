@@ -11,8 +11,8 @@
 # • [wl-clipboard]
 #   https://github.com/bugaevc/wl-clipboard
 #
-# • [emoji-picker]
-#   https://github.com/bcongdon/ep
+# • [smile]
+#   https://mijorus.it/projects/smile/
 #
 # • [gucharmap]
 #   https://gitlab.gnome.org/GNOME/gucharmap
@@ -38,8 +38,8 @@
 			pkgs.wl-clipboard
 
 			# Special characters.
-			## A CLI Emoji Picker.
-			pkgs.emoji-picker
+			## An emoji picker for linux, with custom tags support and localization.
+			pkgs.smile
 
 			## GNOME Character Map, based on the Unicode Character Database.
 			pkgs.gnome.gucharmap
