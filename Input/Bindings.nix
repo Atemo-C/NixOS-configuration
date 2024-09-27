@@ -101,25 +101,25 @@
 		", XF86AudioNext, exec, playerctl next"
 
 		# Power buttons.
-		'', XF86PowerOff, exec, bash "/etc/nixos/Desktop/Scripts/Power menu.sh"''
-		'', XF86PowerDown, exec, bash "/etc/nixos/Desktop/Scripts/Power menu.sh"''
-		'', XF86Sleep, exec, bash "/etc/nixos/Desktop/Scripts/Power menu.sh"''
-		'', XF86Suspend, exec, bash "/etc/nixos/Desktop/Scripts/Power menu.sh"''
+		'', XF86PowerOff, exec, bash "/etc/nixos/Desktop/Scripts/Power.sh"''
+		'', XF86PowerDown, exec, bash "/etc/nixos/Desktop/Scripts/Power.sh"''
+		'', XF86Sleep, exec, bash "/etc/nixos/Desktop/Scripts/Power.sh"''
+		'', XF86Suspend, exec, bash "/etc/nixos/Desktop/Scripts/Power.sh"''
 
 		# Program launching
-		''ALT, RETURN, exec, bash "/etc/nixos/Desktop/Scripts/Program launcher.sh"''
+		''ALT, RETURN, exec, bash "/etc/nixos/Desktop/Scripts/Programs.sh"''
 		"ALT SHIFT, RETURN, exec, tofi-drun --drun-launch=true"
 
 		# Screenshot
-		'', PRINT, exec, bash "/etc/nixos/Desktop/Scripts/Hyprshot single.sh"''
-		''SHIFT, PRINT, exec, bash "/etc/nixos/Desktop/Scripts/Hyprshot.sh"''
+		'', PRINT, exec, bash "/etc/nixos/Desktop/Scripts/Screenshot/Fullscreen.sh"''
+		''SHIFT, PRINT, exec, bash "/etc/nixos/Desktop/Scripts/Screenshot/Region.sh"''
 
 		# Emoji picking
 		"ALT SHIFT, E, exec, smile"
 
 		# Clipboard managing
 		"SUPER SHIFT, V, exec, clipman pick -t CUSTOM -T tofi"
-		"SUPER CONTROL, V, exec, clipman clear --all & notify-send -t 1000 'Clipboard cleared'"
+		"SUPER CONTROL, V, exec, clipman clear --all & notify-send -t 1500 'Clipboard cleared'"
 		''ALT, V, exec, alacritty -e micro "$HOME/Documents/Clipboard.txt"''
 
 		# Terminal emulator
