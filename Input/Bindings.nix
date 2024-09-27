@@ -111,8 +111,8 @@
 		"ALT SHIFT, RETURN, exec, tofi-drun --drun-launch=true"
 
 		# Screenshot
-		'', PRINT, exec, bash "/etc/nixos/Desktop/Scripts/Screenshot/Fullscreen.sh"''
-		''SHIFT, PRINT, exec, bash "/etc/nixos/Desktop/Scripts/Screenshot/Region.sh"''
+		'', PRINT, exec, bash "/etc/nixos/Desktop/Scripts/Screenshots/Fullscreen.sh"''
+		''SHIFT, PRINT, exec, bash "/etc/nixos/Desktop/Scripts/Screenshots/Region.sh"''
 
 		# Emoji picking
 		"ALT SHIFT, E, exec, smile"
