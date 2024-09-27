@@ -7,17 +7,6 @@
 # Relevant issues:
 #─────────────────
 # • https://github.com/hyprwm/hyprpaper/issues/85
-#
-# Depedencies:
-#─────────────
-# • [zenity]
-#   https://gitlab.gnome.org/GNOME/zenity
-#
-# • [libnotify]
-#   https://gitlab.gnome.org/GNOME/libnotify
-#
-# • [hyprpaper]
-#   https://github.com/hyprwm/hyprpaper
 
 # Closes on error.
 set -euo pipefail

@@ -15,7 +15,7 @@
 
 	# Boot modules.
 	./Boot/Autostart.nix
-	./Boot/EFI.nix
+#	./Boot/EFI.nix
 #	./Boot/BIOS.nix
 
 	# Desktop modules.
@@ -78,7 +78,7 @@
 
 	# Printing & scanning modules.
 	./Printing/General.nix
-	./Printing/HP.nix
+#	./Printing/HP.nix
 
 	# Programs modules.
 	./Programs/3D.nix
@@ -99,7 +99,7 @@
 
 	# Storage modules.
 	./Storage/Filesystems.nix
-	./Storage/Mounts.nix
+#	./Storage/Mounts.nix
 	./Storage/Optical.nix
 	./Storage/Settings.nix
 
@@ -116,7 +116,7 @@
 
 	# Virtualisation modules.
 #	./Virtualisation/Docker.nix
-	./Virtualisation/Virt-manager.nix
+#	./Virtualisation/Virt-manager.nix
 #	./Virtualisation/Virtualbox.nix
 #	./Virtualisation/Waydroid.nix
 

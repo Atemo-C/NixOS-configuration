@@ -18,7 +18,7 @@
 	systemd-boot = {
 		# Maximum number of latest generations in the boot menu.
 		# Useful to prevent boot partition running out of disk space.
-		configurationLimit = 10;
+		configurationLimit = 20;
 
 		# Whether to allow editing the kernel command-line before boot.
 		# It allows gaining root access by passing init=/bin/sh as a kernel, so it is recommended to turn it off.

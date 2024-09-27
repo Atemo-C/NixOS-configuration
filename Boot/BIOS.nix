@@ -13,7 +13,7 @@
 	grub = {
 		# Maximum of configurations in boot menu.
 		# GRUB has problems when there are too many entries.
-		configurationLimit = 10;
+		configurationLimit = 20;
 
 		# The device on which the GRUB boot loader will be installed.
 		# To install GRUB on multiple devices, use boot.loader.grub.devices.
