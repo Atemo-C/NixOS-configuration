@@ -5,6 +5,7 @@
 #
 # Used NixOS options:
 #────────────────────
+# • https://search.nixos.org/options?channel=24.05&show=environment.variables
 # • https://search.nixos.org/options?channel=24.05&show=programs.thunar.enable
 # • https://search.nixos.org/options?channel=24.05&show=programs.thunar.plugins
 # • https://search.nixos.org/options?channel=24.05&show=programs.xfconf.enable
@@ -31,16 +32,21 @@
 
 { config, pkgs, ... }: {
 
-	environment.systemPackages = [
-		# A simple, fast and user-friendly alternative to find.
-		pkgs.fd
+	environment = {
+		systemPackages = [
+			# A simple, fast and user-friendly alternative to find.
+			pkgs.fd
 
-		# The next gen ls command.
-		pkgs.lsd
+			# The next gen ls command.
+			pkgs.lsd
 
-		# A simple, fast, and featureful alternative to rm and trash-cli.
-		pkgs.trashy
-	];
+			# A simple, fast, and featureful alternative to rm and trash-cli.
+			pkgs.trashy
+		];
+
+		# Default file manager to use.
+		variables = { FILEMANAGER = "thunar"; };
+	};
 
 	programs = {
 		thunar = {
