@@ -268,6 +268,7 @@
 		## • Left click opens a calendar.
 		"clock" = {
 			format   = "{:%d/%m/%Y %H:%M:%S}";
+			interval = 1;
 			on-click = "$TERMINAL -e calcurse";
 		};
 
