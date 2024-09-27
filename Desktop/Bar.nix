@@ -121,6 +121,8 @@
 			on-click               = "bash /etc/nixos/Desktop/Scripts/Screenshots/Region.sh";
 			on-click-right         = "bash /etc/nixos/Desktop/Scripts/Screenshots/Fullscreen.sh";
 			on-click-middle        = "bash /etc/nixos/Desktop/Scripts/Screenshots/Window.sh";
+			on-click-backward      = "bash /etc/nixos/Desktop/Scripts/Screenshots/Region-clipboard.sh";
+			on-click-forward       = "bash /etc/nixos/Desktop/Scripts/Screenshots/Fullscreen-clipboard.sh";
 			path                   = "/etc/nixos/Desktop/Icons/Screenshot.png";
 			size                   = 22;
 			tooltip-format         = "Take a screenshot";

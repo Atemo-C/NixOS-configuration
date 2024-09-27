@@ -4,7 +4,7 @@
 set -euo pipefail
 
 # • Takes a region screenshot.
-# • Saves the screenshot.
+# • Sets the output folder of the screenshot.
 # • Sets the name of the screenshot.
 hyprshot \
 	--mode region \

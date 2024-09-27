@@ -5,7 +5,7 @@ set -euo pipefail
 
 # • Takes a full-screen screenshot.
 # • Automatically selects the active monitor to capture.
-# • Saves the screenshot.
+# • Sets the output folder of the screenshot.
 # • Sets the name of the screenshot.
 hyprshot \
 	--mode output \
