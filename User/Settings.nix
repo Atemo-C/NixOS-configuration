@@ -49,7 +49,7 @@
 		homeMode = "755";
 
 		# Initial password for the user; Can be changed once logged in with the `passwd` command.
-		initialPassword = "NeverGonnaGiveYouUp";
+		initialPassword = "69420";
 
 		# Indicates whether this is an account for a "real" user.
 		isNormalUser = true;

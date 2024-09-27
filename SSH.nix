@@ -10,14 +10,14 @@
 { config, ... }: {
 
 	# List of TCP ports on which incoming SSH connections are accepted.
-	networking.firewall.allowedTCPPorts = [ 2077 ];
+	networking.firewall.allowedTCPPorts = [ 4200 ];
 
 	services.openssh = {
 		# Whether to enable the OpenSSH daemon.
 		enable = true;
 
 		# Which ports the SSH daemon should listen to.
-		ports = [ 2077 ];
+		ports = [ 4200 ];
 
 		settings = {
 			# Login is allowed only for the listed users.
