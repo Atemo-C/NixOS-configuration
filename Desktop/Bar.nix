@@ -136,7 +136,7 @@
 		## • Middle click clears the temporary clipboard.
 		"image#Clipboard" = {
 			on-click        = "clipman pick -t CUSTOM -T tofi";
-			on-click-right  = "$EDITOR $HOME/Documents/Clipboard.txt";
+			on-click-right  = "$TERMINAL -e $EDITOR $HOME/Documents/Clipboard.txt";
 			on-click-middle = "clipman clear --all & notify-send -t 1500 'Clipboard cleared'";
 			path            = "/etc/nixos/Desktop/Icons/Clipboard.png";
 			size            = 22;
