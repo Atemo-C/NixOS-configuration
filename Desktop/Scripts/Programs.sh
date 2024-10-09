@@ -204,7 +204,7 @@ Program=$(
 #	nvidia-offload steam & disown
 
 [ "$Program" = "  D.D.D                That's not my neighbor" ] &&
-	steam-run "$HOME/Programs/Games/That's not my neighbor/That's not my neighbor.x86_64" & disown
+	steam-run "$HOME/Programs/That's not my neighbor/That's not my neighbor.x86_64" & disown
 #	nvidia-offload steam-run "$HOME/Programs/That's not my neighbor/That's not my neighbor.x86_64" & disown
 
 [ "$Program" = "󰙯  Vesktop              Discord, but Vencorded" ] &&
