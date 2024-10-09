@@ -225,6 +225,9 @@
 		"float, class: (xfburn)"
 		"float, class: (zenity)"
 
+		# Floating windows [By both].
+		"float, class: (lagrange), title: (Preferences)"
+
 		# Flotaing [By classa and title].
 		"float, class: (UltiMaker-Cura), title: (Preferences)"
 
