@@ -2,4 +2,4 @@
 
 set -euo pipefail
 
-pkill feh
+pkill feh && notify-send "Crosshair/s killed"
