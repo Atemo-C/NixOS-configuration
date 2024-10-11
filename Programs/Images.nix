@@ -1,5 +1,8 @@
 # Used NixOS packages:
 #─────────────────────
+# • [feh]
+#   https://feh.finalrewind.org/
+#
 # • [gimp]
 #   https://www.gimp.org/
 #
@@ -49,6 +52,9 @@
 #   https://github.com/lxqt/lximage-qt
 
 { pkgs, ... }: { environment.systemPackages = [
+
+	# Extremely simplistic image viewing.
+	pkgs.feh
 
 	# Image editing.
 	## The GNU Image Manipulation Program (with plugins).

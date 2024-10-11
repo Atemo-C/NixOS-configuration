@@ -32,6 +32,8 @@ Programs=(
 	"  Clock                GNOME's clock"
 	"  CUPS                 Printer configuration"
 	" "
+	"  Crosshair            A simple red-dot crosshair"
+	"󰽅  Kill Crosshair       Kill the active crosshair/s"
 	"  DeSmuME              Nintendo DS/I emulator"
 	"  Jstest               Gamepad tester"
 	"󰍳  PrismLauncher        Minecraft Launcher"
@@ -174,6 +176,12 @@ Program=$(
 
 [ "$Program" = "  CUPS                 Printer configuration" ] &&
 	xdg-open "https://localhost:631/" & disown
+
+[ "$Program" = "  Crosshair            A simple red-dot crosshair" ] &&
+	bash /etc/nixos/Desktop/Scripts/Crosshair/Crosshair-start.sh & disown
+
+[ "$Program" = "󰽅  Kill Crosshair       Kill the active crosshair/s" ] &&
+	bash /etc/nixos/Desktop/Scripts/Crosshair/Crosshair-kill.sh & disown
 
 [ "$Program" = "  DeSmuME              Nintendo DS/I emulator" ] &&
 	desmume & disown
