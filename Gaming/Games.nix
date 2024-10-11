@@ -22,8 +22,8 @@
 		# CLI program for managing Minecraft mods and modpacks from Modrinth, CurseForge, and GitHub Releases.
 		pkgs.unstable.ferium
 
-		# The open-source Java Development Kit.
-		pkgs.jdk
+		# The open-source Java Development Kit, version 22.
+		pkgs.jdk22
 
 		# Infinite-world block sandbox.
 		pkgs.unstable.minetest
