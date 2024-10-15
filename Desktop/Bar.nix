@@ -101,8 +101,8 @@
 		## • Left click opens the default file manager.
 		## • Right click opens the download directory in the default file manager.
 		"image#Files" = {
-			on-click       = "$FILEMANAGER";
-			on-click-right = "$FILEMANAGER $HOME/Downloads/";
+			on-click       = "thunar";
+			on-click-right = "thunar $HOME/Downloads/";
 			path           = "/etc/nixos/Desktop/Icons/Files.png";
 			size           = 22;
 			tooltip-format = "Files";
@@ -136,7 +136,7 @@
 		## • Middle click clears the temporary clipboard.
 		"image#Clipboard" = {
 			on-click        = "clipman pick -t CUSTOM -T tofi";
-			on-click-right  = "$TERMINAL -e $EDITOR $HOME/Documents/Clipboard.txt";
+			on-click-right  = "alacritty -e micro $HOME/Documents/Clipboard.txt";
 			on-click-middle = "clipman clear --all & notify-send -t 1500 'Clipboard cleared'";
 			path            = "/etc/nixos/Desktop/Icons/Clipboard.png";
 			size            = 22;
@@ -189,7 +189,7 @@
 		## • Left click opens a system resource monitor.
 		## • Right click shows a detailed temperature readout.
 		"image#CPU" = {
-			on-click       = "$TERMINAL -e btop";
+			on-click       = "alacritty -e btop";
 			on-click-right = "notify-send '$(sensors)'";
 			path           = "/etc/nixos/Desktop/Icons/CPU.png";
 			size           = 22;
@@ -198,7 +198,7 @@
 		"cpu" = {
 			interval       = 1;
 			format         = "{usage}% ";
-			on-click       = "$TERMINAL -e btop";
+			on-click       = "alacritty -e btop";
 			on-click-right = "notify-send '$(sensors)'";
 		};
 		"temperature" = {
@@ -206,7 +206,7 @@
 			interval           = 1;
 			hwmon-path         = "/sys/class/hwmon/hwmon1/temp1_input";
 			format             = "{temperatureC}°C";
-			on-click           = "$TERMINAL -e btop";
+			on-click           = "alacritty -e btop";
 			on-click-right     = "notify-send '$(sensors)'";
 		};
 
@@ -216,7 +216,7 @@
 		## • Left click opens a system resource monitor.
 		## • Right click shows a detailed memory readout.
 		"image#RAM" = {
-			on-click       = "$TERMINAL -e btop";
+			on-click       = "alacritty -e btop";
 			on-click-right = ''notify-send "$(free -mh)"'';
 			path           = "/etc/nixos/Desktop/Icons/RAM.png";
 			size           = 22;
@@ -225,7 +225,7 @@
 		"memory" = {
 			interval       = 1;
 			format         = "{percentage}%";
-			on-click       = "$TERMINAL -e btop";
+			on-click       = "alacritty -e btop";
 			on-click-right = ''notify-send "$(free -mh)"'';
 		};
 
@@ -271,7 +271,7 @@
 		"clock" = {
 			format   = "{:%d/%m/%Y %H:%M:%S}";
 			interval = 1;
-			on-click = "$TERMINAL -e calcurse";
+			on-click = "alacritty -e calcurse";
 		};
 
 		## Close/kill button.
