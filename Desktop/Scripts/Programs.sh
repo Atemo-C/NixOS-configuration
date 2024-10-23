@@ -160,7 +160,7 @@ Program=$(
 	$TERMINAL -e btop & disown
 
 [ "$Program" = "  CPU-X                Detailed processor information" ] &&
-	st -c CPU-X -g=81x28 -e cpu-x & disown
+	cpu-x & disown
 
 [ "$Program" = "  Mission Center       GUI-based system monitor" ] &&
 	missioncenter & disown
