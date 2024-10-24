@@ -21,7 +21,7 @@ Wallpaper=$(zenity \
 case $? in
 	# Put the selected wallpaper into hyprpaper's configuration file.
 	0) echo -e \
-		"preload = $Wallpaper\nwallpaper = ,$Wallpaper\nsplash = false\nipc = off" \
+		"preload = $Wallpaper\nwallpaper = ,$Wallpaper\nsplash = false\nipc = on" \
 		> "$HOME/.config/hypr/hyprpaper.conf" ;
 
 		# Kills hyprpaper if it is already running or not, then continues.
