@@ -178,9 +178,13 @@
 		##─────────────────────
 		## Settings for Hyprland's workspaces.
 		"hyprland/workspaces" = {
-			persistent-workspaces = { "*" = 8; };
-			on-scroll-up          = "hyprctl dispatch workspace e+1";
-			on-scroll-down        = "hyprctl dispatch workspace e-1";
+			persistent-workspaces = {
+				# Which workspaces to show on which monitor (here, 4 per monitor).
+				"DP-1"     = [ 1 2 3 4 ];
+				"HDMI-A-1" = [ 5 6 7 8 ];
+			};
+#			on-scroll-up   = "hyprctl dispatch workspace e+1";
+#			on-scroll-down = "hyprctl dispatch workspace e-1";
 		};
 
 		## CPU monitor.

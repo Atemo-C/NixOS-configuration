@@ -184,11 +184,11 @@
 	# Monitor settings.
 	# Name, Resolution@Rate, Position, Scale, Rotation.
 	monitor = [
-			# [Secondary] Left HDMI monitor
-			"HDMI-A-1, 1600x900@60, 0x0, 1"
-
 			# [Main] Center DisplayPort monitor
-			"DP-1, 1920x1080@120, 1600x0, 1"
+			"DP-1, 1920x1080@120, auto-right, 1"
+
+			# [Secondary] Left HDMI monitor
+			"HDMI-A-1, 1600x900@60, auto-left, 1"
 		];
 
 	# Rendering settings.
@@ -266,6 +266,18 @@
 		# Sober-specific settings.
 		"tile, class: (sober)"
 		"immediate, class: (sober)"
+	];
+
+	# Workspace settings.
+	workspace = [
+		"1, monitor: DP-1"
+		"2, monitor: DP-1"
+		"3, monitor: DP-1"
+		"4, monitor: DP-1"
+		"5, monitor: HDMI-A-1"
+		"6, monitor: HDMI-A-1"
+		"7, monitor: HDMI-A-1"
+		"8, monitor: HDMI-A-1"
 	];
 
 }; }
