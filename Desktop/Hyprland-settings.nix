@@ -183,7 +183,13 @@
 
 	# Monitor settings.
 	# Name, Resolution@Rate, Position, Scale, Rotation.
-	monitor = ", 1920x1080@120, 0x0, 1";
+	monitor = [
+			# [Secondary] Left HDMI monitor
+			"HDMI-A-1, 1600x900@60, 0x0, 1"
+
+			# [Main] Center DisplayPort monitor
+			"DP-1, 1920x1080@120, 1600x0, 1"
+		];
 
 	# Rendering settings.
 	render = {
