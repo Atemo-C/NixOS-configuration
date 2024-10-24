@@ -62,7 +62,7 @@
 
 			# Noto Fonts and emojis.
 			pkgs.unstable.noto-fonts
-			pkgs.unstable.noto-fonts-cjk
+			pkgs.unstable.noto-fonts-cjk-sans
 			pkgs.unstable.noto-fonts-color-emoji
 		];
 	};
