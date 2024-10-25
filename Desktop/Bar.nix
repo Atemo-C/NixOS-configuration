@@ -33,7 +33,7 @@
 			"image#Screenshot" "custom/Spacer"
 			"image#Clipboard"  "custom/Spacer"
 			"image#Picker"     "custom/Spacer"
-			"image#Tray"       "custom/Bigspacer"
+			"tray"             "custom/Bigspacer"
 			"image#Power"
 		];
 
