@@ -18,8 +18,11 @@
 
 	# List of TCP ports on which incoming connections are accepted.
 	networking.firewall.allowedTCPPorts = [
-		42000 # Incoming port for Warpinator transfers.
-		42001 # Incoming port for Warpinator registrations.
+		42000
+		42001
 	];
+
+	# List of UDP ports on which incoming connections are accepted.
+	networking.firewall.allowedTCPPorts = [ 5353 ];
 
 }
