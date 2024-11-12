@@ -21,15 +21,20 @@
 	# Parameters added to the kernel command line.
 	boot.kernelParams = [ "nvidia.NVreg_PreserveVideoMemoryAllocations=1" ];
 
-	hardware.nvidia = {
-		# Whether to enable kernel modesetting when using the NVIDIA proprietary driver.
-		modesetting.enable = true;
+	hardware = {
+		nvidia = {
+			# Whether to enable kernel modesetting when using the NVIDIA proprietary driver.
+			modesetting.enable = true;
 
-		# The NVIDIA driver package to use.
-		package = config.boot.kernelPackages.nvidiaPackages.beta;
+			# The NVIDIA driver package to use.
+			package = config.boot.kernelPackages.nvidiaPackages.beta;
 
-		# Whether to enable experimental power management through systemd.
-		powerManagement.enable = true;
+			# Whether to enable experimental power management through systemd.
+			powerManagement.enable = true;
+		};
+
+		# Whether to enable dynamic CDI configuration for NVIDIA GPUs by running nvidia-container-toolkit on boot.
+		hardware.nvidia-container-toolkit.enable = false;
 	};
 
 	# Environment variables for Hyprland.
