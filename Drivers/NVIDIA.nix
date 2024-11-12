@@ -10,6 +10,7 @@
 # • https://search.nixos.org/options?channel=24.05&show=hardware.nvidia.modesetting.enable
 # • https://search.nixos.org/options?channel=24.05&show=hardware.nvidia.package
 # • https://search.nixos.org/options?channel=24.05&show=hardware.nvidia.powerManagement.enable
+# • https://search.nixos.org/options?channel=24.05&show=hardware.nvidia-container-toolkit.enable
 # • https://search.nixos.org/options?channel=24.05&show=services.xserver.videoDrivers
 #
 # Used Home Manager options:
