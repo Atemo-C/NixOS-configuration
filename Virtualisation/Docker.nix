@@ -9,7 +9,7 @@
 # • https://search.nixos.org/options?channel=24.05&show=virtualisation.docker.rootless.enable
 # • https://search.nixos.org/options?channel=24.05&show=virtualisation.docker.rootless.setSocketVariable
 
-{ conifg, ... }: {
+{ config, ... }: {
 
 	# User's auxilary groups for accessing Docker.
 	users.users.${config.custom.name}.extraGroups = [ "docker" ];
