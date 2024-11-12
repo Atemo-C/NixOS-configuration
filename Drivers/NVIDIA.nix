@@ -34,7 +34,7 @@
 		};
 
 		# Whether to enable dynamic CDI configuration for NVIDIA GPUs by running nvidia-container-toolkit on boot.
-		hardware.nvidia-container-toolkit.enable = false;
+		nvidia-container-toolkit.enable = false;
 	};
 
 	# Environment variables for Hyprland.
