@@ -22,6 +22,12 @@
 	# Parameters added to the kernel command line.
 	boot.kernelParams = [ "nvidia.NVreg_PreserveVideoMemoryAllocations=1" ];
 
+	# List of CUDA packages to install.
+#	environment.systemPackages = [
+#		pkgs.unstable.cudaPackages.cudnn
+#		pkgs.unstable.cudaPackages.cutensor
+#	];
+
 	hardware = {
 		nvidia = {
 			# Whether to enable kernel modesetting when using the NVIDIA proprietary driver.
