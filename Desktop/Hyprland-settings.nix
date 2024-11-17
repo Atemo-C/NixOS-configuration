@@ -53,20 +53,23 @@
 			xray = true;
 		};
 
-		# Shadow’s color. Alpha dictates shadow’s opacity.
-		"col.shadow" = "rgba(00b0ffcc)";
+		# Shadow settings.
+		shadow = {
+			# Whether to enable drop shadows on windows.
+			enabled = true;
 
-		# Inactive shadow color (if not set, will fall back to col.shadow).
-		"col.shadow_inactive" = "rgba(000000cc)";
+			# Shadow’s color. Alpha dictates shadow’s opacity.
+			color = "rgba(00b0ffcc)";
 
-		# Whether to enable drop shadows on windows.
-		drop_shadow = true;
+			# Inactive shadow color (if not set, will fall back to col.shadow).
+			color_inactive = "rgba(000000cc)";
 
-		# Shadow range (“size”) in layout px.
-		shadow_range = "6";
+			# Shadow range (“size”) in layout px.
+			range = "6";
 
-		# In what power to render the falloff (more power, the faster the falloff). [1 - 4]
-		shadow_render_power = "10";
+			# In what power to render the falloff (more power, the faster the falloff). [1 - 4]
+			render_power = "10";
+		};
 	};
 
 	# Environment variables.
@@ -156,10 +159,6 @@
 		# The window is conceptually divided into four triangles, and cursor’s triangle determines the split direction.
 		# This feature also turns on preserve_split.
 		smart_split = true;
-
-		# Whether to apply gaps when there is only one window on a workspace, aka. smart gaps.
-		# No border - 1, With border - 2 [0/1/2]
-		no_gaps_when_only = "1";
 	};
 
 	# Miscellaneous settings.
@@ -266,6 +265,12 @@
 		# Sober-specific settings.
 		"tile, class: (sober)"
 		"immediate, class: (sober)"
+
+		# Replacement for "no gaps when only."
+		"bordersize 0, floating:0, onworkspace:w[tv1]"
+		"rounding 0, floating:0, onworkspace:w[tv1]"
+		"bordersize 0, floating:0, onworkspace:f[1]"
+		"rounding 0, floating:0, onworkspace:f[1]"
 	];
 
 	# Workspace settings.
@@ -278,6 +283,10 @@
 		"6, monitor: HDMI-A-1"
 		"7, monitor: HDMI-A-1"
 		"8, monitor: HDMI-A-1"
+
+		# Replacement for "no gaps when only."
+		"w[tv1], gapsout:0, gapsin:0"
+		"f[1], gapsout:0, gapsin:0"
 	];
 
 }; }
