@@ -14,4 +14,7 @@
 	# A blazing fast wayland wallpaper utility.
 	pkgs.unstable.hyprpaper
 
+	# GUI for setting wallpapers with hyprpaper.
+	pkgs.unstable.hyprwall
+
 ]; }
