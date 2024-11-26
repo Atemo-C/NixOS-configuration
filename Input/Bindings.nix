@@ -8,10 +8,10 @@
 
 { config, ... }: { home-manager.users.${config.custom.name}.wayland.windowManager.hyprland.settings = {
 
-	# Keyboard bindings.
-	## https://wiki.hyprland.org/Configuring/Binds/
 	bind = [
-		# Workspace switching [AZERTY].
+		# Workspace switching (numerical).
+		#─────────────────────────────────
+		# [ AZERTY ]
 		"SUPER, ampersand, workspace, 1"
 		"SUPER, eacute, workspace, 2"
 		"SUPER, quotedbl, workspace, 3"
@@ -21,7 +21,7 @@
 		"SUPER, egrave, workspace, 7"
 		"SUPER, underscore, workspace, 8"
 
-		# Workspace switching [ISRT].
+		# [ ISRT ]
 		"SUPER, I, workspace, 1"
 		"SUPER, S, workspace, 2"
 		"SUPER, R, workspace, 3"
@@ -31,7 +31,7 @@
 		"SUPER, A, workspace, 7"
 		"SUPER, O, workspace, 8"
 
-		# Workspace switching [Number].
+		# [ Number ]
 		"SUPER, 1, workspace, 1"
 		"SUPER, 2, workspace, 2"
 		"SUPER, 3, workspace, 3"
@@ -41,7 +41,9 @@
 		"SUPER, 7, workspace, 7"
 		"SUPER, 8, workspace, 8"
 
-		# Move window to workspace [AZERTY].
+		# Move window to workspace (numerical).
+		#──────────────────────────────────────
+		# [ AZERTY ]
 		"SUPER SHIFT, ampersand, movetoworkspace, 1"
 		"SUPER SHIFT, eacute, movetoworkspace, 2"
 		"SUPER SHIFT, quotedbl, movetoworkspace, 3"
@@ -51,7 +53,7 @@
 		"SUPER SHIFT, egrave, movetoworkspace, 7"
 		"SUPER SHIFT, underscore, movetoworkspace, 8"
 
-		# Move window to workspace [ISRT].
+		# [ ISRT ]
 		"SUPER SHIFT, I, movetoworkspace, 1"
 		"SUPER SHIFT, S, movetoworkspace, 2"
 		"SUPER SHIFT, R, movetoworkspace, 3"
@@ -61,7 +63,7 @@
 		"SUPER SHIFT, A, movetoworkspace, 7"
 		"SUPER SHIFT, O, movetoworkspace, 8"
 
-		# Move window to workspace [Number].
+		# [ Number ]
 		"SUPER SHIFT, 1, movetoworkspace, 1"
 		"SUPER SHIFT, 2, movetoworkspace, 2"
 		"SUPER SHIFT, 3, movetoworkspace, 3"
@@ -71,91 +73,163 @@
 		"SUPER SHIFT, 7, movetoworkspace, 7"
 		"SUPER SHIFT, 8, movetoworkspace, 8"
 
-		# Window focus switching.
+		# Window focus switching (directional).
+		#──────────────────────────────────────
 		"SUPER, left, movefocus, l"
 		"SUPER, down, movefocus, d"
 		"SUPER, up, movefocus, u"
 		"SUPER, right, movefocus, r"
 
-		# Move window in stack.
+		# Move window in stack (directional).
+		#────────────────────────────────────
 		"SUPER SHIFT, left, movewindow, l"
 		"SUPER SHIFT, down, movewindow, d"
 		"SUPER SHIFT, up, movewindow, u"
 		"SUPER SHIFT, right, movewindow, r"
 
 		# Window state control.
+		#──────────────────────
+		# Toggles the current window's floating state.
 		"SUPER, f, togglefloating"
+
+		# Toggles the focused window's fullscreen mode.
 		"SUPER SHIFT, f, fullscreen, 0"
+
+		# Toggles the focused window's maximixed mode.
 		"SUPER CONTROL, f, fullscreen, 1"
 
-		# Window switching with ALT+(SHIFT+)TAB.
-		"ALT, Tab, cyclenext"
-		"ALT, Tab, bringactivetotop"
-		"ALT SHIFT, Tab, cyclenext, prev"
-		"ALT SHIFT, Tab, bringactivetotop"
+		# Window switching.
+		#──────────────────
+		# Focuses the next window on a workspace and brings it up.
+		"ALT, Tab, cyclenext" "ALT, Tab, bringactivetotop"
+
+		# Focuses the previous window on a workspace and brings it up.
+		"ALT SHIFT, Tab, cyclenext, prev" "ALT SHIFT, Tab, bringactivetotop"
+
+		# Window groupping.
+		#──────────────────
+		# Toggles the current active window into a group.
+		"SUPER ALT, t, togglegroup"
+
+		# Switches to the next window in a group.
+		"SUPER, Tab, changegroupactive, f"
+
+		# Switches to the previous window in a group.
+		"SUPER, Tab, changegroupactive, b"
+
+		# Lock the focused group (toggle).
+		# (The current group will not accept new windows or be moved to other groups.)
+		"SUPER, l, lockactivegroup, toggle"
+
+		# Moves the active window into a group in a specified direction (directional).
+		"SUPER ALT, left, moveintogroup, l"
+		"SUPER ALT, down, moveintogroup, d"
+		"SUPER ALT, up, moveintogroup, u"
+		"SUPER ALT, right, moveintogroup, r"
+
+		# Moves the active window out of a group (directional).
+		"SUPER ALT SHIFT, left, moveoutofgroup, l"
+		"SUPER ALT SHIFT, down, moveoutofgroup, d"
+		"SUPER ALT SHIFT, up, moveoutofgroup, u"
+		"SUPER ALT SHIFT, right, moveoutofgroup, r"
+
+		# Swaps the active window with the next in a group.
+		"SUPER ALT, Tab, movegroupwindow, f"
+
+		# Swaps the active window with the previous in a group.
+		"SUPER ALT SHIFT, Tab, movegroupwindow, b"
 
 		# Media control.
+		#───────────────
 		", XF86AudioPlay, exec, playerctl play-pause"
 		", XF86AudioStop, exec, playerctl stop"
 		", XF86AudioPrev, exec, playerctl previous"
 		", XF86AudioNext, exec, playerctl next"
 
 		# Power buttons.
+		#───────────────
 		'', XF86PowerOff, exec, bash "/etc/nixos/Desktop/Scripts/Power.sh"''
 		'', XF86PowerDown, exec, bash "/etc/nixos/Desktop/Scripts/Power.sh"''
 		'', XF86Sleep, exec, bash "/etc/nixos/Desktop/Scripts/Power.sh"''
 		'', XF86Suspend, exec, bash "/etc/nixos/Desktop/Scripts/Power.sh"''
 
-		# Program launching
+		# Programs/Launchers/Etc.
+		#────────────────────────
+		# Custom program launcher.
 		''ALT, RETURN, exec, bash "/etc/nixos/Desktop/Scripts/Programs.sh"''
+
+		# Generil drun launcher.
 		"ALT SHIFT, RETURN, exec, tofi-drun --drun-launch=true"
 
-		# Screenshot
-		'', PRINT, exec, bash "/etc/nixos/Desktop/Scripts/Screenshots/Fullscreen.sh"''
-		''SHIFT, PRINT, exec, bash "/etc/nixos/Desktop/Scripts/Screenshots/Region.sh"''
-
-		# Emoji picking
+		# Emoji picking.
 		"ALT SHIFT, E, exec, smile"
-
-		# Clipboard managing
-		"SUPER SHIFT, V, exec, clipman pick -t CUSTOM -T tofi"
-		"SUPER CONTROL, V, exec, clipman clear --all & notify-send -t 1500 'Clipboard cleared'"
-		''ALT, V, exec, alacritty -e micro "$HOME/Documents/Clipboard.txt"''
 
 		# Terminal emulator
 		"SUPER, RETURN, exec, alacritty"
 
-		# Closing window
+		# Screenshots.
+		#─────────────
+		# Fullscreen screenshot (save).
+		'', PRINT, exec, bash "/etc/nixos/Desktop/Scripts/Screenshots/Fullscreen.sh"''
+
+		# Region screenshot (save).
+		''SHIFT, PRINT, exec, bash "/etc/nixos/Desktop/Scripts/Screenshots/Region.sh"''
+
+		# Fullscreen screenshot (copy).
+		''CONTROL, PRINT, exec, bash "/etc/nixos/Desktop/Scripts/Screenshots/Fullscreen-copy.sh"''
+
+		# Region screenshot (copy).
+		''CONTROL SHIFT, PRINT, exec, bash "/etc/nixos/Desktop/Scripts/Screenshots/Region-copy.sh"''
+
+		# Clipboard management.
+		#──────────────────────
+		# Select from the clipboard.
+		"SUPER SHIFT, V, exec, clipman pick -t CUSTOM -T tofi"
+
+		# Clear the clipboard.
+		"SUPER CONTROL, V, exec, clipman clear --all & notify-send -t 1500 'Clipboard cleared'"
+
+		# Opens a "primary" clipboard file.
+		''ALT, V, exec, alacritty -e micro "$HOME/Documents/Clipboard.txt"''
+
+		# Termination of programs and Hyprland.
+		#──────────────────────────────────────
+		# Closing the active window.
 		''SUPER SHIFT, C, killactive''
 
-		# Hyprland control
+		# Hyprland controls
+		#──────────────────
+		# Issue a reload to force reload the config.
 		''SUPER SHIFT CONTROL, R, exec, hyprctl reload''
+
+		# Exits out of Hyprland.
 		''SUPER SHIFT CONTROL, Q, exit''
 
-		# Global bindings. Disabled them temporarily when configuring affected programs with said bindings.
-		# https://wiki.hyprland.org/Configuring/Binds/#global-keybinds
+		# Global bindings.
+		#─────────────────
+		# (Disabled them temporarily when configuring affected programs with said bindings.)
 		"ALT SUPER, R, pass, ^(com\.obsproject\.Studio)$"
 		"ALT SUPER, S, pass, ^(com\.obsproject\.Studio)$"
 	];
 
 	# Repeatable keyboard bindings.
-	## https://wiki.hyprland.org/Configuring/Binds/
+	#──────────────────────────────
 	binde = [
-		# Window resizing [Keyboard].
-		"SUPER CONTROL, left,  resizeactive, -5 0"
-		"SUPER CONTROL, down,  resizeactive, 0 5"
-		"SUPER CONTROL, up,    resizeactive, 0 -5"
+		# Window resizing [Keyboard] (directional).
+		"SUPER CONTROL, left, resizeactive, -5 0"
+		"SUPER CONTROL, down, resizeactive, 0 5"
+		"SUPER CONTROL, up, resizeactive, 0 -5"
 		"SUPER CONTROL, right, resizeactive, 5 0"
 
-		# Audio volume [Output].
+		# Audio volume [Output] (numerical).
 		", XF86AudioRaiseVolume, exec, amixer -q sset Master 1%+"
 		", XF86AudioLowerVolume, exec, amixer -q sset Master 1%-"
-		", XF86AudioMute,        exec, amixer -q sset Master toggle"
+		", XF86AudioMute, exec, amixer -q sset Master toggle"
 
 		# Audio volume [Input].
 		"SUPER, XF86AudioRaiseVolume, exec, amixer -q sset Capture 1%+"
 		"SUPER, XF86AudioLowerVolume, exec, amixer -q sset Capture 1%-"
-		"SUPER, XF86AudioMute,        exec, amixer -q sset Capture toggle"
+		"SUPER, XF86AudioMute, exec, amixer -q sset Capture toggle"
 
 		# Audio volume [Player].
 		"SHIFT, XF86AudioRaiseVolume, exec, playerctl volume 0.01%+"
@@ -163,7 +237,7 @@
 	];
 
 	# Mouse bindings.
-	## https://wiki.hyprland.org/Configuring/Binds/
+	#────────────────
 	bindm = [
 		"SUPER, mouse:272, movewindow"
 		"SUPER, mouse:273, resizewindow"
