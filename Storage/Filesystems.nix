@@ -25,9 +25,6 @@
 # • [nilfs-utils]
 #   https://search.nixos.org/packages?channel=24.05&show=nilfs-utils
 #
-# • [reiser4progs]
-#   https://sourceforge.net/projects/reiser4/
-#
 # • [udftools]
 #   https://search.nixos.org/packages?channel=24.05&show=udftools
 #
@@ -57,7 +54,6 @@
 		pkgs.jfsutils
 		pkgs.lvm2
 		pkgs.nilfs-utils
-		pkgs.reiser4progs
 		pkgs.udftools
 		pkgs.util-linux
 		pkgs.xfsdump
