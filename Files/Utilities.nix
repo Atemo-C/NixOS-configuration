@@ -145,14 +145,14 @@
 
 		# General archiving utilities.
 		## Archive manager for the GNOME desktop environment.
-		pkgs.gnome.file-roller
+		pkgs.file-roller
 
 		## Do The Right Extraction: A tool for taking the hassle out of extracting archives.
 		pkgs.dtrx
 
 		# Disk utilities.
 		## GNOME's disk utility.
-		pkgs.gnome.gnome-disk-utility
+		pkgs.gnome-disk-utility
 
 		## Graphical disk partitioning tool.
 		pkgs.gparted

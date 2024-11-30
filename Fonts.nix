@@ -58,7 +58,8 @@
 		# Font packages used. Local fonts may be added in the $HOME/.local/share/fonts/ directory.
 		packages =  [
 			# UbuntuMono Nerd Fonts.
-			(pkgs.unstable.nerdfonts.override { fonts = [ "UbuntuMono" ]; })
+			pkgs.unstable.nerd-fonts.ubuntu
+			pkgs.unstable.nerd-fonts.ubuntu-mono
 
 			# Noto Fonts and emojis.
 			pkgs.unstable.noto-fonts

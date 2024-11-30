@@ -23,7 +23,7 @@
 		pkgs.unstable.ferium
 
 		# The open-source Java Development Kit, version 22.
-		pkgs.jdk22
+		pkgs.jdk23
 
 		# Infinite-world block sandbox.
 		pkgs.unstable.minetest

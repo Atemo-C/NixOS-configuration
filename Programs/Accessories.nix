@@ -15,7 +15,7 @@
 	pkgs.galculator
 
 	# A simple and elegant clock application for GNOME.
-	pkgs.gnome.gnome-clocks
+	pkgs.gnome-clocks
 
 	# Offline password manager with many features.
 	pkgs.unstable.keepassxc

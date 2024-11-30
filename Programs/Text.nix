@@ -42,7 +42,7 @@
 			pkgs.smile
 
 			## GNOME Character Map, based on the Unicode Character Database.
-			pkgs.gnome.gucharmap
+			pkgs.gucharmap
 
 			# Modern and intuitive terminal-based text editor.
 			pkgs.micro

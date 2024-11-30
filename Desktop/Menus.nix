@@ -10,7 +10,7 @@
 { config, pkgs, ... }: {
 
 	# Tool to display dialogs from the commandline and shell scripts.
-	environment.systemPackages = [ pkgs.gnome.zenity ];
+	environment.systemPackages = [ pkgs.zenity ];
 
 	home-manager.users.${config.custom.name}.programs.tofi = {
 		# Whether to enable Tofi, a tiny dynamic menu for Wayland.

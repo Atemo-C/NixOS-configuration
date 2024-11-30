@@ -3,6 +3,9 @@
 	# Automatically generated hardware configuration module.
 	./hardware-configuration.nix
 
+	# Temporary module.
+	./Temporary.nix
+
 	# Android modules.
 	./Android/ADB.nix
 	./Android/Utilities.nix
