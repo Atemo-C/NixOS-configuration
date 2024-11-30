@@ -8,6 +8,7 @@
 #────────────────────
 # • https://search.nixos.org/options?channel=24.11&show=boot.kernelParams
 # • https://search.nixos.org/options?channel=24.11&show=hardware.nvidia.modesetting.enable
+# • https://search.nixos.org/options?channel=24.11&show=hardware.nvidia.open
 # • https://search.nixos.org/options?channel=24.11&show=hardware.nvidia.package
 # • https://search.nixos.org/options?channel=24.11&show=hardware.nvidia.powerManagement.enable
 # • https://search.nixos.org/options?channel=24.11&show=hardware.nvidia-container-toolkit.enable
@@ -32,6 +33,9 @@
 		nvidia = {
 			# Whether to enable kernel modesetting when using the NVIDIA proprietary driver.
 			modesetting.enable = true;
+
+			# Whether to enable the open source NVIDIA kernel module.
+			open = true;
 
 			# The NVIDIA driver package to use.
 			package = config.boot.kernelPackages.nvidiaPackages.beta;
