@@ -1,9 +1,9 @@
 # Used NixOS options:
 #────────────────────
-# • https://search.nixos.org/options?channel=24.05&show=programs.gamemode.enable
-# • https://search.nixos.org/options?channel=24.05&show=programs.gamemode.settings
-# • https://search.nixos.org/options?channel=24.05&show=programs.gamescope.enable
-# • https://search.nixos.org/options?channel=24.05&show=programs.gamescope.package
+# • https://search.nixos.org/options?channel=24.11&show=programs.gamemode.enable
+# • https://search.nixos.org/options?channel=24.11&show=programs.gamemode.settings
+# • https://search.nixos.org/options?channel=24.11&show=programs.gamescope.enable
+# • https://search.nixos.org/options?channel=24.11&show=programs.gamescope.package
 
 { config, pkgs, ... }: { programs = {
 

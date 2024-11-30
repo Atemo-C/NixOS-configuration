@@ -4,7 +4,7 @@
 #
 # Used NixOS options:
 #────────────────────
-# • https://search.nixos/org/options?channel=24.05&show=networking.firewall.allowedTCPPorts
+# • https://search.nixos/org/options?channel=24.11&show=networking.firewall.allowedTCPPorts
 #
 # Used NixOS packages:
 #─────────────────────

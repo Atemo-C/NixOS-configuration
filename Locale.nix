@@ -4,8 +4,8 @@
 #
 # Used NixOS options:
 #────────────────────
-# • https://search.nixos.org/options?channel=24.05&show=i18n.defaultLocale
-# • https://search.nixos.org/options?channel=24.05&show=i18n.extraLocaleSettings
+# • https://search.nixos.org/options?channel=24.11&show=i18n.defaultLocale
+# • https://search.nixos.org/options?channel=24.11&show=i18n.extraLocaleSettings
 
 { config, ... }: { i18n = {
 

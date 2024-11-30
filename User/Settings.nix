@@ -1,17 +1,17 @@
 # Used NixOS options:
 #────────────────────
-# • https://search.nixos.org/options?channel=24.05&show=nix.settings.trusted-users
-# • https://search.nixos.org/options?channel=24.05&show=users.users.<name>.autoSubUidGidRange
-# • https://search.nixos.org/options?channel=24.05&show=users.users.<name>.createHome
-# • https://search.nixos.org/options?channel=24.05&show=users.users.<name>.description
-# • https://search.nixos.org/options?channel=24.05&show=users.users.<name>.extraGroups
-# • https://search.nixos.org/options?channel=24.05&show=users.users.<name>.group
-# • https://search.nixos.org/options?channel=24.05&show=users.users.<name>.home
-# • https://search.nixos.org/options?channel=24.05&show=users.users.<name>.homeMode
-# • https://search.nixos.org/options?channel=24.05&show=users.users.<name>.initialPassword
-# • https://search.nixos.org/options?channel=24.05&show=users.users.<name>.isNormalUser
-# • https://search.nixos.org/options?channel=24.05&show=users.users.<name>.isSystemUser
-# • https://search.nixos.org/options?channel=24.05&show=users.users.<name>.useDefaultShell
+# • https://search.nixos.org/options?channel=24.11&show=nix.settings.trusted-users
+# • https://search.nixos.org/options?channel=24.11&show=users.users.<name>.autoSubUidGidRange
+# • https://search.nixos.org/options?channel=24.11&show=users.users.<name>.createHome
+# • https://search.nixos.org/options?channel=24.11&show=users.users.<name>.description
+# • https://search.nixos.org/options?channel=24.11&show=users.users.<name>.extraGroups
+# • https://search.nixos.org/options?channel=24.11&show=users.users.<name>.group
+# • https://search.nixos.org/options?channel=24.11&show=users.users.<name>.home
+# • https://search.nixos.org/options?channel=24.11&show=users.users.<name>.homeMode
+# • https://search.nixos.org/options?channel=24.11&show=users.users.<name>.initialPassword
+# • https://search.nixos.org/options?channel=24.11&show=users.users.<name>.isNormalUser
+# • https://search.nixos.org/options?channel=24.11&show=users.users.<name>.isSystemUser
+# • https://search.nixos.org/options?channel=24.11&show=users.users.<name>.useDefaultShell
 
 { config, ... }: {
 

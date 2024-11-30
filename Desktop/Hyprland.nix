@@ -5,10 +5,11 @@
 #
 # Used NixOS options:
 #────────────────────
-# • https://search.nixos.org/options?channel=24.05&show=environment.sessionVariables
-# • https://search.nixos.org/options?channel=24.05&show=programs.hyprland.enable
-# • https://search.nixos.org/options?channel=24.05&show=programs.hyprland.package
-# • https://search.nixos.org/options?channel=24.05&show=nixpkgs.overlays
+# • https://search.nixos.org/options?channel=24.11&show=environment.sessionVariables
+# • https://search.nixos.org/options?channel=24.11&show=programs.hyprland.enable
+# • https://search.nixos.org/options?channel=24.11&show=programs.hyprland.package
+# • https://search.nixos.org/options?channel=24.11&show=programs.hyprland.withUWSM
+# • https://search.nixos.org/options?channel=24.11&show=nixpkgs.overlays
 #
 # Used Home Manager options:
 #───────────────────────────
@@ -33,8 +34,11 @@
 		# Needed even with the Home Manager module for an optimal experience.
 		enable = true;
 
-		# # The hyprland package to use.
+		# The hyprland package to use.
 		package = pkgs.unstable.hyprland;
+
+		# Whether to launch Hyprland with the UWSM (Universal Wayland Session Manager) session manager.
+		withUWSM = true;
 	};
 
 	# Hyprland override for enabling the legacy renderer.

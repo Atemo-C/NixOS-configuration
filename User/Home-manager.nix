@@ -11,7 +11,7 @@
 
 # Adds Home Manager. Its version should match the installed NixOS version.
 let
-	home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-24.05.tar.gz";
+	home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-24.11.tar.gz";
 in {
 	imports = [ "${home-manager}/nixos" ];
 

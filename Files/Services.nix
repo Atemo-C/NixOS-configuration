@@ -4,8 +4,8 @@
 #
 # Used NixOS options:
 #────────────────────
-# • https://search.nixos.org/options?channel=unstable&show=services.smartd.enable
-# • https://search.nixos.org/options?channel=unstable&show=services.udisks2.enable
+# • https://search.nixos.org/options?channel=24.11&show=services.smartd.enable
+# • https://search.nixos.org/options?channel=24.11&show=services.udisks2.enable
 
 { config, ... }: { services = {
 

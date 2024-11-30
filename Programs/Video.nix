@@ -5,8 +5,8 @@
 #
 # Used NixOS options:
 #────────────────────
-# • https://search.nixos.org/options?channel=24.05&show=boot.extraModulePackages
-# • https://search.nixos.org/options?channel=24.05&show=boot.initrd.kernelModules
+# • https://search.nixos.org/options?channel=24.11&show=boot.extraModulePackages
+# • https://search.nixos.org/options?channel=24.11&show=boot.initrd.kernelModules
 #
 # Used NixOS packages:
 #─────────────────────

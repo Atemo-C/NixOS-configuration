@@ -5,12 +5,12 @@
 #
 # Used NixOS options:
 #────────────────────
-# • https://search.nixos.org/options?channel=24.05&show=services.flatpak.enable
+# • https://search.nixos.org/options?channel=24.11&show=services.flatpak.enable
 #
 # Used NixOS packages:
 #─────────────────────
 # • [appimage-run]
-#   https://search.nixos.org/packages?channel=24.05&show=appimage-run
+#   https://search.nixos.org/packages?channel=24.11&show=appimage-run
 
 { config, pkgs, ... }: {
 

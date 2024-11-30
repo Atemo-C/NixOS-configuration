@@ -1,6 +1,6 @@
 # Used NixOS options:
 #────────────────────
-# • https://search.nixos.org/options?channel=24.05&show=boot.supportedFilesystems
+# • https://search.nixos.org/options?channel=24.11&show=boot.supportedFilesystems
 #
 # Used NixOS packages:
 #─────────────────────
@@ -14,7 +14,7 @@
 #   https://git.kernel.org/pub/scm/linux/kernel/git/jaegeuk/f2fs-tools.git/
 #
 # • [hfsprogs]
-#   https://search.nixos.org/packages?channel=24.05&show=hfsprogs
+#   https://search.nixos.org/packages?channel=24.11&show=hfsprogs
 #
 # • [jfsutils]
 #   https://jfs.sourceforge.net/
@@ -23,10 +23,10 @@
 #   http://sourceware.org/lvm2/
 #
 # • [nilfs-utils]
-#   https://search.nixos.org/packages?channel=24.05&show=nilfs-utils
+#   https://search.nixos.org/packages?channel=24.11&show=nilfs-utils
 #
 # • [udftools]
-#   https://search.nixos.org/packages?channel=24.05&show=udftools
+#   https://search.nixos.org/packages?channel=24.11&show=udftools
 #
 # • [util-linux]
 #   https://www.kernel.org/pub/linux/utils/util-linux/

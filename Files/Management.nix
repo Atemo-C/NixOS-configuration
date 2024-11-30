@@ -5,10 +5,10 @@
 #
 # Used NixOS options:
 #────────────────────
-# • https://search.nixos.org/options?channel=24.05&show=environment.variables
-# • https://search.nixos.org/options?channel=24.05&show=programs.thunar.enable
-# • https://search.nixos.org/options?channel=24.05&show=programs.thunar.plugins
-# • https://search.nixos.org/options?channel=24.05&show=programs.xfconf.enable
+# • https://search.nixos.org/options?channel=24.11&show=environment.variables
+# • https://search.nixos.org/options?channel=24.11&show=programs.thunar.enable
+# • https://search.nixos.org/options?channel=24.11&show=programs.thunar.plugins
+# • https://search.nixos.org/options?channel=24.11&show=programs.xfconf.enable
 #
 # Used NixOS packages:
 #─────────────────────

@@ -4,19 +4,15 @@
 #
 # Used NixOS options:
 #────────────────────
-# • https://search.nixos.org/options?channel=24.05&show=hardware.opengl.enable
-# • https://search.nixos.org/options?channel=24.05&show=hardware.opengl.driSupport
-# • https://search.nixos.org/options?channel=24.05&show=hardware.opengl.driSupport32Bit
+# • https://search.nixos.org/options?channel=24.11&show=hardware.graphics.enable
+# • https://search.nixos.org/options?channel=24.11&show=hardware.graphics.enable32Bit
 
-{ config, ... }: { hardware.opengl = {
+{ config, ... }: { hardware.graphics = {
 
-	# Whether to enable OpenGL drivers.
+	# Whether to enable hardware accelerated graphics drivers.
 	enable = true;
 
-	# Whether to enable accelerated OpenGL rendering through the Direct Rendering Interface (DRI).
-	driSupport = true;
-
-	#  On 64-bit systems, whether to support Direct Rendering for 32-bit applications (such as Wine).
-	driSupport32Bit = true;
+	# On 64-bit systems, whether to also install 32-bit drivers for 32-bit applications (such as Wine).
+	enable32Bit = true;
 
 }; }

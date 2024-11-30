@@ -1,7 +1,7 @@
 # Used NixOS options:
 #────────────────────
-# • https://search.nixos.org/options?channel=24.05&show=console.colors
-# • https://search.nixos.org/options?channel=24.05&show=console.earlySetup
+# • https://search.nixos.org/options?channel=24.11&show=console.colors
+# • https://search.nixos.org/options?channel=24.11&show=console.earlySetup
 
 { config, ... }: { console = {
 

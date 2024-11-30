@@ -1,7 +1,7 @@
 # Used NixOS options:
 #────────────────────
-# • https://search.nixos.org/options?channel=24.05&show=time.hardwareClockInLocalTime
-# • https://search.nixos.org/options?channel=24.05&show=time.timeZone
+# • https://search.nixos.org/options?channel=24.11&show=time.hardwareClockInLocalTime
+# • https://search.nixos.org/options?channel=24.11&show=time.timeZone
 
 { config, ... }: { time = {
 

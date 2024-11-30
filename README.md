@@ -27,7 +27,7 @@ flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/fl
 If you have installed a NixOS version higher/lower than the value currently used here (`24.05`), you must change the value of `system.stateVersion` in the `Packaging/System.nix` module to it. After that, you should never need to change it, unless you install NixOS from scratch with a different version. You do not have to nor should not change this number if you keep the same installation, even when upgrading NixOS version.
 
 ## [2.5] Home Manager version
-The `User/Home-manager.nix` module fetches the tarball of the desired Home Manager version, which should ideally be the same version as the NixOS version currently running. In it, if needed, change the `24.05` part in `"https://github.com/nix-community/home-manager/archive/release-24.05.tar.gz"` to the appropriate version.
+The `User/Home-manager.nix` module fetches the tarball of the desired Home Manager version, which should ideally be the same version as the NixOS version currently running. In it, if needed, change the `24.11` part in `"https://github.com/nix-community/home-manager/archive/release-24.11.tar.gz"` to the appropriate version.
 
 ## [2.6] BIOS or EFI boot
 In `configuration.nix`, comment/uncomment the desired boot mode. You can tweak the `Boot/EFI` and `Boot/BIOS` modules on their own for futher configuration if needed.

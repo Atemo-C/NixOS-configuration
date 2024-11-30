@@ -4,8 +4,8 @@
 #
 # Used NixOS options:
 #────────────────────
-# • https://search.nixos.org/options?channel=24.05&show=hardware.bluetooth.enable
-# • https://search.nixos.org/options?channel=24.05&show=services.blueman.enable
+# • https://search.nixos.org/options?channel=24.11&show=hardware.bluetooth.enable
+# • https://search.nixos.org/options?channel=24.11&show=services.blueman.enable
 #
 # Used packages:
 #───────────────

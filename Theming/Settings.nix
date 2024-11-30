@@ -1,8 +1,8 @@
 # Used NixOS options:
 #────────────────────
-# • https://search.nixos.org/options?channel=24.05&show=environment.sessionVariables
-# • https://search.nixos.org/options?channel=24.05&show=qt.enable
-# • https://search.nixos.org/options?channel=24.05&show=qt.style
+# • https://search.nixos.org/options?channel=24.11&show=environment.sessionVariables
+# • https://search.nixos.org/options?channel=24.11&show=qt.enable
+# • https://search.nixos.org/options?channel=24.11&show=qt.style
 #
 # Used Home Manager options:
 #───────────────────────────

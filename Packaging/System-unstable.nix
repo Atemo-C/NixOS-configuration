@@ -1,6 +1,6 @@
 # Used NixOS options:
 #────────────────────
-# • https://search.nixos.org/options?channel=24.05&show=nixpkgs.config
+# • https://search.nixos.org/options?channel=24.11&show=nixpkgs.config
 
 # Allow the use of packages from the unstable branch of NixOS by using pkgs.unstable.<package-name>.
 { config, pkgs, ... }:

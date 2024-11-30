@@ -10,10 +10,10 @@
 #
 # Used NixOS options:
 #────────────────────
-# • https://search.nixos.org/options?channel=24.05&show=networking.hostName
-# • https://search.nixos.org/options?channel=24.05&show=networking.networkmanager.enable
-# • https://search.nixos.org/options?channel=24.05&show=systemd.services
-# • https://search.nixos.org/options?channel=24.05&show=users.users.<name>.extraGroups
+# • https://search.nixos.org/options?channel=24.11&show=networking.hostName
+# • https://search.nixos.org/options?channel=24.11&show=networking.networkmanager.enable
+# • https://search.nixos.org/options?channel=24.11&show=systemd.services
+# • https://search.nixos.org/options?channel=24.11&show=users.users.<name>.extraGroups
 
 { config, pkgs, ... }: {
 

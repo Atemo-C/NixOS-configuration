@@ -1,11 +1,11 @@
 # Used NixOS options:
 #────────────────────
-# • https://search.nixos.org/options?channel=24.05&show=networking.firewall.allowedTCPPorts
-# • https://search.nixos.org/options?channel=24.05&show=services.openssh.enable
-# • https://search.nixos.org/options?channel=24.05&show=services.openssh.ports
-# • https://search.nixos.org/options?channel=24.05&show=services.openssh.settings.AllowUsers
-# • https://search.nixos.org/options?channel=24.05&show=services.openssh.settings.PermitRootLogin
-# • https://search.nixos.org/options?channel=24.05&show=services.openssh.startWhenNeeded
+# • https://search.nixos.org/options?channel=24.11&show=networking.firewall.allowedTCPPorts
+# • https://search.nixos.org/options?channel=24.11&show=services.openssh.enable
+# • https://search.nixos.org/options?channel=24.11&show=services.openssh.ports
+# • https://search.nixos.org/options?channel=24.11&show=services.openssh.settings.AllowUsers
+# • https://search.nixos.org/options?channel=24.11&show=services.openssh.settings.PermitRootLogin
+# • https://search.nixos.org/options?channel=24.11&show=services.openssh.startWhenNeeded
 
 { config, ... }: {
 

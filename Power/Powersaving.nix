@@ -4,8 +4,8 @@
 # • https://wiki.nixos.org/wiki/Laptop
 #
 # Used NixOS options:
-# • https://search.nixos.org/options?channel=24.05&show=services.tlp.enable
-# • https://search.nixos.org/options?channel=24.05&show=services.tlp.settings
+# • https://search.nixos.org/options?channel=24.11&show=services.tlp.enable
+# • https://search.nixos.org/options?channel=24.11&show=services.tlp.settings
 
 { config, ... }: { services.tlp = {
 

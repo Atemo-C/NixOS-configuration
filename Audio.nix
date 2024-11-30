@@ -4,14 +4,14 @@
 #
 # Used NixOS options:
 #────────────────────
-# • https://search.nixos.org/options?channel=24.05&show=security.rtkit.enable
-# • https://search.nixos.org/options?channel=24.05&show=services.pipewire.alsa.enable
-# • https://search.nixos.org/options?channel=24.05&show=services.pipewire.alsa.support32Bit
-# • https://search.nixos.org/options?channel=24.05&show=services.pipewire.enable
-# • https://search.nixos.org/options?channel=24.05&show=services.pipewire.jack.enable
-# • https://search.nixos.org/options?channel=24.05&show=services.pipewire.package
-# • https://search.nixos.org/options?channel=24.05&show=services.pipewire.pulse.enable
-# • https://search.nixos.org/options?channel=24.05&show=services.pipewire.wireplumber.package
+# • https://search.nixos.org/options?channel=24.11&show=security.rtkit.enable
+# • https://search.nixos.org/options?channel=24.11&show=services.pipewire.alsa.enable
+# • https://search.nixos.org/options?channel=24.11&show=services.pipewire.alsa.support32Bit
+# • https://search.nixos.org/options?channel=24.11&show=services.pipewire.enable
+# • https://search.nixos.org/options?channel=24.11&show=services.pipewire.jack.enable
+# • https://search.nixos.org/options?channel=24.11&show=services.pipewire.package
+# • https://search.nixos.org/options?channel=24.11&show=services.pipewire.pulse.enable
+# • https://search.nixos.org/options?channel=24.11&show=services.pipewire.wireplumber.package
 
 
 { config, pkgs, ... }: {

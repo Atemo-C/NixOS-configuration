@@ -6,8 +6,8 @@
 #
 # Used NixOS options:
 #────────────────────
-# • https://search.nixos.org/options?channel=24.05&show=hardware.opentabletdriver.daemon.enable = true;
-# • https://search.nixos.org/options?channel=24.05&show=hardware.opentabletdriver.enable = true;
+# • https://search.nixos.org/options?channel=24.11&show=hardware.opentabletdriver.daemon.enable = true;
+# • https://search.nixos.org/options?channel=24.11&show=hardware.opentabletdriver.enable = true;
 #
 # Used Home Manager options:
 #───────────────────────────

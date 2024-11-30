@@ -4,9 +4,9 @@
 #
 # Used NixOS options:
 #────────────────────
-# • https://search.nixos.org/options?channel=24.05&show=users.users.<name>.shell
-# • https://search.nixos.org/options?channel=24.05&show=programs.fish.enable
-# • https://search.nixos.org/options?channel=24.05&show=programs.fish.shellAbbrs
+# • https://search.nixos.org/options?channel=24.11&show=users.users.<name>.shell
+# • https://search.nixos.org/options?channel=24.11&show=programs.fish.enable
+# • https://search.nixos.org/options?channel=24.11&show=programs.fish.shellAbbrs
 
 { config, pkgs, ... }: {
 

@@ -4,9 +4,9 @@
 #
 # Used NixOS options:
 #────────────────────
-# • https://search.nixos.org/options?channel=24.05&show=services.printing.drivers
-# • https://search.nixos.org/options?channel=24.05&show=hardware.sane.extraBackends
-# • https://search.nixos.org/options?channel=24.05&show=hardware.sane.disabledDefaultBackends
+# • https://search.nixos.org/options?channel=24.11&show=services.printing.drivers
+# • https://search.nixos.org/options?channel=24.11&show=hardware.sane.extraBackends
+# • https://search.nixos.org/options?channel=24.11&show=hardware.sane.disabledDefaultBackends
 
 { config, pkgs, ... }: {
 

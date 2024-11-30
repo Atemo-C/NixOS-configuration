@@ -4,11 +4,11 @@
 #
 # Used NixOS options:
 #────────────────────
-# • https://search.nixos.org/options?channel=24.05&show=boot.loader.efi.canTouchEfiVariables
-# • https://search.nixos.org/options?channel=24.05&show=boot.loader.systemd-boot.configurationLimit
-# • https://search.nixos.org/options?channel=24.05&show=boot.loader.systemd-boot.editor
-# • https://search.nixos.org/options?channel=24.05&show=boot.loader.systemd-boot.enable
-# • https://search.nixos.org/options?channel=24.05&show=boot.loader.timeout
+# • https://search.nixos.org/options?channel=24.11&show=boot.loader.efi.canTouchEfiVariables
+# • https://search.nixos.org/options?channel=24.11&show=boot.loader.systemd-boot.configurationLimit
+# • https://search.nixos.org/options?channel=24.11&show=boot.loader.systemd-boot.editor
+# • https://search.nixos.org/options?channel=24.11&show=boot.loader.systemd-boot.enable
+# • https://search.nixos.org/options?channel=24.11&show=boot.loader.timeout
 
 { config, ... }: { boot.loader = {
 

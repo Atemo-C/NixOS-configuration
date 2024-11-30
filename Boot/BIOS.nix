@@ -3,10 +3,10 @@
 # • https://wiki.nixos.org/wiki/Bootloader
 #
 # Used NixOS options:
-# • https://search.nixos.org/options?channel=24.05&show=boot.loader.grub.configurationLimit
-# • https://search.nixos.org/options?channel=24.05&show=boot.loader.grub.device
-# • https://search.nixos.org/options?channel=24.05&show=boot.loader.grub.enable
-# • https://search.nixos.org/options?channel=24.05&show=boot.loader.timeout
+# • https://search.nixos.org/options?channel=24.11&show=boot.loader.grub.configurationLimit
+# • https://search.nixos.org/options?channel=24.11&show=boot.loader.grub.device
+# • https://search.nixos.org/options?channel=24.11&show=boot.loader.grub.enable
+# • https://search.nixos.org/options?channel=24.11&show=boot.loader.timeout
 
 { config, ... }: { boot.loader = {
 

@@ -1,7 +1,7 @@
 # Used NixOS options:
 #────────────────────
-# • https://search.nixos.org/options?channel=24.05&show=environment.variables
-# • https://search.nixos.org/options?channel=24.05&show=programs.nano.enable
+# • https://search.nixos.org/options?channel=24.11&show=environment.variables
+# • https://search.nixos.org/options?channel=24.11&show=programs.nano.enable
 #
 # Used NixOS packages:
 #─────────────────────
@@ -67,7 +67,7 @@
 	};
 
 	# Disabling the GNU NANO text editor that is enabled by default.
-	## https://search.nixos.org/options?channel=24.05&show=programs.nano.enable
+	## https://search.nixos.org/options?channel=24.11&show=programs.nano.enable
 	programs.nano.enable = false;
 
 }

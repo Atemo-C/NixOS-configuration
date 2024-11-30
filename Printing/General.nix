@@ -4,12 +4,12 @@
 #
 # Used NixOS options:
 #────────────────────
-# • https://search.nixos.org/options?channel=24.05&show=services.avahi.enable
-# • https://search.nixos.org/options?channel=24.05&show=services.avahi.nssmdns4
-# • https://search.nixos.org/options?channel=24.05&show=services.avahi.openFirewall
-# • https://search.nixos.org/options?channel=24.05&show=services.printing.enable
-# • https://search.nixos.org/options?channel=24.05&show=hardware.sane.enable
-# • https://search.nixos.org/options?channel=24.05&show=users.users.<name>.extraGroups
+# • https://search.nixos.org/options?channel=24.11&show=services.avahi.enable
+# • https://search.nixos.org/options?channel=24.11&show=services.avahi.nssmdns4
+# • https://search.nixos.org/options?channel=24.11&show=services.avahi.openFirewall
+# • https://search.nixos.org/options?channel=24.11&show=services.printing.enable
+# • https://search.nixos.org/options?channel=24.11&show=hardware.sane.enable
+# • https://search.nixos.org/options?channel=24.11&show=users.users.<name>.extraGroups
 #
 # Used NixOS packages:
 #─────────────────────

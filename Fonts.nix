@@ -4,14 +4,14 @@
 #
 # Used NixOS options:
 #────────────────────
-# • https://search.nixos.org/options?channel=24.05&show=console.font
-# • https://search.nixos.org/options?channel=24.05&show=fonts.fontconfig.cache32Bit
-# • https://search.nixos.org/options?channel=24.05&show=fonts.fontconfig.hinting.style
-# • https://search.nixos.org/options?channel=24.05&show=fonts.fontconfig.defaultFonts.emoji
-# • https://search.nixos.org/options?channel=24.05&show=fonts.fontconfig.defaultFonts.monospace
-# • https://search.nixos.org/options?channel=24.05&show=fonts.fontconfig.defaultFonts.sansSerif
-# • https://search.nixos.org/options?channel=24.05&show=fonts.fontconfig.defaultFonts.serif
-# • https://search.nixos.org/options?channel=24.05&show=fonts.fontDir.enable
+# • https://search.nixos.org/options?channel=24.11&show=console.font
+# • https://search.nixos.org/options?channel=24.11&show=fonts.fontconfig.cache32Bit
+# • https://search.nixos.org/options?channel=24.11&show=fonts.fontconfig.hinting.style
+# • https://search.nixos.org/options?channel=24.11&show=fonts.fontconfig.defaultFonts.emoji
+# • https://search.nixos.org/options?channel=24.11&show=fonts.fontconfig.defaultFonts.monospace
+# • https://search.nixos.org/options?channel=24.11&show=fonts.fontconfig.defaultFonts.sansSerif
+# • https://search.nixos.org/options?channel=24.11&show=fonts.fontconfig.defaultFonts.serif
+# • https://search.nixos.org/options?channel=24.11&show=fonts.fontDir.enable
 #
 # Used Home Manager options:
 #───────────────────────────

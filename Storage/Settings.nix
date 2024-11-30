@@ -4,8 +4,8 @@
 #
 # Used NixOS options:
 #────────────────────
-# • https://search.nixos.org/options?channel=24.05&show=services.btrfs.autoScrub.enable
-# • https://search.nixos.org/options?channel=24.05&show=services.fstrim.enable
+# • https://search.nixos.org/options?channel=24.11&show=services.btrfs.autoScrub.enable
+# • https://search.nixos.org/options?channel=24.11&show=services.fstrim.enable
 
 { config, ... }: { services = {
 

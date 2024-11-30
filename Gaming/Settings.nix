@@ -4,8 +4,8 @@
 #
 # Used NixOS options:
 #────────────────────
-# • https://search.nixos.org/options?channel=24.05&show=boot.kernel.sysctl
-# • https://search.nixos.org/options?channel=24.05&show=security.pam.loginLimits
+# • https://search.nixos.org/options?channel=24.11&show=boot.kernel.sysctl
+# • https://search.nixos.org/options?channel=24.11&show=security.pam.loginLimits
 
 { config, ... }: {
 

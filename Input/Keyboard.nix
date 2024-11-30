@@ -14,8 +14,8 @@
 #
 # Used NixOS options:
 #────────────────────
-# • https://search.nixos.org/options?channel=24.05&show=console.keyMap
-# • https://search.nixos.org/options?channel=24.05&show=hardware.keyboard.zsa.enable
+# • https://search.nixos.org/options?channel=24.11&show=console.keyMap
+# • https://search.nixos.org/options?channel=24.11&show=hardware.keyboard.zsa.enable
 #
 # Used Home Manager options:
 #───────────────────────────

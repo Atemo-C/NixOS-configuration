@@ -9,7 +9,7 @@
 #
 # Used NixOS options:
 #────────────────────
-# • https://search.nixos.org/options?channel=24.05&show=environment.variables
+# • https://search.nixos.org/options?channel=24.11&show=environment.variables
 #
 # Used Home Manager options:
 #───────────────────────────
