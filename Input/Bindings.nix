@@ -176,10 +176,10 @@
 		''SHIFT, PRINT, exec, bash "/etc/nixos/Desktop/Scripts/Screenshots/Region.sh"''
 
 		# Fullscreen screenshot (copy).
-		''CONTROL, PRINT, exec, bash "/etc/nixos/Desktop/Scripts/Screenshots/Fullscreen-copy.sh"''
+		''CONTROL, PRINT, exec, bash "/etc/nixos/Desktop/Scripts/Screenshots/Fullscreen-clipboard.sh"''
 
 		# Region screenshot (copy).
-		''CONTROL SHIFT, PRINT, exec, bash "/etc/nixos/Desktop/Scripts/Screenshots/Region-copy.sh"''
+		''CONTROL SHIFT, PRINT, exec, bash "/etc/nixos/Desktop/Scripts/Screenshots/Region-clipboard.sh"''
 
 		# Clipboard management.
 		#──────────────────────
