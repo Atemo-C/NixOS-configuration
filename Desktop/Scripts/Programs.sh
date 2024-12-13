@@ -202,7 +202,7 @@ Program=$(
 	net.rpcs3.RPCS3 & disown
 
 [ "$Program" = "  PCSX2                PlayStation 2/1 emulator" ] &&
-	net.pcsx2.PCSX2 & disown
+	pcsx2-qt & disown
 
 [ "$Program" = "  Sober                Roblox client" ] &&
 	org.vinegarhq.Sober & disown
