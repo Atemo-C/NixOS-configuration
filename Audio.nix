@@ -10,7 +10,7 @@
 		pkgs.unstable.pavucontrol
 
 		# PipeWire patchbay.
-		pkgs.unstable.qpwgraph
+		pkgs.qpwgraph
 	];
 
 	services = {
