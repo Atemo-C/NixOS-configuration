@@ -493,8 +493,10 @@
 			# Floating windows [By class].
 			"float, class: (file-roller)"
 			"float, class: (galculator)"
+			"float, class: (org.gnome.Calculator)"
 			"float, class: (.gamescope-wrapped)"
-			"float, class: (gcolor*)"
+			"float, class: (gcolor3)"
+			"float, class: (gcolor2)"
 			"float, class: (lxqt-policykit-agent)"
 			"float, class: (scrcpy)"
 			"float, class: (waydroid.)"
