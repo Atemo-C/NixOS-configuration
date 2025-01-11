@@ -11,7 +11,7 @@
 		pkgs.unstable.minetest
 
 		# A free, open source launcher for Minecraft.
-		pkgs.unstable.prismlauncher
+		pkgs.prismlauncher
 	];
 
 	# List of TCP ports on which incoming connections are accepted.
