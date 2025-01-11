@@ -26,7 +26,7 @@
 			cpdir = "cp -r -v -i";
 			mv = "mv -v -i";
 			rm = "rm -v -i";
-			rmdir = "rm -d -v -i";
+			rmdir = "rm -d -r -v -i";
 
 			# Remapping mouse extra button to F13.
 			f13 = "sudo evsieve --input /dev/input/by-id/usb-1bcf_USB_Optical_Mouse-event-mouse grab --map btn:extra key:f13 --output";
