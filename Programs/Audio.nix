@@ -12,4 +12,10 @@
 	# Audio effects for PipeWire applications.
 	pkgs.unstable.easyeffects
 
+	# Midi sound fonts.
+	pkgs.soundfont-fluid
+	pkgs.soundfont-arachno
+	pkgs.soundfont-ydp-grand
+	pkgs.soundfont-generaluser
+
 ]; }
