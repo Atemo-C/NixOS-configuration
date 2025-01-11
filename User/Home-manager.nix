@@ -1,26 +1,16 @@
-# Documentation:
-#───────────────
-# • https://wiki.nixos.org/wiki/Home_Manager
-#
-# Used Home Manager options:
-#───────────────────────────
-# • [Link doesn't exist] https://nix-community.github.io/home-manager/options.xhtml#opt-backupFileExtension
-# • https://nix-community.github.io/home-manager/options.xhtml#opt-home.stateVersion
+{ config, pkgs, ... }: let home-manager = builtins.fetchTarball
+"https://github.com/nix-community/home-manager/archive/release-24.11.tar.gz";
+in {#                                                          ^---^
+	# Import the Home Manager module.
+	imports = [ (import "${home-manager}/nixos") ];
 
-{ config, pkgs, ... }:
-
-# Adds Home Manager. Its version should match the installed NixOS version.
-let
-	home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-24.11.tar.gz";
-in {
-	imports = [ "${home-manager}/nixos" ];
-
+	# Home Manager settings.
 	home-manager = {
-		# Automatic backup of conflicting configuration files.
-		backupFileExtension = "backup";
+		# Backup file extension to use when backing up files replaced by Home Manager.
+		backupFileExtension = "HM-Backup";
 
-		# Home Manager version.
+		# State version of Home Manager.
+		# Here, it is assumed that Home Manager was installed with the same version used to install NixOS.
 		users.${config.custom.name}.home.stateVersion = "${config.system.stateVersion}";
 	};
-
 }

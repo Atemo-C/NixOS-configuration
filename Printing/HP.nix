@@ -1,13 +1,3 @@
-# Documentation:
-#───────────────
-# • https://wiki.nixos.org/wiki/Printing
-#
-# Used NixOS options:
-#────────────────────
-# • https://search.nixos.org/options?channel=24.11&show=services.printing.drivers
-# • https://search.nixos.org/options?channel=24.11&show=hardware.sane.extraBackends
-# • https://search.nixos.org/options?channel=24.11&show=hardware.sane.disabledDefaultBackends
-
 { config, pkgs, ... }: {
 
 	# Make use of the hplip CUPS drivers.
@@ -17,7 +7,7 @@
 		# Enable the hplip SANE backend.
 		extraBackends = [ pkgs.hplipWithPlugin ];
 
-		# SANE backends to disable that can conflict with the desired backends.
+		# SANE backends to disable that can conflict with the desired HP backends.
 		disabledDefaultBackends = [ "escl" ];
 	};
 

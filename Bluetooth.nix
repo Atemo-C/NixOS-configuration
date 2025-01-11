@@ -1,17 +1,3 @@
-# Documentation:
-#───────────────
-# • https://wiki.nixos.org/wiki/Bluetooth
-#
-# Used NixOS options:
-#────────────────────
-# • https://search.nixos.org/options?channel=24.11&show=hardware.bluetooth.enable
-# • https://search.nixos.org/options?channel=24.11&show=services.blueman.enable
-#
-# Used packages:
-#───────────────
-# • [blueberry]
-#   https://github.com/linuxmint/blueberry
-
 { config, pkgs, ... }: {
 
 	# Bluetooth configuration tool.
@@ -20,7 +6,18 @@
 	# Whether to enable support for Bluetooth.
 	hardware.bluetooth.enable = true;
 
-	# Whether to enable blueman, a bluetooth mannager.
-	services.blueman.enable = true;
+	# Whether to enable the Blueman Bluetooth manager.
+	services.buleman.enable = true;
+
+	# Using Bluetooth headset buttons to control media, the system way.
+#	systemd.user.services.mpris-proxy = {
+#		description = "Mpris proxy";
+#		after = [ "network.target" "sound.target" ];
+#		wantedBy = [ "default.target" ];
+#		serviceConfig.ExecStart = "${pkgs.bluez}/bin/mpris-proxy";
+#	};
+
+	# Using Bluetooth headset buttons to control media, the Home Manager way.
+	users.users.${config.custom.name}.services.mpris-proxy.enable = true;
 
 }

@@ -1,30 +1,18 @@
-# Documentation:
-#───────────────
-# • https://wiki.nixos.org/wiki/Bootloader
-#
-# Used NixOS options:
-# • https://search.nixos.org/options?channel=24.11&show=boot.loader.grub.configurationLimit
-# • https://search.nixos.org/options?channel=24.11&show=boot.loader.grub.device
-# • https://search.nixos.org/options?channel=24.11&show=boot.loader.grub.enable
-# • https://search.nixos.org/options?channel=24.11&show=boot.loader.timeout
+{ config, ... }: { boot.loader.grub = {
 
-{ config, ... }: { boot.loader = {
+	# Limit of generations that appear in the boot menu.
+	configurationLimit = 20;
 
-	grub = {
-		# Maximum of configurations in boot menu.
-		# GRUB has problems when there are too many entries.
-		configurationLimit = 20;
+	# Device where the boot loader should be installed.
+	device = "/dev/sda";
 
-		# The device on which the GRUB boot loader will be installed.
-		# To install GRUB on multiple devices, use boot.loader.grub.devices.
-		device = "/dev/sda";
+	# Whether to enable the boot loader.
+	enable = true;
 
-		# Whether to enable the GNU GRUB boot loader.
-		enable = true;
-	};
+	# Whether to make the memtest86 memory testing program available in the boot menu.
+	memtest86.enable = true;
 
-	# Timeout in seconds until loader boots the default menu item.
-	# Use null if the loader menu should be displayed indefinitely.
-	timeout = 3;
+	# Whether to append entries for other detected operating systems.
+	useOSProber = true;
 
 }; }

@@ -1,18 +1,14 @@
-# Brother, nah, I need to find something else to show notifications.
-# Or have a clean config.
-# I'll do that later.
 { config, pkgs, ... }: {
 
 	# A library that sends desktop notifications to a notification daemon.
 	environment.systemPackages = builtins.attrValues { inherit (pkgs) libnotify; };
 
+	# Display notifications graphically with dunst.
 	home-manager.users.${config.custom.name}.services.dunst = {
 		# Whether to enable the dunst notification daemon.
-		## https://nix-community.github.io/home-manager/options.xhtml#opt-services.dunst.enable
 		enable = true;
 
 		# Configuration written to $XDG_CONFIG_HOME/dunst/dunstrc.
-		## https://nix-community.github.io/home-manager/options.xhtml#opt-services.dunst.settings
 		settings = {
 			global = {
 				monitor = 0;

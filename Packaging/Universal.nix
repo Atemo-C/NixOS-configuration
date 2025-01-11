@@ -1,23 +1,15 @@
-# Documentation:
-#───────────────
-# • https://wiki.nixos.org/wiki/Appimage
-# • https://wiki.nixos.org/wiki/Flatpak
-#
-# Used NixOS options:
-#────────────────────
-# • https://search.nixos.org/options?channel=24.11&show=services.flatpak.enable
-#
-# Used NixOS packages:
-#─────────────────────
-# • [appimage-run]
-#   https://search.nixos.org/packages?channel=24.11&show=appimage-run
-
 { config, pkgs, ... }: {
 
-	# Use AppImages with the appimage-run command.
-	environment.systemPackages = [ pkgs.appimage-run ];
+	# AppImages.
+	programs.appimage = {
+		# Whether to enable binfmt registration to run appimages via appimage-run seamlessly.
+		binfmt = true;
 
-	# Whether to enable Flatpak.
+		# Whether to enable the appimage-run wrapper script for executing AppImages on NixOS.
+		enable = true;
+	};
+
+	# Whether to enable the Flatpak packaging system.
 	services.flatpak.enable = true;
 
 }

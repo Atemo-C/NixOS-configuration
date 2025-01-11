@@ -1,50 +1,49 @@
-# Documentation:
-#───────────────
-# • https://wiki.nixos.org/wiki/PipeWire#Enabling_PipeWire
-#
-# Used NixOS options:
-#────────────────────
-# • https://search.nixos.org/options?channel=24.11&show=security.rtkit.enable
-# • https://search.nixos.org/options?channel=24.11&show=services.pipewire.alsa.enable
-# • https://search.nixos.org/options?channel=24.11&show=services.pipewire.alsa.support32Bit
-# • https://search.nixos.org/options?channel=24.11&show=services.pipewire.enable
-# • https://search.nixos.org/options?channel=24.11&show=services.pipewire.jack.enable
-# • https://search.nixos.org/options?channel=24.11&show=services.pipewire.package
-# • https://search.nixos.org/options?channel=24.11&show=services.pipewire.pulse.enable
-# • https://search.nixos.org/options?channel=24.11&show=services.pipewire.wireplumber.package
-
-
 { config, pkgs, ... }: {
 
-	# Whether to enable the RealtimeKit system service.
-	# It hands out realtime scheduling priority to user processes on demand.
-	# For example, some audio servers use this to acquire realtime priority.
-	security.rtkit.enable = true;
+	# Packages for controlling general audio settings, as well as various audio utilities.
+	# More specific audio tools (music player, sound effects, etc) can be found in Programs/Audio.nix.
+	environment.systemPackages = [
+		# Utilities for ALSA.
+		pkgs.alsa-utils
 
-	services.pipewire = {
-		alsa = {
-			# Whether to enable ALSA support.
+		# Graphical volume control.
+		pkgs.unstable.pavucontrol
+
+		# PipeWire patchbay.
+		pkgs.unstable.qpwgraph
+	];
+
+	services = {
+		# PipeWire multimedia framework.
+		pipewire = {
+			alsa = {
+				# Whether to enable ALSA support.
+				enable = true;
+
+				# Whether to enable 32-bit ALSA support.
+				support32Bit = true;
+			};
+
+			# Whether to enable PipeWire.
 			enable = true;
 
-			# Whether to enable 32-bit ALSA support on 64-bit systems.
-			support32Bit = true;
+			# Whether to enable JACK support.
+			jack.enable = true;
+
+			# Whether to enable PulseAudio support.
+			pulse.enable = true;
+
+			# Which PipeWire package to use.
+			package = pkgs.unstable.pipewire;
+
+			# The WirePlumber package to use.
+			# It should be from the same branch as PipeWire.
+			wireplumber.package = pkgs.unstable.wireplumber;
 		};
 
-		# Whether to enable PipeWire service.
-		enable = true;
-
-		# Whether to enable JACK audio emulation.
-		jack.enable = true;
-
-		# The pipewire package to use.
-		package = pkgs.unstable.pipewire;
-
-		# Whether to enable PulseAudio server emulation.
-		pulse.enable = true;
-
-		# The WirePlumber package to use.
-		# Ideally, should be from the same branch as the PipeWire package uses.
-		wireplumber.package = pkgs.unstable.wireplumber;
+		# Whether to enable the playerctl daemon.
+		# Not needed / Already enabled on some desktops.
+		playerctld.enable = true;
 	};
 
 }

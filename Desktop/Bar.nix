@@ -1,20 +1,9 @@
-# Documentation:
-#───────────────
-# • https://github.com/Alexays/Waybar/wiki
-#
-# Used Home Manager options:
-#───────────────────────────
-# • https://nix-community.github.io/home-manager/options.xhtml#opt-programs.waybar.enable
-# • https://nix-community.github.io/home-manager/options.xhtml#opt-programs.waybar.package
-# • https://nix-community.github.io/home-manager/options.xhtml#opt-programs.waybar.systemd.enable
-# • https://nix-community.github.io/home-manager/options.xhtml#opt-programs.waybar.settings
-
 { config, pkgs, ... }: { home-manager.users.${config.custom.name}.programs.waybar = {
 
 	# Whether to enable Waybar.
 	enable = true;
 
-	# Waybar package to use.
+	# Waybar package to use. Should come from the same version branch as the Wayland compositor.
 	package = pkgs.unstable.waybar;
 
 	# Whether to enable Waybar systemd integration.
@@ -22,272 +11,231 @@
 
 	# Waybar configuration.
 	settings.mainBar = {
-		# Decide if the bar is displayed in front (top) of the windows or behind (bottom) them.
+		# Whether the bar is displayed in front (top) of the windows or behind (bottom) them.
 		layer = "top";
 
-		# Modules that will be displayed on the left.
+		# Modules to be displayed on the left of the bar.
 		modules-left = [
-			"image#Programs"   "custom/Spacer"
-#			"image#Settings"   "custom/Spacer"
-			"image#Files"      "custom/Spacer"
-			"image#Screenshot" "custom/Spacer"
-			"image#Clipboard"  "custom/Spacer"
-			"image#Picker"     "custom/Spacer"
-			"tray"             "custom/Bigspacer"
-			"image#Power"
+			"image#programs"   "custom/spacer"
+#			"image#settings"   "custom/spacer"
+			"image#files"      "custom/spacer"
+			"image#screenshot" "custom/spacer"
+			"image#clipboard"  "custom/spacer"
+			"image#picker"     "custom/spacer"
+			"tray"             "custom/bigspacer"
+			"image#power"
 		];
 
-		# Modules that will be displayed in the center.
-		modules-center = [ "hyprland/workspaces" ];
+		# Modules to be displayed in the center of the bar.
+		modules-center = [
+#			"image#overview" "custom/spacer"
+			"hyprland/workspaces"
+		];
 
-		# Modules that will be displayed on the right.
+		# Modules to be displayed on the right of the bar.
 		modules-right = [
-			"image#CPU"   "cpu"           "temperature"   "custom/Spacer"
-			"image#RAM"   "memory"        "custom/Spacer"
-#			"battery"     "custom/Spacer"
-#			"backlight"   "custom/Spacer"
-			"wireplumber" "custom/Spacer"
-			"clock"       "custom/Bigspacer"
-			"image#Close"
+			"image#cpu"   "cpu"    "temperature" "custom/spacer"
+			"image#ram"   "memory" "custom/spacer"
+#			"battery"     "custom/spacer"
+#			"backlight"   "custom/spacer"
+			"wireplumber" "custom/spacer"
+			"clock"       "custom/bigspacer"
+			"image#close"
 		];
 
-		# Modules configuration.
-
-		## Spacer.
-		##────────
-		## A normal spacer to be put between modules.
-		"custom/Spacer" = {
-			format   = "  ";
+		# Spacer module. A normal spacer to be but between modules.
+		"custom/spacer" = {
+			format = "  ";
 			interval = "once";
-			tooltip  = false;
+			tooltip = false;
 		};
 
-		## Big spacer.
-		##────────────
-		## A bigg spacer to separate modules further and prevent accidental clicks.
-		"custom/Bigspacer" = {
-			format   = "    ";
+		# Big spacer module. A bigger spacer when the normal spacer is not thicc enough.
+		"custom/bigspacer" = {
+			format = "    ";
 			interval = "once";
-			tooltip  = false;
+			tooltip = false;
 		};
 
-		## Program launcher.
-		##──────────────────
-		## A program launcher icon.
-		## • Left click opens a custom program launcher.
-		## • Right click opens a generic run launcher.
-		"image#Programs" = {
-			on-click       = "bash /etc/nixos/Desktop/Scripts/Programs.sh";
+		# Program launcher module.
+		# • [LMB] Opens a program launcher.
+		# • [RMB] Opens a generic run launcher.
+		"image#programs" = {
+			on-click = "bash /etc/nixos/Scripts/Programs.sh";
 			on-click-right = "tofi-drun --drun-launch=true";
-			path           = "/etc/nixos/Desktop/Icons/Programs.png";
-			size           = 22;
-			tooltip-format = "Program launcher";
+			path = "/etc/nixos/Icons/Programs.png";
+			size = 22;
 		};
 
-#		## Settings.
-#		##──────────
-#		## A quick-settings icon to temporarily change settings.
-#		"image#Settings" = {
-#			interval       = "once";
-#			on-click       = "bash /etc/nixos/Desktop/Scripts/Settings.sh";
-#			path           = "/etc/nixos/Desktop/Icons/Settings.png";
-#			size           = 22;
-#			tooltip-format = "Quick settings";
+		# Settings module.
+#		"images#settings" = {
+#			on-click = "bash /etc/nixos/Scripts/Settings.sh";
+#			path = "/etc/nixos/Icons/Settings.png";
+#			size = 22;
 #		};
 
-		## Files.
-		##───────
-		## A simple file manager shortcut.
-		## • Left click opens the default file manager.
-		## • Right click opens the download directory in the default file manager.
-		"image#Files" = {
-			on-click       = "thunar";
+		# File manager shortcut module.
+		# • [LMB] Opens a file manager in the default directory.
+		# • [RMB] Opens a file manager in the Downloads directory.
+		"image#files" = {
+			on-click = "thunar";
 			on-click-right = "thunar $HOME/Downloads/";
-			path           = "/etc/nixos/Desktop/Icons/Files.png";
-			size           = 22;
-			tooltip-format = "Files";
+			path = "/etc/nixos/Icons/Files.png";
+			size = 22;
 		};
 
-		## Screenshots.
-		##─────────────
-		## A screenshot shortcut.
-		## • Left click lets you select a region to screenshot.
-		## • Right click takes a full-screen screenshot.
-		## • Middle click lets you select a window to screenshot.
-		## • Forward click lets you select a region to screenshot without saving.
-		## • Backward click takes a full-screen screenshot without saving.
-		## •
-		"image#Screenshot" = {
-			on-click          = "bash /etc/nixos/Desktop/Scripts/Screenshots/Region.sh";
-			on-click-right    = "bash /etc/nixos/Desktop/Scripts/Screenshots/Fullscreen.sh";
-			on-click-middle   = "bash /etc/nixos/Desktop/Scripts/Screenshots/Window.sh";
-			on-click-backward = "bash /etc/nixos/Desktop/Scripts/Screenshots/Region-clipboard.sh";
-			on-click-forward  = "bash /etc/nixos/Desktop/Scripts/Screenshots/Fullscreen-clipboard.sh";
-			path              = "/etc/nixos/Desktop/Icons/Screenshot.png";
-			size              = 22;
-			tooltip-format    = "Take a screenshot";
+		# Screenshots shortcut module.
+		# • [LMB] Select a region to screenshot.
+		# • [RMB] Take a full-screen screenshot.
+		# • [MMB] Select a window to screenshot.
+		# • [FMB] Select a region to screenshot without saving.
+		# • [BMB] Take a full-screen screenshot without saving.
+		"image#screenshot" = {
+			on-click = "bash /etc/nixos/Scripts/Screenshots/Region.sh";
+			on-click-right = "bash /etc/nixos/Scripts/Screenshots/Fullscreen.sh";
+			on-click-middle = "bash /etc/nixos/Scripts/Screenshots/Window.sh";
+			on-click-backward = "bash /etc/nixos/Scripts/Screenshots/Region-clipboard.sh";
+			on-click-forward = "bash /etc/nixos/Scripts/Screenshots/Fullscreen-clipboard.sh";
+			path = "/etc/nixos/Icons/Screenshot.png";
+			size = 22;
 		};
 
-		## Clipboard.
-		##───────────
-		## A clipboard shortcut.
-		## • Left click opens the clipboard manager (temporary clipboard).
-		## • Right click opens the clipboard file (permanent clipboard).
-		## • Middle click clears the temporary clipboard.
-		"image#Clipboard" = {
-			on-click        = "clipman pick -t CUSTOM -T tofi";
-			on-click-right  = "alacritty -e micro $HOME/Documents/Clipboard.txt";
-			on-click-middle = "clipman clear --all & notify-send -t 1500 'Clipboard cleared'";
-			path            = "/etc/nixos/Desktop/Icons/Clipboard.png";
-			size            = 22;
-			tooltip-format  = "Clipboard";
+		# Clipboard module.
+		# • [LMB] Opens a clipboard manager.
+		# • [RMB] Opens a clipboard text file.
+		# • [MMB] Clears the clipboard content of the clipboard manager.
+		# • [F/BMB] Opens a bookmarks text file.
+		"image#clipboard" = {
+			on-click = "clipman pick -t CUSTOM -T tofi";
+			on-click-right = "alacritty -e micro $HOME/Documents/Clipboard.txt";
+			on-click-middle = "clipman clear --all & notify-send -t 1500 'Clipboard cleared.'";
+			on-click-backward = "alacritty -e micro $HOME/Documents/Bookmarks.txt";
+			on-click-forward = "alacritty -e micro $HOME/Documents/Bookmarks.txt";
+			path = "/etc/nixos/Icons/Clipboard.png";
+			size = 22;
 		};
 
-		## Color picker.
-		##──────────────
-		## A color picker shortcut.
-		## • Left click lets you pick a color from the screen.
-		## • Right click opens a more complete color picker.
-		"image#Picker" = {
-			on-click       = "bash /etc/nixos/Desktop/Scripts/Picker.sh";
+		# Color picker module.
+		# • [LMB] Pick a color anywhere on the desktop.
+		# • [RMB] Opens a graphical color picker.
+		"image#picker" = {
+			on-click = "bash /etc/nixos/Scripts/Picker.sh";
 			on-click-right = "gcolor3";
-			path           = "/etc/nixos/Desktop/Icons/Picker.png";
-			size           = 22;
-			tooltip-format = "Color picker";
+			path = "/etc/nixos/Icons/Picker.png";
+			size = 22;
 		};
 
-		## System tray.
-		##─────────────
+		# System tray module.
 		tray = {
-			icon-size         = 22;
-			spacing           = 8;
+			icon-size = 22;
 			reverse-direction = true;
+			spacing = 8;
 		};
 
-		## Power menu.
-		##────────────
-		## A power menu with power and logout options.
-		"image#Power" = {
-			on-click       = "bash /etc/nixos/Desktop/Scripts/Power.sh";
-			path           = "/etc/nixos/Desktop/Icons/Power.png";
-			size           = 22;
-			tooltip-format = "Power menu";
+		# Power menu module.
+		"image#power" = {
+			on-click = "bash /etc/nixos/Scripts/Power.sh";
+			path = "/etc/nixos/Icons/Power.png";
+			size = 22;
 		};
 
-		## Hyprland workspaces.
-		##─────────────────────
-		## Settings for Hyprland's workspaces.
-		"hyprland/workspaces" = {
-			persistent-workspaces = {
-				# Which workspaces to show on which monitor (here, 4 per monitor).
-				"DP-1"     = [ 1 2 3 4 ];
-				"HDMI-A-1" = [ 5 6 7 8 ];
-			};
-#			on-scroll-up   = "hyprctl dispatch workspace e+1";
-#			on-scroll-down = "hyprctl dispatch workspace e-1";
-		};
+		# Hyprland workspaces module.
+#		"hyprland/workspaces" = { persistent-workspaces = {
+#			"DP-1" = [ 1 2 3 4 ];
+#			"HDMI-A-1" = [ 5 6 7 8 ];
+#		}; };
+		"hyprland/workspaces" = { persistent-workspaces = { "*" = 8; }; };
 
-		## CPU monitor.
-		##─────────────
-		## A CPU usage and temperature monitor.
-		## • Left click opens a system resource monitor.
-		## • Right click shows a detailed temperature readout.
-		"image#CPU" = {
-			on-click       = "alacritty -e btop";
-			on-click-right = "notify-send '$(sensors)'";
-			path           = "/etc/nixos/Desktop/Icons/CPU.png";
-			size           = 22;
-			tooltip        = false;
+		# CPU monitoring modules.
+		# • [LMB] Opens a system resources monitor.
+		# • [RMB] Shows detailed current system temperatures at a glance.
+		# • [MMB] Shows detailed current memory usage at a glance.
+		"image#cpu" = {
+			on-click = "alacritty -e btop";
+			on-click-right = ''notify-send "$(sensors)"'';
+			on-click-middle = ''notify-send "$(free -mht)"'';
+			path = "/etc/nixos/Icons/CPU.png";
+			size = 22;
 		};
 		"cpu" = {
-			interval       = 1;
-			format         = "{usage}% ";
-			on-click       = "alacritty -e btop";
-			on-click-right = "notify-send '$(sensors)'";
+			format = "{usage}% ";
+			interval = 1;
+			on-click = "alacritty -e btop";
+			on-click-right = ''notify-send "$(sensors)"'';
+			on-click-middle = ''notify-send "$(free -mht)"'';
 		};
 		"temperature" = {
 			critical-threshold = 75;
-			interval           = 1;
-			hwmon-path         = "/sys/class/hwmon/hwmon1/temp1_input";
-			format             = "{temperatureC}°C";
-			on-click           = "alacritty -e btop";
-			on-click-right     = "notify-send '$(sensors)'";
+			format = "{temperatureC}°C";
+			hwmon-path = "/sys/class/hwmon/hwmon1/temp1_input";
+			interval = 1;
+			on-click = "alacritty -e btop";
+			on-click-right = ''notify-send "$(sensors)"'';
+			on-click-middle = ''notify-send "$(free -mht)"'';
 		};
 
-		## RAM monitor.
-		##─────────────
-		## A RAM usage monitor.
-		## • Left click opens a system resource monitor.
-		## • Right click shows a detailed memory readout.
-		"image#RAM" = {
-			on-click       = "alacritty -e btop";
-			on-click-right = ''notify-send "$(free -mh)"'';
-			path           = "/etc/nixos/Desktop/Icons/RAM.png";
-			size           = 22;
-			tooltip        = false;
+		# RAM monitoring modules.
+		# • [LMB] Opens a system resources monitor.
+		# • [RMB] Shows detailed current memory usage at a glance.
+		# • [MMB] Shows detailed current system temperatures at a glance.
+		"image#ram" = {
+			on-click = "alacritty -e btop";
+			on-click-right = ''notify-send "$(free -mht)"'';
+			on-click-middle = ''notify-send "$(sensors)"'';
+			path = "/etc/nixos/Icons/RAM.png";
+			size = 22;
 		};
 		"memory" = {
-			interval       = 1;
-			format         = "{percentage}%";
-			on-click       = "alacritty -e btop";
-			on-click-right = ''notify-send "$(free -mh)"'';
+			format = "{percentage}%";
+			interval = 1;
+			on-click = "alacritty -e btop";
+			on-click-right = ''notify-send "$(free -mht)"'';
+			on-click-middle = ''notify-send "$(sensors)"'';
 		};
 
-		## Battery.
-		##─────────
-		## A battery monitor.
-		## • Left click opens a menu to select a power profile mode on compatible systems.
-		## • Right click shows a detailed battery readout.
-		##─────────
-		## Not implemented yet: I have no device to test it on.
-		## Feel free to donate a laptop, heh :p
+		# Battery monitoring module.
+		# Not yet implemented: Feel free to donate a laptop if you want.
+		# It only needs to be good enough to run this NixOS configuration.
+		# • [LMB] Would open a menu to select a power profile mode on compatible systems.
+		# • [RMB] Would show a detailed battery readout at a glance.
 
-		## Backlight.
-		##───────────
-		## Backlight control.
-		## • Scrolling up increases the screen brightness.
-		## • Scrolling down decreases the screen brightness.
-		##───────────
-		## Not implemented yet: I have no device to test it on.
-		## Feel free to donate a laptop, heh :p²
+		# Backlight module.
+		# Not yet implemented, same reason as above.
+		# • [SCRL UP] Would increase the screen brightness.
+		# • [SCRL DN] Would decrease the screen brightness.
+		# Note: A similar module could be made for compatible backlit keyboards.
 
-		## Audio output.
-		##──────────────
-		## Audio output monitor and control (if only it supported input as well).
-		## • Left click opens the pavucontrol sound control.
-		## • Right click opens the qpwgraph PipeWire patchbay.
-		## • Middle click toggles muting the output volume.
-		## • Scrolling up increases the output volume.
-		## • Scrolling down decreases the output volume.
+		# Audio output monitoring and control module.
+		# • [LMB] Opens a sound control program.
+		# • [RMB] Opens an audio patchbay.
+		# • [MMB] Toggles muting the output volume.
+		# • [SCRL UP] Increases the output volume by 1%.
+		# • [SCRL DN] Decreases the output volume by 1%.
 		"wireplumber" = {
-			format          = "{icon} {volume}%";
-			format-icons    = [ "󰕿 "  "󰖀 " "󰕾 "];
-			format-muted    = " ";
-			on-click        = "pavucontrol";
-			on-click-right  = "qpwgraph";
+			format = "{icon} {volume}%";
+			format-icons = [ "󰕿 "  "󰖀 " "󰕾 "];
+			format-muted = " ";
+			on-click = "pavucontrol";
+			on-click-right = "qpwgraph";
 			on-click-middle = "amixer -q sset Master toggle";
 		};
 
-		## Date and time.
-		##───────────────
-		## Displays the date and time.
-		## • Left click opens a calendar.
+		# Date and time module.
+		# • [LMB] Opens a calendar.
 		"clock" = {
-			format   = "{:%d/%m/%Y %H:%M:%S}";
+			format = "{:%d/%m/%Y %H:%M:%S}";
 			interval = 1;
 			on-click = "alacritty -e calcurse";
 		};
 
-		## Close/kill button.
-		##───────────────────
-		## A button to close/kill a program.
-		## • Left click closes the focused window.
-		## • Right click and hold lets you select a window to kill.
-		"image#Close" = {
-			path           = "/etc/nixos/Desktop/Icons/Close.png";
-			size           = 22;
-			on-click       = "hyprctl dispatch killactive";
+		# Close/kill button module.
+		# • [LMB] Closes the focused window.
+		# • [RMB (hold)] Select a window to kill/force quit.
+		"image#close" = {
+			on-click = "hyprctl dispatch killactive";
 			on-click-right = "hyprctl kill";
+			path = "/etc/nixos/Icons/Close.png";
+			size = 22;
 		};
 	};
 

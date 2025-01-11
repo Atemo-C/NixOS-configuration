@@ -1,36 +1,24 @@
-# Documentation:
-#───────────────
-# • https://wiki.nixos.org/wiki/Bootloader
-#
-# Used NixOS options:
-#────────────────────
-# • https://search.nixos.org/options?channel=24.11&show=boot.loader.efi.canTouchEfiVariables
-# • https://search.nixos.org/options?channel=24.11&show=boot.loader.systemd-boot.configurationLimit
-# • https://search.nixos.org/options?channel=24.11&show=boot.loader.systemd-boot.editor
-# • https://search.nixos.org/options?channel=24.11&show=boot.loader.systemd-boot.enable
-# • https://search.nixos.org/options?channel=24.11&show=boot.loader.timeout
-
 { config, ... }: { boot.loader = {
 
 	# Whether the installation process is allowed to modify EFI boot variables.
 	efi.canTouchEfiVariables = true;
 
 	systemd-boot = {
-		# Maximum number of latest generations in the boot menu.
-		# Useful to prevent boot partition running out of disk space.
+		# Limit of generations that appear in the boot menu.
 		configurationLimit = 20;
 
+		# The resolution of the console.
+		consoleMode = "max";
+
 		# Whether to allow editing the kernel command-line before boot.
-		# It allows gaining root access by passing init=/bin/sh as a kernel, so it is recommended to turn it off.
-		# However, it is enabled by default in NixOS for backwards compatibility.
+		# For security reasons, it is recommended to keep it to false.
 		editor = false;
 
-		# Whether to enable the systemd-boot (formerly gummiboot) EFI boot manager.
+		# Whether to enable the boot loader.
 		enable = true;
-	};
 
-	# Timeout (in seconds) until loader boots the default menu item.
-	# Use null if the loader menu should be displayed indefinitely.
-	timeout = 3;
+		# Whether to make the memtest86 memory testing program available in the boot menu.
+		memtest86.enable = true;
+	};
 
 }; }

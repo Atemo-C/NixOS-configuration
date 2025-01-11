@@ -1,10 +1,2 @@
-# Documentation:
-#───────────────
-# • https://wiki.nixos.org/wiki/Waydroid
-#
-# Used NixOS options:
-#────────────────────
-# • https://search.nixos.org/options?channel=24.11&show=virtualisation.waydroid.enable
-
-# Whether to enable Waydroid.
+# Whether to enable Waydroid, an Android emulator.
 { config, ... }: { virtualisation.waydroid.enable = true; }

@@ -1,29 +1,3 @@
-# Used NixOS packages:
-#─────────────────────
-# • [bat]
-#   https://github.com/sharkdp/bat
-#
-# • [calcurse]
-#   https://calcurse.org/
-#
-# • [dash]
-#   http://gondor.apana.org.au/~herbert/dash/
-#
-# • [wget]
-#   https://www.gnu.org/software/wget/
-#
-# • [git]
-#   https://git-scm.com/
-#
-# • [gh]
-#   https://cli.github.com/
-#
-# • [tlrc]
-#   https://github.com/tldr-pages/tlrc
-#
-# • [parallel]
-#   https://www.gnu.org/software/parallel/
-
 { pkgs, ... }: { environment.systemPackages = [
 
 	# A cat(1) clone with syntax highlighting and Git integration.

@@ -1,60 +1,16 @@
-# Documentation:
-#───────────────
-# • https://github.com/yt-dlp/yt-dlp#configuration
-#
-# Used NixOS packages:
-#─────────────────────
-# • [amfora]
-#   https://github.com/makeworld-the-better-one/amfora
-#
-# • [lagrange]
-#   https://gmi.skyjake.fi/lagrange/
-#
-# • [librewolf]
-#   https://librewolf.net/
-#
-# • [tor-browser]
-#   https://www.torproject.org/
-#
-# • [thunderbird]
-#   https://thunderbird.net/
-#
-# • [qbittorrent]
-#   https://www.qbittorrent.org/
-#
-# • [gallery-dl]
-#   https://github.com/mikf/gallery-dl
-#
-# • [element-desktop]
-#   https://element.io/
-#
-# • [revolt-desktop]
-#   https://revolt.chat/
-#
-# • [vesktop]
-#   https://github.com/Vencord/Vesktop
-#
-# Used Home Manager options:
-#───────────────────────────
-# • https://nix-community.github.io/home-manager/options.xhtml#opt-programs.yt-dlp.enable
-# • https://nix-community.github.io/home-manager/options.xhtml#opt-programs.yt-dlp.package
-# • https://nix-community.github.io/home-manager/options.xhtml#opt-programs.yt-dlp.settings
-
 { config, pkgs, ... }: {
 
 	environment.systemPackages = [
-		# Gemini browsers.
-		## A fancy terminal browser for the Gemini protocol.
+		# A fancy terminal browser for the Gemini protocol.
 		pkgs.amfora
 
-		## A Beautiful Gemini Client.
+		# A Beautiful Gemini Client.
 		pkgs.lagrange
 
-		# Web browsers.
-		## A fork of Firefox, focused on privacy, security and freedom.
+		# A fork of Firefox, focused on privacy, security and freedom.
 		pkgs.librewolf
 
-		## Privacy-focused browser routing traffic through the Tor network.
+		# Privacy-focused browser routing traffic through the Tor network.
 		pkgs.tor-browser
 
 		# A full-featured e-mail client.

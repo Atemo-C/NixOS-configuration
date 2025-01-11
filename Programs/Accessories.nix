@@ -1,20 +1,9 @@
-# Used NixOS packages:
-#─────────────────────
-# • [galculator]
-#   http://galculator.sourceforge.net/
-#
-# • [gnome-clocks]
-#   https://apps.gnome.org/Clocks/
-#
-# • [keepassxc]
-#   https://keepassxc.org/
-
 { pkgs, ... }: { environment.systemPackages = [
 
-	# A GTK 2/3 algebraic and RPN calculator.
-	pkgs.galculator
+	# A GTK calculator from GNOME.
+	pkgs.gnome-calculator
 
-	# A simple and elegant clock application for GNOME.
+	# A simple and elegant clock application from GNOME.
 	pkgs.gnome-clocks
 
 	# Offline password manager with many features.

@@ -1,21 +1,4 @@
-# Used NixOS options:
-#────────────────────
-# • https://search.nixos.org/options?channel=24.11&show=environment.sessionVariables
-# • https://search.nixos.org/options?channel=24.11&show=qt.enable
-# • https://search.nixos.org/options?channel=24.11&show=qt.style
-#
-# Used Home Manager options:
-#───────────────────────────
-# • ttps://nix-community.github.io/home-manager/options.xhtml#opt-dconf.settings
-# • ttps://nix-community.github.io/home-manager/options.xhtml#opt-gtk.enable
-# • ttps://nix-community.github.io/home-manager/options.xhtml#opt-gtk.gtk2.extraConfig
-# • ttps://nix-community.github.io/home-manager/options.xhtml#opt-gtk.gtk3.extraConfig
-# • ttps://nix-community.github.io/home-manager/options.xhtml#opt-qt.enable
-# • ttps://nix-community.github.io/home-manager/options.xhtml#opt-qt.style
-# • ttps://nix-community.github.io/home-manager/options.xhtml#opt-qt.platformTheme
-
-
-{ config, ... }: {
+{ config, pkgs, ... }: {
 
 	# Tell Adwaita-based programs to prefer a dark theme.
 	environment.sessionVariables = {
@@ -51,11 +34,11 @@
 		};
 
 		qt = {
-			# Whether to enable Qt 5 and 6 configuration.
+			# Whether to enable Qt configuration.
 			enable = true;
 
-			# Style to use for Qt5/Qt6 applications.
-			style.name = "adwaita-dark";
+			# Style to use for Qt applications.
+			style.name = "gtk2";
 		};
 	};
 
@@ -63,8 +46,11 @@
 		# Whether to enable Qt configuration, including theming.
 		enable = true;
 
+		# Selects the platform theme to use for Qt applications.
+		platformTheme = "gtk2";
+
 		# Selects the style to use for Qt applications.
-		style = "adwaita-dark";
+		style = "gtk2";
 	};
 
 }

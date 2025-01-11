@@ -1,13 +1,3 @@
-# Documentation:
-#───────────────
-# • https://wiki.nixos.org/wiki/VirtualBox
-#
-# Used NixOS options:
-#────────────────────
-# • https://search.nixos.org/options?channel=24.11&show=virtualisation.virtualbox.host.enable
-# • https://search.nixos.org/options?channel=24.11&show=virtualisation.virtualbox.host.enableExtensionPack
-# • https://search.nixos.org/options?channel=24.11&show=users.users.<name>.extraGroups
-
 { config, ... }: {
 
 	virtualisation.virtualbox.host = {

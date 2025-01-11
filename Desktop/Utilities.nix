@@ -1,20 +1,12 @@
-# Used packages:
-#───────────────
-# • [lxqt-policykit]
-# https://github.com/lxqt/lxqt-policykit
-#
-# • [hyprpaper]
-# https://github.com/hyprwm/hyprpaper
-
 { pkgs, ... }: { environment.systemPackages = [
 
-	# The LXQt PolicyKit agent.
-	pkgs.lxqt.lxqt-policykit
+	# LXQt PolicyKit agent.
+	pkgs.unstable.lxqt.lxqt-policykit
 
-	# A blazing fast wayland wallpaper utility.
+	# Wallpaper utility.
 	pkgs.unstable.hyprpaper
 
-	# GUI for setting wallpapers with hyprpaper.
-	pkgs.unstable.hyprwall
+	# Legacy X11 tools, mostly for Xwayland programs.
+	pkgs.xorg.xrandr
 
 ]; }

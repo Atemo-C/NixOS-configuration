@@ -1,33 +1,25 @@
-# Used NixOS options:
-#────────────────────
-# • https://search.nixos.org/options?channel=24.11&show=networking.firewall.allowedTCPPorts
-# • https://search.nixos.org/options?channel=24.11&show=services.openssh.enable
-# • https://search.nixos.org/options?channel=24.11&show=services.openssh.ports
-# • https://search.nixos.org/options?channel=24.11&show=services.openssh.settings.AllowUsers
-# • https://search.nixos.org/options?channel=24.11&show=services.openssh.settings.PermitRootLogin
-# • https://search.nixos.org/options?channel=24.11&show=services.openssh.startWhenNeeded
-
 { config, ... }: {
 
 	# List of TCP ports on which incoming SSH connections are accepted.
-	networking.firewall.allowedTCPPorts = [ 4200 ];
+	networking.firewall.allowedTCPPorts = [ 1263 ];
 
 	services.openssh = {
 		# Whether to enable the OpenSSH daemon.
 		enable = true;
 
 		# Which ports the SSH daemon should listen to.
-		ports = [ 4200 ];
+		ports = [ 1263 ];
 
+		# OpenSSH settings.
 		settings = {
-			# Login is allowed only for the listed users.
+			# Login is allowed only for the listed users:
 			AllowUsers = [ "${config.custom.name}" ];
 
-			# Whether the root user can login using ssh.
+			# Whether the root user can login with SSH.
 			PermitRootLogin = "no";
 		};
 
-		# Only start an instance for each incoming connection.
+		# Whether to only start an instance for each incoming connection.
 		startWhenNeeded = true;
 	};
 

@@ -1,11 +1,3 @@
-# Used NixOS packages:
-#─────────────────────
-# • [libreoffice]
-#   https://libreoffice.org/
-#
-# • [xreader]
-#   https://github.com/linuxmint/xreader
-
 { pkgs, ... }: { environment.systemPackages = [
 
 	# Comprehensive, professional-quality productivity suite, a variant of openoffice.org.

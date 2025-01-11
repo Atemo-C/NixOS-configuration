@@ -1,22 +1,3 @@
-# Documentation:
-#───────────────
-# • https://alacritty.org/config-alacritty.html
-#
-# Used NixOS packages:
-#─────────────────────
-# • [lxterminal]
-#   https://wiki.lxde.org/en/LXTerminal
-#
-# Used NixOS options:
-#────────────────────
-# • https://search.nixos.org/options?channel=24.11&show=environment.variables
-#
-# Used Home Manager options:
-#───────────────────────────
-# • https://nix-community.github.io/home-manager/options.xhtml#opt-programs.alacritty.enable
-# • https://nix-community.github.io/home-manager/options.xhtml#opt-programs.alacritty.package
-# • https://nix-community.github.io/home-manager/options.xhtml#opt-programs.alacritty.settings
-
 { config, pkgs, ... }: {
 
 	environment = {

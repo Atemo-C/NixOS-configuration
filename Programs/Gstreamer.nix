@@ -1,8 +1,3 @@
-# Used NixOS packages:
-#─────────────────────
-# • Everything here
-#   https://gstreamer.freedesktop.org/
-
 # Open source multimedia framework.
 { pkgs, ... }: { environment.systemPackages = [
 

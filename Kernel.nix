@@ -1,10 +1,2 @@
-# Documentation:
-#───────────────
-# • https://wiki.nixos.org/wiki/Linux_kernel
-#
-# Used NixOS options:
-#────────────────────
-# • https://search.nixos.org/options?channel=24.11&show=boot.kernelPackages
-
-# Which version of the Linux Kernel to be used by NixOS.
+# Which version of the Linux kernel to use.
 { config, pkgs, ... }: { boot.kernelPackages = pkgs.unstable.linuxPackages_zen; }

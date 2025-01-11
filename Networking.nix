@@ -1,32 +1,19 @@
-# Documentation:
-#───────────────
-# • https://wiki.nixos.org/wiki/Networking
-# • https://wiki.nixos.org/wiki/NetworkManager
-#
-# Used NixOS packages:
-#─────────────────────
-# • [networkmanagerapplet]
-#   https://gitlab.gnome.org/GNOME/network-manager-applet/
-#
-# Used NixOS options:
-#────────────────────
-# • https://search.nixos.org/options?channel=24.11&show=networking.hostName
-# • https://search.nixos.org/options?channel=24.11&show=networking.networkmanager.enable
-# • https://search.nixos.org/options?channel=24.11&show=systemd.services
-# • https://search.nixos.org/options?channel=24.11&show=users.users.<name>.extraGroups
-
 { config, pkgs, ... }: {
 
-	# NetworkManager control applet.
-	environment.systemPackages = [ pkgs.networkmanagerapplet ];
-
 	networking = {
-		# The name of the machine.
-		hostName = "R5-PC";
+		# Specifies when the dhcpcd device will fork to background.
+		# background, any, ipv4, ipv6, both, if-carrier-up
+		dhcpcd.wait = "background";
 
-		# Whether to use NetworkManager to manage network interfaces.
+		# Whether to enable networking using NetworkManager.
 		networkmanager.enable = true;
 	};
+
+	# Whether to enable the NetworkManager control applet.
+	programs.nm-applet.enable = true;
+
+	# If you prefer to start it manually, you can install the package alone.
+#	environment.systemPackages = [ pkgs.networkmanagerapplet ];
 
 	# Whether to enable NetworkManager's "wait-online" service.
 	systemd.services.NetworkManager-wait-online.enable = false;

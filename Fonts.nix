@@ -1,63 +1,40 @@
-# Documentation:
-#───────────────
-# • https://wiki.nixos.org/wiki/Fonts
-#
-# Used NixOS options:
-#────────────────────
-# • https://search.nixos.org/options?channel=24.11&show=console.font
-# • https://search.nixos.org/options?channel=24.11&show=fonts.fontconfig.cache32Bit
-# • https://search.nixos.org/options?channel=24.11&show=fonts.fontconfig.hinting.style
-# • https://search.nixos.org/options?channel=24.11&show=fonts.fontconfig.defaultFonts.emoji
-# • https://search.nixos.org/options?channel=24.11&show=fonts.fontconfig.defaultFonts.monospace
-# • https://search.nixos.org/options?channel=24.11&show=fonts.fontconfig.defaultFonts.sansSerif
-# • https://search.nixos.org/options?channel=24.11&show=fonts.fontconfig.defaultFonts.serif
-# • https://search.nixos.org/options?channel=24.11&show=fonts.fontDir.enable
-#
-# Used Home Manager options:
-#───────────────────────────
-# • https://nix-community.github.io/home-manager/options.xhtml#opt-gtk.font.name
-# • https://nix-community.github.io/home-manager/options.xhtml#opt-gtk.font.size
-# • https://nix-community.github.io/home-manager/options.xhtml#opt-wayland.windowManager.hyprland.settings
-
 { config, pkgs, ... }: {
 
-	# The font used for the virtual consoles. Can be null, a font name, or a path to a PSF font file.
+	# The font used for the virtual consoles.
 	console.font = "Lat2-Terminus16";
 
 	fonts = {
-		fontconfig = {
-			# Generate system fonts cache for 32-bit applications.
-			cache32Bit = true;
+		# Whether to install a basic set of fonts providing several styles and families.
+		# It also provides a reasonable coverage of Unicode.
+		enableDefaultPackages = true;
 
-			defaultFonts = {
-				# System-wide default emoji font(s).
-				# Multiple fonts may be listed in case a font does not support all emoji.
-				# Note that fontconfig matches color emoji fonts preferentially.
-				emoji = [ "Noto Color Emoji "];
-
-				# System-wide default monospace font(s).
-				# Multiple fonts may be listed in case multiple languages must be supported.
-				monospace = [ "UbuntuMono Nerd Font" "Noto Color Emoji" ];
-
-				# System-wide default sans serif font(s).
-				# Multiple fonts may be listed in case multiple languages must be supported.
-				sansSerif = [ "UbuntuMono Nerd Font" "Noto Color Emoji" ];
-
-				# System-wide default serif font(s).
-				# Multiple fonts may be listed in case multiple languages must be supported.
-				serif = [ "UbuntuMono Nerd Font" "Noto Color Emoji" ];
-			};
-
-			# Hintstyle is the amount of font reshaping done to line up to the grid.
-			hinting.style = "slight";
-		};
-
-		# Whether to create a directory with links to all fonts in the /run/current-system/sw/share/X11/fonts directory.
+		# Whether to create a directory with links to all fonts in /run/current-system/sw/share/X11/fonts.
 		fontDir.enable = true;
 
-		# Font packages used. Local fonts may be added in the $HOME/.local/share/fonts/ directory.
-		packages =  [
-			# UbuntuMono Nerd Fonts.
+		fontconfig = {
+			# Whether to generate system fonts cache for 32-bit applications.
+			cache32Bit = true;
+
+			# Default fonts to use, per category.
+			# Multiple fonts may be listed in case one does not support certain characters, such as emojis.
+			defaultFonts = {
+				# Default emoji font(s).
+				emoji = [ "Noto Color Emoji" ];
+
+				# Default monospace font(s).
+				monospace = [ "UbuntuMono Nerd Font" "Noto Color Emoji" ];
+
+				# Default Sans-Serif font(s).
+				sansSerif = [ "UbuntuMono Nerd Font" "Noto Color Emoji" ];
+
+				# Default Serif font(s).
+				serif = [ "UbuntuMono Nerd Font" "Noto Color Emoji" ];
+			};
+		};
+
+		# List of primary font packages.
+		packages = [
+			# Ubuntu Nerd Fonts.
 			pkgs.unstable.nerd-fonts.ubuntu
 			pkgs.unstable.nerd-fonts.ubuntu-mono
 
@@ -68,17 +45,15 @@
 		];
 	};
 
+	# Fonts to be used for the user.
 	home-manager.users.${config.custom.name} = {
 		gtk.font = {
-			# The family name of the font to use in GTK+ 2/3 applications.
+			# The family name of the font to use in compatible GTK applications.
 			name = "UbuntuMono Nerd Font";
 
-			# The size of the font to use in GTK+ 2/3 applications.
+			# The size of the font to use in compatible GTK applications.
 			size = 11;
 		};
-
-		# Font family name for the Hyprland Wayland compositor.
-		wayland.windowManager.hyprland.settings.misc = { font_family = "UbuntuMono Nerd Font"; };
 	};
 
 }

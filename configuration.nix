@@ -1,126 +1,152 @@
-{ ... }: { imports = [
+{ config, ... }: {
 
-	# Automatically generated hardware configuration module.
-	./hardware-configuration.nix
+	custom = {
+		# Name of the current user.
+		# [a-z] [A-Z] [0-9] [ - _ ]
+		name = "user-name";
 
-	# Temporary module.
-	./Temporary.nix
+		# Title of the current user.
+		title = "User titl";
+	};
 
-	# Android modules.
-	./Android/ADB.nix
-	./Android/Utilities.nix
+	# Name of the current system.
+	# [a-z] [A-Z] [0-9] [ - ]
+	networking.hostName = "COMPUTER-NAME";
 
-	# Audio module.
-	./Audio.nix
+	# Which version of NixOS was initially installed on the current system.
+	# There is no need to change it post-installation, even when upgrading to a newer NixOS version.
+	system.stateVersion = "24.11";
 
-	# Bluetooth module.
-#	./Bluetooth.nix
+	imports = [
+		# Automatically generated hardware configuration module.
+		./hardware-configuration.nix
 
-	# Boot modules.
-	./Boot/Autostart.nix
-#	./Boot/EFI.nix
-#	./Boot/BIOS.nix
+		# Temporary module.
+		./Temporary.nix
 
-	# Desktop modules.
-	./Desktop/Bar.nix
-	./Desktop/Dconf.nix
-	./Desktop/Hyprland-settings.nix
-	./Desktop/Hyprland.nix
-	./Desktop/Menus.nix
-	./Desktop/Notifications.nix
-	./Desktop/Utilities.nix
-	./Desktop/XDG.nix
+		# Android module.
+		./Android.nix
 
-	# Driver modules.
-#	./Drivers/NVIDIA.nix
-	./Drivers/General-graphics.nix
+		# Audio module.
+		./Audio.nix
 
-	# File management modules.
-	./Files/Management.nix
-	./Files/Services.nix
-	./Files/Sharing.nix
-	./Files/Utilities.nix
+		# Bluetooth module.
+#		./Bluetooth.nix
 
-	# Time module.
-	./Time.nix
+		# Boot modules.
+		# Select one of EFI.nix or BIOS.nix. Shared-boot-settings.nix is always enabled.
+		./Boot/EFI.nix
+#		./Boot/BIOS.nix
+#		./Boot/Monitors.nix
+		./Boot/Shared-boot-settings.nix
 
-	# Fonts module.
-	./Fonts.nix
+		# Linux console (TTY) module.
+		./Console.nix
 
-	# Gaming modules.
-	./Gaming/Emulation.nix
-	./Gaming/Games.nix
-	./Gaming/Settings.nix
-	./Gaming/Steam.nix
-	./Gaming/Utilities.nix
+		# Desktop modules.
+		./Desktop/Bar.nix
+		./Desktop/Dconf.nix
+		./Desktop/Hyprland.nix
+		./Desktop/Menus.nix
+		./Desktop/Notifications.nix
+		./Desktop/Utilities.nix
+		./Desktop/XDG.nix
 
-	# Input modules.
-	./Input/Bindings.nix
-	./Input/Controller.nix
-	./Input/Keyboard.nix
-	./Input/Mouse-and-touchpad.nix
-	./Input/Power.nix
-	./Input/Tablet.nix
-	./Input/Utilities.nix
+		# Time module.
+		./Time.nix
 
-	# Linux Kernel module.
-	./Kernel.nix
+		# Fonts module.
+		./Fonts.nix
 
-	# Networking module.
-	./Networking.nix
+		# Gaming modules.
+		./Gaming/Emulation.nix
+		./Gaming/Games.nix
+		./Gaming/Gaming-tweaks.nix
+		./Gaming/Gaming-utilities.nix
+		./Gaming/Steam.nix
 
-	# Packaging modules.
-	# System.nix also contains the state version.
-	./Packaging/System.nix
-	./Packaging/System-unstable.nix
-	./Packaging/Universal.nix
+		# GPU modules. Select relevant ones; Shared-GPU-settings.nix is always enabled.
+		./GPU/Shared-GPU-settings.nix
+#		./GPU/NVIDIA.nix
+#		./GPU/NVIDIA-CUDA-and-CDI.nix
+#		./GPU/OpenCL-AMD.nix
+#		./GPU/OpenCL-Intel.nix
+#		./GPU/VA-API-Intel.nix
 
-	# Power modules.
-	./Power/Powersaving.nix
-	./Power/Utilities.nix
+		# Input modules.
+		./Input/Input-utilities.nix
+		./Input/OpenTabletDriver.nix
+		./Input/Power-button.nix
+		./Input/ZSA.nix
 
-	# Printing & scanning modules.
-	./Printing/General.nix
-#	./Printing/HP.nix
+		# Keyboard layout module.
+		./Layout.nix
 
-	# Programs modules.
-	./Programs/3D.nix
-	./Programs/Accessories.nix
-	./Programs/Audio.nix
-	./Programs/Gstreamer.nix
-	./Programs/Images.nix
-	./Programs/Internet.nix
-	./Programs/Office.nix
-	./Programs/Sysinfo.nix
-	./Programs/Terminal-emulators.nix
-	./Programs/Terminal-utilities.nix
-	./Programs/Text.nix
-	./Programs/Video.nix
+		# Locale module.
+		./Locale.nix
 
-	# SSH module.
-	./SSH.nix
+		# Linux Kernel module.
+		./Kernel.nix
 
-	# Storage modules.
-	./Storage/Filesystems.nix
-#	./Storage/Mounts.nix
-	./Storage/Optical.nix
-	./Storage/Settings.nix
+		# Networking module.
+		./Networking.nix
 
-	# Theming modules.
-	./Theming/Icons.nix
-	./Theming/Settings.nix
-	./Theming/TTY.nix
+		# Packaging modules.
+		./Packaging/General.nix
+		./Packaging/Unstable.nix
+		./Packaging/Universal.nix
 
-	# User modules.
-	./User/Home-manager.nix
-	./User/Name.nix
-	./User/Settings.nix
-	./User/Shell.nix
+		# Power module.
+		./Power.nix
 
-	# Virtualisation modules.
-#	./Virtualisation/Docker.nix
-#	./Virtualisation/Virt-manager.nix
-#	./Virtualisation/Virtualbox.nix
-#	./Virtualisation/Waydroid.nix
+		# Printing and scanning modules.
+		./Printing/General-printing.nix
+		./Printing/HP.nix
 
-]; }
+		# Programs modules.
+		./Programs/3D.nix
+		./Programs/Accessories.nix
+		./Programs/Audio.nix
+		./Programs/Gstreamer.nix
+		./Programs/Images.nix
+		./Programs/Internet.nix
+		./Programs/Office.nix
+		./Programs/System-info.nix
+		./Programs/Terminal-emulators.nix
+		./Programs/Terminal-utilities.nix
+		./Programs/Text.nix
+		./Programs/Video.nix
+
+		# SSH module.
+		./SSH.nix
+
+		# Storage and file management modules.
+		./Storage/File-management.nix
+#		./Storage/File-sharing.nix
+		./Storage/File-utilities.nix
+		./Storage/Filesystems-services.nix
+		./Storage/Filesystems-settings.nix
+		./Storage/Filesystems-support.nix
+		./Storage/Optical-media.nix
+#		./Storage/Storage-mounts.nix
+
+		# Theming modules.
+		./Theming/Application-theme.nix
+		./Theming/Icons.nix
+		./Theming/Settings.nix
+
+		# User modules.
+		./User/Home-manager.nix
+		./User/Name-module.nix
+		./User/User-settings.nix
+		./User/Shell.nix
+
+		# Virtualisation modules.
+#		./Virtualisation/Docker.nix
+#		./Virtualisation/Docker-NVIDIA.nix
+#		./Virtualisation/Virt-manager.nix
+#		./Virtualisation/Virtualbox.nix
+#		./Virtualisation/Waydroid.nix
+	];
+
+}

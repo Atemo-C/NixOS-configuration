@@ -1,23 +1,15 @@
-# Used NixOS packages:
-#─────────────────────
-# • [desmume]
-#   https://www.github.com/TASVideos/desmume/
-#
-# • [pcsx2]
-#   https://pcsx2.net/
-#
-# • [rpcs3]
-#   https://rpcs3.net/
-
 { pkgs, ... }: { environment.systemPackages = [
 
 	# An open-source Nintendo DS emulator.
-	pkgs.unstable.desmume
+	pkgs.desmume
 
-	# Playstation 2 emulator.
+	# PlayStation 1 emulator.
+	pkgs.unstable.duckstation
+
+	# PlayStation 2 emulator.
 	pkgs.unstable.pcsx2
 
-	# PS3 emulator/debugger.
+	# PlayStation emulator.
 	pkgs.unstable.rpcs3
 
 ]; }

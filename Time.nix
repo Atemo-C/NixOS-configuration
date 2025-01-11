@@ -1,8 +1,3 @@
-# Used NixOS options:
-#────────────────────
-# • https://search.nixos.org/options?channel=24.11&show=time.hardwareClockInLocalTime
-# • https://search.nixos.org/options?channel=24.11&show=time.timeZone
-
 { config, ... }: { time = {
 
 	# If set, keep the hardware clock in local time instead of UTC.
