@@ -76,9 +76,9 @@
 			opti-jpg = "jpegoptim -s -v *.jpg";
 			opti-jpeg = "jpegoptim -s -v *.jpeg";
 			opti-png = "oxipng --strip all -v *.png";
-			jpg-jxl = "parallel cjxl '{.}' '{.}'.jxl -v ::: *.jpg";
-			jpeg-jxl = "parallel cjxl '{.}' '{.}'.jxl -v ::: *.jpeg";
-			png-jxl = "parallel cjxl '{.}' '{.}'.jxl -d 0 -v ::: *.png";
+			jpg-jxl = "parallel cjxl '{}' '{.}'.jxl -v ::: *.jpg";
+			jpeg-jxl = "parallel cjxl '{}' '{.}'.jxl -v ::: *.jpeg";
+			png-jxl = "parallel cjxl '{}' '{.}'.jxl -d 0 -v ::: *.png";
 
 			# List.
 			l = "lsd --group-dirs first";
