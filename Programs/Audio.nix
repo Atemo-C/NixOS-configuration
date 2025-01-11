@@ -25,4 +25,4 @@
 		pkgs.soundfont-generaluser
 	];
 
-}
+}; }
