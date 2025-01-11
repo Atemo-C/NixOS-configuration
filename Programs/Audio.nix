@@ -1,21 +1,28 @@
-{ pkgs, ... }: { environment.systemPackages = [
+{ pkgs, ... }: { environment = {
 
-	# A lightweight and versatile audio player.
-	pkgs.audacious
+	# Adds MIDI soundfonts (if present) to /run/current-system/sw.
+	# Why this does not seem to be done by default is beyond me.
+	pathsToLink = [ "/share/soundfonts" ];
 
-	# View and edit tags for various audio files.
-	pkgs.easytag
+	# Audio packages to install.
+	systemPackages = [
+		# A lightweight and versatile audio player.
+		pkgs.audacious
 
-	# Sound editor with graphical UI.
-	pkgs.audacity
+		# View and edit tags for various audio files.
+		pkgs.easytag
 
-	# Audio effects for PipeWire applications.
-	pkgs.unstable.easyeffects
+		# Sound editor with graphical UI.
+		pkgs.audacity
 
-	# Midi sound fonts.
-	pkgs.soundfont-fluid
-	pkgs.soundfont-arachno
-	pkgs.soundfont-ydp-grand
-	pkgs.soundfont-generaluser
+		# Audio effects for PipeWire applications.
+		pkgs.unstable.easyeffects
 
-]; }
+		# Midi sound fonts.
+		pkgs.soundfont-fluid
+		pkgs.soundfont-arachno
+		pkgs.soundfont-ydp-grand
+		pkgs.soundfont-generaluser
+	];
+
+}
