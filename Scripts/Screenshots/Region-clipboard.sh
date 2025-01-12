@@ -7,4 +7,5 @@ set -euo pipefail
 # • Copies the screenshot to the clipboard.
 hyprshot \
 	--mode region \
+	--freeze \
 	--clipboard-only

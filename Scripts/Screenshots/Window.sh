@@ -8,5 +8,6 @@ set -euo pipefail
 # • Sets the name of the screenshot.
 hyprshot \
 	--mode window \
+	--freeze \
 	--output-folder "$HOME/Images/Screenshots" \
 	--filename Screenshot"$(echo ' ')""$(date +'%d-%m-%Y %H-%M-%S')".png
