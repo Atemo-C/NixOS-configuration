@@ -17,7 +17,7 @@
 		pkgs.thunderbird-bin
 
 		# Featureful free software BitTorrent client.
-		pkgs.unstable.qbittorrent
+		pkgs.qbittorrent
 
 		# Command-line program to download image-galleries and collections from several image hosting sites.
 		pkgs.gallery-dl

@@ -4,12 +4,12 @@
 	pkgs.desmume
 
 	# PlayStation 1 emulator.
-	pkgs.unstable.duckstation
+	pkgs.duckstation
 
 	# PlayStation 2 emulator.
-	pkgs.unstable.pcsx2
+	pkgs.pcsx2
 
 	# PlayStation emulator.
-	pkgs.unstable.rpcs3
+	pkgs.rpcs3
 
 ]; }

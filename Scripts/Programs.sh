@@ -35,12 +35,13 @@ Programs=(
 	"  Enable crosshair     A simple red-dot crosshair"
 	"󰽅  Disable crosshair    Closes the active crosshair/s"
 	"  DeSmuME              Nintendo DS/I emulator"
+	"  DuckStation          Playstation 1 emulator"
+	"  PCSX2                PlayStation 2 emulator"
+	"  RPCS3                PlayStation 3 emulator"
 	"  Jstest               Gamepad / controller tester"
 	"󰍳  PrismLauncher        Minecraft Launcher"
 	"󰍳  Minetest             Open source voxel game engine"
 	"󰍳  NBT Explorer         NBT Explorer and editor"
-	"  RPCS3                PlayStation 3 emulator"
-	"  PCSX2                PlayStation 2/1 emulator"
 	"  Sober                Roblox client"
 	"  Steam                Valve winning by doing nothing"
 	"  D.D.D                That's not my neighbor"
@@ -186,6 +187,15 @@ Program=$(
 [ "$Program" = "  DeSmuME              Nintendo DS/I emulator" ] &&
 	nohup desmume > /dev/null 2>&1 &
 
+[ "$Program" = "  DuckStation          Playstation 1 emulator" ] &&
+	nohup duckstation > /dev/null 2>&1 &
+
+[ "$Program" = "  PCSX2                PlayStation 2/1 emulator" ] &&
+	nohup pcsx2-qt > /dev/null 2>&1 &
+
+[ "$Program" = "  RPCS3                PlayStation 3 emulator" ] &&
+	nohup rpcs3 > /dev/null 2>&1 &
+
 [ "$Program" = "  Jstest               Gamepad / controller tester" ] &&
 	nohup jstest-gtk > /dev/null 2>&1 &
 
@@ -197,12 +207,6 @@ Program=$(
 
 [ "$Program" = "󰍳  NBT Explorer         NBT Explorer and editor" ] &&
 	nohup page.codeberg.JakobDev.jdNBTExplorer > /dev/null 2>&1 &
-
-[ "$Program" = "  RPCS3                PlayStation 3 emulator" ] &&
-	nohup net.rpcs3.RPCS3 > /dev/null 2>&1 &
-
-[ "$Program" = "  PCSX2                PlayStation 2/1 emulator" ] &&
-	nohup net.pcsx2.PCSX2 > /dev/null 2>&1 &
 
 [ "$Program" = "  Sober                Roblox client" ] &&
 	nohup org.vinegarhq.Sober > /dev/null 2>&1 &

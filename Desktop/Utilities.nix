@@ -1,7 +1,7 @@
 { pkgs, ... }: { environment.systemPackages = [
 
 	# LXQt PolicyKit agent.
-	pkgs.unstable.lxqt.lxqt-policykit
+	pkgs.lxqt.lxqt-policykit
 
 	# Wallpaper utility.
 	pkgs.unstable.hyprpaper
