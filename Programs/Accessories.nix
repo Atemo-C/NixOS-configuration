@@ -7,6 +7,6 @@
 	pkgs.gnome-clocks
 
 	# Offline password manager with many features.
-	pkgs.unstable.keepassxc
+	pkgs.keepassxc
 
 ]; }
