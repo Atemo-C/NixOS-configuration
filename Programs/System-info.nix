@@ -51,7 +51,7 @@
 				{
 					type = "cpu";
 					key = "Cores";
-					format = "{3} cores and {4} threads at {7}Ghz";
+					format = "{3} cores and {4} threads at {7}";
 				}
 				"break"
 				{
