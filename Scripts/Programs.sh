@@ -155,7 +155,7 @@ Program=$(
 	nohup blender > /dev/null 2>&1 &
 
 [ "$Program" = "  Cura                 3D printing" ] &&
-	nohup QT_QPA_PLATFORM=xcb QT_STYLE_OVERRIDE="" com.ultimaker.cura > /dev/null 2>&1 &
+	nohup com.ultimaker.cura > /dev/null 2>&1 &
 
 [ "$Program" = "  BTOP                 Terminal-based system monitor" ] &&
 	nohup $TERMINAL -e btop > /dev/null 2>&1 &
