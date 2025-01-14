@@ -544,6 +544,8 @@
 			# GIMP-specific settings.
 			"center, title: (Open Image), class: (.gimp-2.10-wrapped_)"
 			"size 800 600, title: (Open Image), class: (.gimp-2.10-wrapped_)"
+			"center, title: (Save Image), class: (.gimp-2.10-wrapped_)"
+			"size 800 600, title: (Save Image), class: (.gimp-2.10-wrapped_)"
 
 			# Replacement for "no gaps when only."
 			"prop bordersize 0, floating:0, onworkspace:w[tv1]"
