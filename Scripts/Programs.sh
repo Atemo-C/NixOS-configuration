@@ -115,7 +115,7 @@ Program=$(
 )
 
 [ "$Program" = " " ] &&
-	nohup bash "/etc/nixos/Desktop/Scripts/Program launcher.sh" > /dev/null 2>&1 &
+	nohup bash "/etc/nixos/Scripts/Program launcher.sh" > /dev/null 2>&1 &
 
 [ "$Program" = "                     󰌧  Run launcher                     " ] &&
 	nohup tofi-drun --drun-launch=true > /dev/null 2>&1 &
@@ -179,10 +179,10 @@ Program=$(
 	nohup xdg-open "https://localhost:631/" > /dev/null 2>&1 &
 
 [ "$Program" = "  Enable crosshair     A simple red-dot crosshair" ] &&
-	nohup bash /etc/nixos/Desktop/Scripts/Crosshair/Crosshair-start.sh > /dev/null 2>&1 &
+	nohup dash /etc/nixos/Scripts/Crosshair/Crosshair-start.sh > /dev/null 2>&1 &
 
 [ "$Program" = "󰽅  Disable crosshair    Closes the active crosshair/s" ] &&
-	nohup bash /etc/nixos/Desktop/Scripts/Crosshair/Crosshair-kill.sh > /dev/null 2>&1 &
+	nohup dash /etc/nixos/Scripts/Crosshair/Crosshair-kill.sh > /dev/null 2>&1 &
 
 [ "$Program" = "  DeSmuME              Nintendo DS/I emulator" ] &&
 	nohup desmume > /dev/null 2>&1 &
@@ -274,7 +274,7 @@ Program=$(
 	nohup gimp > /dev/null 2>&1 &
 
 [ "$Program" = "  Hyprpaper            Set desktop background/wallpaper" ] &&
-	nohup bash "/etc/nixos/Desktop/Scripts/Hyprpaper.sh" > /dev/null 2>&1 &
+	nohup bash "/etc/nixos/Scripts/Hyprpaper.sh" > /dev/null 2>&1 &
 
 [ "$Program" = "  Inkscape             Vector image manipulation" ] &&
 	nohup inkscape > /dev/null 2>&1 &

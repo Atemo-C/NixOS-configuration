@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/dash
 
 feh /etc/nixos/Desktop/Scripts/Crosshair/Crosshair.png & sleep 0.5 &&
 hyprctl dispatch togglefloating class:feh &&

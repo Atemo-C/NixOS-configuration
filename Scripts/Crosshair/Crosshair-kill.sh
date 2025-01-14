@@ -1,3 +1,3 @@
-#!/usr/bin/env bash
+#!/bin/dash
 
 pkill feh && notify-send "Crosshair/s killed"
