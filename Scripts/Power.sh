@@ -32,7 +32,7 @@ Choice=$(
 )
 
 [ "$Choice" = " " ] &&
-	nohup bash "/etc/nixos/Desktop/Scripts/Power menu.sh"
+	nohup bash "/etc/nixos/Scripts/Power menu.sh"
 
 [ "$Choice" = "󰍹  Turn off display/s" ] &&
 	sleep 0.2 && hyprctl dispatcher dpms off
@@ -54,7 +54,7 @@ Choice=$(
 		systemctl suspend
 
 	[ "$Choice" = "  Back" ] &&
-		nohup bash "/etc/nixos/Desktop/Scripts/Power menu.sh"
+		nohup bash "/etc/nixos/Scripts/Power menu.sh"
 
 
 [ "$Choice" = "󰒲  Hibernate" ] &&
@@ -74,7 +74,7 @@ Choice=$(
 		systemctl hibernate
 
 	[ "$Choice" = "  Back" ] &&
-		nohup bash "/etc/nixos/Desktop/Scripts/Power menu.sh"
+		nohup bash "/etc/nixos/Scripts/Power menu.sh"
 
 
 [ "$Choice" = "󱌂  Hybrid sleep" ] &&
@@ -94,7 +94,7 @@ Choice=$(
 		systemctl hybrid-sleep
 
 	[ "$Choice" = "  Back" ] &&
-		nohup bash "/etc/nixos/Desktop/Scripts/Power menu.sh"
+		nohup bash "/etc/nixos/Scripts/Power menu.sh"
 
 
 [ "$Choice" = "󰜉  Reboot" ] &&
@@ -114,7 +114,7 @@ Choice=$(
 		systemctl reboot
 
 	[ "$Choice" = "  Back" ] &&
-		nohup bash "/etc/nixos/Desktop/Scripts/Power menu.sh"
+		nohup bash "/etc/nixos/Scripts/Power menu.sh"
 
 
 [ "$Choice" = "  Reboot to UEFI firmware" ] &&
@@ -134,7 +134,7 @@ Choice=$(
 		systemctl reboot --firmware-setup
 
 	[ "$Choice" = "  Back" ] &&
-		nohup bash "/etc/nixos/Desktop/Scripts/Power menu.sh"
+		nohup bash "/etc/nixos/Scripts/Power menu.sh"
 
 
 [ "$Choice" = "  Power off" ] &&
@@ -154,7 +154,7 @@ Choice=$(
 		systemctl poweroff
 
 	[ "$Choice" = "  Back" ] &&
-		nohup bash "/etc/nixos/Desktop/Scripts/Power menu.sh"
+		nohup bash "/etc/nixos/Scripts/Power menu.sh"
 
 
 [ "$Choice" = "󰺟  Halt" ] &&
@@ -175,7 +175,7 @@ Choice=$(
 		systemctl poweroff
 
 	[ "$Choice" = "  Back" ] &&
-		nohup bash "/etc/nixos/Desktop/Scripts/Power menu.sh"
+		nohup bash "/etc/nixos/Scripts/Power menu.sh"
 
 
 [ "$Choice" = "󰗼  Exit" ] &&
