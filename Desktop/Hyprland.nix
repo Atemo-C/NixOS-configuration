@@ -541,6 +541,10 @@
 			"tile, class: (sober)"
 			"prop immediate, class: (sober)"
 
+			# GIMP-specific settings.
+			"center, title: (Open Image), class: (.gimp-2.10-wrapped_)"
+			"size 800 600, title: (Open Image), class: (.gimp-2.10-wrapped_)"
+
 			# Replacement for "no gaps when only."
 			"prop bordersize 0, floating:0, onworkspace:w[tv1]"
 			"prop rounding 0, floating:0, onworkspace:w[tv1]"
