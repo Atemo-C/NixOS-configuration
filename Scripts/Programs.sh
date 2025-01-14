@@ -179,10 +179,10 @@ Program=$(
 	nohup xdg-open "https://localhost:631/" > /dev/null 2>&1 &
 
 [ "$Program" = "  Enable crosshair     A simple red-dot crosshair" ] &&
-	nohup dash /etc/nixos/Desktop/Scripts/Crosshair/Crosshair-start.sh > /dev/null 2>&1 &
+	nohup bash /etc/nixos/Desktop/Scripts/Crosshair/Crosshair-start.sh > /dev/null 2>&1 &
 
 [ "$Program" = "󰽅  Disable crosshair    Closes the active crosshair/s" ] &&
-	nohup dash /etc/nixos/Desktop/Scripts/Crosshair/Crosshair-kill.sh > /dev/null 2>&1 &
+	nohup bash /etc/nixos/Desktop/Scripts/Crosshair/Crosshair-kill.sh > /dev/null 2>&1 &
 
 [ "$Program" = "  DeSmuME              Nintendo DS/I emulator" ] &&
 	nohup desmume > /dev/null 2>&1 &
