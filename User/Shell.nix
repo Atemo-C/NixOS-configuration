@@ -45,7 +45,7 @@
 			nix-update-now = "sudo nixos-rebuild switch --use-remote-sudo --quiet";
 			nix-update-boot = "sudo nixos-rebuild boot --use-remote-sudo --quiet";
 			nix-upgrade-now = "sudo nixos-rebuild switch --upgrade --use-remote-sudo --quiet";
-			upgrade-boot = "sudo nixos-rebuild boot --upgrade --use-remote-sudo --quiet";
+			nix-upgrade-boot = "sudo nixos-rebuild boot --upgrade --use-remote-sudo --quiet";
 
 			# Flatpaks and FlatHub.
 			enable-flathub = "flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo && flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo";
