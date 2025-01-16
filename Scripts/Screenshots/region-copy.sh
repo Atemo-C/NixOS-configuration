@@ -2,4 +2,4 @@
 
 set -euo pipefail
 
-grim -g "$(slurp)" | wl-copy && notify-send -t 1500 "Screenshot copied."
+grim -g "$(slurp)" - | wl-copy && notify-send -t 1500 "Screenshot copied."
