@@ -85,17 +85,20 @@
 		};
 
 		# Screenshots shortcut module.
-		# • [LMB] Select a region to screenshot.
-		# • [RMB] Take a full-screen screenshot.
-		# • [MMB] Select a window to screenshot.
-		# • [FMB] Select a region to screenshot without saving.
-		# • [BMB] Take a full-screen screenshot without saving.
+		# • [LMB] Select a region to screenshot without saving.
+		# • [RMB] Take a single-monitor screenshot without saving.
+		# • [MMB] Take an all-monitors screenshot without saving.
+		# • [BMB] Select a region to screeshot.
+		# • [FMB] Take a single-monitor screenshot.
+		# • [U/D] Take an all-monitors screenshot.
 		"image#screenshot" = {
-			on-click = "bash /etc/nixos/Scripts/Screenshots/Region.sh";
-			on-click-right = "bash /etc/nixos/Scripts/Screenshots/Fullscreen.sh";
-			on-click-middle = "bash /etc/nixos/Scripts/Screenshots/Window.sh";
-			on-click-backward = "bash /etc/nixos/Scripts/Screenshots/Region-clipboard.sh";
-			on-click-forward = "bash /etc/nixos/Scripts/Screenshots/Fullscreen-clipboard.sh";
+			on-click = "bash /etc/nixos/Scripts/Screenshots/region-copy.sh";
+			on-click-right = "bash /etc/nixos/Scripts/Screenshots/1screen-copy.sh";
+			on-click-middle = "bash /etc/nixos/Scrpts/Screenshots/allscreen-copy.sh";
+			on-click-backward = "bash /etc/nixos/Scripts/Screenshots/region-save.sh";
+			on-click-forward = "bash /etc/nixos/Scripts/Screenshots/1scren-save.sh";
+			on-scroll-down = "bash /etc/nixos/Scripts/Screenshots/allscreen-save.sh";
+			on-scroll-up = "bash /etc/nixos/Scripts/Screenshots/allscreen-save.sh";
 			path = "/etc/nixos/Icons/Screenshot.png";
 			size = 22;
 		};

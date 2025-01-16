@@ -3,6 +3,9 @@
 	# Extremely simplistic image viewing.
 	pkgs.feh
 
+	# Take screenshots with grim and slurp.
+	pkgs.grim pkgs.slurp
+
 	# The GNU Image Manipulation Program (with plugins).
 	pkgs.gimp-with-plugins
 
@@ -32,9 +35,6 @@
 
 	# A simple color chooser written in GTK3.
 	pkgs.gcolor3
-
-	# Hyprshot is an utility to easily take screenshots in Hyprland using your mouse.
-	pkgs.unstable.hyprshot
 
 	# Multithreaded lossless PNG compression optimizer.
 	pkgs.oxipng
