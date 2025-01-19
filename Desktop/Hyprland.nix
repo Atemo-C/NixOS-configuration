@@ -484,12 +484,12 @@
 		# Window rules.
 		windowrulev2 = [
 			# Floating windows [By title].
-			"float, title: (About*)"
+			"float, title: .*About.*"
 			"float, title: (Authentication Required)"
 			"float, title: (Blender Preferences)"
 			"float, title: (Close LibreWolf)"
 			"float, title: (File Operation Progress)"
-			"float, title: (Opening *), class:(librewolf)"
+			"float, title: .*Opening.*, class:(librewolf)"
 			"float, title: (PCSX2 Settings)"
 			"float, title: (Picture-in-Picture)"
 			"float, title: (Steam Settings)"
@@ -525,7 +525,7 @@
 			"suppressevent maximize, title: (Revolt)"
 
 			# Fullscreening windows [By class].
-			"fullscreen, 1, class: (Better than Adventure*)"
+			"fullscreen, 1, class: .*Better than Adventure.*"
 
 			# XWayland videobridge-specific settings.
 			"prop noanim, class: (xwaylandvideobridge)"
@@ -552,13 +552,14 @@
 			"prop immediate, class: (sober)"
 
 			# GIMP-specific settings.
-			"center, title: (Open Image), class: (.gimp-2.10-wrapped_)"
-			"size 800 600, title: (Open Image), class: (.gimp-2.10-wrapped_)"
-			"center, title: (Save Image), class: (.gimp-2.10-wrapped_)"
-			"size 800 600, title: (Save Image), class: (.gimp-2.10-wrapped_)"
-			"center, title: (Export Image), class: (.gimp-2.10-wrapped_)"
-			"size 800 600, title: (Export Image), class: (.gimp-2.10-wrapped_)"
-			"center, title: (Print), class: (.gimp-2.10-wrapped_)"
+			"center, title: (Open Image), class: .*gimp.*"
+			"size 800 600, title: (Open Image), class: .*gimp.*"
+			"center, title: (Save Image), class: .*gimp.*"
+			"size 800 600, title: (Save Image), class: .*gimp.*"
+			"center, title: (Export Image), class: .*gimp.*"
+			"size 800 600, title: .*Export Image.*, class: .*gimp.*"
+			"center, title: (Print), class: .*gimp.*"
+
 
 			# Replacement for "no gaps when only."
 			"prop bordersize 0, floating:0, onworkspace:w[tv1]"
