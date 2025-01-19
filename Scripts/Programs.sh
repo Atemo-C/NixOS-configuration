@@ -62,7 +62,7 @@ Programs=(
 	"󰒖  Warpinator           Local file sharing"
 	" "
 	"  Flatseal             Manage flatpak permissions"
-	"  Calculator           Calculator"
+	"  Mini-calc            Calculator"
 	" "
 	"  Gcolor               Advanced color picker"
 	"  Hyprpicker           Screen color picker"
@@ -259,8 +259,8 @@ Program=$(
 [ "$Program" = "  Flatseal             Manage flatpak permissions" ] &&
 	nohup com.github.tchx84.Flatseal > /dev/null 2>&1 &
 
-[ "$Program" = "  Calculator           Calculator" ] &&
-	nohup gnome-calculator > /dev/null 2>&1 &
+[ "$Program" = "  Mini-calc            Calculator" ] &&
+	nohup alacritty --class minicalc -e mini-calc > /dev/null 2>&1 &
 
 [ "$Program" = "  Gcolor               Advanced color picker" ] &&
 	nohup gcolor3 > /dev/null 2>&1 &

@@ -533,7 +533,11 @@
 			"noinitialfocus, class: (xwaylandvideobridge)"
 			"opacity 0.0 override 0.0 override, class: (xwaylandvideobridge)"
 
-			# CPU-X (TUI)-specific settings.
+			# Mini-calc specific settings.
+			"float, class: (minicalc)"
+			"size 500 377, class: (minicalc)"
+
+			# CPU-X (TUI) specific settings.
 			"center, class: (CPU-X)"
 			"float, class: (CPU-X)"
 			"size 600 425, class: (CPU-X)"
@@ -552,6 +556,9 @@
 			"size 800 600, title: (Open Image), class: (.gimp-2.10-wrapped_)"
 			"center, title: (Save Image), class: (.gimp-2.10-wrapped_)"
 			"size 800 600, title: (Save Image), class: (.gimp-2.10-wrapped_)"
+			"center, title: (Export Image), class: (.gimp-2.10-wrapped_)"
+			"size 800 600, title: (Export Image), class: (.gimp-2.10-wrapped_)"
+			"center, title: (Print), class: (.gimp-2.10-wrapped_)"
 
 			# Replacement for "no gaps when only."
 			"prop bordersize 0, floating:0, onworkspace:w[tv1]"
@@ -640,6 +647,9 @@
 
 			# Audio tweaks with Easy Effects.
 			"easyeffects --gapplication-service"
+
+			# Terminal emulator as a daemon.
+			"alacritty --daemon"
 		];
 	};
 
