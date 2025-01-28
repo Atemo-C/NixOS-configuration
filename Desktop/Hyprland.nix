@@ -527,6 +527,10 @@
 			# Fullscreening windows [By class].
 			"fullscreen, 1, class: .*Better than Adventure.*"
 
+			# Start programs with a groupbar.
+			"group, always, class: (.virt-manager-wrapped), title:(Virtual Machine Manager)"
+			"group, always, class: (xclicker)"
+
 			# XWayland videobridge-specific settings.
 			"prop noanim, class: (xwaylandvideobridge)"
 			"prop nofocus, class: (xwaylandvideobridge)"
