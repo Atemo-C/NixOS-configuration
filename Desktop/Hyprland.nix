@@ -524,6 +524,11 @@
 			"group, always, class: (.virt-manager-wrapped), title:(Virtual Machine Manager)"
 			"group, always, title: (XClicker)"
 
+			# qBittorrent-specific settings.
+			"float, class: (org.qbittorrent.qBittorrent)"
+			"tile, class: (org.qbittorrent.qBittorrent), title: .*qBittorrent v.*"
+			"size 1280 720, class: (org.qbittorrent.qBittorrent)"
+
 			# XWayland videobridge-specific settings.
 			"prop noanim, class: (xwaylandvideobridge)"
 			"prop nofocus, class: (xwaylandvideobridge)"
