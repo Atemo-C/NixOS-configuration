@@ -1,4 +1,4 @@
-{ config, ... }: { systemd.services = {
+{ config, lib, pkgs, ... }: { systemd.services = {
 
 	# Alternative suspend command.
 	sleep.serviceConfig.ExecStart = lib.mkForce "${pkgs.pm-suspend}/bin/pm-suspend";
