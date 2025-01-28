@@ -247,7 +247,7 @@
 			# Whether to enable direct scanout.
 			# Direct scanout attempts to reduce lag when there is only one fullscreen application on a screen.
 			# It is recommended to set this to false if fullscreen applications show graphical glitches.
-			direct_scanout = true;
+			direct_scanout = false;
 		};
 
 		# Cursor settings.
