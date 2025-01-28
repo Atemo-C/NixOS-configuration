@@ -1,12 +1,12 @@
 { config, ... }: { systemd.services = {
 
 	# Alternative suspend command.
-	sleep.serviceConfig.ExecStart = lib.mkForce "/run/current-system/sw/bin/pm-suspend";
+	sleep.serviceConfig.ExecStart = lib.mkForce "${pkgs.pm-suspend}/bin/pm-suspend";
 
 	# Alternative hibernate command.
-	hibernate.serviceConfig.ExecStart = lib.mkForce "/run/current-system/sw/bin/pm-hibernate";
+	hibernate.serviceConfig.ExecStart = lib.mkForce "${pkgs.pm-suspend}/bin/pm-hibernate";
 
 	# Alternative hybrid sleep command.
-	hybrid-sleep.serviceConfig.ExecStart = lib.mkForce "/run/current-system/sw/bin/pm-suspend-hybrid";
+	hybrid-sleep.serviceConfig.ExecStart = lib.mkForce "${pkgs.pm-suspend}/bin/pm-suspend-hybrid";
 
 }; }
