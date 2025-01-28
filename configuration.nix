@@ -93,8 +93,9 @@
 		./Packaging/Unstable.nix
 		./Packaging/Universal.nix
 
-		# Power module.
-		./Power.nix
+		# Power modules.
+#		./Power/Alternate-suspend.nix
+		./Power/Power.nix
 
 		# Printing and scanning modules.
 		./Printing/General-printing.nix
