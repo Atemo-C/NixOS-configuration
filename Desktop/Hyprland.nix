@@ -483,7 +483,21 @@
 
 		# Window rules.
 		windowrulev2 = [
-			# Floating windows [By title].
+			# Floating windows.
+			"float, class: (file-roller)"
+			"float, class: (galculator)"
+			"float, class: (.gamescope-wrapped)"
+			"float, class: (gcolor2)"
+			"float, class: (gcolor3)"
+			"float, class: (lagrange), title: (Preferences)"
+			"float, class: (lxqt-policykit-agent)"
+			"float, class: (org.gnome.Calculator)"
+			"float, class: (scrcpy)"
+			"float, class: (waydroid.)"
+			"float, class: (Waydroid)"
+			"float, class: (xdg-desktop-portal-gtk)"
+			"float, class: (xfburn)"
+			"float, class: (zenity)"
 			"float, title: .*About.*"
 			"float, title: (Authentication Required)"
 			"float, title: (Blender Preferences)"
@@ -496,50 +510,25 @@
 			"float, title: (waypaper)"
 			"float, title: (Xwayland on :12)"
 
-			# Floating windows [By class].
-			"float, class: (file-roller)"
-			"float, class: (galculator)"
-			"float, class: (org.gnome.Calculator)"
-			"float, class: (.gamescope-wrapped)"
-			"float, class: (gcolor3)"
-			"float, class: (gcolor2)"
-			"float, class: (lxqt-policykit-agent)"
-			"float, class: (scrcpy)"
-			"float, class: (waydroid.)"
-			"float, class: (Waydroid)"
-			"float, class: (xdg-desktop-portal-gtk)"
-			"float, class: (xfburn)"
-			"float, class: (zenity)"
-
-			# Floating windows [By both].
-			"float, class: (lagrange), title: (Preferences)"
-
-			# Flotaing [By classa and title].
-			"float, class: (UltiMaker-Cura), title: (Preferences)"
-
-			# Tilling windows [By title].
-			"tile, title: (Select an image)"
+			# Tilling windows.
 			"tile, title: (Kurso de Esperanto Kape)"
+			"tile, title: (Select an image)"
 
-			# Event suppression [By title].
+			# Event suppression.
 			"suppressevent maximize, title: (Revolt)"
 
-			# Fullscreening windows [By class].
+			# Fullscreen windows.
 			"fullscreen, 1, class: .*Better than Adventure.*"
 
-			# Start programs with a groupbar.
+			# Groupbar rules.
 			"group, always, class: (.virt-manager-wrapped), title:(Virtual Machine Manager)"
-			"group, always, class: (xclicker)"
+			"group, always, title: (XClicker)"
 
 			# XWayland videobridge-specific settings.
 			"prop noanim, class: (xwaylandvideobridge)"
 			"prop nofocus, class: (xwaylandvideobridge)"
 			"noinitialfocus, class: (xwaylandvideobridge)"
 			"opacity 0.0 override 0.0 override, class: (xwaylandvideobridge)"
-
-			# Mini-calc specific settings.
-			"float, class: (minicalc)"
-			"size 500 377, class: (minicalc)"
 
 			# CPU-X (TUI) specific settings.
 			"center, class: (CPU-X)"
@@ -564,8 +553,7 @@
 			"size 800 600, title: .*Export Image.*, class: .*gimp.*"
 			"center, title: (Print), class: .*gimp.*"
 
-
-			# Replacement for "no gaps when only."
+			# Replacement for Hyprland's "no gaps when only."
 			"prop bordersize 0, floating:0, onworkspace:w[tv1]"
 			"prop rounding 0, floating:0, onworkspace:w[tv1]"
 			"prop bordersize 0, floating:0, onworkspace:f[1]"
