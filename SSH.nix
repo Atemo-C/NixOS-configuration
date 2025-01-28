@@ -1,7 +1,7 @@
 { config, ... }: {
 
 	# List of TCP ports on which incoming SSH connections are accepted.
-	networking.firewall.allowedTCPPorts = [ 1263 ];
+	networking.firewall.allowedTCPPorts = [ "${config.services.openssh.ports}" ];
 
 	services.openssh = {
 		# Whether to enable the OpenSSH daemon.
