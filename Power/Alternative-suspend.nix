@@ -1,7 +1,8 @@
 { config, lib, pkgs, ... }: { systemd.services = {
 
-	# Alternative suspend command.
+	# Alternative suspend commands.
 	suspend.serviceConfig.ExecStart = lib.mkForce "${pkgs.pmutils}/bin/pm-suspend";
+	systemd-suspend.serviceConfig.ExecStart = lib.mkForce "${pkgs.pmutils}/bin/pm-suspend";
 
 	# Alternative hibernate command.
 	hibernate.serviceConfig.ExecStart = lib.mkForce "${pkgs.pmutils}/bin/pm-hibernate";
