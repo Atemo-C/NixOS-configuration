@@ -646,6 +646,9 @@
 			# Audio tweaks with Easy Effects.
 			"easyeffects --gapplication-service"
 
+			# Fcitx5 input method (DBus).
+			"fcitx5"
+
 			# Terminal emulator as a daemon.
 			"alacritty --daemon"
 		];
