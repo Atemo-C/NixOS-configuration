@@ -71,6 +71,7 @@
 #		./GPU/VA-API-Intel.nix
 
 		# Input modules.
+		./Input/IBus.nix
 		./Input/Input-utilities.nix
 		./Input/OpenTabletDriver.nix
 		./Input/Power-button.nix
