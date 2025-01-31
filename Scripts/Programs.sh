@@ -220,16 +220,16 @@ Program=$(
 #	nohup nvidia-offload steam-run "$HOME/Programs/That's not my neighbor/That's not my neighbor.x86_64" > /dev/null 2>&1 &
 
 [ "$Program" = "󰙯  Vesktop              Discord, but Vencorded" ] &&
-	nohup vesktop --ozone-platform=x11 > /dev/null 2>&1 &
-#	nohup vesktop > /dev/null 2>&1 &
+#	nohup vesktop --ozone-platform=x11 > /dev/null 2>&1 &
+	nohup vesktop > /dev/null 2>&1 &
 
 [ "$Program" = "󰭻  Element              Actually, no need for spyware" ] &&
-	nohup element-desktop --ozone-platform=x11 > /dev/null 2>&1 &
-#	nohup element-desktop > /dev/null 2>&1 &
+#	nohup element-desktop --ozone-platform=x11 > /dev/null 2>&1 &
+	nohup element-desktop > /dev/null 2>&1 &
 
 [ "$Program" = "󰭻  Revolt               FOSS alternative to Discord" ] &&
-	nohup revolt-desktop --ozone-platform=x11 > /dev/null 2>&1 &
-#	nohup revolt-desktop > /dev/null 2>&1 &
+#	nohup revolt-desktop --ozone-platform=x11 > /dev/null 2>&1 &
+	nohup revolt-desktop > /dev/null 2>&1 &
 
 [ "$Program" = "  Freetube             Watch YouTube videos" ] &&
 #	nohup freetube --ozone-platform=x11 > /dev/null 2>&1 &
