@@ -25,7 +25,7 @@
 	};
 
 	# Audio effects for PipeWire applications.
-	home-manager.users.users.${config.custom.name}.services.easyeffects = {
+	home-manager.users.${config.custom.name}.services.easyeffects = {
 		# Whether to enable EasyEffects.
 		# Necessitates programs.dconf.enable to be true.
 		enable = true;
