@@ -31,7 +31,7 @@
 		enable = true;
 
 		# The EasyEffects package to use.
-		package = pkgs.unstable.easyeffects
+		package = pkgs.unstable.easyeffects;
 	};
 
 }
