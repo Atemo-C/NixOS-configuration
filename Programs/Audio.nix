@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ config, pkgs, ... }: {
 
 	environment = {
 		# Adds MIDI soundfonts (if present) to /run/current-system/sw.
