@@ -221,19 +221,19 @@ Program=$(
 
 [ "$Program" = "󰙯  Vesktop              Discord, but Vencorded" ] &&
 #	nohup vesktop --ozone-platform=x11 > /dev/null 2>&1 &
-	nohup vesktop > /dev/null 2>&1 &
+	nohup vesktop --ozone-platform=wayland > /dev/null 2>&1 &
 
 [ "$Program" = "󰭻  Element              Actually, no need for spyware" ] &&
 #	nohup element-desktop --ozone-platform=x11 > /dev/null 2>&1 &
-	nohup element-desktop > /dev/null 2>&1 &
+	nohup element-desktop --ozone-platform=wayland > /dev/null 2>&1 &
 
 [ "$Program" = "󰭻  Revolt               FOSS alternative to Discord" ] &&
 #	nohup revolt-desktop --ozone-platform=x11 > /dev/null 2>&1 &
-	nohup revolt-desktop > /dev/null 2>&1 &
+	nohup revolt-desktop --ozone-platform=wayland > /dev/null 2>&1 &
 
 [ "$Program" = "  Freetube             Watch YouTube videos" ] &&
 #	nohup freetube --ozone-platform=x11 > /dev/null 2>&1 &
-	nohup freetube > /dev/null 2>&1 &
+	nohup freetube --ozone-platform=wayland > /dev/null 2>&1 &
 
 [ "$Program" = "󰋊  Gnome disk utility   GNOME's disk utility" ] &&
 	nohup gnome-disks > /dev/null 2>&1 &
