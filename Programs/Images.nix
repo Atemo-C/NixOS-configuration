@@ -9,6 +9,9 @@
 	# The GNU Image Manipulation Program (with plugins).
 	pkgs.gimp-with-plugins
 
+	# Lightweight and flexible command-line JSON processor (here for screenshots).
+	pkgs.jq
+
 	# A free and open source painting application and GMic plugin for Krita.
 	pkgs.krita pkgs.krita-plugin-gmic
 
