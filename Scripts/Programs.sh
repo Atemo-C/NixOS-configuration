@@ -298,7 +298,7 @@ Program=$(
 	nohup xclicker > /dev/null 2>&1 &
 
 [ "$Program" = "  Kurso de Esperanto   Esperanto learning program" ] &&
-	nohup steam-run "$HOME/Programs/Kurso de Esperanto/kursokape" > /dev/null 2>&1 &
+	nohup QT_QPA_PLATFORM=xcb steam-run "$HOME/Programs/Kurso de Esperanto/kursokape" > /dev/null 2>&1 &
 
 [ "$Program" = "  KeePassXC            Password manager" ] &&
 	nohup keepassxc > /dev/null 2>&1 &
