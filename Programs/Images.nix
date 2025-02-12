@@ -3,8 +3,8 @@
 	# Extremely simplistic image viewing.
 	pkgs.feh
 
-	# Take screenshots with grim and slurp.
-	pkgs.grim pkgs.slurp
+	# Take screenshots with grimblast.
+	pkgs.unstable.grimblast
 
 	# The GNU Image Manipulation Program (with plugins).
 	pkgs.gimp-with-plugins

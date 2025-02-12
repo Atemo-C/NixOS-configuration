@@ -405,22 +405,22 @@
 
 			# Screenshots.
 			# Fullscreen screenshot (save).
-			'', PRINT, exec, bash "/etc/nixos/Scripts/Screenshots/1screen-save.sh"''
+			'', PRINT, exec, bash "/etc/nixos/Scripts/Screenshots/Monitor-save.sh"''
 
 			# Fullscreen screenshot (copy).
-			''CONTROL, PRINT, exec, bash "/etc/nixos/Scripts/Screenshots/1screen-copy.sh"''
+			''CONTROL, PRINT, exec, dash "/etc/nixos/Scripts/Screenshots/Monitor-copy.sh"''
 
 			# Region screenshot (save).
-			''SHIFT, PRINT, exec, bash "/etc/nixos/Scripts/Screenshots/region-save.sh"''
+			''SHIFT, PRINT, exec, bash "/etc/nixos/Scripts/Screenshots/Area-save.sh"''
 
 			# Region screenshot (copy).
-			''CONTROL SHIFT, PRINT, exec, bash "/etc/nixos/Scripts/Screenshots/region-copy.sh"''
+			''CONTROL SHIFT, PRINT, exec, dash "/etc/nixos/Scripts/Screenshots/Area-copy.sh"''
 
 			# All-monitors screenshot (save).
-			''ALT, PRINT, exec, bash "/etc/nixos/Scripts/Screenshots/allscreen-save.sh"''
+			''ALT, PRINT, exec, bash "/etc/nixos/Scripts/Screenshots/All-save.sh"''
 
 			# All-monitors screenshot (copy).
-			''ALT SHIFT, PRINT, exec, bash "/etc/nixos/Scripts/Screenshots/allscreen-copy.sh"''
+			''ALT SHIFT, PRINT, exec, dash "/etc/nixos/Scripts/Screenshots/All-copy.sh"''
 
 
 			# Clipboard management.

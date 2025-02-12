@@ -92,13 +92,13 @@
 		# • [FMB] Take a single-monitor screenshot.
 		# • [U/D] Take an all-monitors screenshot.
 		"image#screenshot" = {
-			on-click = "bash /etc/nixos/Scripts/Screenshots/region-copy.sh";
-			on-click-right = "bash /etc/nixos/Scripts/Screenshots/1screen-copy.sh";
-			on-click-middle = "bash /etc/nixos/Scrpts/Screenshots/allscreen-copy.sh";
-			on-click-backward = "bash /etc/nixos/Scripts/Screenshots/region-save.sh";
-			on-click-forward = "bash /etc/nixos/Scripts/Screenshots/1scren-save.sh";
-			on-scroll-down = "bash /etc/nixos/Scripts/Screenshots/allscreen-save.sh";
-			on-scroll-up = "bash /etc/nixos/Scripts/Screenshots/allscreen-save.sh";
+			on-click = "dash /etc/nixos/Scripts/Screenshots/Area-copy.sh";
+			on-click-right = "dash /etc/nixos/Scripts/Screenshots/Monitor-copy.sh";
+			on-click-middle = "dash /etc/nixos/Scrpts/Screenshots/All-copy.sh";
+			on-click-backward = "bash /etc/nixos/Scripts/Screenshots/Area-save.sh";
+			on-click-forward = "bash /etc/nixos/Scripts/Screenshots/Monitor-save.sh";
+			on-scroll-down = "bash /etc/nixos/Scripts/Screenshots/All-save.sh";
+			on-scroll-up = "bash /etc/nixos/Scripts/Screenshots/All-save.sh";
 			path = "/etc/nixos/Icons/Screenshot.png";
 			size = 22;
 		};
