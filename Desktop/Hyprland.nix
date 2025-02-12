@@ -549,8 +549,11 @@
 			"tile, class: (sober)"
 			"prop immediate, class: (sober)"
 
-			# Full-screen proton-specific settings.
-			"prop immediate, fullscreen:1, class: (steam_proton), "
+			# Fullscreen-specific tearing settings.
+			"prop immediate, fullscreen:1, class: (steam_proton)"
+			"prop immediate, fullscreen:1, class: (Luanti)"
+			"prop immediate, fullscreen:1, class: .*Better than Adventure.*"
+			"prop immediate, fullscreen:1, class: (com.mojang.minecraft)"
 
 			# GIMP-specific settings.
 			"center, title: (Open Image), class: .*gimp.*"
