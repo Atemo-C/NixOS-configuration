@@ -483,117 +483,116 @@
 
 		# Window rules.
 		windowrulev2 = [
-			# Floating windows.
-			"float, class: (file-roller)"
-			"float, class: (galculator)"
-			"float, class: (.gamescope-wrapped)"
-			"float, class: (gcolor2)"
-			"float, class: (gcolor3)"
-			"float, class: (lagrange), title: (Preferences)"
-			"float, class: (lxqt-policykit-agent)"
-			"float, class: (org.gnome.Calculator)"
-			"float, class: (scrcpy)"
-			"float, class: (waydroid.)"
-			"float, class: (Waydroid)"
-			"float, class: (xdg-desktop-portal-gtk)"
-			"float, class: (xfburn)"
-			"float, class: (zenity)"
-			"float, title: .*About.*"
-			"float, title: (Authentication Required)"
-			"float, title: (Blender Preferences)"
-			"float, title: (Close LibreWolf)"
-			"float, title: (File Operation Progress)"
-			"float, title: .*Opening.*, class:(librewolf)"
-			"float, title: (PCSX2 Settings)"
-			"float, title: (Picture-in-Picture)"
-			"float, title: (Steam Settings)"
-			"float, title: (waypaper)"
-			"float, title: (Xwayland on :12)"
+				# Floating windows.
+				"float, class: (file-roller)"
+				"float, class: (galculator)"
+				"float, class: (.gamescope-wrapped)"
+				"float, class: (gcolor2)"
+				"float, class: (gcolor3)"
+				"float, class: (lagrange), title: (Preferences)"
+				"float, class: (lxqt-policykit-agent)"
+				"float, class: (org.gnome.Calculator)"
+				"float, class: (scrcpy)"
+				"float, class: (waydroid.)"
+				"float, class: (Waydroid)"
+				"float, class: (xdg-desktop-portal-gtk)"
+				"float, class: (xfburn)"
+				"float, class: (zenity)"
+				"float, title: .*About.*"
+				"float, title: (Authentication Required)"
+				"float, title: (Blender Preferences)"
+				"float, title: (Close LibreWolf)"
+				"float, title: (File Operation Progress)"
+				"float, title: .*Opening.*, class:(librewolf)"
+				"float, title: (PCSX2 Settings)"
+				"float, title: (Picture-in-Picture)"
+				"float, title: (Steam Settings)"
+				"float, title: (waypaper)"
+				"float, title: (Xwayland on :12)"
 
-			# Tilling windows.
-			"tile, title: (Kurso de Esperanto Kape)"
-			"tile, title: (Select an image)"
+				# Tilling windows.
+				"tile, title: (Kurso de Esperanto Kape)"
+				"tile, title: (Select an image)"
+				"tile, class: (sober)"
 
-			# Event suppression.
-			"suppressevent maximize, title: (Revolt)"
+				# Event suppression.
+				"suppressevent maximize, title: (Revolt)"
 
-			# Fullscreen windows.
-			"fullscreen, 1, class: .*Better than Adventure.*"
+				# Fullscreen windows.
+				"fullscreen, 1, class: .*Better than Adventure.*"
+				"fullscreen, 1, class: (Luanti)"
 
-			# Groupbar rules.
-			"group, always, class: (.virt-manager-wrapped), title:(Virtual Machine Manager)"
-			"group, always, title: (XClicker)"
+				# Groupbar rules.
+				"group, always, class: (.virt-manager-wrapped), title:(Virtual Machine Manager)"
+				"group, always, title: (XClicker)"
 
-			# qBittorrent-specific settings.
-			"float, class: (org.qbittorrent.qBittorrent)"
-			"tile, class: (org.qbittorrent.qBittorrent), title: .*qBittorrent v.*"
-			"size 1280 720, class: (org.qbittorrent.qBittorrent)"
+				# qBittorrent-specific settings.
+				"float, class: (org.qbittorrent.qBittorrent)"
+				"tile, class: (org.qbittorrent.qBittorrent), title: .*qBittorrent v.*"
+				"size 1280 720, class: (org.qbittorrent.qBittorrent)"
 
-			# XWayland videobridge-specific settings.
-			"prop noanim, class: (xwaylandvideobridge)"
-			"prop nofocus, class: (xwaylandvideobridge)"
-			"noinitialfocus, class: (xwaylandvideobridge)"
-			"opacity 0.0 override 0.0 override, class: (xwaylandvideobridge)"
+				# XWayland videobridge-specific settings.
+				"prop noanim, class: (xwaylandvideobridge)"
+				"prop nofocus, class: (xwaylandvideobridge)"
+				"noinitialfocus, class: (xwaylandvideobridge)"
+				"opacity 0.0 override 0.0 override, class: (xwaylandvideobridge)"
 
-			# CPU-X (TUI) specific settings.
-			"center, class: (CPU-X)"
-			"float, class: (CPU-X)"
-			"size 600 425, class: (CPU-X)"
+				# CPU-X (TUI) specific settings.
+				"center, class: (CPU-X)"
+				"float, class: (CPU-X)"
+				"size 600 425, class: (CPU-X)"
 
-			# Smile-specific settings.
-			"center, class: (it.mijorus.smile)"
-			"float, class: (it.mijorus.smile)"
-			"size 320 410, class: (it.mijorus.smile)"
+				# Smile-specific settings.
+				"center, class: (it.mijorus.smile)"
+				"float, class: (it.mijorus.smile)"
+				"size 320 410, class: (it.mijorus.smile)"
 
-			# Sober-specific settings.
-			"tile, class: (sober)"
-			"prop immediate, class: (sober)"
+				# Fullscreen-specific tearing settings.
+				"prop immediate, fullscreen:1, class: (steam_proton)"
+				"prop immediate, fullscreen:1, class: (Luanti)"
+				"prop immediate, fullscreen:1, class: .*Better than Adventure.*"
+				"prop immediate, fullscreen:1, class: (com.mojang.minecraft)"
+				"prop immediate, fullscreen:1, class: (sober)"
 
-			# Fullscreen-specific tearing settings.
-			"prop immediate, fullscreen:1, class: (steam_proton)"
-			"prop immediate, fullscreen:1, class: (Luanti)"
-			"prop immediate, fullscreen:1, class: .*Better than Adventure.*"
-			"prop immediate, fullscreen:1, class: (com.mojang.minecraft)"
+				# GIMP-specific settings.
+				"center, title: (Open Image), class: .*gimp.*"
+				"size 800 600, title: (Open Image), class: .*gimp.*"
+				"center, title: (Save Image), class: .*gimp.*"
+				"size 800 600, title: (Save Image), class: .*gimp.*"
+				"center, title: (Export Image), class: .*gimp.*"
+				"size 800 600, title: .*Export Image.*, class: .*gimp.*"
+				"center, title: (Print), class: .*gimp.*"
 
-			# GIMP-specific settings.
-			"center, title: (Open Image), class: .*gimp.*"
-			"size 800 600, title: (Open Image), class: .*gimp.*"
-			"center, title: (Save Image), class: .*gimp.*"
-			"size 800 600, title: (Save Image), class: .*gimp.*"
-			"center, title: (Export Image), class: .*gimp.*"
-			"size 800 600, title: .*Export Image.*, class: .*gimp.*"
-			"center, title: (Print), class: .*gimp.*"
+				# Replacement for Hyprland's "no gaps when only."
+				"prop bordersize 0, floating:0, onworkspace:w[tv1]"
+				"prop rounding 0, floating:0, onworkspace:w[tv1]"
+				"prop bordersize 0, floating:0, onworkspace:f[1]"
+				"prop rounding 0, floating:0, onworkspace:f[1]"
 
-			# Replacement for Hyprland's "no gaps when only."
-			"prop bordersize 0, floating:0, onworkspace:w[tv1]"
-			"prop rounding 0, floating:0, onworkspace:w[tv1]"
-			"prop bordersize 0, floating:0, onworkspace:f[1]"
-			"prop rounding 0, floating:0, onworkspace:f[1]"
+				# Disable blur for floating windows.
+				"prop noblur, floating:1"
+			];
 
-			# Disable blur for floating windows.
-			"prop noblur, floating:1"
-		];
+			# Layer rules.
+			layerrule = [
+				# Blur on Waybar
+				"blur, waybar"
+			];
 
-		# Layer rules.
-		layerrule = [
-			# Blur on Waybar
-			"blur, waybar"
-		];
+			# Workspace settings.
+			workspace = [
+				"1, monitor: DP-1"
+				"2, monitor: DP-1"
+				"3, monitor: DP-1"
+				"4, monitor: DP-1"
+				"5, monitor: HDMI-A-1"
+				"6, monitor: HDMI-A-1"
+				"7, monitor: HDMI-A-1"
+				"8, monitor: HDMI-A-1"
 
-		# Workspace settings.
-		workspace = [
-#			"1, monitor: DP-1"
-#			"2, monitor: DP-1"
-#			"3, monitor: DP-1"
-#			"4, monitor: DP-1"
-#			"5, monitor: HDMI-A-1"
-#			"6, monitor: HDMI-A-1"
-#			"7, monitor: HDMI-A-1"
-#			"8, monitor: HDMI-A-1"
-
-			# Replacement for "no gaps when only."
-			"w[tv1], gapsout:0, gapsin:0"
-			"f[1], gapsout:0, gapsin:0"
+				# Replacement for "no gaps when only."
+				"w[tv1], gapsout:0, gapsin:0"
+				"f[1], gapsout:0, gapsin:0"
 		];
 
 		# Environment variables.

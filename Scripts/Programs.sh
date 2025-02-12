@@ -40,7 +40,7 @@ Programs=(
 	"  RPCS3                PlayStation 3 emulator"
 	"  Jstest               Gamepad / controller tester"
 	"󰍳  PrismLauncher        Minecraft Launcher"
-	"󰍳  Minetest             Open source voxel game engine"
+	"󰍳  Luanti (minetest)    Open source voxel game engine"
 	"󰍳  NBT Explorer         NBT Explorer and editor"
 	"  Sober                Roblox client"
 	"  Steam                Valve winning by doing nothing"
@@ -202,8 +202,8 @@ Program=$(
 [ "$Program" = "󰍳  PrismLauncher        Minecraft Launcher" ] &&
 	nohup prismlauncher > /dev/null 2>&1 &
 
-[ "$Program" = "󰍳  Minetest             Open source voxel game engine" ] &&
-	nohup minetest > /dev/null 2>&1 &
+[ "$Program" = "󰍳  Luanti (minetest)    Open source voxel game engine" ] &&
+	nohup luanti > /dev/null 2>&1 &
 
 [ "$Program" = "󰍳  NBT Explorer         NBT Explorer and editor" ] &&
 	nohup page.codeberg.JakobDev.jdNBTExplorer > /dev/null 2>&1 &
