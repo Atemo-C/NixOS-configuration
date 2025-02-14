@@ -502,6 +502,7 @@
 				"float, title: (Authentication Required)"
 				"float, title: (Blender Preferences)"
 				"float, title: (Close LibreWolf)"
+				"float, title: (Fabric Installer)"
 				"float, title: (File Operation Progress)"
 				"float, title: .*Opening.*, class:(librewolf)"
 				"float, title: (PCSX2 Settings)"
