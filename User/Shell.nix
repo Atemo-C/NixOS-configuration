@@ -70,7 +70,8 @@
 			ytmp3 = "yt-dlp -x --audio-format mp3 --audio-quality 0";
 
 			# FFmpeg.
-			ffx = ''cd Downloads/YT-dlp && ffmpeg -i "https://url-here.m3u8" -c copy -bsf:a aac_adtstoasc name-here.mp4'';
+			ffx = ''cd Downloads/YT-dlp && ffmpeg -hide_banner -i "https://url-here.m3u8" -c copy -bsf:a aac_adtstoasc name-here.mp4'';
+			ffmpeg = "ffmpeg -hide_banner"
 
 			# Image convertion and optimization.
 			opti-jpg = "jpegoptim -s -v *.jpg";
