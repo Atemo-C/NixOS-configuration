@@ -71,7 +71,7 @@
 
 			# FFmpeg.
 			ffx = ''cd Downloads/YT-dlp && ffmpeg -hide_banner -i "https://url-here.m3u8" -c copy -bsf:a aac_adtstoasc name-here.mp4'';
-			ffmpeg = "ffmpeg -hide_banner"
+			ffmpeg = "ffmpeg -hide_banner";
 
 			# Image convertion and optimization.
 			opti-jpg = "jpegoptim -s -v *.jpg";
