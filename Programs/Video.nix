@@ -11,7 +11,7 @@
 		(wrapOBS { plugins = with pkgs.unstable.obs-studio-plugins; [ wlrobs ]; } )
 
 		# Utility to allow streaming Wayland windows to X applications.
-		unstable.xwaylandvideobridge
+		unstable.kdePackages.xwaylandvideobridge
 
 		# Free and open source video editor, based on MLT Framework and KDE Frameworks.
 		kdePackages.kdenlive
