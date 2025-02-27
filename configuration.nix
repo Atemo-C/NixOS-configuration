@@ -95,7 +95,7 @@
 		./Packaging/Universal.nix
 
 		# Power modules.
-#		./Power/Alternate-suspend.nix
+#		./Power/Alternative-suspend.nix
 		./Power/Power.nix
 
 		# Printing and scanning modules.
