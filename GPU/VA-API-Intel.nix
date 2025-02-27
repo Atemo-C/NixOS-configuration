@@ -2,9 +2,9 @@
 { config, pkgs, ... }: { hardware.graphics.extraPackages = [
 
 	# For modern Intel GPUs:
-	intel-media-driver
+	pkgs.intel-media-driver
 
 	# For older Intel GPUs using the i965 driver:
-#	intel-vaapi-driver
+#	pkgs.intel-vaapi-driver
 
 ]; }
