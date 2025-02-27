@@ -6,6 +6,15 @@
 	# The Hyprland package to use.
 	package = pkgs.unstable.hyprland;
 
+	# The Hyprland package to use, with overrides.
+#	package = (pkgs.unstable.hyprland.override {
+#		# Whether to enable XWayland.
+#		enableXWayland = false;
+#
+#		# Whether to use the Legacy renderer (for old GPUs).
+#		legacyRenderer = true;
+#	});
+
 	# Hyprland settings.
 	settings = {
 		# General settings.
