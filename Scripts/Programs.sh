@@ -239,7 +239,7 @@ Program=$(
 	nohup gnome-disks > /dev/null 2>&1 &
 
 [ "$Program" = "󰋊  Gparted              Partition manager" ] &&
-	nohup $TERMINAL -e sudo -E gparted > /dev/null 2>&1 &
+	nohup gparted > /dev/null 2>&1 &
 
 [ "$Program" = "󰋊  ncdu                 Disk usage" ] &&
 	nohup $TERMINAL -e ncdu > /dev/null 2>&1 &
