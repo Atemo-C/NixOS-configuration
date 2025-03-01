@@ -224,7 +224,7 @@ Program=$(
 	nohup keymapp > /dev/null 2>&1 &
 
 [ "$Program" = "  SC-Controller        Remap controllers in userspace" ] &&
-	nohup sc-controller > > /dev/null 2>&1 &
+	nohup sc-controller > /dev/null 2>&1 &
 
 [ "$Program" = "󰍽  Xclicker             X11 autocliker (for XWayland)" ] &&
 	nohup xclicker > /dev/null 2>&1 &
