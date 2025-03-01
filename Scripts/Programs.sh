@@ -38,13 +38,17 @@ Programs=(
 	"  DuckStation          Playstation 1 emulator"
 	"  PCSX2                PlayStation 2 emulator"
 	"  RPCS3                PlayStation 3 emulator"
-	"  Jstest               Gamepad / controller tester"
 	"󰍳  PrismLauncher        Minecraft Launcher"
 	"󰍳  Luanti (minetest)    Open source voxel game engine"
 	"󰍳  NBT Explorer         NBT Explorer and editor"
 	"  Sober                Roblox client"
 	"  Steam                Valve winning by doing nothing"
 	"  D.D.D                That's not my neighbor"
+	" "
+	"  Jstest               Gamepad / controller tester"
+	"  Keymapp              Layout tool for ZSA keyboards"
+	"  SC-Controller        Remap controllers in userspace"
+	"󰍽  Xclicker             X11 autocliker (for XWayland)"
 	" "
 	"󰙯  Vesktop              Discord, but Vencorded"
 	"󰭻  Element              Actually, no need for spyware"
@@ -73,9 +77,6 @@ Programs=(
 	"  OpenTabletDriver     Configure your drawing tablet"
 	"  Pixelorama           Pixelart tool"
 	"  Upscayl              Upscale images"
-	" "
-	"  Keymapp              Layout tool for ZSA keyboards"
-	"󰍽  Xclicker             X11 autocliker (for XWayland)"
 	" "
 	"  Kurso de Esperanto   Esperanto learning program"
 	" "
@@ -179,10 +180,10 @@ Program=$(
 	nohup xdg-open "https://localhost:631/" > /dev/null 2>&1 &
 
 [ "$Program" = "  Enable crosshair     A simple red-dot crosshair" ] &&
-	nohup dash /etc/nixos/Scripts/Crosshair/Crosshair-start.sh > /dev/null 2>&1 &
+	nohup dash /etc/nixos/Scripts/Crosshair/Crosshair-start.sh > /dev/null 2
 
 [ "$Program" = "󰽅  Disable crosshair    Closes the active crosshair/s" ] &&
-	nohup dash /etc/nixos/Scripts/Crosshair/Crosshair-kill.sh > /dev/null 2>&1 &
+	nohup dash /etc/nixos/Scripts/Crosshair/Crosshair-kill.sh > /dev/null 2
 
 [ "$Program" = "  DeSmuME              Nintendo DS/I emulator" ] &&
 	nohup desmume > /dev/null 2>&1 &
@@ -195,9 +196,6 @@ Program=$(
 
 [ "$Program" = "  RPCS3                PlayStation 3 emulator" ] &&
 	nohup rpcs3 > /dev/null 2>&1 &
-
-[ "$Program" = "  Jstest               Gamepad / controller tester" ] &&
-	nohup jstest-gtk > /dev/null 2>&1 &
 
 [ "$Program" = "󰍳  PrismLauncher        Minecraft Launcher" ] &&
 	nohup prismlauncher > /dev/null 2>&1 &
@@ -219,21 +217,33 @@ Program=$(
 	nohup steam-run "$HOME/Programs/That's not my neighbor/That's not my neighbor.x86_64" > /dev/null 2>&1 &
 #	nohup nvidia-offload steam-run "$HOME/Programs/That's not my neighbor/That's not my neighbor.x86_64" > /dev/null 2>&1 &
 
+[ "$Program" = "  Jstest               Gamepad / controller tester" ] &&
+	nohup jstest-gtk > /dev/null 2>&1 &
+
+[ "$Program" = "  Keymapp              Layout tool for ZSA keyboards" ] &&
+	nohup keymapp > /dev/null 2>&1 &
+
+[ "$Program" = "  SC-Controller        Remap controllers in userspace" ] &&
+	nohup sc-controller > > /dev/null 2>&1 &
+
+[ "$Program" = "󰍽  Xclicker             X11 autocliker (for XWayland)" ] &&
+	nohup xclicker > /dev/null 2>&1 &
+
 [ "$Program" = "󰙯  Vesktop              Discord, but Vencorded" ] &&
-#	nohup vesktop --ozone-platform=x11 > /dev/null 2>&1 &
-	nohup vesktop --ozone-platform=wayland > /dev/null 2>&1 &
+	nohup vesktop --ozone-platform=x11 > /dev/null 2>&1 &
+#	nohup vesktop --ozone-platform=wayland > /dev/null 2>&1 &
 
 [ "$Program" = "󰭻  Element              Actually, no need for spyware" ] &&
 #	nohup element-desktop --ozone-platform=x11 > /dev/null 2>&1 &
 	nohup element-desktop --ozone-platform=wayland > /dev/null 2>&1 &
 
 [ "$Program" = "󰭻  Revolt               FOSS alternative to Discord" ] &&
-#	nohup revolt-desktop --ozone-platform=x11 > /dev/null 2>&1 &
-	nohup revolt-desktop --ozone-platform=wayland > /dev/null 2>&1 &
+	nohup revolt-desktop --ozone-platform=x11 > /dev/null 2>&1 &
+#	nohup revolt-desktop --ozone-platform=wayland > /dev/null 2>&1 &
 
 [ "$Program" = "  Freetube             Watch YouTube videos" ] &&
-#	nohup freetube --ozone-platform=x11 > /dev/null 2>&1 &
-	nohup freetube --ozone-platform=wayland > /dev/null 2>&1 &
+	nohup freetube --ozone-platform=x11 > /dev/null 2>&1 &
+#	nohup freetube --ozone-platform=wayland > /dev/null 2>&1 &
 
 [ "$Program" = "󰋊  Gnome disk utility   GNOME's disk utility" ] &&
 	nohup gnome-disks > /dev/null 2>&1 &
@@ -290,12 +300,6 @@ Program=$(
 
 [ "$Program" = "  Upscayl              Upscale images" ] &&
 	nohup upscayl > /dev/null 2>&1 &
-
-[ "$Program" = "  Keymapp              Layout tool for ZSA keyboards" ] &&
-	nohup keymapp > /dev/null 2>&1 &
-
-[ "$Program" = "󰍽  Xclicker             X11 autocliker (for XWayland)" ] &&
-	nohup xclicker > /dev/null 2>&1 &
 
 [ "$Program" = "  Kurso de Esperanto   Esperanto learning program" ] &&
 	QT_QPA_PLATFORM=xcb nohup steam-run "$HOME/Programs/Kurso de Esperanto/kursokape" > /dev/null 2>&1 &
