@@ -85,7 +85,10 @@
 
 			# Shadows settings.
 			shadow = {
-				# In hwat power to render the falloff. More power, the faster the falloff.
+				# Whether to enable drop shadows on windows.
+#				enabled = false;
+
+				# In what power to render the falloff. More power, the faster the falloff.
 				render_power = 8;
 
 				# Shadow color.
