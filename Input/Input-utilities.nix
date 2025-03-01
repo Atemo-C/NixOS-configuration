@@ -9,6 +9,9 @@
 	# A simple GTK-based joystic tester.
 	pkgs.jstest-gtk
 
+	# User-mode driver and GUI for any controller.
+	pkgs.unstable.sc-controller
+
 	# Toolsf or working with USB devices, such as lsusb.
 	pkgs.usbutils
 
