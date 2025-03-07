@@ -8,13 +8,13 @@
 
 	environment.systemPackages = [
 		# Utility to allow streaming Wayland windows to X applications.
-		unstable.kdePackages.xwaylandvideobridge
+		pkgs.unstable.kdePackages.xwaylandvideobridge
 
 		# Free and open source video editor, based on MLT Framework and KDE Frameworks.
-		kdePackages.kdenlive
+		pkgs.kdePackages.kdenlive
 
 		# Open Source YouTube app for privacy.
-		freetube
+		pkgs.freetube
 
 		# General-purpose media player, fork of MPlayer and mplayer2.
 		(pkgs.unstable.mpv.override { scripts = [
@@ -23,13 +23,13 @@
 		]; })
 
 		# A complete, cross-platform solution to record, convert and stream audio and video.
-		ffmpeg_7-full
+		pkgs.ffmpeg_7-full
 
 		# Open h.265 video codec implementation.
-		libde265
+		pkgs.libde265
 
 		# V4L utils and libv4l, provide common image formats regardless of the v4l device.
-		v4l-utils
+		pkgs.v4l-utils
 	];
 
 	# Free and open source software for video recording and live streaming, with the wlrobs plugin.
