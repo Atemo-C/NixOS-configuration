@@ -15,9 +15,6 @@
 	# Tools for mastering Blu-ray and DVD+-RW/+-R media
 	pkgs.dvdplusrwtools
 
-	# http://www.transcoding.org/
-	pkgs.transcode
-
 	# https://www.gnu.org/software/vcdimager/
 	pkgs.vcdimager
 
