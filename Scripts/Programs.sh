@@ -13,11 +13,11 @@ Programs=(
 	"  Lagrange             GUI Gemini client"
 	" "
 	"  Audacious            Music player"
-	"  Audacity             Audio editor"
 	"  EasyEffects          Effects to inputs or outputs"
 	"  EasyTAG              Audio tag editor"
 	"  Pavucontrol          Audio volume manager"
 	"󰤽  qpwgraph             Audio patchbay"
+	"  Tenacity             Audio editor"
 	" "
 	"󰂫  Blender              3D modeling"
 	"  Cura                 3D printing"
@@ -136,10 +136,6 @@ Program=$(
 [ "$Program" = "  Audacious            Music player" ] &&
 	nohup audacious > /dev/null 2>&1 &
 
-[ "$Program" = "  Audacity             Audio editor" ] &&
-	nohup GDK_BACKEND=x11 audacity > /dev/null 2>&1 &
-#	nohup audacity > /dev/null 2>&1 &
-
 [ "$Program" = "  EasyEffects          Effects to inputs or outputs" ] &&
 	nohup easyeffects > /dev/null 2>&1 &
 
@@ -151,6 +147,10 @@ Program=$(
 
 [ "$Program" = "󰤽  qpwgraph             Audio patchbay" ] &&
 	nohup qpwgraph > /dev/null 2>&1 &
+
+[ "$Program" = "  Tenacity             Audio editor" ] &&
+	nohup GDK_BACKEND=x11 tenacity > /dev/null 2>&1 &
+#	nohup tenacity > /dev/null 2>&1 &
 
 [ "$Program" = "󰂫  Blender              3D modeling" ] &&
 	nohup blender > /dev/null 2>&1 &

@@ -11,7 +11,7 @@
 			pkgs.audacious
 
 			# View and edit tags for various audio files.
-			pkgs.easytag
+			pkgs.tenacity
 
 			# Sound editor with graphical UI.
 			pkgs.audacity
