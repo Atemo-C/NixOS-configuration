@@ -6,7 +6,7 @@
 		name = "user-name";
 
 		# Title of the current user.
-		title = "User titl";
+		title = "User title";
 	};
 
 	# Name of the current system.
