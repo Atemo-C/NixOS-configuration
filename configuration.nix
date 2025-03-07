@@ -93,6 +93,7 @@
 		./Packaging/General.nix
 		./Packaging/Unstable.nix
 		./Packaging/Universal.nix
+		./Packaging/Windows.nix
 
 		# Power modules.
 #		./Power/Alternative-suspend.nix
