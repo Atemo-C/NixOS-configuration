@@ -6,10 +6,7 @@
 		initrd.kernelModules = [ "v4l2loopback" ];
 	};
 
-	environment.systemPackages = with pkgs; [
-		# Free and open source software for video recording and live streaming, with the wlrobs plugin.
-		(wrapOBS { plugins = with pkgs.unstable.obs-studio-plugins; [ wlrobs ]; } )
-
+	environment.systemPackages = [
 		# Utility to allow streaming Wayland windows to X applications.
 		unstable.kdePackages.xwaylandvideobridge
 
@@ -20,7 +17,10 @@
 		freetube
 
 		# General-purpose media player, fork of MPlayer and mplayer2.
-		mpv
+		(pkgs.unstable.mpv.override { scripts = [
+			pkgs.unstable.mpvScripts.mpris
+			pkgs.unstable.mpvScripts.sponsorblock
+		]; })
 
 		# A complete, cross-platform solution to record, convert and stream audio and video.
 		ffmpeg_7-full
@@ -32,19 +32,20 @@
 		v4l-utils
 	];
 
-	# MPV plugins.
-	nixpkgs.overlays = with pkgs; [
-		(self: super: {
-			mpv = super.mpv.override {
-				scripts = [
-					# MPRIS plugin for mpv.
-					self.mpvScripts.mpris
+	# Free and open source software for video recording and live streaming, with the wlrobs plugin.
+	programs.obs-studio = {
+		# Whether to enable OBS Studio for video recording and live streaming.
+		enable = true;
 
-					# Script for mpv to skip sponsored segments of YouTube videos.
-					self.mpvScripts.sponsorblock
-				];
-			};
-		})
-	];
+		# Whether to install and set up the v4l2loopback kernel module.
+		# Necessary for OBS to start a virtual camera.
+		enableVirtualCamera = true;
+
+		# Which package to use for OBS Studio.
+		package = pkgs.unstable.obs-studio
+
+		# Which plugins to add to OBS Studio.
+		plugins = [ pkgs.unstable.obs-studio-plugins.wlrobs ];
+	};
 
 }
