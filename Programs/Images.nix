@@ -15,12 +15,6 @@
 	# A free and open source painting application and GMic plugin for Krita.
 	pkgs.krita pkgs.krita-plugin-gmic
 
-	# Vector graphics editor (with extensions).
-	pkgs.inkscape-with-extensions
-
-	# Free & open-source 2D sprite editor, made with the Godot Engine.
-	pkgs.pixelorama
-
 	# A software suite to create, edit, compose, or convert bitmap images.
 	pkgs.imagemagick
 

@@ -10,11 +10,11 @@
 		# A fork of Firefox, focused on privacy, security and freedom.
 		pkgs.librewolf
 
+		# Graphical librespeed client written using GTK4 + libadwaita.
+		pkgs.speedtest
+
 		# Privacy-focused browser routing traffic through the Tor network.
 		pkgs.tor-browser
-
-		# A full-featured e-mail client.
-		pkgs.thunderbird-bin
 
 		# Featureful free software BitTorrent client.
 		pkgs.qbittorrent

@@ -72,10 +72,8 @@ Programs=(
 	"  Hyprpicker           Screen color picker"
 	"  GIMP                 GNU Image Manipulation Program"
 	"  Hyprpaper            Set desktop background/wallpaper"
-	"  Inkscape             Vector image manipulation"
 	"  Krita                Digital painting"
 	"  OpenTabletDriver     Configure your drawing tablet"
-	"  Pixelorama           Pixelart tool"
 	"  Upscayl              Upscale images"
 	" "
 	"  Kurso de Esperanto   Esperanto learning program"
@@ -99,8 +97,6 @@ Programs=(
 	"  Xfburn               Disc burning"
 	" "
 	"󰓅  Speedtest            Test internet speed"
-	" "
-	"  Thunderbird          E-mail client"
 	" "
 	"󰪫  Virt Manager         Virtual machines using QEMU/KVM"
 	" "
@@ -168,7 +164,7 @@ Program=$(
 	nohup missioncenter > /dev/null 2>&1 &
 
 [ "$Program" = "󱌐  Bottles              Run Windows programs in Bottles" ] &&
-	nohup com.usebottles.bottles > /dev/null 2>&1 &
+	nohup bottles > /dev/null 2>&1 &
 
 [ "$Program" = "  Calcurse             Calendar" ] &&
 	nohup $TERMINAL -e calcurse > /dev/null 2>&1 &
@@ -286,17 +282,11 @@ Program=$(
 [ "$Program" = "  Hyprpaper            Set desktop background/wallpaper" ] &&
 	nohup bash "/etc/nixos/Scripts/Hyprpaper.sh" > /dev/null 2>&1 &
 
-[ "$Program" = "  Inkscape             Vector image manipulation" ] &&
-	nohup inkscape > /dev/null 2>&1 &
-
 [ "$Program" = "  Krita                Digital painting" ] &&
 	nohup krita > /dev/null 2>&1 &
 
 [ "$Program" = "  OpenTabletDriver     Configure your drawing tablet" ] &&
 	nohup otd-gui > /dev/null 2>&1 &
-
-[ "$Program" = "  Pixelorama           Pixelart tool" ] &&
-	nohup pixelorama > /dev/null 2>&1 &
 
 [ "$Program" = "  Upscayl              Upscale images" ] &&
 	nohup upscayl > /dev/null 2>&1 &
@@ -341,10 +331,7 @@ Program=$(
 	nohup xfburn > /dev/null 2>&1 &
 
 [ "$Program" = "󰓅  Speedtest            Test internet speed" ] &&
-	nohup xyz.ketok.Speedtest > /dev/null 2>&1 &
-
-[ "$Program" = "  Thunderbird          E-mail client" ] &&
-	nohup thunderbird > /dev/null 2>&1 &
+	nohup speedtest > /dev/null 2>&1 &
 
 [ "$Program" = "󰪫  Virt Manager         Virtual machines using QEMU/KVM" ] &&
 	nohup virt-manager > /dev/null 2>&1 &
