@@ -51,7 +51,7 @@ Programs=(
 	"󰍽  Xclicker             X11 autocliker (for XWayland)"
 	" "
 	"󰙯  Vesktop              Discord, but Vencorded"
-	"󰭻  Element              Actually, no need for spyware"
+	"󰭻  Element              Matrix client"
 	"󰭻  Revolt               FOSS alternative to Discord"
 	" "
 	"  Freetube             Watch YouTube videos"
@@ -229,9 +229,8 @@ Program=$(
 	nohup vesktop --ozone-platform=x11 > /dev/null 2>&1 &
 #	nohup vesktop --ozone-platform=wayland > /dev/null 2>&1 &
 
-[ "$Program" = "󰭻  Element              Actually, no need for spyware" ] &&
-#	nohup element-desktop --ozone-platform=x11 > /dev/null 2>&1 &
-	nohup element-desktop --ozone-platform=wayland > /dev/null 2>&1 &
+[ "$Program" = "󰭻  Element              Matrix client" ] &&
+	nohup librewolf --new-window "https://app.element.io/" > /dev/null 2>&1 &
 
 [ "$Program" = "󰭻  Revolt               FOSS alternative to Discord" ] &&
 	nohup revolt-desktop --ozone-platform=x11 > /dev/null 2>&1 &

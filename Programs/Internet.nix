@@ -22,9 +22,6 @@
 		# Command-line program to download image-galleries and collections from several image hosting sites.
 		gallery-dl
 
-		# A feature-rich client for Matrix.org.
-		element-desktop
-
 		# An open source user-first chat platform.
 		revolt-desktop
 
