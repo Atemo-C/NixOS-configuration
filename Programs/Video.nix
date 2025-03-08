@@ -41,6 +41,9 @@
 		# Necessary for OBS to start a virtual camera.
 		enableVirtualCamera = true;
 
+		# Overrides for OBS Studio.
+#		package = (pkgs.obs-studio.override { cudaSupport = true; });
+
 		# Which plugins to add to OBS Studio.
 		plugins = [ pkgs.obs-studio-plugins.wlrobs ];
 	};
