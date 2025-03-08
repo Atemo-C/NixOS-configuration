@@ -23,7 +23,7 @@
 		]; })
 
 		# A complete, cross-platform solution to record, convert and stream audio and video.
-		ffmpeg_7-full
+		ffmpeg-full
 
 		# Open h.265 video codec implementation.
 		libde265
