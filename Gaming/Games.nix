@@ -1,17 +1,17 @@
 { config, pkgs, ... }: {
 
-	environment.systemPackages = [
+	environment.systemPackages = with pkgs; [
 		# CLI program for managing Minecraft mods and modpacks from Modrinth, CurseForge, and GitHub Releases.
-		pkgs.ferium
+		ferium
 
 		# The open-source Java Development Kit, version 23.
-		pkgs.jdk23
+		jdk23
 
 		# Infinite-world block sandbox.
-		pkgs.minetest
+		minetest
 
 		# A free, open source launcher for Minecraft.
-		pkgs.prismlauncher
+		prismlauncher
 	];
 
 	# List of TCP ports on which incoming connections are accepted.

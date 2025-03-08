@@ -2,15 +2,15 @@
 
 	# Packages for controlling general audio settings, as well as various audio utilities.
 	# More specific audio tools (music player, sound effects, etc) can be found in Programs/Audio.nix.
-	environment.systemPackages = [
+	environment.systemPackages = with pkgs; [
 		# Utilities for ALSA.
-		pkgs.alsa-utils
+		alsa-utils
 
 		# Graphical volume control.
-		pkgs.pavucontrol
+		pavucontrol
 
 		# PipeWire patchbay.
-		pkgs.qpwgraph
+		qpwgraph
 	];
 
 	services = {

@@ -6,21 +6,21 @@
 		pathsToLink = [ "/share/soundfonts" ];
 
 		# Audio packages to install.
-		systemPackages = [
+		systemPackages = with pkgs; [
 			# A lightweight and versatile audio player.
-			pkgs.audacious
+			audacious
 
 			# View and edit tags for various audio files.
-			pkgs.tenacity
+			easytag
 
 			# Sound editor with graphical UI.
-			pkgs.audacity
+			tenacity
 
 			# Midi sound fonts.
-			pkgs.soundfont-fluid
-			pkgs.soundfont-arachno
-			pkgs.soundfont-ydp-grand
-			pkgs.soundfont-generaluser
+			soundfont-fluid
+			soundfont-arachno
+			soundfont-ydp-grand
+			soundfont-generaluser
 		];
 	};
 

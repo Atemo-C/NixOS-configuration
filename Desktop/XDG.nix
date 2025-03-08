@@ -1,9 +1,9 @@
 { config, pkgs, ... }: { xdg.portal = {
 
 	# List of packages that provide XDG desktop portal configuration.
-	configPackages = [
-		pkgs.xdg-desktop-portal-hyprland
-		pkgs.xdg-desktop-portal-gtk
+	configPackages = with pkgs; [
+		xdg-desktop-portal-hyprland
+		xdg-desktop-portal-gtk
 	];
 
 	# Additional portals to add to the path.

@@ -1,12 +1,12 @@
-{ pkgs, ... }: { environment.systemPackages = [
+{ pkgs, ... }: { environment.systemPackages = with pkgs; [
 
 	# LXQt PolicyKit agent.
-	pkgs.lxqt.lxqt-policykit
+	lxqt.lxqt-policykit
 
 	# Wallpaper utility.
-	pkgs.hyprpaper
+	hyprpaper
 
 	# Legacy X11 tools, mostly for Xwayland programs.
-	pkgs.xorg.xrandr
+	xorg.xrandr
 
 ]; }

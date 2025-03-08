@@ -1,35 +1,35 @@
 { config, pkgs, ... }: {
 
-	environment.systemPackages = [
+	environment.systemPackages = with pkgs; [
 		# A fancy terminal browser for the Gemini protocol.
-		pkgs.amfora
+		amfora
 
 		# A Beautiful Gemini Client.
-		pkgs.lagrange
+		lagrange
 
 		# A fork of Firefox, focused on privacy, security and freedom.
-		pkgs.librewolf
+		librewolf
 
 		# Graphical librespeed client written using GTK4 + libadwaita.
-		pkgs.speedtest
+		speedtest
 
 		# Privacy-focused browser routing traffic through the Tor network.
-		pkgs.tor-browser
+		tor-browser
 
 		# Featureful free software BitTorrent client.
-		pkgs.qbittorrent
+		qbittorrent
 
 		# Command-line program to download image-galleries and collections from several image hosting sites.
-		pkgs.gallery-dl
+		gallery-dl
 
 		# A feature-rich client for Matrix.org.
-		pkgs.element-desktop
+		element-desktop
 
 		# An open source user-first chat platform.
-		pkgs.revolt-desktop
+		revolt-desktop
 
 		# An alternate client for Discord with Vencord built-in.
-		pkgs.vesktop
+		vesktop
 	];
 
 	# Command-line tool to download videos from YouTube.com and other sites (youtube-dl fork).

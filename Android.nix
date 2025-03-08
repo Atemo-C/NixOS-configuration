@@ -1,14 +1,14 @@
 { config, pkgs, ... }: {
 
-	environment.systemPackages = [
+	environment.systemPackages = with pkgs; [
 		# Reverse tethering over ADB for Android.
-		pkgs.gnirehtet
+		gnirehtet
 
 		# Implementation of Microsoft's Media Transfer Protocol.
-		pkgs.libmtp
+		libmtp
 
 		# Display and control Android devices over USB or TCP/IP
-		pkgs.scrcpy
+		scrcpy
 	];
 
 	# Whether to enable the use of the Android Debug Bridge (ADB).

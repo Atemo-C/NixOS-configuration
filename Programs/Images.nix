@@ -1,48 +1,48 @@
-{ pkgs, ... }: { environment.systemPackages = [
+{ pkgs, ... }: { environment.systemPackages = with pkgs; [
 
 	# Extremely simplistic image viewing.
-	pkgs.feh
+	feh
 
 	# Take screenshots with grimblast.
-	pkgs.grimblast
+	grimblast
 
 	# The GNU Image Manipulation Program (with plugins).
-	pkgs.gimp-with-plugins
+	gimp-with-plugins
 
 	# Lightweight and flexible command-line JSON processor (here for screenshots).
-	pkgs.jq
+	jq
 
 	# A free and open source painting application and GMic plugin for Krita.
-	pkgs.krita pkgs.krita-plugin-gmic
+	krita krita-plugin-gmic
 
 	# A software suite to create, edit, compose, or convert bitmap images.
-	pkgs.imagemagick
+	imagemagick
 
 	# JPEG XL image format reference implementation.
-	pkgs.libjxl
+	libjxl
 
 	# Collection of libraries and applications implementing large parts of the DICOM standard.
-	pkgs.dcmtk
+	dcmtk
 
 	# Tools and library for the WebP image format.
-	pkgs.libwebp
+	libwebp
 
 	# A wlroots-compatible Wayland color picker that does not suck.
-	pkgs.hyprpicker
+	hyprpicker
 
 	# A simple color chooser written in GTK3.
-	pkgs.gcolor3
+	gcolor3
 
 	# Multithreaded lossless PNG compression optimizer.
-	pkgs.oxipng
+	oxipng
 
 	# Optimize JPEG files.
-	pkgs.jpegoptim
+	jpegoptim
 
 	# Free and Open Source AI Image Upscaler.
-	pkgs.upscayl
+	upscayl
 
 	# Image viewers.
-	pkgs.lxqt.lximage-qt
+	lxqt.lximage-qt
 
 ]; }

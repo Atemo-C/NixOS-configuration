@@ -1,29 +1,32 @@
 { config, pkgs, ... }: {
 
-	environment.systemPackages = [
+	environment.systemPackages = with pkgs; [
 		# A monitor of resources.
-		pkgs.btop
+		btop
 
 		# Free software that gathers information on CPU, motherboard and more.
-		pkgs.cpu-x
+		cpu-x
 
 		# Tools for reading hardware sensors.
-		pkgs.lm_sensors
+		lm_sensors
 
 		# Tools for monitoring the health of hard drives.
-		pkgs.smartmontools
+		smartmontools
+
+		# Monitor your CPU, Memory, Disk, Network and GPU usage graphically.
+		mission-center
 
 		# Mersenne prime search / System stability tester (torture).
-		pkgs.mprime
+		mprime
 
 		# Vulkan tools and utilties.
-		pkgs.vulkan-tools
+		vulkan-tools
 
 		# Collection of demos and test programs for OpenGL and Mesa.
-		pkgs.mesa-demos
+		mesa-demos
 
 		# Provide detailed information on the hardware configuration of the machine.
-		pkgs.lshw
+		lshw
 	];
 
 	# Fastfetch, like Neofetch, but in C, much faster, and actually maintained.

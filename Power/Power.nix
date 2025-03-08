@@ -1,13 +1,13 @@
 { config, pkgs, ... }: {
 
 	# Power utilities.
-	environment.systemPackages = [
+	environment.systemPackages = with pkgs; [
 		# Read and control device brightness.
-		pkgs.brightnessctl
+		brightnessctl
 
 		# Small collection of scripts that handle suspend and resume on behalf of HAL.
 		# USeful for systems where `systemctl suspend` does not work properly, such as the ThinkPad L510.
-		pkgs.pmutils
+		pmutils
 	];
 
 	# Power-saving with TLP.
@@ -26,8 +26,8 @@
 			CPU_MIN_PERF_ON_BAT = 0;
 			CPU_MAX_PERF_ON_AC = 100;
 			CPU_MAX_PERF_ON_BAT = 90;
-			START_CHARGE_THRESH_BAT0 = 25;
-			STOP_CHARGE_THRESH_BAT0 = 85;
+#			START_CHARGE_THRESH_BAT0 = 25;
+			STOP_CHARGE_THRESH_BAT0 = 90;
 		};
 	};
 

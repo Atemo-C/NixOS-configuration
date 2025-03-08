@@ -1,10 +1,10 @@
 # Enabling VA-API for compatible Intel GPUs.
-{ config, pkgs, ... }: { hardware.graphics.extraPackages = [
+{ config, pkgs, ... }: { hardware.graphics.extraPackages = with pkgs; [
 
 	# For modern Intel GPUs:
-	pkgs.intel-media-driver
+	intel-media-driver
 
 	# For older Intel GPUs using the i965 driver:
-#	pkgs.intel-vaapi-driver
+#	intel-vaapi-driver
 
 ]; }

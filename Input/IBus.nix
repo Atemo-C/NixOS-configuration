@@ -7,9 +7,9 @@
 	type = "fcitx5";
 
 	# Enabled Fcitx5 addons.
-	fcitx5.addons = [
-		pkgs.fcitx5-gtk
-		pkgs.fcitx5-configtool
+	fcitx5.addons = with pkgs; [
+		fcitx5-gtk
+		fcitx5-configtool
 	];
 
 }; }

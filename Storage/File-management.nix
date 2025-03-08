@@ -1,14 +1,14 @@
 { config, pkgs, ... }: {
 
-	environment.systemPackages = [
+	environment.systemPackages = with pkgs; [
 		# Alternative to the find command.
-		pkgs.fd
+		fd
 
 		# Alternative to the ls command.
-		pkgs.lsd
+		lsd
 
 		# Move files to the trash. Alternative to rm and trash-cli.
-		pkgs.trashy
+		trashy
 	];
 
 	programs = {
@@ -17,15 +17,15 @@
 			enable = true;
 
 			# List of Thunar plugins to install.
-			plugins = [
+			plugins = with pkgs.xfce; [
 				# Thunar plugin providing file context menus for archives.
-				pkgs.xfce.thunar-archive-plugin
+				thunar-archive-plugin
 
 				# Thunar extension for automatic management of removable drives and media.
-				pkgs.xfce.thunar-volman
+				thunar-volman
 
 				# Thunar plugin providing tagging and renaming features for media files.
-				pkgs.xfce.thunar-media-tags-plugin
+				thunar-media-tags-plugin
 			];
 		};
 

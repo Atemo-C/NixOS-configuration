@@ -1,15 +1,15 @@
-{ pkgs, ... }: { environment.systemPackages = [
+{ pkgs, ... }: { environment.systemPackages = with pkgs; [
 
 	# An open-source Nintendo DS emulator.
-	pkgs.desmume
+	desmume
 
 	# PlayStation 1 emulator.
-	pkgs.duckstation
+	duckstation
 
 	# PlayStation 2 emulator.
-	pkgs.pcsx2
+	pcsx2
 
 	# PlayStation emulator.
-	pkgs.rpcs3
+	rpcs3
 
 ]; }

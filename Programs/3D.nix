@@ -1,10 +1,10 @@
-{ pkgs, ... }: { environment.systemPackages = [
+{ pkgs, ... }: { environment.systemPackages = with pkgs; [
 
 	# 3D Creation/Animation/Publishing System.
-	pkgs.blender
+	blender
 
 	# 3D pritner / slicing GUI built on top of the Uranium framework.
 	# Currently severely outdated, use the Flatpak version instead.
-#	pkgs.cura
+#	cura
 
 ]; }
