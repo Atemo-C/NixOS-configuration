@@ -584,6 +584,10 @@
 
 			# Enable blur only for specific tilled windows.
 			"prop noblur, class: ^(?!(Alacritty|lxterminal))"
+
+			# Unique border settings for some windows.
+			"bordercolor rgb(0CCC00), class: (Alacritty)"
+			"bordercolor rgb(FF0000), title: .*sudo.*"
 			];
 
 			# Layer rules.
