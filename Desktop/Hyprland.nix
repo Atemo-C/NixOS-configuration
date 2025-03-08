@@ -579,8 +579,11 @@
 				"prop bordersize 0, floating:0, onworkspace:f[1]"
 				"prop rounding 0, floating:0, onworkspace:f[1]"
 
-				# Disable blur for floating windows.
-				"prop noblur, floating:1"
+			# Disable blur for floating windows.
+			"prop noblur, floating:1"
+
+			# Enable blur only for specific tilled windows.
+			"prop noblur, class: ^(?!(Alacritty|lxterminal))"
 			];
 
 			# Layer rules.
