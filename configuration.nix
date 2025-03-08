@@ -91,7 +91,6 @@
 
 		# Packaging modules.
 		./Packaging/General.nix
-		./Packaging/Unstable.nix
 		./Packaging/Universal.nix
 		./Packaging/Windows.nix
 
