@@ -5,6 +5,6 @@
 
 	# 3D pritner / slicing GUI built on top of the Uranium framework.
 	# Currently severely outdated, use the Flatpak version instead.
-#	pkgs.unstable.cura
+#	pkgs.cura
 
 ]; }

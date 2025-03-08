@@ -5,8 +5,8 @@
 
 	# CUDA packages to install, if desired.
 	environment.systemPackages = [
-		pkgs.unstable.cudaPackages.cudnn
-		pkgs.unstable.cudaPackages.cutensor
+		pkgs.cudaPackages.cudnn
+		pkgs.cudaPackages.cutensor
 	];
 
 	# Whether to enable dynamic CDI configuration for NVIDIA GPUs.

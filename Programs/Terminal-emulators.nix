@@ -13,9 +13,6 @@
 		# Whether to enable Alacritty.
 		enable = true;
 
-		# The Alacritty package to install.
-		package = pkgs.unstable.alacritty;
-
 		# Alacritty configuration, written to $XDG_CONFIG_HOME/alacritty/alacritty.toml.
 		settings = {
 			window = {

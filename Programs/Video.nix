@@ -8,7 +8,7 @@
 
 	environment.systemPackages = [
 		# Utility to allow streaming Wayland windows to X applications.
-		pkgs.unstable.kdePackages.xwaylandvideobridge
+		pkgs.kdePackages.xwaylandvideobridge
 
 		# Free and open source video editor, based on MLT Framework and KDE Frameworks.
 		pkgs.kdePackages.kdenlive
@@ -17,9 +17,9 @@
 		pkgs.freetube
 
 		# General-purpose media player, fork of MPlayer and mplayer2.
-		(pkgs.unstable.mpv.override { scripts = [
-			pkgs.unstable.mpvScripts.mpris
-			pkgs.unstable.mpvScripts.sponsorblock
+		(pkgs.mpv.override { scripts = [
+			pkgs.mpvScripts.mpris
+			pkgs.mpvScripts.sponsorblock
 		]; })
 
 		# A complete, cross-platform solution to record, convert and stream audio and video.
@@ -41,11 +41,8 @@
 		# Necessary for OBS to start a virtual camera.
 		enableVirtualCamera = true;
 
-		# Which package to use for OBS Studio.
-		package = pkgs.unstable.obs-studio
-
 		# Which plugins to add to OBS Studio.
-		plugins = [ pkgs.unstable.obs-studio-plugins.wlrobs ];
+		plugins = [ pkgs.obs-studio-plugins.wlrobs ];
 	};
 
 }

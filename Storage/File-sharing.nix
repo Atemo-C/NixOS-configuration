@@ -1,7 +1,7 @@
 { config, pkgs, ... }: {
 
 	# Share files across the LAN with Warpinator.
-	environment.systemPackages = [ pkgs.unstable.warpinator ];
+	environment.systemPackages = [ pkgs.warpinator ];
 
 	# List of TCP and UDP ports on which incoming connections are accepted.
 	networking.firewall = {

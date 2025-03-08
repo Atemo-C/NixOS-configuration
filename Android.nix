@@ -8,7 +8,7 @@
 		pkgs.libmtp
 
 		# Display and control Android devices over USB or TCP/IP
-		pkgs.unstable.scrcpy
+		pkgs.scrcpy
 	];
 
 	# Whether to enable the use of the Android Debug Bridge (ADB).

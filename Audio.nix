@@ -7,7 +7,7 @@
 		pkgs.alsa-utils
 
 		# Graphical volume control.
-		pkgs.unstable.pavucontrol
+		pkgs.pavucontrol
 
 		# PipeWire patchbay.
 		pkgs.qpwgraph
@@ -32,13 +32,6 @@
 
 			# Whether to enable PulseAudio support.
 			pulse.enable = true;
-
-			# Which PipeWire package to use.
-			package = pkgs.unstable.pipewire;
-
-			# The WirePlumber package to use.
-			# It should be from the same branch as PipeWire.
-			wireplumber.package = pkgs.unstable.wireplumber;
 		};
 
 		# Whether to enable the playerctl daemon.

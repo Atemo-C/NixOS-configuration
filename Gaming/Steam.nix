@@ -8,12 +8,12 @@
 	extest.enable = true;
 
 	# Extra packages to be used as compatibility tools for Steam on Linux.
-	extraCompatPackages = [ pkgs.unstable.proton-ge-bin ];
+	extraCompatPackages = [ pkgs.proton-ge-bin ];
 
 	# Additional packages to add to the Steam environment.
 	extraPackages = [
 		# SteamOS session compositing window manager.
-		pkgs.unstable.gamescope
+		pkgs.gamescope
 
 		# Optimise Linux system performance for gaming on demand.
 		pkgs.gamemode

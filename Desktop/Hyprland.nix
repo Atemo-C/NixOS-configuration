@@ -3,11 +3,8 @@
 	# Whether to enable the Hyprland Wayland compositor.
 	enable = true;
 
-	# The Hyprland package to use.
-	package = pkgs.unstable.hyprland;
-
-	# The Hyprland package to use, with overrides.
-#	package = (pkgs.unstable.hyprland.override {
+	# Overrides for Hyprland.
+#	package = (pkgs.hyprland.override {
 #		# Whether to enable XWayland.
 #		enableXWayland = false;
 #

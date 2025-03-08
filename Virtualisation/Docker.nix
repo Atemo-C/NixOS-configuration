@@ -7,9 +7,6 @@
 		# Whether to enable Docker.
 		enable = true;
 
-		# Which Docker package to use.
-		package = pkgs.unstable.docker;
-
 		rootless = {
 			# Wether to enable Docker in a rootless mode.
 			enable = true;

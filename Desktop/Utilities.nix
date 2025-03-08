@@ -4,7 +4,7 @@
 	pkgs.lxqt.lxqt-policykit
 
 	# Wallpaper utility.
-	pkgs.unstable.hyprpaper
+	pkgs.hyprpaper
 
 	# Legacy X11 tools, mostly for Xwayland programs.
 	pkgs.xorg.xrandr

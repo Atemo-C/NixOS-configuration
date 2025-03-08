@@ -4,7 +4,7 @@
 	pkgs.feh
 
 	# Take screenshots with grimblast.
-	pkgs.unstable.grimblast
+	pkgs.grimblast
 
 	# The GNU Image Manipulation Program (with plugins).
 	pkgs.gimp-with-plugins
@@ -19,7 +19,7 @@
 	pkgs.inkscape-with-extensions
 
 	# Free & open-source 2D sprite editor, made with the Godot Engine.
-	pkgs.unstable.pixelorama
+	pkgs.pixelorama
 
 	# A software suite to create, edit, compose, or convert bitmap images.
 	pkgs.imagemagick
@@ -34,7 +34,7 @@
 	pkgs.libwebp
 
 	# A wlroots-compatible Wayland color picker that does not suck.
-	pkgs.unstable.hyprpicker
+	pkgs.hyprpicker
 
 	# A simple color chooser written in GTK3.
 	pkgs.gcolor3

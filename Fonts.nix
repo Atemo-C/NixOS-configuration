@@ -35,13 +35,13 @@
 		# List of primary font packages.
 		packages = [
 			# Ubuntu Nerd Fonts.
-			pkgs.unstable.nerd-fonts.ubuntu
-			pkgs.unstable.nerd-fonts.ubuntu-mono
+			pkgs.nerd-fonts.ubuntu
+			pkgs.nerd-fonts.ubuntu-mono
 
 			# Noto Fonts and emojis.
-			pkgs.unstable.noto-fonts
-			pkgs.unstable.noto-fonts-cjk-sans
-			pkgs.unstable.noto-fonts-color-emoji
+			pkgs.noto-fonts
+			pkgs.noto-fonts-cjk-sans
+			pkgs.noto-fonts-color-emoji
 		];
 	};
 

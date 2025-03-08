@@ -11,9 +11,6 @@
 	gamescope = {
 		# Whether to enbale gamescope, the SteamOS session compositing window manager.
 		enable = true;
-
-		# The gamescope package to use.
-		package = pkgs.unstable.gamescope;
 	};
 
 }; }

@@ -29,16 +29,13 @@
 		pkgs.revolt-desktop
 
 		# An alternate client for Discord with Vencord built-in.
-		pkgs.unstable.vesktop
+		pkgs.vesktop
 	];
 
 	# Command-line tool to download videos from YouTube.com and other sites (youtube-dl fork).
 	home-manager.users.${config.custom.name}.programs.yt-dlp = {
 		# Whether to enable yt-dlp.
 		enable = true;
-
-		# Package providing yt-dlp.
-		package = pkgs.unstable.yt-dlp;
 
 		# Configuration written to $XDG_CONFIG_HOME/yt-dlp/config.
 		settings.output = ''"%(title)s.%(ext)s"'';

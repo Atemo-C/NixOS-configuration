@@ -2,13 +2,13 @@
 
 	environment.systemPackages = [
 		# CLI program for managing Minecraft mods and modpacks from Modrinth, CurseForge, and GitHub Releases.
-		pkgs.unstable.ferium
+		pkgs.ferium
 
 		# The open-source Java Development Kit, version 23.
 		pkgs.jdk23
 
 		# Infinite-world block sandbox.
-		pkgs.unstable.minetest
+		pkgs.minetest
 
 		# A free, open source launcher for Minecraft.
 		pkgs.prismlauncher

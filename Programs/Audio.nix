@@ -29,9 +29,6 @@
 		# Whether to enable EasyEffects.
 		# Necessitates programs.dconf.enable to be true.
 		enable = true;
-
-		# The EasyEffects package to use.
-		package = pkgs.unstable.easyeffects;
 	};
 
 }

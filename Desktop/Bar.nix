@@ -3,9 +3,6 @@
 	# Whether to enable Waybar.
 	enable = true;
 
-	# Waybar package to use. Should come from the same version branch as the Wayland compositor.
-	package = pkgs.unstable.waybar;
-
 	# Whether to enable Waybar systemd integration.
 	systemd.enable = true;
 
