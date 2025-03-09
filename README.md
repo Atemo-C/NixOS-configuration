@@ -22,7 +22,7 @@ CIn `configuration.nix`, comment/uncomment the desired boot mode. You can tweak 
 There are other modules imported in `configuration.nix` that you may wish to comment/uncommend, and individually tweak. Be sure to check relevant ones out.
 
 ## [2.6] Home Manager version
-The `User/Home-manager.nix` module fetches the tarball of the desired Home Manager version, which should ideally be the same version as the NixOS version currently running. In it, if needed, change the `24.11` part in `"https://github.com/nix-community/home-manager/archive/release-24.11.tar.gz"` to the appropriate version.
+The `User/Home-manager.nix` module fetches the tarball of the desired Home Manager version, which should ideally be the same version as the NixOS version currently running. In it, if needed, change the `master` part in `"https://github.com/nix-community/home-manager/archive/master.tar.gz"` to the appropriate version, like `release-24.11`.
 
 ## [2.7] Flatpaks with Flathub
 Currently, the Flathub Flatpak repository cannot be declaratively defined in NixOS nor Home Manager without using a custom Nix Flake. As such, you have to manually add it with a shell command after installation. If you are using the FISH shell, there should already be an abbreviation to do so, being the following:
