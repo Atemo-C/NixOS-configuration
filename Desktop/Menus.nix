@@ -19,7 +19,7 @@
 			font-size = 12;
 
 			# Window background color
-			background-color = "#111111dd";
+			background-color = "#000000dd";
 
 			# Selection text color.
 			selection-color = "#ffffff";
