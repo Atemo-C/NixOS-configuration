@@ -89,7 +89,7 @@
 				render_power = 8;
 
 				# Shadow color.
-				color = "rgba(00b0ffcc)";
+				color = "rgba(cccccccc)";
 
 				# Inactive shadow color.
 				color_inactive = "rgba(000000cc)";
