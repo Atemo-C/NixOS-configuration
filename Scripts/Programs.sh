@@ -300,7 +300,7 @@ Program=$(
 	nohup kdenlive > /dev/null 2>&1 &
 
 [ "$Program" = "󰑋  OBS studio           Recording and streaming" ] &&
-	nohup com.obsproject.Studio.Locale > /dev/null 2>&1 &
+	nohup com.obsproject.Studio > /dev/null 2>&1 &
 
 [ "$Program" = "󰏆  LibreOffice          Office suite" ] &&
 	nohup soffice > /dev/null 2>&1 &
