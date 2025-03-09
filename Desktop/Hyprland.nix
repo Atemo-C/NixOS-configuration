@@ -45,7 +45,7 @@
 				# Whether to enable snapping for floating windows.
 				enabled = true;
 
-				# If true, windows snap such that only noe border's worth of space is between them.
+				# If true, windows snap such that only one border's worth of space is between them.
 				border_overlap = true;
 			};
 		};
