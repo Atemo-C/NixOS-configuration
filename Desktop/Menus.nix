@@ -19,19 +19,19 @@
 			font-size = 12;
 
 			# Window background color
-			background-color = "#111111";
+			background-color = "#111111dd";
 
 			# Selection text color.
 			selection-color = "#ffffff";
 
 			# Selection text background color.
-			selection-background = "#0f415f";
+			selection-background = "#0f415fdd";
 
 			# Selection background padding.
 			selection-background-padding = 6;
 
 			# Input text background.
-			input-background = "#141414";
+			input-background = "#141414dd";
 
 			# Input background padding.
 			input-background-padding = 6;

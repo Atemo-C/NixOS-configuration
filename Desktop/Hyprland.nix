@@ -586,13 +586,17 @@
 			"bordercolor rgb(e60073), title: .*micro.*, class: (Alacritty|lxterminal)"
 			"bordercolor rgb(FF0000), title: .*sudo.*, class: (Alacritty|lxterminal)"
 			"prop bordersize 2, title: .*sudo.*, class: (Alacritty|lxterminal)"
-			];
+		];
 
-			# Layer rules.
-			layerrule = [
-				# Blur on Waybar
-				"blur, waybar"
-			];
+		# Layer rules.
+		layerrule = [
+			# Blur for Waybar.
+			"blur, waybar"
+
+			# Blur and xray off for tofi/other lauchers.
+			"blur, launcher"
+			"xray 0, launcher"
+		];
 
 			# Workspace settings.
 			workspace = [
