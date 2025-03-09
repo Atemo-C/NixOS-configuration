@@ -583,6 +583,7 @@
 
 			# Border settings for some windows.
 			"bordercolor rgb(0CCC00), class: (Alacritty|lxterminal)"
+			"bordercolor rgb(e60073), title: .*micro.*, class: (Alacritty|lxterminal)"
 			"bordercolor rgb(FF0000), title: .*sudo.*, class: (Alacritty|lxterminal)"
 			"prop bordersize 2, title: .*sudo.*, class: (Alacritty|lxterminal)"
 			];
