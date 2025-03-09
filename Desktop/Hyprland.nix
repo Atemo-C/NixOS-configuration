@@ -558,7 +558,7 @@
 			"size 320 410, class: (it.mijorus.smile)"
 
 			# Render all fullscreen programs immediately apart from the ones listed here.
-			"prop immediate, fullscreen:1, class: ^(?!(librewolf|mpv|FreeTube|Alacritty|lxterminal|vesktop|Revolt))"
+			"prop immediate, fullscreen:1, class: negative:(librewolf|mpv|FreeTube|Alacritty|lxterminal|vesktop|Revolt)"
 
 			# GIMP-specific settings.
 			"center, title: (Open Image), class: .*gimp.*"
@@ -579,7 +579,7 @@
 			"prop noblur, floating:1"
 
 			# Enable blur only for specific tilled windows.
-			"prop noblur, class: ^(?!(Alacritty|lxterminal))"
+			"prop noblur, class: negative:(Alacritty|lxterminal)"
 
 			# Border settings for some windows.
 			"bordercolor rgb(0CCC00), class: (Alacritty|lxterminal)"
