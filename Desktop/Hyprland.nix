@@ -498,6 +498,8 @@
 			"prop rounding 0,   floating:0, onworkspace:f[1]"
 
 			# Border settings for some windows.
+			"bordercolor rgb(00ffff) rgb(0080ff) 45deg, floating:1"
+			"prop bordersize 2, floating:1"
 			"bordercolor rgb(0CCC00), tag: term"
 			"bordercolor rgb(ff00ff), title: micro.*, tag: term"
 			"bordercolor rgb(ffc000), title: ssh.*, tag: term"
