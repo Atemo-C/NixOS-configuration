@@ -332,10 +332,10 @@
 			", XF86AudioNext, exec, playerctl next"
 
 			# Power buttons.
-			'', XF86PowerOff, exec, bash "/etc/nixos/Scripts/Power.sh"''
+			'', XF86PowerOff,  exec, bash "/etc/nixos/Scripts/Power.sh"''
 			'', XF86PowerDown, exec, bash "/etc/nixos/Scripts/Power.sh"''
-			'', XF86Sleep, exec, bash "/etc/nixos/Scripts/Power.sh"''
-			'', XF86Suspend, exec, bash "/etc/nixos/Scripts/Power.sh"''
+			'', XF86Sleep,     exec, bash "/etc/nixos/Scripts/Power.sh"''
+			'', XF86Suspend,   exec, bash "/etc/nixos/Scripts/Power.sh"''
 
 			# Custom program launcher.
 			''ALT, RETURN, exec, bash "/etc/nixos/Scripts/Programs.sh"''
