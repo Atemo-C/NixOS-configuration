@@ -497,7 +497,6 @@
 			"prop bordersize 0, floating:0, onworkspace:f[1]"
 			"prop rounding 0,   floating:0, onworkspace:f[1]"
 
-
 			# Border settings for some windows.
 			"bordercolor rgb(0CCC00), tag: term"
 			"bordercolor rgb(ff00ff), title: micro.*, tag: term"
