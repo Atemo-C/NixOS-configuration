@@ -17,14 +17,14 @@
 			group.groupbar."col.active" = general."col.active_border";
 
 		# Inactive window border colour and group background.
-		general."col.inactive_border" = "rgb(121212)";
+		general."col.inactive_border" = "rgb(1c1c1c)";
 			group."col.border_inactive" = general."col.inactive_border";
 			group.groupbar."col.inactive" = general."col.inactive_border";
 
 		# Active window border colour and group background for locked groups and group-excluded windows.
 		general."col.nogroup_border_active" = "rgb(ff4400)";
-			group."col.border_locked_active" = general."col.nogroup_border";
-			group.groupbar."col.locked_active" = general."col.nogroup_border";
+			group."col.border_locked_active" = general."col.nogroup_border_active";
+			group.groupbar."col.locked_active" = general."col.nogroup_border_active";
 
 		# Inactive  window border colour and group background for locked groups and group-excluded windows.
 		general."col.nogroup_border" = general."col.inactive_border";
@@ -191,36 +191,36 @@
 			render_unfocused_fps = 1;
 		};
 
-		# The name of the default monitor for the cursor to be set on startup.
-		# See `hyprctl monitors` for the names of the currently attached monitor(s).
-		# For Xwayland apps, you might also need to add `xrandr --output NAME --primary` in exec-once.
-		cursor.default_monitor = "DP-1";
+#		# The name of the default monitor for the cursor to be set on startup.
+#		# See `hyprctl monitors` for the names of the currently attached monitor(s).
+#		# For Xwayland apps, you might also need to add `xrandr --output NAME --primary` in exec-once.
+#		cursor.default_monitor = "DP-1";
 
 		# Workspace settings.
 		workspace = [
-			# Assign specific workspaces to specific monitors.
-			"1, monitor: DP-1"
-			"2, monitor: DP-1"
-			"3, monitor: DP-1"
-			"4, monitor: DP-1"
-			"5, monitor: HDMI-A-1"
-			"6, monitor: HDMI-A-1"
-			"7, monitor: HDMI-A-1"
-			"8, monitor: HDMI-A-1"
+#			# Assign specific workspaces to specific monitors.
+#			"1, monitor: DP-1"
+#			"2, monitor: DP-1"
+#			"3, monitor: DP-1"
+#			"4, monitor: DP-1"
+#			"5, monitor: HDMI-A-1"
+#			"6, monitor: HDMI-A-1"
+#			"7, monitor: HDMI-A-1"
+#			"8, monitor: HDMI-A-1"
 
 			# Remove gaps when only one window is present.
 			"w[tv1], gapsout:0, gapsin:0"
 			"f[1],   gapsout:0, gapsin:0"
 		];
 
-		# Monitor settings.
-		monitor = [
-			# [Main] Center DisplayPort monitor.
-			"DP-1, 1920x1080@120, 0x0, 1"
-
-			# [Secondary] Left HDMI-to-VGA monitor.
-			"HDMI-A-1, 1600x900@60, -1600x147, 1"
-		];
+#		# Monitor settings.
+#		monitor = [
+#			# [Main] Center DisplayPort monitor.
+#			"DP-1, 1920x1080@120, 0x0, 1"
+#
+#			# [Secondary] Left HDMI-to-VGA monitor.
+#			"HDMI-A-1, 1600x900@60, -1600x147, 1"
+#		];
 
 		# Whether to enable back-and-forth between the current and last active workspaces.
 		binds.workspace_back_and_forth = true;
@@ -456,15 +456,12 @@
 			"tile, title: (Select an image)"
 			"tile, class: (sober)"
 
-			# Enable blur only for specific tilled windows.
-			"prop noblur, class: negative:(Alacritty|lxterminal)"
-
 			# Fullscreen windows.
 			"fullscreen, 1, class: .*Better than Adventure.*"
 			"fullscreen, 1, class: (Luanti)"
 
 			# Render all fullscreen programs immediately apart from the ones with the `tear` tag.
-			"prop immediate, fullscreen:1, tag: (tear)"
+			"prop immediate, fullscreen:1, tag: tear"
 
 			# Tags for specific application types.
 			"tag +term, class: (Alacritty|lxterminal|kitty|cool-retro-term.|XTerm)"
@@ -474,7 +471,7 @@
 			"prop noblur, floating:1"
 
 			# Enable blur only for specific tilled windows.
-			"prop noblur, tag: negative:(term)"
+			"prop noblur, tag: negative:term"
 
 			# Event suppression.
 			"suppressevent maximize, title: (Revolt)"
@@ -502,13 +499,12 @@
 
 
 			# Border settings for some windows.
-			"bordercolor rgb(0CCC00), tag: (term)"
-			"bordercolor rgb(ff00ff), title: micro.*, tag: (term)"
-			"bordercolor rgb(ff00ff) rgb(0080ff) 45deg, title: micro.*nix.*, tag: (term)"
-			"bordercolor rgb(ffc000), title: ssh.*, tag: (term)"
-			"bordercolor rgb(ffc000), title: sftp.*, tag: (term)"
-			"bordercolor rgb(FF0000), title: sudo.*, tag: (term)"
-			"prop bordersize 2, title: sudo.*, tag: (term)"
+			"bordercolor rgb(0CCC00), tag: term"
+			"bordercolor rgb(ff00ff), title: micro.*, tag: term"
+			"bordercolor rgb(ffc000), title: ssh.*, tag: term"
+			"bordercolor rgb(ffc000), title: sftp.*, tag: term"
+			"bordercolor rgb(FF0000), title: sudo.*, tag: term"
+			"prop bordersize 2, title: sudo.*, tag: term"
 		];
 
 		# Layer rules.
@@ -553,10 +549,10 @@
 
 		# Programs to start when logging into Hyprland.
 		exec-once = [
-			# Set the default monitor for Xwayland programs.
-			"xrandr --output DP-1 --primary"
+#			# Set the default monitor for Xwayland programs.
+#			"xrandr --output DP-1 --primary"
 
-			# Screen sharing for legacy X11 programs.
+#			# Screen sharing for legacy X11 programs.
 #			"xwaylandvideobridge"
 
 			# Wallpaper.
