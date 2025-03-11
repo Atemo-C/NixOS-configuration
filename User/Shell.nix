@@ -40,10 +40,10 @@
 
 			# NixOS.
 			channel-list = "sudo nix-channel --list";
-			channel-upgrade = "sudo nix-channel --add https://channels.nixos.org/nixos-XX.XX nixos && micro /etc/nixos/User/Home-Manager.nix";
+			channel-change = "sudo nix-channel --add https://channels.nixos.org/nixos-XX.XX nixos && micro /etc/nixos/User/Home-Manager.nix";
+			nix-list = "sudo nixos-rebuild list-generations";
 			nix-clean = "sudo nix-collect-garbage -d --quiet";
-			nix-test = "sudo nixos-rebuild test --use-remote-sudo --quiet";
-			nix-test-upgrade = "sudo nixos-rebuild test --upgrade --use-remote-sudo --quiet";
+			nix-test = ''set -x CURRENTDIR $(pwd) && cd /tmp/ && sudo nixos-rebuild test --use-remote-sudo --quiet; cd "$CURRENTDIR"'';
 			nix-update-now = "sudo nixos-rebuild switch --use-remote-sudo --quiet";
 			nix-update-boot = "sudo nixos-rebuild boot --use-remote-sudo --quiet";
 			nix-upgrade-now = "sudo nixos-rebuild switch --upgrade --use-remote-sudo --quiet";
