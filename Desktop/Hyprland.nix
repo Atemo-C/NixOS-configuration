@@ -454,7 +454,6 @@
 			# Tilling windows.
 			"tile, title: (Kurso de Esperanto Kape)"
 			"tile, title: (Select an image)"
-			"tile, class: (sober)"
 
 			# Fullscreen windows.
 			"fullscreen, 1, class: .*Better than Adventure.*"
@@ -465,7 +464,7 @@
 
 			# Tags for specific application types.
 			"tag +term, class: (Alacritty|lxterminal|kitty|cool-retro-term.|XTerm)"
-			"tag +tear, fullscreen:1, class: (steam_proton|steam_app|Luanti|com.mojang.minecraft|sober|.*Better than Adventrue.*)"
+			"tag +tear, fullscreen:1, class: (steam_proton|steam_app|Luanti|com.mojang.minecraft|org.vinegarhq.Sober|.*Better than Adventrue.*)"
 
 			# Disable blur for floating windows.
 			"prop noblur, floating:1"
