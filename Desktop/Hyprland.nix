@@ -465,7 +465,7 @@
 
 			# Tags for specific application types.
 			"tag +term, class: (Alacritty|lxterminal|kitty|cool-retro-term.|XTerm)"
-			"tag +tear, fullscreen:1, class: (steam_proton|steam_appLuanti|com.mojang.minecraft|sober|.*Better than Adventrue.*)"
+			"tag +tear, fullscreen:1, class: (steam_proton|steam_app|Luanti|com.mojang.minecraft|sober|.*Better than Adventrue.*)"
 
 			# Disable blur for floating windows.
 			"prop noblur, floating:1"
