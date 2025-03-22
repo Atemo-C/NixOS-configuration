@@ -507,7 +507,7 @@
 			"bordercolor rgb(FF0000), title: (Authentication Required)"
 			"prop bordersize 2, title: (Authentication Required)"
 			"prop bordersize 2, title: sudo.*, tag: term"
-			"prop rounding 8, floating:1, class: (vesktop)"
+			"prop rounding 8, floating:1, class: (vesktop|sober_services)"
 		];
 
 		# Layer rules.
