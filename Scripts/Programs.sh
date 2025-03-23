@@ -145,8 +145,7 @@ Program=$(
 	nohup qpwgraph > /dev/null 2>&1 &
 
 [ "$Program" = "  Tenacity             Audio editor" ] &&
-	nohup GDK_BACKEND=x11 tenacity > /dev/null 2>&1 &
-#	nohup tenacity > /dev/null 2>&1 &
+	nohup tenacity > /dev/null 2>&1 &
 
 [ "$Program" = "󰂫  Blender              3D modeling" ] &&
 	nohup blender > /dev/null 2>&1 &
