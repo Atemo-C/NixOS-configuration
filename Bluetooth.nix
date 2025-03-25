@@ -18,6 +18,6 @@
 #	};
 
 	# Using Bluetooth headset buttons to control media, the Home Manager way.
-	home-manager.users.users.${config.custom.name}.services.mpris-proxy.enable = true;
+	home-manager.users.${config.custom.name}.services.mpris-proxy.enable = true;
 
 }
