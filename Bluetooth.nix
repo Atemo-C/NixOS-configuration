@@ -7,7 +7,7 @@
 	hardware.bluetooth.enable = true;
 
 	# Whether to enable the Blueman Bluetooth manager.
-	services.buleman.enable = true;
+	services.blueman.enable = true;
 
 	# Using Bluetooth headset buttons to control media, the system way.
 #	systemd.user.services.mpris-proxy = {
