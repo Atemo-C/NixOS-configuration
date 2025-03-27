@@ -12,5 +12,6 @@ in {
 		# State version of Home Manager.
 		# Here, it is assumed that Home Manager was installed with the same version used to install NixOS.
 		users.${config.custom.name}.home.stateVersion = "${config.system.stateVersion}";
+		users.root.home.stateVersion = "${config.system.stateVersion}";
 	};
 }

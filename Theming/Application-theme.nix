@@ -1,9 +1,23 @@
-{ config, pkgs, ... }: { home-manager.users.${config.custom.name}.gtk.theme = {
+{ config, pkgs, ... }: { home-manager.users = {
 
-	# Package providing the theme.
-	package = pkgs.flat-remix-gtk;
+	# Theme for the user.
+	${config.custom.name}.gtk.theme = {
 
-	# The name of the theme to use within the package.
-	name = "Flat-Remix-GTK-Blue-Darkest-Solid";
+		# Package providing the theme.
+		package = pkgs.flat-remix-gtk;
+
+		# The name of the theme to use within the package.
+		name = "Flat-Remix-GTK-Blue-Darkest-Solid";
+	};
+
+	# Theme for the root user.
+	root.gtk.theme = {
+
+		# Package providing the theme.
+		package = pkgs.flat-remix-gtk;
+
+		# The name of the theme to use within the package.
+		name = "Flat-Remix-GTK-Red-Darkest-Solid";
+	};
 
 }; }

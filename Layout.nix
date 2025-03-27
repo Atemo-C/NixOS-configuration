@@ -12,4 +12,13 @@
 		kb_variant = "intl";
 	};
 
+#	# Keyboard layout in other graphical environments.
+#	services.xserver.xkb = {
+#		# Keyboard layout to use.
+#		layout = "us";
+#
+#		# Keyboard layout variant to use.
+#		variant = "intl";
+#	};
+
 }
