@@ -146,6 +146,13 @@
 #		./Virtualisation/Virt-manager.nix
 #		./Virtualisation/Virtualbox.nix
 #		./Virtualisation/Waydroid.nix
+
+		# Virtualisation modules for guest agents.
+#		./Guest-virt/QEMU-KVM.nix
+#		./Guest-virt/VMWare.nix
+#		./Guest-virt/HyperV.nix
+#		./Guest-virt/XE.nix
+#		./Guest-virt/VirtualBox.nix
 	];
 
 }
