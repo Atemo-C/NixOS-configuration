@@ -60,7 +60,9 @@
 			lofi-escape = ''mpv --quiet --no-video "https://www.youtube.com/watch?v=S_MOd40zlYU"'';
 			lofi-jazz = ''mpv --quiet --no-video "https://www.youtube.com/watch?v=HuFYqnbVbzY"'';
 			lofi-piano = ''mpv --quiet --no-video "https://www.youtube.com/watch?v=TtkFsfOP9QI"'';
+			lofi-pov = ''mpv --quiet --no-video "https://www.youtube.com/watch?v=uFlzUaisbig"'';
 			lofi-rain = ''mpv --quiet --no-video "https://www.youtube.com/watch?v=-OekvEFm1lo"'';
+			lofi-sad = ''mpv --quiet --no-video "https://www.youtube.com/watch?v=P6Segk8cr-c"'';
 			lofi-sleep = ''mpv --quiet --no-video "https://www.youtube.com/watch?v=28KRPhVzCus"'';
 			lofi-study = ''mpv --quiet --no-video "https://www.youtube.com/watch?v=jfKfPfyJRdk"'';
 			lofi-synthwave = ''mpv --quiet --no-video "https://www.youtube.com/watch?v=4xDzrJKXOOY"'';
@@ -82,6 +84,7 @@
 			jpg-jxl = "parallel cjxl '{}' '{.}'.jxl -v ::: *.jpg";
 			jpeg-jxl = "parallel cjxl '{}' '{.}'.jxl -v ::: *.jpeg";
 			png-jxl = "parallel cjxl '{}' '{.}'.jxl -d 0 -v ::: *.png";
+			jpg-jxl = "parallel djxl '{}' '{.}'.jpg -v ::: *.jxl";
 
 			# List.
 			l = "lsd --group-dirs first";
