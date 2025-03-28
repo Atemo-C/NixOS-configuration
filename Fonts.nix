@@ -45,14 +45,25 @@
 		];
 	};
 
-	# Fonts to be used for the user.
-	home-manager.users.${config.custom.name} = {
-		gtk.font = {
-			# The family name of the font to use in compatible GTK applications.
-			name = "UbuntuMono Nerd Font";
+	# Fonts to be used for the normal and root users.
+	home-manager.users = {
+		${config.custom.name} = {
+			gtk.font = {
+				# The family name of the font to use in compatible GTK applications.
+				name = "UbuntuMono Nerd Font";
 
-			# The size of the font to use in compatible GTK applications.
-			size = 11;
+				# The size of the font to use in compatible GTK applications.
+				size = 11;
+			};
+		};
+		root = {
+			gtk.font = {
+				# The family name of the font to use in compatible GTK applications.
+				name = "UbuntuMono Nerd Font";
+
+				# The size of the font to use in compatible GTK applications.
+				size = 11;
+			};
 		};
 	};
 
