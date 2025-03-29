@@ -124,7 +124,7 @@ Program=$(
 	nohup lxterminal > /dev/null 2>&1 &
 
 [ "$Program" = "  Amfora               CLI Gemini client" ] &&
-	nohup $TERMINAL -e amfora > /dev/null 2>&1 &
+	nohup "$TERMINAL" -e amfora > /dev/null 2>&1 &
 
 [ "$Program" = "  Lagrange             GUI Gemini client" ] &&
 	nohup lagrange > /dev/null 2>&1 &
@@ -154,7 +154,7 @@ Program=$(
 	nohup cura > /dev/null 2>&1 &
 
 [ "$Program" = "  BTOP                 Terminal-based system monitor" ] &&
-	nohup $TERMINAL -e btop > /dev/null 2>&1 &
+	nohup "$TERMINAL" -e btop > /dev/null 2>&1 &
 
 [ "$Program" = "  CPU-X                Detailed processor information" ] &&
 	nohup cpu-x > /dev/null 2>&1 &
@@ -166,7 +166,7 @@ Program=$(
 	nohup bottles > /dev/null 2>&1 &
 
 [ "$Program" = "  Calcurse             Calendar" ] &&
-	nohup $TERMINAL -e calcurse > /dev/null 2>&1 &
+	nohup "$TERMINAL" -e calcurse > /dev/null 2>&1 &
 
 [ "$Program" = "  Clock                GNOME's clock" ] &&
 	nohup gnome-clocks > /dev/null 2>&1 &
@@ -246,10 +246,10 @@ Program=$(
 	nohup gparted > /dev/null 2>&1 &
 
 [ "$Program" = "󰋊  ncdu                 Disk usage" ] &&
-	nohup $TERMINAL -e ncdu > /dev/null 2>&1 &
+	nohup "$TERMINAL" -e ncdu > /dev/null 2>&1 &
 
 [ "$Program" = "  Ventoy               Bootable USB creation tool" ] &&
-	nohup $TERMINAL -e sudo ventoy-web > /dev/null 2>&1 &
+	nohup "$TERMINAL" -e sudo ventoy-web > /dev/null 2>&1 &
 
 [ "$Program" = "  File roller          Archive manager" ] &&
 	nohup file-roller > /dev/null 2>&1 &
@@ -317,7 +317,7 @@ Program=$(
 	nohup tor-browser > /dev/null 2>&1 &
 
 [ "$Program" = "󰛳  Network Manager      Manage WiFi and Ethernet" ] &&
-	nohup $TERMINAL -e nmtui > /dev/null 2>&1 &
+	nohup "$TERMINAL" -e nmtui > /dev/null 2>&1 &
 
 [ "$Program" = "󰛳  NM-applet            NetworkManager applet" ] &&
 	nohup nm-applet > /dev/null 2>&1 &
