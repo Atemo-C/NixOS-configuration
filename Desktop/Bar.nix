@@ -8,13 +8,12 @@
 
 	# Waybar configuration.
 	settings.mainBar = {
-		# Whether the bar is displayed in front (top) of the windows or behind (bottom) them.
+		# Whether the bar is displayed in front of (top) or behind (bottom) the windows.
 		layer = "top";
 
 		# Modules to be displayed on the left of the bar.
 		modules-left = [
 			"image#programs"   "custom/spacer"
-#			"image#settings"   "custom/spacer"
 			"image#files"      "custom/spacer"
 			"image#screenshot" "custom/spacer"
 			"image#clipboard"  "custom/spacer"
@@ -25,7 +24,6 @@
 
 		# Modules to be displayed in the center of the bar.
 		modules-center = [
-#			"image#overview" "custom/spacer"
 			"hyprland/workspaces"
 		];
 
@@ -64,13 +62,6 @@
 			size = 22;
 		};
 
-		# Settings module.
-#		"images#settings" = {
-#			on-click = "bash /etc/nixos/Scripts/Settings.sh";
-#			path = "/etc/nixos/Icons/Settings.png";
-#			size = 22;
-#		};
-
 		# File manager shortcut module.
 		# • [LMB] Opens a file manager in the default directory.
 		# • [RMB] Opens a file manager in the Downloads directory.
@@ -88,14 +79,14 @@
 		# • [BMB] Select a region to screeshot.
 		# • [FMB] Take a single-monitor screenshot.
 		# • [U/D] Take an all-monitors screenshot.
-		"image#screenshot" = {
-			on-click = "dash /etc/nixos/Scripts/Screenshots/Area-copy.sh";
-			on-click-right = "dash /etc/nixos/Scripts/Screenshots/Monitor-copy.sh";
-			on-click-middle = "dash /etc/nixos/Scrpts/Screenshots/All-copy.sh";
-			on-click-backward = "bash /etc/nixos/Scripts/Screenshots/Area-save.sh";
-			on-click-forward = "bash /etc/nixos/Scripts/Screenshots/Monitor-save.sh";
-			on-scroll-down = "bash /etc/nixos/Scripts/Screenshots/All-save.sh";
-			on-scroll-up = "bash /etc/nixos/Scripts/Screenshots/All-save.sh";
+		"image#screenshot" = rec {
+			on-click = "bash /etc/nixos/Scripts/Screenshot.sh --copy area";
+			on-click-right = "bash /etc/nixos/Scripts/Screenshot.sh --copy monitor";
+			on-click-middle = "bash /etc/nixos/Scrpts/Screenshot.sh --copy all";
+			on-click-backward = "bash /etc/nixos/Scripts/Screenshot.sh --save area";
+			on-click-forward = "bash /etc/nixos/Scripts/Screenshot.sh --save monitor";
+			on-scroll-down = "bash /etc/nixos/Scripts/Screenshot.sh --save all";
+			on-scroll-up = on-scroll-down;
 			path = "/etc/nixos/Icons/Screenshot.png";
 			size = 22;
 		};
@@ -105,12 +96,12 @@
 		# • [RMB] Opens a clipboard text file.
 		# • [MMB] Clears the clipboard content of the clipboard manager.
 		# • [F/BMB] Opens a bookmarks text file.
-		"image#clipboard" = {
+		"image#clipboard" = rec {
 			on-click = "clipman pick -t CUSTOM -T tofi";
 			on-click-right = "alacritty -e micro $HOME/Documents/Clipboard.txt";
 			on-click-middle = "clipman clear --all & notify-send -t 1500 'Clipboard cleared.'";
 			on-click-backward = "alacritty -e micro $HOME/Documents/Bookmarks.txt";
-			on-click-forward = "alacritty -e micro $HOME/Documents/Bookmarks.txt";
+			on-click-forward = on-click-backward;
 			path = "/etc/nixos/Icons/Clipboard.png";
 			size = 22;
 		};
@@ -140,11 +131,11 @@
 		};
 
 		# Hyprland workspaces module.
-#		"hyprland/workspaces" = { persistent-workspaces = {
-#			"DP-1" = [ 1 2 3 4 ];
-#			"HDMI-A-1" = [ 5 6 7 8 ];
-#		}; };
-		"hyprland/workspaces" = { persistent-workspaces = { "*" = 8; }; };
+		"hyprland/workspaces" = { persistent-workspaces = {
+			"DP-1" = [ 1 2 3 4 ];
+			"HDMI-A-1" = [ 5 6 7 8 ];
+		}; };
+#		"hyprland/workspaces" = { persistent-workspaces = { "*" = 8; }; };
 
 		# CPU monitoring modules.
 		# • [LMB] Opens a system resources monitor.
@@ -180,8 +171,8 @@
 		# • [MMB] Shows detailed current system temperatures at a glance.
 		"image#ram" = {
 			on-click = "alacritty -e btop";
-			on-click-right = ''notify-send "$(free -mht)"'';
-			on-click-middle = ''notify-send "$(sensors)"'';
+			on-click-right = ''notify-send "$(sensors)"'';
+			on-click-middle = ''notify-send "$(free -mht)"'';
 			path = "/etc/nixos/Icons/RAM.png";
 			size = 22;
 		};
@@ -189,8 +180,8 @@
 			format = "{percentage}%";
 			interval = 1;
 			on-click = "alacritty -e btop";
-			on-click-right = ''notify-send "$(free -mht)"'';
-			on-click-middle = ''notify-send "$(sensors)"'';
+			on-click-right = ''notify-send "$(sensors)"'';
+			on-click-middle = ''notify-send "$(free -mht)"'';
 		};
 
 		# Battery monitoring module.
@@ -262,7 +253,7 @@
 		}
 
 		tooltip {
-			background: #242424;
+			background: #1d1d1d;
 			border: 2px solid #0080ff;
 		}
 

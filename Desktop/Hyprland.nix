@@ -350,22 +350,22 @@
 			"SUPER, RETURN, exec, alacritty"
 
 			# Fullscreen screenshot (save).
-			'', PRINT, exec, bash "/etc/nixos/Scripts/Screenshots/Monitor-save.sh"''
+			'', PRINT, exec, bash "/etc/nixos/Scripts/Screenshot.sh --save monitor"''
 
 			# Fullscreen screenshot (copy).
-			''CONTROL, PRINT, exec, dash "/etc/nixos/Scripts/Screenshots/Monitor-copy.sh"''
+			''CONTROL, PRINT, exec, bash "/etc/nixos/Scripts/Screenshot.sh --copy monitor"''
 
 			# Region screenshot (save).
-			''SHIFT, PRINT, exec, bash "/etc/nixos/Scripts/Screenshots/Area-save.sh"''
+			''SHIFT, PRINT, exec, bash "/etc/nixos/Scripts/Screenshot.sh --save area"''
 
 			# Region screenshot (copy).
-			''CONTROL SHIFT, PRINT, exec, dash "/etc/nixos/Scripts/Screenshots/Area-copy.sh"''
+			''CONTROL SHIFT, PRINT, exec, bash "/etc/nixos/Scripts/Screenshot.sh --copy area"''
 
 			# All-monitors screenshot (save).
-			''ALT, PRINT, exec, bash "/etc/nixos/Scripts/Screenshots/All-save.sh"''
+			''ALT, PRINT, exec, bash "/etc/nixos/Scripts/Screenshot.sh --save all"''
 
 			# All-monitors screenshot (copy).
-			''ALT SHIFT, PRINT, exec, dash "/etc/nixos/Scripts/Screenshots/All-copy.sh"''
+			''ALT SHIFT, PRINT, exec, bash "/etc/nixos/Scripts/Screenshot.sh --copy all"''
 
 			# Select from the clipboard.
 			"SUPER SHIFT, V, exec, clipman pick -t CUSTOM -T tofi"
