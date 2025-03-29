@@ -4,7 +4,7 @@
 for type in "$@"; do
 	case "$type" in
 		area) shottype="area";;
-		monitor) shottype="monitor";;
+		monitor) shottype="output";;
 		all) shottype="screen";;
 		--copy|-c|--save|-s);; # This is handled in the later part of this script.
 		*);; # If the argument is not recognized, it is ignored.
