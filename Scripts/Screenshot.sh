@@ -34,7 +34,7 @@ elif echo "$*" | grep -q -- "--save" || echo "$*" | grep -q -- "-s"; then
 
 # Errors out if no argument or an invalid one is given.
 else
-echo "
+	echo "
  $(tput setaf 1)$(tput bold)Error$(tput sgr0): Missing or invalid argument.
  You can use the $(tput setaf 2)--copy$(tput sgr0) / $(tput setaf 2)-c$(tput sgr0) or the $(tput setaf 2)--save$(tput sgr0) / $(tput setaf 2)-s$(tput sgr0) argument, followed or preceeded by one of:
    $(tput setaf 6)area$(tput sgr0)    $(tput setaf 13)(to select an area or individual window)$(tput sgr0)
