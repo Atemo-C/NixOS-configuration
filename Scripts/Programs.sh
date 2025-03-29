@@ -33,7 +33,7 @@ Programs=(
 	"  CUPS                 Printer configuration"
 	" "
 	"  Enable crosshair     A simple red-dot crosshair"
-	"󰽅  Disable crosshair    Closes the active crosshair/s"
+	"󰽅  Disable crosshair    Kills the active crosshair/s"
 	"  DeSmuME              Nintendo DS/I emulator"
 	"  DuckStation          Playstation 1 emulator"
 	"  PCSX2                PlayStation 2 emulator"
@@ -175,10 +175,10 @@ Program=$(
 	nohup xdg-open "https://localhost:631/" > /dev/null 2>&1 &
 
 [ "$Program" = "  Enable crosshair     A simple red-dot crosshair" ] &&
-	nohup dash /etc/nixos/Scripts/Crosshair/Crosshair-start.sh > /dev/null 2
+	nohup dash /etc/nixos/Scripts/Crosshair/Crosshair.sh --start > /dev/null 2
 
-[ "$Program" = "󰽅  Disable crosshair    Closes the active crosshair/s" ] &&
-	nohup dash /etc/nixos/Scripts/Crosshair/Crosshair-kill.sh > /dev/null 2
+[ "$Program" = "󰽅  Disable crosshair    Kills the active crosshair/s" ] &&
+	nohup dash /etc/nixos/Scripts/Crosshair/Crosshair.sh --kill > /dev/null 2
 
 [ "$Program" = "  DeSmuME              Nintendo DS/I emulator" ] &&
 	nohup desmume > /dev/null 2>&1 &
