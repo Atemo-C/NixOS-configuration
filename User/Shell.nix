@@ -142,7 +142,7 @@
 			list-recursive-long = llr;
 
 			# List all+long+tree.
-			lalt = "lsd --goup-dirs first -Al --tree";
+			lalt = "lsd --group-dirs first -Al --tree";
 			latl = lalt;
 			llta = lalt;
 			llat = lalt;
@@ -156,7 +156,7 @@
 			list-tree-all-long = lalt;
 
 			# List all+long+recursive.
-			lalr = "lsd --goup-dirs first -Al --recursive";
+			lalr = "lsd --group-dirs first -Al --recursive";
 			larl = lalr;
 			llra = lalr;
 			llar = lalr;
