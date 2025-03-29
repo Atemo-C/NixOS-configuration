@@ -9,7 +9,7 @@
 		enable = true;
 
 		# Set of FISH abbreviations.
-		shellAbbrs = {
+		shellAbbrs = rec {
 			# Short abbreviations.
 			b = "btop";
 			c = "clear";
@@ -27,6 +27,11 @@
 			mv = "mv -v -i";
 			rm = "rm -v -i";
 			rmdir = "rm -d -r -v -i";
+
+			# Going back more directories.
+			"..." = "cd ../../";
+			"...." = "cd ../../../";
+			"....." = "cd ../../../../";
 
 			# Remapping mouse extra button to F13.
 			f13 = "sudo evsieve --input /dev/input/by-id/usb-1bcf_USB_Optical_Mouse-event-mouse grab --map btn:extra key:f13 --output";
@@ -88,81 +93,81 @@
 
 			# List.
 			l = "lsd --group-dirs first";
-			list = "lsd --group-dirs first";
+			list = l;
 
 			# List all.
 			la = "lsd --group-dirs first -A";
-			list-all = "lsd --group-dirs first -A";
+			list-all = la;
 
 			# List long.
 			ll = "lsd --group-dirs first -l";
-			list-long = "lsd --group-dirs first -l";
+			list-long = ll;
 
 			# List tree.
 			lt = "lsd --group-dirs first --tree";
-			list-tree = "lsd --group-dirs first --tree";
+			list-tree = lt;
 
 			# List recursive.
 			lr = "lsd --group-dirs first --recursive";
-			list-recursive = "lsd --group-dirs first --recursive";
+			list-recursive = lr;
 
 			# List all+long.
 			lal = "lsd --group-dirs first -Al";
-			lla = "lsd --group-dirs first -Al";
-			list-all-long = "lsd --group-dirs first -Al";
-			list-long-all = "lsd --group-dirs first -Al";
+			lla = lal;
+			list-all-long = lal;
+			list-long-all = lal;
 
 			# List all+tree.
 			lat = "lsd --group-dirs first -A --tree";
-			lta = "lsd --group-dirs first -A --tree";
-			list-all-tree = "lsd --group-dirs first -A --tree";
-			list-tree-all = "lsd --group-dirs first -A --tree";
+			lta = lat;
+			list-all-tree = lat;
+			list-tree-all = lat;
 
 			# List all+recursive.
 			lar = "lsd --group-dirs first -A --recursive";
-			lra = "lsd --group-dirs first -A --recursive";
-			list-all-recursive = "lsd --group-dirs first -A --recursive";
-			list-recursive-all = "lsd --group-dirs first -A --recursive";
+			lra = lar;
+			list-all-recursive = lar;
+			list-recursive-all = lar;
 
 			# List long+tree.
 			llt = "lsd --group-dirs first -l --tree";
-			ltl = "lsd --group-dirs first -l --tree";
-			list-long-tree = "lsd --group-dirs first -l --tree";
-			list-tree-long = "lsd --group-dirs first -l --tree";
+			ltl = llt;
+			list-long-tree = llt;
+			list-tree-long = llt;
 
 			# List long+recursive.
 			llr = "lsd --group-dirs first -l --recursive";
-			lrl = "lsd --group-dirs first -l --recursive";
-			list-long-recursive = "lsd --group-dirs first -l --recursive";
-			list-recursive-long = "lsd --group-dirs first -l --recursive";
+			lrl = llr;
+			list-long-recursive = llr;
+			list-recursive-long = llr;
 
 			# List all+long+tree.
 			lalt = "lsd --goup-dirs first -Al --tree";
-			latl = "lsd --goup-dirs first -Al --tree";
-			llta = "lsd --goup-dirs first -Al --tree";
-			llat = "lsd --goup-dirs first -Al --tree";
-			ltla = "lsd --goup-dirs first -Al --tree";
-			ltal = "lsd --goup-dirs first -Al --tree";
-			list-all-long-tree = "lsd --goup-dirs first -Al --tree";
-			list-all-tree-long = "lsd --goup-dirs first -Al --tree";
-			list-long-tree-all = "lsd --goup-dirs first -Al --tree";
-			list-long-all-tree = "lsd --goup-dirs first -Al --tree";
-			list-tree-long-all = "lsd --goup-dirs first -Al --tree";
-			list-tree-all-long = "lsd --goup-dirs first -Al --tree";
+			latl = lalt;
+			llta = lalt;
+			llat = lalt;
+			ltla = lalt;
+			ltal = lalt;
+			list-all-long-tree = lalt;
+			list-all-tree-long = lalt;
+			list-long-tree-all = lalt;
+			list-long-all-tree = lalt;
+			list-tree-long-all = lalt;
+			list-tree-all-long = lalt;
 
 			# List all+long+recursive.
 			lalr = "lsd --goup-dirs first -Al --recursive";
-			larl = "lsd --goup-dirs first -Al --recursive";
-			llra = "lsd --goup-dirs first -Al --recursive";
-			llar = "lsd --goup-dirs first -Al --recursive";
-			lrla = "lsd --goup-dirs first -Al --recursive";
-			lral = "lsd --goup-dirs first -Al --recursive";
-			list-all-long-recursive = "lsd --goup-dirs first -Al --recursive";
-			list-all-recursive-long = "lsd --goup-dirs first -Al --recursive";
-			list-long-recursive-all = "lsd --goup-dirs first -Al --recursive";
-			list-long-all-recursive = "lsd --goup-dirs first -Al --recursive";
-			list-recursive-long-all = "lsd --goup-dirs first -Al --recursive";
-			list-recursive-all-long = "lsd --goup-dirs first -Al --recursive";
+			larl = lalr;
+			llra = lalr;
+			llar = lalr;
+			lrla = lalr;
+			lral = lalr;
+			list-all-long-recursive = lalr;
+			list-all-recursive-long = lalr;
+			list-long-recursive-all = lalr;
+			list-long-all-recursive = lalr;
+			list-recursive-long-all = lalr;
+			list-recursive-all-long = lalr;
 		};
 	};
 
