@@ -131,11 +131,11 @@
 		};
 
 		# Hyprland workspaces module.
-		"hyprland/workspaces" = { persistent-workspaces = {
-			"DP-1" = [ 1 2 3 4 ];
-			"HDMI-A-1" = [ 5 6 7 8 ];
-		}; };
-#		"hyprland/workspaces" = { persistent-workspaces = { "*" = 8; }; };
+#		"hyprland/workspaces" = { persistent-workspaces = {
+#			"DP-1" = [ 1 2 3 4 ];
+#			"HDMI-A-1" = [ 5 6 7 8 ];
+#		}; };
+		"hyprland/workspaces" = { persistent-workspaces = { "*" = 8; }; };
 
 		# CPU monitoring modules.
 		# • [LMB] Opens a system resources monitor.
