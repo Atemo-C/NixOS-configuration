@@ -84,7 +84,7 @@
 			jpg-jxl = "parallel cjxl '{}' '{.}'.jxl -v ::: *.jpg";
 			jpeg-jxl = "parallel cjxl '{}' '{.}'.jxl -v ::: *.jpeg";
 			png-jxl = "parallel cjxl '{}' '{.}'.jxl -d 0 -v ::: *.png";
-			jpg-jxl = "parallel djxl '{}' '{.}'.jpg -v ::: *.jxl";
+			jxl-jpg = "parallel djxl '{}' '{.}'.jpg -v ::: *.jxl";
 
 			# List.
 			l = "lsd --group-dirs first";
