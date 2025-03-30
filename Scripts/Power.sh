@@ -1,39 +1,47 @@
 #!/bin/dash
 
-# Executeables shortcut.
+# Shortcut for binaries.
 SW="/run/current-system/sw/bin"
 HM="$HOME/.nix-profile/bin"
 
-# Check if the requiered dependencies are installed.
-[ -f "$HM/hyprland" ] || [ -f "$SW/hyprland" ] || { notify-send "This power menu is made for Hyprland."; exit 1; }
-[ -f "$HM/tofi" ] || [ -f "$SW/tofi" ] || { notify-send "tofi is not installed."; exit 1; }
+# Check if libnotify is installed.
+[ -f "$SW/notify-send" ] || {
+	echo "libnotify could not be found. It is needed to display graphical notifications.";
+	exit 1;
+}
 
-# Create the Options list, filled later by the script.
-Options="
-"
+# Check if Hyprland is the active desktop.
+[ "$XDG_CURRENT_DESKTOP" = "Hyprland" ] || {
+	notify-send "This wallpaper utility can only be used with Hyprland." &
+	echo "This wallpaper utility can only be used with Hyprland.";
+	exit 1;
+}
 
-# Create the Confirmation list, used in some prompts.
+# Check if Tofi is installed.
+[ -f "$HM/tofi" ] || [ -f "$SW/tofi" ] || {
+	notify-send "tofi could not be found. It is necessary to display the graphical menu." &
+	echo "tofi could not be found. It is necessary to display the graphical menu.";
+	exit 1;
+}
+
+# Create the Confirmation list, used in prompts where user confirmation is good to have.
 Confirmations="
   No
   Yes
-  Back
-"
+  Back"
+
+# Set the size of the Tofi menu for the main selection.
+Width="187"
+Height="292"
 
 # Gather the number of active monitors.
 Count=$(hyprctl monitors | grep -c "Monitor")
 
-# Choose the correct orthography depending on the monitor count.
-[ "$Count" -eq 1 ] &&
-	Options="
-$Options
-󰍹  Turn off display"
+# Choose the correct orthography, depending on the monitor count.
+[ "$Count" -eq 1 ] && Options="󰍹  Turn off display"
+[ "$Count" -ge 2 ] && Options="󰍹  Turn off displays"
 
-[ "$Count" -ge 2 ] &&
-	Options="
-$Options
-󰍹  Turn off displays"
-
-# Add some of the other entries to the Options.
+# Add some of the other entries to the options.
 Options="
 $Options
 󰒲  Suspend
@@ -41,19 +49,14 @@ $Options
 󱌂  Hybrid sleep
 󰜉  Reboot"
 
-# Sets the size of the Tofi menu for the main selection.
-Width="187"
-Height="292"
-
-# If booted in EFI mode, add the option to reboot into the UEFI firmware and set the appropriate size for Tofi.
-[ -d "/sys/firmware/efi" ] &&
-	Options="
+# If booted in EFI mode, add the option to reboot into the UEFI firmware and change the size of the Tofi menu.
+[ -d "/sys/firmware/efi" ] && Options="
 $Options
   Reboot to UEFI firmware"
 	Width="236"
 	Height="327"
 
-# Add the remaining entries to the Options.
+# Add the remaining entries to the options.
 Options="
 $Options
   Power off
