@@ -278,7 +278,7 @@ Program=$(
 	nohup gimp > /dev/null 2>&1 &
 
 [ "$Program" = "  Hyprpaper            Set desktop background/wallpaper" ] &&
-	nohup bash "/etc/nixos/Scripts/Hyprpaper.sh" > /dev/null 2>&1 &
+	nohup dash "/etc/nixos/Scripts/Hyprpaper.sh" > /dev/null 2>&1 &
 
 [ "$Program" = "  Krita                Digital painting" ] &&
 	nohup krita > /dev/null 2>&1 &

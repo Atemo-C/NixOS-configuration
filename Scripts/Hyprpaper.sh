@@ -1,5 +1,4 @@
-# Closes on error.
-set -euo pipefail
+#!/bin/dash
 
 # Wallpaper file selection.
 Wallpaper=$(zenity \
@@ -11,8 +10,11 @@ Wallpaper=$(zenity \
 
 case $? in
 	# Write the wallpaper's path to hyprpaper's configuration file.
-	0) echo -e \
-		"preload = $Wallpaper\nwallpaper = ,$Wallpaper\nsplash = false\nipc = on" \
+	0) echo \
+		"preload = $Wallpaper
+		wallpaper = ,$Wallpaper
+		splash = false
+		ipc = on" \
 		> "$HOME/.config/hypr/hyprpaper.conf";
 
 		# Kills hyprpaper if it is already running, then continues.
