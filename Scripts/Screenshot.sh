@@ -1,17 +1,43 @@
 #!/bin/dash
 
-# Executeables shortcut.
+# Shortcut for binaries.
 SW="/run/current-system/sw/bin"
-HM="$HOME/.nix-profile/bin"
 
-# Check if the requiered dependencies are installed.
-[ -f "$HM/hyprland" ] || [ -f "$SW/hyprland" ] || { notify-send "This crosshair is made for Hyprland."; exit 1; }
-[ -f "$SW/grimblast" ] || { notify-send "grimblast is not installed."; exit 1; }
-[ -f "$SW/magick" ] || { notify-send "imagemagick is not installed."; exit 1; }
-[ -f "$SW/oxipng" ] || { notify-send "oxipng is not installed."; exit 1; }
-[ -f "$SW/notify-send" ] || { echo "notify-send is not installed."; exit 1; }
+# Check if libnotify is installed.
+[ -f "$SW/notify-send" ] || {
+	echo "libnotify could not be found. It is needed to display graphical notifications.";
+	exit 1;
+}
 
-# Loop that defines the type of screenshot being taken.
+# Check if Hyprland is the active desktop.
+[ "$XDG_CURRENT_DESKTOP" = "Hyprland" ] || {
+	notify-send "This wallpaper utility can only be used with Hyprland." &
+	echo "This wallpaper utility can only be used with Hyprland.";
+	exit 1;
+}
+
+# Check if grimblast is insalled.
+[ -f "$SW/grimblast" ] || {
+	notify-send "grimblast could not be found. It is needed to take screenshots." &
+	echo "grimblast could not be found. It is needed to take screenshots.";
+	exit 1;
+}
+
+# Check if oxipng is installed.
+[ -f "$SW/oxipng" ] || {
+	notify-send "oxipng could not be found. It is needed to optimize the intial saved screenshots." &
+	echo "oxipng could not be found. It is needed to optimize the intial saved screenshots.";
+	exit 1;
+}
+
+# Check if imagemagick is installed.
+[ -f "$SW/magick" ] || {
+	notify-send "imagemagick could not be found. It is needed to convert the saved screenshot to a WEBP image." &
+	echo "imagemagick could not be found. It is needed to convert the saved screenshot to a WEBP image.";
+	exit 1;
+}
+
+# Define the type of screenshot being taken.
 for type in "$@"; do
 	case "$type" in
 		area) shottype="area";;
@@ -24,14 +50,14 @@ done
 
 # Copies the screenshot to the clipboard with the --copy or -c argument.
 if echo "$*" | grep -q -- "--copy" || echo "$*" | grep -q -- "-c"; then
-	grimblast --notify --freeze copy "$shottype"
+		grimblast --notify --freeze copy "$shottype"
 
 # Saves the screenshot to a file with the --save or -s argument.
 elif echo "$*" | grep -q -- "--save" || echo "$*" | grep -q -- "-s"; then
-	# Sets the screenshot's name.
+	# Set the screenshot's name.
 	IMAGE=$(date +'Screenshot_%d-%m-%Y_%H-%M-%S')
 
-	# Changes the active directory to save the screenshot into.
+	# Change the active directory to save the screenshot into.
 	cd "$HOME/Images/Screenshots" || exit 1
 
 	# Take the screenshot.
@@ -46,8 +72,8 @@ elif echo "$*" | grep -q -- "--save" || echo "$*" | grep -q -- "-s"; then
 	# Remove the original screenshot.
 	rm "$IMAGE".png
 
-# Errors out if no argument or an invalid one is given.
 else
+	# Error out if no argument or an invalid one is given.
 	echo "
  $(tput setaf 1)$(tput bold)Error$(tput sgr0): Missing or invalid argument.
  You can use the $(tput setaf 2)--copy$(tput sgr0) / $(tput setaf 2)-c$(tput sgr0) or the $(tput setaf 2)--save$(tput sgr0) / $(tput setaf 2)-s$(tput sgr0) argument, followed or preceeded by one of:
