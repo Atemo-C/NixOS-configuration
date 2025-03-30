@@ -110,7 +110,7 @@
 		# • [LMB] Pick a color anywhere on the desktop.
 		# • [RMB] Opens a graphical color picker.
 		"image#picker" = {
-			on-click = "bash /etc/nixos/Scripts/Picker.sh";
+			on-click = "dash /etc/nixos/Scripts/Picker.sh";
 			on-click-right = "gcolor3";
 			path = "/etc/nixos/Icons/Picker.png";
 			size = 22;
