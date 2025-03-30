@@ -332,10 +332,10 @@
 			", XF86AudioNext, exec, playerctl next"
 
 			# Power buttons.
-			'', XF86PowerOff,  exec, bash "/etc/nixos/Scripts/Power.sh"''
-			'', XF86PowerDown, exec, bash "/etc/nixos/Scripts/Power.sh"''
-			'', XF86Sleep,     exec, bash "/etc/nixos/Scripts/Power.sh"''
-			'', XF86Suspend,   exec, bash "/etc/nixos/Scripts/Power.sh"''
+			'', XF86PowerOff,  exec, dash "/etc/nixos/Scripts/Power.sh"''
+			'', XF86PowerDown, exec, dash "/etc/nixos/Scripts/Power.sh"''
+			'', XF86Sleep,     exec, dash "/etc/nixos/Scripts/Power.sh"''
+			'', XF86Suspend,   exec, dash "/etc/nixos/Scripts/Power.sh"''
 
 			# Custom program launcher.
 			''ALT, RETURN, exec, bash "/etc/nixos/Scripts/Programs.sh"''
@@ -350,22 +350,22 @@
 			"SUPER, RETURN, exec, alacritty"
 
 			# Fullscreen screenshot (save).
-			'', PRINT, exec, bash "/etc/nixos/Scripts/Screenshot.sh --save monitor"''
+			'', PRINT, exec, dash "/etc/nixos/Scripts/Screenshot.sh --save monitor"''
 
 			# Fullscreen screenshot (copy).
-			''CONTROL, PRINT, exec, bash "/etc/nixos/Scripts/Screenshot.sh --copy monitor"''
+			''CONTROL, PRINT, exec, dash "/etc/nixos/Scripts/Screenshot.sh --copy monitor"''
 
 			# Region screenshot (save).
-			''SHIFT, PRINT, exec, bash "/etc/nixos/Scripts/Screenshot.sh --save area"''
+			''SHIFT, PRINT, exec, dash "/etc/nixos/Scripts/Screenshot.sh --save area"''
 
 			# Region screenshot (copy).
-			''CONTROL SHIFT, PRINT, exec, bash "/etc/nixos/Scripts/Screenshot.sh --copy area"''
+			''CONTROL SHIFT, PRINT, exec, dash "/etc/nixos/Scripts/Screenshot.sh --copy area"''
 
 			# All-monitors screenshot (save).
-			''ALT, PRINT, exec, bash "/etc/nixos/Scripts/Screenshot.sh --save all"''
+			''ALT, PRINT, exec, dash "/etc/nixos/Scripts/Screenshot.sh --save all"''
 
 			# All-monitors screenshot (copy).
-			''ALT SHIFT, PRINT, exec, bash "/etc/nixos/Scripts/Screenshot.sh --copy all"''
+			''ALT SHIFT, PRINT, exec, dash "/etc/nixos/Scripts/Screenshot.sh --copy all"''
 
 			# Select from the clipboard.
 			"SUPER SHIFT, V, exec, clipman pick -t CUSTOM -T tofi"

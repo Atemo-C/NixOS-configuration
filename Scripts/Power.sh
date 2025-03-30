@@ -1,43 +1,52 @@
-#!/usr/bin/env bash
+#!/bin/dash
 
 # Create the Options list, filled later by the script.
-Options=()
+Options="
+"
 
 # Create the Confirmation list, used in some prompts.
-Confirmations=(
-	"  No"
-	"  Yes"
-	"  Back"
-	" "
-	"󰗼  Exit"
-)
+Confirmations="
+  No
+  Yes
+  Back
+"
 
 # Gather the number of active monitors.
 Count=$(hyprctl monitors | grep -c "Monitor")
 
 # Choose the correct orthography depending on the monitor count.
 if [ "$Count" -eq 1 ]; then
-	Options+=("󰍹  Turn off display")
+	Options="
+$Options
+󰍹  Turn off display
+"
 
 elif [ "$Count" -ge 2 ]; then
-	Options+=("󰍹  Turn off displays")
+	Options="
+$Options
+󰍹  Turn off displays
+"
 
 else
-	echo "An error occured during fetching of any active output."
+	echo "An error occured during the fetching of any active output."
 	exit 1
 fi
 
-# Add some of the other entries to Options.
-Options+=(
-	"󰒲  Suspend"
-	"󰒲  Hibernate"
-	"󱌂  Hybrid sleep"
-	"󰜉  Reboot"
-)
+# Add some of the other entries to the Options.
+Options="
+$Options
+󰒲  Suspend
+󰒲  Hibernate
+󱌂  Hybrid sleep
+󰜉  Reboot
+"
 
-# If on an EFI system, add the option to reboot into the UEFI firmware, and set the appropriate size for Tofi.
+# If booted in EFI mode, add the option to reboot into the UEFI firmware and set the appropriate size for Tofi.
 if [ -d "/sys/firmware/efi" ]; then
-	Options+=("  Reboot to UEFI firmware")
+	Options="
+$Options
+  Reboot to UEFI firmware
+"
 	Width="236"
 	Height="327"
 else
@@ -45,181 +54,187 @@ else
 	Height="292"
 fi
 
-# Add the remaining entries to Options.
-Options+=(
-	"  Power off"
-	"󰺟  Halt"
-	" "
-	"󰗼  Exit"
-)
+# Add the remaining entries to the Options.
+Options="
+$Options
+  Power off
+󰺟  Halt
+ ‎
+󰗼  Exit
+"
 
 # Let the user select an option.
-Choice=$(
-	printf '%s\n' "${Options[@]}" | tofi \
-		--width "$Width" \
-		--height "$Height" \
-		--prompt-text " " \
-		"${@}"
+Choice=$(printf '%s\n' "$Options" | tofi \
+	--width "$Width" \
+	--height "$Height" \
+	--prompt-text " " \
+	"$@"
 )
 
-# Defines the actions for every option.
-[ "$Choice" = " " ] &&
-	nohup bash "/etc/nixos/Scripts/Power.sh" > /dev/null 2>&1 &
+# Defines the actions for every choice.
+case "$Choice" in
+	"󰍹  Turn off display")
+		sleep 0.2 && hyprctl dispatcher dpms off
+	;;
 
-[ "$Choice" = "󰍹  Turn off display" ] || [ "$Choice" = "󰍹  Turn off displays" ] &&
-	sleep 0.2 && hyprctl dispatcher dpms off
+	"󰍹  Turn off displays")
+		sleep 0.2 && hyprctl dispatcher dpms off
+	;;
 
-[ "$Choice" = "󰒲  Suspend" ] &&
-	Choice=$(
-		printf '%s\n' "${Confirmations[@]}" | tofi \
+	"󰒲  Suspend")
+		Choice=$(printf '%s\n' "$Confirmations" | tofi \
 			--width 140 \
-			--height 182 \
+			--height 124 \
 			--prompt-text "Suspend?"
-	)
-	[ "$Choice" = " " ] &&
+		)
+		case "$Choice" in
+			"  No")
+				exit
+			;;
+
+			"  Yes")
+				systemctl suspend
+			;;
+
+			"  Back")
+				nohup dash "/etc/nixos/Scripts/Power.sh" > /dev/null 2>&1 &
+			;;
+		esac
+	;;
+
+	"󰒲  Hibernate")
+		Choice=$(printf '%s\n' "$Confirmations" | tofi \
+			--width 156 \
+			--height 124 \
+			--prompt-text "Hibernate?"
+		)
+		case "$Choice" in
+			"  No")
+				exit
+			;;
+
+			"  Yes")
+				systemctl hibernate
+			;;
+
+			"  Back")
+				nohup dash "/etc/nixos/Scripts/Power.sh" > /dev/null 2>&1 &
+			;;
+		esac
+	;;
+
+	"󱌂  Hybrid sleep")
+		Choice=$(printf '%s\n' "$Confirmations" | tofi \
+			--width 180 \
+			--height 124 \
+			--prompt-text "Hybrid sleep?"
+		)
+		case "$Choice" in
+			"  No")
+				exit
+			;;
+
+			"  Yes")
+				systemctl hybrid-sleep
+			;;
+
+			"  Back")
+				nohup dash "/etc/nixos/Scripts/Power.sh" > /dev/null 2>&1 &
+			;;
+		esac
+	;;
+
+	"󰜉  Reboot")
+		Choice=$(printf '%s\n' "Confirmations" | tofi \
+			--width 131 \
+			--height 124 \
+			--prompt-text "Reboot?"
+		)
+		case "$Choice" in
+			"  No")
+				exit
+			;;
+
+			"  Yes")
+				systemctl reboot
+			;;
+
+			"  Back")
+				nohup dash "/etc/nixos/Scripts/Power.sh" > /dev/null 2>&1 &
+			;;
+		esac
+	;;
+
+	"  Reboot to UEFI firmware")
+		Choice=$(printf '%s\n' "$Confirmations" | tofi \
+			--width 268 \
+			--height 124 \
+			--prompt-text "Reboot to UEFI firmware?"
+		)
+		case "$Choice" in
+			"  No")
+				exit
+			;;
+
+			"  Yes")
+				systemctl reboot --firmware-setup
+			;;
+
+			"  Back")
+				nohup dash "/etc/nixos/Scripts/Power.sh" > /dev/null 2>&1 &
+			;;
+		esac
+	;;
+
+	"  Power off")
+		Choice=$(printf '%s\n' "$Confirmations" | tofi \
+			--width 156 \
+			--height 124 \
+			--prompt-text "Power off?"
+		)
+		case "$Choice" in
+			"  No")
+				exit
+			;;
+
+			"  Yes")
+				systemctl poweroff
+			;;
+
+			"  Back")
+				nohup dash "/etc/nixos/Scripts/Power.sh" > /dev/null 2>&1 &
+			;;
+		esac
+	;;
+
+	"󰺟  Halt")
+		Choice=$(printf '%s\n' "$Confirmations" | tofi \
+			--width 204 \
+			--height 124 \
+			--prompt-text "Halt the system?" & \
+			notify-send "Manually turn off power once the system has halted. This is archaic."
+		)
+		case "$Choice" in
+			"  No")
+				exit
+			;;
+
+			"  Yes")
+				pkexec systemctl halt
+			;;
+
+			"  Back")
+				nohup dash "/etc/nixos/Scripts/Power.sh" > /dev/null 2>&1 &
+			;;
+		esac
+	;;
+
+	" ‎")
 		exit
+	;;
 
-	[ "$Choice" = "  No" ] &&
+	"󰗼  Exit")
 		exit
+	;;
 
-	[ "$Choice" = "  Yes" ] &&
-		systemctl suspend
-
-	[ "$Choice" = "  Back" ] &&
-		nohup bash "/etc/nixos/Scripts/Power.sh" > /dev/null 2>&1 &
-
-	[ "$Choice" = "󰗼  Exit" ] &&
-		exit
-
-[ "$Choice" = "󰒲  Hibernate" ] &&
-	Choice=$(
-		printf '%s\n' "${Confirmations[@]}" | tofi \
-			--width 164 \
-			--height 182 \
-			--prompt-text "Hibernate? "
-	)
-	[ "$Choice" = " " ] &&
-		exit
-
-	[ "$Choice" = "  No" ] &&
-		exit
-
-	[ "$Choice" = "  Yes" ] &&
-		systemctl hibernate
-
-	[ "$Choice" = "  Back" ] &&
-		nohup bash "/etc/nixos/Scripts/Power.sh" > /dev/null 2>&1 &
-
-	[ "$Choice" = "󰗼  Exit" ] &&
-		exit
-
-[ "$Choice" = "󱌂  Hybrid sleep" ] &&
-	Choice=$(
-		printf '%s\n' "${Confirmations[@]}" | tofi \
-			--width 188 \
-			--height 182 \
-			--prompt-text "Hybrid sleep? "
-	)
-	[ "$Choice" = " " ] &&
-		exit
-
-	[ "$Choice" = "  No" ] &&
-		exit
-
-	[ "$Choice" = "  Yes" ] &&
-		systemctl hybrid-sleep
-
-	[ "$Choice" = "  Back" ] &&
-		nohup bash "/etc/nixos/Scripts/Power.sh" > /dev/null 2>&1 &
-
-	[ "$Choice" = "󰗼  Exit" ] &&
-		exit
-
-[ "$Choice" = "󰜉  Reboot" ] &&
-	Choice=$(
-		printf '%s\n' "${Confirmations[@]}" | tofi \
-			--width 139 \
-			--height 182 \
-			--prompt-text "Reboot? "
-	)
-	[ "$Choice" = " " ] &&
-		exit
-
-	[ "$Choice" = "  No" ] &&
-		exit
-
-	[ "$Choice" = "  Yes" ] &&
-		systemctl reboot
-
-	[ "$Choice" = "  Back" ] &&
-		nohup bash "/etc/nixos/Scripts/Power.sh" > /dev/null 2>&1 &
-
-[ "$Choice" = "  Reboot to UEFI firmware" ] &&
-	Choice=$(
-		printf '%s\n' "${Confirmations[@]}" | tofi \
-			--width 276 \
-			--height 182 \
-			--prompt-text "Reboot to UEFI firmware? "
-	)
-	[ "$Choice" = " " ] &&
-		exit
-
-	[ "$Choice" = "  No" ] &&
-		exit
-
-	[ "$Choice" = "  Yes" ] &&
-		systemctl reboot --firmware-setup
-
-	[ "$Choice" = "  Back" ] &&
-		nohup bash "/etc/nixos/Scripts/Power.sh" > /dev/null 2>&1 &
-
-	[ "$Choice" = "󰗼  Exit" ] &&
-		exit
-
-[ "$Choice" = "  Power off" ] &&
-	Choice=$(
-		printf '%s\n' "${Confirmations[@]}" | tofi \
-			--width 164 \
-			--height 182 \
-			--prompt-text "Power off? "
-	)
-	[ "$Choice" = " " ] &&
-		exit
-
-	[ "$Choice" = "  No" ] &&
-		exit
-
-	[ "$Choice" = "  Yes" ] &&
-		systemctl poweroff
-
-	[ "$Choice" = "  Back" ] &&
-		nohup bash "/etc/nixos/Scripts/Power.sh" > /dev/null 2>&1 &
-
-	[ "$Choice" = "󰗼  Exit" ] &&
-		exit
-
-[ "$Choice" = "󰺟  Halt" ] &&
-	Choice=$(
-		printf '%s\n' "${Confirmations[@]}" | tofi \
-			--width 212 \
-			--height 182 \
-			--prompt-text "Halt the system? " & \
-			notify-send "Manually turn off power once the system halts. This is archaic."
-	)
-	[ "$Choice" = " " ] &&
-		exit
-
-	[ "$Choice" = "  No" ] &&
-		exit
-
-	[ "$Choice" = "  Yes" ] &&
-		systemctl poweroff
-
-	[ "$Choice" = "  Back" ] &&
-		nohup bash "/etc/nixos/Scripts/Power.sh" > /dev/null 2>&1 &
-
-	[ "$Choice" = "󰗼  Exit" ] &&
-		exit
-
-[ "$Choice" = "󰗼  Exit" ] &&
-	exit
+esac

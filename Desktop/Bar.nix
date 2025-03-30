@@ -80,12 +80,12 @@
 		# • [FMB] Take a single-monitor screenshot.
 		# • [U/D] Take an all-monitors screenshot.
 		"image#screenshot" = rec {
-			on-click = "bash /etc/nixos/Scripts/Screenshot.sh --copy area";
-			on-click-right = "bash /etc/nixos/Scripts/Screenshot.sh --copy monitor";
-			on-click-middle = "bash /etc/nixos/Scrpts/Screenshot.sh --copy all";
-			on-click-backward = "bash /etc/nixos/Scripts/Screenshot.sh --save area";
-			on-click-forward = "bash /etc/nixos/Scripts/Screenshot.sh --save monitor";
-			on-scroll-down = "bash /etc/nixos/Scripts/Screenshot.sh --save all";
+			on-click = "dash /etc/nixos/Scripts/Screenshot.sh --copy area";
+			on-click-right = "dash /etc/nixos/Scripts/Screenshot.sh --copy monitor";
+			on-click-middle = "dash /etc/nixos/Scrpts/Screenshot.sh --copy all";
+			on-click-backward = "dash /etc/nixos/Scripts/Screenshot.sh --save area";
+			on-click-forward = "dash /etc/nixos/Scripts/Screenshot.sh --save monitor";
+			on-scroll-down = "dash /etc/nixos/Scripts/Screenshot.sh --save all";
 			on-scroll-up = on-scroll-down;
 			path = "/etc/nixos/Icons/Screenshot.png";
 			size = 22;
@@ -125,7 +125,7 @@
 
 		# Power menu module.
 		"image#power" = {
-			on-click = "bash /etc/nixos/Scripts/Power.sh";
+			on-click = "dash /etc/nixos/Scripts/Power.sh";
 			path = "/etc/nixos/Icons/Power.png";
 			size = 22;
 		};
