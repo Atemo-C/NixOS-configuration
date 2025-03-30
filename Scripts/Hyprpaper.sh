@@ -15,7 +15,7 @@ HM="$HOME/.nix-profile/bin"
 
 # Check if Hyprland is the active desktop.
 [ "$XDG_CURRENT_DESKTOP" = "Hyprland" ] || {
-	notify-send "This wallpaper utility can only be used with Hyprland" &
+	notify-send "This wallpaper utility can only be used with Hyprland." &
 	echo "This wallpaper utility can only be used with Hyprland.";
 	exit 1;
 }
