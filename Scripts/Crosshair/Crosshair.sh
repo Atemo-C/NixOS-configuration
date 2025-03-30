@@ -21,7 +21,7 @@ case "$1" in
 		pkill feh && notify-send "Crosshair killed."
 	;;
 
-	# Errors out if no argument or an unvalid one is given.
+	# Errors out if no argument or an invalid one is given.
 	*)
 		echo "
   $(tput setaf1)$(tput bold)Error$(tput sgr0): Missing or invalid argument.
