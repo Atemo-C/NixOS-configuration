@@ -7,7 +7,7 @@ case "$1" in
 	# Starts the crosshair.
 	--start|-s)
 		# Displays the crosshair image.
-		feh "$Crosshair" & || exit 1
+		feh "$Crosshair" || exit 1 &
 
 		# Wait for the image to be loaded.
 		while ! pgrep -x ".feh-wrapped" > /dev/null; do
@@ -48,7 +48,7 @@ case "$1" in
 
 	# Kills the crosshair.
 	--kill|-k)
-		pkill feh && notify-send "Crosshair killed."
+		trap 'pkill feh && notify-send "Crosshair killed."' EXIT
 	;;
 
 	# Errors out if no argument or an invalid one is given.
