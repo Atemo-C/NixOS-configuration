@@ -1,6 +1,6 @@
 #!/bin/dash
 
-# Shortcut for binaries.
+# Shortcuts for binaries.
 SW="/run/current-system/sw/bin"
 HM="$HOME/.nix-profile/bin"
 
