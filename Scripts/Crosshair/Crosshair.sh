@@ -56,9 +56,9 @@ case "$1" in
 	# Errors out if no argument or an invalid one is given.
 	*)
 		echo "
-  $(tput setaf 1)$(tput bold)Error$(tput sgr0): Missing or invalid argument.
-  You can use the $(tput setaf 2)--start$(tput sgr0) / $(tput setaf 2)-s$(tput sgr0) or the $(tput setaf 2)--kill$(tput sgr0) / $(tput setaf 2)-k$(tput sgr0) argument.
-		"
+ $(tput setaf 1)$(tput bold)Error$(tput sgr0): Missing or invalid argument.
+ You can use the $(tput setaf 2)--start$(tput sgr0) / $(tput setaf 2)-s$(tput sgr0) or the $(tput setaf 2)--kill$(tput sgr0) / $(tput setaf 2)-k$(tput sgr0) argument.
+"
 		notify-send "Missing or invalid argument."
 		exit 1
 	;;
