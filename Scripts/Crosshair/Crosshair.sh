@@ -48,7 +48,7 @@ case "$1" in
 
 	# Kills the crosshair.
 	--kill|-k)
-		pkill feh && notify-send "Crosshair killed."
+		trap 'pkill feh' && notify-send "Crosshair killed."
 	;;
 
 	# Errors out if no argument or an invalid one is given.
