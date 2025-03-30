@@ -56,7 +56,7 @@
 		# • [LMB] Opens a program launcher.
 		# • [RMB] Opens a generic run launcher.
 		"image#programs" = {
-			on-click = "bash /etc/nixos/Scripts/Programs.sh";
+			on-click = "dash /etc/nixos/Scripts/Programs.sh";
 			on-click-right = "tofi-drun --drun-launch=true";
 			path = "/etc/nixos/Icons/Programs.png";
 			size = 22;

@@ -1,120 +1,399 @@
-#!/usr/bin/env bash
+#!/bin/dash
 
-set -euo pipefail
+# Defines the height of the program menu in accordance with the screen resolution.
+#---#
+# List monitors.
+# List the 20 lines above "focused: yes".
+# Reverse the sorting order.
+# Grep any lines with x.
+# Keep only the first one.
+# Trim the output so that it only keeps the vertical resolution.
+# Remove some space for the bar and neat gaps.
+Get_vertical=$(hyprctl monitors | grep -B20 "focused: yes" | tac | grep x | head -n 1 | awk -F 'x|@' '{print $2
+}')
+Gap="84"
+Vertical=$(("$Get_vertical"-"$Gap"))
 
-Programs=(
-	"                     󰌧  Run launcher                     "
-	" "
-	"  Alacritty            GPU-accelerated terminal emulator"
-	"  LXTerminal           Lightweight VTE terminal emulator"
-	""
-	" "
-	"  Amfora               CLI Gemini client"
-	"  Lagrange             GUI Gemini client"
-	" "
-	"  Audacious            Music player"
-	"  EasyEffects          Effects to inputs or outputs"
-	"  EasyTAG              Audio tag editor"
-	"  Pavucontrol          Audio volume manager"
-	"󰤽  qpwgraph             Audio patchbay"
-	"  Tenacity             Audio editor"
-	" "
-	"󰂫  Blender              3D modeling"
-	"  Cura                 3D printing"
-	" "
-	"  BTOP                 Terminal-based system monitor"
-	"  CPU-X                Detailed processor information"
-	"  Mission Center       GUI-based system monitor"
-	" "
-	"󱌐  Bottles              Run Windows programs in Bottles"
-	" "
-	"  Calcurse             Calendar"
-	"  Clock                GNOME's clock"
-	"  CUPS                 Printer configuration"
-	" "
-	"  Enable crosshair     A simple red-dot crosshair"
-	"󰽅  Disable crosshair    Kills the active crosshair/s"
-	"  DeSmuME              Nintendo DS/I emulator"
-	"  DuckStation          Playstation 1 emulator"
-	"  PCSX2                PlayStation 2 emulator"
-	"  RPCS3                PlayStation 3 emulator"
-	"󰍳  PrismLauncher        Minecraft Launcher"
-	"󰍳  Luanti (minetest)    Open source voxel game engine"
-	"󰍳  NBT Explorer         NBT Explorer and editor"
-	"  Sober                Roblox client"
-	"  Steam                Valve winning by doing nothing"
-	"  D.D.D                That's not my neighbor"
-	" "
-	"  Jstest               Gamepad / controller tester"
-	"  Keymapp              Layout tool for ZSA keyboards"
-	"  SC-Controller        Remap controllers in userspace"
-	"󰍽  Xclicker             X11 autocliker (for XWayland)"
-	" "
-	"󰙯  Vesktop              Discord, but Vencorded"
-	"󰭻  Element              Matrix client"
-	"󰭻  Revolt               FOSS alternative to Discord"
-	" "
-	"  Freetube             Watch YouTube videos"
-	" "
-	"󰋊  Gnome disk utility   GNOME's disk utility"
-	"󰋊  Gparted              Partition manager"
-	"󰋊  ncdu                 Disk usage"
-	"  Ventoy               Bootable USB creation tool"
-	" "
-	"  File roller          Archive manager"
-	"  Thunar               File manager"
-	"󰒖  Warpinator           Local file sharing"
-	" "
-	"  Flatseal             Manage flatpak permissions"
-	"  Galculator           Calculator"
-	" "
-	"  Gcolor               Advanced color picker"
-	"  Hyprpicker           Screen color picker"
-	"  GIMP                 GNU Image Manipulation Program"
-	"  Hyprpaper            Set desktop background/wallpaper"
-	"  Krita                Digital painting"
-	"  OpenTabletDriver     Configure your drawing tablet"
-	"  Upscayl              Upscale images"
-	" "
-	"  Kurso de Esperanto   Esperanto learning program"
-	" "
-	"  KeePassXC            Password manager"
-	" "
-	"  Kdenlive             Video editor"
-	"󰑋  OBS studio           Recording and streaming"
-	" "
-	"󰏆  LibreOffice          Office suite"
-	"󰚫  Simple scan          Document scanner"
-	" "
-	"  LibreWolf            Web browser"
-	"  LibreWolf - private  Web browser (private window)"
-	"󰗹  Torbrowser launcher  Tor browser"
-	" "
-	"󰛳  Network Manager      Manage WiFi and Ethernet"
-	"󰛳  NM-applet            NetworkManager applet"
-	" "
-	"  qBittorrent          Torrent manager"
-	"  Xfburn               Disc burning"
-	" "
-	"󰓅  Speedtest            Test internet speed"
-	" "
-	"󰪫  Virt Manager         Virtual machines using QEMU/KVM"
-	" "
-	"󰗼  Exit"
-)
+# A neat shortening of paths.
+HM="$HOME/.nix-profile/bin"
+SW="/run/current-system/sw/bin"
+UF="$HOME/.local/share/flatpak/app"
+HP="$HOME/Programs"
 
+# Creates the Programs list, filled by the detected programs below.
+Programs="
+                     󰌧  Run launcher
+ ‎
+"
+
+# Detection of all possible programs used in this script.
+# If they are not detected, they are not added to the list.
+# Some are manually added (e.g. website shortcuts).
+if [ -f "$HM/alacritty" ]; then Programs="
+$Programs
+  Alacritty            GPU-accelerated terminal emulator"
+fi
+
+if [ -f "$SW/lxterminal" ]; then Programs="
+$Programs
+  LXTerminal           Lightweight VTE terminal emulator"
+fi
+
+if [ -f "$SW/amfora" ]; then Programs="
+$Programs
+  Amfora               CLI Gemini client"
+fi
+
+if [ -f "$SW/lagrange" ]; then Programs="
+$Programs
+  Lagrange             GUI Gemini client"
+fi
+
+if [ -f "$SW/audacious" ]; then Programs="
+$Programs
+  Audacious            Music player"
+fi
+
+if [ -f "$HM/easyeffects" ]; then Programs="
+$Programs
+  EasyEffects          Effects to inputs or outputs"
+fi
+
+if [ -f "$SW/easytag" ]; then Programs="
+$Programs
+  EasyTAG              Audio tag editor"
+fi
+
+if [ -f "$SW/pavucontrol" ]; then Programs="
+$Programs
+  Pavucontrol          Audio volume manager"
+fi
+
+if [ -f "$SW/qpwgraph" ]; then Programs="
+$Programs
+󰤽  qpwgraph             Audio patchbay"
+fi
+
+if [ -f "$SW/tenacity" ]; then Programs="
+$Programs
+  Tenacity             Audio editor"
+fi
+
+if [ -f "$SW/blender" ]; then Programs="
+$Programs
+󰂫  Blender              3D modeling"
+fi
+
+if [ -f "$SW/cura" ]; then Programs="
+$Programs
+  Cura                 3D printing"
+fi
+
+if [ -f "$SW/btop" ]; then Programs="
+$Programs
+  BTOP                 Terminal-based system monitor"
+fi
+
+if [ -f "$SW/cpu-x" ]; then Programs="
+$Programs
+  CPU-X                Detailed processor information"
+fi
+
+if [ -f "$SW/missioncenter" ]; then Programs="
+$Programs
+  Mission Center       GUI-based system monitor"
+fi
+
+if [ -f "$SW/bottles" ]; then Programs="
+$Programs
+󱌐  Bottles              Run Windows programs in Bottles"
+fi
+
+if [ -f "$SW/calcurse" ]; then Programs="
+$Programs
+  Calcurse             Calendar"
+fi
+
+if [ -f "$SW/gnome-clocks" ]; then Programs="
+$Programs
+  Clock                GNOME's clock"
+fi
+
+Programs="
+$Programs
+  CUPS                 Printer configuration"
+
+Programs="
+$Programs
+  Enable crosshair     A simple red-dot crosshair"
+
+Programs="
+$Programs
+󰽅  Disable crosshair    Kills the active crosshair/s"
+
+if [ -f "$SW/desmume" ]; then Programs="
+$Programs
+  DeSmuME              Nintendo DS/I emulator"
+fi
+
+if [ -f "$SW/duckstation-qt" ]; then Programs="
+$Programs
+  DuckStation          Playstation 1 emulator"
+fi
+
+if [ -f "$SW/pcsx2-qt" ]; then Programs="
+$Programs
+  PCSX2                PlayStation 2 emulator"
+fi
+
+if [ -f "$SW/rpcs3" ]; then Programs="
+$Programs
+  RPCS3                PlayStation 3 emulator"
+fi
+
+if [ -f "$SW/prismlauncher" ]; then Programs="
+$Programs
+󰍳  PrismLauncher        Minecraft Launcher"
+fi
+
+if [ -f "$SW/luanti" ]; then Programs="
+$Programs
+󰍳  Luanti (minetest)    Open source voxel game engine"
+fi
+
+if [ -d "$UF/page.codeberg.JakobDev.jdNBTExplorer/" ]; then Programs="
+$Programs
+󰍳  NBT Explorer         NBT Explorer and editor"
+fi
+
+if [ -d "$UF/org.vinegarhq.Sober/" ]; then Programs="
+$Programs
+  Sober                Roblox client"
+fi
+
+if [ -f "$SW/steam" ]; then Programs="
+$Programs
+  Steam                Valve winning by doing nothing"
+fi
+
+if [ -d "$HP/That's not my neighbor/" ]; then Programs="
+$Programs
+  D.D.D                That's not my neighbor"
+fi
+
+if [ -f "$SW/jstest-gtk" ]; then Programs="
+$Programs
+  Jstest               Gamepad / controller tester"
+fi
+
+if [ -f "$SW/keymapp" ]; then Programs="
+$Programs
+  Keymapp              Layout tool for ZSA keyboards"
+fi
+
+if [ -f "$SW/sc-controller" ]; then Programs="
+$Programs
+  SC-Controller        Remap controllers in userspace"
+fi
+
+if [ -f "$SW/xclicker" ]; then Programs="
+$Programs
+󰍽  Xclicker             X11 autocliker (for XWayland)"
+fi
+
+if [ -f "$SW/vesktop" ]; then Programs="
+$Programs
+󰙯  Vesktop              Discord, but Vencorded"
+fi
+
+Programs="
+$Programs
+󰭻  Element              Matrix client"
+
+if [ -f "$SW/revolt-desktop" ]; then Programs="
+$Programs
+󰭻  Revolt               FOSS alternative to Discord"
+fi
+
+if [ -f "$SW/freetube" ]; then Programs="
+$Programs
+  Freetube             Watch YouTube videos"
+fi
+
+if [ -f "$SW/gnome-disks" ]; then Programs="
+$Programs
+󰋊  Gnome disk utility   GNOME's disk utility"
+fi
+
+if [ -f "$SW/gparted" ]; then Programs="
+$Programs
+󰋊  Gparted              Partition manager"
+fi
+
+if [ -f "$SW/ncdu" ]; then Programs="
+$Programs
+󰋊  ncdu                 Disk usage"
+fi
+
+if [ -f "$SW/ventoy" ]; then Programs="
+$Programs
+  Ventoy               Bootable USB creation tool"
+fi
+
+if [ -f "$SW/file-roller" ]; then Programs="
+$Programs
+  File roller          Archive manager"
+fi
+
+if [ -f "$SW/thunar" ]; then Programs="
+$Programs
+  Thunar               File manager"
+fi
+
+if [ -f "$SW/warpinator" ]; then Programs="
+$Programs
+󰒖  Warpinator           Local file sharing"
+fi
+
+if [ -d "$UF/com.github.tchx86.Flatseal" ]; then Programs="
+$Programs
+  Flatseal             Manage flatpak permissions"
+fi
+
+if [ -f "$SW/galculator" ]; then Programs="
+$Programs
+  Galculator           Calculator"
+fi
+
+if [ -f "$SW/gcolor3" ]; then Programs="
+$Programs
+  Gcolor               Advanced color picker"
+fi
+
+if [ -f "$SW/hyprpicker" ]; then Programs="
+$Programs
+  Hyprpicker           Screen color picker"
+fi
+
+if [ -f "$SW/gimp" ]; then Programs="
+$Programs
+  GIMP                 GNU Image Manipulation Program"
+fi
+
+if [ -f "$SW/hyprpaper" ]; then Programs="
+$Programs
+  Hyprpaper            Set desktop background/wallpaper"
+fi
+
+if [ -f "$SW/krita" ]; then Programs="
+$Programs
+  Krita                Digital painting"
+fi
+
+if [ -f "$SW/otd" ]; then Programs="
+$Programs
+  OpenTabletDriver     Configure your drawing tablet"
+fi
+
+if [ -f "$SW/upscayl" ]; then Programs="
+$Programs
+  Upscayl              Upscale images"
+fi
+
+if [ -d "$HP/Kurso de Esperanto" ]; then Programs="
+$Programs
+  Kurso de Esperanto   Esperanto learning program"
+fi
+
+if [ -f "$SW/keepassxc" ]; then Programs="
+$Programs
+  KeePassXC            Password manager"
+fi
+
+if [ -f "$SW/kdenlive" ]; then Programs="
+$Programs
+  Kdenlive             Video editor"
+fi
+
+if [ -d "$UF/com.obsproject.Studio" ]; then Programs="
+$Programs
+󰑋  OBS studio           Recording and streaming"
+fi
+
+if [ -f "$SW/libreoffice" ]; then Programs="
+$Programs
+󰏆  LibreOffice          Office suite"
+fi
+
+if [ -f "$SW/simple-scan" ]; then Programs="
+$Programs
+󰚫  Simple scan          Document scanner"
+fi
+
+if [ -f "$SW/librewolf" ]; then Programs="
+$Programs
+  LibreWolf            Web browser"
+fi
+
+if [ -f "$SW/librewolf" ]; then Programs="
+$Programs
+  LibreWolf - private  Web browser (private window)"
+fi
+
+if [ -f "$SW/tor-browser" ]; then Programs="
+$Programs
+󰗹  Torbrowser launcher  Tor browser"
+fi
+
+if [ -f "$SW/nmtui" ]; then Programs="
+$Programs
+󰛳  Network Manager      Manage WiFi and Ethernet"
+fi
+
+#if [ -f "$SW/" ]; then Programs="
+#$Programs
+#󰛳  NM-applet            NetworkManager applet"
+#fi
+
+if [ -f "$SW/qbittorrent" ]; then Programs="
+$Programs
+  qBittorrent          Torrent manager"
+fi
+
+if [ -f "$SW/xfburn" ]; then Programs="
+$Programs
+  Xfburn               Disc burning"
+fi
+
+if [ -f "$SW/speedtest" ]; then Programs="
+$Programs
+󰓅  Speedtest            Test internet speed"
+fi
+
+if [ -f "$SW/virt-manager" ]; then Programs="
+$Programs
+󰪫  Virt Manager         Virtual machines using QEMU/KVM"
+fi
+
+# Add the Exit button
+Programs="
+$Programs
+󰗼  Exit
+"
+
+# Let the user select a program.
 Program=$(
-	printf '%s\n' "${Programs[@]}" | tofi \
-		--width 485 \
-		--height 720 \
+	printf '%s\n' "$Programs" | tofi \
+		--width 484 \
+		--height "$Vertical" \
 		--prompt-text " " \
-		"${@}"
+		"$@"
 )
 
-[ "$Program" = " " ] &&
-	nohup bash "/etc/nixos/Scripts/Program launcher.sh" > /dev/null 2>&1 &
+[ "$Program" = " ‎" ] &&
+	nohup dash "/etc/nixos/Scripts/Program launcher.sh" > /dev/null 2>&1 &
 
-[ "$Program" = "                     󰌧  Run launcher                     " ] &&
+[ "$Program" = "                     󰌧  Run launcher" ] &&
 	nohup tofi-drun --drun-launch=true > /dev/null 2>&1 &
 
 [ "$Program" = "  Alacritty            GPU-accelerated terminal emulator" ] &&

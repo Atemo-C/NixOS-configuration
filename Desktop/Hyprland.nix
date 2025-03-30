@@ -338,7 +338,7 @@
 			'', XF86Suspend,   exec, dash "/etc/nixos/Scripts/Power.sh"''
 
 			# Custom program launcher.
-			''ALT, RETURN, exec, bash "/etc/nixos/Scripts/Programs.sh"''
+			''ALT, RETURN, exec, dash "/etc/nixos/Scripts/Programs.sh"''
 
 			# Generil drun launcher.
 			"ALT SHIFT, RETURN, exec, tofi-drun --drun-launch=true"
