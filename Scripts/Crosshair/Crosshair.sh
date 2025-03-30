@@ -2,9 +2,11 @@
 
 # Sets the path to the crosshair image.
 Crosshair="/etc/nixos/Scripts/Crosshair/Crosshair.png"
+Setprop="hyprctl dispatch setprop class:feh"
+Dispatch="hyprctl dispatch"
 
 case "$1" in
-	# Starts the crosshair.
+	# Starts the crosshair. There is no need to notify the user, as the crosshair will appear right on the screen.
 	--start|-s)
 		# Displays the crosshair image.
 		feh "$Crosshair" || exit 1 &
@@ -15,38 +17,38 @@ case "$1" in
 		done
 
 		# Makes the image floating.
-		hyprctl dispatch togglefloating class:feh &&
+		$Dispatch togglefloating class:feh &&
 
 		# Gather the size of the crosshair image.
 		Width=$(identify -format "%w" "$Crosshair")
 		Height=$(identify -format "%h" "$Crosshair")
 
 		# Sets the appropriate size for the image.
-		hyprctl dispatch setprop class:feh minsize "$Width" "$Height" &&
-		hyprctl dispatch setprop class:feh maxsize "$Width" "$Height" &&
-		hyprctl dispatch resizewindowpixel "$Width" "$Height", class:feh &&
+		$Setprop minsize "$Width" "$Height" &&
+		$Setprop maxsize "$Width" "$Height" &&
+		$Dispatch resizewindowpixel "$Width" "$Height", class:feh &&
 
 		# Removes the border from the image.
-		hyprctl dispatch setprop class:feh bordersize 0 &&
+		$Setprop bordersize 0 &&
 
 		# Rounds the image so that it is not a square.
 		# It uses the width of the image to determine the rounding value.
-		hyprctl dispatch setprop class:feh rounding "$Width" &&
+		$Setprop rounding "$Width" &&
 
 		# Removes shadows from the image so it is less distracting.
-		hyprctl dispatch setprop class:feh noshadow 1 &&
+		$Setprop noshadow 1 &&
 
 		# Centers the image on the screen (it is assumed that the program used with it is fullscreen).
-		hyprctl dispatch centerwindow class:feh &&
+		$Dispatch centerwindow class:feh &&
 
 		# Prevent the image from getting focused.
-		hyprctl dispatch setprop class:feh nofocus true &&
+		$Setprop nofocus true &&
 
 		# Pin the image.
-		hyprctl dispatch pin class:feh
+		$Dispatch pin class:feh
 	;;
 
-	# Kills the crosshair.
+	# Kills the crosshair. The && here is normal.
 	--kill|-k)
 		trap 'pkill feh && notify-send "Crosshair killed."' EXIT
 	;;
