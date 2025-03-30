@@ -7,7 +7,7 @@ case "$1" in
 	# Starts the crosshair.
 	--start|-s)
 		# Displays the crosshair image.
-		feh "$Crosshair" &
+		feh "$Crosshair" & || exit 1
 
 		# Wait for the image to be loaded.
 		while ! pgrep -x ".feh-wrapped" > /dev/null; do
