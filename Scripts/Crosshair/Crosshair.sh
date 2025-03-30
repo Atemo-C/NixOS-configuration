@@ -2,6 +2,8 @@
 
 # Sets the path to the crosshair image.
 Crosshair="/etc/nixos/Scripts/Crosshair/Crosshair.png"
+
+# Neat command shortcuts.
 Setprop="hyprctl dispatch setprop class:feh"
 Dispatch="hyprctl dispatch"
 
