@@ -12,7 +12,7 @@
 Get_vertical=$(hyprctl monitors | grep -B20 "focused: yes" | tac | grep x | head -n 1 | awk -F 'x|@' '{print $2
 }')
 Gap="84"
-Vertical=$(("$Get_vertical"-"$Gap"))
+Vertical=$(( $Get_vertical - $Gap ))
 
 # A neat shortening of paths.
 HM="$HOME/.nix-profile/bin"
