@@ -3,7 +3,7 @@
 case "$1" in
 	# Starts the crosshair.
 	--start|-s)
-		feh /etc/nixos/Scripts/Crosshair/Crosshair.png & sleep 0.5 &&
+		feh /etc/nixos/Scripts/Crosshair/Crosshair.png & sleep 0.1 &&
 		hyprctl dispatch togglefloating class:feh &&
 		hyprctl dispatch setprop class:feh minsize 4 4 &&
 		hyprctl dispatch setprop class:feh maxsize 4 4 &&
