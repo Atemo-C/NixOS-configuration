@@ -1,5 +1,21 @@
 #!/bin/dash
 
+# Path shortcut.
+CF="$HOME/.config/hypr"
+
+# Executeables shortcut.
+SW="/run/current-system/sw/bin"
+HM="$HOME/.nix-profile/bin"
+
+# Check if the required dependencies are installed.
+[ -f "$HM/hyprland" ] || [ -f "$SW/hyprland" ] || { notify-send "This wallpaper utility is made for Hyprland."; exit 1; }
+[ -f "$SW/zenity" ] || { notify-send "zenity is not installed."; exit 1; }
+[ -f "$SW/hyprpaper" ] || [ -f "$HM/hyprpaper" ] || { notify-send "hyprpaper is not installed."; exit 1; }
+[ -f "$SW/notify-send" ] || { echo "notify-send is not installed."; exit 1; }
+
+# Check if Hyprpaper's configuration file exists. If not, create it.
+[ -f "$CF/hyprpaper.conf" ] || { mkdir "$CF" && touch "$CF/hyprpaper.conf"; }
+
 # Wallpaper file selection.
 Wallpaper=$(zenity \
 	--file-selection \

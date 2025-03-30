@@ -1,5 +1,13 @@
 #!/bin/dash
 
+# Executeables shortcut.
+SW="/run/current-system/sw/bin"
+HM="$HOME/.nix-profile/bin"
+
+# Check if the requiered dependencies are installed.
+[ -f "$HM/hyprland" ] || [ -f "$SW/hyprland" ] || { notify-send "This power menu is made for Hyprland."; exit 1; }
+[ -f "$HM/tofi" ] || [ -f "$SW/tofi" ] || { notify-send "tofi is not installed."; exit 1; }
+
 # Defines the height of the program menu in accordance with the screen resolution.
 #---#
 # List monitors.

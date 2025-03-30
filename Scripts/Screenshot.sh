@@ -1,5 +1,16 @@
 #!/bin/dash
 
+# Executeables shortcut.
+SW="/run/current-system/sw/bin"
+HM="$HOME/.nix-profile/bin"
+
+# Check if the requiered dependencies are installed.
+[ -f "$HM/hyprland" ] || [ -f "$SW/hyprland" ] || { notify-send "This crosshair is made for Hyprland."; exit 1; }
+[ -f "$SW/grimblast" ] || { notify-send "grimblast is not installed."; exit 1; }
+[ -f "$SW/magick" ] || { notify-send "imagemagick is not installed."; exit 1; }
+[ -f "$SW/oxipng" ] || { notify-send "oxipng is not installed."; exit 1; }
+[ -f "$SW/notify-send" ] || { echo "notify-send is not installed."; exit 1; }
+
 # Loop that defines the type of screenshot being taken.
 for type in "$@"; do
 	case "$type" in
@@ -25,6 +36,9 @@ elif echo "$*" | grep -q -- "--save" || echo "$*" | grep -q -- "-s"; then
 
 	# Take the screenshot.
 	grimblast --freeze copysave "$shottype" "$IMAGE".png &&
+
+	# Optimize the image.
+	oxipng --strip all "$IMAGE".png &&
 
 	# Convert the screenshot to a WEBP image.
 	magick "$IMAGE".png -quality 100 "$IMAGE".webp &&

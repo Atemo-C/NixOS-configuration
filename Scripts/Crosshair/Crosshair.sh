@@ -11,7 +11,6 @@ SW="/run/current-system/sw/bin"
 HM="$HOME/.nix-profile/bin"
 
 # Check if the requiered dependencies are installed.
-# Can be rewritten into a function, but this is simple enough not to be worth the bother.
 [ -f "$HM/hyprland" ] || [ -f "$SW/hyprland" ] || { notify-send "This crosshair is made for Hyprland."; exit 1; }
 [ -f "$SW/feh" ] || [ -f "$HM/feh"] || { notify-send "feh is not installed."; exit 1; }
 [ -f "$SW/magick" ] || { notify-send "imagemagick is not installed."; exit 1; }
