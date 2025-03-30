@@ -12,7 +12,7 @@
 Get_vertical=$(hyprctl monitors | grep -B20 "focused: yes" | tac | grep x | head -n 1 | awk -F 'x|@' '{print $2
 }')
 Gap="84"
-Vertical=$(( $Get_vertical - $Gap ))
+Vertical=$(($Get_vertical - $Gap))
 
 # A neat shortening of paths.
 HM="$HOME/.nix-profile/bin"
@@ -29,95 +29,77 @@ Programs="
 # Detection of all possible programs used in this script.
 # If they are not detected, they are not added to the list.
 # Some are manually added (e.g. website shortcuts).
-if [ -f "$HM/alacritty" ]; then Programs="
+[ -f "$HM/alacritty" ] && Programs="
 $Programs
   Alacritty            GPU-accelerated terminal emulator"
-fi
 
-if [ -f "$SW/lxterminal" ]; then Programs="
+[ -f "$SW/lxterminal" ] && Programs="
 $Programs
   LXTerminal           Lightweight VTE terminal emulator"
-fi
 
-if [ -f "$SW/amfora" ]; then Programs="
+[ -f "$SW/amfora" ] && Programs="
 $Programs
   Amfora               CLI Gemini client"
-fi
 
-if [ -f "$SW/lagrange" ]; then Programs="
+[ -f "$SW/lagrange" ] && Programs="
 $Programs
   Lagrange             GUI Gemini client"
-fi
 
-if [ -f "$SW/audacious" ]; then Programs="
+[ -f "$SW/audacious" ] && Programs="
 $Programs
   Audacious            Music player"
-fi
 
-if [ -f "$HM/easyeffects" ]; then Programs="
+[ -f "$HM/easyeffects" ] && Programs="
 $Programs
   EasyEffects          Effects to inputs or outputs"
-fi
 
-if [ -f "$SW/easytag" ]; then Programs="
+[ -f "$SW/easytag" ] && Programs="
 $Programs
   EasyTAG              Audio tag editor"
-fi
 
-if [ -f "$SW/pavucontrol" ]; then Programs="
+[ -f "$SW/pavucontrol" ] && Programs="
 $Programs
   Pavucontrol          Audio volume manager"
-fi
 
-if [ -f "$SW/qpwgraph" ]; then Programs="
+[ -f "$SW/qpwgraph" ] && Programs="
 $Programs
 󰤽  qpwgraph             Audio patchbay"
-fi
 
-if [ -f "$SW/tenacity" ]; then Programs="
+[ -f "$SW/tenacity" ] && Programs="
 $Programs
   Tenacity             Audio editor"
-fi
 
-if [ -f "$SW/blender" ]; then Programs="
+[ -f "$SW/blender" ] && Programs="
 $Programs
 󰂫  Blender              3D modeling"
-fi
 
-if [ -f "$SW/cura" ]; then Programs="
+[ -f "$SW/cura" ] && Programs="
 $Programs
   Cura                 3D printing"
-fi
 
-if [ -f "$SW/btop" ]; then Programs="
+[ -f "$SW/btop" ] && Programs="
 $Programs
   BTOP                 Terminal-based system monitor"
-fi
 
-if [ -f "$SW/cpu-x" ]; then Programs="
+[ -f "$SW/cpu-x" ] && Programs="
 $Programs
   CPU-X                Detailed processor information"
-fi
 
-if [ -f "$SW/missioncenter" ]; then Programs="
+[ -f "$SW/missioncenter" ] && Programs="
 $Programs
   Mission Center       GUI-based system monitor"
-fi
 
-if [ -f "$SW/bottles" ]; then Programs="
+[ -f "$SW/bottles" ] && Programs="
 $Programs
 󱌐  Bottles              Run Windows programs in Bottles"
-fi
 
-if [ -f "$SW/calcurse" ]; then Programs="
+[ -f "$SW/calcurse" ] && Programs="
 $Programs
   Calcurse             Calendar"
-fi
 
-if [ -f "$SW/gnome-clocks" ]; then Programs="
+[ -f "$SW/gnome-clocks" ] && Programs="
 $Programs
   Clock                GNOME's clock"
-fi
 
 Programs="
 $Programs
@@ -131,249 +113,203 @@ Programs="
 $Programs
 󰽅  Disable crosshair    Kills the active crosshair/s"
 
-if [ -f "$SW/desmume" ]; then Programs="
+[ -f "$SW/desmume" ] && Programs="
 $Programs
   DeSmuME              Nintendo DS/I emulator"
-fi
 
-if [ -f "$SW/duckstation-qt" ]; then Programs="
+[ -f "$SW/duckstation-qt" ] && Programs="
 $Programs
   DuckStation          Playstation 1 emulator"
-fi
 
-if [ -f "$SW/pcsx2-qt" ]; then Programs="
+[ -f "$SW/pcsx2-qt" ] && Programs="
 $Programs
   PCSX2                PlayStation 2 emulator"
-fi
 
-if [ -f "$SW/rpcs3" ]; then Programs="
+[ -f "$SW/rpcs3" ] && Programs="
 $Programs
   RPCS3                PlayStation 3 emulator"
-fi
 
-if [ -f "$SW/prismlauncher" ]; then Programs="
+[ -f "$SW/prismlauncher" ] && Programs="
 $Programs
 󰍳  PrismLauncher        Minecraft Launcher"
-fi
 
-if [ -f "$SW/luanti" ]; then Programs="
+[ -f "$SW/luanti" ] && Programs="
 $Programs
 󰍳  Luanti (minetest)    Open source voxel game engine"
-fi
 
-if [ -d "$UF/page.codeberg.JakobDev.jdNBTExplorer/" ]; then Programs="
+[ -d "$UF/page.codeberg.JakobDev.jdNBTExplorer/" ] && Programs="
 $Programs
 󰍳  NBT Explorer         NBT Explorer and editor"
-fi
 
-if [ -d "$UF/org.vinegarhq.Sober/" ]; then Programs="
+[ -d "$UF/org.vinegarhq.Sober/" ] && Programs="
 $Programs
   Sober                Roblox client"
-fi
 
-if [ -f "$SW/steam" ]; then Programs="
+[ -f "$SW/steam" ] && Programs="
 $Programs
   Steam                Valve winning by doing nothing"
-fi
 
-if [ -d "$HP/That's not my neighbor/" ]; then Programs="
+[ -d "$HP/That's not my neighbor/" ] && Programs="
 $Programs
   D.D.D                That's not my neighbor"
-fi
 
-if [ -f "$SW/jstest-gtk" ]; then Programs="
+[ -f "$SW/jstest-gtk" ] && Programs="
 $Programs
   Jstest               Gamepad / controller tester"
-fi
 
-if [ -f "$SW/keymapp" ]; then Programs="
+[ -f "$SW/keymapp" ] && Programs="
 $Programs
   Keymapp              Layout tool for ZSA keyboards"
-fi
 
-if [ -f "$SW/sc-controller" ]; then Programs="
+[ -f "$SW/sc-controller" ] && Programs="
 $Programs
   SC-Controller        Remap controllers in userspace"
-fi
 
-if [ -f "$SW/xclicker" ]; then Programs="
+[ -f "$SW/xclicker" ] && Programs="
 $Programs
 󰍽  Xclicker             X11 autocliker (for XWayland)"
-fi
 
-if [ -f "$SW/vesktop" ]; then Programs="
+[ -f "$SW/vesktop" ] && Programs="
 $Programs
 󰙯  Vesktop              Discord, but Vencorded"
-fi
 
 Programs="
 $Programs
 󰭻  Element              Matrix client"
 
-if [ -f "$SW/revolt-desktop" ]; then Programs="
+[ -f "$SW/revolt-desktop" ] && Programs="
 $Programs
 󰭻  Revolt               FOSS alternative to Discord"
-fi
 
-if [ -f "$SW/freetube" ]; then Programs="
+[ -f "$SW/freetube" ] && Programs="
 $Programs
   Freetube             Watch YouTube videos"
-fi
 
-if [ -f "$SW/gnome-disks" ]; then Programs="
+[ -f "$SW/gnome-disks" ] && Programs="
 $Programs
 󰋊  Gnome disk utility   GNOME's disk utility"
-fi
 
-if [ -f "$SW/gparted" ]; then Programs="
+[ -f "$SW/gparted" ] && Programs="
 $Programs
 󰋊  Gparted              Partition manager"
-fi
 
-if [ -f "$SW/ncdu" ]; then Programs="
+[ -f "$SW/ncdu" ] && Programs="
 $Programs
 󰋊  ncdu                 Disk usage"
-fi
 
-if [ -f "$SW/ventoy" ]; then Programs="
+[ -f "$SW/ventoy" ] && Programs="
 $Programs
   Ventoy               Bootable USB creation tool"
-fi
 
-if [ -f "$SW/file-roller" ]; then Programs="
+[ -f "$SW/file-roller" ] && Programs="
 $Programs
   File roller          Archive manager"
-fi
 
-if [ -f "$SW/thunar" ]; then Programs="
+[ -f "$SW/thunar" ] && Programs="
 $Programs
   Thunar               File manager"
-fi
 
-if [ -f "$SW/warpinator" ]; then Programs="
+[ -f "$SW/warpinator" ] && Programs="
 $Programs
 󰒖  Warpinator           Local file sharing"
-fi
 
-if [ -d "$UF/com.github.tchx86.Flatseal" ]; then Programs="
+[ -d "$UF/com.github.tchx86.Flatseal" ] && Programs="
 $Programs
   Flatseal             Manage flatpak permissions"
-fi
 
-if [ -f "$SW/galculator" ]; then Programs="
+[ -f "$SW/galculator" ] && Programs="
 $Programs
   Galculator           Calculator"
-fi
 
-if [ -f "$SW/gcolor3" ]; then Programs="
+[ -f "$SW/gcolor3" ] && Programs="
 $Programs
   Gcolor               Advanced color picker"
-fi
 
-if [ -f "$SW/hyprpicker" ]; then Programs="
+[ -f "$SW/hyprpicker" ] && Programs="
 $Programs
   Hyprpicker           Screen color picker"
-fi
 
-if [ -f "$SW/gimp" ]; then Programs="
+[ -f "$SW/gimp" ] && Programs="
 $Programs
   GIMP                 GNU Image Manipulation Program"
-fi
 
-if [ -f "$SW/hyprpaper" ]; then Programs="
+[ -f "$SW/hyprpaper" ] && Programs="
 $Programs
   Hyprpaper            Set desktop background/wallpaper"
-fi
 
-if [ -f "$SW/krita" ]; then Programs="
+[ -f "$SW/krita" ] && Programs="
 $Programs
   Krita                Digital painting"
-fi
 
-if [ -f "$SW/otd" ]; then Programs="
+[ -f "$SW/otd" ] && Programs="
 $Programs
   OpenTabletDriver     Configure your drawing tablet"
-fi
 
-if [ -f "$SW/upscayl" ]; then Programs="
+[ -f "$SW/upscayl" ] && Programs="
 $Programs
   Upscayl              Upscale images"
-fi
 
-if [ -d "$HP/Kurso de Esperanto" ]; then Programs="
+[ -d "$HP/Kurso de Esperanto" ] && Programs="
 $Programs
   Kurso de Esperanto   Esperanto learning program"
-fi
 
-if [ -f "$SW/keepassxc" ]; then Programs="
+[ -f "$SW/keepassxc" ] && Programs="
 $Programs
   KeePassXC            Password manager"
-fi
 
-if [ -f "$SW/kdenlive" ]; then Programs="
+[ -f "$SW/kdenlive" ] && Programs="
 $Programs
   Kdenlive             Video editor"
-fi
 
-if [ -d "$UF/com.obsproject.Studio" ]; then Programs="
+[ -d "$UF/com.obsproject.Studio" ] && Programs="
 $Programs
 󰑋  OBS studio           Recording and streaming"
-fi
 
-if [ -f "$SW/libreoffice" ]; then Programs="
+[ -f "$SW/libreoffice" ] && Programs="
 $Programs
 󰏆  LibreOffice          Office suite"
-fi
 
-if [ -f "$SW/simple-scan" ]; then Programs="
+[ -f "$SW/simple-scan" ] && Programs="
 $Programs
 󰚫  Simple scan          Document scanner"
-fi
 
-if [ -f "$SW/librewolf" ]; then Programs="
+[ -f "$SW/librewolf" ] && Programs="
 $Programs
   LibreWolf            Web browser"
-fi
 
-if [ -f "$SW/librewolf" ]; then Programs="
+[ -f "$SW/librewolf" ] && Programs="
 $Programs
   LibreWolf - private  Web browser (private window)"
-fi
 
-if [ -f "$SW/tor-browser" ]; then Programs="
+[ -f "$SW/tor-browser" ] && Programs="
 $Programs
 󰗹  Torbrowser launcher  Tor browser"
-fi
 
-if [ -f "$SW/nmtui" ]; then Programs="
+[ -f "$SW/nmtui" ] && Programs="
 $Programs
 󰛳  Network Manager      Manage WiFi and Ethernet"
-fi
 
-#if [ -f "$SW/" ]; then Programs="
+#[ -f "$SW/" ] && Programs="
 #$Programs
 #󰛳  NM-applet            NetworkManager applet"
-#fi
 
-if [ -f "$SW/qbittorrent" ]; then Programs="
+[ -f "$SW/qbittorrent" ] && Programs="
 $Programs
   qBittorrent          Torrent manager"
-fi
 
-if [ -f "$SW/xfburn" ]; then Programs="
+
+[ -f "$SW/xfburn" ] && Programs="
 $Programs
   Xfburn               Disc burning"
-fi
 
-if [ -f "$SW/speedtest" ]; then Programs="
+
+[ -f "$SW/speedtest" ] && Programs="
 $Programs
 󰓅  Speedtest            Test internet speed"
-fi
 
-if [ -f "$SW/virt-manager" ]; then Programs="
+[ -f "$SW/virt-manager" ] && Programs="
 $Programs
 󰪫  Virt Manager         Virtual machines using QEMU/KVM"
-fi
 
 # Add the Exit button
 Programs="
