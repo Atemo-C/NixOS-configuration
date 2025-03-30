@@ -1,48 +1,74 @@
 #!/bin/dash
 
-# Path shortcut.
+# Shortcut for the path where hyprpaper.conf is located.
 CF="$HOME/.config/hypr"
 
-# Executeables shortcut.
+# Shortcuts for binaries.
 SW="/run/current-system/sw/bin"
 HM="$HOME/.nix-profile/bin"
 
-# Check if the required dependencies are installed.
-[ -f "$HM/hyprland" ] || [ -f "$SW/hyprland" ] || { notify-send "This wallpaper utility is made for Hyprland."; exit 1; }
-[ -f "$SW/zenity" ] || { notify-send "zenity is not installed."; exit 1; }
-[ -f "$SW/hyprpaper" ] || [ -f "$HM/hyprpaper" ] || { notify-send "hyprpaper is not installed."; exit 1; }
-[ -f "$SW/notify-send" ] || { echo "notify-send is not installed."; exit 1; }
+# Check if libnotify is installed.
+[ -f "$SW/notify-send" ] || {
+	echo "libnotify could not be found. It is needed to display graphical notifications.";
+	exit 1;
+}
 
-# Check if Hyprpaper's configuration file exists. If not, create it.
-[ -f "$CF/hyprpaper.conf" ] || { mkdir "$CF" && touch "$CF/hyprpaper.conf"; }
+# Check if Hyprland is the active desktop.
+[ "$XDG_CURRENT_DESKTOP" = "Hyprland" ] || {
+	notify-send "This wallpaper utility can only be used with Hyprland" &
+	echo "This wallpaper utility can only be used with Hyprland.";
+	exit 1;
+}
 
-# Wallpaper file selection.
+# Check if Zenity is installed.
+[ -f "$SW/zenity" ] || {
+	notify-send "zenity could not be found. It is requiered toselect the wallpaper." &
+	echo "zenity could not be found. It is requiered toselect the wallpaper.";
+	exit 1;
+}
+
+# Check if Hyprpaper is installed.
+[ -f "$SW/hyprpaper" ] || [ -f "$HM/hyprpaper" ] || {
+	notify-send "hyprpaper could not be found. It is requiered to apply the wallpaper." &
+	echo "hyprpaper could not be found. It is requiered to apply the wallpaper.";
+	exit 1;
+}
+
+# Check if Hyprpaper's configuration file exists.
+# If it does not, it creates it in the expected directory.
+[ -f "$CF/hyprpaper.conf" ] || {
+	mkdir "$CF" &&
+	touch "$CF/hyprpaper.conf";
+}
+
+# Show the file selection dialogue and defines the wallpaper used.
 Wallpaper=$(zenity \
 	--file-selection \
 	--filename="$HOME/Images/Backgrounds/ /" \
 	--file-filter="*.png *.jpg *.jpeg *.webp *.jxl" \
-	--title="Select a wallpaper"
+	--title="Select a wallpaper."
 )
 
 case $? in
-	# Write the wallpaper's path to hyprpaper's configuration file.
+	# Write the select wallpaper's path to hyprpaper's configuration file.
 	0) echo \
 		"preload = $Wallpaper
 		wallpaper = ,$Wallpaper
 		splash = false
 		ipc = on" \
-		> "$HOME/.config/hypr/hyprpaper.conf";
+		> "$CF/hyprpaper.conf";
 
-		# Kills hyprpaper if it is already running, then continues.
+		# Kills hyprpaper if it is already running.
 		pkill --exact "hyprpaper" || true;
 
-		# Small buffer wait, then launch hyprpaper with the desired wallpaper.
-		sleep 0.1 && nohup hyprpaper ;;
+		# Wait until hypraper is no longer running.
+		while pgrep -x ".feh-wrapped" > /dev/null; do
+			sleep 0.05
+		done
 
-	# Notify the user in case no wallpaper has been selected.
-	1) notify-send "No wallpaper has been selected.";;
+		# Starts hyprpaper with the updated configuration.
+		nohup hyprpaper > /dev/null 2>&1 & ;;
 
-	# Send a message if another, unknown error occurs.
-	-1) notify-send "An unexpected error occured. Run this script from a terminal emulator for further output.";;
-
+	# Notify the sure in case an error occurs.
+	1) notify-send "An error occured." & echo "An error occured.";;
 esac
