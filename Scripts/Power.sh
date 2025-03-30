@@ -15,22 +15,15 @@ Confirmations="
 Count=$(hyprctl monitors | grep -c "Monitor")
 
 # Choose the correct orthography depending on the monitor count.
-if [ "$Count" -eq 1 ]; then
+[ "$Count" -eq 1 ] &&
 	Options="
 $Options
-󰍹  Turn off display
-"
+󰍹  Turn off display"
 
-elif [ "$Count" -ge 2 ]; then
+[ "$Count" -ge 2 ] &&
 	Options="
 $Options
-󰍹  Turn off displays
-"
-
-else
-	echo "An error occured during the fetching of any active output."
-	exit 1
-fi
+󰍹  Turn off displays"
 
 # Add some of the other entries to the Options.
 Options="
@@ -38,21 +31,19 @@ $Options
 󰒲  Suspend
 󰒲  Hibernate
 󱌂  Hybrid sleep
-󰜉  Reboot
-"
+󰜉  Reboot"
+
+# Sets the size of the Tofi menu for the main selection.
+Width="187"
+Height="292"
 
 # If booted in EFI mode, add the option to reboot into the UEFI firmware and set the appropriate size for Tofi.
-if [ -d "/sys/firmware/efi" ]; then
+[ -d "/sys/firmware/efi" ] &&
 	Options="
 $Options
-  Reboot to UEFI firmware
-"
+  Reboot to UEFI firmware"
 	Width="236"
 	Height="327"
-else
-	Width="187"
-	Height="292"
-fi
 
 # Add the remaining entries to the Options.
 Options="
@@ -60,8 +51,7 @@ $Options
   Power off
 󰺟  Halt
  ‎
-󰗼  Exit
-"
+󰗼  Exit"
 
 # Let the user select an option.
 Choice=$(printf '%s\n' "$Options" | tofi \
