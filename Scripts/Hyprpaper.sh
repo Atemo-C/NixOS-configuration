@@ -62,7 +62,7 @@ case $? in
 		pkill --exact "hyprpaper" || true;
 
 		# Wait until hypraper is no longer running.
-		while pgrep -x ".feh-wrapped" > /dev/null; do
+		while pgrep -x "hyprpaper" > /dev/null; do
 			sleep 0.05
 		done
 
