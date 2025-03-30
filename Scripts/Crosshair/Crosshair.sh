@@ -1,9 +1,21 @@
 #!/bin/dash
 
-# Sets the path to the crosshair image.
+# Shortcut for the path of the image.
 Crosshair="/etc/nixos/Scripts/Crosshair/Crosshair.png"
 
-# Neat command shortcuts.
+# Check if the determined crosshair file exists.
+[ -f "$Crosshair" ] || { notify-send "$Crosshair does not exist."; exit 1; }
+
+# Executeables shortcut.
+SW="/run/current-system/sw/bin"
+
+# Check if the requiered depedencies are installed.
+# It is assumed that basic shell utilties and Hyprland are installed.
+[ -f "$SW/feh" ] || { notify-send "feh is not installed."; exit 1; }
+[ -f "$SW/magick" ] || { notify-send "imagemagick is not installed."; exit 1; }
+[ -f "$SW/notify-send" ] || { echo "notify-send is not installed."; exit 1; }
+
+# Command shortcuts.
 Setprop="hyprctl dispatch setprop class:feh"
 Dispatch="hyprctl dispatch"
 
