@@ -1,14 +1,32 @@
 #!/bin/dash
 
-# Executeables shortcut.
+# Shortcut for binaries.
 SW="/run/current-system/sw/bin"
 HM="$HOME/.nix-profile/bin"
+UF="$HOME/.local/share/flatpak/app"
+HP="$HOME/Programs"
 
-# Check if the requiered dependencies are installed.
-[ -f "$HM/hyprland" ] || [ -f "$SW/hyprland" ] || { notify-send "This power menu is made for Hyprland."; exit 1; }
-[ -f "$HM/tofi" ] || [ -f "$SW/tofi" ] || { notify-send "tofi is not installed."; exit 1; }
+# Check if libnotify is installed.
+[ -f "$SW/notify-send" ] || {
+	echo "libnotify could not be found. It is needed to display graphical notifications.";
+	exit 1;
+}
 
-# Defines the height of the program menu in accordance with the screen resolution.
+# Check if Hyprland is the active desktop.
+[ "$XDG_CURRENT_DESKTOP" = "Hyprland" ] || {
+	notify-send "This wallpaper utility can only be used with Hyprland." &
+	echo "This wallpaper utility can only be used with Hyprland.";
+	exit 1;
+}
+
+# Check if Tofi is installed.
+[ -f "$HM/tofi" ] || [ -f "$SW/tofi" ] || {
+	notify-send "tofi could not be found. It is necessary to display the graphical menu." &
+	echo "tofi could not be found. It is necessary to display the graphical menu.";
+	exit 1;
+}
+
+# Define the height of the program menu in accordance with the screen resolution.
 #---#
 # List monitors.
 # List the 20 lines above "focused: yes".
@@ -16,19 +34,16 @@ HM="$HOME/.nix-profile/bin"
 # Grep any lines with x.
 # Keep only the first one.
 # Trim the output so that it only keeps the vertical resolution.
-# Remove some space for the bar and neat gaps.
 Get_vertical=$(hyprctl monitors | grep -B20 "focused: yes" | tac | grep x | head -n 1 | awk -F 'x|@' '{print $2
 }')
+
+# Remove some space for the bar and neat gaps.
 Gap="84"
+
+# Set the vertical size of the Tofi menu.
 Vertical=$((Get_vertical - Gap))
 
-# A neat shortening of paths.
-HM="$HOME/.nix-profile/bin"
-SW="/run/current-system/sw/bin"
-UF="$HOME/.local/share/flatpak/app"
-HP="$HOME/Programs"
-
-# Creates the Programs list, filled by the detected programs below.
+# Create the programs list, filled by the programs below when detected.
 Programs="
                      󰌧  Run launcher
  ‎
