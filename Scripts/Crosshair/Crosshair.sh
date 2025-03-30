@@ -1,11 +1,5 @@
 #!/bin/dash
 
-# Shortcut for the path of the image.
-Crosshair="/etc/nixos/Scripts/Crosshair/Crosshair.png"
-
-# Check if the determined crosshair file exists.
-[ -f "$Crosshair" ] || { notify-send "$Crosshair does not exist."; exit 1; }
-
 # Executeables shortcut.
 SW="/run/current-system/sw/bin"
 HM="$HOME/.nix-profile/bin"
@@ -15,6 +9,12 @@ HM="$HOME/.nix-profile/bin"
 [ -f "$SW/feh" ] || [ -f "$HM/feh"] || { notify-send "feh is not installed."; exit 1; }
 [ -f "$SW/magick" ] || { notify-send "imagemagick is not installed."; exit 1; }
 [ -f "$SW/notify-send" ] || { echo "notify-send is not installed."; exit 1; }
+
+# Shortcut for the path of the image.
+Crosshair="/etc/nixos/Scripts/Crosshair/Crosshair.png"
+
+# Check if the determined crosshair file exists.
+[ -f "$Crosshair" ] || { notify-send "$Crosshair does not exist."; exit 1; }
 
 # Command shortcuts.
 Setprop="hyprctl dispatch setprop class:feh"
