@@ -199,14 +199,14 @@
 		# Workspace settings.
 		workspace = [
 #			# Assign specific workspaces to specific monitors.
-#			"1, monitor: DP-1, persistent:true, default:true"
-#			"2, monitor: DP-1, persistent:true"
-#			"3, monitor: DP-1, persistent:true"
-#			"4, monitor: DP-1, persistent:true"
-#			"5, monitor: HDMI-A-1, persistent:true, default:true"
-#			"6, monitor: HDMI-A-1, persistent:true"
-#			"7, monitor: HDMI-A-1, persistent:true"
-#			"8, monitor: HDMI-A-1, persistent:true"
+#			"1, monitor: DP-1"
+#			"2, monitor: DP-1"
+#			"3, monitor: DP-1"
+#			"4, monitor: DP-1"
+#			"5, monitor: HDMI-A-1"
+#			"6, monitor: HDMI-A-1"
+#			"7, monitor: HDMI-A-1"
+#			"8, monitor: HDMI-A-1"
 
 			# Remove gaps when only one window is present.
 			"w[tv1], gapsout:0, gapsin:0"
