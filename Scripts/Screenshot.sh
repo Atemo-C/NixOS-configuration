@@ -109,7 +109,7 @@ elif echo "$*" | grep -q -- "--save" || echo "$*" | grep -q -- "-s"; then
 	# Remove the original screenshot.
 	rm "$Image".png
 
-# Shows the about message.
+# Shows the about message with the --about argument.
 elif echo "$*" | grep -q -- "--about"; then
 	echo "$About"
 
