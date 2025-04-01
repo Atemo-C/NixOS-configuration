@@ -24,6 +24,43 @@ HM="$HOME/.nix-profile/bin"
 	exit 1;
 }
 
+# Give an --about flag.
+for type in "$@"; do
+	case "$type" in
+		--about);;
+		*);;
+	esac
+done
+
+# Define the about message.
+About="
+Power.sh
+
+This scripts allows you to execute power actions within the Hyprland Wayland compositor, using Tofi to display the menu.
+
+It allows for:
+• Turning off the active monitor(s).
+• Suspending to RAM.
+• Hibernating (suspending to disk).
+• Hybrid sleep (suspend to RAM and disk).
+• Reboot.
+• Reboot to the UEFI firmware (only appears when booted in EFI mode).
+• Power off.
+• Halt (an archaic way to turn the device off, and power has to be manually turned off afterwards).
+
+When using the $(tput setaf 2)--about$(tput sgr0) argument, this message is displayed.
+
+Credits:
+• $(tput bold)tofi$(tput sgr0): $(tput setaf 4)https://github.com/philj56/tofi$(tput sgr0)
+"
+
+# Shows the about message
+if echo "$*" | grep -q -- "--about"; then
+	echo "$About" && exit
+
+# Shows the menu normally if no argument is given.
+else
+
 # Create the Confirmation list, used in prompts where user confirmation is good to have.
 Confirmations="
   No
@@ -239,3 +276,5 @@ case "$Choice" in
 	;;
 
 esac
+
+fi
