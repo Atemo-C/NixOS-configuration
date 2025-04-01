@@ -24,7 +24,7 @@ HM="$HOME/.nix-profile/bin"
 	exit 1;
 }
 
-# Give an --about flag.
+# Give an --about argument.
 for type in "$@"; do
 	case "$type" in
 		--about);;
