@@ -6,7 +6,7 @@ SW="/run/current-system/sw/bin"
 # Check if libnotify is installed.
 [ -f "$SW/notify-send" ] || {
 	echo "libnotify could not be found. It is needed to display graphical notifications.";
-	exit 1
+	exit 1;
 }
 
 # Check if Hyprland is the active desktop.
@@ -47,12 +47,11 @@ for type in "$@"; do
 		--save|-s);;
 		--about);;
 		--help);;
-		--debug);;
 		*);;
 	esac
 done
 
-# Defines the help and argument missing messages.
+# Define the help and argument missing messages.
 Help="
 You can use the $(tput setaf 2)--copy$(tput sgr0) / $(tput setaf 2)-c$(tput sgr0) or the $(tput setaf 2)--save$(tput sgr0) / $(tput setaf 2)-s$(tput sgr0) argument, followed or preceeded by one of:
   $(tput setaf 6)area$(tput sgr0)    $(tput setaf 13)(to select an area or individual window)$(tput sgr0)
@@ -62,7 +61,7 @@ You can use the $(tput setaf 2)--copy$(tput sgr0) / $(tput setaf 2)-c$(tput sgr0
 Additionally, you can use the $(tput setaf 2)--about$(tput sgr0) argument to see information about this script, or the $(tput setaf 2)--help$(tput sgr0) argument to see this message.
 "
 
-# Defines the about message.
+# Define the about message.
 About="
 Screenshot.sh
 
@@ -76,7 +75,7 @@ When using the $(tput setaf 2)--save$(tput sgr0)/$(tput setaf 2)-s$(tput sgr0) a
 • The file is then converted to a lossless WEBP image by the magick utility.
 • The original image is deleted, leaving the WEBP image saved.
 
-When using the $(tput setaf 2)--about$(tput sgr0) this message is displayed.
+When using the $(tput setaf 2)--about$(tput sgr0) argument, this message is displayed.
 
 When using the $(tput setaf 2)--help$(tput sgr0) argument, help about the script is displayed.
 
