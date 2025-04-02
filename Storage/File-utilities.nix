@@ -20,6 +20,7 @@
 	tarlz     # tarlz
 	unar      # unarchiver
 	lhasa lha # LHa
+	unzip     # zip
 
 	# Archive manager for the GNOME desktop environment.
 	file-roller
