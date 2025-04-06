@@ -236,7 +236,7 @@ $Programs
 $Programs
 󰒖  Warpinator           Local file sharing"
 
-[ -d "$UF/com.github.tchx86.Flatseal" ] && Programs="
+[ -d "$UF/com.github.tchx84.Flatseal" ] && Programs="
 $Programs
   Flatseal             Manage flatpak permissions"
 
