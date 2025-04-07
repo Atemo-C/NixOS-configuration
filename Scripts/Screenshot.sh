@@ -3,6 +3,89 @@
 # Shortcut for binaries.
 SW="/run/current-system/sw/bin"
 
+# Define the "about" message.
+About="
+Screenshot.sh
+
+This script allows you to take screenshots in the Hyprland Wayland compositor using grimblast.
+
+• When using the --about argument, this message is displayed.
+• When using the --help argument, the help message is displayed.
+• When no argument is given, the program selection starts.
+• When an invalid argument is given, it is ignored.
+
+Credits:
+• grimblast: https://github.com/hyprwm/contrib/tree/main/grimblast
+"
+
+# Define the "help" message.
+Help="
+Screenshot.sh
+
+[ Arguments ]
+• --about
+  Display information about this script.
+
+• --help
+  Display this message.
+
+• --copy (followed by one of the sub-arguments).
+  Copies the created screenshot to the clipboard.
+
+• --save (followed by one of the sub-arguments).
+  · Saves the created screenshot to a file.
+  · Optimizes the screenshot with oxipng.
+  · Converts the screenshot to a lossless WEBP image with magick.
+  · Deletes the original image and leaves you with a nice, optimized WEBP screenshot.
+
+
+[ Sub-arguments ]
+• area
+  To select an area or individual window.
+
+• monitor
+  To select the current monitor.
+
+• all
+  To select all active monitors.
+
+
+[ Examples ]
+• To copy an area to the clipboard.
+dash /path/to/Screenshot.sh --copy area
+
+• To save a screenshot of all monitors.
+dash /path/to/Screenshot.sh --save all
+
+Note: The arguments can be swapped around (all --save instead of --save all).
+"
+
+# Check for arguments.
+for argument in "$@"; do
+	case "$argument" in
+		--about);;
+		--help);;
+		--copy);;
+		--save);;
+		area) shottype="area";;
+		monitor) shottype="output";;
+		all) shottype="screen";;
+		*);;
+	esac
+done
+
+# Show the "about" message when the --about argument is given.
+echo "$*" | grep -q -- "--about" &&
+	echo "$About" &&
+	exit ||
+
+# Show the "help" message when the --help argument is given.
+echo "$*" | grep -q -- "--help" &&
+	echo "$Help" &&
+	exit ||
+
+# When no or an invalid argument is given, check for relevant depedencies and take a screenshot.
+
 # Check if libnotify is installed.
 [ -f "$SW/notify-send" ] || {
 	echo "libnotify could not be found. It is needed to display graphical notifications.";
@@ -37,65 +120,16 @@ SW="/run/current-system/sw/bin"
 	exit 1;
 }
 
-# Define the type of screenshot being taken and handle other arguments.
-for type in "$@"; do
-	case "$type" in
-		area) shottype="area";;
-		monitor) shottype="output";;
-		all) shottype="screen";;
-		--copy|-c);;
-		--save|-s);;
-		--about);;
-		--help);;
-		*);;
-	esac
-done
+echo "$*" | grep -q -- "--copy" &&
+	grimblast --notify --freeze copy "$shottype" &&
+	exit ||
 
-# Define the help and argument missing messages.
-Help="
-You can use the $(tput setaf 2)--copy$(tput sgr0) / $(tput setaf 2)-c$(tput sgr0) or the $(tput setaf 2)--save$(tput sgr0) / $(tput setaf 2)-s$(tput sgr0) argument, followed or preceeded by one of:
-  $(tput setaf 6)area$(tput sgr0)    $(tput setaf 13)(to select an area or individual window)$(tput sgr0)
-  $(tput setaf 6)monitor$(tput sgr0) $(tput setaf 13)(to select the current monitor)$(tput sgr0)
-  $(tput setaf 6)all$(tput sgr0)     $(tput setaf 13)(to select all active monitors)$(tput sgr0)
-
-Additionally, you can use the $(tput setaf 2)--about$(tput sgr0) argument to see information about this script, or the $(tput setaf 2)--help$(tput sgr0) argument to see this message.
-"
-
-# Define the about message.
-About="
-Screenshot.sh
-
-This script allows you to take screenshots in the Hyprland Wayland compositor using the grimblast utility.
-
-When using the $(tput setaf 2)--copy$(tput sgr0)/$(tput setaf 2)-c$(tput sgr0) argument, the taken screenshot is copied into the clipboard.
-
-When using the $(tput setaf 2)--save$(tput sgr0)/$(tput setaf 2)-s$(tput sgr0) argument:
-• The taken screenshot is copied into the clipboard and saved to a file.
-• The file is then optimized by the oxipng utility.
-• The file is then converted to a lossless WEBP image by the magick utility.
-• The original image is deleted, leaving the WEBP image saved.
-
-When using the $(tput setaf 2)--about$(tput sgr0) argument, this message is displayed.
-
-When using the $(tput setaf 2)--help$(tput sgr0) argument, help about the script is displayed.
-
-Credits:
-• $(tput bold)grimblast$(tput sgr0):   $(tput setaf 4)https://github.com/hyprwm/contrib/tree/main/grimblast$(tput sgr0)
-• $(tput bold)oxipng$(tput sgr0):      $(tput setaf 4)https://github.com/shssoichiro/oxipng$(tput sgr0)
-• $(tput bold)imagemagick$(tput sgr0): $(tput setaf 4)http://www.imagemagick.org/$(tput sgr0)
-"
-
-# Copy the screenshot to the clipboard with the --copy or -c argument.
-if echo "$*" | grep -q -- "--copy" || echo "$*" | grep -q -- "-c"; then
-	grimblast --notify --freeze copy "$shottype"
-
-# Save the screenshot to a file with the --save or -s argument.
-elif echo "$*" | grep -q -- "--save" || echo "$*" | grep -q -- "-s"; then
+echo "$*" | grep -q -- "--save" &&
 	# Set the screenshot's name.
 	Image=$(date +'Screenshot_%d-%m-%Y_%H-%M-%S')
 
 	# Change the active directory to save the screenshot into.
-	cd "$HOME/Images/Screenshots" || exit 1
+	cd "$HOME/Images/Screenshots" || cd "$HOME/" || exit 1
 
 	# Take the screenshot.
 	grimblast --freeze copysave "$shottype" "$Image".png &&
@@ -107,19 +141,5 @@ elif echo "$*" | grep -q -- "--save" || echo "$*" | grep -q -- "-s"; then
 	magick "$Image".png -quality 100 "$Image".webp &&
 
 	# Remove the original screenshot.
-	rm "$Image".png
-
-# Shows the about message with the --about argument.
-elif echo "$*" | grep -q -- "--about"; then
-	echo "$About"
-
-# Shows the help message with the --help argument.
-elif echo "$*" | grep -q -- "--help"; then
-	echo "$Help"
-
-# Shows the help message when no or an invalid argument is given.
-else
-	echo "\n$(tput setaf 1)$(tput bold)Error$(tput sgr0): Missing or invalid argument."
-	echo "$Help"
-	exit 1
-fi
+	rm "$Image".png &&
+	exit
