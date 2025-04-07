@@ -3,6 +3,34 @@
 # Shortcut for binaries.
 SW="/run/current-system/sw/bin"
 
+# Define the "about" message.
+About="
+Picker.sh
+
+This script allows you to pick a color on the screen within the Hyprland Wayland compositor using hyprpicker.
+
+Whilst this script could currently be a single command, it exists so that it may be extended further in the future, such as the addition of a color picking history with a graphical menu that would show each color and their value, and let the user pick one of them.
+
+• When using the --about argument, this message is displayed.
+• When no argument is given, the color picking starts.
+• When an invalid argument is given, it is ignored.
+"
+
+# Check for arguments.
+for argument in "$@"; do
+	case "$argument" in
+		--about);;
+		*);;
+	esac
+done
+
+# Show the "about" message when the --about argument is given.
+echo "$*" | grep -q -- "--about" &&
+	echo "$About" &&
+	exit ||
+
+# When no or an invalid argument is given, check for relevant depedencies and pick a color on the screen.
+
 # Check if libnotify is installed.
 [ -f "$SW/notify-send" ] || {
 	echo "libnotify could not be found. It is needed to display graphical notifications.";
@@ -23,36 +51,5 @@ SW="/run/current-system/sw/bin"
 	exit 1;
 }
 
-# Give an --about argument.
-for type in "$@"; do
-	case "$type" in
-		--about);;
-		*);;
-	esac
-done
-
-# Define the about message.
-About="
-Picker.sh
-
-This scripts (that should honestly be just a simple command) allows you to pick a color on the screen within the Hyprland Wayland compositor, using hyprpicker to do so.
-
-Why is this a script? Because I have ideas upon improvements and additional features that could come from it, such as color picking history with a graphical menu that shows each color and their value. We shall see.
-
-When using the $(tput setaf 2)--about$(tput sgr0) argument, this message is displayed.
-
-Credits:
-• $(tput bold)hyprpicker$(tput sgr0) $(tput setaf 4)https://github.com/hyprwm/hyprpicker$(tput sgr0)
-"
-
-# Show the about message when the --about argument is given.
-if echo "$*" | grep -q -- "--about"; then
-	echo "$About" && exit
-
-# Pick a color normally if no argument is given.
-else
-
-# Pick a color on the screen, save it to the clipboard, and send a notification.
-Color="$(hyprpicker -f hex --autocopy)" && notify-send -t 1500 "$Color copied to the clipboard"
-
-fi
+# Pick a color if no argument is given.
+Color="$(hyprpicker -f hex --autocopy)" && notify-send -t 1500 "$Color copied to the clipboard."
