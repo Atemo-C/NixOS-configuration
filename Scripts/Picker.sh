@@ -14,6 +14,9 @@ Whilst this script could currently be a single command, it exists so that it may
 • When using the --about argument, this message is displayed.
 • When no argument is given, the color picking starts.
 • When an invalid argument is given, it is ignored.
+
+Credits:
+• hyprpicker: https://github.com/hyprwm/hyprpicker
 "
 
 # Check for arguments.
