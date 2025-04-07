@@ -31,11 +31,8 @@
 #		./Bluetooth.nix
 
 		# Boot modules.
-		# Select one of EFI.nix or BIOS.nix. Shared-boot-settings.nix is always enabled.
-		./Boot/EFI.nix
-#		./Boot/BIOS.nix
+		./Boot/Boot.nix
 #		./Boot/Monitors.nix
-		./Boot/Shared-boot-settings.nix
 
 		# Linux console (TTY) module.
 		./Console.nix
