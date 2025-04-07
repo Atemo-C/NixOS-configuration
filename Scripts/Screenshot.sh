@@ -11,7 +11,9 @@ This script allows you to take screenshots in the Hyprland Wayland compositor us
 
 • When using the --about argument, this message is displayed.
 • When using the --help argument, the help message is displayed.
-• When no argument is given, the program selection starts.
+• When using the --copy argument, the taken screenshot is copied to the clipboard.
+• When using the --save argument followed by one of \"area\", \"monitor\", \"all\", the taken screenshot is saved.
+• When no argument is given, the screenshot action starts.
 • When an invalid argument is given, it is ignored.
 
 Credits:
