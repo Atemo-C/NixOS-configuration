@@ -26,6 +26,62 @@ HP="$HOME/Programs"
 	exit 1;
 }
 
+# Give an --about and --help argument.
+for type in "$@"; do
+	case "$type" in
+		--about);;
+		--help);;
+		*);;
+	esac
+done
+
+# Define the help message.
+Help="
+When editing this script, you will see elements like these in the Program$(tput setaf 5)=$(tput setaf 6)\"\" $(tput sgr0)list:
+
+ $(tput setaf 5)[$(tput setaf 3) -f $(tput setaf 6)\"\$SW/program-name\" $(tput setaf 5)] &&$(tput sgr0) Programs=$(tput setaf 6)\"
+ \$Programs
+ ICON Program name       Description of the program\" $(tput sgr0)
+
+• $(tput setaf 3)-f$(tput sgr0) checks if the program executable file is present, whereas program-name is the name of said program executable.
+• $(tput setaf 6)\$SW$(tput sgr0) is a shortened path to system-installed programs on NixOS (/run/current-system/sw/bin).
+• $(tput setaf 6)\$HW$(tput sgr0) is a shortened path to home manager-installed programs on NixOS ($HOME/.nix-profile/bin).
+• $(tput setaf 6)\$Programs$(tput sgr0) include the already existing program list, making sure that every programs stays in the menu.
+• $(tput setaf 6)ICON$(tput sgr0) is, optionally, a fancy text icon for the desired program.
+• The rest is self-explanatory.
+
+After that, in Programs$(tput setaf 5)=\$()$(tput sgr0), one defines the action(s) taken when the desired program is selected.
+
+Additionally, you can also use the $(tput setaf 2)--about$(tput sgr0) argument to see information about this script.
+"
+
+# Define the about message.
+About="
+Programs.sh
+
+This script allows to launch any program added in a list within the Hyprland Wayland Compositor, using Tofi to display the menu.
+
+If the path to the desired program is not detected, it is automatically not included in the menu.
+
+When using the $(tput setaf 2)--about$(tput sgr0) argument, this message is displayed.
+
+When using the $(tput setaf 2)--help$(tput sgr0) argument, help about the script is displayed.
+
+Cerdits:
+• $(tput bold)tofi$(tput sgr0): $(tput setaf 4)https://github.com/philj56/tofi$(tput sgr0)
+"
+
+# Show the about message when the --about argument is given.
+if echo "$*" | grep -q -- "--about"; then
+	echo "$About" && exit
+
+# Show the help message when the --help argument is given.
+elif echo "$*" | grep -q -- "--help"; then
+	echo "$Help" && exit
+
+# Show the menu normally if no argument is given.
+else
+
 # Define the height of the program menu in accordance with the screen resolution.
 #---#
 # List monitors.
@@ -574,3 +630,5 @@ Program=$(
 
 [ "$Program" = "󰗼  Exit" ] &&
 	exit
+
+fi
