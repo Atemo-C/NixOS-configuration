@@ -34,6 +34,36 @@ HM="$HOME/.nix-profile/bin"
 	exit 1;
 }
 
+# Give an --about argument.
+for type in "$@"; do
+	case "$type" in
+		--about);;
+		*);;
+	esac
+done
+
+# Define the about message.
+About="
+Hyprpaper.sh
+
+This script allows you to graphically select a wallpaper within the Hyprland Wayland compositor, using hyprpaper and zenity to do so.
+
+If image thumbnails do not show, you might wish to open the relevant directories in a graphical manager to let the desired thumbnailer service create thumbnails for the images.
+
+When using the $(tput setaf 2)--about$(tput sgr0) argument, this message is displayed.
+
+Credits:
+• $(tput bold)hyprpaper$(tput sgr0) $(tput setaf 4)https://github.com/hyprwm/hyprpaper$(tput sgr0)
+• $(tput bold)zenity$(tput sgr0) $(tput setaf 4)https://gitlab.gnome.org/GNOME/zenity.git$(tput sgr0)
+"
+
+# Show the about message when the --about argument is given.
+if echo "$*" | grep -q -- "--about"; then
+	echo "$About" && exit
+
+# Pick a wallpaper normally if no argument is given.
+else
+
 # Check if Hyprpaper's configuration file exists.
 # If it does not, it creates it in the expected directory.
 [ -f "$CF/hyprpaper.conf" ] || {
@@ -72,3 +102,5 @@ case $? in
 	# Notify the sure in case an error occurs.
 	1) notify-send "An error occured." & echo "An error occured.";;
 esac
+
+fi
