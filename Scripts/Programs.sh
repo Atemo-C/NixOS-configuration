@@ -10,7 +10,7 @@ HP="$HOME/Programs"
 [ "$#" -gt 1 ] && {
 	echo "$(tput bold)$(tput setaf 1)Error$(tput sgr0): Invalid number of arguments.
 
-See the $(tput setaf 2)$(tput bold)--about$(tput sgr0) argument.
+See the $(tput setaf 2)$(tput bold)--about$(tput sgr0) and $(tput setaf 2)$(tput bold)--help$(tput sgr0) arguments.
 "
 	exit 1
 }
