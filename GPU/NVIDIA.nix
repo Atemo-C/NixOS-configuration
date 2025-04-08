@@ -37,14 +37,18 @@
 	services.xserver.videoDrivers = [ "nvidia" ];
 
 	# Service to unload NVIDIA modules when using `systemctl kexec`. Work in progress.
-	systemd.services.unmodset = {
+	systemd.services.unmodeset = {
+		description = "Unload nvidia modesetting modules from kernel";
+		documentation = [ "man:modprobe(8)" ];
 		after = [ "umount.target" ];
 		before = [ "kexec.target" ];
+		wantedBy = [ "kexec.target" ];
 		serviceConfig = {
 			Type = "oneshot";
-			ExecStart = "modprobe -r nvidia_drm";
+			ExecStart = "${pkgs.kmod}/bin/modprobe -r nvidia_drm";
+			RemainAfterExit = true; # Optional: keep the service active after execution
 		};
-		wantedBy = [ "kexec.target" ];
+		enable = true;
 	};
 
 }
