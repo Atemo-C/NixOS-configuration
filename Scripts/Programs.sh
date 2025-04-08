@@ -510,7 +510,7 @@ $Programs
 	}
 
 	[ "$Program" = "󰽅  Disable crosshair    Kills the active crosshair/s" ] && {
-		nohup dash /etc/nixos/Scripts/Crosshair/Crosshair.sh --kill > /dev/null 2
+		nohup dash /etc/nixos/Scripts/Crosshair/Crosshair.sh --stop > /dev/null 2
 	}
 
 	[ "$Program" = "  DeSmuME              Nintendo DS/I emulator" ] && {
