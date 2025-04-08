@@ -9,6 +9,9 @@
 	# A POSIX-compliant implementation of /bin/sh that aims to be as small as possible.
 	dash
 
+	# Shell script analysis tool.
+	shellcheck
+
 	# Tool for retrieving files using HTTP, HTTPS, and FTP.
 	wget
 
