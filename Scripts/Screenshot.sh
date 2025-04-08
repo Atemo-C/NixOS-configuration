@@ -84,8 +84,8 @@ $(tput bold)[ Examples ]$(tput sgr0)
 
 	# Check if Hyprland is the active Wayland compositor.
 	[ "$XDG_CURRENT_DESKTOP" = "Hyprland" ] || {
-		notify-send "This program menu can only be used with Hyprland."
-		echo "This program menu can only be used with Hyprland."
+		notify-send "This screenshot utility can only be used with Hyprland."
+		echo "This screenshot utility can only be used with Hyprland."
 		exit 1
 	}
 
