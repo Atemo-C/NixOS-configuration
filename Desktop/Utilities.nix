@@ -1,7 +1,7 @@
 { pkgs, ... }: { environment.systemPackages = with pkgs; [
 
-	# LXQt PolicyKit agent.
-	lxqt.lxqt-policykit
+	# QT Polkit agent for Hyprland.
+	hyprpolkitagent
 
 	# Wallpaper utility.
 	hyprpaper

@@ -562,7 +562,7 @@
 			"hyprpaper"
 
 			# Policykit agent.
-			"lxqt-policykit-agent"
+			"systemctl --user start hyprpolkitagent"
 
 			# Clipboard manager.
 			"wl-paste -t text --watch clipman store --no-persist --max-items=100"
