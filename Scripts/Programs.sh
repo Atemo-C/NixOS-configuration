@@ -6,8 +6,18 @@ HM="$HOME/.nix-profile/bin"
 UF="$HOME/.local/share/flatpak/app"
 HP="$HOME/Programs"
 
-# Define the "about" message.
-About="$(tput bold)$(tput setaf 6)  $(tput setaf 2)Programs.sh$(tput sgr0)
+# Check if the number of arguments is greater than 1.
+[ "$#" -gt 1 ] && {
+	echo "$(tput bold)$(tput setaf 1)Error$(tput sgr0): Invalid number of arguments.
+
+See the $(tput setaf 2)$(tput bold)--about$(tput sgr0) argument.
+"
+	exit 1
+}
+
+# Check for the --about argument.
+[ "$1" = "--about" ] && {
+	echo "$(tput bold)$(tput setaf 6)  $(tput setaf 2)Programs.sh$(tput sgr0)
 
 This script allows you to launch any program that exists in the Program$(tput setaf 5)=$(tput setaf 6)\"\"$(tput sgr0) list within the $(tput bold)$(tput setaf 3)Hyprland$(tput sgr0) Wayland compositor, using $(tput bold)$(tput setaf 6)Tofi$(tput sgr0) to display the menu.
 
@@ -20,9 +30,12 @@ $(tput dim)If a program is in the list but not detected, it is automatically omi
 Credits:
 • $(tput bold)$(tput setaf 3)Tofi$(tput sgr0): $(tput setaf 4)https://github.com/philj56/tofi$(tput sgr0)
 "
+	exit
+}
 
-# Define the "help" message.
-Help="$(tput bold)$(tput setaf 6)  $(tput setaf 2)Programs.sh$(tput sgr0)
+# Check for the --help argument.
+[ "$1" = "--help" ] && {
+	echo "$(tput bold)$(tput setaf 6)  $(tput setaf 2)Programs.sh$(tput sgr0)
 
 When editing this script, you will see these elements in the Program$(tput setaf 5)=$(tput setaf 6)\"\"$(tput sgr0) list:
 
@@ -64,25 +77,6 @@ $(tput bold)[ Arguments ]$(tput sgr0)
   $(tput setaf 2)$(tput bold)--help$(tput sgr0)
   Display this message.
 "
-
-# Check if the number of arguments is greater than 1.
-[ "$#" -gt 1 ] && {
-	echo "$(tput bold)$(tput setaf 1)Error$(tput sgr0): Invalid number of arguments.
-
-See the $(tput setaf 2)$(tput bold)--about$(tput sgr0) argument.
-"
-	exit 1
-}
-
-# Check for the --about argument.
-[ "$1" = "--about" ] && {
-	echo "$About"
-	exit
-}
-
-# Check for the --help argument.
-[ "$1" = "--help" ] && {
-	echo "$Help"
 	exit
 }
 

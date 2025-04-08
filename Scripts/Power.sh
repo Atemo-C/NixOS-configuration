@@ -9,8 +9,18 @@ Script() {
     nohup dash "/etc/nixos/Scripts/Power.sh" > /dev/null 2>&1 & exit
 }
 
-# Define the "about" message.
-About="$(tput bold)$(tput setaf 6)  $(tput setaf 2)Power.sh$(tput sgr0)
+# Check if the number of arguments is greater than 1.
+[ "$#" -gt 1 ] && {
+	echo "$(tput bold)$(tput setaf 1)Error$(tput sgr0): Invalid number of arguments.
+
+See the $(tput setaf 2)$(tput bold)--about$(tput sgr0) argument.
+"
+	exit 1
+}
+
+# Check for the --about argument.
+[ "$1" = "--about" ] && {
+	echo "$(tput bold)$(tput setaf 6)  $(tput setaf 2)Power.sh$(tput sgr0)
 
 This script allows you to execute power action within the $(tput bold)$(tput setaf 3)Hyprland$(tput sgr0) Wayland compositor, using $(tput bold)$(tput setaf 6)Tofi$(tput sgr0) to display the menu.
 
@@ -32,19 +42,6 @@ $(tput dim)Note that if the \"Reboot to the UEFI firmware\" option does not appe
 Credits:
 • $(tput bold)$(tput setaf 3)Tofi$(tput sgr0): $(tput setaf 4)https://github.com/philj56/tofi$(tput sgr0)
 "
-
-# Check if the number of arguments is greater than 1.
-[ "$#" -gt 1 ] && {
-	echo "$(tput bold)$(tput setaf 1)Error$(tput sgr0): Invalid number of arguments.
-
-See the $(tput setaf 2)$(tput bold)--about$(tput sgr0) argument.
-"
-	exit 1
-}
-
-# Check for the --about argument.
-[ "$1" = "--about" ] && {
-	echo "$About"
 	exit
 }
 

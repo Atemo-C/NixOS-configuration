@@ -7,20 +7,6 @@ CF="$HOME/.config/hypr"
 SW="/run/current-system/sw/bin"
 HM="$HOME/.nix-profile/bin"
 
-# Define the "about" message.
-About="$(tput bold)$(tput setaf 6)  $(tput setaf 2)Hyprpaper.sh$(tput sgr0)
-
-This script allows you to graphically select a wallpaper within the $(tput bold)$(tput setaf 3)Hyprland$(tput sgr0) Wayland compositor using $(tput bold)$(tput setaf 6)hyprpaper$(tput sgr0).
-
-$(tput dim)If image thumbnails do not show while picking a wallpaper, you might want to open the relevant directory(ies) in a graphical file manager to let the desired thumbnailer service create thumbnails for the images.$(tput sgr0)
-
-• When using the $(tput setaf 2)$(tput bold)--about$(tput sgr0) argument, this message is displayed.
-• When no argument is given, the wallpaper selection starts.
-
-Credits:
-• $(tput bold)$(tput setaf 3)hyprpaper$(tput sgr0): $(tput setaf 4)https://github.com/hyprwm/hyprpaper$(tput sgr0)
-"
-
 # Check if the number of arguments is greater than 1.
 [ "$#" -gt 1 ] && {
 	echo "$(tput bold)$(tput setaf 1)Error$(tput sgr0): Invalid number of arguments.
@@ -32,7 +18,18 @@ See the $(tput setaf 2)$(tput bold)--about$(tput sgr0) argument.
 
 # Check for the --about argument.
 [ "$1" = "--about" ] && {
-	echo "$About"
+	echo "$(tput bold)$(tput setaf 6)  $(tput setaf 2)Hyprpaper.sh$(tput sgr0)
+
+This script allows you to graphically select a wallpaper within the $(tput bold)$(tput setaf 3)Hyprland$(tput sgr0) Wayland compositor using $(tput bold)$(tput setaf 6)hyprpaper$(tput sgr0).
+
+$(tput dim)If image thumbnails do not show while picking a wallpaper, you might want to open the relevant directory(ies) in a graphical file manager to let the desired thumbnailer service create thumbnails for the images.$(tput sgr0)
+
+• When using the $(tput setaf 2)$(tput bold)--about$(tput sgr0) argument, this message is displayed.
+• When no argument is given, the wallpaper selection starts.
+
+Credits:
+• $(tput bold)$(tput setaf 3)hyprpaper$(tput sgr0): $(tput setaf 4)https://github.com/hyprwm/hyprpaper$(tput sgr0)
+"
 	exit
 }
 
