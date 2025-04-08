@@ -52,8 +52,8 @@ Credits:
 	}
 
 	# Pick a color on the screen.
-	Color="$(hyprpicker -f hex --autocopy)" &&
-	notify-send -t 1500 "$Color copied to the clipboard." &&
+	Color="$(hyprpicker -f hex --autocopy)"
+	notify-send -t 1500 "$Color copied to the clipboard."
 	exit
 }
 
