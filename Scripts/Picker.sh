@@ -40,7 +40,7 @@ Credits:
 	# Check if Hyprland is the active Wayland compositor.
 	[ "$XDG_CURRENT_DESKTOP" = "Hyprland" ] || {
 		notify-send "This color picking utility can only be used with Hyprland."
-		echo "This wallpaper utility can only be used with Hyprland."
+		echo "This color picking utility can only be used with Hyprland."
 		exit 1
 	}
 
