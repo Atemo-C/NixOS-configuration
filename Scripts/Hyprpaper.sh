@@ -102,7 +102,7 @@ ipc = on" \
 }
 
 # Error out if an invalid argument is given.
-echo "$(tput bold)$(tput setaf 1)Error$(tput sgr0): Invalid argument '$(tput setaf 1)$1$(tput sgr0)'.
+echo "$(tput bold)$(tput setaf 1)Error$(tput sgr0): Invalid argument '$(tput setaf 1)$@$(tput sgr0)'.
 
 See the $(tput setaf 2)$(tput bold)--about$(tput sgr0) argument.
 "
