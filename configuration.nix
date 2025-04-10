@@ -21,6 +21,9 @@
 		# Automatically generated hardware configuration module.
 		./hardware-configuration.nix
 
+		# Temporary module.
+		./Temporary.nix
+
 		# Android module.
 		./Android.nix
 
