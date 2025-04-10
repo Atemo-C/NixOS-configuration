@@ -601,7 +601,7 @@ $Programs
 	}
 
 	[ "$Program" = "  Ventoy               Bootable USB creation tool" ] && {
-		nohup "$TERMINAL" -e sudo ventoy-web > /dev/null 2>&1 & exit
+		nohup "$TERMINAL" -e run0 ventoy-web > /dev/null 2>&1 & exit
 	}
 
 	[ "$Program" = "  File roller          Archive manager" ] && {
