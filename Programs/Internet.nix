@@ -4,14 +4,14 @@
 		# A fancy terminal browser for the Gemini protocol.
 		amfora
 
-		# A Beautiful Gemini Client.
+		# A Beautiful Gemini client.
 		lagrange
-
-		# A GTK/Libadwaita Matrix client.
-		fractal
 
 		# A fork of Firefox, focused on privacy, security and freedom.
 		librewolf
+
+		# Electron-based Matrix client.
+		element-desktop
 
 		# Graphical librespeed client written using GTK4 + libadwaita.
 		speedtest
