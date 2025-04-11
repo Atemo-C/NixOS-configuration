@@ -7,6 +7,9 @@
 		# A Beautiful Gemini Client.
 		lagrange
 
+		# A GTK/Libadwaita Matrix client.
+		fractal
+
 		# A fork of Firefox, focused on privacy, security and freedom.
 		librewolf
 

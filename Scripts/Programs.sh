@@ -272,6 +272,10 @@ $Programs
 $Programs
 󰭻  Element              Matrix client"
 
+	[ -f "$SW/fractal" ] && Programs="
+$Programs
+󰭻  Fractal              GTK Matrix client"
+
 	[ -f "$SW/revolt-desktop" ] && Programs="
 $Programs
 󰭻  Revolt               FOSS alternative to Discord"
@@ -576,6 +580,10 @@ $Programs
 
 	[ "$Program" = "󰭻  Element              Matrix client" ] && {
 		nohup librewolf --new-window "https://app.element.io/" > /dev/null 2>&1 & exit
+	}
+
+	[ "$Program" = "󰭻  Fractal              GTK Matrix client" ] && {
+		nohup fractal > /dev/null 2>&1 & exit
 	}
 
 	[ "$Program" = "󰭻  Revolt               FOSS alternative to Discord" ] && {
