@@ -268,13 +268,13 @@ $Programs
 $Programs
 󰙯  Vesktop              Discord, but Vencorded"
 
-	Programs="
+	[ -f "$SW/element-desktop" ] && Programs="
 $Programs
-󰭻  Element (web)         Matrix client"
+󰭻  Element (Electron)    Matrix client"
 
 	Programs="
 $Programs
-󰭻  Element (Electron)    Matrix client"
+󰭻  Element (web)         Matrix client"
 
 	[ -f "$SW/fractal" ] && Programs="
 $Programs
@@ -582,12 +582,12 @@ $Programs
 	#	nohup vesktop --ozone-platform=wayland > /dev/null 2>&1 & exit
 	}
 
-	[ "$Program" = "󰭻  Element (web)         Matrix client" ] && {
-		nohup librewolf --new-window "https://app.element.io/" > /dev/null 2>&1 & exit
-	}
-
 	[ "$Programs" = "󰭻  Element (Electron)    Matrix client" ] && {
 		nohup element-desktop > /dev/null 2>&1 & exit
+	}
+
+	[ "$Program" = "󰭻  Element (web)         Matrix client" ] && {
+		nohup librewolf --new-window "https://app.element.io/" > /dev/null 2>&1 & exit
 	}
 
 	[ "$Program" = "󰭻  Fractal              GTK Matrix client" ] && {
