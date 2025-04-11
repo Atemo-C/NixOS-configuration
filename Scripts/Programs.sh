@@ -582,7 +582,7 @@ $Programs
 	#	nohup vesktop --ozone-platform=wayland > /dev/null 2>&1 & exit
 	}
 
-	[ "$Programs" = "󰭻  Element (Electron)    Matrix client" ] && {
+	[ "$Program" = "󰭻  Element (Electron)    Matrix client" ] && {
 		nohup element-desktop > /dev/null 2>&1 & exit
 	}
 
