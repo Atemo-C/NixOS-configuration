@@ -9,4 +9,7 @@
 	# Legacy X11 tools, mostly for Xwayland programs.
 	xorg.xrandr
 
+	# Keyring.
+	gnome-keyring
+
 ]; }

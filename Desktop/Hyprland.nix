@@ -568,6 +568,9 @@
 			# Policykit agent.
 			"systemctl --user start hyprpolkitagent"
 
+			# Keyring.
+			"gnome-keyring-daemon"
+
 			# Clipboard manager.
 			"wl-paste -t text --watch clipman store --no-persist --max-items=100"
 
