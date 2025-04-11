@@ -505,10 +505,12 @@
 			"bordercolor rgb(ffc000), title: sftp.*, tag: term"
 			"bordercolor rgb(FF0000), title: sudo.*, tag: term"
 			"bordercolor rgb(FF0000), title: run0.*, tag: term"
+			"bordercolor rgb(FF0000), title: 🔴 /.*, tag: term"
 			"bordercolor rgb(FF0000), title: (Authentication Required)"
 			"prop bordersize 2, title: (Authentication Required)"
 			"prop bordersize 2, title: sudo.*, tag: term"
 			"prop bordersize 2, title: run0.*, tag: term"
+			"prop bordersize 2, title: 🔴 /.*, tag: term"
 			"prop rounding 8, floating:1, class: (vesktop|sober_services)"
 		];
 
