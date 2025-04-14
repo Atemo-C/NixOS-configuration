@@ -1,14 +1,11 @@
 { config, pkgs, ... }: {
 
-	# The font used for the virtual consoles.
-	console.font = "Lat2-Terminus16";
-
 	fonts = {
-		# Whether to install a basic set of fonts providing several styles and families.
-		# It also provides a reasonable coverage of Unicode.
+		# Whether to enable a basic set of fonts.
+		# They provide several styles and families, and a reasonable coverage of Unicode.
 		enableDefaultPackages = true;
 
-		# Whether to create a directory with links to all fonts in /run/current-system/sw/share/X11/fonts.
+		# Whether to create a directory with links to all system fonts in /run/current-system/sw/share/X11/fonts.
 		fontDir.enable = true;
 
 		fontconfig = {
@@ -16,36 +13,27 @@
 			cache32Bit = true;
 
 			# Default fonts to use, per category.
-			# Multiple fonts may be listed in case one does not support certain characters, such as emojis.
+			# Multiple fonts may be listed in caseo ne does not support certain characters, such as emojis.
 			defaultFonts = {
-				# Default emoji font(s).
 				emoji = [ "Noto Color Emoji" ];
-
-				# Default monospace font(s).
 				monospace = [ "UbuntuMono Nerd Font" "Noto Color Emoji" ];
-
-				# Default Sans-Serif font(s).
-				sansSerif = [ "UbuntuMono Nerd Font" "Noto Color Emoji" ];
-
-				# Default Serif font(s).
-				serif = [ "UbuntuMono Nerd Font" "Noto Color Emoji" ];
+				sansSerif = [ "Ubuntu Nerd Font" "Noto Color Emoji" ];
+				serif = [ "Ubuntu Nerd Font" "Noto Color Emoji" ];
 			};
 		};
 
-		# List of primary font packages.
+		# List of additional font packages to install.
 		packages = with pkgs; [
 			# Ubuntu Nerd Fonts.
 			nerd-fonts.ubuntu
 			nerd-fonts.ubuntu-mono
 
-			# Noto Fonts and emojis.
-			noto-fonts
+			# Other font packages for additional symbols support.
 			noto-fonts-cjk-sans
-			noto-fonts-color-emoji
 		];
 	};
 
-	# Fonts to be used for the normal and root users.
+	# Fonts managed by Home Manager.
 	home-manager.users = {
 		${config.custom.name} = {
 			gtk.font = {
