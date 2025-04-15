@@ -259,7 +259,7 @@ $Options
 		}
 
 		[ "$Answer" = "  Yes" ] && {
-			pkexec systemctl halt
+			run0 systemctl halt
 		}
 
 		[ "$Answer" = "  Back" ] && {
@@ -268,7 +268,7 @@ $Options
 	}
 
 	[ "$Choice" = " ‎" ] && {
-		nohup dash "/etc/nixos/Scripts/Power.sh" > /dev/null 2>&1 &
+		Script
 	}
 
 	[ "$Choice" = "󰗼  Exit" ] && {
