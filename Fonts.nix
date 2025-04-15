@@ -17,8 +17,8 @@
 			defaultFonts = {
 				emoji = [ "Noto Color Emoji" ];
 				monospace = [ "UbuntuMono Nerd Font" "Noto Color Emoji" ];
-				sansSerif = [ "Ubuntu Nerd Font" "Noto Color Emoji" ];
-				serif = [ "Ubuntu Nerd Font" "Noto Color Emoji" ];
+				sansSerif = [ "UbuntuMono Nerd Font" "Noto Color Emoji" ];
+				serif = [ "UbuntuMono Nerd Font" "Noto Color Emoji" ];
 			};
 		};
 
@@ -38,19 +38,19 @@
 		${config.custom.name} = {
 			gtk.font = {
 				# The family name of the font to use in compatible GTK applications.
-				name = "Ubuntu Nerd Font";
+				name = "UbuntuMono Nerd Font";
 
 				# The size of the font to use in compatible GTK applications.
-				size = 10;
+				size = 11;
 			};
 		};
 		root = {
 			gtk.font = {
 				# The family name of the font to use in compatible GTK applications.
-				name = "Ubuntu Nerd Font";
+				name = "UbuntuMono Nerd Font";
 
 				# The size of the font to use in compatible GTK applications.
-				size = 10;
+				size = 11;
 			};
 		};
 	};
