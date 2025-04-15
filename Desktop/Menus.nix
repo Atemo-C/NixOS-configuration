@@ -13,7 +13,7 @@
 			# Font to use, either a path to a font file or a name.
 			# If a CORRECT path is given, tofi will startup much quicker.
 			# Otherwise, fonts are interpreted in Pango format.
-			font = "/run/current-system/sw/share/X11/fonts/UbuntuMonoNerdFontRegular.ttf";
+			font = "/run/current-system/sw/share/X11/fonts/UbuntuMonoNerdFont-Regular.ttf";
 
 			# # Point size of text.
 			font-size = 12;
