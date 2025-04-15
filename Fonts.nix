@@ -38,19 +38,19 @@
 		${config.custom.name} = {
 			gtk.font = {
 				# The family name of the font to use in compatible GTK applications.
-				name = "UbuntuMono Nerd Font";
+				name = "Ubuntu Nerd Font";
 
 				# The size of the font to use in compatible GTK applications.
-				size = 11;
+				size = 10;
 			};
 		};
 		root = {
 			gtk.font = {
 				# The family name of the font to use in compatible GTK applications.
-				name = "UbuntuMono Nerd Font";
+				name = "Ubuntu Nerd Font";
 
 				# The size of the font to use in compatible GTK applications.
-				size = 11;
+				size = 10;
 			};
 		};
 	};
