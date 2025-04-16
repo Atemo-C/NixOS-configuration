@@ -27,6 +27,7 @@ c=$(tput sgr0)
 		"\n$(dim)If a program is in the list but not detected, it is automatically omitted from the list.${c}\n" \
 		"\n• When using the ${arg}--about${c} argument, this message is displayed." \
 		"\n• When using the ${arg}--help${c} argument, help about this script is displayed." \
+		"\n• When using the ${arg}--check${c} argument, required dependencies will be checked." \
 		"\n• When no argument is given, the program selection process starts.\n" \
 		"\nCredits:" \
 		"\n• ${exe}Tofi${c}: ${web}https://github.com/philj56/tofi${c}\n"
@@ -42,8 +43,35 @@ c=$(tput sgr0)
 		"\nDisplay information about this script.\n" \
 		"\n${arg}--help${c}" \
 		"\nDisplay this message.\n" \
+		"\n${arg}--check${c}" \
+		"\nCheck for required dependencies." \
 		"\n• To add the detection of a program, add an entry like any of the ones in Programs${mag}=${cya}\"\"${c}." \
 		"\n• Then, you can add the action that should be executed upon launch of this program after the Program${mag}=\$()${c} prompt."
+
+	exit
+}
+
+# Check for the --check argument.
+[ "$1" = "--check" ] && {
+	echo "${ico}  ${arg}Programs.sh${c}\n"
+
+	# Check if libnotify is installed.
+	(command -v notify-send > /dev/null 2>&1) && {
+		echo "✅ ${exe}libnotify${c} is installed."
+	} ||
+		echo "❌ ${exe}libnotify${c} is not installed. It is required to display graphical notifications. The script will not run without it."
+
+	# Check if Tofi is installed.
+	(command -v tofi > /dev/null 2>&1) && {
+		echo "✅ ${exe}Tofi${c} is installed."
+	} ||
+		echo "❌ ${exe}Tofi is not installed. It is required to display the graphical menu. The script will not run without it."
+
+	# Check if Hyprland is the active Wayland compositor.
+	[ "$XDG_CURRENT_DESKTOP" = "Hyprland" ] && {
+		echo "✅ ${exe}Hyprland${c} is the active Wayland compositor."
+	} ||
+		echo "❌ ${exe}Hyprland${c} is not the currently active Wayland compositor. The script will not run outside of Hyprland."
 
 	exit
 }

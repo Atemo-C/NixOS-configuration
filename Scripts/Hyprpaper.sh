@@ -25,7 +25,7 @@ c=$(tput sgr0)
 		"\nThis script allows you to graphically select a wallpaper within the ${exe}Hyprland${c} Wayland compositor using ${exe}hyprpaper${c}.\n" \
 		"\n${dim}If image thumbnails do not show while picking a wallpaper, you may want to open the relevant directory(ies) in a graphical file manager to let the desired thumbnailer service create thumbnails for the images.${c}\n" \
 		"\n• When using the ${arg}--about${c} or ${arg}--help${c} argument, this message is displayed." \
-		"\n• When using the ${arg}--check${c} argument, required depedencies will be checked." \
+		"\n• When using the ${arg}--check${c} argument, required dependencies will be checked." \
 		"\n• When no argument is given, the wallpaper selection starts.\n" \
 		"\nCredits:" \
 		"\n• ${exe}hyprpaper${c}: ${web}https://github.com/hyprwm/hyprpaper${c}\n"

@@ -33,8 +33,36 @@ c=$(tput sgr0)
 		"\n• Power off." \
 		"\n• Halt ${dim}(an archaic way to turn the device off, and power has to be manually turned off afterwards)${c}." \
 		"\n• Logging out of ${exe}Hyprland${c}.\n" \
+		"\n• When using the ${arg}--about${c} or ${arg}--help${c} argument, this message is displayed." \
+		"\n• When using the ${arg}--check${c} argument, required dependencies will be checked." \
+		"\n• When no argument is given, the power action selection process starts.\n" \
 		"\nCredits:" \
 		"\n${exe}Tofi${c}: ${web}https://github.com/philj56/tofi${c}\n"
+	exit
+}
+
+# Check for the --check argument.
+[ "$1" = "--check" ] && {
+	echo "${ico}  ${arg}Power.sh${c}\n"
+
+	# Check if libnotify is installed.
+	(command -v notify-send > /dev/null 2>&1) && {
+		echo "✅ ${exe}libnotify${c} is installed."
+	} ||
+		echo "❌ ${exe}libnotify${c} is not installed. It is required to display graphical notifications. The script will not run without it."
+
+	# Check if Tofi is installed.
+	(command -v tofi > /dev/null 2>&1) && {
+		echo "✅ ${exe}Tofi${c} is installed."
+	} ||
+		echo "❌ ${exe}Tofi is not installed. It is required to display the graphical menu. The script will not run without it."
+
+	# Check if Hyprland is the active Wayland compositor.
+	[ "$XDG_CURRENT_DESKTOP" = "Hyprland" ] && {
+		echo "✅ ${exe}Hyprland${c} is the active Wayland compositor."
+	} ||
+		echo "❌ ${exe}Hyprland${c} is not the currently active Wayland compositor. The script will not run outside of Hyprland."
+
 	exit
 }
 

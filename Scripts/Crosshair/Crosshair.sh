@@ -26,6 +26,7 @@ c=$(tput sgr0)
 		"\n${dim}It assumes use in applications such as video-gaming in fullscreen/borderless fullscreen-only.${c}\n" \
 		"\n• When using the ${arg}--about${c} argument, this message is displayed." \
 		"\n• When using the ${arg}--help${c} argument, help about this script is displayed." \
+		"\n• When using the ${arg}--check${c} argument, required dependencies will be checked." \
 		"\n• When using the ${arg}--start${c} argument, a crosshair appears on the currently focused monitor." \
 		"\n• when using the ${arg}--stop${c} argument, the active crosshair is closed.\n" \
 		"\nCredits:" \
@@ -43,6 +44,8 @@ c=$(tput sgr0)
 		"\nDisplay information about this script.\n" \
 		"\n${arg}--help${c}" \
 		"\nDisplay this message.\n" \
+		"\n${arg}--check${c}" \
+		"\nCheck for required dependencies.\n" \
 		"\n${arg}--start${c}" \
 		"\n· Get the image size with imagemagick." \
 		"\n· Check if a crosshair is already running." \
@@ -59,6 +62,37 @@ c=$(tput sgr0)
 		"\n· Pin it on the active monitor.\n" \
 		"\n${arg}--stop${c}" \
 		"\nStop the active crosshair.\n"
+
+	exit
+}
+
+# Check for the --check argument.
+[ "$1" = "--check" ] && {
+	echo "${ico}  ${arg}Crosshair.sh${c}\n"
+
+	# Check if libnotify is installed.
+	(command -v notify-send > /dev/null 2>&1) && {
+		echo "✅ ${exe}libnotify${c} is installed."
+	} ||
+		echo "❌ ${exe}libnotify${c} is not installed. It is required to display graphical notifications. The script will not run without it."
+
+	# Check if imagemagick is installed.
+	(command -v magick > /dev/null 2>&1) && {
+		echo "✅ ${exe}imagemagick${c} is installed."
+	} ||
+		echo "❌ ${exe}imagemagick${c} is not installed. It is required to get the properties of the crosshiar image. The script will not run without it."
+
+	# Check if feh is installed.
+	(command -v feh > /dev/null 2>&1) && {
+		echo "✅ ${exe}feh${c} is installed."
+	} ||
+		echo "❌ ${exe}feh${c} is not installed. It is required to display the crosshair image. The script will not run without it."
+
+	# Check if Hyprland is the active Wayland compositor.
+	[ "$XDG_CURRENT_DESKTOP" = "Hyprland" ] && {
+		echo "✅ ${exe}Hyprland${c} is the active Wayland compositor."
+	} ||
+		echo "❌ ${exe}Hyprland${c} is not the currently active Wayland compositor. The script will not run outside of Hyprland."
 
 	exit
 }

@@ -25,7 +25,7 @@ c=$(tput sgr0)
 		"\nThis script allows you to pick a color on the screen within the ${exe}Hyprland${c} Wayland compositor using ${exe}hyprpicker${c}.\n" \
 		"\n${dim}Whilst this script could currently be a single command, it exists so that it may be extended further in the future, such as the addition of a color picking history with a graphical menu that would show each color and their value, and let the user pick one of them.${c}\n" \
 		"\n• When using the ${arg}--about${c} or ${arg}--help${c} argument, this message is displayed." \
-		"\n• When using the ${arg}--check${c} argument, required depedencies will be checked." \
+		"\n• When using the ${arg}--check${c} argument, required dependencies will be checked." \
 		"\n• When no argument is given, the color picking starts.\n" \
 		"\nCredits:" \
 		"\n• ${exe}hyprpicker${c}: ${web}https://github.com/hyprwm/hyprpicker${c}\n"
