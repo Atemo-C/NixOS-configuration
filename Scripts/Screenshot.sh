@@ -1,75 +1,70 @@
 #!/bin/dash
 
-# Shortcut for binaries.
-SW="/run/current-system/sw/bin"
+# Set some text formatting shortcuts.
+err=$(tput bold)$(tput setaf 1)Error$(tput sgr0)
+arg=$(tput bold)$(tput setaf 2)
+exe=$(tput bold)$(tput setaf 3)
+ico=$(tput bold)$(tput setaf 6)
+web=$(tput setaf 4)
+dim=$(tput dim)
+bol=$(tput bold)
+c=$(tput sgr0)
 
 # Check if the number of arguments is greater than 2.
 [ "$#" -gt 2 ] && {
-	echo "$(tput bold)$(tput setaf 1)Error$(tput sgr0): Invalid number of arguments.
+	echo \
+		"${err}: Invalid number of arguments (${arg}$#${c}).\n" \
+		"\nSee the ${arg}--about${c} and the ${arg}--help${c} arguments.\n"
 
-See the $(tput setaf 2)$(tput bold)--about$(tput sgr0) and $(tput setaf 2)$(tput bold)--help$(tput sgr0) arguments.
-"
 	exit 1
 }
 
 # Check for the --about argument.
 [ "$1" = "--about" ] && {
-	echo "$(tput bold)$(tput setaf 6)  $(tput setaf 2)Screenshot.sh$(tput sgr0)
-
-This script allows you to take screenshots within the $(tput bold)$(tput setaf 3)Hyprland$(tput sgr0) Wayland compositor, using $(tput bold)$(tput setaf 6)grimblast$(tput sgr0) to take the screenshot, $(tput bold)$(tput setaf 6)oxipng$(tput sgr0) to optimize the saved ones, and $(tput bold)$(tput setaf 6)imagemagick$(tput sgr0) to convert the saved ones to WEBP images.
-
-• When using the $(tput setaf 2)$(tput bold)--about$(tput sgr0) argument, this message is displayed.
-• When using the $(tput setaf 2)$(tput bold)--copy$(tput sgr0) argument followed by one of \"$(tput bold)$(tput setaf 6)area$(tput sgr0)\", \"$(tput bold)$(tput setaf 6)monitor$(tput sgr0)\", or \"$(tput bold)$(tput setaf 6)all$(tput sgr0)\", the taken screenshot is copied to the clipboard.
-• When using the $(tput setaf 2)$(tput bold)--save$(tput sgr0) argument followed by one of \"$(tput bold)$(tput setaf 6)area$(tput sgr0)\", \"$(tput bold)$(tput setaf 6)monitor$(tput sgr0)\", or \"$(tput bold)$(tput setaf 6)all$(tput sgr0)\", the taken screenshot is saved, optimized, and converted to a WEBP image.
-
-Credits:
-• $(tput bold)$(tput setaf 3)grimblast$(tput sgr0): $(tput setaf 4)https://github.com/hyprwm/contrib/tree/main/grimblast$(tput sgr0)
-• $(tput bold)$(tput setaf 3)imagemagick$(tput sgr0): $(tput setaf 4)https://imagemagick.org/$(tput sgr0)
-• $(tput bold)$(tput setaf 3)oxipng$(tput sgr0): $(tput setaf 4)https://github.com/shssoichiro/oxipng$(tput sgr0)
-"
+	echo \
+		"${ico}  ${arg}Screenshot.sh${c}\n" \
+		"\nThis script allows you to take screenshots within the $(exe)Hypralnd${c} Wayland compositor, using ${exe}grimblast${c} to take the screenshots, ${exe}oxipng${c} to optimize the intially saved screenshots, and ${exe}imagemagick${c} to convert the optimized screenshots into WEBP images.\n" \
+		"\n• When using the ${arg}--about${c} argument, this message is displayed." \
+		"\n• When using the ${arg}--help${c} argument, help about this script is displayed.\n" \
+		"\n• When using the ${arg}--copy${c} argument, followed by one of \"${arg}area${c}\" \"${arg}monitor${c}\", or \"${arg}all${c}\", the taken screenshot is copied to the clipboard." \
+		"\n• When using the ${arg}--save${c} argument, followed by one of \"${arg}area${c}\" \"${arg}monitor${c}\", or \"${arg}all${c}\", the taken screenshot is saved, optimized, and converted to a WEBP image.\n" \
+		"\nCredits:" \
+		"\n• ${exe}grimblast${c}: ${web}https://github.com/hyprwm/contrib/tree/main/grimblast${c}" \
+		"\n• ${exe}imagemagick${c}: ${web}https://imagemagick.org/${c}" \
+		"\n• ${exe}oxipng${c}: ${web}https://github.com/shssoichiro/oxipng${c}\n"
 
 	exit
 }
 
 # Check for the --help argument.
 [ "$1" = "--help" ] && {
-	echo "$(tput bold)$(tput setaf 6)  $(tput setaf 2)Screenshot.sh$(tput sgr0)
-
-$(tput bold)[ Arguments ]$(tput sgr0)
-  $(tput bold)$(tput setaf 2)--about$(tput sgr0)
-  Display information about this script.
-
-  $(tput bold)$(tput setaf 2)--help$(tput sgr0)
-  Display this message.
-
-  $(tput bold)$(tput setaf 2)--copy$(tput sgr0) (followed by one of the sub-arguments).
-  Copies the created screenshot to the clipboard.
-
-  $(tput bold)$(tput setaf 2)--save$(tput sgr0) (followed by one of the sub-arguments).
-  · Saves the created screenshot to a file with $(tput bold)$(tput setaf 6)grimblast$(tput sgr0).
-  · Optimizes it with $(tput bold)$(tput setaf 6)oxipng$(tput sgr0).
-  · Converts it to a lossless WEBP image with $(tput bold)$(tput setaf 6)magick$(tput sgr0).
-  · Deletes the original image and leaves you with the WEBP screenshot.
-
-$(tput bold)[ Sub-arguments ]$(tput sgr0)
-  $(tput bold)$(tput setaf 6)area$(tput sgr0)
-  To select an area or individual window.
-
-  $(tput bold)$(tput setaf 6)monitor$(tput sgr0)
-  To select the current monitor.
-
-  $(tput bold)$(tput setaf 6)all$(tput sgr0)
-  To select all active monitors.
-
-$(tput bold)[ Examples ]$(tput sgr0)
-  • To copy an area screenshot to the clipboard.
-  $(tput setaf 4)dash $(tput setaf 6)/path/to/Screenshot.sh $(tput setaf 2)--copy $(tput setaf 5)area$(tput sgr0)
-
-  • To save a screenshot of all monitors.
-  $(tput setaf 4)dash $(tput setaf 6)/path/to/Screenshot.sh $(tput setaf 2)--save $(tput setaf 5)all$(tput sgr0)
-
-  $(tput dim)Note: The arguments cannot be swapped around ($(tput bold)$(tput setaf 2)--copy $(tput setaf 6)all$(tput sgr0)$(tput dim) is valid, but $(tput bold)$(tput setaf 6)all $(tput setaf 2)--copy$(tput sgr0)$(tput dim) is not).
-"
+	echo \
+		"${ico}  ${arg}Screenshot.sh${c}\n" \
+		"\n${bol}[ Arguments ]${c}" \
+		"\n${arg}--about${c}" \
+		"\nDisplay information about this script." \
+		"\n${arg}--help${c}" \
+		"\nDisplay this message.\n" \
+		"\n${arg}--copy${c}${dim}(followed by one of the sub-arguments)${c}" \
+		"\nCopy the created screenshot to the clipboard.\n" \
+		"\n${arg}--save${c}${dim}(followed by one of the sub-arguments)${c}" \
+		"\n· Save the created screenshot to a file with ${exe}grimblast${c}." \
+		"\n· Optimize it with ${exe}oxipng${c}." \
+		"\n· Convert it to a lossless WEBP image with ${exe}imagemagick${c}." \
+		"\n· Delete the original image and keep the WEBP screenshot.\n" \
+		"\n${bol}[ Sub-arguments ]${c}" \
+		"\n${arg}area${c}" \
+		"\nTo select an area or individual window.\n" \
+		"\n${arg}monitor${c}" \
+		"\nTo select the current monitor.\n" \
+		"\n${arg}all${c}" \
+		"\nTo select all active monitors.\n" \
+		"\n${bol}[ Examples ]${c}" \
+		"\n• To copy an area screenshot to the clipboard." \
+		"\n    ${arg}dash${c} ${web}/path/to/Screenshot.sh${c} ${arg}--copy area${c}\n" \
+		"\n• To save a screenot of all monitors." \
+		"\n    ${arg}dash${c} ${web}/path/to/Screenshot.sh${c} ${arg}--save all ${c}\n" \
+		"\n${dim}Note: The arguments cannot be swapped around.${c}\n"
 
 	exit
 }
@@ -77,36 +72,22 @@ $(tput bold)[ Examples ]$(tput sgr0)
 # Check for the --copy argument and its sub-arguments.
 [ "$1" = "--copy" ] && {
 	# Check if libnotify is installed.
-	[ -f "$SW/notify-send" ] || {
-		echo "libnotify could not be found. It is needed to display graphical notifications."
+	command -v notify-send || {
+		echo "${err}: libnotify could not be found. It is required to display graphical notifications."
 		exit 1
 	}
 
 	# Check if Hyprland is the active Wayland compositor.
 	[ "$XDG_CURRENT_DESKTOP" = "Hyprland" ] || {
-		notify-send "This screenshot utility can only be used with Hyprland."
-		echo "This screenshot utility can only be used with Hyprland."
+		notify-send "Error: This screenshot utility can only be used with the Hyprland Wayland compositor."
+		echo "${err}: This screenshot utility can only be used with the ${exe}Hyprland${c} Wayland compositor."
 		exit 1
 	}
 
 	# Check if grimblast is installed.
-	[ -f "$SW/grimblast" ] || {
-		notify-send "grimblast could not be found. It is needed to take screenshots."
-		echo "grimblast could not be found. It is needed to take screenshots."
-		exit 1
-	}
-
-	# Check if oxipng is installed.
-	[ -f "$SW/oxipng" ] || {
-		notify-send "oxipng could not be found. It is needed to optimize the intial saved screenshots."
-		echo "oxipng could not be found. It is needed to optimize the intial saved screenshots."
-		exit 1
-	}
-
-	# Check if imagemagick is installed.
-	[ -f "$SW/magick" ] || {
-		notify-send "imagemagick could not be found. It is needed to convert the saved screenshot to a WEBP image."
-		echo "imagemagick could not be found. It is needed to convert the saved screenshot to a WEBP image."
+	command -v grimblast || {
+		notify-send "Error: grimblast could not be found. It is required to take screenshots."
+		echo "${err}: ${exe}grimblast${c} could not be found. It is required to take screenshots."
 		exit 1
 	}
 
@@ -123,36 +104,36 @@ $(tput bold)[ Examples ]$(tput sgr0)
 # Check for the --save argument and its sub-arguments.
 [ "$1" = "--save" ] && {
 	# Check if libnotify is installed.
-	[ -f "$SW/notify-send" ] || {
-		echo "libnotify could not be found. It is needed to display graphical notifications."
+	command -v notify-send || {
+		echo "${err}: libnotify could not be found. It is required to display graphical notifications."
 		exit 1
 	}
 
 	# Check if Hyprland is the active Wayland compositor.
 	[ "$XDG_CURRENT_DESKTOP" = "Hyprland" ] || {
-		notify-send "This program menu can only be used with Hyprland."
-		echo "This program menu can only be used with Hyprland."
+		notify-send "Error: This screenshot utility can only be used with the Hyprland Wayland compositor."
+		echo "${err}: This screenshot utility can only be used with the ${exe}Hyprland${c} Wayland compositor."
 		exit 1
 	}
 
 	# Check if grimblast is installed.
-	[ -f "$SW/grimblast" ] || {
-		notify-send "grimblast could not be found. It is needed to take screenshots."
-		echo "grimblast could not be found. It is needed to take screenshots."
+	command -v grimblast || {
+		notify-send "Error: grimblast could not be found. It is required to take screenshots."
+		echo "${err}: ${exe}grimblast${c} could not be found. It is required to take screenshots."
 		exit 1
 	}
 
 	# Check if oxipng is installed.
-	[ -f "$SW/oxipng" ] || {
-		notify-send "oxipng could not be found. It is needed to optimize the intial saved screenshots."
-		echo "oxipng could not be found. It is needed to optimize the intial saved screenshots."
+	command -v oxipng || {
+		notify-send "Error: oxipng could not be found. It is required to optimize the saved screenshot."
+		echo "${err}: ${exe}oxipng${c} could not be found. It is required to optimize the saved screenshot."
 		exit 1
 	}
 
 	# Check if imagemagick is installed.
-	[ -f "$SW/magick" ] || {
-		notify-send "imagemagick could not be found. It is needed to convert the saved screenshot to a WEBP image."
-		echo "imagemagick could not be found. It is needed to convert the saved screenshot to a WEBP image."
+	command -v magick || {
+		notify-send "Error: imagemagick could not be found. It is required to convert the saved screenshot to a WEBP image."
+		echo "${err}: ${exe}imagemagick${c} could not be found. It is required to convert the saved screenshot to a WEBP image."
 		exit 1
 	}
 
@@ -183,8 +164,8 @@ $(tput bold)[ Examples ]$(tput sgr0)
 }
 
 # Error out if an invalid argument is given.
-echo "$(tput bold)$(tput setaf 1)Error$(tput sgr0): Invalid argument '$(tput setaf 1)$*$(tput sgr0)'.
+echo \
+	"${err}: Invalid argument '${arg}$*${c}'.\n" \
+	"\nSee the ${arg}--about${c} and the ${arg}--help${c} arguments.\n"
 
-See the $(tput setaf 2)$(tput bold)--about$(tput sgr0) and $(tput setaf 2)$(tput bold)--help$(tput sgr0) arguments.
-"
 exit 1
