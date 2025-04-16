@@ -57,7 +57,7 @@ c=$(tput sgr0)
 	[ "$XDG_CURRENT_DESKTOP" = "Hyprland" ] && {
 		echo "✅ ${exe}Hyprland${c} is the active Wayland compositor."
 	} ||
-		echo "❌ ${exe}Hyprland${c} is not the currently active Wayland compositor. This script will not run outside of Hyprland."
+		echo "❌ ${exe}Hyprland${c} is not the currently active Wayland compositor. The script will not run outside of Hyprland."
 
 	exit
 }
