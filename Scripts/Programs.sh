@@ -285,35 +285,35 @@ $Programs
 $Programs
   Flatseal             Manage flatpak permissions"
 
-	command -v /galculator && Programs="
+	command -v galculator && Programs="
 $Programs
   Galculator           Calculator"
 
-	command -v /gcolor3 && Programs="
+	command -v gcolor3 && Programs="
 $Programs
   Gcolor               Advanced color picker"
 
-	command -v /hyprpicker && Programs="
+	command -v hyprpicker && Programs="
 $Programs
   Hyprpicker           Screen color picker"
 
-	command -v /gimp && Programs="
+	command -v gimp && Programs="
 $Programs
   GIMP                 GNU Image Manipulation Program"
 
-	command -v /hyprpaper && Programs="
+	command -v hyprpaper && Programs="
 $Programs
   Hyprpaper            Set desktop background/wallpaper"
 
-	command -v /krita && Programs="
+	command -v krita && Programs="
 $Programs
   Krita                Digital painting"
 
-	command -v /otd && Programs="
+	command -v otd && Programs="
 $Programs
   OpenTabletDriver     Configure your drawing tablet"
 
-	command -v /upscayl && Programs="
+	command -v upscayl && Programs="
 $Programs
   Upscayl              Upscale images"
 
