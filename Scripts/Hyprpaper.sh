@@ -44,18 +44,21 @@ c=$(tput sgr0)
 	[ "$XDG_CURRENT_DESKTOP" = "Hyprland" ] || {
 		notify-send "Error: This wallpaper utility can only be used with the Hyprland Wayland compositor."
 		echo "${err}: This wallpaper utility can only be used with the ${exe}Hyprland${c} Wayland compositor."
+		exit 1
 	}
 
 	# Check if Zenity is installed.
 	command -v zenity || {
 		notify-send "Error: zenity could not be found. It is required to select a wallpaper."
 		echo "${err}: ${exe}zenity${c} could not be found. It is required to select a wallpaper."
+		exit 1
 	}
 
 	# Check if Hyprpaper is installed.
 	command -v hyprpaper || {
 		notify-send "Error: hyprpaper could not be found. It is required to apply a wallpaper."
 		echo "${err}: ${exe}hyprpaper${c} could not be found. It is required to apply a wallpaper."
+		exit 1
 	}
 
 	# Show the file selection dialogue and define the wallpaper to be used.
