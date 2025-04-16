@@ -36,19 +36,19 @@ c=$(tput sgr0)
 # Check for the --check argument.
 [ "$1" = "--check" ] && {
 	# Check if libnotify is installed.
-	(command -v notify-send > /dev/null 2>&1 ) && {
+	(command -v notify-send > /dev/null 2>&1) && {
 		echo "✅ ${exe}libnotify${c} is installed."
 	} ||
 		echo "❌ ${exe}libnotify${c} is not installed. It is required to display graphical notifications. The script will not run without it."
 
 	# Check if Zenity is installed.
-	(command -v zenity > /dev/null 2>&1 ) && {
+	(command -v zenity > /dev/null 2>&1) && {
 		echo "✅ ${exe}zenity${c} is installed."
 	} ||
 		echo "❌ ${exe}zenity${c} is not installed. It is required to graphically select a wallpaper. The script will not run without it."
 
 	# Check if Hyprpaper is installed.
-	(command -v hyprpaper > /dev/null 2>&1 ) && {
+	(command -v hyprpaper > /dev/null 2>&1) && {
 		echo "✅ ${exe}hyprpaper${c} is installed."
 	} ||
 		echo "❌ ${exe}hyprpaper${c} is not installed. It is required to apply a wallpaper. The script will not run without it."
