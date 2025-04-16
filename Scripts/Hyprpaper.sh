@@ -25,9 +25,39 @@ c=$(tput sgr0)
 		"\nThis script allows you to graphically select a wallpaper within the ${exe}Hyprland${c} Wayland compositor using ${exe}hyprpaper${c}.\n" \
 		"\n${dim}If image thumbnails do not show while picking a wallpaper, you may want to open the relevant directory(ies) in a graphical file manager to let the desired thumbnailer service create thumbnails for the images.${c}\n" \
 		"\n• When using the ${arg}--about${c} or ${arg}--help${c} argument, this message is displayed." \
+		"\n• When using the ${arg}--check${c} argument, required depedencies will be checked." \
 		"\n• When no argument is given, the wallpaper selection starts.\n" \
 		"\nCredits:" \
 		"\n• ${exe}hyprpaper${c}: ${web}https://github.com/hyprwm/hyprpaper${c}\n"
+
+	exit
+}
+
+# Check for the --check argument.
+[ "$1" = "--check" ] && {
+	# Check if libnotify is installed.
+	(command -v notify-send > /dev/null 2>&1 ) && {
+		echo "✅ ${exe}libnotify${c} is installed."
+	} ||
+		echo "❌ ${exe}libnotify${c} is not installed. It is required to display graphical notifications. The script will not run without it."
+
+	# Check if Zenity is installed.
+	(command -v zenity > /dev/null 2>&1 ) && {
+		echo "✅ ${exe}zenity${c} is installed."
+	} ||
+		echo "❌ ${exe}zenity${c} is not installed. It is required to graphically select a wallpaper. The script will not run without it."
+
+	# Check if Hyprpaper is installed.
+	(command -v hyprpaper > /dev/null 2>&1 ) && {
+		echo "✅ ${exe}hyprpaper${c} is installed."
+	} ||
+		echo "❌ ${exe}hyprpaper${c} is not installed. It is required to apply a wallpaper. The script will not run without it."
+
+	# Check if Hyprland is the active Wayland compositor.
+	[ "$XDG_CURRENT_DESKTOP" = "Hyprland" ] && {
+		echo "✅ ${exe}Hyprland${c} is the active Wayland compositor."
+	} ||
+		echo "❌ ${exe}Hyprland${c} is not the currently active Wayland compositor. This script will not run outside of Hyprland."
 
 	exit
 }
