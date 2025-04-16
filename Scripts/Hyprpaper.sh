@@ -99,7 +99,7 @@ c=$(tput sgr0)
 
 # Error out if an invalid argument is given.
 echo \
-	"${err}: Invalid argument '${arg}$*${c}'.\n"
+	"${err}: Invalid argument '${arg}$*${c}'.\n" \
 	"\nSee the ${arg}--about${c} / ${arg}--help${c} argument.\n"
 
 exit 1
