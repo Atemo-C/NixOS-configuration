@@ -1,43 +1,42 @@
 #!/bin/dash
 
-# Shortcut for the location of hyprpaper's configuration file.
-CF="$HOME/.config/hypr"
-
-# Shortcuts for binaries.
-SW="/run/current-system/sw/bin"
-HM="$HOME/.nix-profile/bin"
+# Set some useful color shortcuts.
+err=$(tput bold)$(tput setaf 1)
+arg=$(tput bold)$(tput setaf 2)
+ico=$(tput bold)$(tput setaf 6)
+nam=$(tput bold)$(tput setaf 3)
+lin=$(tput setaf 4)
+dim=$(tput dim)
+x=$(tput sgr0)
 
 # Check if the number of arguments is greater than 1.
 [ "$#" -gt 1 ] && {
-	echo "$(tput bold)$(tput setaf 1)Error$(tput sgr0): Invalid number of arguments.
+	echo \
+		"${err}Error${x}: Invalid number of arguments.\n" \
+		"\nSee the ${arg}--about${x} argument.\n"
 
-See the $(tput setaf 2)$(tput bold)--about$(tput sgr0) argument.
-"
-	exit 1
+	exit
 }
 
 # Check for the --about argument.
 [ "$1" = "--about" ] && {
-	echo "$(tput bold)$(tput setaf 6)  $(tput setaf 2)Hyprpaper.sh$(tput sgr0)
+	echo \
+		"${ico} ${x} ${arg}Hyprpaper.sh${x}\n" \
+		"\nThis script allows you to graphically select a wallpaper within the ${nam}Hyprland${x} Wayland compositor using ${nam}hyprpaper${x}.\n" \
+		"\n${dim}If image thumbnails do not show while picking a wallpaper, you may want to open the relevant directory(ies) in a graphical file manager to let the desired thumbnailer service create thumbnails for the images.${x}\n" \
+		"\n• When using the ${arg}--about${x} argument, this message is displayed." \
+		"\n• When no argument is given, the wallpaper selection starts.\n" \
+		"\nCredits:" \
+		"\n• ${nam}hyprpaper${x}: ${lin}https://github.com/hyprwm/hyprpaper${x}\n"
 
-This script allows you to graphically select a wallpaper within the $(tput bold)$(tput setaf 3)Hyprland$(tput sgr0) Wayland compositor using $(tput bold)$(tput setaf 6)hyprpaper$(tput sgr0).
-
-$(tput dim)If image thumbnails do not show while picking a wallpaper, you might want to open the relevant directory(ies) in a graphical file manager to let the desired thumbnailer service create thumbnails for the images.$(tput sgr0)
-
-• When using the $(tput setaf 2)$(tput bold)--about$(tput sgr0) argument, this message is displayed.
-• When no argument is given, the wallpaper selection starts.
-
-Credits:
-• $(tput bold)$(tput setaf 3)hyprpaper$(tput sgr0): $(tput setaf 4)https://github.com/hyprwm/hyprpaper$(tput sgr0)
-"
 	exit
 }
 
 # When no argument is provided, continue on with the wallpaper selection process.
 [ "$1" = "" ] && {
 	# Check if libnotify is installed.
-	[ -f "$SW/notify-send" ] || {
-		echo "libnotify could not be found. It is needed to display graphical notifications."
+	command -v notify-send || {
+		echo "libnotify could not be found. It is required to display graphical notifications."
 		exit 1
 	}
 
@@ -49,14 +48,14 @@ Credits:
 	}
 
 	# Check if Zenity is installed.
-	[ -f "$SW/zenity" ] || {
+	command -v zenity || {
 		notify-send "zenity could not be found. It is requiered toselect the wallpaper."
 		echo "zenity could not be found. It is requiered toselect the wallpaper."
 		exit 1
 	}
 
 	# Check if Hyprpaper is installed.
-	[ -f "$SW/hyprpaper" ] || [ -f "$HM/hyprpaper" ] || {
+	command -v hyprpaper || {
 		notify-send "hyprpaper could not be found. It is requiered to apply the wallpaper."
 		echo "hyprpaper could not be found. It is requiered to apply the wallpaper."
 		exit 1
@@ -74,11 +73,11 @@ Credits:
 	Out=$?
 	[ "$Out" = "0" ] && {
 		echo \
-"preload = $Wallpaper
-wallpaper = ,$Wallpaper
-splash = false
-ipc = on" \
-		> "$CF/hyprpaper.conf";
+			"preload = $Wallpaper" \
+			"\nwallpaper = ,$Wallpaper" \
+			"\nsplash = false" \
+			"\nipc = on" \
+		> "$HOME/.config/hypr/hyprpaper.conf";
 
 		# Kill hyprpaper if it is already running.
 		pkill --exact "hyprpaper" || true;
@@ -102,8 +101,8 @@ ipc = on" \
 }
 
 # Error out if an invalid argument is given.
-echo "$(tput bold)$(tput setaf 1)Error$(tput sgr0): Invalid argument '$(tput setaf 1)$*$(tput sgr0)'.
+echo "${err}Error${x}: Invalid argument '${arg}$*${x}'.
 
-See the $(tput setaf 2)$(tput bold)--about$(tput sgr0) argument.
+See the ${arg}--about${x} argument.
 "
 exit 1
