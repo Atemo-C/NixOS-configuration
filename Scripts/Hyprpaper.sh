@@ -35,6 +35,8 @@ c=$(tput sgr0)
 
 # Check for the --check argument.
 [ "$1" = "--check" ] && {
+	echo "${ico}  ${arg}Hyprpaper.sh${c}\n"
+
 	# Check if libnotify is installed.
 	(command -v notify-send > /dev/null 2>&1) && {
 		echo "✅ ${exe}libnotify${c} is installed."
