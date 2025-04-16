@@ -15,7 +15,7 @@ c=$(tput sgr0)
 		"${err}: Invalid number of arguments (${arg}$#${c}).\n" \
 		"\nSee the ${arg}--about${c} / ${arg}--help${c} argument.\n"
 
-	exit
+	exit 1
 }
 
 # Check for the --about or --help argument.
