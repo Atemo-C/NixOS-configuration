@@ -1,69 +1,62 @@
 #!/bin/dash
 
-# Shortcuts for binaries.
-SW="/run/current-system/sw/bin"
-HM="$HOME/.nix-profile/bin"
-
-# Shortcut for the script.
-Script() {
-    nohup dash "/etc/nixos/Scripts/Power.sh" > /dev/null 2>&1 & exit
-}
+# Set some text formatting shortcuts.
+err=$(tput bold)$(tput setaf 1)Error$(tput sgr0)
+arg=$(tput bold)$(tput setaf 2)
+exe=$(tput bold)$(tput setaf 3)
+ico=$(tput bold)$(tput setaf 6)
+web=$(tput setaf 4)
+dim=$(tput dim)
+c=$(tput sgr0)
 
 # Check if the number of arguments is greater than 1.
 [ "$#" -gt 1 ] && {
-	echo "$(tput bold)$(tput setaf 1)Error$(tput sgr0): Invalid number of arguments.
+	echo \
+		"${err}: Invalid number of arguments (${arg}$#${c}).\n" \
+		"\nSee the ${arg}--about${c} / ${arg}--help${c} argument.\n"
 
-See the $(tput setaf 2)$(tput bold)--about$(tput sgr0) argument.
-"
-	exit 1
-}
-
-# Check for the --about argument.
-[ "$1" = "--about" ] && {
-	echo "$(tput bold)$(tput setaf 6)  $(tput setaf 2)Power.sh$(tput sgr0)
-
-This script allows you to execute power action within the $(tput bold)$(tput setaf 3)Hyprland$(tput sgr0) Wayland compositor, using $(tput bold)$(tput setaf 6)Tofi$(tput sgr0) to display the menu.
-
-It allows for:
-• Turning off the active monitor(s).
-• Suspending to RAM.
-• Hibernating (suspending to disk).
-• Hybrid sleep (suspend to RAM and disk).
-• Reboot.
-• Reboot to the UEFI firmware (only appears when booted in EFI mode).
-• Power off.
-• Halt (an archaic way to turn the device off, and power has to be manually turned off afterwards).
-
-$(tput dim)Note that if the \"Reboot to the UEFI firmware\" option does not appear despite your computer supporting it, you might have accidentally installed or started your operating system in BIOS mode.$(tput sgr0)
-
-• When using the $(tput setaf 2)$(tput bold)--about$(tput sgr0) argument, this message is displayed.
-• When no argument is given, the power action selection process starts.
-
-Credits:
-• $(tput bold)$(tput setaf 3)Tofi$(tput sgr0): $(tput setaf 4)https://github.com/philj56/tofi$(tput sgr0)
-"
 	exit
 }
 
-# When no argument is provided, continue on with the power action selection process.
+# Check for the --about or --help argument.
+[ "$1" = "--about" ] || [ "$1" = "--help" ] && {
+	echo \
+		"${ico}  ${arg}Power.sh${c}\n" \
+		"\nThis script lets you execute power actions within the ${exe}Hyprland${c} Wayland compositor, using ${exe}Tofi${c} to display the menu.\n" \
+		"\nIt allows for:" \
+		"\n• Turning off the active monitor(s)." \
+		"\n• Suspending to RAM." \
+		"\n• Hibernating ${dim}(suspsending to disk)${c}." \
+		"\n• Hybrid sleep ${dim}(suspsend to RAM and disk)${c}." \
+		"\n• Reboot." \
+		"\n• Reboot to the UEFI firmware ${dim}(only appears when booted in EFI mode)${c}." \
+		"\n• Power off." \
+		"\n• Halt ${dim}(an archaic way to turn the device off, and power has to be manually turned off afterwards)${c}." \
+		"\n• Logging out of ${exe}Hyprland${c}.\n" \
+		"\nCredits:" \
+		"\n${exe}Tofi${c}: ${web}https://github.com/philj56/tofi${c}\n"
+	exit
+}
+
+# When no argument is provided, start the power action selection process.
 [ "$1" = "" ] && {
 	# Check if libnotify is installed.
-	[ -f "$SW/notify-send" ] || {
-		echo "libnotify could not be found. It is needed to display graphical notifications."
+	command -v notify-send || {
+		echo "${err}: libnotify could not be found. It is required to display graphical notifications."
 		exit 1
 	}
 
 	# Check if Hyprland is the active Wayland compositor.
 	[ "$XDG_CURRENT_DESKTOP" = "Hyprland" ] || {
-		notify-send "This power menu can only be used with Hyprland."
-		echo "This power menu can only be used with Hyprland."
+		notify-send "Error: This power utility can only be used with the Hyprland Wayland compositor."
+		echo "${err}: This power utility can only be used with the ${exe}Hyprland${c} Wayland compositor."
 		exit 1
 	}
 
 	# Check if Tofi is installed.
-	[ -f "$HM/tofi" ] || [ -f "$SW/tofi" ] || {
-		notify-send "tofi could not be found. It is necessary to display the graphical menu."
-		echo "tofi could not be found. It is necessary to display the graphical menu."
+	command -v tofi || {
+		notify-send "Error: Tofi could not be found. It is necessary to display the graphical menu."
+		echo "${err}: ${exe}Tofi${c} could not be found. It is necessary to display the graphical menu."
 		exit 1
 	}
 
@@ -75,15 +68,20 @@ Credits:
 
 	# Set the size of the Tofi menu for the main selection and for the height of the confirmation dialogues.
 	Width="187"
-	Height="292"
-	ConfHeight="124"
+	Height="309"
+	ConfHeight="120"
 
 	# Gather the number of active monitors.
 	Count=$(hyprctl monitors | grep -c "Monitor")
 
 	# Choose the correct orthography depending on the monitor count, and add the relevant one to the Options list.
-	[ "$Count" -eq 1 ] && Options="󰍹  Turn off display"
-	[ "$Count" -ge 2 ] && Options="󰍹  Turn off displays"
+	[ "$Count" -eq 1 ] && {
+		Options="󰍹  Turn off display"
+	}
+
+	[ "$Count" -ge 2 ] && {
+		Options="󰍹  Turn off displays"
+	}
 
 	# Add some of the other entries to the Options list.
 	Options="
@@ -98,13 +96,14 @@ $Options
 $Options
   Reboot to UEFI firmware"
 	Width="236"
-	Height="327"
+	Height="344"
 
 	# Add the remaining entries to the Options list.
 	Options="
 $Options
   Power off
 󰺟  Halt
+󰿅  Log out
  ‎
 󰗼  Exit"
 
@@ -247,12 +246,13 @@ $Options
 	}
 
 	[ "$Choice" = "󰺟  Halt" ] && {
-		Answer=$(printf '%s\n' "$Confirmations" | tofi \
-			--width 156 \
-			--height "$ConfHeight" \
-			--prompt-text "Power off?"
-		)
 		notify-send "Manually turn off the power once the system is halted. This is archaic."
+		echo "Manually turn off the power once the system is halted. This is archaic."
+		Answer=$(printf '%s\n' "$Confirmations" | tofi \
+			--width 116 \
+			--height "$ConfHeight" \
+			--prompt-text "Halt?"
+		)
 
 		[ "$Answer" = "  No" ] && {
 			exit
@@ -260,6 +260,27 @@ $Options
 
 		[ "$Answer" = "  Yes" ] && {
 			run0 systemctl halt
+		}
+
+		[ "$Answer" = "  Back" ] && {
+			Script
+		}
+	}
+
+	[ "$Choice" = "󰿅  Log out" ] && {
+		Answer=$(printf '%s\n' "$Confirmations" | tofi \
+			--width 236 \
+			--height "$ConfHeight" \
+			--prompt-text "Log out of Hyprland?"
+		)
+
+		[ "$Answer" = "  No" ] && {
+			exit
+		}
+
+		[ "$Answer" = "  Yes" ] && {
+			hyprctl dispatch exit
+			exit
 		}
 
 		[ "$Answer" = "  Back" ] && {
@@ -277,8 +298,8 @@ $Options
 }
 
 # Error out if an invalid argument is given.
-echo "$(tput bold)$(tput setaf 1)Error$(tput sgr0): Invalid argument '$(tput setaf 1)$*$(tput sgr0)'.
+echo \
+	"${err}: Invalid argument '${arg}$*${c}'.\n" \
+	"\nSee the ${arg}--about${c} / ${arg}--help${c} argument.\n"
 
-See the $(tput setaf 2)$(tput bold)--about$(tput sgr0) argument.
-"
 exit 1
