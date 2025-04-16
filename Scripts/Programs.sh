@@ -1,104 +1,72 @@
 #!/bin/dash
 
-# Shortcuts for binaries.
-SW="/run/current-system/sw/bin"
-HM="$HOME/.nix-profile/bin"
-UF="$HOME/.local/share/flatpak/app"
-HP="$HOME/Programs"
+# Set some text formatting shortcuts.
+err=$(tput bold)$(tput setaf 1)Error$(tput sgr0)
+arg=$(tput bold)$(tput setaf 2)
+exe=$(tput bold)$(tput setaf 3)
+ico=$(tput bold)$(tput setaf 6)
+web=$(tput setaf 4)
+mag=$(tput setaf 5)
+cya=$(tput setaf 6)
+c=$(tput sgr0)
 
 # Check if the number of arguments is greater than 1.
 [ "$#" -gt 1 ] && {
-	echo "$(tput bold)$(tput setaf 1)Error$(tput sgr0): Invalid number of arguments.
+	echo \
+		"${err}: Invalid number of arguments (${arg}$#${c}).\n" \
+		"\nSee the ${arg}--about${c} and the ${arg}--help${c} arguments.\n"
 
-See the $(tput setaf 2)$(tput bold)--about$(tput sgr0) and $(tput setaf 2)$(tput bold)--help$(tput sgr0) arguments.
-"
-	exit 1
+	exit
 }
 
 # Check for the --about argument.
 [ "$1" = "--about" ] && {
-	echo "$(tput bold)$(tput setaf 6)  $(tput setaf 2)Programs.sh$(tput sgr0)
+	echo \
+		"${ico}  ${arg}Programs.sh${c}\n" \
+		"\nThis script allows you to launch any program of your choosing in a custom list wihin the ${exe}Hyprland${c} Wayland compositor using ${exe}Tofi${c} to display the menu.\n" \
+		"\n$(dim)If a program is in the list but not detected, it is automatically omitted from the list.${c}\n" \
+		"\n• When using the ${arg}--about${c} argument, this message is displayed." \
+		"\n• When using the ${arg}--help${c} argument, help about this script is displayed." \
+		"\n• When no argument is given, the program selection process starts.\n" \
+		"\nCredits:" \
+		"\n• ${exe}Tofi${c}: ${web}https://github.com/philj56/tofi${c}\n"
 
-This script allows you to launch any program that exists in the Program$(tput setaf 5)=$(tput setaf 6)\"\"$(tput sgr0) list within the $(tput bold)$(tput setaf 3)Hyprland$(tput sgr0) Wayland compositor, using $(tput bold)$(tput setaf 6)Tofi$(tput sgr0) to display the menu.
-
-$(tput dim)If a program is in the list but not detected, it is automatically omitted from the list.$(tput sgr0)
-
-• When using the $(tput setaf 2)$(tput bold)--about$(tput sgr0) argument, this message is displayed.
-• When using the $(tput setaf 2)$(tput bold)--help$(tput sgr0) argument, help about this script is displayed.
-• When no argument is given, the program selection process starts.
-
-Credits:
-• $(tput bold)$(tput setaf 3)Tofi$(tput sgr0): $(tput setaf 4)https://github.com/philj56/tofi$(tput sgr0)
-"
 	exit
 }
 
 # Check for the --help argument.
 [ "$1" = "--help" ] && {
-	echo "$(tput bold)$(tput setaf 6)  $(tput setaf 2)Programs.sh$(tput sgr0)
+	echo \
+		"${ico}  ${arg}Programs.sh${c}\n" \
+		"\n${arg}--about${c}" \
+		"\nDisplay information about this script.\n" \
+		"\n${arg}--help${c}" \
+		"\nDisplay this message.\n" \
+		"\n• To add the detection of a program, add an entry like any of the ones in Programs${mag}=${cya}\"\"${c}." \
+		"\n• Then, you can add the action that should be executed upon launch of this program after the Program${mag}=\$()${c} prompt."
 
-When editing this script, you will see these elements in the Program$(tput setaf 5)=$(tput setaf 6)\"\"$(tput sgr0) list:
-
-  $(tput setaf 5)[ $(tput setaf 3)-f $(tput setaf 6)\"\$SW/program-name\"$(tput setaf 5)] && $(tput sgr0)Programs$(tput setaf 5)=$(tput setaf 6)\"
-  \$Programs
-  ICON Program name   Short description of the program\"$(tput sgr0)
-
-• $(tput setaf 3)-f$(tput sgr0) checks if the program executable is present.
-• $(tput setaf 6)\$SW$(tput sgr0) is a shortened path to system-installed programs on NixOS ($(tput dim)$SW$(tput sgr0)).
-• $(tput setaf 6)\$HW$(tput sgr0) is a shortened path to Home Manager-installed programs on NixOS ($(tput dim)$HM$(tput sgr0)).
-• $(tput setaf 6)\$UF$(tput sgr0) is a shortened path to user-Flatpak-installed programs ($(tput dim)$UF$(tput sgr0)).
-• $(tput setaf 6)\$HP$(tput sgr0) is a shortened path to a custom directory for other binaries ($(tput dim)$HP$(tput sgr0)).
-• $(tput setaf 6)program-name$(tput sgr0) is the name of the executable that contains the desired command.
-• $(tput setaf 6)\$Programs$(tput sgr0) is the list of programs in the list, added before every new program to retain them.
-• $(tput setaf 6)ICON$(tput sgr0) is, optionally, a fancy text icon for the desired program.
-• The rest is self-explanatory.
-
-Once you have added the desired programs, you will need to define their actions after the Program$(tput setaf 5)=\$()$(tput sgr0) prompt, like so:
-
-$(tput dim)…$(tput sgr0)
-Program$(tput setaf 5)=\$($(tput setaf 2)
-  printf $(tput setaf 6)'%s\\\n' \"\$Programs\" $(tput sgr0)| tofi \\
-    $(tput setaf 3)--width $(tput setaf 5)484 $(tput sgr0)\\
-    $(tput setaf 3)--height $(tput setaf 6)\"\$Vertical\" $(tput sgr0)\\
-    $(tput setaf 3)--prompt-text $(tput setaf 6)\" \" $(tput sgr0)\\
-    $(tput setaf 6)\"\$@\"$(tput setaf 5)
-)$(tput setaf sgr0)
-
-$(tput setaf 5)[ $(tput setaf 6)\"\$Program\" $(tput setaf 5)= $(tput setaf 6)\"program-name\"$(tput setaf 5) ] &&
-  $(tput setaf 2)nohup $(tput sgr0)program-name $(tput setaf 5)> $(tput sgr0)/dev/null $(tput setaf 5)2>&1 &$(tput sgr0)
-$(tput dim)…$(tput sgr0)
-
-• $(tput setaf 2)nohup$(tput sgr0) is used to start the program quietly, and the pipe to $(tput setaf 5)/dev/null 2>&1 &$(tput sgr0) further quiets things down.
-
-$(tput bold)[ Arguments ]$(tput sgr0)
-  $(tput setaf 2)$(tput bold)--about$(tput sgr0)
-  Display information about this script.
-
-  $(tput setaf 2)$(tput bold)--help$(tput sgr0)
-  Display this message.
-"
 	exit
 }
 
-# When no argument is provided, continue on with the program selection process.
+# When no argument is provided, start the program selection process.
 [ "$1" = "" ] && {
 	# Check if libnotify is installed.
-	[ -f "$SW/notify-send" ] || {
-		echo "libnotify could not be found. It is needed to display graphical notifications."
+	command -v notify-send || {
+		echo "${err}: libnotify could not be found. It is required to display graphical notifications."
 		exit 1
 	}
 
 	# Check if Hyprland is the active Wayland compositor.
 	[ "$XDG_CURRENT_DESKTOP" = "Hyprland" ] || {
-		notify-send "This program menu can only be used with Hyprland."
-		echo "This program menu can only be used with Hyprland."
+		notify-send "Error: This program menu can only be used with the Hyprland Wayland compositor."
+		echo "${err}: This program menu can only be used with the ${exe}Hyprland${c} Wayland compositor."
 		exit 1
 	}
 
 	# Check if Tofi is installed.
-	[ -f "$HM/tofi" ] || [ -f "$SW/tofi" ] || {
-		notify-send "tofi could not be found. It is necessary to display the graphical menu."
-		echo "tofi could not be found. It is necessary to display the graphical menu."
+	command -v tofi || {
+		notify-send "Error: Tofi could not be found. It is necessary to display the graphical menu."
+		echo "${err}: ${exe}Tofi${c} could not be found. It is necessary to display the graphical menu."
 		exit 1
 	}
 
@@ -124,75 +92,75 @@ $(tput bold)[ Arguments ]$(tput sgr0)
  ‎
 "
 
-	[ -f "$HM/alacritty" ] && Programs="
+	command -v alacritty && Programs="
 $Programs
   Alacritty            GPU-accelerated terminal emulator"
 
-	[ -f "$SW/lxterminal" ] && Programs="
+	command -v lxterminal && Programs="
 $Programs
   LXTerminal           Lightweight VTE terminal emulator"
 
-	[ -f "$SW/amfora" ] && Programs="
+	command -v amfora && Programs="
 $Programs
   Amfora               CLI Gemini client"
 
-	[ -f "$SW/lagrange" ] && Programs="
+	command -v lagrange && Programs="
 $Programs
   Lagrange             GUI Gemini client"
 
-	[ -f "$SW/audacious" ] && Programs="
+	command -v audacious && Programs="
 $Programs
   Audacious            Music player"
 
-	[ -f "$HM/easyeffects" ] && Programs="
+	command -v easyeffects && Programs="
 $Programs
   EasyEffects          Effects to inputs or outputs"
 
-	[ -f "$SW/easytag" ] && Programs="
+	command -v easytag && Programs="
 $Programs
   EasyTAG              Audio tag editor"
 
-	[ -f "$SW/pavucontrol" ] && Programs="
+	command -v pavucontrol && Programs="
 $Programs
   Pavucontrol          Audio volume manager"
 
-	[ -f "$SW/qpwgraph" ] && Programs="
+	command -v qpwgraph && Programs="
 $Programs
 󰤽  qpwgraph             Audio patchbay"
 
-	[ -f "$SW/tenacity" ] && Programs="
+	command -v tenacity && Programs="
 $Programs
   Tenacity             Audio editor"
 
-	[ -f "$SW/blender" ] && Programs="
+	command -v blender && Programs="
 $Programs
 󰂫  Blender              3D modeling"
 
-	[ -f "$SW/cura" ] && Programs="
+	command -v cura && Programs="
 $Programs
   Cura                 3D printing"
 
-	[ -f "$SW/btop" ] && Programs="
+	command -v btop && Programs="
 $Programs
   BTOP                 Terminal-based system monitor"
 
-	[ -f "$SW/cpu-x" ] && Programs="
+	command -v cpu-x && Programs="
 $Programs
   CPU-X                Detailed processor information"
 
-	[ -f "$SW/missioncenter" ] && Programs="
+	command -v missioncenter && Programs="
 $Programs
   Mission Center       GUI-based system monitor"
 
-	[ -f "$SW/bottles" ] && Programs="
+	command -v bottles && Programs="
 $Programs
 󱌐  Bottles              Run Windows programs in Bottles"
 
-	[ -f "$SW/calcurse" ] && Programs="
+	command -v calcurse && Programs="
 $Programs
   Calcurse             Calendar"
 
-	[ -f "$SW/gnome-clocks" ] && Programs="
+	command -v gnome-clocks && Programs="
 $Programs
   Clock                GNOME's clock"
 
@@ -200,75 +168,72 @@ $Programs
 $Programs
   CUPS                 Printer configuration"
 
-	Programs="
+	[ -f "/etc/nixos/Scripts/Crosshair/Crosshair.sh" ] && Programs="
 $Programs
-  Enable crosshair     A simple red-dot crosshair"
-
-	Programs="
-$Programs
+  Enable crosshair     A simple red-dot crosshair
 󰽅  Disable crosshair    Kills the active crosshair/s"
 
-	[ -f "$SW/desmume" ] && Programs="
+	command -v desmume && Programs="
 $Programs
   DeSmuME              Nintendo DS/I emulator"
 
-	[ -f "$SW/duckstation-qt" ] && Programs="
+	command -v duckstation-qt && Programs="
 $Programs
   DuckStation          Playstation 1 emulator"
 
-	[ -f "$SW/pcsx2-qt" ] && Programs="
+	command -v pcsx2-qt && Programs="
 $Programs
   PCSX2                PlayStation 2 emulator"
 
-	[ -f "$SW/rpcs3" ] && Programs="
+	command -v rpcs3 && Programs="
 $Programs
   RPCS3                PlayStation 3 emulator"
 
-	[ -f "$SW/prismlauncher" ] && Programs="
+	command -v prismlauncher && Programs="
 $Programs
 󰍳  PrismLauncher        Minecraft Launcher"
 
-	[ -f "$SW/luanti" ] && Programs="
+	command -v luanti && Programs="
 $Programs
 󰍳  Luanti (minetest)    Open source voxel game engine"
 
-	[ -d "$UF/page.codeberg.JakobDev.jdNBTExplorer/" ] && Programs="
+	command -v page.codeberg.JakobDev.jdNBTExplorer && Programs="
 $Programs
 󰍳  NBT Explorer         NBT Explorer and editor"
 
-	[ -d "$UF/org.vinegarhq.Sober/" ] && Programs="
+	command -v org.vinegarhq.Sober && Programs="
 $Programs
   Sober                Roblox client"
 
-	[ -f "$SW/steam" ] && Programs="
+	command -v steam && Programs="
 $Programs
   Steam                Valve winning by doing nothing"
 
-	[ -d "$HP/That's not my neighbor/" ] && Programs="
+	[ -d "$HOME/Programs/That's not my neighbor/" ] && Programs="
 $Programs
   D.D.D                That's not my neighbor"
 
-	[ -f "$SW/jstest-gtk" ] && Programs="
+	command -v jstest-gtk && Programs="
 $Programs
   Jstest               Gamepad / controller tester"
 
-	[ -f "$SW/keymapp" ] && Programs="
+	command -v keymapp && Programs="
 $Programs
   Keymapp              Layout tool for ZSA keyboards"
 
-	[ -f "$SW/sc-controller" ] && Programs="
+	command -v sc-controller && Programs="
 $Programs
   SC-Controller        Remap controllers in userspace"
 
-	[ -f "$SW/xclicker" ] && Programs="
+	command -v xclicker && Programs="
 $Programs
 󰍽  Xclicker             X11 autocliker (for XWayland)"
 
-	[ -f "$SW/vesktop" ] && Programs="
+	command -v vesktop && Programs="
 $Programs
 󰙯  Vesktop              Discord, but Vencorded"
 
-	[ -f "$SW/element-desktop" ] && Programs="
+	command -v element-desktop && Programs="
 $Programs
 󰭻  Element (Electron)    Matrix client"
 
@@ -280,137 +245,137 @@ $Programs
 $Programs
 󰭻  Fractal              GTK Matrix client"
 
-	[ -f "$SW/revolt-desktop" ] && Programs="
+	command -v revolt-desktop && Programs="
 $Programs
 󰭻  Revolt               FOSS alternative to Discord"
 
-	[ -f "$SW/freetube" ] && Programs="
+	command -v freetube && Programs="
 $Programs
   Freetube             Watch YouTube videos"
 
-	[ -f "$SW/gnome-disks" ] && Programs="
+	command -v gnome-disks && Programs="
 $Programs
 󰋊  Gnome disk utility   GNOME's disk utility"
 
-	[ -f "$SW/gparted" ] && Programs="
+	command -v gparted && Programs="
 $Programs
 󰋊  Gparted              Partition manager"
 
-	[ -f "$SW/ncdu" ] && Programs="
+	command -v ncdu && Programs="
 $Programs
 󰋊  ncdu                 Disk usage"
 
-	[ -f "$SW/ventoy" ] && Programs="
+	command -v ventoy && Programs="
 $Programs
   Ventoy               Bootable USB creation tool"
 
-	[ -f "$SW/file-roller" ] && Programs="
+	command -v file-roller && Programs="
 $Programs
   File roller          Archive manager"
 
-	[ -f "$SW/thunar" ] && Programs="
+	command -v thunar && Programs="
 $Programs
   Thunar               File manager"
 
-	[ -f "$SW/warpinator" ] && Programs="
+	command -v warpinator && Programs="
 $Programs
 󰒖  Warpinator           Local file sharing"
 
-	[ -d "$UF/com.github.tchx84.Flatseal" ] && Programs="
+	command -v com.github.tchx84.Flatseal && Programs="
 $Programs
   Flatseal             Manage flatpak permissions"
 
-	[ -f "$SW/galculator" ] && Programs="
+	command -v /galculator && Programs="
 $Programs
   Galculator           Calculator"
 
-	[ -f "$SW/gcolor3" ] && Programs="
+	command -v /gcolor3 && Programs="
 $Programs
   Gcolor               Advanced color picker"
 
-	[ -f "$SW/hyprpicker" ] && Programs="
+	command -v /hyprpicker && Programs="
 $Programs
   Hyprpicker           Screen color picker"
 
-	[ -f "$SW/gimp" ] && Programs="
+	command -v /gimp && Programs="
 $Programs
   GIMP                 GNU Image Manipulation Program"
 
-	[ -f "$SW/hyprpaper" ] && Programs="
+	command -v /hyprpaper && Programs="
 $Programs
   Hyprpaper            Set desktop background/wallpaper"
 
-	[ -f "$SW/krita" ] && Programs="
+	command -v /krita && Programs="
 $Programs
   Krita                Digital painting"
 
-	[ -f "$SW/otd" ] && Programs="
+	command -v /otd && Programs="
 $Programs
   OpenTabletDriver     Configure your drawing tablet"
 
-	[ -f "$SW/upscayl" ] && Programs="
+	command -v /upscayl && Programs="
 $Programs
   Upscayl              Upscale images"
 
-	[ -d "$HP/Kurso de Esperanto" ] && Programs="
+	[ -d "$HOME/Programs/Kurso de Esperanto" ] && Programs="
 $Programs
   Kurso de Esperanto   Esperanto learning program"
 
-	[ -f "$SW/keepassxc" ] && Programs="
+	command -v keepassxc && Programs="
 $Programs
   KeePassXC            Password manager"
 
-	[ -f "$SW/kdenlive" ] && Programs="
+	command -v kdenlive && Programs="
 $Programs
   Kdenlive             Video editor"
 
-	[ -d "$UF/com.obsproject.Studio" ] && Programs="
+	command -v com.obsproject.Studio && Programs="
 $Programs
 󰑋  OBS studio           Recording and streaming"
 
-	[ -f "$SW/libreoffice" ] && Programs="
+	command -v libreoffice && Programs="
 $Programs
 󰏆  LibreOffice          Office suite"
 
-	[ -f "$SW/simple-scan" ] && Programs="
+	command -v simple-scan && Programs="
 $Programs
 󰚫  Simple scan          Document scanner"
 
-	[ -f "$SW/librewolf" ] && Programs="
+	command -v librewolf && Programs="
 $Programs
   LibreWolf            Web browser"
 
-	[ -f "$SW/librewolf" ] && Programs="
+	command -v librewolf && Programs="
 $Programs
   LibreWolf - private  Web browser (private window)"
 
-	[ -f "$SW/tor-browser" ] && Programs="
+	command -v tor-browser && Programs="
 $Programs
 󰗹  Torbrowser launcher  Tor browser"
 
-	[ -f "$SW/nmtui" ] && Programs="
+	command -v nmtui && Programs="
 $Programs
 󰛳  Network Manager      Manage WiFi and Ethernet"
 
-#	[ -f "$SW/" ] && Programs="
+#	command -v nm-applet && Programs="
 #$Programs
 #󰛳  NM-applet            NetworkManager applet"
 
-	[ -f "$SW/qbittorrent" ] && Programs="
+	command -v qbittorrent && Programs="
 $Programs
   qBittorrent          Torrent manager"
 
 
-	[ -f "$SW/xfburn" ] && Programs="
+	command -v xfburn && Programs="
 $Programs
   Xfburn               Disc burning"
 
 
-	[ -f "$SW/speedtest" ] && Programs="
+	command -v speedtest && Programs="
 $Programs
 󰓅  Speedtest            Test internet speed"
 
-	[ -f "$SW/virt-manager" ] && Programs="
+	command -v virt-manager && Programs="
 $Programs
 󰪫  Virt Manager         Virtual machines using QEMU/KVM"
 
@@ -735,8 +700,8 @@ $Programs
 }
 
 # Error out if an invalid argument is given.
-echo "$(tput bold)$(tput setaf 1)Error$(tput sgr0): Invalid argument '$(tput setaf 1)$*$(tput sgr0)'.
+echo \
+	"${err}: Invalid argument '${arg}$*${c}'.\n" \
+	"\nSee the ${arg}--about${c} and the ${arg}--help${c} arguments.\n"
 
-See the $(tput setaf 2)$(tput bold)--about$(tput sgr0) and $(tput setaf 2)$(tput bold)--help$(tput sgr0) arguments.
-"
 exit 1
