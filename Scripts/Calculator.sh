@@ -12,7 +12,7 @@ c=$(tput sgr0)
 echo \
 	"${ico} Calculator${c} ${dim}(proof of concept, very dumb, use bc instead.)${c}\n" \
 	"\n• Enter a simple expression to calculate." \
-	"\n• Type '${arg}q${c}', '${arg}c${c}', '${arg}x${c}', or '${arg}exit${c}' to exit." \
+	"\n• Type '${arg}q${c}', '${arg}x${c}', or '${arg}exit${c}' to exit." \
 	"\n• Type '${arg}c${c}' or '${arg}clear${c}' to clear the screen.${num}\n"
 
 # Create the last_result variable.
@@ -34,7 +34,7 @@ while true; do
 		echo \
 			"${ico} Calculator${c} ${dim}(proof of concept, very dumb, use bc instead.)${c}\n" \
 			"\n• Enter a simple expression to calculate." \
-			"\n• Type '${arg}q${c}', '${arg}c${c}', '${arg}x${c}', or '${arg}exit${c}' to exit." \
+			"\n• Type '${arg}q${c}', '${arg}x${c}', or '${arg}exit${c}' to exit." \
 			"\n• Type '${arg}c${c}' or '${arg}clear${c}' to clear the screen.${num}\n"
 		continue
 	}
