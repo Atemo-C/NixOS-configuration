@@ -7,7 +7,7 @@
 	grimblast
 
 	# The GNU Image Manipulation Program (with plugins).
-	gimp-with-plugins
+	gimp3-with-plugins
 
 	# Lightweight and flexible command-line JSON processor (here for screenshots).
 	jq

@@ -10,6 +10,6 @@
 	pcsx2
 
 	# PlayStation emulator.
-	rpcs3
+#	rpcs3
 
 ]; }
