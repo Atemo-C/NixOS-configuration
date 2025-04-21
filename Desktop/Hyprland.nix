@@ -425,6 +425,7 @@
 		windowrulev2 = [
 			# Floating windows.
 			"float, class: (file-roller)"
+			"float, class: (org.gnome.FileRoller)"
 			"float, class: (galculator)"
 			"float, class: (.gamescope-wrapped)"
 			"float, class: (gcolor2)"
