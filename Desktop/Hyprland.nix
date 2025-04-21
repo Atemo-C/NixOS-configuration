@@ -424,6 +424,7 @@
 		# Window rules.
 		windowrulev2 = [
 			# Floating windows.
+			"float, title: Export Image as.*"
 			"float, class: (file-roller)"
 			"float, class: (org.gnome.FileRoller)"
 			"float, class: (galculator)"
