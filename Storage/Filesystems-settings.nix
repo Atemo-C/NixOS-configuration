@@ -15,7 +15,7 @@
 #			options = "-n standby";
 #		}
 #		{
-#			# Prevent smartd from waking up these drives during standby.
+#			# Prevent smartd from waking up this drives during standby.
 #			device = "/dev/disk/by-id/ata-WDC_WD1600BEVS-08VAT2_WD-WXP1A30R8683";
 #			options = "-n standby";
 #		}
