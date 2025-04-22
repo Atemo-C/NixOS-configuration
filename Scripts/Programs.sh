@@ -221,6 +221,10 @@ $Programs
 $Programs
 󰍳  PrismLauncher        Minecraft Launcher"
 
+	command -v io.mrarm.mcpelauncher && Programs="
+$Programs
+󰍳  MC Bedrock Launcher  Minecraft Bedrock"
+
 	command -v luanti && Programs="
 $Programs
 󰍳  Luanti (minetest)    Open source voxel game engine"
@@ -259,11 +263,13 @@ $Programs
 
 	command -v vesktop && Programs="
 $Programs
-󰙯  Vesktop              Discord, but Vencorded"
+󰙯  Vesktop              Discord, but Vencorded
+󰙯  Vesktop (Wayland)    Discord, but Vencorded"
 
 	command -v element-desktop && Programs="
 $Programs
-󰭻  Element (Electron)    Matrix client"
+󰭻  Element               Matrix client
+󰭻  Element (Wayland)     Matrix client"
 
 	Programs="
 $Programs
@@ -534,6 +540,10 @@ $Programs
 		nohup prismlauncher > /dev/null 2>&1 & exit
 	}
 
+	[ "$Program" = "󰍳  MC Bedrock Launcher  Minecraft Bedrock" ] && {
+		nohup io.mrarm.mcpelauncher > /dev/null 2>&1 & exit
+	}
+
 	[ "$Program" = "󰍳  Luanti (minetest)    Open source voxel game engine" ] && {
 		nohup luanti > /dev/null 2>&1 & exit
 	}
@@ -572,11 +582,18 @@ $Programs
 
 	[ "$Program" = "󰙯  Vesktop              Discord, but Vencorded" ] && {
 		nohup vesktop --ozone-platform=x11 > /dev/null 2>&1 & exit
-	#	nohup vesktop --ozone-platform=wayland > /dev/null 2>&1 & exit
 	}
 
-	[ "$Program" = "󰭻  Element (Electron)    Matrix client" ] && {
+	[ "$Program" = "󰙯  Vesktop (Wayland)    Discord, but Vencorded" ] && {
+		nohup vesktop --ozone-platform=wayland > /dev/null 2>&1 & exit
+	}
+
+	[ "$Program" = "󰭻  Element               Matrix client" ] && {
 		nohup element-desktop > /dev/null 2>&1 & exit
+	}
+
+	[ "$Program" = "󰭻  Element (Wayland)     Matrix client" ] && {
+		nohup element-desktop --ozone-platform=wayland > /dev/null 2>&1 & exit
 	}
 
 	[ "$Program" = "󰭻  Element (web)         Matrix client" ] && {
