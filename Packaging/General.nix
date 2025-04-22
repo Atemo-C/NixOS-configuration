@@ -6,4 +6,7 @@
 	# Whether to allow installation of unfree packages.
 	nixpkgs.config.allowUnfree = true;
 
+	# Enable the nix-command feature.
+	nix.settings.experimental-features = [ "nix-command" ];
+
 }
