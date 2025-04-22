@@ -71,19 +71,19 @@ c=$(tput sgr0)
 	echo "${ico}  ${arg}Crosshair.sh${c}\n"
 
 	# Check if libnotify is installed.
-	(command -v notify-send > /dev/null 2>&1) && {
+	command -v notify-send > /dev/null 2>&1 && {
 		echo "✅ ${exe}libnotify${c} is installed."
 	} ||
 		echo "❌ ${exe}libnotify${c} is not installed. It is required to display graphical notifications. The script will not run without it."
 
 	# Check if imagemagick is installed.
-	(command -v magick > /dev/null 2>&1) && {
+	command -v magick > /dev/null 2>&1 && {
 		echo "✅ ${exe}imagemagick${c} is installed."
 	} ||
 		echo "❌ ${exe}imagemagick${c} is not installed. It is required to get the properties of the crosshiar image. The script will not run without it."
 
 	# Check if feh is installed.
-	(command -v feh > /dev/null 2>&1) && {
+	command -v feh > /dev/null 2>&1 && {
 		echo "✅ ${exe}feh${c} is installed."
 	} ||
 		echo "❌ ${exe}feh${c} is not installed. It is required to display the crosshair image. The script will not run without it."

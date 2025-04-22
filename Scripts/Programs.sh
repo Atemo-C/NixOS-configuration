@@ -56,13 +56,13 @@ c=$(tput sgr0)
 	echo "${ico}  ${arg}Programs.sh${c}\n"
 
 	# Check if libnotify is installed.
-	(command -v notify-send > /dev/null 2>&1) && {
+	command -v notify-send > /dev/null 2>&1 && {
 		echo "✅ ${exe}libnotify${c} is installed."
 	} ||
 		echo "❌ ${exe}libnotify${c} is not installed. It is required to display graphical notifications. The script will not run without it."
 
 	# Check if Tofi is installed.
-	(command -v tofi > /dev/null 2>&1) && {
+	command -v tofi > /dev/null 2>&1 && {
 		echo "✅ ${exe}Tofi${c} is installed."
 	} ||
 		echo "❌ ${exe}Tofi is not installed. It is required to display the graphical menu. The script will not run without it."
