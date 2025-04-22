@@ -55,13 +55,5 @@
 				});
 			});
 		})
-
-		# https://github.com/NixOS/nixpkgs/issues/393181
-		environment.systemPackages = with pkgs; [ heimdall ];
-		(final: prev: {
-				heimdall = prev.heimdall.overrideAttrs (
-					old: { src = builtins.fetchFromSourcehut "https://git.sr.ht/~grimler/Heimdall"; }
-				);
-			})
 	];
 }
