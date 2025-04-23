@@ -9,4 +9,7 @@
 	# Whether to enable libvirtd, a dameon that manages virtual machines.
 	virtualisation.libvirtd.enable = true;
 
+	# Link QEMU firmware to /var/lib/qemu/firmware/.
+	systemd.tmpfiles.rules = [ "L+ /var/lib/qemu/firmware - - - - ${pkgs.qemu}/share/qemu/firmware" ];
+
 }
