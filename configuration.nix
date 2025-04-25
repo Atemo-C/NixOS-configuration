@@ -1,158 +1,138 @@
-{ config, ... }: {
+{ config, ... }: { imports = [
 
-	custom = {
-		# Name of the current user.
-		# [a-z] [A-Z] [0-9] [ - _ ]
-		name = "user-name";
+	# Automatically-generated hardware setting module.
+	./hardware-configuration.nix
 
-		# Title of the current user.
-		title = "User title";
-	};
+	# Additional modifications/overrides to `hardware-configuration.nix`.
+#	./Hardware-overrides.nix
 
-	# Name of the current system.
-	# [a-z] [A-Z] [0-9] [ - ]
-	networking.hostName = "COMPUTER-NAME";
+	# Temporary fixes.
+	./Temporary.nix
 
-	# Which version of NixOS was initially installed on the current system.
-	# There is no need to change it post-installation, even when upgrading to a newer NixOS version.
-	system.stateVersion = "24.11";
+	# Support and interaction with Android devices.
+	./Android.nix
 
-	imports = [
-		# Automatically generated hardware configuration module.
-		./hardware-configuration.nix
+	# Audio settings and packages.
+	./Audio.nix
 
-		# Temporary module.
-		./Temporary.nix
+	# Bluetooth settings.
+	./Bluetooth.nix
 
-		# Android module.
-		./Android.nix
+	# Boot settings.
+	./Boot.nix
 
-		# Audio module.
-		./Audio.nix
+	# Linux Console (TTY) settings.
+	./Console.nix
 
-		# Bluetooth module.
-#		./Bluetooth.nix
+	# Desktop components.
+	./Desktop/Dependencies.nix # XDG-DP & Dconf.
+	./Desktop/Dunst.nix        # Notifications.
+	./Desktop/Hyprland.nix     # Wayland compositor.
+	./Desktop/Menus.nix        # Menus for scripts, run launchers, and file selection.
+	./Desktop/Utilities.nix    # Wallpaper, keyring, polkit agent…
+	./Desktop/Waybar.nix       # Desktop bar.
 
-		# Boot modules.
-		./Boot/Boot.nix
-#		./Boot/Monitors.nix
+	# Time settings.
+	./Time.nix
 
-		# Linux console (TTY) module.
-		./Console.nix
+	# Font settings.
+	./Fonts.nix
 
-		# Desktop modules.
-		./Desktop/Bar.nix
-		./Desktop/Dconf.nix
-		./Desktop/Hyprland.nix
-		./Desktop/Menus.nix
-		./Desktop/Notifications.nix
-		./Desktop/Utilities.nix
-		./Desktop/XDG.nix
+	# GPU modules.
+	# A boot entry for 16XX> NVIDIA GPUs is added when `NVIDIA.nix` is used.
+	# Unfortunately, it is not currently possible to make a specialisation the default entry in the bootloader.
+	# https://github.com/NixOS/nixpkgs/issues/146641
+	#
+	# In the `Shared.nix` module, you can configure which non-NVIDIA elements you want to be installed.
+	./GPU/Shared.nix
+	./GPU/NVIDIA.nix
 
-		# Time module.
-		./Time.nix
+	# Input modules.
+	./Input/Fcitx5.nix           # Input method framework.
+	./Input/OpenTabletDriver.nix # For drawing tablets.
+	./Input/Power-button.nix     # Actions upon power buttons press.
+	./Input/Utilities.nix        # Game controller tester, mouse refresh rate settings…
+	./Input/ZSA.nix              # For ZSA keyboards.
 
-		# Fonts module.
-		./Fonts.nix
+	# Linux Kernel settings.
+	./Kernel.nix
 
-		# Gaming modules.
-		./Gaming/Emulation.nix
-		./Gaming/Games.nix
-		./Gaming/Gaming-tweaks.nix
-		./Gaming/Gaming-utilities.nix
-		./Gaming/Steam.nix
+	# Keyboard layout.
+	./Layout.nix
 
-		# GPU modules. Select relevant ones; Shared-GPU-settings.nix is always enabled.
-		./GPU/Shared-GPU-settings.nix
-#		./GPU/NVIDIA.nix
-#		./GPU/NVIDIA-CUDA-and-CDI.nix
-#		./GPU/OpenCL-AMD.nix
-#		./GPU/OpenCL-Intel.nix
-#		./GPU/VA-API-Intel.nix
+	# System locale.
+	./Locale.nix
 
-		# Input modules.
-		./Input/IBus.nix
-		./Input/Input-utilities.nix
-		./Input/OpenTabletDriver.nix
-		./Input/Power-button.nix
-		./Input/ZSA.nix
+	# Monitor/s (screen/s) settings.
+	./Monitors.nix
 
-		# Keyboard layout module.
-		./Layout.nix
+	# Networking settings.
+	./Networking.nix
 
-		# Locale module.
-		./Locale.nix
+	# Nix and NixOS-related settings.
+	./Nix-settings.nix
 
-		# Linux Kernel module.
-		./Kernel.nix
+	# Packaging modules.
+	./Packaging/Nix.nix
+	./Packaging/Universal.nix
+	./Packaging/Windows.nix
 
-		# Networking module.
-		./Networking.nix
+	# Power modules.
+	./Power/Alternative-suspend.nix
+	./Power/Power.nix
 
-		# Packaging modules.
-		./Packaging/General.nix
-		./Packaging/Universal.nix
-		./Packaging/Windows.nix
+	# Printing module and additional drivers.
+	./Printing.nix
 
-		# Power modules.
-#		./Power/Alternative-suspend.nix
-		./Power/Power.nix
+	# Modules to install and configure various packages onto the system.
+	./Programs/3D.nix
+	./Programs/Accessories.nix
+	./Programs/Gaming.nix
+	./Programs/Gstreamer.nix
+	./Programs/Images.nix
+	./Programs/Internet.nix
+	./Programs/Office.nix
+	./Programs/System-info.nix
+	./Programs/Terminal-emulators.nix
+	./Programs/Terminal-utilities.nix
+	./Programs/Text.nix
+	./Programs/Video.nix
 
-		# Printing and scanning modules.
-		./Printing/General-printing.nix
-		./Printing/HP.nix
+	# OpenSSH module.
+	./SSH.nix
 
-		# Programs modules.
-		./Programs/3D.nix
-		./Programs/Accessories.nix
-		./Programs/Audio.nix
-		./Programs/Gstreamer.nix
-		./Programs/Images.nix
-		./Programs/Internet.nix
-		./Programs/Office.nix
-		./Programs/System-info.nix
-		./Programs/Terminal-emulators.nix
-		./Programs/Terminal-utilities.nix
-		./Programs/Text.nix
-		./Programs/Video.nix
+	# Storage and file management modules.
+	./Storage/File-management.nix
+	./Storage/File-utilities.nix
+	./Storage/Filesystem-services.nix
+	./Storage/Filesystem-settings.nix
+	./Storage/Filesystem-support.nix
+	./Storage/Optical-media.nix
+	./Storage/Storage-mounts.nix
 
-		# SSH module.
-		./SSH.nix
+	# Theming.
+	./Theming/Program-themes.nix
+	./Theming/Icon-themes.nix
+	./Theming/Settings.nix
 
-		# Storage and file management modules.
-		./Storage/File-management.nix
-#		./Storage/File-sharing.nix
-		./Storage/File-utilities.nix
-		./Storage/Filesystems-services.nix
-		./Storage/Filesystems-settings.nix
-		./Storage/Filesystems-support.nix
-		./Storage/Optical-media.nix
-#		./Storage/Storage-mounts.nix
+	# User modules.
+	./User/Home-manager.nix
+	./User/Name.nix
+	./User/Name-module.nix
+	./User/Settings.nix
+	./User/Shell.nix
 
-		# Theming modules.
-		./Theming/Application-theme.nix
-		./Theming/Icons.nix
-		./Theming/Settings.nix
+	# Host virtualisation modules.
+#	./Virtualisation/Host/Docker.nix
+#	./Virtualisation/Host/Virt-manager.nix
+#	./Virtualisation/Host/Virtualbox.nix
+#	./Virtualisation/Host/Waydroid.nix
 
-		# User modules.
-		./User/Home-manager.nix
-		./User/Name-module.nix
-		./User/User-settings.nix
-		./User/Shell.nix
+	# Guest virtualisation modules.
+#	./Virtualisation/Guest/QEMU-KVM.nix
+#	./Virtualisation/Guest/VMWare.nix
+#	./Virtualisation/Guest/HyperV.nix
+#	./Virtualisation/Guest/XE.nix
+#	./Virtualisation/Guest/VirtualBox.nix
 
-		# Virtualisation modules.
-#		./Virtualisation/Docker.nix
-#		./Virtualisation/Docker-NVIDIA.nix
-#		./Virtualisation/Virt-manager.nix
-#		./Virtualisation/Virtualbox.nix
-#		./Virtualisation/Waydroid.nix
-
-		# Virtualisation modules for guest agents.
-#		./Guest-virt/QEMU-KVM.nix
-#		./Guest-virt/VMWare.nix
-#		./Guest-virt/HyperV.nix
-#		./Guest-virt/XE.nix
-#		./Guest-virt/VirtualBox.nix
-	];
-
-}
+]; }
