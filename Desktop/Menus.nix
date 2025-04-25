@@ -4,23 +4,12 @@
 	environment.systemPackages = [ pkgs.zenity ];
 
 	# Tofi menu for various scripts.
-	home-manager.users.${config.custom.name}.programs.tofi = {
+	home-manager.users.${config.userName}.programs.tofi = {
 		# Whether to enable Tofi, a tiny dynamic menu for Wayland.
 		enable = true;
 
 		# Settings to be written to the Tofi configuration file.
 		settings = {
-			# Font to use, either a path to a font file or a name.
-			# If a CORRECT path is given, tofi will startup much quicker.
-			# Otherwise, fonts are interpreted in Pango format.
-			font = "/run/current-system/sw/share/X11/fonts/UbuntuMonoNerdFont-Regular.ttf";
-
-			# Point size of text.
-			font-size = 12;
-
-			# Whether to enable font hinting.
-			hint-font = false;
-
 			# Window background color
 			background-color = "#000000dd";
 
