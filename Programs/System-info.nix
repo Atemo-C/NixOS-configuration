@@ -1,43 +1,43 @@
 { config, pkgs, ... }: {
 
-	environment.systemPackages = with pkgs; [
+	environment.systemPackages = [
 		# A monitor of resources.
-		btop
-
-		# BTOP with CUDA support.
-#		(btop.override { cudaSupport = true; })
+		# If the NVIDIA drivers are used, support for it is enabled.
+		( if config.services.xserver.videoDrivers == "nvidia" then (
+			pkgs.btop.override { cudaSupport = true; } ) else pkgs.btop
+		)
 
 		# Free software that gathers information on CPU, motherboard and more.
-		cpu-x
+		pkgs.cpu-x
 
 		# Tools for reading hardware sensors.
-		lm_sensors
+		pkgs.lm_sensors
 
 		# Tools for monitoring the health of hard drives.
-		smartmontools
+		pkgs.smartmontools
 
 		# Monitor your CPU, Memory, Disk, Network and GPU usage graphically.
-		mission-center
+		pkgs.mission-center
 
 		# Mersenne prime search / System stability tester (torture).
-		mprime
+		pkgs.mprime
 
 		# Vulkan tools and utilties.
-		vulkan-tools
+		pkgs.vulkan-tools
 
 		# Collection of demos and test programs for OpenGL and Mesa.
-		mesa-demos
+		pkgs.mesa-demos
 
 		# Provide detailed information on the hardware configuration of the machine.
-		lshw
+		pkgs.lshw
 	];
 
 	# Fastfetch, like Neofetch, but in C, much faster, and actually maintained.
-	home-manager.users.${config.custom.name}.programs.fastfetch = {
+	home-manager.users.${config.userName}.programs.fastfetch = {
 		# Whether to enable fastfetch.
 		enable = true;
 
-		# Configuration written to $XDG_CONFIG_HOME/fastfetch/config.jsonc.
+		# Fastfetch configuration.
 		settings = {
 			"$schema" = "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json";
 			logo = "none";

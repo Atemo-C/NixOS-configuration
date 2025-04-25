@@ -1,34 +1,34 @@
 { config, pkgs, ... }: {
 
 	environment = {
-		systemPackages = with pkgs; [
+		systemPackages = [
 			# A simple clipboard manager for Wayland.
-			clipman
+			pkgs.clipman
 
 			# Command-line copy/paste utilities for Wayland.
-			wl-clipboard
+			pkgs.wl-clipboard
 
 			# An emoji picker for linux, with custom tags support and localization.
-			smile
+			pkgs.smile
 
 			# GNOME Character Map, based on the Unicode Character Database.
-			gucharmap
+			pkgs.gucharmap
 
 			# Modern and intuitive terminal-based text editor.
-			micro-with-wl-clipboard
+			pkgs.micro-with-wl-clipboard
 
 			# Aspell dictionaries.
-			aspell
-			aspellDicts.uk
-			aspellDicts.fr
-			aspellDicts.en
-			aspellDicts.eo
+			pkgs.aspell
+			pkgs.aspellDicts.uk
+			pkgs.aspellDicts.fr
+			pkgs.aspellDicts.en
+			pkgs.aspellDicts.eo
 
 			# Hunspell dictionaries.
-			hunspell
-			hunspellDicts.en_GB-ize
-			hunspellDicts.en_US
-			hunspellDicts.fr-any
+			pkgs.hunspell
+			pkgs.hunspellDicts.en_GB-ize
+			pkgs.hunspellDicts.en_US
+			pkgs.hunspellDicts.fr-any
 		];
 
 		# Set Micro as the default text editor.

@@ -1,39 +1,39 @@
 { config, pkgs, ... }: {
 
-	environment.systemPackages = with pkgs; [
+	environment.systemPackages = [
 		# A fancy terminal browser for the Gemini protocol.
-		amfora
+		pkgs.amfora
 
 		# A Beautiful Gemini client.
-		lagrange
+		pkgs.lagrange
 
 		# A fork of Firefox, focused on privacy, security and freedom.
-		librewolf
+		pkgs.librewolf
 
 		# Electron-based Matrix client.
-		element-desktop
+		pkgs.element-desktop
 
 		# Graphical librespeed client written using GTK4 + libadwaita.
-		speedtest
+		pkgs.speedtest
 
 		# Privacy-focused browser routing traffic through the Tor network.
-		tor-browser
+		pkgs.tor-browser
 
 		# Featureful free software BitTorrent client.
-		qbittorrent
+		pkgs.qbittorrent
 
 		# Command-line program to download image-galleries and collections from several image hosting sites.
-		gallery-dl
+		pkgs.gallery-dl
 
 		# An open source user-first chat platform.
-		revolt-desktop
+		pkgs.revolt-desktop
 
 		# An alternate client for Discord with Vencord built-in.
-		vesktop
+		pkgs.vesktop
 	];
 
 	# Command-line tool to download videos from YouTube.com and other sites (youtube-dl fork).
-	home-manager.users.${config.custom.name}.programs.yt-dlp = {
+	home-manager.users.${config.userName}.programs.yt-dlp = {
 		# Whether to enable yt-dlp.
 		enable = true;
 

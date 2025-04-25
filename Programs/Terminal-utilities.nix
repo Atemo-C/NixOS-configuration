@@ -1,27 +1,27 @@
-{ pkgs, ... }: { environment.systemPackages = with pkgs; [
+{ pkgs, ... }: { environment.systemPackages = [
 
 	# A cat(1) clone with syntax highlighting and Git integration.
-	bat
+	pkgs.bat
 
 	# A calendar and scheduling application for the command line.
-	calcurse
+	pkgs.calcurse
 
 	# A POSIX-compliant implementation of /bin/sh that aims to be as small as possible.
-	dash
+	pkgs.dash
 
 	# Shell script analysis tool.
-	shellcheck
+	pkgs.shellcheck
 
 	# Tool for retrieving files using HTTP, HTTPS, and FTP.
-	wget
+	pkgs.wget
 
 	# Distributed version control system & GitHub CLI tool.
-	git gh
+	pkgs.git pkgs.gh
 
 	# Simplified and community-driven man pages, written in Rust.
-	tlrc
+	pkgs.tlrc
 
 	# Shell tool for executing jobs in parallel.
-	parallel
+	pkgs.parallel
 
 ]; }

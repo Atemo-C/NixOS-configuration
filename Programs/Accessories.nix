@@ -1,12 +1,9 @@
-{ pkgs, ... }: { environment.systemPackages = with pkgs; [
+{ pkgs, ... }: { environment.systemPackages =  [
 
 	# GTK algebraic and RPN calculator.
-	galculator
-
-	# A simple and elegant clock application from GNOME.
-	gnome-clocks
+	pkgs.galculator
 
 	# Offline password manager with many features.
-	keepassxc
+	pkgs.keepassxc
 
 ]; }

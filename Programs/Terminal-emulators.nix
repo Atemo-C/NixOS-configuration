@@ -4,16 +4,16 @@
 		# Set the default terminal emulator through an environment variable.
 		variables = { TERMINAL = "alacritty"; };
 
-		# The standard terminal emulator of LXDE.
+		# The standard terminal emulator of LXDE, for compatiblity purposes.
 		systemPackages = [ pkgs.lxterminal ];
 	};
 
 	# A cross-platform, GPU-accelerated terminal emulator.
-	home-manager.users.${config.custom.name}.programs.alacritty = {
+	home-manager.users.${config.userName}.programs.alacritty = {
 		# Whether to enable Alacritty.
 		enable = true;
 
-		# Alacritty configuration, written to $XDG_CONFIG_HOME/alacritty/alacritty.toml.
+		# Alacritty configuration.
 		settings = {
 			window = {
 				dynamic_padding = true;
