@@ -1,23 +1,15 @@
-{ config, pkgs, ... }: {
-
-	# Bluetooth configuration tool.
-	environment.systemPackages = [ pkgs.blueberry ];
+{ config, pkgs, ... }: rec {
 
 	# Whether to enable support for Bluetooth.
 	hardware.bluetooth.enable = true;
 
-	# Whether to enable the Blueman Bluetooth manager.
-	services.blueman.enable = true;
+	# If Bluetooth is enabled, add a Bluetooth configuration tool.
+	environment.systemPackages = [( if hardware.bluetooth.enable then pkgs.blueberry else null )];
 
-	# Using Bluetooth headset buttons to control media, the system way.
-#	systemd.user.services.mpris-proxy = {
-#		description = "Mpris proxy";
-#		after = [ "network.target" "sound.target" ];
-#		wantedBy = [ "default.target" ];
-#		serviceConfig.ExecStart = "${pkgs.bluez}/bin/mpris-proxy";
-#	};
+	# If Bluetooth is enabled, enable the Blueman Bluetooth manager.
+	services.blueman.enable = hardware.bluetooth.enable;
 
-	# Using Bluetooth headset buttons to control media, the Home Manager way.
-	home-manager.users.${config.custom.name}.services.mpris-proxy.enable = true;
+	# If Bluetooth is enabled, allow using Bluetooth headset buttons to control media for the user.
+	home-manager.users.${config.userName}.services.mpris-proxy.enable = hardware.bluetooth.enable;
 
 }
