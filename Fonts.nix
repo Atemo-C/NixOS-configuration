@@ -23,19 +23,23 @@
 		};
 
 		# List of additional font packages to install.
-		packages = with pkgs; [
+		packages = [
 			# Ubuntu Nerd Fonts.
-			nerd-fonts.ubuntu
-			nerd-fonts.ubuntu-mono
+			pkgs.nerd-fonts.ubuntu
+			pkgs.nerd-fonts.ubuntu-mono
 
 			# Other font packages for additional symbols support.
-			noto-fonts-cjk-sans
+			pkgs.noto-fonts-cjk-sans
 		];
 	};
 
 	# Fonts managed by Home Manager.
 	home-manager.users = {
-		${config.custom.name} = {
+		${config.userName} = {
+			# Font settings for Dunst notifications.
+			services.dunst.settings.global.font = "UbuntuMono Nerd Font 12";
+
+			# Font settings for graphical programs.
 			gtk.font = {
 				# The family name of the font to use in compatible GTK applications.
 				name = "UbuntuMono Nerd Font";
@@ -43,8 +47,33 @@
 				# The size of the font to use in compatible GTK applications.
 				size = 11;
 			};
+
+			# Font settings for the Hyprland Wayland compositor.
+			wayland.windowManager.hyprland.settings = {
+				# Set the global default font for Hyprland.
+				font_family = "UbuntuMono Nerd Font Bold";
+
+				# Font size of groupbar titles.
+				group.groupbar.font_size = 12;
+			};
+
+			# Font settings for the Tofi menu.
+			programs.tofi.settings = {
+				# Font to use, either a path to a font file or a name.
+				# If a CORRECT path is given, tofi will startup much quicker.
+				# Otherwise, fonts are interpreted in Pango format.
+				font = "/run/current-system/sw/share/X11/fonts/UbuntuMonoNerdFont-Regular.ttf";
+
+				# Point size of the text.
+				font-size = 12;
+
+				# Whether to enable font hinting.
+				hint-font = false;
+			};
 		};
+
 		root = {
+			# Font settings for graphical programs.
 			gtk.font = {
 				# The family name of the font to use in compatible GTK applications.
 				name = "UbuntuMono Nerd Font";
