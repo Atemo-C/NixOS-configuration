@@ -1,21 +1,21 @@
-{ pkgs, ... }: { environment.systemPackages = with pkgs; [
+{ pkgs, ... }: { environment.systemPackages = [
 
 	# Show mouse refresh rate under linux + evdev.
-	evhz
+	pkgs.evhz
 
 	# Utility for mapping events from Linux event devices.
-	evsieve
+	pkgs.evsieve
 
 	# A simple GTK-based joystic tester.
-	jstest-gtk
+	pkgs.jstest-gtk
 
 	# User-mode driver and GUI for any controller.
-	sc-controller
+	pkgs.sc-controller
 
 	# Toolsf or working with USB devices, such as lsusb.
-	usbutils
+	pkgs.usbutils
 
-	# Fast GUI autoclicker for x11/xwayland programs.
-	xclicker
+	# Fast GUI autoclicker for x11/XWayland programs.
+	pkgs.xclicker
 
 ]; }
