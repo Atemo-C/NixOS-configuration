@@ -7,24 +7,21 @@ If you want to use this configuration (or rather, a version of it), on your own 
 # [2] To do when using this configuration
 
 ## [2.1] Name.
-In `configuration.nix`, you can set your user's name and title at `custom.name` and `custom.title`. They will automatically be applied to the modules that need them; They will use the `${config.custom.name}` and `${config.custom.title}` values using the `User/Name-module.nix` module.
+In `User/Name.nix`, you can set your user's name and title at `userName` and `userTitle`. They will automatically be applied to the modules that need them; They will use the `${config.userName}` and `${config.userTitle}` values using the `User/Name-module.nix` module.
 
 ## [2.2] Hostname.
-In `configuration.nix`, you can set your computer's name on the network at `networking.hostName`.
+In `Networking.nix`, you can set your computer's name on the network at `networking.hostName`.
 
 ## [2.3] NixOS state version.
-If you have installed a NixOS version higher/lower than the value currently used here (`24.11`), you must change the value of `system.stateVersion` in `configuration.nix`. After that, you should never need to change it, unless you install NixOS from scratch with a different (higher) version. You do not have to nor should change this number if you keep the same installation, even when upgrading NixOS version.
+If you have installed a NixOS version higher/lower than the value currently used here (`24.11`), you must change the value of `system.stateVersion` in `Nix-settings.nix`. After that, you should never need to change it, unless you install NixOS from scratch with a different (higher) version. You do not have to nor should change this number if you keep the same installation, even when upgrading NixOS version.
 
-## [2.4] BIOS or EFI boot.
-CIn `configuration.nix`, comment/uncomment the desired boot mode. You can tweak the `Boot/EFI` and `Boot/BIOS` modules on their own for futher configuration if needed.
-
-## [2.5] Graphics drivers, etc.
+## [2.4] Graphics drivers, etc.
 There are other modules imported in `configuration.nix` that you may wish to comment/uncommend, and individually tweak. Be sure to check relevant ones out.
 
-## [2.6] Home Manager version
+## [2.5] Home Manager version
 The `User/Home-manager.nix` module fetches the tarball of the desired Home Manager version, which should ideally be the same version as the NixOS version currently running. In it, if needed, change the `master` part in `"https://github.com/nix-community/home-manager/archive/master.tar.gz"` to the appropriate version, like `release-24.11`.
 
-## [2.7] Flatpaks with Flathub
+## [2.6] Flatpaks with Flathub
 Currently, the Flathub Flatpak repository cannot be declaratively defined in NixOS nor Home Manager without using a custom Nix Flake. As such, you have to manually add it with a shell command after installation. If you are using the FISH shell, there should already be an abbreviation to do so, being the following:
 `enable-flathub`
 
