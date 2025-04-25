@@ -9,6 +9,6 @@
 	};
 
 	# User's auxilary groups for accessing VirtualBox.
-	users.extraGroups.vboxusers.members = [ "${config.custom.name}" ];
+	users.extraGroups.vboxusers.members = [ "${config.userName}" ];
 
 }
