@@ -78,7 +78,7 @@
 	./Packaging/Windows.nix
 
 	# Power modules.
-	./Power/Alternative-suspend.nix
+#	./Power/Alternative-suspend.nix
 	./Power/Power.nix
 
 	# Printing module and additional drivers.
