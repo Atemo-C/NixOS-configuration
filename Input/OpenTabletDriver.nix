@@ -9,7 +9,4 @@
 		enable = true;
 	};
 
-	# Starts the OpenTabletDriver dameon when the Hyprland Wayland compositor is started.
-	home-manager.users.${config.custom.name}.wayland.windowManager.hyprland.settings.exec-once = [ "otd-dameon" ];
-
 }
