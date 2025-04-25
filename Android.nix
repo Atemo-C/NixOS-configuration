@@ -4,7 +4,7 @@
 	programs.adb.enable = true;
 
 	# If ADB is enabled, add the user to the `adbusers` group.
-	users.users.${userName}.extraGroups = ( if programs.adb.enable then [ "adbusers" ] else null );
+	users.users.${config.userName}.extraGroups = ( if programs.adb.enable then [ "adbusers" ] else null );
 
 	# Various Android packages and utilities.
 	# Some packages will only install if ADB is enabled.
