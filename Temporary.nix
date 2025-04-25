@@ -7,7 +7,8 @@
 	};
 
 	# https://github.com/NixOS/nixpkgs/issues/399907
-	# Fixed by https://github.com/NixOS/nixpkgs/pull/400139, awaiting merge into nixpkgs-unstable.
+	# Fixed by https://github.com/NixOS/nixpkgs/pull/400139, merged into nixpkgs-unstable.
+	# Waiting some time before removing.
 	nixpkgs.overlays = [
 		(final: prev: {
 			qt6Packages = prev.qt6Packages.overrideScope (_: kprev: {
