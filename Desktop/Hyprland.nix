@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: { home-manager.users.${config.custom.name}.wayland.windowManager.hyprland = {
+{ config, pkgs, ... }: { home-manager.users.${config.userName}.wayland.windowManager.hyprland = {
 
 	# Whether to enable the Hyprland Wayland compositor.
 	enable = true;
@@ -44,9 +44,6 @@
 			groupbar = {
 				# Height of the groupbar.
 				height = 18;
-
-				# Font size of groupbar title.
-				font_size = 12;
 
 				# Text color of groupbar title.
 				text_color = "rgb(ffffff)";
@@ -167,19 +164,6 @@
 			# Whether to disable the Hyprland splash rendering.
 			disable_splash_rendering = true;
 
-			# Set the global default font to render the text, including debug fps/notifications, config errors, etc.
-			font_family = "UbuntuMono Nerd Font Bold";
-
-			# Controls the VRR (Adaptive Sync) of the monitors.
-			# 0 (off), 1 (on), 2 (fullscreen only).
-			vrr = 0;
-
-			# Whether to wake up the monitors if the mouse moves.
-			mouse_move_enables_dpms = true;
-
-			# Whether to wake up the monitors if a key is pressed.
-			key_press_enables_dpms = true;
-
 			# Change the background color when no wallpaper is set.
 			background_color = "rgb(3b6ea5)";
 
@@ -191,36 +175,12 @@
 			render_unfocused_fps = 1;
 		};
 
-#		# The name of the default monitor for the cursor to be set on startup.
-#		# See `hyprctl monitors` for the names of the currently attached monitor(s).
-#		# For Xwayland apps, you might also need to add `xrandr --output NAME --primary` in exec-once.
-#		cursor.default_monitor = "DP-1";
-
 		# Workspace settings.
 		workspace = [
-#			# Assign specific workspaces to specific monitors.
-#			"1, monitor: DP-1"
-#			"2, monitor: DP-1"
-#			"3, monitor: DP-1"
-#			"4, monitor: DP-1"
-#			"5, monitor: HDMI-A-1"
-#			"6, monitor: HDMI-A-1"
-#			"7, monitor: HDMI-A-1"
-#			"8, monitor: HDMI-A-1"
-
 			# Remove gaps when only one window is present.
 			"w[tv1], gapsout:0, gapsin:0"
 			"f[1],   gapsout:0, gapsin:0"
 		];
-
-#		# Monitor settings.
-#		monitor = [
-#			# [Main] Center DisplayPort monitor.
-#			"DP-1, 1920x1080@120, 0x0, 1"
-#
-#			# [Secondary] Left HDMI-to-VGA monitor.
-#			"HDMI-A-1, 1600x900@60, -1600x147, 1"
-#		];
 
 		# Whether to enable back-and-forth between the current and last active workspaces.
 		binds.workspace_back_and_forth = true;
@@ -466,7 +426,7 @@
 
 			# Tags for specific application types.
 			"tag +term, class: (Alacritty|lxterminal|kitty|cool-retro-term.|XTerm)"
-			"tag +tear, fullscreen:1, class: (steam_proton|steam_app|Luanti|com.mojang.minecraft|org.vinegarhq.Sober|.*Better than Adventrue.*)"
+			"tag +tear, fullscreen:1, class: (steam_proton|steam_app|Luanti|com.mojang.minecraft|org.vinegarhq.Sober|.*Better than Adventrue.*|mcpelauncher-client)"
 
 			# Disable blur for floating windows.
 			"prop noblur, floating:1"
@@ -479,7 +439,7 @@
 
 			# Groupbar rules.
 			"group, always, class: (.virt-manager-wrapped), title:(Virtual Machine Manager)"
-			"group, always, title: (XClicker)"
+			"group, always, class: (xclicker)"
 
 			# XWayland videobridge-specific settings.
 			"prop noanim,                       class: (xwaylandvideobridge)"
@@ -558,9 +518,6 @@
 
 		# Programs to start when logging into Hyprland.
 		exec-once = [
-#			# Set the default monitor for Xwayland programs.
-#			"xrandr --output DP-1 --primary"
-
 #			# Screen sharing for legacy X11 programs.
 #			"xwaylandvideobridge"
 
