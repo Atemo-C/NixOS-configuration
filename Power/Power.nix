@@ -1,13 +1,13 @@
 { config, pkgs, ... }: {
 
 	# Power utilities.
-	environment.systemPackages = with pkgs; [
+	environment.systemPackages = [
 		# Read and control device brightness.
-		brightnessctl
+		pkgs.brightnessctl
 
 		# Small collection of scripts that handle suspend and resume on behalf of HAL.
 		# USeful for systems where `systemctl suspend` does not work properly, such as the ThinkPad L510.
-		pmutils
+		pkgs.pmutils
 	];
 
 	# Power-saving with TLP.
