@@ -1,15 +1,15 @@
-{ pkgs, ... }: { environment.systemPackages = with pkgs; [
+{ pkgs, ... }: { environment.systemPackages = [
 
 	# QT Polkit agent for Hyprland.
-	hyprpolkitagent
+	pkgs.hyprpolkitagent
 
 	# Wallpaper utility.
-	hyprpaper
+	pkgs.hyprpaper
 
 	# Legacy X11 tools, mostly for Xwayland programs.
-	xorg.xrandr
+	pkgs.xorg.xrandr
 
 	# Keyring.
-	gnome-keyring
+	pkgs.gnome-keyring
 
 ]; }
