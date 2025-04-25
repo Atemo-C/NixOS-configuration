@@ -1,67 +1,68 @@
-{ pkgs, ... }: { environment.systemPackages = with pkgs; [
+{ config, pkgs, ... }: { environment.systemPackages = [
 
 	# Archiving-only formats support and utilities.
-	binutils   # ar
-	cpio       # cpio
-	libarchive # libarchive
-	gnutar     # GNU tar
+	pkgs.binutils   # ar
+	pkgs.cpio       # cpio
+	pkgs.libarchive # libarchive
+	pkgs.gnutar     # GNU tar
 
 	# Compression-only formats support and utilities.
-	bzip3 # bzip3
-	gzip  # gzip
-	lrzip # lrzip
-	lz4   # LZ4
-	lzip  # lzip
-	lzop  # lzop
+	pkgs.bzip3 # bzip3
+	pkgs.gzip  # gzip
+	pkgs.lrzip # lrzip
+	pkgs.lz4   # LZ4
+	pkgs.lzip  # lzip
+	pkgs.lzop  # lzop
 
 	# Archiving and compression formats support and utilities.
-	p7zip     # gzip bzip2 LZMA xz zstd ZIP RAR 7z CAB
-	dar       # DAR
-	tarlz     # tarlz
-	unar      # unarchiver
-	lhasa lha # LHa
-	unzip     # zip
+	pkgs.p7zip          # gzip bzip2 LZMA xz zstd ZIP RAR 7z CAB
+	pkgs.dar            # DAR
+	pkgs.tarlz          # tarlz
+	pkgs.unar           # unarchiver
+	pkgs.lhasa pkgs.lha # LHa
+	pkgs.unzip          # zip
 
 	# Archive manager for the GNOME desktop environment.
-	file-roller
+	pkgs.file-roller
 
 	# Do The Right Extraction: A tool for taking the hassle out of extracting archives.
-	dtrx
+	pkgs.dtrx
 
 	# GNOME's disk utility.
-	gnome-disk-utility
+	pkgs.gnome-disk-utility
 
 	# Graphical disk partitioning tool.
-	gparted
+	pkgs.gparted
 
 	# A tool to get/set ATA/SATA drive parameters under Linux.
-	hdparm
+	pkgs.hdparm
 
 	# Disk usage analyzer with an ncurses interface
-	ncdu
+	pkgs.ncdu
 
 	# A new bootable USB solution.
-	ventoy-full
+	pkgs.ventoy-full
 
 	# Thumbnailing utilties and media formats support.
-	poppler                   # .pdf
-	f3d                       # General 3D files thumbnailing
-	ffmpegthumbnailer         # General video files thumbnailing
-	freetype                  # Font files
-	gnome-epub-thumbnailer    # .epub .mobi
-	kdePackages.kimageformats # Various image formats
-	kdePackages.qtsvg         # .svg
-	libgsf                    # .odf
-	mcomix                    # .cbr
-	nufraw-thumbnailer        # .raw
-	xfce.tumbler              # General image files thumbnailing
-	webp-pixbuf-loader        # .webp
+	pkgs.poppler                   # .pdf
+	pkgs.f3d                       # General 3D files thumbnailing
+	pkgs.ffmpegthumbnailer         # General video files thumbnailing
+	pkgs.freetype                  # Font files
+	pkgs.gnome-epub-thumbnailer    # .epub .mobi
+	pkgs.kdePackages.kimageformats # Various image formats
+	pkgs.kdePackages.qtsvg         # .svg
+	pkgs.libgsf                    # .odf
+	pkgs.mcomix                    # .cbr
+	pkgs.nufraw-thumbnailer        # .raw
+	# General image files thumbnailing for XFCE's Thunar.
+	( if config.programs.thunar.enable then pkgs.xfce.tumbler else null )
+	pkgs.webp-pixbuf-loader        # .webp
 
 	# Other utilities.
 	# Command line utilities for working with .desktop files.
-	desktop-file-utils
+	pkgs.desktop-file-utils
 
 	# A database of common MIME types.
-	shared-mime-info
+	pkgs.shared-mime-info
 
 ]; }
