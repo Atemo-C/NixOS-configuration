@@ -1,21 +1,21 @@
-{ pkgs, ... }: { environment.systemPackages = with pkgs; [
+{ pkgs, ... }: { environment.systemPackages = [
 
 	# Disc burner and project creator for Xfce.
-	xfce.xfburn
+	pkgs.xfce.xfburn
 
 	# A tool and library for reading digital audio from CDs.
-	cdparanoia
+	pkgs.cdparanoia
 
 	# A tool for recording audio or data CD-Rs in disk-at-once (DAO) mode.
-	cdrdao
+	pkgs.cdrdao
 
 	# Highly portable CD/DVD/BluRay command line recording software.
-	cdrtools
+	pkgs.cdrtools
 
 	# Tools for mastering Blu-ray and DVD+-RW/+-R media
-	dvdplusrwtools
+	pkgs.dvdplusrwtools
 
 	# https://www.gnu.org/software/vcdimager/
-	vcdimager
+	pkgs.vcdimager
 
 ]; }

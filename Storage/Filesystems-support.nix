@@ -7,18 +7,18 @@
 
 	# Packages providing support and tools for additional filesystems.
 	# (Gparted will be very happy about that.)
-	environment.systemPackages = with pkgs; [
-		cryptsetup
-		exfatprogs
-		f2fs-tools
-		hfsprogs
-		jfsutils
-		lvm2
-		nilfs-utils
-		udftools
-		util-linux
-		xfsdump
-		xfsprogs
+	environment.systemPackages = [
+		pkgs.cryptsetup
+		pkgs.exfatprogs
+		pkgs.f2fs-tools
+		pkgs.hfsprogs
+		pkgs.jfsutils
+		pkgs.lvm2
+		pkgs.nilfs-utils
+		pkgs.udftools
+		pkgs.util-linux
+		pkgs.xfsdump
+		pkgs.xfsprogs
 	];
 
 }
