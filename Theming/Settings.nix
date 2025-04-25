@@ -8,7 +8,7 @@
 
 	home-manager.users = {
 		# GTK and QT settings for the user.
-		${config.custom.name} = {
+		${config.userName} = {
 			# Settings to write to the dconf configuration system.
 			# Here, sets the desired window icons layout.
 			dconf.settings = { "org/gnome/desktop/wm/preferences" = { button-layout = "icon,appmenu:"; }; };
