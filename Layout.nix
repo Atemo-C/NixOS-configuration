@@ -3,8 +3,8 @@
 	# Keyboard layout in the Linux console (TTY).
 	console.keyMap = "us-acentos";
 
-	# Keyboard layout in the Hyprland desktop.
-	home-manager.users.${config.custom.name}.wayland.windowManager.hyprland.settings.input = {
+	# Keyboard layout in the Hyprland Wayland compositor.
+	home-manager.users.${config.userName}.wayland.windowManager.hyprland.settings.input = {
 		# Keyboard layout to use.
 		kb_layout = "us";
 
@@ -12,7 +12,7 @@
 		kb_variant = "intl";
 	};
 
-#	# Keyboard layout in other graphical environments.
+#	# Keyboard layout to use in other graphical environments.
 #	services.xserver.xkb = {
 #		# Keyboard layout to use.
 #		layout = "us";
