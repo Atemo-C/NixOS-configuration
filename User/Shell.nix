@@ -2,7 +2,7 @@
 
 	# The path to the user’s shell.
 	# Don’t forget to enable your shell in programs if necessary, like programs.fish.enable = true;.
-	users.users.${config.custom.name}.shell = pkgs.fish;
+	users.users.${config.userName}.shell = pkgs.fish;
 
 	programs.fish = {
 		# Whether to configure FISH as an interactive shell.

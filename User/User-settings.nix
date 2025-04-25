@@ -1,4 +1,4 @@
-{ config, ... }: { users.users.${config.custom.name} = {
+{ config, ... }: { users.users.${config.userName} = {
 
 	# Whether to automatically allocate subordinate user and group IDs for the user.
 	autoSubUidGidRange = true;
@@ -7,7 +7,7 @@
 	createHome = true;
 
 	# Short description of the user account, typically the user's full name.
-	description = "${config.custom.title}";
+	description = "${config.userTitle}";
 
 	# The user's auxilary groups.
 	# Some groups are present in other relevant modules.
@@ -25,14 +25,14 @@
 	group = "users";
 
 	# The user's home directory.
-	home = "/User/${config.custom.title}";
+	home = "/User/${config.userTitle}";
 
 	# The user's home directory mode in numeric fromat.
 	homeMode = "755";
 
 	# Initial password for the user.
 	# Can be changed with the `passwd` command.
-	initialPassword = "NeverGonnaLetYouDown";
+	initialPassword = "NeverGonnaGiveYouUp";
 
 	# Whether this is an account for a "real" user.
 	isNormalUser = true;

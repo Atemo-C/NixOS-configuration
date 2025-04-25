@@ -1,7 +1,7 @@
 # Module to define the user name & title throughout the configuration.
-{ config, lib, ... }: { options.custom = {
+{ config, lib, ... }: { options = {
 
-	name = lib.mkOption { type = lib.types.str; };
-	title = lib.mkOption { type = lib.types.str; };
+	userName = lib.mkOption { type = lib.types.str; };
+	userTitle = lib.mkOption { type = lib.types.str; };
 
 }; }
