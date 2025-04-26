@@ -8,7 +8,7 @@
 #		extraBackends = [ ];
 
 #		# Disable certain SANE backends that can conflict with your devices.
-#		disableDefaultBackends = [ "escl" ];
+#		disabledDefaultBackends = [ "escl" ];
 	};
 
 	# Printing and related networking services settings.
