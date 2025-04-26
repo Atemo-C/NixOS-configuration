@@ -51,7 +51,7 @@
 			# Font settings for the Hyprland Wayland compositor.
 			wayland.windowManager.hyprland.settings = {
 				# Set the global default font for Hyprland.
-				font_family = "UbuntuMono Nerd Font Bold";
+				misc.font_family = "UbuntuMono Nerd Font Bold";
 
 				# Font size of groupbar titles.
 				group.groupbar.font_size = 12;
