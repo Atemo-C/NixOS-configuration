@@ -17,7 +17,7 @@
 		}; };
 
 		# Monitor settings in the Hyprland Wayland compositor.
-		wayland.windowManager.hyprland = {
+		wayland.windowManager.hyprland.settings = {
 			# The name of the default monitor for the cursor to be set on startup.
 			# See `hyprctl monitors` for the names of the currently attached monitor(s).
 			# For Xwayland apps, you might also need to add `xrandr --output NAME --primary` in exec-once.
