@@ -11,7 +11,7 @@
 
 	home-manager.users.${config.userName} = {
 		# Monitor settings for the Hyprland workspaces module in the Waybar bar.
-		programs.waybar.settings.mainBar.settings."hyprland/workspaces" = { persistent-workspaces = {
+		programs.waybar.settings.mainBar."hyprland/workspaces" = { persistent-workspaces = {
 			"DP-1" = [ 1 2 3 4 ];
 			"HDMI-A-1" = [ 5 6 7 8 ];
 		}; };
