@@ -40,8 +40,8 @@
 	# Disk usage analyzer with an ncurses interface
 	pkgs.ncdu
 
-	# System restore tool for Linux.
-	pkgs.timeshift
+	# System restore tool for Linux. (As well as a dependency for it.)
+	pkgs.timeshift pkgs.xorg.xhost
 
 	# A new bootable USB solution.
 	pkgs.ventoy-full
