@@ -12,7 +12,7 @@
 		download-buffer-size = 524288000;
 
 		# Enable the nix-command feature.
-		nix.settings.experimental-features = [ "nix-command" ];
+		experimental-features = [ "nix-command" ];
 	};
 
 }
