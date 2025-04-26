@@ -1,4 +1,4 @@
-{ pkgs, ... }: { environment.systemPackages = [
+{ config, pkgs, ... }: { environment.systemPackages = [
 
 	# QT Polkit agent for Hyprland.
 	( if config.home-manager.users.${config.userName}.wayland.windowManager.hyprland.enable then

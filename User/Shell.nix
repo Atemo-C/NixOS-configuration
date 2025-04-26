@@ -54,7 +54,7 @@
 			nix-update-now-nvidia = "run0 nixos-rebuild --specialisation NVIDIA switch --quiet";
 			nix-update-boot = "run0 nixos-rebuild boot --quiet";
 			nix-upgrade-now = "run0 nixos-rebuild switch --upgrade --quiet";
-			nix-upgrade-now = "run0 nixos-rebuild --specialisation NVIDIA switch --upgrade --quiet";
+			nix-upgrade-now-nvidia = "run0 nixos-rebuild --specialisation NVIDIA switch --upgrade --quiet";
 			nix-upgrade-boot = "run0 nixos-rebuild boot --upgrade --quiet";
 
 			# Flatpaks and FlatHub.

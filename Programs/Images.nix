@@ -1,4 +1,4 @@
-{ pkgs, ... }: { environment.systemPackages = [
+{ config, pkgs, ... }: { environment.systemPackages = [
 
 	# Extremely simplistic image viewing.
 	pkgs.feh
