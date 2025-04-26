@@ -64,7 +64,7 @@
 	./Locale.nix
 
 	# Monitor/s (screen/s) settings.
-	./Monitors.nix
+#	./Monitors.nix
 
 	# Networking settings.
 	./Networking.nix
