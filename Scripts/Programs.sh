@@ -631,7 +631,7 @@ $Programs
 	}
 
 	[ "$Program" = "󰁯  Timeshift           System/File restore" ] && {
-		nohup timeshift-gtk > /dev/null 2>&1 & exit
+		nohup timeshift-launcher > /dev/null 2>&1 & exit
 	}
 
 	[ "$Program" = "  Ventoy               Bootable USB creation tool" ] && {
