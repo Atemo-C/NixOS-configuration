@@ -25,7 +25,7 @@
 			});
 		})
 	];
-	home-manager.users.${config.custom.name}.nixpkgs.overlays = [
+	home-manager.users.${config.userName}.nixpkgs.overlays = [
 		(final: prev: {
 			qt6Packages = prev.qt6Packages.overrideScope (_: kprev: {
 				qt6gtk2 = kprev.qt6gtk2.overrideAttrs (_: {
