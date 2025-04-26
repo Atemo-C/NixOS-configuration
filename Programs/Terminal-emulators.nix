@@ -19,16 +19,6 @@
 				dynamic_padding = true;
 				opacity = 0.8;
 			};
-			font = {
-				normal = {
-					family = "UbuntuMono Nerd Font";
-					style = "Regular";
-				};
-				bold.style = "Bold";
-				italic.style = "Italic";
-				bold_italic.style = "Bold Italic";
-				size = 12.0;
-			};
 			colors = {
 				primary = {
 					background = "#000000";

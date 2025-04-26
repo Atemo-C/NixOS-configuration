@@ -57,6 +57,28 @@
 				group.groupbar.font_size = 12;
 			};
 
+			# Font settings for the Alacritty terminal emulator.
+			programs.alacritty.settings.font = {
+				normal = {
+					# Font to use.
+					family = "UbuntuMono Nerd Font";
+
+					# Default style for the font.
+					style = "Regular";
+				};
+				# Bold font style.
+				bold.style = "Bold";
+
+				# Italic font style.
+				italic.style = "Italic";
+
+				# Bold italic font style.
+				bold_italic.style = "Bold Italic";
+
+				# Font size.
+				size = 12.0;
+			};
+
 			# Font settings for the Tofi menu.
 			programs.tofi.settings = {
 				# Font to use, either a path to a font file or a name.
