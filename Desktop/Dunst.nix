@@ -159,7 +159,7 @@
 				min_icon_size = 32;
 
 				# Scale larger icons down to this size. Set to `0` to disable.
-				max_icon_size = 128;
+				max_icon_size = 42;
 
 				# Whether a notification popped up from history should be sticky or timeout as if it would normally do.
 				sticky_history = "yes";
