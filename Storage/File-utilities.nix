@@ -40,6 +40,9 @@
 	# Disk usage analyzer with an ncurses interface
 	pkgs.ncdu
 
+	# System restore tool for Linux.
+	pkgs.timeshift
+
 	# A new bootable USB solution.
 	pkgs.ventoy-full
 
@@ -54,11 +57,11 @@
 	pkgs.libgsf                    # .odf
 	pkgs.mcomix                    # .cbr
 	pkgs.nufraw-thumbnailer        # .raw
-	# General image files thumbnailing for XFCE's Thunar.
-	( if config.programs.thunar.enable then pkgs.xfce.tumbler else null )
 	pkgs.webp-pixbuf-loader        # .webp
 
-	# Other utilities.
+	# General image files thumbnailing for XFCE's Thunar.
+	( if config.programs.thunar.enable then pkgs.xfce.tumbler else null )
+
 	# Command line utilities for working with .desktop files.
 	pkgs.desktop-file-utils
 

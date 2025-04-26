@@ -299,6 +299,10 @@ $Programs
 $Programs
 󰋊  ncdu                 Disk usage"
 
+	command -v timeshift && Programs="
+$Programs
+󰁯  Timeshift           System/File restore"
+
 	command -v ventoy && Programs="
 $Programs
   Ventoy               Bootable USB creation tool"
@@ -624,6 +628,10 @@ $Programs
 
 	[ "$Program" = "󰋊  ncdu                 Disk usage" ] && {
 		nohup "$TERMINAL" -e ncdu > /dev/null 2>&1 & exit
+	}
+
+	[ "$Program" = "󰁯  Timeshift           System/File restore" ] && {
+		nohup timeshift-gtk > /dev/null 2>&1 & exit
 	}
 
 	[ "$Program" = "  Ventoy               Bootable USB creation tool" ] && {
