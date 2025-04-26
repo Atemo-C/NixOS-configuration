@@ -1,10 +1,12 @@
 { pkgs, ... }: { environment.systemPackages = [
 
 	# QT Polkit agent for Hyprland.
-	pkgs.hyprpolkitagent
+	( if config.home-manager.users.${config.userName}.wayland.windowManager.hyprland.enable then
+		pkgs.hyprpolkitagent else null )
 
 	# Wallpaper utility.
-	pkgs.hyprpaper
+	( if config.home-manager.users.${config.userName}.wayland.windowManager.hyprland.enable then
+		pkgs.hyprpaper else null )
 
 	# Legacy X11 tools, mostly for Xwayland programs.
 	pkgs.xorg.xrandr

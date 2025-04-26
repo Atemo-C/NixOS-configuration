@@ -534,13 +534,14 @@
 			"wl-paste -t text --watch clipman store --no-persist --max-items=100"
 
 			# Audio tweaks with Easy Effects.
-			"easyeffects --gapplication-service"
+			( if config.home-manager.users.${config.userName}.services.easyeffects.enable then
+				"easyeffects --gapplication-service" else null )
 
 			# Fcitx5 input method (DBus).
-			"fcitx5"
+			( if config.i18n.inputMethod.type == "fcitx5" then "fcitx5" else null )
 
 			# Terminal emulator as a daemon.
-			"alacritty --daemon"
+			( if config.home-manager.users.${config.userName}.programs.alacritty.enable then "alacritty --daemon" else null )
 		];
 	};
 

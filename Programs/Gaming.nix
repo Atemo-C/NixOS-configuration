@@ -59,11 +59,11 @@
 				pkgs.gamescope
 
 				# Optimise Linux system performance for gaming on demand.
-				pkgs.gamemode
+				( if gamemode.enable then pkgs.gamemode else null )
 			];
 
 			# Whether to open ports in the firewall for Steam Retome Play.
-			remotePlay.openFirewall = true;
+			remotePlay.openFirewall = steam.enable;
 		};
 	};
 

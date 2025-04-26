@@ -16,7 +16,7 @@
 
 	# If `i18n.inputMethod.type` is `fcitx5`, add it to startup programs in the Hyprland Wayland compositor.
 	home-manager.users.${config.userName}.wayland.windowManager.hyprland.settings.exec-once = [
-		( if config.i18n.inputMethod == "fcitx5" then "fcitx5" else null )
+		( if config.i18n.inputMethod.type == "fcitx5" then "fcitx5" else null )
 	];
 
 }

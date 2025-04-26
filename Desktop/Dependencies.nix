@@ -4,12 +4,13 @@
 	programs.dconf.enable = true;
 
 	# XDG Desktop Portals settings.
-	xdg.portal = {
-		# List of packages that provide XDG Desktop Portal configuration.
-		configPackages = [
-			pkgs.xdg-desktop-portal-hyprland
-			pkgs.xdg-desktop-portal-gtk
-		];
+xdg.portal = {
+			# List of packages that provide XDG Desktop Portal configuration.
+			configPackages = [
+				( if config.home-manager.users.${config.userName}.wayland.windowManager.hyprland.enable then
+					pkgs.xdg-desktop-portal-hyprland else null )
+				pkgs.xdg-desktop-portal-gtk
+			];
 
 		# Additional portals to add to the path.
 		extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
