@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: rec {
+{ config, lib, pkgs, ... }: rec {
 
 	# Audio & media-related services configuration.
 	services = {
@@ -71,7 +71,7 @@
 		services.easyeffects.enable = true;
 
 		# Enable Dconf if EasyEffects is enabled.
-		programs.dconf.enable = mkDefault services.easyeffects.enable;
+		programs.dconf.enable = lib.mkDefault services.easyeffects.enable;
 
 		# If EasyEffects is enabled, it is added to startup programs in the Hyprland Wayland compositor.
 		wayland.windowManager.hyprland.settings.exec-once = [
