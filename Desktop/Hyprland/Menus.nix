@@ -6,7 +6,7 @@
 	# Tofi menu for various scripts.
 	home-manager.users.${config.userName}.programs.tofi = {
 		# Enable Tofi, a tiny dynamic menu for Wayland.
-		enable = true;
+		enable = config.home-manager.users.${config.userName}.wayland.windowManager.hyprland.enable;
 
 		# Settings to be written to the Tofi configuration file.
 		settings = {
