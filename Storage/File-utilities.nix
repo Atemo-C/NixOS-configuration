@@ -60,7 +60,7 @@
 	pkgs.webp-pixbuf-loader        # .webp
 
 	# General image files thumbnailing for XFCE's Thunar.
-	( if config.programs.thunar.enable then pkgs.xfce.tumbler else null )
+	(if config.programs.thunar.enable then pkgs.xfce.tumbler else null)
 
 	# Command line utilities for working with .desktop files.
 	pkgs.desktop-file-utils
