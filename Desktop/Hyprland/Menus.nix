@@ -5,7 +5,7 @@
 
 	# Tofi menu for various scripts.
 	home-manager.users.${config.userName}.programs.tofi = {
-		# Whether to enable Tofi, a tiny dynamic menu for Wayland.
+		# Enable Tofi, a tiny dynamic menu for Wayland.
 		enable = true;
 
 		# Settings to be written to the Tofi configuration file.

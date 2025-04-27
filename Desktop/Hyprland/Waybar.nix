@@ -1,6 +1,6 @@
 { config, pkgs, ... }: { home-manager.users.${config.userName}.programs.waybar = {
 
-	# Whether to enable Waybar.
+	# Enable the Waybar bar.
 	enable = config.home-manager.users.${config.userName}.wayland.windowManager.hyprland.enable;
 
 	# Whether to enable Waybar systemd integration.
