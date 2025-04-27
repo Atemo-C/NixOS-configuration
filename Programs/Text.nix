@@ -3,10 +3,12 @@
 	environment = {
 		systemPackages = [
 			# A simple clipboard manager for Wayland.
-			pkgs.clipman
+			(if config.home-manager.users.${config.userName}.wayland.windowManager.hyprland.enable then
+				pkgs.clipman else null)
 
 			# Command-line copy/paste utilities for Wayland.
-			pkgs.wl-clipboard
+			(if config.home-manager.users.${config.userName}.wayland.windowManager.hyprland.enable then
+				pkgs.wl-clipboard else null)
 
 			# An emoji picker for linux, with custom tags support and localization.
 			pkgs.smile
@@ -15,7 +17,8 @@
 			pkgs.gucharmap
 
 			# Modern and intuitive terminal-based text editor.
-			pkgs.micro-with-wl-clipboard
+			(if config.home-manager.users.${config.userName}.wayland.windowManager.hyprland.enable then
+				pkgs.micro-with-wl-clipboard else pkgs.micro)
 
 			# Aspell dictionaries.
 			pkgs.aspell

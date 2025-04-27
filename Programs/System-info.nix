@@ -2,10 +2,7 @@
 
 	environment.systemPackages = [
 		# A monitor of resources.
-		# If the NVIDIA drivers are used, support for it is enabled.
-		( if config.services.xserver.videoDrivers == "nvidia" then (
-			pkgs.btop.override { cudaSupport = true; } ) else pkgs.btop
-		)
+		pkgs.btop
 
 		# Free software that gathers information on CPU, motherboard and more.
 		pkgs.cpu-x

@@ -33,20 +33,4 @@
 		pkgs.v4l-utils
 	];
 
-	# Free and open source software for video recording and live streaming, with the wlrobs plugin.
-#	programs.obs-studio = {
-#		# Whether to enable OBS Studio for video recording and live streaming.
-#		enable = true;
-#
-#		# Whether to install and set up the v4l2loopback kernel module.
-#		# Necessary for OBS to start a virtual camera.
-#		enableVirtualCamera = true;
-#
-#		# Overrides for OBS Studio.
-#		package = (pkgs.obs-studio.override { cudaSupport = true; });
-#
-#		# Which plugins to add to OBS Studio.
-#		plugins = [ pkgs.obs-studio-plugins.wlrobs ];
-#	};
-
 }

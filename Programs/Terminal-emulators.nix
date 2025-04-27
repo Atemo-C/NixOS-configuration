@@ -10,7 +10,7 @@
 
 	# A cross-platform, GPU-accelerated terminal emulator.
 	home-manager.users.${config.userName}.programs.alacritty = {
-		# Whether to enable Alacritty.
+		# Enable the Alacritty terminal emulator.
 		enable = true;
 
 		# Alacritty configuration.
