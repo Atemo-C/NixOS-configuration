@@ -1,2 +1,2 @@
-# Which version of the Linux kernel to use.
+# Override the Linux kernel used by NixOS.
 { config, pkgs, ... }: { boot.kernelPackages = pkgs.linuxPackages_zen; }
