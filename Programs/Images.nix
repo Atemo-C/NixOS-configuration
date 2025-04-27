@@ -4,8 +4,8 @@
 	pkgs.feh
 
 	# Take screenshots with grimblast.
-	( if config.home-manager.users.${config.userName}.wayland.windowManager.hyprland.enable then
-		pkgs.grimblast else null )
+	(if config.home-manager.users.${config.userName}.wayland.windowManager.hyprland.enable then
+		pkgs.grimblast else null)
 
 	# The GNU Image Manipulation Program (with plugins).
 	pkgs.gimp3-with-plugins
@@ -29,8 +29,8 @@
 	pkgs.libwebp
 
 	# A wlroots-compatible Wayland color picker that does not suck.
-	( if config.home-manager.users.${config.userName}.wayland.windowManager.hyprland.enable then
-		pkgs.hyprpicker else null )
+	(if config.home-manager.users.${config.userName}.wayland.windowManager.hyprland.enable then
+		pkgs.hyprpicker else null)
 
 	# A simple color chooser written in GTK3.
 	pkgs.gcolor3
