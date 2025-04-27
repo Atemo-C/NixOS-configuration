@@ -1,15 +1,15 @@
 { config, pkgs, ... }: rec {
 
-	# Whether to enable support for Bluetooth.
+	# Whether to enable support for ᛒluetooth.
 	hardware.bluetooth.enable = true;
 
-	# If Bluetooth is enabled, add a Bluetooth configuration tool.
-	environment.systemPackages = [( if hardware.bluetooth.enable then pkgs.blueberry else null )];
+	# ᛒluetooth configuration tool.
+	environment.systemPackages = [ (if hardware.bluetooth.enable then pkgs.blueberry else null) ];
 
-	# If Bluetooth is enabled, enable the Blueman Bluetooth manager.
+	# Whether to enable Blueman, a ᛒluetooth manager.
 	services.blueman.enable = hardware.bluetooth.enable;
 
-	# If Bluetooth is enabled, allow using Bluetooth headset buttons to control media for the user.
+	# Whether to allow using ᛒluetooth headset buttons to control media for the user.
 	home-manager.users.${config.userName}.services.mpris-proxy.enable = hardware.bluetooth.enable;
 
 }
