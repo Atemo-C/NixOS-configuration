@@ -5,7 +5,7 @@
 
 	# Display notifications graphically with Dunst.
 	home-manager.users.${config.userName}.services.dunst = {
-		# Whteher to enable the dunst notification daemon.
+		# Enable the dunst notification daemon.
 		enable = true;
 
 		# Dunst settings.
@@ -44,7 +44,7 @@
 				# Scale factor. It is auto-detected if the value is `0`.
 				scale = 0;
 
-				# Whether to turn on the progress bar.
+				# Turn on the progress bar.
 				# It appears when a progress hint is passed with, for example, `dunstify -h int:value:12`
 				progress_bar = true;
 
@@ -108,7 +108,7 @@
 				# Define a color for the separator.
 				separator_color = frame_color;
 
-				# Whether to enable sorting of notification by id, urgency, or update.
+				# Enable sorting of notification by id, urgency, or update.
 				sort = "yes";
 
 				# The spacing between lines.
@@ -137,7 +137,7 @@
 				# Whether to ignore newlines '\n' in notifications.
 				ignore_newlines = "no";
 
-				# Whether to stack together notifications with the same content.
+				# Stack together notifications with the same content.
 				stack_duplicates = true;
 
 				# Whether to hide the count of stacked notifications with the same content.
@@ -146,7 +146,7 @@
 				# Whether to display indicators for URLs (U) and actions (A).
 				show_indicators = "no";
 
-				# Whether to enable recursive icon lookup.
+				# Enable recursive icon lookup.
 				# You can set a single theme, instead of having to define all lookup paths.
 				enable_recursive_icon_lookup = true;
 
@@ -161,7 +161,7 @@
 				# Scale larger icons down to this size. Set to `0` to disable.
 				max_icon_size = 42;
 
-				# Whether a notification popped up from history should be sticky or timeout as if it would normally do.
+				# A notification popped up from history should be sticky or timeout as if it would normally do.
 				sticky_history = "yes";
 
 				# Maximum amount of notifications kept in history.
@@ -170,7 +170,7 @@
 				# Browser for opening URLs in context menu.
 				browser = "/run/current-system/sw/bin/librewolf";
 
-				# Whether to always run rule-defined scripts, even if the notification is suppressed.
+				# Always run rule-defined scripts, even if the notification is suppressed.
 				always_run_script = true;
 
 				# Define the title of the windows spawned by dunst (X11).
@@ -205,7 +205,7 @@
 				mouse_right_click = "close_all";
 			};
 
-			# Whether to calculate the DPI to use on a per-monitor basis.
+			# Calculate the DPI to use on a per-monitor basis.
 			experimental.per_monitor_dpi = true;
 
 			# Settings for low-urgency notification messages.
