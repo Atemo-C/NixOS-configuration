@@ -1,4 +1,4 @@
-# Temporary fixes with relevant links to related issues.
+# Temporary fixes with relevant links to the relevant issues.
 { config, pkgs, ... }: {
 
 	# https://github.com/NixOS/nixpkgs/issues/361592
