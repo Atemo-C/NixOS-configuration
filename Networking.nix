@@ -1,29 +1,27 @@
 { config, pkgs, ... }: rec {
 
 	networking = {
-		# Specifices when the dhcpcd device will fork to background.
-		# Can be one of: background, any, ipv6, both, if-carrier-up.
-		# Select `background` for faster boot times.
+		# Fork the dhcpcd device to the background to improve boot times.
 		dhcpcd.wait = "background";
 
-		# Name of the system.
+		# Name of the system over the network.
 		# [a-z] [A-Z] [0-9] [ - ]
 		hostName = "COMPUTER-NAME";
 
-		# Whether to enable easy networking using NetworkManager.
+		# Whether to enable NetworkManager for easy networking.
 		networkmanager.enable = true;
 	};
 
-	# If NetworkManager is enabled, disable NetworkManager's "wait-online" service.
-	# This improves boot times.
-	systemd.services.NetworkManager-wait-online.enable = ( if networking.networkmanager.enable then false else null );
-
-	# If NetworkManager is enabled, add the user to the NetworkManager group to allow managing it.
+	# If NetworkManager is enabled, add the user to the `networkmanager` group.
 	users.users.${config.userName}.extraGroups = [
-		( if networking.networkmanager.enable then "networkmanager" else null )
+		( if networking.networkmanager.enable then "networkmanager" else null)
 	];
 
-	# If NetworkManager is enabled, enable the NetworkManager control applet in graphical environments.
-	programs.nm-applet.enable = networking.networkmanager.enable;
+	# Disable NetworkManager's `wait-online` service to improve boot times.
+	systemd.services.NetworkManager-wait-online.enable = (if networking.networkmanager.enable then false else null);
+
+	# If NetworkManager and the Hyprland Wayland compositor are enabled, add an applet to control network graphically.
+	programs.nm-applet.enable =
+		networking.networkmanager.enable && home-manager.users.${config.userName}wayland.windowManager.hyprland.enable;
 
 }
