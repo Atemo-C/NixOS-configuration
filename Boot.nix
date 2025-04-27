@@ -19,6 +19,6 @@
 	};
 
 	# If on an EFI system, install a user-space application to allow manually modifying the EFI Boot Manager.
-	environment.systemPackages = [ (if boot.loader.limine.efiSupport then pkgs.efibootmgr else null) ];
+	environment.systemPackages = [ (if pkgs.stdenv.hostPlatform.isEfi then pkgs.efibootmgr else null) ];
 
 }
