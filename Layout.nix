@@ -25,4 +25,4 @@
 	# Whether to use the virtual console (TTY) keymap from the xserver keyboard settings.
 	console.useXkbConfig = true;
 
-};
+}
