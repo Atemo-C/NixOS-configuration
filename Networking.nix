@@ -14,7 +14,7 @@
 
 	# If NetworkManager is enabled, add the user to the `networkmanager` group.
 	users.users.${config.userName}.extraGroups = [
-		( if networking.networkmanager.enable then "networkmanager" else null)
+		(if networking.networkmanager.enable then "networkmanager" else null)
 	];
 
 	# Disable NetworkManager's `wait-online` service to improve boot times.
