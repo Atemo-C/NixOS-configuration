@@ -3,7 +3,7 @@
 	# Icon and cursor theming for the user.
 	${config.userName} = rec {
 		home.pointerCursor = {
-			# Whether to enable gtk config generation for home.pointerCursor .
+			# Enable GTK config generation for home.pointerCursor .
 			gtk.enable = true;
 
 			# Package providing the cursor theme.
@@ -50,7 +50,7 @@
 	# Icon and cursor theming for the root user.
 	root = rec {
 		home.pointerCursor = {
-			# Whether to enable gtk config generation for home.pointerCursor .
+			# Enable GTK config generation for home.pointerCursor .
 			gtk.enable = true;
 
 			# Package providing the cursor theme.

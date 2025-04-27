@@ -14,7 +14,7 @@
 			dconf.settings = { "org/gnome/desktop/wm/preferences" = { button-layout = "icon,appmenu:"; }; };
 
 			gtk = {
-				# Whether to enable GTK 2/3 configuration.
+				# Enable GTK 2/3 configuration.
 				enable = true;
 
 				# Extra configuration lines to add verbatim to ~/.gtkrc-2.0.
@@ -51,7 +51,7 @@
 			dconf.settings = { "org/gnome/desktop/wm/preferences" = { button-layout = "icon,appmenu:"; }; };
 
 			gtk = {
-				# Whether to enable GTK 2/3 configuration.
+				# Enable GTK 2/3 configuration.
 				enable = true;
 
 				# Extra configuration lines to add verbatim to ~/.gtkrc-2.0.
