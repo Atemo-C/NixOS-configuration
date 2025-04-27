@@ -1,20 +1,24 @@
-{ config, ... }: { boot.loader = {
+{ config, ... }: rec {
 
-	# Whether the installation process is allowed to modify EFI boot variables.
-	# Only necessary on EFI-booted devices.
-	efi.canTouchEfiVariables = true;
+	boot.loader = {
+		# Limine bootloader configuration.
+		limine = {
+			# Whether to enable the Limine bootloader.
+			enable = true;
 
-	# Timeout, in seconds, until the first entry in the bootloader is activated.
-	timeout = 10;
+			# Maximum number of latest NixOS generations to show in the boot menu.
+			# This is useful to prevent tho boot partition from running out of disk space.
+			maxGenerations = 48;
+		};
 
-	# Limine bootloader settings.
-	limine = {
-		# Whether to enable the Limine bootloader.
-		enable = true;
+		# Timeout, in seconds, until the first entry in the bootloader is activated.
+		timeout = 10;
 
-		# Maximum number of latest generations to show in the boot menu.
-		# Useful to prevent the boot partition from running out of disk space.
-		maxGenerations = 48;
+		# If on an EFI system, allow the installation process to modify EFI boot variables.
+		efi.canTouchEfiVariables = pkgs.stdenv.hostPlatform.isEfi;
 	};
 
-}; }
+	# If on an EFI system, install a user-space application to allow manually modifying the EFI Boot Manager.
+	environment.systemPackages = [ (if boot.loader.limine.efiSupport then pkgs.efibootmgr else null) ];
+
+}
