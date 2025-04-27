@@ -32,23 +32,23 @@
 
 	programs = {
 		gamemode = {
-			# Whether to enable GameMode to optimise system performance on demand for gaming.
+			# Enable GameMode to optimise system performance on demand for gaming.
 			enable = true;
 
 			# System-wide configuration for GameMode (/etc/gamemode.ini).
 			settings.general = { inhibit_screensaver = 0; };
 		};
 
-		# Whether to enable gamescope, the SteamOS session compositing window manager.
+		# Enable gamescope, the SteamOS session compositing window manager.
 		gamescope.enable = true;
 
 		steam = {
-			# Whether to enable Steam.
+			# Enable Steam.
 			enable = true;
 
-			# Whether to enable loading the extest library into Steam, to translate X11 input events to uinput events.
+			# Enable loading the extest library into Steam, to translate X11 input events to uinput events.
 			# (e.g. for using Steam Input on Wayland).
-			extest.enable = true;
+			extest.enable = steam.enable;
 
 			# Extra packages to be used as compatibility tools for Steam on Linux.
 			extraCompatPackages = [ pkgs.proton-ge-bin ];
@@ -56,10 +56,10 @@
 			# Additional packages to add to the Steam environment.
 			extraPackages = [
 				# SteamOS session compositing window manager.
-				pkgs.gamescope
+				(if gamescope.enable then pkgs.gamescope else null)
 
 				# Optimise Linux system performance for gaming on demand.
-				( if gamemode.enable then pkgs.gamemode else null )
+				(if gamemode.enable then pkgs.gamemode else null)
 			];
 
 			# Whether to open ports in the firewall for Steam Retome Play.
