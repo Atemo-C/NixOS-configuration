@@ -10,7 +10,7 @@
 		layout = "us";
 
 		# Keyboard layout variant to use.
-		variant = "intl"
+		variant = "intl";
 	};
 
 	# Keyboard layout configuration to use in the Hyprland Wayland compositor.
