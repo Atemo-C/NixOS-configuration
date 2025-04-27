@@ -70,13 +70,13 @@
 		# It necessitates Dconf to be enabled.
 		services.easyeffects.enable = true;
 
-		# Enable Dconf if EasyEffects is enabled.
-		programs.dconf.enable = lib.mkDefault services.easyeffects.enable;
-
 		# If EasyEffects is enabled, it is added to startup programs in the Hyprland Wayland compositor.
 		wayland.windowManager.hyprland.settings.exec-once = [
 			(if services.easyeffects.enable then "easyeffects --gapplication-service" else null)
 		];
 	};
+
+	# Enable Dconf if EasyEffects is enabled.
+	programs.dconf.enable = lib.mkDefault services.easyeffects.enable;
 
 }
