@@ -360,14 +360,14 @@
 			"SUPER CONTROL, right, resizeactive, 5 0"
 
 			# Audio volume [Output].
-			", XF86AudioRaiseVolume, exec, amixer -q sset Master 1%+"
-			", XF86AudioLowerVolume, exec, amixer -q sset Master 1%-"
-			", XF86AudioMute,        exec, amixer -q sset Master toggle"
+			", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.01+"
+			", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.01-"
+			", XF86AudioMute,        exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
 
 			# Audio volume [Input].
-			"SUPER, XF86AudioRaiseVolume, exec, amixer -q sset Capture 1%+"
-			"SUPER, XF86AudioLowerVolume, exec, amixer -q sset Capture 1%-"
-			"SUPER, XF86AudioMute,        exec, amixer -q sset Capture toggle"
+			"SUPER, XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 0.01+"
+			"SUPER, XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 0.01-"
+			", XF86AudioMute,             exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
 
 			# Audio volume [Player].
 			"SHIFT, XF86AudioRaiseVolume, exec, playerctl volume 0.01%+"
