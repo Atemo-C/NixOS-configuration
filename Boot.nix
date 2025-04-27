@@ -1,4 +1,4 @@
-{ config, ... }: rec {
+{ config, pkgs, ... }: rec {
 
 	boot.loader = {
 		# Limine bootloader configuration.
