@@ -1,7 +1,9 @@
 { config, ... }: rec {
 
-	# Keyboard layout configuration to use in graphical environments.
-	# To see a complete list: https://gist.github.com/jatcwang/ae3b7019f219b8cdc6798329108c9aee
+	# Keyboard layout configuration to use.
+	# To see a complete list of layouts, variants, and other settings:
+	# • https://gist.github.com/jatcwang/ae3b7019f219b8cdc6798329108c9aee
+	#
 	# And why this list cannot be seen within NixOS:
 	# • https://github.com/NixOS/nixpkgs/issues/254523
 	# • https://github.com/NixOS/nixpkgs/issues/286283
@@ -22,7 +24,7 @@
 		kb_variant = services.xserver.xkb.variant;
 	};
 
-	# Whether to use the virtual console (TTY) keymap from the xserver keyboard settings.
+	# Let the virtual console (TTY) keymap be the same as the one configured in xserver.
 	console.useXkbConfig = true;
 
 }
