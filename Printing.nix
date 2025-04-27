@@ -1,7 +1,7 @@
 { config, pkgs, ... }: rec {
 
 	hardware.sane = {
-		# Whether to enable support for SANE scanners.
+		# Enable support for SANE scanners.
 		enable = true;
 
 #		# Enable extra backends for SANE scanners.
@@ -14,18 +14,18 @@
 	# Printing and related networking services settings.
 	services = {
 		avahi = {
-			# Whether to run the Avahi daemon for device discovery.
+			# Run the Avahi daemon for device discovery.
 			enable = true;
 
-			# Whether to enable the mDNS NSS plug-in for IPv4.
+			# Enable the mDNS NSS plug-in for IPv4.
 			nssmdns4 = true;
 
-			# Whether to open the firewall for UDP port 5353.
+			# Open the firewall for UDP port 5353.
 			openFirewall = true;
 		};
 
 		printing = {
-			# Whether to enable printing support through the CUPS daemaon.
+			# Enable printing support through the CUPS daemaon.
 			enable = true;
 
 #			# Additional drivers, if needed.
@@ -52,7 +52,7 @@
 
 	# If printing/scanning is enabled, install a simple scanning utility.
 	environment.systemPackages = [
-		( if services.printing.enable || hardware.sane.enable then pkgs.simple-scan else null )
+		(if services.printing.enable || hardware.sane.enable then pkgs.simple-scan else null)
 	];
 
 }
