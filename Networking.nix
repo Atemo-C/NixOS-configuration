@@ -22,6 +22,6 @@
 
 	# If NetworkManager and the Hyprland Wayland compositor are enabled, add an applet to control network graphically.
 	programs.nm-applet.enable =
-		networking.networkmanager.enable && config.home-manager.users.${config.userName}wayland.windowManager.hyprland.enable;
+		networking.networkmanager.enable && config.home-manager.users.${config.userName}wayland.window.Manager.hyprland.enable;
 
 }
