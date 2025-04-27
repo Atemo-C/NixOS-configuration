@@ -41,4 +41,10 @@
 	# Whether to enable the GNU NANO text editor that is enabled by default.
 	programs.nano.enable = false;
 
+	# Start the clipboard manager in the Hyprland Wayland compositor.
+	home-manager.users.${config.userName}.wayland.windowManager.hyprland.settings.exec-once = [
+		(if config.home-manager.users.${config.userName}.wayland.windowManager.hyprland.enable then
+			"wl-paste -t text --watch clipman store --no-persist --max-items=100" else null)
+	];
+
 }
