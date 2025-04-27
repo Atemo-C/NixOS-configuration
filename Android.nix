@@ -1,12 +1,12 @@
 { config, pkgs, ... }: rec {
 
-	# Whether to configure system to use Android Debug Bridge (ADB).
+	# Enable support for the Android Debug Bridge (ADB).
 	programs.adb.enable = true;
 
-	# If ADB is enabled, add the user to the `adbusers` group.
+	# Add the user to the `adbusers` group if ADB is enabled.
 	users.users.${config.userName}.extraGroups = (if programs.adb.enable then [ "adbusers" ] else null);
 
-	# Android-related packages.
+	# Android-related utilities.
 	environment.systemPackages = [
 		# Reverse tethering over ADB for Android.
 		(if programs.adb.enable then pkgs.gnirehtet else null)
