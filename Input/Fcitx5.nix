@@ -1,8 +1,8 @@
 { config, pkgs, ... }: {
 
 	i18n.inputMethod = {
-		# Whether to enable an additional input method type.
-		enable = true;
+		# Enable an additional input method type.
+		enable = config.home-manager.users.${config.userName}.wayland.windowManager.hyprland.enable
 
 		# Input method to be used.
 		type = "fcitx5";
