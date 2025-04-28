@@ -6,7 +6,8 @@
 	# QT Polkit agent for the Hyprland Wayland compositor.
 	environment.systemPackages = [
 		(if config.home-manager.users.${config.userName}.wayland.windowManager.hyprland.enable then
-			pkgs.hyprpolkitagent else null)
+			pkgs.hyprpolkitagent else null
+		)
 	];
 
 	# Start the Polkit agent in the Hyprland Wayland compositor.
