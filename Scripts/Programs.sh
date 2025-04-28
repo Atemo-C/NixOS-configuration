@@ -299,6 +299,10 @@ $Programs
 $Programs
 󰋊  ncdu                 Disk usage"
 
+	command -v kbackup && Programs="
+$Programs
+󰁯  KBackup              Backup user files"
+
 	command -v timeshift && Programs="
 $Programs
 󰁯  Timeshift           System/File restore"
@@ -628,6 +632,10 @@ $Programs
 
 	[ "$Program" = "󰋊  ncdu                 Disk usage" ] && {
 		nohup "$TERMINAL" -e ncdu > /dev/null 2>&1 & exit
+	}
+
+	[ "$Program" = "󰁯  KBackup              Backup user files" ] && {
+		nohup kbackup > /dev/null 2>&1 & exit
 	}
 
 	[ "$Program" = "󰁯  Timeshift           System/File restore" ] && {

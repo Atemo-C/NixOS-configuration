@@ -43,6 +43,9 @@
 	# System restore tool for Linux. (As well as a dependency for it.)
 	pkgs.timeshift pkgs.xorg.xhost
 
+	# Backup program with an easy-to-use interface. (For user files.)
+	pkgs.kdePackages.kbackup
+
 	# A new bootable USB solution.
 	pkgs.ventoy-full
 
