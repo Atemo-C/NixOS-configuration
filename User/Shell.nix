@@ -5,7 +5,7 @@
 	users.users.${config.userName}.shell = pkgs.fish;
 
 	programs.fish = {
-		# Whether to configure FISH as an interactive shell.
+		# Configure FISH as an interactive shell.
 		enable = true;
 
 		# Set of FISH abbreviations.
