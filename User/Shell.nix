@@ -79,7 +79,9 @@
 
 			# YT-DLP.
 			yt = "yt-dlp";
+			yt-tor = "yt-dlp --proxy socks5://localhost:9050";
 			ytmp3 = "yt-dlp -x --audio-format mp3 --audio-quality 0";
+			ytmp3-tor = "yt-dlp -x --audio-format mp3 --audio-quality 0 --proxy socks5://localhost:9050";
 
 			# FFmpeg.
 			ffx = ''cd Downloads/YT-dlp && ffmpeg -hide_banner -i "https://url-here.m3u8" -c copy -bsf:a aac_adtstoasc name-here.mp4'';

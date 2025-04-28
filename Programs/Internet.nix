@@ -17,6 +17,9 @@
 			# Graphical librespeed client written using GTK4 + libadwaita.
 			pkgs.speedtest
 
+			# Anonymizing overlay network
+			pkgs.tor
+
 			# Privacy-focused browser routing traffic through the Tor network.
 			pkgs.tor-browser
 
