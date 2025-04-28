@@ -164,6 +164,9 @@
 			# Whether to disable the Hyprland splash rendering.
 			disable_splash_rendering = true;
 
+			# Whether to enable the "not responding" popup for "unresponsive" programs.
+			enable_anr_dialog = false;
+
 			# Change the background color when no wallpaper is set.
 			background_color = "rgb(3b6ea5)";
 
