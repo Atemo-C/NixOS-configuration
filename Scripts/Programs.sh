@@ -485,7 +485,7 @@ $Programs
 	}
 
 	[ "$Program" = "  Cura                 3D printing" ] && {
-		nohup cura > /dev/null 2>&1 & exit
+		nohup cura -platformtheme gtk3 > /dev/null 2>&1 & exit
 	}
 
 	[ "$Program" = "  BTOP                 Terminal-based system monitor" ] && {
@@ -545,7 +545,7 @@ $Programs
 	}
 
 	[ "$Program" = "󰍳  MC Bedrock Launcher  Minecraft Bedrock" ] && {
-		nohup mcpelauncher-ui-qt > /dev/null 2>&1 & exit
+		nohup mcpelauncher-ui-qt -platformtheme gtk3 > /dev/null 2>&1 & exit
 	}
 
 	[ "$Program" = "󰍳  Luanti (minetest)    Open source voxel game engine" ] && {
