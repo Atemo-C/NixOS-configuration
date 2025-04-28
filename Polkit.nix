@@ -10,7 +10,7 @@
 	];
 
 	# Start the Polkit agent in the Hyprland Wayland compositor.
-	home-manger.users.${config.userName}.wayland.windowManager.hyprland.settings.exec-once = [
+	home-manager.users.${config.userName}.wayland.windowManager.hyprland.settings.exec-once = [
 		(if config.home-manager.users.${config.userName}.wayland.windowManager.hyprland.enable then
 			"systemctl --user start hyprpolkitagent" else null
 		)
