@@ -221,7 +221,7 @@ $Programs
 $Programs
 󰍳  PrismLauncher        Minecraft Launcher"
 
-	command -v io.mrarm.mcpelauncher && Programs="
+	command -v mcpelauncher-ui-qt && Programs="
 $Programs
 󰍳  MC Bedrock Launcher  Minecraft Bedrock"
 
@@ -545,7 +545,7 @@ $Programs
 	}
 
 	[ "$Program" = "󰍳  MC Bedrock Launcher  Minecraft Bedrock" ] && {
-		nohup io.mrarm.mcpelauncher > /dev/null 2>&1 & exit
+		nohup mcpelauncher-ui-qt > /dev/null 2>&1 & exit
 	}
 
 	[ "$Program" = "󰍳  Luanti (minetest)    Open source voxel game engine" ] && {

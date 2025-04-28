@@ -68,6 +68,9 @@
 	./Packaging/Universal.nix
 	./Packaging/Windows.nix
 
+	# Polkit configuration.
+	./Polkit.nix
+
 	# Power modules.
 #	./Power/Alternative-suspend.nix
 	./Power/Power.nix
