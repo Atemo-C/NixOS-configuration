@@ -8,24 +8,25 @@
 		systemPackages = [ pkgs.lxterminal ];
 	};
 
-	# Start the terminal as a background daemon in the Hyprland Wayland compositor.
-	home-manager.users.${config.userName}.wayland.windowManager.hyprland.settings.exec-once = [
-		(if config.home-manager.users.${config.userName}.wayland.windowManager.hyprland.enable &&
-		home-manager.users.${config.userName}.programs.alacritty then
-			"alacritty --daemon" else null)
-
+	home-manager.users.${config.userName} = {
 	# A cross-platform, GPU-accelerated terminal emulator.
-	home-manager.users.${config.userName}.programs.alacritty = {
+	programs.alacritty = {
 		# Enable the Alacritty terminal emulator.
 		enable = true;
 
 		# Alacritty configuration.
-		settings = {
-			window = {
+		settings.window = {
 				dynamic_padding = true;
 				opacity = 0.8;
 			};
 		};
+
+		# Start the terminal as a background daemon in the Hyprland Wayland compositor.
+		wayland.windowManager.hyprland.settings.exec-once = [
+			(if config.home-manager.users.${config.userName}.wayland.windowManager.hyprland.enable &&
+			home-manager.users.${config.userName}.programs.alacritty.enable then
+				"alacritty --daemon" else null)
+		];
 	};
 
 }
