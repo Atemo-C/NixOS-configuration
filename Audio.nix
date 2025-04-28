@@ -8,12 +8,12 @@
 
 			# Optionally, add support to emulate other audio servers, for compatibility.
 			# (ALSA, JACK, and PulseAudio)
-#			alsa = {
-#				enable = true;
-#				support32Bit = true;
-#			};
-#			jack.enable = true;
-#			pulse.enable = true;
+			alsa = {
+				enable = true;
+				support32Bit = true;
+			};
+			jack.enable = true;
+			pulse.enable = true;
 		};
 
 		# Enable the playerctld daemon for easy multimedia control.
