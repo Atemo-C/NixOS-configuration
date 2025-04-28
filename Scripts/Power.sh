@@ -9,6 +9,11 @@ web=$(tput setaf 4)
 dim=$(tput dim)
 c=$(tput sgr0)
 
+# Shortcut for the script.
+Script() {
+	nohup dash "/etc/nixos/Scripts/Power.sh" > /dev/null 2>&1 & exit
+}
+
 # Check if the number of arguments is greater than 1.
 [ "$#" -gt 1 ] && {
 	echo \
