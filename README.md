@@ -1,6 +1,6 @@
 # [1] General information
 This is an almost identical version of the NixOS configuration that I use. It is made for single-user use on a desktop or laptop system. \
-It does not use Flakes, but does make use of Home Manager. Since March of 2025, this now assumes an installation pulling packages only from unstable. \
+It does not use Flakes, but does make use of Home Manager. Since March of 2025, this now assumes an installation pulling packages only from `unstable` or `unstable-small`. \
 It is an overhaul of my previous NixOS configuration, which can still be found [here](https://github.com/Atemo-C/OLD-NixOS-Configuration). \
 If you want to use this configuration (or rather, a version of it), on your own system, it is highly recommended that you read what each module does and edit them if needed. \
 &nbsp;
