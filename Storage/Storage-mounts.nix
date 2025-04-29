@@ -17,13 +17,13 @@
 #	fileSystems."/run/media/${config.userName}/5GhB-GPT-HGST" = {
 #		device = "/dev/disk/by-id/ata-HGST_HTS545050A7E680_160607RBF54AAH3E8DNP-part1";
 #		fsType = "btrfs";
-#		options = {
+#		options = [
 #			"defaults"
 #			"rw"
 #			"nofail"
 #			"users"
 #			"exec"
-#		};
+#		];
 #	};
 
 }
