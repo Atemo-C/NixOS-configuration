@@ -24,6 +24,9 @@
 #			device = "/dev/disk/by-id/ata-TOSHIBA_DT01ACA100_448164BNS";
 #			options = "-n standby";
 #		}
+#			# Prevent smartd from waking up this drives during standby.
+#			device = "/dev/disk/by-id/ata-HGST_HTS545050A7E680_160607RBF54AAH3E8DNP";
+#			options = "-n standby";
 #	];
 
 }; }
