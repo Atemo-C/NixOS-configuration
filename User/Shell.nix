@@ -34,6 +34,9 @@
 			"...." = "cd ../../../";
 			"....." = "cd ../../../../";
 
+			# Easy backups of user files. Change the backup directory as needed.
+			backup = ''rsync -av --delete --delete-excluded --exclude-from=".exclude.txt" --progress -h ${config.users.users.${config.userName}.home} /run/media/${config.userName}/744GB-HDD-EXT/Backups-Rsync/'';
+
 			# Remapping mouse extra button to F13.
 			f13 = "run0 evsieve --input /dev/input/by-id/usb-1bcf_USB_Optical_Mouse-event-mouse grab --map btn:extra key:f13 --output";
 
