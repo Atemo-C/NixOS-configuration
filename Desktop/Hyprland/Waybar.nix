@@ -58,7 +58,7 @@
 		"image#programs" = {
 			on-click = "dash /etc/nixos/Scripts/Programs.sh";
 			on-click-right = "tofi-drun --drun-launch=true";
-			path = "/etc/nixos/Icons/Programs.png";
+			path = "/etc/nixos/Icons/Programs.svg";
 			size = 22;
 		};
 
@@ -68,7 +68,7 @@
 		"image#files" = {
 			on-click = "thunar";
 			on-click-right = "thunar $HOME/Downloads/";
-			path = "/etc/nixos/Icons/Files.png";
+			path = "/etc/nixos/Icons/Files.svg";
 			size = 22;
 		};
 
@@ -87,7 +87,7 @@
 			on-click-forward = "dash /etc/nixos/Scripts/Screenshot.sh --save monitor";
 			on-scroll-down = "dash /etc/nixos/Scripts/Screenshot.sh --save all";
 			on-scroll-up = on-scroll-down;
-			path = "/etc/nixos/Icons/Screenshot.png";
+			path = "/etc/nixos/Icons/Screenshot.svg";
 			size = 22;
 		};
 
@@ -102,7 +102,7 @@
 			on-click-middle = "clipman clear --all & notify-send -t 1500 'Clipboard cleared.'";
 			on-click-backward = "alacritty -e micro $HOME/Documents/Bookmarks.txt";
 			on-click-forward = on-click-backward;
-			path = "/etc/nixos/Icons/Clipboard.png";
+			path = "/etc/nixos/Icons/Clipboard.svg";
 			size = 22;
 		};
 
@@ -112,7 +112,7 @@
 		"image#picker" = {
 			on-click = "dash /etc/nixos/Scripts/Picker.sh";
 			on-click-right = "gcolor3";
-			path = "/etc/nixos/Icons/Picker.png";
+			path = "/etc/nixos/Icons/Picker.svg";
 			size = 22;
 		};
 
@@ -126,7 +126,7 @@
 		# Power menu module.
 		"image#power" = {
 			on-click = "dash /etc/nixos/Scripts/Power.sh";
-			path = "/etc/nixos/Icons/Power.png";
+			path = "/etc/nixos/Icons/Power.svg";
 			size = 22;
 		};
 
@@ -141,7 +141,7 @@
 			on-click = "alacritty -e btop";
 			on-click-right = ''notify-send "$(sensors)"'';
 			on-click-middle = ''notify-send "$(free -mht)"'';
-			path = "/etc/nixos/Icons/CPU.png";
+			path = "/etc/nixos/Icons/CPU.svg";
 			size = 22;
 		};
 		"cpu" = {
@@ -169,7 +169,7 @@
 			on-click = "alacritty -e btop";
 			on-click-right = ''notify-send "$(sensors)"'';
 			on-click-middle = ''notify-send "$(free -mht)"'';
-			path = "/etc/nixos/Icons/RAM.png";
+			path = "/etc/nixos/Icons/RAM.svg";
 			size = 22;
 		};
 		"memory" = {
@@ -221,7 +221,7 @@
 		"image#close" = {
 			on-click = "hyprctl dispatch killactive";
 			on-click-right = "hyprctl kill";
-			path = "/etc/nixos/Icons/Close.png";
+			path = "/etc/nixos/Icons/Close.svg";
 			size = 22;
 		};
 	};
