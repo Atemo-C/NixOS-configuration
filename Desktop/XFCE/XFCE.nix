@@ -1,22 +1,22 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }: let XFCE = config.services.desktopManager.xfce.enable; in {
 
-	services = rec {
+	services = {
 		# Select the XFCE desktop environment by default when logging in graphically.
-		displayManager.defaultSession = (if xserver.desktopManager.xfce.enable then "xfce" else null);
+		displayManager.defaultSession = if XFCE then "xfce" else null;
 
 		xserver = {
 			# Enable the X server for XFCE.
-			enable = xserver.desktopManager.xfce.enable;
+			enable = XFCE;
 
 			# Exclude undesired packages.
-			excludePackages = [ (if xserver.desktopManager.xfce.enable then pkgs.xterm else null) ];
+			excludePackages = if XFCE then [ pkgs.xterm ] else [];
 
 			desktopManager = {
 				# Enable the XFCE desktop environment.
 				xfce.enable = true;
 
 				# Disable XTerm since XFCE's terminal is already present.
-				xterm.enable = (if xserver.desktopManager.xfce.enable then false else true);
+				xterm.enable = if XFCE then false else null;
 			};
 		};
 	};

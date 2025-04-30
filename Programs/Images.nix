@@ -1,11 +1,10 @@
-{ config, pkgs, ... }: { environment.systemPackages = [
+{ config, pkgs, ... }: let
 
+	Hyprland = config.home-manager.users.${config.userName}.wayland.windowManager.hyprland.enable;
+
+in { environment.systemPackages = [
 	# Extremely simplistic image viewing.
 	pkgs.feh
-
-	# Take screenshots with grimblast.
-	(if config.home-manager.users.${config.userName}.wayland.windowManager.hyprland.enable then
-		pkgs.grimblast else null)
 
 	# The GNU Image Manipulation Program (with plugins).
 	pkgs.gimp3-with-plugins
@@ -28,10 +27,6 @@
 	# Tools and library for the WebP image format.
 	pkgs.libwebp
 
-	# A wlroots-compatible Wayland color picker that does not suck.
-	(if config.home-manager.users.${config.userName}.wayland.windowManager.hyprland.enable then
-		pkgs.hyprpicker else null)
-
 	# A simple color chooser written in GTK3.
 	pkgs.gcolor3
 
@@ -47,4 +42,13 @@
 	# Image viewers.
 	pkgs.lxqt.lximage-qt
 
-]; }
+] ++ (
+	# Only install these packages if Hyprland is enabled.
+	if Hyprland then [
+		# Take screenshots with grimblast.
+		pkgs.grimblast
+
+		# Pick a color on the monitor with Hyprpicker.
+		pkgs.hyprpicker
+	] else []
+); }

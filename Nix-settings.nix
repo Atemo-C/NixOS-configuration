@@ -5,7 +5,7 @@
 	system.stateVersion = "24.11";
 
 	nix.settings = {
-		# Save disk space by hard-linking files in the store that have identical contents.
+		# Whether to save disk space by hard-linking files in the store that have identical contents.
 		auto-optimise-store = true;
 
 		# Increase the size of the download buffer for Nix.

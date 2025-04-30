@@ -1,67 +1,75 @@
-{ config, lib, pkgs, ... }: rec {
+{ config, lib, pkgs, ... }: let
 
-	# Audio & media-related services configuration.
+	Audio = config.services.pipewire.enable;
+	Effects = config.home-manager.users.${config.userName}.services.easyeffects.enable;
+
+in {
+
 	services = {
 		pipewire = {
-			# Enable the PipeWire multimedia framework.
+			# Whether to enable the PipeWire multimedia framework.
 			enable = true;
 
-			# Optionally, add support to emulate other audio servers, for compatibility.
-			# (ALSA, JACK, and PulseAudio)
+			# Whether to enable emulation for the ALSA audio server.
 			alsa = {
-				enable = true;
-				support32Bit = true;
+				enable = Audio;
+				support32Bit = Audio;
 			};
-			jack.enable = true;
-			pulse.enable = true;
+
+			# Whether to enable emulation for the JACK audio server.
+			jack.enable = Audio;
+
+			# Whether to enable emulation for the PulseAudio audio server.
+			pulse.enable = Audio;
 		};
 
-		# Enable the playerctld daemon for easy multimedia control.
-		playerctld.enable = services.pipewire.enable;
+		# Whether to enable the playerctl daemon for easy multimedia control.
+		playerctld.enable = Audio;
 	};
 
-	# Enable the RealtimeKit service to allow PipeWire to acquire realtime priority.
-	security.rtkit.enable = services.pipewire.enable;
+	# Whether to enable the Realtimekit service.
+	# Programs such as PipeWire use it to acquire realtime priority.
+	security.rtkit.enable = Audio;
 
 	environment = {
-		# Link MIDI soundfonts to `/run/current-system/sw/share/soundfonts` to make their access easier.
-		pathsToLink = [ "/share/soundfonts" ];
+		# Link MIDI soundfonts to `/run/current-system/sw/share/soundfonts` for easier access.
+		pathsToLink = if Audio then [ "/share/soundfonts" ] else [];
 
-		systemPackages = [
-			# Lightweight and versatile audio player.
+		systemPackages = if Audio then [
+			# View and edit tags for various audio files.
 			pkgs.audacious pkgs.audacious-plugins
 
 			# View and edit tags for various audio files.
 			pkgs.easytag
 
 			# PipeWire volume control.
-			(if services.pipewire.enable then pkgs.pwvucontrol else null)
+			pkgs.pwvucontrol
 
-			# Qt graph manager (patchbay) for PipeWire.
-			(if services.pipewire.enable then pkgs.qpwgraph else null)
+			# QT graph manager (patchbay) for PipeWire.
+			pkgs.qpwgraph
 
 			# MIDI sound fonts.
-			pkgs.soundfont-fluid
 			pkgs.soundfont-arachno
-			pkgs.soundfont-ydp-grand
+			pkgs.soundfont-fluid
 			pkgs.soundfont-generaluser
+			pkgs.soundfont-ydp-grand
 
 			# Sound editor.
 			pkgs.tenacity
-		];
+		] else [];
 	};
 
-	home-manager.users.${config.userName} = rec {
-		# Enable live audio effects using EasyEffects. Dconf will be enabled automatically as it is needed.
+	home-manager.users.${config.userName} = {
+		# Whether to enable live audio effects using EasyEffects.
 		services.easyeffects.enable = true;
 
-		# Auto-start EasyEffects if it is enabled.
-		wayland.windowManager.hyprland.settings.exec-once = [
-			(if services.easyeffects.enable then "easyeffects --gapplication-service" else null)
-		];
+		# Start EasyEffect on launch if it is enabled.
+		wayland.windowManager.hyprland.settings.exec-once = if Audio then [
+			"easyeffects --gapplication-service"
+		] else [];
 	};
 
 	# Enable Dconf if EasyEffects is enabled.
-	programs.dconf.enable = lib.mkDefault services.easyeffects.enable;
+	programs.dconf.enable = lib.mkDefault Effects;
 
 }

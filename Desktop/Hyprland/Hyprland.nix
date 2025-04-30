@@ -1,6 +1,6 @@
 { config, pkgs, ... }: { home-manager.users.${config.userName}.wayland.windowManager.hyprland = {
 
-	# Enable the Hyprland Wayland compositor.
+	# Whether to enable the Hyprland Wayland compositor.
 	enable = true;
 
 #	# Whether to enable XWayland support; Disabling it will give a Wayland-only desktop.

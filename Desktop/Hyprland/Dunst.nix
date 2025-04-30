@@ -5,7 +5,7 @@
 
 	# Display notifications graphically with Dunst.
 	home-manager.users.${config.userName}.services.dunst = {
-		# Enable the dunst notification daemon.
+		# Enable the dunst notification daemon if Hyprland is used.
 		enable = config.home-manager.users.${config.userName}.wayland.windowManager.hyprland.enable;
 
 		# Dunst settings.

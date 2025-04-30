@@ -1,24 +1,27 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }: let
 
-	environment.systemPackages = [
+	Hyprland = config.home-manager.users.${config.userName}.wayland.windowManager.hyprland.enable;
+
+in {
+
+	environment.systemPackages = if Hyprland then [
 		# Wallpaper utility.
-		(if config.home-manager.users.${config.userName}.wayland.windowManager.hyprland.enable then
-			pkgs.hyprpaper else null)
+		pkgs.hyprpaper
 
 		# Legacy X11 tools, mostly for Xwayland programs.
 		pkgs.xorg.xrandr
 
 		# Keyring.
 		pkgs.gnome-keyring
-	];
+	] else [];
 
-	home-manager.users.${config.userName}.wayland.windowManager.hyprland.settings.exec-once = [
-		# Start the wallpaper utility in the Hyprland Wayland compositor.
-		(if config.home-manager.users.${config.userName}.wayland.windowManager.hyprland.enable then
-			"hyprpaper" else null)
+	# Start relevant utilities when logging into Hyprland.
+	home-manager.users.${config.userName}.wayland.windowManager.hyprland.settings.exec-once = if Hyprland then [
+		# Start the wallpaper utility.
+		"hyprpaper"
 
-		# Start the keyring in the Hyprland Wayland compositor.
-		(if config.home-manager.users.${config.userName}.wayland.windowManager.hyprland.enable then
-			"gnome-keyring-daemon" else null)
-	];
+		# Start the keyring.
+		"gnome-keyring-daemon"
+	] else [];
+
 }

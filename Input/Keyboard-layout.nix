@@ -1,4 +1,8 @@
-{ config, ... }: rec {
+{ config, ... }: let
+
+	Hyprland = config.home-manager.users.${config.userName}.wayland.windowManager.hyprland.enable;
+
+in rec {
 
 	# Keyboard layout configuration to use.
 	# To see a complete list of layouts, variants, and other settings:
@@ -16,13 +20,13 @@
 	};
 
 	# Keyboard layout configuration to use in the Hyprland Wayland compositor.
-	home-manager.users.${config.userName}.wayland.windowManager.hyprland.settings.input = {
+	home-manager.users.${config.userName}.wayland.windowManager.hyprland.settings.input = if Hyprland then {
 		# Keyboard layout to use.
 		kb_layout = services.xserver.xkb.layout;
 
 		# Keyboard layout variant to use.
 		kb_variant = services.xserver.xkb.variant;
-	};
+	} else {};
 
 	# Let the virtual console (TTY) keymap be the same as the one configured in xserver.
 	console.useXkbConfig = true;

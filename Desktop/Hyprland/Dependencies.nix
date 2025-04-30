@@ -1,25 +1,28 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }: let
 
-	# Enable Dconf.
-	programs.dconf.enable = config.home-manager.users.${config.userName}.wayland.windowManager.hyprland.enable;
+	Hyprland = config.home-manager.users.${config.userName}.wayland.windowManager.hyprland.enable;
+
+in {
+
+	# Enable Dconf if Hyprland is used.
+	programs.dconf.enable = Hyprland;
 
 	# XDG Desktop Portals settings.
 	xdg.portal = {
 		# List of packages that provide XDG Desktop Portal configuration.
-		configPackages = [
+		configPackages = if Hyprland then [
 			# Hyprland Desktop Portal.
-			(if config.home-manager.users.${config.userName}.wayland.windowManager.hyprland.enable then
-				pkgs.xdg-desktop-portal-hyprland else null)
+			pkgs.xdg-desktop-portal-hyprland
 
 			# GTK Desktop Portal.
 			pkgs.xdg-desktop-portal-gtk
-		];
+		] else [];
 
 		# Additional portals to add to the path.
-		extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+		extraPortals = if Hyprland then [ pkgs.xdg-desktop-portal-gtk ] else [];
 
 		# Enable XDG Desktop integration, a must on Wayland.
-		enable = config.home-manager.users.${config.userName}.wayland.windowManager.hyprland.enable;
+		enable = Hyprland;
 	};
 
 }

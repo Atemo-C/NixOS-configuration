@@ -1,8 +1,12 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }: let
+
+	Hyprland = config.home-manager.users.${config.userName}.wayland.windowManager.hyprland.enable;
+
+in {
 
 	i18n.inputMethod = {
-		# Enable an additional input method type.
-		enable = config.home-manager.users.${config.userName}.wayland.windowManager.hyprland.enable
+		# Whether to enable an additional input method type in Hyprland.
+		enable = Hyprland;
 
 		# Input method to be used.
 		type = "fcitx5";
@@ -15,8 +19,7 @@
 	};
 
 	# If `i18n.inputMethod.type` is `fcitx5`, add it to startup programs in the Hyprland Wayland compositor.
-	home-manager.users.${config.userName}.wayland.windowManager.hyprland.settings.exec-once = [
-		( if config.i18n.inputMethod.type == "fcitx5" then "fcitx5" else null )
-	];
+	home-manager.users.${config.userName}.wayland.windowManager.hyprland.settings.exec-once = if
+		config.i18n.inputMethod.type == "fcitx5" then [ "fcitx5" ] else [];
 
 }

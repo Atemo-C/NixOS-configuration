@@ -1,14 +1,15 @@
 { config, pkgs, ... }: {
 
 	fonts = {
-		# Enable a basic set of fonts to provide a reasonble coverage of Unicode, including emojis and old characters.
+		# Whether to enable a basic set of fonts to provide a reasonble coverage of Unicode.
+		# Especially useful for emojis and some legacy characters.
 		enableDefaultPackages = true;
 
-		# Create a directory with links to all system fonts in `/run/current-system/sw/share/X11/fonts`.
+		# Whether to link all system fonts in `/run/current-system/sw/share/X11/fonts`.
 		fontDir.enable = true;
 
 		fontconfig = {
-			# Generate system fonts cache for 32-bit applications.
+			# Whether to generate system fonts cache for 32-bit applications.
 			cache32Bit = true;
 
 			# Default fonts to use, per category.

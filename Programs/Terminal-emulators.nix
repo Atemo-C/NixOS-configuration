@@ -1,4 +1,9 @@
-{ config, pkgs, ... }: rec {
+{ config, pkgs, ... }: let
+
+	Alacritty = config.home-manager.users.${config.userName}.programs.alacritty.enable;
+	Hyprland = config.home-manager.users.${config.userName}.wayland.windowManager.hyprland.enable;
+
+in {
 
 	environment = {
 		# Set the default terminal emulator through an environment variable.
@@ -21,12 +26,10 @@
 			};
 		};
 
-		# Start the terminal as a background daemon in the Hyprland Wayland compositor.
-		wayland.windowManager.hyprland.settings.exec-once = [
-			(if config.home-manager.users.${config.userName}.wayland.windowManager.hyprland.enable &&
-			home-manager.users.${config.userName}.programs.alacritty.enable then
-				"alacritty --daemon" else null)
-		];
+		# Start the terminal as a background daemon in the Hyprland if it is used.
+		wayland.windowManager.hyprland.settings.exec-once = if Alacritty && Hyprland then [
+			"alacritty --daemon"
+		] else [];
 	};
 
 }

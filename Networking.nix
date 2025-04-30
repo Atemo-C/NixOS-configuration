@@ -1,27 +1,29 @@
-{ config, pkgs, ... }: rec {
+{ config, pkgs, ... }: let
+
+	Networking = config.networking.networkmanager.enable;
+	Hyprland = config.home-manager.users.${config.userName}.wayland.windowManager.hyprland.enable;
+
+in {
 
 	networking = {
 		# Fork the dhcpcd device to the background to improve boot times.
 		dhcpcd.wait = "background";
 
-		# Name of the system over the network.
+		# Name of the system over the Network.
 		# [a-z] [A-Z] [0-9] [ - ]
-		hostName = "COMPUTER-NAME";
+		hostName = "COMPUTER-HERE";
 
 		# Whether to enable NetworkManager for easy networking.
 		networkmanager.enable = true;
 	};
 
-	# If NetworkManager is enabled, add the user to the `networkmanager` group.
-	users.users.${config.userName}.extraGroups = [
-		(if networking.networkmanager.enable then "networkmanager" else null)
-	];
+	# Add the user to the `networkmanager` group if NetworkManager is enabled.
+	users.users.${config.userName}.extraGroups = if Networking then [ "networkmanager" ] else [];
 
 	# Disable NetworkManager's `wait-online` service to improve boot times.
-	systemd.services.NetworkManager-wait-online.enable = (if networking.networkmanager.enable then false else null);
+	systemd.services.NetworkManager-wait-online.enable = (if Networking then false else null);
 
-	# If NetworkManager and the Hyprland Wayland compositor are enabled, add an applet to control network graphically.
-	programs.nm-applet.enable =
-		networking.networkmanager.enable && config.home-manager.users.${config.userName}wayland.window.Manager.hyprland.enable;
+	# Add an applet to control NetworkManager graphically if both it and Hyprland are enabled.
+	programs.nm-applet.enable = Networking && Hyprland;
 
 }

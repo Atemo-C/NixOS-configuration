@@ -1,7 +1,7 @@
 { config, ... }: rec {
 
 	services.openssh = {
-		# Enable the OpenSSH daemon.
+		# Whether to enable the OpenSSH daemon.
 		enable = true;
 
 		# Which ports the SSH daemon should listen to.
@@ -16,7 +16,7 @@
 			PermitRootLogin = "no";
 		};
 
-		# Only start an instance for each incoming connection.
+		# Whether to only start an instance for each incoming connection.
 		startWhenNeeded = true;
 	};
 
