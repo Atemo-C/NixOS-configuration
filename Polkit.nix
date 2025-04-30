@@ -9,7 +9,7 @@ in {
 	security.polkit.enable = true;
 
 	# QT Polkit agent for Hyprland.
-	environment.systemPackages = if Hyprland then [ pkgs.hyprpolkitagent ] else [];
+	environment.systemPackages = if Hyprland && Polkit then [ pkgs.hyprpolkitagent ] else [];
 
 	# Start the Polkit agent in Hyprland.
 	home-manager.users.${config.userName}.wayland.windowManager.hyprland.settings.exec-once = if
