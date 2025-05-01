@@ -1,13 +1,13 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }: let EFI = pkgs.stdenv.hostPlatform.isEfi; in {
 
 	boot.loader = {
 		limine = {
 			# Whether to enable the Limine bootloader.
 			enable = true;
 
-			# If booting in BIOS mode, select the drive to install the bootloader onto.
-			# You can see its name by doing `ls /dev/disk/by-id`.
-#			biosDevice = if ! pkgs.stdenv.hostPlatform.isEfi then "/dev/disk/by-id/disk-here" else "nodev";
+			# If booting in BIOS mode, select the drive to install Limine onto.
+			# You can see its name by running the command `ls /dev/disk/by-id`.
+#			biosDevice = if EFI then "nodev" else "nvme-Samsung_SSD_970_EVO_Plus_1TB_S4EWNX0W519865N";
 
 			# Maximum number of latest NixOS generations to keep in the boot menu.
 			# This prevents the boot partition from running out of disk space.
@@ -18,10 +18,10 @@
 		timeout = 10;
 
 		# If on an EFI system, allow the installation process to modify EFI boot variables.
-		efi.canTouchEfiVariables = pkgs.stdenv.hostPlatform.isEfi;
+		efi.canTouchEfiVariables = EFI;
 	};
 
 	# If on an EFI system, install a utility to manually modify the EFI boot manager and its entries.
-	environment.systemPackages = if pkgs.stdenv.hostPlatform.isEfi then [ pkgs.efibootmgr ] else [];
+	environment.systemPackages = if EFI then [ pkgs.efibootmgr ] else [];
 
 }
