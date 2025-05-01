@@ -1,2 +1,10 @@
-# Override the Linux kernel used by NixOS.
-{ config, pkgs, ... }: { boot.kernelPackages = pkgs.linuxPackages_zen; }
+{ config, pkgs, ... }: { boot = {
+
+	# Change the compression type of the initramfs to improve boot times.
+	# The effect is only really noticeable on old hardware.
+	boot.initrd.compressor = "cat";
+
+	# Override the Linux kernel used by NixOS.
+	kernelPackages = pkgs.linuxPackages_zen;
+
+}; }
