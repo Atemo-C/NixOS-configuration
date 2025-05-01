@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }: rec {
 
 	# AppImages.
 	programs.appimage = {
@@ -11,5 +11,8 @@
 
 	# Whether to enable the Flatpak packaging system.
 	services.flatpak.enable = true;
+
+	# Enable Dconf if Flatpak is enabled.
+	programs.dconf.enable = (if services.flatpak.enable then true else null);
 
 }
