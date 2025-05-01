@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: let XFCE = config.services.desktopManager.xfce.enable; in {
+{ config, pkgs, ... }: let XFCE = config.services.xserver.desktopManager.xfce.enable; in {
 
 	services = {
 		# Select the XFCE desktop environment by default when logging in graphically.
