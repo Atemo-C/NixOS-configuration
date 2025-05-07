@@ -37,11 +37,11 @@ c=$(tput sgr0)
 [ "$1" = "--check" ] && {
 	echo "${ico}  ${arg}Hyprpaper.sh${c}\n"
 
-	# Check if libnotify is installed.
-	command -v notify-send > /dev/null 2>&1 && {
-		echo "✅ ${exe}libnotify${c} is installed."
+	# Check if Dunst is installed.
+	command -v dunstify > /dev/null 2>&1 && {
+		echo "✅ ${exe}Dunst${c} is installed."
 	} ||
-		echo "❌ ${exe}libnotify${c} is not installed. It is required to display graphical notifications. The script will not run without it."
+		echo "❌ ${exe}Dunst${c} is not installed. It is required to display graphical notifications. The script will not run without it."
 
 	# Check if Zenity is installed.
 	command -v zenity > /dev/null 2>&1 && {
@@ -66,29 +66,29 @@ c=$(tput sgr0)
 
 # When no argument is provided, start the wallpaper selection process.
 [ "$1" = "" ] && {
-	# Check if libnotify is installed.
-	command -v notify-send || {
-		echo "${err}: libnotify could not be found. It is required to display graphical notifications."
+	# Check if Dunst is installed.
+	command -v dunstify || {
+		echo "${err}: Dunst could not be found. It is required to display graphical notifications."
 		exit 1
 	}
 
 	# Check if Hyprland is the active Wayland compositor.
 	[ "$XDG_CURRENT_DESKTOP" = "Hyprland" ] || {
-		notify-send "Error: This wallpaper utility can only be used with the Hyprland Wayland compositor."
+		dunstify "Error: This wallpaper utility can only be used with the Hyprland Wayland compositor."
 		echo "${err}: This wallpaper utility can only be used with the ${exe}Hyprland${c} Wayland compositor."
 		exit 1
 	}
 
 	# Check if Zenity is installed.
 	command -v zenity || {
-		notify-send "Error: zenity could not be found. It is required to select a wallpaper."
+		dunstify "Error: zenity could not be found. It is required to select a wallpaper."
 		echo "${err}: ${exe}zenity${c} could not be found. It is required to select a wallpaper."
 		exit 1
 	}
 
 	# Check if Hyprpaper is installed.
 	command -v hyprpaper || {
-		notify-send "Error: hyprpaper could not be found. It is required to apply a wallpaper."
+		dunstify "Error: hyprpaper could not be found. It is required to apply a wallpaper."
 		echo "${err}: ${exe}hyprpaper${c} could not be found. It is required to apply a wallpaper."
 		exit 1
 	}
@@ -126,7 +126,7 @@ c=$(tput sgr0)
 
 	# If an error occurs or the file picker is closed, display an error message.
 	[ "$Out" = "1" ] && {
-		notify-send "Error: An error occurred, or the file selection was closed before selecting a wallpaper."
+		dunstify "Error: An error occurred, or the file selection was closed before selecting a wallpaper."
 		echo "${err}: An error occurred, or the file selection was closed before selecting a wallpaper."
 		exit 1
 	}

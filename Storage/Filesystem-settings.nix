@@ -1,6 +1,6 @@
 { config, ... }: { services = {
 
-	# Enable periodic scrubbing on BTRFS.
+	# Whether to enable periodic scrubbing on BTRFS.
 	btrfs.autoScrub.enable = true;
 
 	# Whether to enable periodic SSD TRIM.

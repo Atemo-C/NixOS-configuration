@@ -1,6 +1,6 @@
 { config, pkgs, ... }: { home-manager.users.${config.userName}.programs.waybar = {
 
-	# Enable the Waybar bar if Hyprland is used.
+	# If Hyprland is enabled, enable the Waybar bar.
 	enable = config.home-manager.users.${config.userName}.wayland.windowManager.hyprland.enable;
 
 	# Whether to enable Waybar systemd integration.
@@ -99,7 +99,7 @@
 		"image#clipboard" = rec {
 			on-click = "clipman pick -t CUSTOM -T tofi";
 			on-click-right = "alacritty -e micro $HOME/Documents/Clipboard.txt";
-			on-click-middle = "clipman clear --all & notify-send -t 1500 'Clipboard cleared.'";
+			on-click-middle = "clipman clear --all & dunstify -t 1500 'Clipboard cleared.'";
 			on-click-backward = "alacritty -e micro $HOME/Documents/Bookmarks.txt";
 			on-click-forward = on-click-backward;
 			path = "/etc/nixos/Icons/Clipboard.svg";
@@ -139,8 +139,8 @@
 		# • [MMB] Shows detailed current memory usage at a glance.
 		"image#cpu" = {
 			on-click = "alacritty -e btop";
-			on-click-right = ''notify-send "$(sensors)"'';
-			on-click-middle = ''notify-send "$(free -mht)"'';
+			on-click-right = ''dunstify "$(sensors)"'';
+			on-click-middle = ''dunstify "$(free -mht)"'';
 			path = "/etc/nixos/Icons/CPU.svg";
 			size = 22;
 		};
@@ -148,8 +148,8 @@
 			format = "{usage}% ";
 			interval = 1;
 			on-click = "alacritty -e btop";
-			on-click-right = ''notify-send "$(sensors)"'';
-			on-click-middle = ''notify-send "$(free -mht)"'';
+			on-click-right = ''dunstify "$(sensors)"'';
+			on-click-middle = ''dunstify "$(free -mht)"'';
 		};
 		"temperature" = {
 			critical-threshold = 75;
@@ -157,8 +157,8 @@
 			hwmon-path = "/sys/class/hwmon/hwmon1/temp1_input";
 			interval = 1;
 			on-click = "alacritty -e btop";
-			on-click-right = ''notify-send "$(sensors)"'';
-			on-click-middle = ''notify-send "$(free -mht)"'';
+			on-click-right = ''dunstify "$(sensors)"'';
+			on-click-middle = ''dunstify "$(free -mht)"'';
 		};
 
 		# RAM monitoring modules.
@@ -167,8 +167,8 @@
 		# • [MMB] Shows detailed current system temperatures at a glance.
 		"image#ram" = {
 			on-click = "alacritty -e btop";
-			on-click-right = ''notify-send "$(sensors)"'';
-			on-click-middle = ''notify-send "$(free -mht)"'';
+			on-click-right = ''dunstify "$(sensors)"'';
+			on-click-middle = ''dunstify "$(free -mht)"'';
 			path = "/etc/nixos/Icons/RAM.svg";
 			size = 22;
 		};
@@ -176,8 +176,8 @@
 			format = "{percentage}%";
 			interval = 1;
 			on-click = "alacritty -e btop";
-			on-click-right = ''notify-send "$(sensors)"'';
-			on-click-middle = ''notify-send "$(free -mht)"'';
+			on-click-right = ''dunstify "$(sensors)"'';
+			on-click-middle = ''dunstify "$(free -mht)"'';
 		};
 
 		# Battery monitoring module.

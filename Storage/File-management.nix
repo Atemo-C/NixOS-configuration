@@ -13,7 +13,7 @@
 
 	programs = rec {
 		thunar = {
-			# Enable Thunar, the Xfce file manager.
+			# Whether to enable Thunar, the Xfce file manager.
 			enable = true;
 
 			# List of Thunar plugins to install.

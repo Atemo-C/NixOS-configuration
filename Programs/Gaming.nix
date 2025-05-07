@@ -1,4 +1,10 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }: let
+
+	gamescope = config.programs.gamescope.enable;
+	gamemode  = config.programs.gamemode.enable;
+	steam     = config.programs.steam.enable;
+
+in {
 
 	# Games, emulators, and other relevant packages to install.
 	environment.systemPackages = [
@@ -32,38 +38,40 @@
 
 	programs = {
 		gamemode = {
-			# Enable GameMode to optimise system performance on demand for gaming.
+			# Whether to enable GameMode to optimise system performance on demand for gaming.
 			enable = true;
 
 			# System-wide configuration for GameMode (/etc/gamemode.ini).
-			settings.general = { inhibit_screensaver = 0; };
+			settings.general = if gamemode then { inhibit_screensaver = 0; } else {};
 		};
 
-		# Enable gamescope, the SteamOS session compositing window manager.
+		# Whether to enable Gamescope, the SteamOS session compositing window manager.
 		gamescope.enable = true;
 
 		steam = {
-			# Enable Steam.
+			# Whether to enable Steam.
 			enable = true;
 
 			# Enable loading the extest library into Steam, to translate X11 input events to uinput events.
 			# (e.g. for using Steam Input on Wayland).
-			extest.enable = steam.enable;
+			extest.enable = steam;
 
 			# Extra packages to be used as compatibility tools for Steam on Linux.
-			extraCompatPackages = [ pkgs.proton-ge-bin ];
+			extraCompatPackages = if steam then [ pkgs.proton-ge-bin ] else [];
 
 			# Additional packages to add to the Steam environment.
-			extraPackages = [
+			extraPackages = if steam && gamescope then [
 				# SteamOS session compositing window manager.
-				(if gamescope.enable then pkgs.gamescope else null)
-
-				# Optimise Linux system performance for gaming on demand.
-				(if gamemode.enable then pkgs.gamemode else null)
-			];
+				pkgs.gamescope
+			] else [] ++ (
+				if steam && gamemode then [
+					# Optimise Linux system performance for gaming on demand.
+					pkgs.gamemode
+				] else []
+			);
 
 			# Whether to open ports in the firewall for Steam Retome Play.
-			remotePlay.openFirewall = steam.enable;
+			remotePlay.openFirewall = steam;
 		};
 	};
 

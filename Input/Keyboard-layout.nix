@@ -1,6 +1,6 @@
 { config, ... }: let
 
-	Hyprland = config.home-manager.users.${config.userName}.wayland.windowManager.hyprland.enable;
+	hyprland = config.home-manager.users.${config.userName}.wayland.windowManager.hyprland.enable;
 
 in rec {
 
@@ -20,7 +20,7 @@ in rec {
 	};
 
 	# Keyboard layout configuration to use in the Hyprland Wayland compositor.
-	home-manager.users.${config.userName}.wayland.windowManager.hyprland.settings.input = if Hyprland then {
+	home-manager.users.${config.userName}.wayland.windowManager.hyprland.settings.input = if hyprland then {
 		# Keyboard layout to use.
 		kb_layout = services.xserver.xkb.layout;
 

@@ -2,6 +2,7 @@
 
 	environment.systemPackages = [
 		# A monitor of resources.
+		# If the NVIDIA drivers are used, support for it is enabled.
 		pkgs.btop
 
 		# Free software that gathers information on CPU, motherboard and more.
@@ -30,12 +31,12 @@
 	];
 
 	# Fastfetch, like Neofetch, but in C, much faster, and actually maintained.
-	home-manager.users.${config.userName}.programs.fastfetch = {
+	home-manager.users.${config.userName}.programs.fastfetch = rec {
 		# Whether to enable fastfetch.
 		enable = true;
 
 		# Fastfetch configuration.
-		settings = {
+		settings = if enable then {
 			"$schema" = "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json";
 			logo = "none";
 			modules = [
@@ -244,7 +245,7 @@
 				}
 				"break"
 			];
-		};
+		} else {};
 	};
 
 }

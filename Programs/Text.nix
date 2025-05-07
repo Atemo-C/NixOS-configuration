@@ -1,7 +1,6 @@
 { config, pkgs, ... }: let
 
-	Hyprland = config.home-manager.users.${config.userName}.wayland.windowManager.hyprland.enable;
-	XFCE = config.services.desktopManager.xfce.enable;
+	hyprland = config.home-manager.users.${config.userName}.wayland.windowManager.hyprland.enable;
 
 in {
 
@@ -27,7 +26,7 @@ in {
 			pkgs.hunspellDicts.fr-any
 		] ++ (
 			# Only install these utilities if Hyprland is used.
-			if Hyprland then [
+			if hyprland then [
 				# A simple clipboard manager for Wayland.
 				pkgs.clipman
 
@@ -47,7 +46,7 @@ in {
 	programs.nano.enable = false;
 
 	# Start the clipboard manager in Hyprland if it is used.
-	home-manager.users.${config.userName}.wayland.windowManager.hyprland.settings.exec-once = if Hyprland then [
+	home-manager.users.${config.userName}.wayland.windowManager.hyprland.settings.exec-once = if hyprland then [
 		"wl-paste -t text --watch clipman store --no-persist --max-items=100"
 	] else [];
 

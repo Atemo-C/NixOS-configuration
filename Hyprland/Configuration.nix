@@ -334,7 +334,7 @@
 			"SUPER SHIFT, V, exec, clipman pick -t CUSTOM -T tofi"
 
 			# Clear the clipboard.
-			"SUPER CONTROL, V, exec, clipman clear --all & notify-send -t 1500 'Clipboard cleared'"
+			"SUPER CONTROL, V, exec, clipman clear --all & dunstify -t 1500 'Clipboard cleared'"
 
 			# Opens a "primary" clipboard file.
 			''ALT, V, exec, alacritty -e micro "$HOME/Documents/Clipboard.txt"''
@@ -430,6 +430,10 @@
 			# Tags for specific application types.
 			"tag +term, class: (Alacritty|lxterminal|kitty|cool-retro-term.|XTerm)"
 			"tag +tear, fullscreen:1, class: (steam_proton|steam_app|Luanti|com.mojang.minecraft|org.vinegarhq.Sober|.*Better than Adventrue.*|mcpelauncher-client)"
+			"tag +tear, fullscreen:1, title: Minecraft"
+
+			# Set content that should be affected by variable refresh rate.
+			"content game, tag: tear"
 
 			# Disable blur for floating windows.
 			"prop noblur, floating:1"

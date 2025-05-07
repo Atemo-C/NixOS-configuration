@@ -2,7 +2,7 @@
 
 	# Which version of NixOS was initially installed on the current system.
 	# There is no need to change it post-installation, even when upgrading to a newer NixOS version.
-	system.stateVersion = "24.11";
+	system.stateVersion = "25.05";
 
 	nix.settings = {
 		# Whether to save disk space by hard-linking files in the store that have identical contents.

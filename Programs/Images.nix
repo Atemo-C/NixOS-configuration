@@ -1,6 +1,6 @@
 { config, pkgs, ... }: let
 
-	Hyprland = config.home-manager.users.${config.userName}.wayland.windowManager.hyprland.enable;
+	hyprland = config.home-manager.users.${config.userName}.wayland.windowManager.hyprland.enable;
 
 in { environment.systemPackages = [
 	# Extremely simplistic image viewing.
@@ -17,6 +17,9 @@ in { environment.systemPackages = [
 
 	# A software suite to create, edit, compose, or convert bitmap images.
 	pkgs.imagemagick
+
+	# Vector graphics editor
+	pkgs.inkscape
 
 	# JPEG XL image format reference implementation.
 	pkgs.libjxl
@@ -44,11 +47,12 @@ in { environment.systemPackages = [
 
 ] ++ (
 	# Only install these packages if Hyprland is enabled.
-	if Hyprland then [
+	if hyprland then [
 		# Take screenshots with grimblast.
 		pkgs.grimblast
 
 		# Pick a color on the monitor with Hyprpicker.
 		pkgs.hyprpicker
 	] else []
+
 ); }

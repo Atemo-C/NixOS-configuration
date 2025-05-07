@@ -1,6 +1,9 @@
-{ config, pkgs, ... }: let home-manager = builtins.fetchTarball
-"https://github.com/nix-community/home-manager/archive/master.tar.gz";
+{ config, pkgs, ... }: let
+
+	home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
+
 in {
+
 	# Import the Home Manager module.
 	imports = [ (import "${home-manager}/nixos") ];
 
@@ -16,4 +19,5 @@ in {
 			root.home.stateVersion = "${config.system.stateVersion}";
 		};
 	};
+
 }

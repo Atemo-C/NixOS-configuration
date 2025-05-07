@@ -1,11 +1,11 @@
-{ config, pkgs, ... }: rec {
+{ config, pkgs, ... }: {
 
-	hardware.graphics = {
-		# Enable hardware accelerated graphics drivers.
+	hardware.graphics = rec {
+		# Whether to enable hardware accelerated graphics drivers.
 		enable = true;
 
 		# Also install 32-bit drivers for 32-bit applications.
-		enable32Bit = hardware.graphics.enable;
+		enable32Bit = enable;
 
 		# Extra packages for hardware acceleration.
 		# There should be little to no conflicts with multiple of them installed.

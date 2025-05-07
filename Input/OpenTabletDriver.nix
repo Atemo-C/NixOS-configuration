@@ -5,7 +5,7 @@
 		# Whether to start the OpenTabletDriver daemon as a systemd user service.
 		daemon.enable = true;
 
-		# Enable OpenTabletDriver udev rules, user service and blacklist kernel modules that conflict with it.
+		# Whether to enable OpenTabletDriver udev rules, user service, and blacklist kernel modules that conflict with it.
 		enable = true;
 	};
 

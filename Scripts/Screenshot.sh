@@ -76,11 +76,11 @@ c=$(tput sgr0)
 [ "$1" = "--check" ] && {
 	echo "${ico}  ${arg}Screenshot.sh${c}\n"
 
-	# Check if libnotify is installed.
-	command -v notify-send > /dev/null 2>&1 && {
-		echo "✅ ${exe}libnotify${c} is installed."
+	# Check if Dunst is installed.
+	command -v dunstify > /dev/null 2>&1 && {
+		echo "✅ ${exe}Dunst${c} is installed."
 	} ||
-		echo "❌ ${exe}libnotify${c} is not installed. It is required to display graphical notifications. The script will not run without it."
+		echo "❌ ${exe}Dunst${c} is not installed. It is required to display graphical notifications. The script will not run without it."
 
 	# Check if grimblast is installed.
 	command -v grimblast > /dev/null 2>&1 && {
@@ -89,7 +89,7 @@ c=$(tput sgr0)
 		echo "❌ ${exe}grimblast is not installed. It is required to take screenshots. The script will not run without it."
 
 	# Check if oxipng is installed.
-	command -v notify-send > /dev/null 2>&1 && {
+	command -v dunstify > /dev/null 2>&1 && {
 		echo "✅ ${exe}oxipng${c} is installed."
 	} ||
 		echo "❌ ${exe}oxipng${c} is not installed. It is required to optimize saved screenshots. The script will only run when using the ${arg}--copy${c} argument."
@@ -111,22 +111,22 @@ c=$(tput sgr0)
 
 # Check for the --copy argument and its sub-arguments.
 [ "$1" = "--copy" ] && {
-	# Check if libnotify is installed.
-	command -v notify-send || {
-		echo "${err}: libnotify could not be found. It is required to display graphical notifications."
+	# Check if Dunst is installed.
+	command -v dunstify || {
+		echo "${err}: Dunst could not be found. It is required to display graphical notifications."
 		exit 1
 	}
 
 	# Check if Hyprland is the active Wayland compositor.
 	[ "$XDG_CURRENT_DESKTOP" = "Hyprland" ] || {
-		notify-send "Error: This screenshot utility can only be used with the Hyprland Wayland compositor."
+		dunstify "Error: This screenshot utility can only be used with the Hyprland Wayland compositor."
 		echo "${err}: This screenshot utility can only be used with the ${exe}Hyprland${c} Wayland compositor."
 		exit 1
 	}
 
 	# Check if grimblast is installed.
 	command -v grimblast || {
-		notify-send "Error: grimblast could not be found. It is required to take screenshots."
+		dunstify "Error: grimblast could not be found. It is required to take screenshots."
 		echo "${err}: ${exe}grimblast${c} could not be found. It is required to take screenshots."
 		exit 1
 	}
@@ -143,36 +143,36 @@ c=$(tput sgr0)
 
 # Check for the --save argument and its sub-arguments.
 [ "$1" = "--save" ] && {
-	# Check if libnotify is installed.
-	command -v notify-send || {
-		echo "${err}: libnotify could not be found. It is required to display graphical notifications."
+	# Check if Dunst is installed.
+	command -v dunstify || {
+		echo "${err}: Dunst could not be found. It is required to display graphical notifications."
 		exit 1
 	}
 
 	# Check if Hyprland is the active Wayland compositor.
 	[ "$XDG_CURRENT_DESKTOP" = "Hyprland" ] || {
-		notify-send "Error: This screenshot utility can only be used with the Hyprland Wayland compositor."
+		dunstify "Error: This screenshot utility can only be used with the Hyprland Wayland compositor."
 		echo "${err}: This screenshot utility can only be used with the ${exe}Hyprland${c} Wayland compositor."
 		exit 1
 	}
 
 	# Check if grimblast is installed.
 	command -v grimblast || {
-		notify-send "Error: grimblast could not be found. It is required to take screenshots."
+		dunstify "Error: grimblast could not be found. It is required to take screenshots."
 		echo "${err}: ${exe}grimblast${c} could not be found. It is required to take screenshots."
 		exit 1
 	}
 
 	# Check if oxipng is installed.
 	command -v oxipng || {
-		notify-send "Error: oxipng could not be found. It is required to optimize the saved screenshot."
+		dunstify "Error: oxipng could not be found. It is required to optimize the saved screenshot."
 		echo "${err}: ${exe}oxipng${c} could not be found. It is required to optimize the saved screenshot."
 		exit 1
 	}
 
 	# Check if imagemagick is installed.
 	command -v magick || {
-		notify-send "Error: imagemagick could not be found. It is required to convert the saved screenshot to a WEBP image."
+		dunstify "Error: imagemagick could not be found. It is required to convert the saved screenshot to a WEBP image."
 		echo "${err}: ${exe}imagemagick${c} could not be found. It is required to convert the saved screenshot to a WEBP image."
 		exit 1
 	}

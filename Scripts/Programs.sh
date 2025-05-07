@@ -55,11 +55,11 @@ c=$(tput sgr0)
 [ "$1" = "--check" ] && {
 	echo "${ico}  ${arg}Programs.sh${c}\n"
 
-	# Check if libnotify is installed.
-	command -v notify-send > /dev/null 2>&1 && {
-		echo "✅ ${exe}libnotify${c} is installed."
+	# Check if Dunst is installed.
+	command -v dunstify > /dev/null 2>&1 && {
+		echo "✅ ${exe}Dunst${c} is installed."
 	} ||
-		echo "❌ ${exe}libnotify${c} is not installed. It is required to display graphical notifications. The script will not run without it."
+		echo "❌ ${exe}Dunst${c} is not installed. It is required to display graphical notifications. The script will not run without it."
 
 	# Check if Tofi is installed.
 	command -v tofi > /dev/null 2>&1 && {
@@ -78,22 +78,22 @@ c=$(tput sgr0)
 
 # When no argument is provided, start the program selection process.
 [ "$1" = "" ] && {
-	# Check if libnotify is installed.
-	command -v notify-send || {
-		echo "${err}: libnotify could not be found. It is required to display graphical notifications."
+	# Check if Dunst is installed.
+	command -v dunstify || {
+		echo "${err}: Dunst could not be found. It is required to display graphical notifications."
 		exit 1
 	}
 
 	# Check if Hyprland is the active Wayland compositor.
 	[ "$XDG_CURRENT_DESKTOP" = "Hyprland" ] || {
-		notify-send "Error: This program menu can only be used with the Hyprland Wayland compositor."
+		dunstify "Error: This program menu can only be used with the Hyprland Wayland compositor."
 		echo "${err}: This program menu can only be used with the ${exe}Hyprland${c} Wayland compositor."
 		exit 1
 	}
 
 	# Check if Tofi is installed.
 	command -v tofi || {
-		notify-send "Error: Tofi could not be found. It is necessary to display the graphical menu."
+		dunstify "Error: Tofi could not be found. It is necessary to display the graphical menu."
 		echo "${err}: ${exe}Tofi${c} could not be found. It is necessary to display the graphical menu."
 		exit 1
 	}
@@ -347,6 +347,10 @@ $Programs
 $Programs
   Hyprpaper            Set desktop background/wallpaper"
 
+	command -v inkscape && Programs="
+$Programs
+  Inkscape             Vector graphics (SVG) editor"
+
 	command -v krita && Programs="
 $Programs
   Krita                Digital painting"
@@ -561,7 +565,7 @@ $Programs
 	}
 
 	[ "$Program" = "  Sober                Roblox client" ] && {
-		nohup org.vinegarhq.Sober > /dev/null 2>&1 & exit
+		nohup org.vinegarhq.Sober --bootstrap > /dev/null 2>&1 & exit
 	}
 
 	[ "$Program" = "  Steam                Valve winning by doing nothing" ] && {
@@ -680,6 +684,10 @@ $Programs
 
 	[ "$Program" = "  Hyprpaper            Set desktop background/wallpaper" ] && {
 		nohup dash "/etc/nixos/Scripts/Hyprpaper.sh" > /dev/null 2>&1 & exit
+	}
+
+	[ "$Program" = "  Inkscape             Vector graphics (SVG) editor" ] && {
+		nohup inkscape > /dev/null 2>&1 & exit
 	}
 
 	[ "$Program" = "  Krita                Digital painting" ] && {

@@ -1,7 +1,7 @@
 { config, pkgs, ... }: let
 
-	Polkit = config.security.polkit.enable;
-	Hyprland = config.home-manager.users.${config.userName}.wayland.windowManager.hyprland.enable;
+	polkit = config.security.polkit.enable;
+	hyprland = config.home-manager.users.${config.userName}.wayland.windowManager.hyprland.enable;
 
 in {
 
@@ -9,10 +9,10 @@ in {
 	security.polkit.enable = true;
 
 	# QT Polkit agent for Hyprland.
-	environment.systemPackages = if Hyprland && Polkit then [ pkgs.hyprpolkitagent ] else [];
+	environment.systemPackages = if hyprland && polkit then [ pkgs.hyprpolkitagent ] else [];
 
 	# Start the Polkit agent in Hyprland.
 	home-manager.users.${config.userName}.wayland.windowManager.hyprland.settings.exec-once = if
-		Polkit && Hyprland then [ "systemctl --user start hyprpolkitagent" ] else [];
+		polkit && hyprland then [ "systemctl --user start hyprpolkitagent" ] else [];
 
 }

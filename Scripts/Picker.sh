@@ -37,11 +37,11 @@ c=$(tput sgr0)
 [ "$1" = "--check" ] && {
 	echo "${ico}  ${arg}Picker.sh${c}\n"
 
-	# Check if libnotify is installed.
-	command -v notify-send > /dev/null 2>&1 && {
-		echo "✅ ${exe}libnotify${c} is installed."
+	# Check if Dunst is installed.
+	command -v dunstify > /dev/null 2>&1 && {
+		echo "✅ ${exe}Dunst${c} is installed."
 	} ||
-		echo "❌ ${exe}libnotify${c} is not installed. It is required to display graphical notifications. The script will not run without it."
+		echo "❌ ${exe}Dunst${c} is not installed. It is required to display graphical notifications. The script will not run without it."
 
 	# Check if hyprpicker is installed.
 	command -v hyprpicker > /dev/null 2>&1 && {
@@ -60,22 +60,22 @@ c=$(tput sgr0)
 
 # When no argument is provided, start the color picking process.
 [ "$1" = "" ] && {
-	# Check if libnotify is installed.
-	command -v notify-send || {
-		echo "${err}: libnotify could not be found. It is required to display graphical notifications."
+	# Check if Dunst is installed.
+	command -v dunstify || {
+		echo "${err}: Dunst could not be found. It is required to display graphical notifications."
 		exit 1
 	}
 
 	# Check if Hyprland is the active Wayland compositor.
 	[ "$XDG_CURRENT_DESKTOP" = "Hyprland" ] || {
-		notify-send "Error: This color picking utility can only be used with the Hyprland Wayland compositor."
+		dunstify "Error: This color picking utility can only be used with the Hyprland Wayland compositor."
 		echo "${err}: This color picking utility can only be used with the ${exe}Hyprland${c} Wayland compositor."
 		exit 1
 	}
 
 	# Check if hyprpicker is installed.
 	command -v hyprpicker || {
-		notify-send "Error: hyprpicker could not be found. It is required to pick a color on the screen."
+		dunstify "Error: hyprpicker could not be found. It is required to pick a color on the screen."
 		echo "${err}: ${exe}hyprpicker${c} could not be found. It is required to pick a color on the screen."
 		exit 1
 	}
@@ -85,14 +85,14 @@ c=$(tput sgr0)
 	Out=$?
 	# Notify the user when a color has been picked.
 	[ "$Out" = "0" ] && {
-		notify-send -t 1500 "$Color copied to the clipboard."
+		dunstify -t 1500 "$Color copied to the clipboard."
 		echo "${ico}$Color${c} copied to the clipboard."
 		exit
 	}
 
 	# Notify the user when the color selection process has been aborted.
 	[ "$Out" = "1" ] && {
-		notify-send -t 1500 "The color picking process has been aborted."
+		dunstify -t 1500 "The color picking process has been aborted."
 		echo "The color picking process has been aborted."
 		exit 1
 	}

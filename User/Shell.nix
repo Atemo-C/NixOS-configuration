@@ -45,7 +45,7 @@
 
 			# Toggling recent files.
 			enable-recent-files = "run0 rm -v -i ~/.local/share/recently-used.xbel";
-			disable-recent-files = "run0 rm -v -i ~/.local/share/recently-used.xbel; run0 chattr -V +i ~/.local/share/recently-used.xbel";
+			disable-recent-files = "run0 rm -v -i ~/.local/share/recently-used.xbel; touch ~/.local/share/recently-used.xbel && run0 chattr -V +i ~/.local/share/recently-used.xbel";
 
 			# NixOS.
 			channel-list = "run0 nix-channel --list";
@@ -54,10 +54,8 @@
 			nix-clean = "run0 nix-collect-garbage -d --quiet";
 			nix-test = ''set -x CURRENTDIR $(pwd) && cd /tmp/ && run0 nixos-rebuild test --quiet; cd "$CURRENTDIR"'';
 			nix-update-now = "run0 nixos-rebuild switch --quiet";
-			nix-update-now-nvidia = "run0 nixos-rebuild --specialisation NVIDIA switch --quiet";
 			nix-update-boot = "run0 nixos-rebuild boot --quiet";
 			nix-upgrade-now = "run0 nixos-rebuild switch --upgrade --quiet";
-			nix-upgrade-now-nvidia = "run0 nixos-rebuild --specialisation NVIDIA switch --upgrade --quiet";
 			nix-upgrade-boot = "run0 nixos-rebuild boot --upgrade --quiet";
 
 			# Flatpaks and FlatHub.

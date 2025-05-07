@@ -50,11 +50,11 @@ Script() {
 [ "$1" = "--check" ] && {
 	echo "${ico}  ${arg}Power.sh${c}\n"
 
-	# Check if libnotify is installed.
-	command -v notify-send > /dev/null 2>&1 && {
-		echo "✅ ${exe}libnotify${c} is installed."
+	# Check if Dunst is installed.
+	command -v dunstify > /dev/null 2>&1 && {
+		echo "✅ ${exe}Dunst${c} is installed."
 	} ||
-		echo "❌ ${exe}libnotify${c} is not installed. It is required to display graphical notifications. The script will not run without it."
+		echo "❌ ${exe}Dunst${c} is not installed. It is required to display graphical notifications. The script will not run without it."
 
 	# Check if Tofi is installed.
 	command -v tofi > /dev/null 2>&1 && {
@@ -73,22 +73,22 @@ Script() {
 
 # When no argument is provided, start the power action selection process.
 [ "$1" = "" ] && {
-	# Check if libnotify is installed.
-	command -v notify-send || {
-		echo "${err}: libnotify could not be found. It is required to display graphical notifications."
+	# Check if Dunst is installed.
+	command -v dunstify || {
+		echo "${err}: Dunst could not be found. It is required to display graphical notifications."
 		exit 1
 	}
 
 	# Check if Hyprland is the active Wayland compositor.
 	[ "$XDG_CURRENT_DESKTOP" = "Hyprland" ] || {
-		notify-send "Error: This power utility can only be used with the Hyprland Wayland compositor."
+		dunstify "Error: This power utility can only be used with the Hyprland Wayland compositor."
 		echo "${err}: This power utility can only be used with the ${exe}Hyprland${c} Wayland compositor."
 		exit 1
 	}
 
 	# Check if Tofi is installed.
 	command -v tofi || {
-		notify-send "Error: Tofi could not be found. It is necessary to display the graphical menu."
+		dunstify "Error: Tofi could not be found. It is necessary to display the graphical menu."
 		echo "${err}: ${exe}Tofi${c} could not be found. It is necessary to display the graphical menu."
 		exit 1
 	}
@@ -279,7 +279,7 @@ $Options
 	}
 
 	[ "$Choice" = "󰺟  Halt" ] && {
-		notify-send "Manually turn off the power once the system is halted. This is archaic."
+		dunstify "Manually turn off the power once the system is halted. This is archaic."
 		echo "Manually turn off the power once the system is halted. This is archaic."
 		Answer=$(printf '%s\n' "$Confirmations" | tofi \
 			--width 116 \

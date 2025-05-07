@@ -1,16 +1,11 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }: { home-manager.users.${config.userName}.services.dunst = {
 
-	# A library that sends desktop notification to a notification daemon.
-	environment.systemPackages = [ pkgs.libnotify ];
+	# If Hyprland is enabled, display notifications graphically with Dunst.
+	enable = true;
 
-	# Display notifications graphically with Dunst.
-	home-manager.users.${config.userName}.services.dunst = {
-		# Enable the dunst notification daemon if Hyprland is used.
-		enable = config.home-manager.users.${config.userName}.wayland.windowManager.hyprland.enable;
-
-		# Dunst settings.
-		settings = {
-			global = rec {
+	# Dunst settings.
+	settings = {
+		global = rec {
 				# Which monitor should the notifications be displayed on.
 				monitor = 0;
 
@@ -108,7 +103,7 @@
 				# Define a color for the separator.
 				separator_color = frame_color;
 
-				# Enable sorting of notification by id, urgency, or update.
+				# Whether to enable sorting of notification by id, urgency, or update.
 				sort = "yes";
 
 				# The spacing between lines.
@@ -146,7 +141,7 @@
 				# Whether to display indicators for URLs (U) and actions (A).
 				show_indicators = "no";
 
-				# Enable recursive icon lookup.
+				# Whether to enable recursive icon lookup.
 				# You can set a single theme, instead of having to define all lookup paths.
 				enable_recursive_icon_lookup = true;
 
@@ -224,10 +219,13 @@
 			# Settings for critical-urgency notification messages.
 			urgency_critical = {
 				background = "#281d1d";
-				foreground = "#ff8080";
+				foreground = "#ffbfbf";
 				frame_color = "#ff0000";
 				timeout = 0;
 			};
 		};
 	};
+
 }
+
+

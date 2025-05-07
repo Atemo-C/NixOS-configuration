@@ -1,4 +1,8 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }: let
+
+	hyprland = config.home-manager.users.${config.userName}.wayland.windowManager.hyprland.enable;
+
+in {
 
 	# Tell Adwaita-based programs to prefer a dark theme.
 	environment.sessionVariables = {
@@ -11,7 +15,8 @@
 		${config.userName} = {
 			# Settings to write to the dconf configuration system.
 			# Here, sets the desired window icons layout.
-			dconf.settings = { "org/gnome/desktop/wm/preferences" = { button-layout = "icon,appmenu:"; }; };
+			dconf.settings = if hyprland then
+				{ "org/gnome/desktop/wm/preferences" = { button-layout = "icon,appmenu:"; }; } else {};
 
 			gtk = {
 				# Enable GTK 2/3 configuration.
@@ -48,7 +53,8 @@
 		root = {
 			# Settings to write to the dconf configuration system.
 			# Here, sets the desired window icons layout.
-			dconf.settings = { "org/gnome/desktop/wm/preferences" = { button-layout = "icon,appmenu:"; }; };
+			dconf.settings = if hyprland then
+				{ "org/gnome/desktop/wm/preferences" = { button-layout = "icon,appmenu:"; }; } else {};
 
 			gtk = {
 				# Enable GTK 2/3 configuration.

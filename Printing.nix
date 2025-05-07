@@ -1,35 +1,35 @@
-{ config, pkgs, ... }: let Printing = config.services.printing.enable; in {
+{ config, pkgs, ... }: let printing = config.services.printing.enable; in {
 
 	hardware.sane = {
 		# Whether to enable support for SANE scanners.
-		enable = Printing;
+		enable = printing;
 
-#		# Enable extra backends for SANE scanners.
-#		extraBackends = [ ];
+#		# Which extra backends for SANE scanners to enable.
+#		extraBackends = [ pkgs.hplipWithPlugin ];
 
 #		# Disable certain SANE backends that can conflict with your devices.
-#		disabledDefaultBackends = [ ];
+#		disabledDefaultBackends = [ "escl" ];
 	};
 
 	# Printing and related networking services settings.
 	services = {
 		avahi = {
 			# Run the Avahi daemon for device discovery.
-			enable = Printing;
+			enable = printing;
 
 			# Enable the mDNS NSS plug-in for IPv4.
-			nssmdns4 = Printing;
+			nssmdns4 = printing;
 
 			# Open the firewall for UDP port 5353.
-			openFirewall = Printing;
+			openFirewall = printing;
 		};
 
 		printing = {
-			# Enable printing support through the CUPS daemaon.
+			# Whether to enable printing support through the CUPS daemaon.
 			enable = true;
 
 #			# Additional drivers, if needed.
-			drivers = [
+			drivers = if printing then [
 #				pkgs.gutenprint                   # Drivers for many different printers from many different vendors.
 #				pkgs.gutenprintBin                # Additional, binary-only drivers for some printers.
 #				pkgs.hplip                        # Drivers for HP printers.
@@ -41,14 +41,14 @@
 #				pkgs.brgenml1lpr                  # v Generic drivers for more Brother printers.
 #				pkg.sbrgenml1cupswrapper          # ^ Generic drivers for more Brother printers.
 #				pkgs.cnijfilter2                  # Drivers for some Canon Pixma devices.
-			];
+			] else [];
 		};
 	};
 
 	# If printing is enabled, add the user to the relevant printing and scanning groups.
-	users.users.${config.userName}.extraGroups = if Printing then [ "lp" "scanner" ] else [];
+	users.users.${config.userName}.extraGroups = if printing then [ "lp" "scanner" ] else [];
 
 	# If printing is enabled, install a simple scanning utility.
-	environment.systemPackages = if Printing then [ pkgs.simple-scan ] else [];
+	environment.systemPackages = if printing then [ pkgs.simple-scan ] else [];
 
 }

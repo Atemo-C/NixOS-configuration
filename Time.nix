@@ -5,7 +5,7 @@
 	# If null, the timezone will default to UTC and can be set imperatively using timedatectl.
 	timeZone = "Europe/Paris";
 
-	# If set, keep the hardware clock in local time instead of UTC.
+	# Whether to keep the hardware clock in local time instead of UTC.
 	# Mostly useful if dual-booting with a Windows-based operating system.
 	hardwareClockInLocalTime = true;
 

@@ -70,11 +70,11 @@ c=$(tput sgr0)
 [ "$1" = "--check" ] && {
 	echo "${ico}  ${arg}Crosshair.sh${c}\n"
 
-	# Check if libnotify is installed.
-	command -v notify-send > /dev/null 2>&1 && {
-		echo "✅ ${exe}libnotify${c} is installed."
+	# Check if Dunst is installed.
+	command -v dunstify > /dev/null 2>&1 && {
+		echo "✅ ${exe}Dunst${c} is installed."
 	} ||
-		echo "❌ ${exe}libnotify${c} is not installed. It is required to display graphical notifications. The script will not run without it."
+		echo "❌ ${exe}Dunst${c} is not installed. It is required to display graphical notifications. The script will not run without it."
 
 	# Check if imagemagick is installed.
 	command -v magick > /dev/null 2>&1 && {
@@ -99,29 +99,29 @@ c=$(tput sgr0)
 
 # Check for the --start argument.
 [ "$1" = "--start" ] && {
-	# Check if libnotify is installed.
-	command -v notify-send || {
-		echo "${err}: libnotify could not be found. It is required to display graphical notifications."
+	# Check if Dunst is installed.
+	command -v dunstify || {
+		echo "${err}: Dunst could not be found. It is required to display graphical notifications."
 		exit 1
 	}
 
 	# Check if Hyprland is the active Wayland compositor.
 	[ "$XDG_CURRENT_DESKTOP" = "Hyprland" ] || {
-		notify-send "Error: This crosshair can only be used with the Hyprland Wayland compositor."
+		dunstify "Error: This crosshair can only be used with the Hyprland Wayland compositor."
 		echo "${err}: This crosshair can only be used with the ${exe}Hyprland${c} Wayland compositor."
 		exit 1
 	}
 
 	# Check if imagemagick is installed.
 	command -v magick || {
-		notify-send "Error: imagemagick could not be found. It is required to get the crosshair image's properties."
+		dunstify "Error: imagemagick could not be found. It is required to get the crosshair image's properties."
 		echo "${err}: ${exe}imagemagick${c} could not be found. It is required to get the crosshair image's properties."
 		exit 1
 	}
 
 	# Check if feh is installed.
 	command -v feh || {
-		notify-send "Error: feh could not be found. It is required to display the crosshair image."
+		dunstify "Error: feh could not be found. It is required to display the crosshair image."
 		echo "${err}: ${exe}feh${c} could not be found. It is required to display the crosshair image."
 		exit 1
 	}
@@ -131,7 +131,7 @@ c=$(tput sgr0)
 
 	# Check if the crosshair image exists.
 	[ -f "$Crosshair" ] || {
-		notify-send "Error: $Crosshair could not be found."
+		dunstify "Error: $Crosshair could not be found."
 		echo "${err}: ${web}$Crosshair${c} could not be found."
 		exit 1
 	}

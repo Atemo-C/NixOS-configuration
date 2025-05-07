@@ -1,7 +1,8 @@
-{ config, lib, pkgs, ... }: let
+{ config, pkgs, ... }: let
 
-	Audio = config.services.pipewire.enable;
-	Effects = config.home-manager.users.${config.userName}.services.easyeffects.enable;
+	pipewire    = config.services.pipewire.enable;
+	easyeffects = config.home-manager.users.${config.userName}.services.easyeffects.enable;
+	hyprland    = config.home-manager.users.${config.userName}.wayland.windowManager.hyprland.enable;
 
 in {
 
@@ -10,32 +11,33 @@ in {
 			# Whether to enable the PipeWire multimedia framework.
 			enable = true;
 
-			# Whether to enable emulation for the ALSA audio server.
+			# If PipeWire is enabled, enable emulation for the ALSA audio server.
 			alsa = {
-				enable = Audio;
-				support32Bit = Audio;
+				enable = pipewire;
+				support32Bit = pipewire;
 			};
 
-			# Whether to enable emulation for the JACK audio server.
-			jack.enable = Audio;
+			# If PipeWire is enabled, enable emulation for the JACK audio server.
+			jack.enable = pipewire;
 
-			# Whether to enable emulation for the PulseAudio audio server.
-			pulse.enable = Audio;
+			# If PipeWire is enabled, enable emulation for the PulseAudio audio server.
+			pulse.enable = pipewire;
 		};
 
-		# Whether to enable the playerctl daemon for easy multimedia control.
-		playerctld.enable = Audio;
+		# If PipeWire is enabled, enable the playerctld daemon for easy multimedia control.
+		playerctld.enable = pipewire;
 	};
 
-	# Whether to enable the Realtimekit service.
-	# Programs such as PipeWire use it to acquire realtime priority.
-	security.rtkit.enable = Audio;
+	# If PipeWire is enabled, enable the Realtimekit service.
+	# It allows programs such as PipeWire to acquire realtime priority.
+	security.rtkit.enable = pipewire;
 
-	environment = {
+	environment = if pipewire then {
 		# Link MIDI soundfonts to `/run/current-system/sw/share/soundfonts` for easier access.
-		pathsToLink = if Audio then [ "/share/soundfonts" ] else [];
+		pathsToLink = [ "/share/soundfonts" ];
 
-		systemPackages = if Audio then [
+		# Install some audio utilities.
+		systemPackages = [
 			# View and edit tags for various audio files.
 			pkgs.audacious pkgs.audacious-plugins
 
@@ -56,20 +58,20 @@ in {
 
 			# Sound editor.
 			pkgs.tenacity
-		] else [];
-	};
+		];
+	} else {};
 
 	home-manager.users.${config.userName} = {
 		# Whether to enable live audio effects using EasyEffects.
 		services.easyeffects.enable = true;
 
-		# Start EasyEffect on launch if it is enabled.
-		wayland.windowManager.hyprland.settings.exec-once = if Audio then [
+		# If EasyEffect is enabled, start it on launch.
+		wayland.windowManager.hyprland.settings.exec-once = if pipewire && hyprland then [
 			"easyeffects --gapplication-service"
 		] else [];
 	};
 
-	# Enable Dconf if EasyEffects is enabled.
-	programs.dconf.enable = lib.mkDefault Effects;
+	# If EasyEffect is enabled, enable Dconf, which EasyEffects needs.
+	programs.dconf.enable = easyeffects;
 
 }
