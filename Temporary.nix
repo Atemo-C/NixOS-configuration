@@ -7,4 +7,24 @@
 		pamMount = false;
 	};
 
+	# https://github.com/NixOS/nixpkgs/issues/404912
+	# https://github.com/NixOS/nixpkgs/pull/404963
+	nixpkgs.overlays = [
+		(self: super: {
+			mcpelauncher-client = super.mcpelauncher-client.overrideAttrs (oldAttrs: {
+				version = "1.3.0-qt6";
+				src = oldAttrs.src.override {
+					hash = "sha256-/I6hCnRSFHX30Gd0jErx5Uy/o8JCdYexsMRDKMUOWWI=";
+				};
+			});
+		})
+		(self: super: {
+			mcpelauncher-ui-qt = super.mcpelauncher-ui-qt.overrideAttrs (oldAttrs: {
+				src = oldAttrs.src.override {
+					hash = "sha256-333PwfBWhdfJSi1XrJNHidMYZrzSReb8s4VxBASFQ6Q=";
+				};
+			});
+		})
+	];
+
 }
