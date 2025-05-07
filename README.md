@@ -1,20 +1,20 @@
 ![image](https://github.com/Atemo-C/NixOS-configuration/blob/main/Desktop.webp)
 
-# $\textcolor{#0080ff}{\textsf{[1] General information.}}$
+# [1] General information.
 This is an almost identical version of the NixOS configuration that I use. It is made for a single-user environment on an x86_64 CPU-based PC. \
 Since March 2025, it now assumes an installation pulling packages from either the `unstable` or `unstable-small` branches. \
 It is a successor to [my previous NixOS configuration](https://github.com/Atemo-C/OLD-NixOS-Configuration), which is now archived. \
 If you want to use this configuration (or rather, a version of it) on your system, it is highly recommended that you read what each module does, & edit them if needed. It is, after all, a very personalized system that fits my own needs. \
 &nbsp;
 
-# $\textcolor{#ff0000}{\textsf{[2] To do when using this configuration.}}$
+# [2] To do when using this configuration.
 
-## $\textcolor{#ff8000}{\textsf{[2.1] BIOS boot.}}$
+## [2.1] BIOS boot.
 **This only applies if you are booting in BIOS mode.**
 In the `Boot.nix` module, you will find the option to set the storage device on which the `Limine` bootloader should be installed onto *(`boot.loader.limine.biosDevice`)*. You need to set this value for it to be installed. \
 Be careful: Using `/dev/sdX` is not recommended, for if you use multiple drives, these names may change upon reboots or other hardware/software changes. Instead, it is recommended to use the disk's ID, found in `/dev/disk/by-id`. An example using a Samsung NVME SSD is provided in the configuration.
 
-## $\textcolor{#ff8000}{\textsf{[2.2] User name and description.}}$
+## [2.2] User name & description/.
 In the `User/Name.nix` module, you can set your user's name & description *(title)*. They will automatically be applied to the modules that need them, using `${config.userName}` & `${config.userTitle}` where needed. \
 To see which modules use these variables, open a terminal emulator where this configuration is located, & you can run the following commands:
 - `grep -Rn "\${config.userName}"`
@@ -22,35 +22,35 @@ To see which modules use these variables, open a terminal emulator where this co
 *"`-R`" reads all files under each directory, recursively, also following any symbolic links.* \
 *"`-n`" shows the relevant line number at the end of the file name.*
 
-## $\textcolor{#ff8000}{\textsf{[2.3] Host name.}}$
+## [2.3] Host name.
 In the `Networking.nix` module, you can set the PC's name over the network at `networking.hostName`.
 
-## $\textcolor{#ff8000}{\textsf{[2.4] NixOS state version.}}$
+## [2.4] NixOS state version.
 If you have initially installed NixOS with a version different from the one present in this configuration, you will need to change its value *(currently, `25.05`)* to the desired one. \
 Note that, after that, you should never change this number. Only change it when fully re-installing NixOS.
 
-## $\textcolor{#ff8000}{\textsf{[2.5] NVIDIA GPUs.}}$
+## [2.5] NVIDIA GPUs.
 To enable support for NVIDIA GPUs *(16XX+ 20XX+)* with the relevant proprietary drivers, you can uncomment the `./NVIDIA.nix` import in the `configuration.nix` module.
 
-## $\textcolor{#ff8000}{\textsf{[2.6] Flatpaks and Flathub.}}$
+## [2.6] Flatpaks & Flathub.
 Currently, the Flathub Flatpak repository cannot be easily declaratively defined in NixOS & Home Manager by themselves. As such, it needs to be manually added with a shell command after installation. \
 If you are using the FISH shell, I added an abbreviation that will do it for you: `enable-flathub`. \
 &nbsp;
 
-## $\textcolor{#ff8000}{\textsf{[2.7] Guest additions.}}$
+## [2.7] Guest additions.
 If you are installing on a virtual machine, you might consider uncommenting the relevant Guest agents/additions in the `configuration.nix` module.
 
-## $\textcolor{#ff8000}{\textsf{[2.8] Desktop environments.}}$
-This configuration is aimed and sometimes assumes *(to be fixed)* the use of the [Hyprland](https://hyprland.org/) Wayland compositor. However, you can enable the [XFCE](https://xfce.org/) desktop environ00cc00ment instead by uncommenting the relevant modules in the `configuration.nix` module, as long as you also disable Hyprland.
+## [2.8] Desktop environment.
+This configuration is aimed and sometimes assumes *(to be fixed)* the use of the [Hyprland](https://hyprland.org/) Wayland compositor. However, you can enable the [XFCE](https://xfce.org/) desktop environment instead by uncommenting the relevant modules in the `configuration.nix` module, as long as you also disable Hyprland.
 
-# $\textcolor{#ff0080}{\textsf{[3] Use cases and features implementation.}}$
+# [3] Use cases & features implementation.
 
-## $\textcolor{#c000ff}{\textsf{[3.1] Targeted use case.}}$
+## [3.1] Targeted use case.
 - Single user.
 - Personal computing.
 - Desktops & laptops.
 
-## $\textcolor{#c000ff}{\textsf{[3.2] Not yet implemented or tested, including but not limited to…}}$
+## [3.2] Not yet implemented or tested, including but not limited to…
 - Secure Boot.
 - Accessibility.
 - Touchscreen.
@@ -64,7 +64,7 @@ This configuration is aimed and sometimes assumes *(to be fixed)* the use of the
 	- Less than 64 GiB of storage *(some Nix storage optimizations are already enabled)*. \
 &nbsp;
 
-# $\textcolor{#00c0ff}{\textsf{[4] Some useful NixOS resources and credits.}}$
+# [4] Some useful NixOS resources & credits.
 Help is available in:
 - The configuration.nix(5) man page.
 - The on-device manual by running the `nixos-help` command.
