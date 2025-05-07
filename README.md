@@ -37,6 +37,12 @@ Currently, the Flathub Flatpak repository cannot be easily declaratively defined
 If you are using the FISH shell, I added an abbreviation that will do it for you: `enable-flathub`. \
 &nbsp;
 
+## [2.7] Guest additions.
+If you are installing on a virtual machine, you might consider uncommenting the relevant Guest agents/additions in the `configuration.nix` module.
+
+## [2.8] Desktop environment.
+This configuration is aimed and sometimes assumes *(to be fixed)* the use of the [Hyprland](https://hyprland.org/) Wayland compositor. However, you can enable the [XFCE](https://xfce.org/) desktop environment instead by uncommenting the relevant modules in the `configuration.nix` module, as long as you also disable Hyprland.
+
 # [3] Use cases & features implementation.
 
 ## [3.1] Targeted use case.
