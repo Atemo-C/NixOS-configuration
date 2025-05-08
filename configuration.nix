@@ -10,7 +10,7 @@
 	./Boot.nix
 	./Kernel.nix
 	./Locale.nix
-	./Monitors.nix
+#	./Monitors.nix
 	./Networking.nix
 	./Nix-settings.nix
 	./Packaging.nix
