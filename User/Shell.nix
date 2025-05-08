@@ -65,11 +65,13 @@
 
 			# Online music.
 			lofi-asian = ''mpv --quiet --no-video "https://www.youtube.com/watch?v=Na0w3Mz46GA"'';
-			lofi-christmas = ''mpv --quiet --no-video "https://www.youtube.com/watch?v=pfiCNAc2AgU"'';
 			lofi-escape = ''mpv --quiet --no-video "https://www.youtube.com/watch?v=S_MOd40zlYU"'';
 			lofi-jazz = ''mpv --quiet --no-video "https://www.youtube.com/watch?v=HuFYqnbVbzY"'';
+			lofi-medieval = ''mpv --quiet --no-video "https://www.youtube.com/watch?v=IxPANmjPaek"'';
 			lofi-piano = ''mpv --quiet --no-video "https://www.youtube.com/watch?v=TtkFsfOP9QI"'';
+			lofi-pomodoro = ''mpv --quiet --no-video "https://www.youtube.com/watch?v=1oDrJba2PSs"'';
 			lofi-pov = ''mpv --quiet --no-video "https://www.youtube.com/watch?v=uFlzUaisbig"'';
+			lofi-purr = ''mpv --quiet --no-video "https://www.youtube.com/watch?v=fIpBwfFn3sg"'';
 			lofi-rain = ''mpv --quiet --no-video "https://www.youtube.com/watch?v=-OekvEFm1lo"'';
 			lofi-sad = ''mpv --quiet --no-video "https://www.youtube.com/watch?v=P6Segk8cr-c"'';
 			lofi-sleep = ''mpv --quiet --no-video "https://www.youtube.com/watch?v=28KRPhVzCus"'';
