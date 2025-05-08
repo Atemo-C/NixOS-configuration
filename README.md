@@ -14,7 +14,7 @@ If you want to use this configuration (or rather, a version of it) on your syste
 In the `Boot.nix` module, you will find the option to set the storage device on which the `Limine` bootloader should be installed onto *(`boot.loader.limine.biosDevice`)*. You need to set this value for it to be installed. \
 Be careful: Using `/dev/sdX` is not recommended, for if you use multiple drives, these names may change upon reboots or other hardware/software changes. Instead, it is recommended to use the disk's ID, found in `/dev/disk/by-id`. An example using a Samsung NVME SSD is provided in the configuration.
 
-## [2.2] User name & description/.
+## [2.2] User name & description.
 In the `User/Name.nix` module, you can set your user's name & description *(title)*. They will automatically be applied to the modules that need them, using `${config.userName}` & `${config.userTitle}` where needed. \
 To see which modules use these variables, open a terminal emulator where this configuration is located, & you can run the following commands:
 - `grep -Rn "\${config.userName}"`
