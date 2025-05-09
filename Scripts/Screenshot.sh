@@ -121,7 +121,7 @@ hweb2="</span>"
 [ "$1" = "--copy" ] && {
 	# Check if Dunst is installed.
 	command -v dunstify > /dev/null 2>&1 || {
-		printf "%s: %sDunst%s could not be found. It is required to display graphical notifications." \
+		printf "%s: %sDunst%s could not be found. It is required to display graphical notifications.\n" \
 			"$err" "$exe" "$c"
 
 		exit 1
@@ -131,7 +131,7 @@ hweb2="</span>"
 	[ "$XDG_CURRENT_DESKTOP" = "Hyprland" ] || {
 		dunstify -u critical "Screenshot.sh" "$herr: This script can only be used with the$hexe1 Hyprland$hexe2 Wayland compositor."
 
-		printf "%s: This script can only be used with the %sHyprland%s Wayland compositor." \
+		printf "%s: This script can only be used with the %sHyprland%s Wayland compositor.\n" \
 			"$err" "$exe" "$c"
 
 		exit 1
@@ -141,7 +141,7 @@ hweb2="</span>"
 	command -v grimblast > /dev/null 2>&1 || {
 		dunstify -u critical "Screenshot.sh" "$herr:$hexe1 Grimblast$hexe2 could not be found. It is required to take screenshots."
 
-		printf "%s: %sGrimblast%s could not be found. It is required to take screenshots." \
+		printf "%s: %sGrimblast%s could not be found. It is required to take screenshots.\n" \
 			"$err" "$exe" "$c"
 	}
 
@@ -155,7 +155,7 @@ hweb2="</span>"
 		grimblast --notify --freeze copy "$Type"  > /dev/null 2>&1 || {
 			dunstify -u critical "Screenshot.sh" "$herr: There was an error when taking a screenshot."
 
-			printf "%s: There was an error when taking a screenshot." \
+			printf "%s: There was an error when taking a screenshot.\n" \
 				"$err"
 
 			exit 1
@@ -169,7 +169,7 @@ hweb2="</span>"
 [ "$1" = "--save" ] && {
 	# Check if Dunst is installed.
 	command -v dunstify > /dev/null 2>&1 || {
-		printf "%s: %sDunst%s could not be found. It is required to display graphical notifications." \
+		printf "%s: %sDunst%s could not be found. It is required to display graphical notifications.\n" \
 			"$err" "$exe" "$c"
 
 		exit 1
@@ -179,7 +179,7 @@ hweb2="</span>"
 	[ "$XDG_CURRENT_DESKTOP" = "Hyprland" ] || {
 		dunstify -u critical "Screenshot.sh" "$herr: This script can only be used with the$hexe1 Hyprland$hexe2 Wayland compositor."
 
-		printf "%s: This script can only be used with the %sHyprland%s Wayland compositor." \
+		printf "%s: This script can only be used with the %sHyprland%s Wayland compositor.\n" \
 			"$err" "$exe" "$c"
 
 		exit 1
@@ -189,7 +189,7 @@ hweb2="</span>"
 	command -v grimblast > /dev/null 2>&1 || {
 		dunstify -u critical "Screenshot.sh" "$herr:$hexe1 Grimblast$hexe2 could not be found. It is required to take screenshots."
 
-		printf "%s: %sGrimblast%s could not be found. It is required to take screenshots." \
+		printf "%s: %sGrimblast%s could not be found. It is required to take screenshots.\n" \
 			"$err" "$exe" "$c"
 
 		exit 1
@@ -199,7 +199,7 @@ hweb2="</span>"
 	command -v oxipng > /dev/null 2>&1 || {
 		dunstify -u critical "Screenshot.sh" "$herr:$hexe1 Oxipng$hexe2 could not be found. It is required to optimize the initial screenshot."
 
-		printf "%s: %sOxipng%s could not be found. It is required to optimize the initial screenshot." \
+		printf "%s: %sOxipng%s could not be found. It is required to optimize the initial screenshot.\n" \
 			"$err" "$exe" "$c"
 
 		exit 1
@@ -209,7 +209,7 @@ hweb2="</span>"
 	command -v magick > /dev/null 2>&1 || {
 		dunstify -u critical "Screenshot.sh" "$herr:$hexe1 ImageMagick$hexe2 could not be found. It is required to convert the screenshot to a WEBP image."
 
-		printf "%s: %ImageMagick%s could not be found. It is required to convert the screenshot to a WEBP image." \
+		printf "%s: %ImageMagick%s could not be found. It is required to convert the screenshot to a WEBP image.\n" \
 			"$err" "$exe" "$c"
 
 		exit 1
@@ -229,7 +229,7 @@ hweb2="</span>"
 		cd "$HOME/Images/Screenshots" || cd "$HOME" || {
 			dunstify -u critical "… What? How? How is there not even a \$HOME directory??????"
 
-			printf "… What? How? How is there not even a \$HOME directory??????"
+			printf "… What? How? How is there not even a \$HOME directory??????\n"
 
 			exit 1
 		}
@@ -238,7 +238,7 @@ hweb2="</span>"
 		grimblast --freeze copysave "$Type" "$Image".png > /dev/null 2>&1 || {
 			dunstify -u critical "Screenshot.sh" "$herr: There was an error when taking a screenshot."
 
-			printf "%s: There was an error when taking a screenshot." \
+			printf "%s: There was an error when taking a screenshot.\n" \
 				"$err"
 
 			exit 1
@@ -248,7 +248,7 @@ hweb2="</span>"
 		oxipng --strip all "$Image".png || {
 			dunstify -u critical "Screenshot.sh" "$herr: There was an error when optimizing$hweb1 $Image.png$hweb2"
 
-			printf "%s: There was an error when optimizing %s$Image.png%s" \
+			printf "%s: There was an error when optimizing %s$Image.png%s\n" \
 				"$err" "$web" "$c"
 
 			exit 1
@@ -258,7 +258,7 @@ hweb2="</span>"
 		magick "$Image".png -quality 100 "$Image".webp || {
 			dunstify -u critical "Screenshot.sh" "$herr: There was an error when converting$hweb1 $Image.png$hweb2 to a WEBP image."
 
-			printf "%s: There was an error when converting %s$Image.png%s to a WEBP image." \
+			printf "%s: There was an error when converting %s$Image.png%s to a WEBP image.\n" \
 				"$err" "$web" "$c"
 
 			exit 1
@@ -269,6 +269,9 @@ hweb2="</span>"
 
 		# Notify the user.
 		dunstify "Screenshot.sh" "Screenshot$hweb1 $Image.webp$hweb2 has been taken."
+
+		printf "Screenshot %s%s.webp%s has been taken." \
+			"$web" "$Image" "$c"
 
 		exit 0
 	}

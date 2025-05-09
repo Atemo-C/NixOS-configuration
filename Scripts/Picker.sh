@@ -1,106 +1,122 @@
 #!/bin/dash
 
-# Set some text formatting shortcuts.
+# Set some text formatting shortcuts for printf.
 err=$(tput bold)$(tput setaf 1)Error$(tput sgr0)
 arg=$(tput bold)$(tput setaf 2)
 exe=$(tput bold)$(tput setaf 3)
 ico=$(tput bold)$(tput setaf 6)
 web=$(tput setaf 4)
 dim=$(tput dim)
+bol=$(tput bold)
 c=$(tput sgr0)
+
+# Set some text formatting shortcuts for dunstify.
+herr="<b><span foreground='#ff0000'>Error</span></b>"
+hexe1="<b><span foreground='#ffc000'>"
+hexe2="</span></b>"
 
 # Check if the number of arguments is greater than 1.
 [ "$#" -gt 1 ] && {
-	echo \
-		"${err}: Invalid number of arguments (${arg}$#${c}).\n" \
-		"\nSee the ${arg}--about${c} / ${arg}--help${c} argument.\n"
+	printf "%s: Invalid number of arguments '%s%d%s'.\n\n" \
+		"$err" "$arg" "$#" "$c"
+
+	printf "See the %s--about%s / %s--help%s / %s-h%s argument.\n" \
+		"$arg" "$c" "$arg" "$c" "$arg" "$c"
 
 	exit 1
 }
 
-# Check for the --about or --help argument.
-[ "$1" = "--about" ] || [ "$1" = "--help" ] && {
-	echo \
-		"${ico}  ${arg}Picker.sh${c}\n" \
-		"\nThis script allows you to pick a color on the screen within the ${exe}Hyprland${c} Wayland compositor using ${exe}hyprpicker${c}.\n" \
-		"\n${dim}Whilst this script could currently be a single command, it exists so that it may be extended further in the future, such as the addition of a color picking history with a graphical menu that would show each color and their value, and let the user pick one of them.${c}\n" \
-		"\n• When using the ${arg}--about${c} or ${arg}--help${c} argument, this message is displayed." \
-		"\n• When using the ${arg}--check${c} argument, required dependencies will be checked." \
-		"\n• When no argument is given, the color picking starts.\n" \
-		"\nCredits:" \
-		"\n• ${exe}hyprpicker${c}: ${web}https://github.com/hyprwm/hyprpicker${c}\n"
+# Check for the `--about` and `--help` arguments.
+[ "$1" = "--about" ] || [ "$1" = "--help" ] || [ "$1" = "-h" ] && {
+	printf "%s  %sPicker.sh%s\n\n" \
+		"$ico" "$arg" "$c"
 
-	exit
-}
+	printf "%s[ Description ]%s\n" \
+		"$bol" "$c"
 
-# Check for the --check argument.
-[ "$1" = "--check" ] && {
-	echo "${ico}  ${arg}Picker.sh${c}\n"
+	printf " This script allows you to pick a color on the screen within the %sHyprland%s Wayland compositor.\n" \
+		"$exe" "$c"
 
-	# Check if Dunst is installed.
-	command -v dunstify > /dev/null 2>&1 && {
-		echo "✅ ${exe}Dunst${c} is installed."
-	} ||
-		echo "❌ ${exe}Dunst${c} is not installed. It is required to display graphical notifications. The script will not run without it."
+	printf " %sWhilst this script could currently be a single command, it exists so that it may be extended further in the future, such as with the addition of a color picking history with a graphical menu that shows each color and their value, letting the user pick any one of them.%s\n\n" \
+		"$dim" "$c"
 
-	# Check if hyprpicker is installed.
-	command -v hyprpicker > /dev/null 2>&1 && {
-		echo "✅ ${exe}hyprpicker${c} is installed."
-	} ||
-		echo "❌ ${exe}hyprpicker${c} is not installed. It is required to pick a color on the screen. The script will not run without it."
+	printf "%s[ Arguments ]%s\n" \
+		"$bol" "$c"
 
-	# Check if Hyprland is the active Wayland compositor.
-	[ "$XDG_CURRENT_DESKTOP" = "Hyprland" ] && {
-		echo "✅ ${exe}Hyprland${c} is the active Wayland compositor."
-	} ||
-		echo "❌ ${exe}Hyprland${c} is not the currently active Wayland compositor. The script will not run outside of Hyprland."
+	printf " No argument: Pick a color on the screen.\n\n"
 
-	exit
+	printf " %s--about%s / %s--help%s / %s-h%s \n" \
+		"$arg" "$c" "$arg" "$c" "$arg" "$c"
+
+	printf "  Display this message.\n\n"
+
+	printf "%s[ Credits ]%s\n" \
+		"$bol" "$c"
+
+	printf " %sHyprpicker%s: %shttps://github.com/hyprwm/hyprpicker%s" \
+		"$exe" "$c" "$web" "$c"
+
+	exit 0
 }
 
 # When no argument is provided, start the color picking process.
 [ "$1" = "" ] && {
 	# Check if Dunst is installed.
-	command -v dunstify || {
-		echo "${err}: Dunst could not be found. It is required to display graphical notifications."
+	command -v dunstify > /dev/null 2>&1 || {
+		printf "%s: %sDunst%s could not be found. It is required to display graphical notifications." \
+			"$err" "$exe" "$c"
+
 		exit 1
 	}
 
 	# Check if Hyprland is the active Wayland compositor.
 	[ "$XDG_CURRENT_DESKTOP" = "Hyprland" ] || {
-		dunstify "Error: This color picking utility can only be used with the Hyprland Wayland compositor."
-		echo "${err}: This color picking utility can only be used with the ${exe}Hyprland${c} Wayland compositor."
+		dunstify -u critical "Picker.sh" "$herr: This script can only be used with the$hexe1 Hyprland$hexe2 Wayland compositor."
+
+		printf "%s: This script can only be used with the %sHyprland%s Wayland compositor." \
+			"$err" "$exe" "$c"
+
 		exit 1
 	}
 
-	# Check if hyprpicker is installed.
+	# Check if Hyprpicker is installed.
 	command -v hyprpicker || {
-		dunstify "Error: hyprpicker could not be found. It is required to pick a color on the screen."
-		echo "${err}: ${exe}hyprpicker${c} could not be found. It is required to pick a color on the screen."
+		dunstify -u critical "Picker.sh" "$herr:$hexe1 Hyprpicker$hexe2 could not be found. It is required to pick a color on the screen."
+
+		printf "%s: %sHyprpicker%s could not be found. It is required to pick a color on the screen." \
+			"$err" "$exe" "$c"
+
 		exit 1
 	}
 
 	# Pick a color on the screen.
 	Color="$(hyprpicker -f hex --autocopy)"
 	Out=$?
+
 	# Notify the user when a color has been picked.
 	[ "$Out" = "0" ] && {
-		dunstify -t 1500 "$Color copied to the clipboard."
-		echo "${ico}$Color${c} copied to the clipboard."
-		exit
+		dunstify -t 1500 "Picker.sh" "$Color copied to the clipboard."
+
+		printf "%s copied to the clipboard." \
+			"$Color"
+
+		exit 0
 	}
 
 	# Notify the user when the color selection process has been aborted.
 	[ "$Out" = "1" ] && {
-		dunstify -t 1500 "The color picking process has been aborted."
-		echo "The color picking process has been aborted."
-		exit 1
+		dunstify -u critical "Picker.sh" "$herr: The color picking process was aborted or failed."
+
+		printf "%s: The color picking process was aborted or failed." \
+			"$err"
 	}
 }
 
 # Error out if an invalid argument is given.
-echo \
-	"${err}: Invalid argument '${arg}$*${c}'.\n" \
-	"\nSee the ${arg}--about${c} / ${arg}--help${c} argument.\n"
+printf "%s: Invalid argument '%s%s%s'.\n\n" \
+	"$err" "$arg" "$*" "$c"
+
+printf "See the %s--about%s / %s--help%s / %s-h%s argument.\n" \
+	"$arg" "$c" "$arg" "$c" "$arg" "$c"
 
 exit 1
