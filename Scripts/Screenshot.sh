@@ -1,6 +1,6 @@
 #!/bin/dash
 
-# Set some text formatting shortcuts.
+# Set some text formatting shortcuts for printf.
 err=$(tput bold)$(tput setaf 1)Error$(tput sgr0)
 arg=$(tput bold)$(tput setaf 2)
 exe=$(tput bold)$(tput setaf 3)
@@ -10,202 +10,275 @@ dim=$(tput dim)
 bol=$(tput bold)
 c=$(tput sgr0)
 
+# Set some text formatting shortcuts for dunstify.
+herr="<b><span foreground='#ff0000'>Error</span></b>"
+hexe1="<b><span foreground='#ffc000'>"
+hexe2="</span></b>"
+hweb1="<span foreground='#0080ff'>"
+hweb2="</span>"
+
 # Check if the number of arguments is greater than 2.
 [ "$#" -gt 2 ] && {
-	echo \
-		"${err}: Invalid number of arguments (${arg}$#${c}).\n" \
-		"\nSee the ${arg}--about${c} and the ${arg}--help${c} arguments.\n"
+	printf "%s: Invalid number of arguments '%s%d%s'.\n\n" \
+		"$err" "$arg" "$#" "$c"
+
+	printf "See the %s--about%s / %s--help%s / %s-h%s argument.\n" \
+		"$arg" "$c" "$arg" "$c" "$arg" "$c"
 
 	exit 1
 }
 
-# Check for the --about argument.
-[ "$1" = "--about" ] && {
-	echo \
-		"${ico}  ${arg}Screenshot.sh${c}\n" \
-		"\nThis script allows you to take screenshots within the $(exe)Hypralnd${c} Wayland compositor, using ${exe}grimblast${c} to take the screenshots, ${exe}oxipng${c} to optimize the intially saved screenshots, and ${exe}imagemagick${c} to convert the optimized screenshots into WEBP images.\n" \
-		"\n• When using the ${arg}--about${c} argument, this message is displayed." \
-		"\n• When using the ${arg}--help${c} argument, help about this script is displayed." \
-		"\n• When using the ${arg}--check${c} argument, required dependencies will be checked." \
-		"\n• When using the ${arg}--copy${c} argument, followed by one of \"${arg}area${c}\" \"${arg}monitor${c}\", or \"${arg}all${c}\", the taken screenshot is copied to the clipboard." \
-		"\n• When using the ${arg}--save${c} argument, followed by one of \"${arg}area${c}\" \"${arg}monitor${c}\", or \"${arg}all${c}\", the taken screenshot is saved, optimized, and converted to a WEBP image.\n" \
-		"\nCredits:" \
-		"\n• ${exe}grimblast${c}: ${web}https://github.com/hyprwm/contrib/tree/main/grimblast${c}" \
-		"\n• ${exe}imagemagick${c}: ${web}https://imagemagick.org/${c}" \
-		"\n• ${exe}oxipng${c}: ${web}https://github.com/shssoichiro/oxipng${c}\n"
+# Check for the `--about` and `--help` arguments.
+[ "$1" = "--about" ] || [ "$1" = "--help" ] || [ "$1" = "-h" ] && {
 
-	exit
+	printf "%s  %sScreenshot.sh%s\n\n" \
+		"$ico" "$arg" "$c"
+
+	printf "%s[ Description ]%s\n" \
+		"$bol" "$c"
+
+	printf " This script allows you to take screenshots within the %sHyprland%s Wayland compositor.\n\n" \
+		"$exe" "$c"
+
+	printf "%s[ Arguments ]%s\n" \
+		"$bol" "$c"
+
+	printf " %s--about%s / %s--help%s / %s-h%s \n" \
+		"$arg" "$c" "$arg" "$c" "$arg" "$c"
+
+	printf "  Display this message.\n\n"
+
+	printf " %s--copy%s %s(followed by one of the sub-arguments)%s\n" \
+		"$arg" "$c" "$dim" "$c"
+
+	printf "   Take a screenshot with %sGrimblast%s and copy it to the clipboard.\n\n" \
+		"$exe" "$c"
+
+	printf " %s--save%s %s(followed by one of the sub-arguments)%s\n" \
+		"$arg" "$c" "$dim" "$c"
+
+	printf "   • Take a screenshot with %sGrimblast%s and save it to a file.\n" \
+		"$exe" "$c"
+
+	printf "   • Optimize it with %sOxipng%s.\n" \
+		"$exe" "$c"
+
+	printf "   • Convert it to a WEBP image with %sImageMagick%s.\n" \
+		"$exe" "$c"
+
+	printf "   • Delete the original image, keeping the WEBP one.\n\n"
+
+	printf "%s[ Sub-arguments ]%s\n" \
+		"$bol" "$c"
+
+	printf " %sarea%s\n" \
+		"$arg" "$c"
+
+	printf "   Select an area or individual window to screenshot.\n\n"
+
+	printf " %smonitor%s\n" \
+		"$arg" "$c"
+
+	printf "   Select the current monitor to screenshot.\n\n"
+
+	printf " %sall%s\n" \
+		"$arg" "$c"
+
+	printf "   Select all active monitors to screenshot.\n\n"
+
+	printf "%s[ Examples ]%s\n" \
+		"$bol" "$c"
+
+	printf " To copy an area screenshot to the clipboard:\n"
+
+	printf "   %sdash%s %s/path/to/Screenshot.sh %s--copy area%s\n\n" \
+		"$arg" "$c" "$web" "$arg" "$c"
+
+	printf " To save a screenshot of all monitors:\n"
+
+	printf "   %sdash%s %s/path/to/Screenshot.sh %s--save all%s\n\n" \
+		"$arg" "$c" "$web" "$arg" "$c"
+
+	printf " %sNote: The arguments cannot be swapped around.%s\n\n" \
+		"$dim" "$c"
+
+	printf "%s[ Credits ]%s\n" \
+		"$bol" "$c"
+
+	printf " %sGrimblast%s:   %shttps://github.com/hyprwm/contrib/tree/main/grimblast%s\n" \
+		"$exe" "$c" "$web" "$c"
+
+	printf " %sImageMagick%s: %shttps://imagemagick.org%s\n" \
+		"$exe" "$c" "$web" "$c"
+
+	printf " %sOxipng%s:      %shttps://github.com/shssoichiro/oxipng%s\n" \
+		"$exe" "$c" "$web" "$c"
+
+	exit 0
 }
 
-# Check for the --help argument.
-[ "$1" = "--help" ] && {
-	echo \
-		"${ico}  ${arg}Screenshot.sh${c}\n" \
-		"\n${bol}[ Arguments ]${c}" \
-		"\n${arg}--about${c}" \
-		"\nDisplay information about this script.\n" \
-		"\n${arg}--help${c}" \
-		"\nDisplay this message.\n" \
-		"\n${arg}--check${c}" \
-		"\nCheck for required dependencies.\n" \
-		"\n${arg}--copy${c}${dim}(followed by one of the sub-arguments)${c}" \
-		"\nCopy the created screenshot to the clipboard.\n" \
-		"\n${arg}--save${c}${dim}(followed by one of the sub-arguments)${c}" \
-		"\n· Save the created screenshot to a file with ${exe}grimblast${c}." \
-		"\n· Optimize it with ${exe}oxipng${c}." \
-		"\n· Convert it to a lossless WEBP image with ${exe}imagemagick${c}." \
-		"\n· Delete the original image and keep the WEBP screenshot.\n" \
-		"\n${bol}[ Sub-arguments ]${c}" \
-		"\n${arg}area${c}" \
-		"\nTo select an area or individual window.\n" \
-		"\n${arg}monitor${c}" \
-		"\nTo select the current monitor.\n" \
-		"\n${arg}all${c}" \
-		"\nTo select all active monitors.\n" \
-		"\n${bol}[ Examples ]${c}" \
-		"\n• To copy an area screenshot to the clipboard." \
-		"\n    ${arg}dash${c} ${web}/path/to/Screenshot.sh${c} ${arg}--copy area${c}\n" \
-		"\n• To save a screenot of all monitors." \
-		"\n    ${arg}dash${c} ${web}/path/to/Screenshot.sh${c} ${arg}--save all ${c}\n" \
-		"\n${dim}Note: The arguments cannot be swapped around.${c}\n"
-
-	exit
-}
-
-# Check for the --check argument.
-[ "$1" = "--check" ] && {
-	echo "${ico}  ${arg}Screenshot.sh${c}\n"
-
-	# Check if Dunst is installed.
-	command -v dunstify > /dev/null 2>&1 && {
-		echo "✅ ${exe}Dunst${c} is installed."
-	} ||
-		echo "❌ ${exe}Dunst${c} is not installed. It is required to display graphical notifications. The script will not run without it."
-
-	# Check if grimblast is installed.
-	command -v grimblast > /dev/null 2>&1 && {
-		echo "✅ ${exe}grimblast${c} is installed."
-	} ||
-		echo "❌ ${exe}grimblast is not installed. It is required to take screenshots. The script will not run without it."
-
-	# Check if oxipng is installed.
-	command -v dunstify > /dev/null 2>&1 && {
-		echo "✅ ${exe}oxipng${c} is installed."
-	} ||
-		echo "❌ ${exe}oxipng${c} is not installed. It is required to optimize saved screenshots. The script will only run when using the ${arg}--copy${c} argument."
-
-	# Check if imagemagick is installed.
-	command -v magick > /dev/null 2>&1 && {
-		echo "✅ ${exe}imagemagick${c} is installed."
-	} ||
-		echo "❌ ${exe}imagemagick${c} is not installed. It is required to convert the saved screenshots into WEBP images. The script will only run when using the ${arg}--copy${c} argument."
-
-	# Check if Hyprland is the active Wayland compositor.
-	[ "$XDG_CURRENT_DESKTOP" = "Hyprland" ] && {
-		echo "✅ ${exe}Hyprland${c} is the active Wayland compositor."
-	} ||
-		echo "❌ ${exe}Hyprland${c} is not the currently active Wayland compositor. The script will not run outside of Hyprland."
-
-	exit
-}
-
-# Check for the --copy argument and its sub-arguments.
+# Check for the `--copy` argument and its sub-arguments.
 [ "$1" = "--copy" ] && {
 	# Check if Dunst is installed.
-	command -v dunstify || {
-		echo "${err}: Dunst could not be found. It is required to display graphical notifications."
+	command -v dunstify > /dev/null 2>&1 || {
+		printf "%s: %sDunst%s could not be found. It is required to display graphical notifications." \
+			"$err" "$exe" "$c"
+
 		exit 1
 	}
 
 	# Check if Hyprland is the active Wayland compositor.
 	[ "$XDG_CURRENT_DESKTOP" = "Hyprland" ] || {
-		dunstify "Error: This screenshot utility can only be used with the Hyprland Wayland compositor."
-		echo "${err}: This screenshot utility can only be used with the ${exe}Hyprland${c} Wayland compositor."
+		dunstify -u critical "Screenshot.sh" "$herr: This script can only be used with the$hexe1 Hyprland$hexe2 Wayland compositor."
+
+		printf "%s: This script can only be used with the %sHyprland%s Wayland compositor." \
+			"$err" "$exe" "$c"
+
 		exit 1
 	}
 
-	# Check if grimblast is installed.
-	command -v grimblast || {
-		dunstify "Error: grimblast could not be found. It is required to take screenshots."
-		echo "${err}: ${exe}grimblast${c} could not be found. It is required to take screenshots."
-		exit 1
+	# Check if Grimblast is installed.
+	command -v grimblast > /dev/null 2>&1 || {
+		dunstify -u critical "Screenshot.sh" "$herr:$hexe1 Grimblast$hexe2 could not be found. It is required to take screenshots."
+
+		printf "%s: %sGrimblast%s could not be found. It is required to take screenshots." \
+			"$err" "$exe" "$c"
 	}
 
 	# Copy a screenshot to the clipboard.
-	[ "$#" -eq 2 ] && [ "$#" -eq 2 ] && [ "$2" = "area" ] || [ "$2" = "monitor" ] || [ "$2" = "all" ] && {
+	[ "$#" -eq 2 ] && [ "$2" = "area" ] || [ "$2" = "monitor" ] || [ "$2" = "all" ] && {
 		[ "$2" = "area" ] && Type="area"
 		[ "$2" = "monitor" ] && Type="output"
 		[ "$2" = "all" ] && Type="screen"
-		grimblast --notify --freeze copy "$Type"
-		exit
+
+		# Take the screenshot.
+		grimblast --notify --freeze copy "$Type"  > /dev/null 2>&1 || {
+			dunstify -u critical "Screenshot.sh" "$herr: There was an error when taking a screenshot."
+
+			printf "%s: There was an error when taking a screenshot." \
+				"$err"
+
+			exit 1
+		}
+
+		exit 0
 	}
 }
 
-# Check for the --save argument and its sub-arguments.
+# Check for the `--save` argument and its sub-arguments.
 [ "$1" = "--save" ] && {
 	# Check if Dunst is installed.
-	command -v dunstify || {
-		echo "${err}: Dunst could not be found. It is required to display graphical notifications."
+	command -v dunstify > /dev/null 2>&1 || {
+		printf "%s: %sDunst%s could not be found. It is required to display graphical notifications." \
+			"$err" "$exe" "$c"
+
 		exit 1
 	}
 
 	# Check if Hyprland is the active Wayland compositor.
 	[ "$XDG_CURRENT_DESKTOP" = "Hyprland" ] || {
-		dunstify "Error: This screenshot utility can only be used with the Hyprland Wayland compositor."
-		echo "${err}: This screenshot utility can only be used with the ${exe}Hyprland${c} Wayland compositor."
+		dunstify -u critical "Screenshot.sh" "$herr: This script can only be used with the$hexe1 Hyprland$hexe2 Wayland compositor."
+
+		printf "%s: This script can only be used with the %sHyprland%s Wayland compositor." \
+			"$err" "$exe" "$c"
+
 		exit 1
 	}
 
-	# Check if grimblast is installed.
-	command -v grimblast || {
-		dunstify "Error: grimblast could not be found. It is required to take screenshots."
-		echo "${err}: ${exe}grimblast${c} could not be found. It is required to take screenshots."
+	# Check if Grimblast is installed.
+	command -v grimblast > /dev/null 2>&1 || {
+		dunstify -u critical "Screenshot.sh" "$herr:$hexe1 Grimblast$hexe2 could not be found. It is required to take screenshots."
+
+		printf "%s: %sGrimblast%s could not be found. It is required to take screenshots." \
+			"$err" "$exe" "$c"
+
 		exit 1
 	}
 
-	# Check if oxipng is installed.
-	command -v oxipng || {
-		dunstify "Error: oxipng could not be found. It is required to optimize the saved screenshot."
-		echo "${err}: ${exe}oxipng${c} could not be found. It is required to optimize the saved screenshot."
+	# Check if Oxipng is installed.
+	command -v oxipng > /dev/null 2>&1 || {
+		dunstify -u critical "Screenshot.sh" "$herr:$hexe1 Oxipng$hexe2 could not be found. It is required to optimize the initial screenshot."
+
+		printf "%s: %sOxipng%s could not be found. It is required to optimize the initial screenshot." \
+			"$err" "$exe" "$c"
+
 		exit 1
 	}
 
-	# Check if imagemagick is installed.
-	command -v magick || {
-		dunstify "Error: imagemagick could not be found. It is required to convert the saved screenshot to a WEBP image."
-		echo "${err}: ${exe}imagemagick${c} could not be found. It is required to convert the saved screenshot to a WEBP image."
+	# Check if ImageMagick is installed.
+	command -v magick > /dev/null 2>&1 || {
+		dunstify -u critical "Screenshot.sh" "$herr:$hexe1 ImageMagick$hexe2 could not be found. It is required to convert the screenshot to a WEBP image."
+
+		printf "%s: %ImageMagick%s could not be found. It is required to convert the screenshot to a WEBP image." \
+			"$err" "$exe" "$c"
+
 		exit 1
 	}
 
 	# Save a screenshot to a file.
-	[ "$2" = "area" ] && Type="area"
-	[ "$2" = "monitor" ] && Type="output"
-	[ "$2" = "all" ] && Type="screen"
+	[ "$#" -eq 2 ] && [ "$2" = "area" ] || [ "$2" = "monitor" ] || [ "$2" = "all" ] && {
+		[ "$2" = "area" ] && Type="area"
+		[ "$2" = "monitor" ] && Type="output"
+		[ "$2" = "all" ] && Type="screen"
 
-	# Set the screenshot's name
-	Image=$(date +'Screenshot_%d-%m-%Y_%H-%M-%S')
+		# Set the screenshot's name.
+		Image=$(date +'Screenshot_%d-%m-%Y_%H-%M-%S')
 
-	# Change the active directory to save the screenshot into.
-	cd "$HOME/Images/Screenshots" || cd "$HOME/" || exit 1
+		# Change the active directory to save the screenshot into.
+		# If it is not found, simply save it in the $HOME directory.
+		cd "$HOME/Images/Screenshots" || cd "$HOME" || {
+			dunstify -u critical "… What? How? How is there not even a \$HOME directory??????"
 
-	# Take the screenshot.
-	grimblast --freeze copysave "$Type" "$Image".png
+			printf "… What? How? How is there not even a \$HOME directory??????"
 
-	# Optimize the image
-	oxipng --strip all "$Image".png
+			exit 1
+		}
 
-	# Convert the screenshot to a WEBP image.
-	magick "$Image".png -quality 100 "$Image".webp
+		# Take the screenshot.
+		grimblast --freeze copysave "$Type" "$Image".png > /dev/null 2>&1 || {
+			dunstify -u critical "Screenshot.sh" "$herr: There was an error when taking a screenshot."
 
-	# Remove the original screenshot.
-	rm "$Image"
+			printf "%s: There was an error when taking a screenshot." \
+				"$err"
 
-	exit
+			exit 1
+		}
+
+		# Optimize the image.
+		oxipng --strip all "$Image".png || {
+			dunstify -u critical "Screenshot.sh" "$herr: There was an error when optimizing$hweb1 $Image.png$hweb2"
+
+			printf "%s: There was an error when optimizing %s$Image.png%s" \
+				"$err" "$web" "$c"
+
+			exit 1
+		}
+
+		# Convert the image to a WEBP one.
+		magick "$Image".png -quality 100 "$Image".webp || {
+			dunstify -u critical "Screenshot.sh" "$herr: There was an error when converting$hweb1 $Image.png$hweb2 to a WEBP image."
+
+			printf "%s: There was an error when converting %s$Image.png%s to a WEBP image." \
+				"$err" "$web" "$c"
+
+			exit 1
+		}
+
+		# Remove the original screenshot.
+		rm -v "$Image.png"
+
+		# Notify the user.
+		dunstify "Screenshot.sh" "Screenshot$hweb1 $Image.webp$hweb2 has been taken."
+
+		exit 0
+	}
 }
 
 # Error out if an invalid argument is given.
-echo \
-	"${err}: Invalid argument '${arg}$*${c}'.\n" \
-	"\nSee the ${arg}--about${c} and the ${arg}--help${c} arguments.\n"
+printf "%s: Invalid argument '%s%s%s'.\n\n" \
+	"$err" "$arg" "$*" "$c"
+
+printf "See the %s--about%s / %s--help%s / %s-h%s argument.\n" \
+	"$arg" "$c" "$arg" "$c" "$arg" "$c"
 
 exit 1
