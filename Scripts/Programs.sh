@@ -1,5 +1,8 @@
 #!/bin/dash
 
+# --ozone-platform=x11
+# ^ In case some Electron programs ever need to run under Xwayland, use this.
+
 # Set some text formatting shortcuts.
 err=$(tput bold)$(tput setaf 1)Error$(tput sgr0)
 arg=$(tput bold)$(tput setaf 2)
@@ -263,17 +266,11 @@ $Programs
 
 	command -v vesktop && Programs="
 $Programs
-󰙯  Vesktop              Discord, but Vencorded
-󰙯  Vesktop (Wayland)    Discord, but Vencorded"
+󰙯  Vesktop              Discord, but Vencorded"
 
 	command -v element-desktop && Programs="
 $Programs
-󰭻  Element               Matrix client
-󰭻  Element (Wayland)     Matrix client"
-
-	Programs="
-$Programs
-󰭻  Element (web)         Matrix client"
+󰭻  Element               Matrix client"
 
 	[ -f "$SW/fractal" ] && Programs="
 $Programs
@@ -593,23 +590,11 @@ $Programs
 	}
 
 	[ "$Program" = "󰙯  Vesktop              Discord, but Vencorded" ] && {
-		nohup vesktop --ozone-platform=x11 > /dev/null 2>&1 & exit
-	}
-
-	[ "$Program" = "󰙯  Vesktop (Wayland)    Discord, but Vencorded" ] && {
 		nohup vesktop --ozone-platform=wayland > /dev/null 2>&1 & exit
 	}
 
-	[ "$Program" = "󰭻  Element               Matrix client" ] && {
-		nohup element-desktop > /dev/null 2>&1 & exit
-	}
-
-	[ "$Program" = "󰭻  Element (Wayland)     Matrix client" ] && {
+	[ "$Program" = "󰭻  Element              Matrix client" ] && {
 		nohup element-desktop --ozone-platform=wayland > /dev/null 2>&1 & exit
-	}
-
-	[ "$Program" = "󰭻  Element (web)         Matrix client" ] && {
-		nohup librewolf --new-window "https://app.element.io/" > /dev/null 2>&1 & exit
 	}
 
 	[ "$Program" = "󰭻  Fractal              GTK Matrix client" ] && {
@@ -617,13 +602,11 @@ $Programs
 	}
 
 	[ "$Program" = "󰭻  Revolt               FOSS alternative to Discord" ] && {
-		nohup revolt-desktop --ozone-platform=x11 > /dev/null 2>&1 & exit
-	#	nohup revolt-desktop --ozone-platform=wayland > /dev/null 2>&1 & exit
+		nohup revolt-desktop --ozone-platform=wayland > /dev/null 2>&1 & exit
 	}
 
 	[ "$Program" = "  Freetube             Watch YouTube videos" ] && {
-		nohup freetube --ozone-platform=x11 > /dev/null 2>&1 & exit
-	#	nohup freetube --ozone-platform=wayland > /dev/null 2>&1 & exit
+		nohup freetube --ozone-platform=wayland > /dev/null 2>&1 & exit
 	}
 
 	[ "$Program" = "󰋊  Gnome disk utility   GNOME's disk utility" ] && {
