@@ -53,7 +53,7 @@ hexe2="</span></b>"
 	printf "%s[ Credits ]%s\n" \
 		"$bol" "$c"
 
-	printf " %sHyprpicker%s: %shttps://github.com/hyprwm/hyprpicker%s" \
+	printf " %sHyprpicker%s: %shttps://github.com/hyprwm/hyprpicker%s\n" \
 		"$exe" "$c" "$web" "$c"
 
 	exit 0
@@ -63,7 +63,7 @@ hexe2="</span></b>"
 [ "$1" = "" ] && {
 	# Check if Dunst is installed.
 	command -v dunstify > /dev/null 2>&1 || {
-		printf "%s: %sDunst%s could not be found. It is required to display graphical notifications." \
+		printf "%s: %sDunst%s could not be found. It is required to display graphical notifications.\n" \
 			"$err" "$exe" "$c"
 
 		exit 1
@@ -73,7 +73,7 @@ hexe2="</span></b>"
 	[ "$XDG_CURRENT_DESKTOP" = "Hyprland" ] || {
 		dunstify -u critical "Picker.sh" "$herr: This script can only be used with the$hexe1 Hyprland$hexe2 Wayland compositor."
 
-		printf "%s: This script can only be used with the %sHyprland%s Wayland compositor." \
+		printf "%s: This script can only be used with the %sHyprland%s Wayland compositor.\n" \
 			"$err" "$exe" "$c"
 
 		exit 1
@@ -83,7 +83,7 @@ hexe2="</span></b>"
 	command -v hyprpicker || {
 		dunstify -u critical "Picker.sh" "$herr:$hexe1 Hyprpicker$hexe2 could not be found. It is required to pick a color on the screen."
 
-		printf "%s: %sHyprpicker%s could not be found. It is required to pick a color on the screen." \
+		printf "%s: %sHyprpicker%s could not be found. It is required to pick a color on the screen.\n" \
 			"$err" "$exe" "$c"
 
 		exit 1
@@ -97,7 +97,7 @@ hexe2="</span></b>"
 	[ "$Out" = "0" ] && {
 		dunstify -t 1500 "Picker.sh" "$Color copied to the clipboard."
 
-		printf "%s copied to the clipboard." \
+		printf "%s copied to the clipboard.\n" \
 			"$Color"
 
 		exit 0
@@ -107,7 +107,7 @@ hexe2="</span></b>"
 	[ "$Out" = "1" ] && {
 		dunstify -u critical "Picker.sh" "$herr: The color picking process was aborted or failed."
 
-		printf "%s: The color picking process was aborted or failed." \
+		printf "%s: The color picking process was aborted or failed.\n" \
 			"$err"
 	}
 }

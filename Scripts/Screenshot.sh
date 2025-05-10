@@ -3,10 +3,12 @@
 # Set some text formatting shortcuts for printf.
 err=$(tput bold)$(tput setaf 1)Error$(tput sgr0)
 arg=$(tput bold)$(tput setaf 2)
+sarg=$(tput bold)$(tput setaf 5)
 exe=$(tput bold)$(tput setaf 3)
 ico=$(tput bold)$(tput setaf 6)
 web=$(tput setaf 4)
-dim=$(tput dim)
+pat=$(tput setaf 6)
+dim=$(tput dim)$(tput sitm)
 bol=$(tput bold)
 c=$(tput sgr0)
 
@@ -30,7 +32,6 @@ hweb2="</span>"
 
 # Check for the `--about` and `--help` arguments.
 [ "$1" = "--about" ] || [ "$1" = "--help" ] || [ "$1" = "-h" ] && {
-
 	printf "%s  %sScreenshot.sh%s\n\n" \
 		"$ico" "$arg" "$c"
 
@@ -40,8 +41,8 @@ hweb2="</span>"
 	printf " This script allows you to take screenshots within the %sHyprland%s Wayland compositor.\n\n" \
 		"$exe" "$c"
 
-	printf "%s[ Arguments ]%s\n" \
-		"$bol" "$c"
+	printf "%s[ %sArguments%s%s ]%s\n" \
+		"$bol" "$arg" "$c" "$bol" "$c"
 
 	printf " %s--about%s / %s--help%s / %s-h%s \n" \
 		"$arg" "$c" "$arg" "$c" "$arg" "$c"
@@ -68,21 +69,21 @@ hweb2="</span>"
 
 	printf "   • Delete the original image, keeping the WEBP one.\n\n"
 
-	printf "%s[ Sub-arguments ]%s\n" \
-		"$bol" "$c"
+	printf "%s[ %sSub-arguments%s%s ]%s\n" \
+		"$bol" "$sarg" "$c" "$bol" "$c"
 
 	printf " %sarea%s\n" \
-		"$arg" "$c"
+		"$sarg" "$c"
 
 	printf "   Select an area or individual window to screenshot.\n\n"
 
 	printf " %smonitor%s\n" \
-		"$arg" "$c"
+		"$sarg" "$c"
 
 	printf "   Select the current monitor to screenshot.\n\n"
 
 	printf " %sall%s\n" \
-		"$arg" "$c"
+		"$sarg" "$c"
 
 	printf "   Select all active monitors to screenshot.\n\n"
 
@@ -91,13 +92,13 @@ hweb2="</span>"
 
 	printf " To copy an area screenshot to the clipboard:\n"
 
-	printf "   %sdash%s %s/path/to/Screenshot.sh %s--copy area%s\n\n" \
-		"$arg" "$c" "$web" "$arg" "$c"
+	printf "   %sdash%s %s%s %s--copy %sarea%s\n\n" \
+		"$exe" "$c" "$pat" "$0" "$arg" "$sarg" "$c"
 
 	printf " To save a screenshot of all monitors:\n"
 
-	printf "   %sdash%s %s/path/to/Screenshot.sh %s--save all%s\n\n" \
-		"$arg" "$c" "$web" "$arg" "$c"
+	printf "   %sdash%s %s%s %s--save %sall%s\n\n" \
+		"$exe" "$c" "$pat" "$0" "$arg" "$sarg" "$c"
 
 	printf " %sNote: The arguments cannot be swapped around.%s\n\n" \
 		"$dim" "$c"
@@ -153,7 +154,7 @@ hweb2="</span>"
 
 		# Take the screenshot.
 		grimblast --notify --freeze copy "$Type"  > /dev/null 2>&1 || {
-			dunstify -u critical "Screenshot.sh" "$herr: There was an error when taking a screenshot."
+			dunstify -u critical "Screenshot.sh" "$herr: Screenshot cancelled."
 
 			printf "%s: There was an error when taking a screenshot.\n" \
 				"$err"
@@ -236,7 +237,7 @@ hweb2="</span>"
 
 		# Take the screenshot.
 		grimblast --freeze copysave "$Type" "$Image".png > /dev/null 2>&1 || {
-			dunstify -u critical "Screenshot.sh" "$herr: There was an error when taking a screenshot."
+			dunstify -u critical "Screenshot.sh" "$herr: Screenshot cancelled."
 
 			printf "%s: There was an error when taking a screenshot.\n" \
 				"$err"
