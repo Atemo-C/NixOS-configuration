@@ -270,7 +270,7 @@ $Programs
 
 	command -v element-desktop && Programs="
 $Programs
-󰭻  Element               Matrix client"
+󰭻  Element              Matrix client"
 
 	[ -f "$SW/fractal" ] && Programs="
 $Programs
