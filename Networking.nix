@@ -1,6 +1,10 @@
-{ config, pkgs, ... }: let
+{ config, lib, pkgs, ... }: let
 
+	# Network management with NetworkManager; Toggleable in this module.
 	networkmanager = config.networking.networkmanager.enable;
+
+	# Hyprland check for the nm-applet program.
+	# Hyprland is toggleable in the `/.Hyprland/Configuration.nix` module.
 	hyprland = config.home-manager.users.${config.userName}.wayland.windowManager.hyprland.enable;
 
 in {
@@ -17,13 +21,16 @@ in {
 		networkmanager.enable = true;
 	};
 
-	# If NetworkManager is enabled, add the user to the `networkmanager` group.
-	users.users.${config.userName}.extraGroups = if networkmanager then [ "networkmanager" ] else [];
+	# Add the user to the `networkmanager` group.
+	users.users.${config.userName}.extraGroups = lib.optionalAttrs networkmanager [ "networkmanager" ];
 
 	# Disable NetworkManager's `wait-online` service to improve boot times.
-	systemd.services.NetworkManager-wait-online.enable = if networkmanager then false else null;
+	systemd.services.NetworkManager-wait-online.enable = lib.optionalAttrs networkmanager false;
 
-	# If Hyprland & NetworkManager are enabled, add an applet to configure the network graphically.
-	programs.nm-applet.enable = networkmanager && hyprland;
+	# Disable NetworkManager's `ModemManager` service if not using cellular connections.
+	systemd.services.ModemManager.enable = lib.optionalAttrs networkmanager false;
+
+	# Add an applet to configure the network graphically in Hyprland.
+	programs.nm-applet.enable = lib.optionals (networkmanager && hyprland) true;
 
 }

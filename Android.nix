@@ -1,27 +1,29 @@
-{ config, pkgs, ... }: let adb = config.programs.adb.enable; in {
+{ config, lib, pkgs, ... }: let
 
-	# Whether to enable support for the Android Debug Bridge (ADB).
+	# Android Debug Bridge (ADB) support; Toggleable in this module.
+	adb = config.programs.adb.enable;
+
+in {
+
+	# Whether to enbale support for the Android Debug Bridge (ADB).
 	programs.adb.enable = true;
 
-	# If ADB is enabled, the user is added to the `adbusers` group.
-	users.users.${config.userName}.extraGroups = if adb then [ "adbusers" ] else [];
+	# Add the user to the `adbusers` group.
+	users.users.${config.userName}.extraGroups = lib.optionalAttrs adb [ "adbusers" ];
 
-	# Install some Andorid-related utilities.
+	# Install some Android-related packages.
 	environment.systemPackages = [
 		# Implementation of Microsoft's Media Transfer Protocol.
 		pkgs.libmtp
 
 		# FUSE filesystem for MTP devices.
 		pkgs.jmtpfs
-	] ++ (
-		# The following utilities depend on ADB.
-		if adb then [
-			# Reverse tethering over ADB for Android.
-			pkgs.gnirehtet
+	] ++ (lib.optionalAttrs adb [
+		# Reverse tethering over ADB for Android.
+		pkgs.gnirehtet
 
-			# Display & control Android devices over USB or TCP/IP.
-			pkgs.scrcpy
-		] else []
-	);
+		# Display & control Android devices over USB or TCP/IP.
+		pkgs.scrcpy
+	] );
 
 }

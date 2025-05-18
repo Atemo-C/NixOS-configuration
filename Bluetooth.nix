@@ -1,12 +1,17 @@
-{ config, pkgs, ... }: let bluetooth = config.hardware.bluetooth.enable; in {
+{ config, lib, pkgs, ... }: let
 
-	# Whether to enable support for ᛒluetooth.
+	# Bluetooth support; Toggleable in this module.
+	bluetooth = config.hardware.bluetooth.enable;
+
+in {
+
+	# Whether to enable support for Bluetooth.
 	hardware.bluetooth.enable = true;
 
-	# If Bluetooth is enabled, activate the Blueman service.
-	services.blueman.enable = bluetooth;
+	# Whether to activate the Blueman Bluetooth service.
+	services.blueman.enable = lib.optionalAttrs bluetooth true;
 
-	# If Bluetooth is enabled, allow controlling media through Bluetooth headset buttons.
-	home-manager.users.${config.userName}.services.mpris-proxy.enable = bluetooth;
+	# Whether to allow controlling media through Blueetoh headset buttons.
+	home-manager.users.${config.userName}.services.mpris-proxy.enable = lib.optionalAttrs bluetooth true;
 
 }

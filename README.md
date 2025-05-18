@@ -1,11 +1,10 @@
 ![image](https://github.com/Atemo-C/NixOS-configuration/blob/main/Desktop.webp)
 
 # [1] General information.
-This is an almost identical version of the NixOS configuration that I use. It is made for a single-user environment on an x86_64 CPU-based PC. \
-Since March 2025, it now assumes an installation pulling packages from either the `unstable` or `unstable-small` branches. \
+This NixOS configuration is made for a single-user, desktop environment on an X86_64 (AMD64) CPU-based PC. \
+It assumes an installation pulling packages from the `unstable` branch. \
 It is a successor to [my previous NixOS configuration](https://github.com/Atemo-C/OLD-NixOS-Configuration), which is now archived. \
-If you want to use this configuration (or rather, a version of it) on your system, it is highly recommended that you read what each module does, & edit them if needed. It is, after all, a very personalized system that fits my own needs. \
-&nbsp;
+When using this configuration, make sure to read and modify each module of interest to you. It is, after all, made for myself first.
 
 # [2] To do when using this configuration.
 

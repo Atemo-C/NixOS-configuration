@@ -1,8 +1,13 @@
-{ config, pkgs, ... }: let
+{ config, lib, pkgs, ... }: let
 
-	pipewire    = config.services.pipewire.enable;
+	# Audio using PipeWire; Toggleable in this module.
+	pipewire = config.services.pipewire.enable;
+
+	# Audio effects using EasyEffects, auto-started in Hyprland.
+	# • EasyEffects is Toggleable in this module.
+	# • Hyprland is toggleable in the `./Hyprland/Configuration.nix` module.
 	easyeffects = config.home-manager.users.${config.userName}.services.easyeffects.enable;
-	hyprland    = config.home-manager.users.${config.userName}.wayland.windowManager.hyprland.enable;
+	hyprland = config.home-manager.users.${config.userName}.wayland.windowManager.hyprland.enable;
 
 in {
 
@@ -11,67 +16,78 @@ in {
 			# Whether to enable the PipeWire multimedia framework.
 			enable = true;
 
-			# If PipeWire is enabled, enable emulation for the ALSA audio server.
-			alsa = {
-				enable = pipewire;
-				support32Bit = pipewire;
+			# Whether to enable emulation for the ALSA audio server.
+			alsa = lib.optionalAttrs pipewire {
+				enable = true;
+				support32Bit = true;
 			};
 
-			# If PipeWire is enabled, enable emulation for the JACK audio server.
-			jack.enable = pipewire;
+			# Whether to enable emulation for the JACK audio server.
+			jack.enable lib.optionalAttrs pipewire true;
 
-			# If PipeWire is enabled, enable emulation for the PulseAudio audio server.
-			pulse.enable = pipewire;
+			# Whether to enable emulation for the PulseAudio server.
+			pulse.enable lib.optionalAttrs pipewire true;
 		};
 
-		# If PipeWire is enabled, enable the playerctld daemon for easy multimedia control.
-		playerctld.enable = pipewire;
+		# Whether to enable the playerctld daemon for easy multimedia control.
+		playerctld.enable = lib.optionalAttrs pipewire true;
 	};
 
-	# If PipeWire is enabled, enable the Realtimekit service.
-	# It allows programs such as PipeWire to acquire realtime priority.
-	security.rtkit.enable = pipewire;
+	# Whether to enable the Realtimekit service, allowing programs like PipeWire to acquire realtime priority.
+	security.rtkit.enable = lib.optionalAttrs pipewire true;
 
-	environment = if pipewire then {
-		# Link MIDI soundfonts to `/run/current-system/sw/share/soundfonts` for easier access.
+	environment = lib.optionalAttrs pipewire {
+		# Link MIDI soundfonts to `/run/current-system/sw/share/soundfonts`.
 		pathsToLink = [ "/share/soundfonts" ];
 
-		# Install some audio utilities.
+		# Install some audio packages.
 		systemPackages = [
-			# View and edit tags for various audio files.
-			pkgs.audacious pkgs.audacious-plugins
+			# Audio player.
+			pkgs.audacious
+			pkgs.audacious-plugins
 
-			# View and edit tags for various audio files.
+			# View & edit tags for various audio files.
 			pkgs.easytag
 
-			# PipeWire volume control.
+			# Volume control.
 			pkgs.pwvucontrol
 
-			# QT graph manager (patchbay) for PipeWire.
+			# Graph manager ("patchbay") for PipeWire.
 			pkgs.qpwgraph
 
 			# MIDI sound fonts.
+			# Frank Wen's pro-quality GM/GS soundfont.
+			# Note: Old & reliable, decent quality, MIT license.
 			pkgs.soundfont-arachno
+
+			# General MIDI-compliant bank, aimed at enhancing the realism of your MIDI files & arrangements.
+			# Note: Awesome quality, quite complete, but unfree license.
 			pkgs.soundfont-fluid
+
+			# Acoustic grand piano soundfont.
+			# Note: Great quality, piano-focused (obviously), CC 3.0 license.
 			pkgs.soundfont-generaluser
+
+			# SoundFont bank featuring 259 instrument presets & 11 drum kits
+			# Note: Good quality, very complete, GS 2.0 license.
 			pkgs.soundfont-ydp-grand
 
 			# Sound editor.
 			pkgs.tenacity
 		];
-	} else {};
+	};
 
-	home-manager.users.${config.userName} = {
+	home-manager.users.${config.userName} = lib.optionalAttrs pipewire {
 		# Whether to enable live audio effects using EasyEffects.
 		services.easyeffects.enable = true;
 
-		# If EasyEffect is enabled, start it on launch.
-		wayland.windowManager.hyprland.settings.exec-once = if pipewire && hyprland then [
+		# Start EasyEffects with Hyprland.
+		wayland.windowManager.hyprland.settings.exec-once = lib.optionals (easyeffects && hyprland) [
 			"easyeffects --gapplication-service"
-		] else [];
+		];
 	};
 
-	# If EasyEffect is enabled, enable Dconf, which EasyEffects needs.
-	programs.dconf.enable = easyeffects;
+	# Enable Dconf for EasyEffects.
+	programs.dconf.enable = lib.optionalAttrs easyeffects true;
 
 }
