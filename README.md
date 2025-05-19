@@ -33,14 +33,14 @@ To enable support for NVIDIA GPUs *(16XX+ 20XX+)* with the relevant proprietary 
 
 ## [2.6] Flatpaks & Flathub.
 Currently, the Flathub Flatpak repository cannot be easily declaratively defined in NixOS & Home Manager by themselves. As such, it needs to be manually added with a shell command after installation. \
-If you are using the FISH shell, I added an abbreviation that will do it for you: [`enable-flathub`](https://github.com/Atemo-C/NixOS-configuration/blob/main/User/Shell.nix#L62). \
-&nbsp;
+If you are using the FISH shell, I added an abbreviation that will do it for you: [`enable-flathub`](https://github.com/Atemo-C/NixOS-configuration/blob/main/User/Shell.nix#L62).
 
 ## [2.7] Guest additions.
 If you are installing on a virtual machine, you might consider uncommenting the relevant Guest agents/additions in the [`configuration.nix`](https://github.com/Atemo-C/NixOS-configuration/blob/main/configuration.nix) module.
 
 ## [2.8] Desktop environment.
-This configuration is aimed and sometimes assumes *(to be fixed)* the use of the [Hyprland](https://hyprland.org/) Wayland compositor. However, you can enable the [XFCE](https://xfce.org/) desktop environment instead by uncommenting the relevant modules in the [`configuration.nix`](https://github.com/Atemo-C/NixOS-configuration/blob/main/configuration.nix) module, as long as you also disable Hyprland in the [`./Hyprland/Enable.nix`](https://github.com/Atemo-C/NixOS-configuration/blob/main/Hyprland/Enable.nix) module.
+This configuration is aimed and sometimes assumes *(to be fixed)* the use of the [Hyprland](https://hyprland.org/) Wayland compositor. However, you can enable the [XFCE](https://xfce.org/) desktop environment instead by uncommenting the relevant modules in the [`configuration.nix`](https://github.com/Atemo-C/NixOS-configuration/blob/main/configuration.nix) module, as long as you also disable Hyprland in the [`./Hyprland/Enable.nix`](https://github.com/Atemo-C/NixOS-configuration/blob/main/Hyprland/Enable.nix) module. \
+&nbsp;
 
 # [3] Use cases & features implementation.
 
