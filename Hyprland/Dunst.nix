@@ -1,11 +1,18 @@
-{ config, pkgs, ... }: { home-manager.users.${config.userName}.services.dunst = {
+{ config, lib, pkgs, ... }: let
 
-	# If Hyprland is enabled, display notifications graphically with Dunst.
-	enable = true;
+	# Hyprland check for Dunst.
+	# Hyprland is toggleable in the `./Hyprland/Enable.nix` module.
+	hyprland = config.enableHyprland;
 
-	# Dunst settings.
-	settings = {
-		global = rec {
+in {
+
+	home-manager.users.${config.userName}.services.dunst = lib.optionalAttrs hyprland {
+		# Whether to display graphical notifications with Dunst.
+		enable = true;
+
+		# Dunst settings.
+		settings = {
+			global = rec {
 				# Which monitor should the notifications be displayed on.
 				monitor = 0;
 

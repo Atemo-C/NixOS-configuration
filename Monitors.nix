@@ -6,7 +6,13 @@
 # • On the top, you will find the most updated version of the module.
 # • Below it, you will find the old version, commented out.
 
-{ config, ... }: {
+{ config, lib, ... }: let
+
+	# Check for Hyprland.
+	# Hyprland is toggleable in the `./Hyprland/Enable.nix` module.
+	hyprland = config.enableHyprland;
+
+in {
 
 	# Settings for connected monitors during the boot process.
 	boot.kernelParams = [
@@ -14,7 +20,7 @@
 		"video=DP-1:1920x1080@120"
 	];
 
-	home-manager.users.${config.userName} = {
+	home-manager.users.${config.userName} = lib.optionalAttrs hyprland {
 		# Monitor settings for the Hyprland workspaces module in the Waybar bar.
 		programs.waybar.settings.mainBar."hyprland/workspaces" = { persistent-workspaces = {
 			"DP-1" = [ 1 2 3 4 5 6 7 8 ];

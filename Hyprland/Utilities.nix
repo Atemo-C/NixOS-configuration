@@ -1,7 +1,13 @@
-{ config, pkgs, ... }: {
+{ config, lib, pkgs, ... }: let
+
+	# Hyprland check for various utilities.
+	# Hyprland is toggleable in the `./Hyprland/Enable.nix` module.
+	hyprland = config.enableHyprland;
+
+in {
 
 	# Utilties for a more fully-featured Hyprland desktop.
-	environment.systemPackages = [
+	environment.systemPackages = lib.optionalAttrs hyprland [
 		# Keyring.
 		pkgs.gnome-keyring
 
@@ -15,7 +21,7 @@
 		pkgs.zenity
 	];
 
-	home-manager.users.${config.userName} = {
+	home-manager.users.${config.userName} = lib.optionalAttrs hyprland {
 		# Tofi menu for shell scripts.
 		programs.tofi = {
 			# Enable Tofi, a tiny dynamic menu for Wayland, if Hyprland is used.
@@ -72,10 +78,10 @@
 	};
 
 	# If Hyprland is enabled, enable Dconf.
-	programs.dconf.enable = true;
+	programs.dconf.enable = lib.optionalAttrs hyprland true;
 
 	# XDG Desktop Portal settings.
-	xdg.portal = {
+	xdg.portal = lib.optionalAttrs hyprland {
 		# List of packages that provide XDG Desktop Portal configuration.
 		configPackages = [
 			# Hyprland Desktop Portal.

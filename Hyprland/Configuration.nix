@@ -1,16 +1,17 @@
 { config, pkgs, ... }: { home-manager.users.${config.userName}.wayland.windowManager.hyprland = {
 
 	# Whether to enable the Hyprland Wayland compositor.
-	enable = true;
+	# It can be changed in the `./Hyprland/Enable.nix` module, or changed as `enableHyprland = true; / false;`.
+	enable = config.enableHyprland;
 
 #	# Whether to enable XWayland support; Disabling it will give a Wayland-only desktop.
-#	xwayland.enable = false;
+#	xwayland.enable = lib.optionalAttrs hyprland false;
 
 #	# Whether to use the Legacy renderer; Mostly useful for older GPUs.
-#	package = (pkgs.hyprland.override { legacyRenderer = true; });
+#	package = lib.optionalAttrs hyprland (pkgs.hyprland.override { legacyRenderer = true; });
 
 	# Hyprland settings. They are arranged in a custom order.
-	settings = rec {
+	settings = lib.optionalAttrs hyprland rec {
 		# Active window border colour and group background.
 		general."col.active_border" = "rgb(0080ff)";
 			group."col.border_active" = general."col.active_border";
@@ -70,8 +71,8 @@
 
 		# Shadows.
 		decoration.shadow = {
-#			# Whether to enable drop shadows on windows.
-#			enable = false;
+			# Whether to enable drop shadows on windows.
+			enable = true;
 
 			# In what power to render the falloff; More power = The faster the falloff.
 			render_power = 8;
@@ -113,7 +114,7 @@
 		# Animations.
 		animations = {
 			# Whether to enable animations.
-			enabled = true;
+			enabled = false;
 
 			# Whether to enable first launch animation.
 			first_launch_animation = false;

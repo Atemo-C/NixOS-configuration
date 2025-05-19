@@ -3,8 +3,8 @@
 	# Polkit support; Toggleable in this module.
 	polkit = config.security.polkit.enable;
 
-	# Hyprland is toggleable in the `./Hyprland/Configuration.nix` module.
-	hyprland = config.home-manager.users.${config.userName}.wayland.windowManager.hyprland.enable;
+	# Hyprland is toggleable in the `./Hyprland/Enable.nix` module.
+	hyprland = config.enableHyprland;
 
 in {
 

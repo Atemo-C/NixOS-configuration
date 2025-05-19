@@ -4,8 +4,8 @@
 	networkmanager = config.networking.networkmanager.enable;
 
 	# Hyprland check for the nm-applet program.
-	# Hyprland is toggleable in the `/.Hyprland/Configuration.nix` module.
-	hyprland = config.home-manager.users.${config.userName}.wayland.windowManager.hyprland.enable;
+	# Hyprland is toggleable in the `./Hyprland/Enable.nix` module.
+	hyprland = config.enableHyprland;
 
 in {
 

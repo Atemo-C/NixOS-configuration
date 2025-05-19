@@ -5,9 +5,9 @@
 
 	# Audio effects using EasyEffects, auto-started in Hyprland.
 	# • EasyEffects is Toggleable in this module.
-	# • Hyprland is toggleable in the `./Hyprland/Configuration.nix` module.
+	# • Hyprland is toggleable in the `./Hyprland/Enable.nix` module.
 	easyeffects = config.home-manager.users.${config.userName}.services.easyeffects.enable;
-	hyprland = config.home-manager.users.${config.userName}.wayland.windowManager.hyprland.enable;
+	hyprland = config.enableHyprland;
 
 in {
 
@@ -23,10 +23,10 @@ in {
 			};
 
 			# Whether to enable emulation for the JACK audio server.
-			jack.enable lib.optionalAttrs pipewire true;
+			jack.enable = lib.optionalAttrs pipewire true;
 
 			# Whether to enable emulation for the PulseAudio server.
-			pulse.enable lib.optionalAttrs pipewire true;
+			pulse.enable = lib.optionalAttrs pipewire true;
 		};
 
 		# Whether to enable the playerctld daemon for easy multimedia control.
