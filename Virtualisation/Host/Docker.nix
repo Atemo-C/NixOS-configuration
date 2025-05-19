@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: rec {
+{ config, lib, pkgs, ... }: rec {
 
 	virtualisation.docker = {
 		# Whether to enable Docker.
@@ -20,6 +20,6 @@
 	};
 
 	# If Docker is enabled, add the user to the `docker` group.
-	users.users.${config.userName}.extraGroups = if virtualisation.docker.enable then [ "docker" ] else [];
+	users.users.${config.userName}.extraGroups = lib.optionalAttrs virtualisation.docker.enable [ "docker" ];
 
 }

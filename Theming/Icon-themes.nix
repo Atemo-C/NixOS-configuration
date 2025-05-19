@@ -1,6 +1,8 @@
-{ config, pkgs, ... }: let
+{ config, lib, pkgs, ... }: let
 
-	hyprland = config.home-manager.users.${config.userName}.wayland.windowManager.hyprland.enable;
+	# Hyprland check for Hyprland and Hyprland utilities-specific theming.
+	# Hyprland is toggleable in the `./Hyprland/Enable.nix` module.
+	hyprland = config.enableHyprland;
 
 in { home-manager.users = {
 
@@ -42,13 +44,13 @@ in { home-manager.users = {
 		};
 
 		# Icon settings for the Dunst notification daemon.
-		services.dunst.settings.global = if hyprland then {
+		services.dunst.settings.global = lib.optionalAttrs hyprland {
 			# Set icon theme (only used for recursive icon lookup).
 			icon_theme = "Flat-Remix-Blue-Dark";
 
 			# Paths to default icons (only necessary when not using recursive icon lookup).
 			icon_path = "$HOME/.nix-profile/share/icons/Flat-Remix-Blue-Dark/status/scalable/16/:$HOME/.nix-profile/share/icons/Flat-Remix-Blue-Dark/devices/scalable/";
-		} else {};
+		};
 	};
 
 	# Icon and cursor theming for the root user.

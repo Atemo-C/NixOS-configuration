@@ -1,8 +1,13 @@
-{ config, pkgs, ... }: let
+{ config, lib, pkgs, ... }: let
 
+	# Gamescope compositing window manager; Toggleable in this module.
 	gamescope = config.programs.gamescope.enable;
-	gamemode  = config.programs.gamemode.enable;
-	steam     = config.programs.steam.enable;
+
+	# Gamemode gaming optimisations; Toggleable in this module.
+	gamemode = config.programs.gamemode.enable;
+
+	# Steam game distribution platform; Toggleable in this module.
+	steam = config.programs.steam.enable;
 
 in {
 
@@ -42,7 +47,7 @@ in {
 			enable = true;
 
 			# System-wide configuration for GameMode (/etc/gamemode.ini).
-			settings.general = if gamemode then { inhibit_screensaver = 0; } else {};
+			settings.general.inhibit_screensaver = lib.optionalAttrs gamemode 0;
 		};
 
 		# Whether to enable Gamescope, the SteamOS session compositing window manager.
@@ -57,17 +62,17 @@ in {
 			extest.enable = steam;
 
 			# Extra packages to be used as compatibility tools for Steam on Linux.
-			extraCompatPackages = if steam then [ pkgs.proton-ge-bin ] else [];
+			extraCompatPackages = lib.optionalAttrs steam [ pkgs.proton-ge-bin ];
 
 			# Additional packages to add to the Steam environment.
-			extraPackages = if steam && gamescope then [
+			extraPackages = lib.optionals (steam && gamescope) [
 				# SteamOS session compositing window manager.
 				pkgs.gamescope
-			] else [] ++ (
-				if steam && gamemode then [
+			] ++ (
+				lib.optionals (steam && gamemode) [
 					# Optimise Linux system performance for gaming on demand.
 					pkgs.gamemode
-				] else []
+				]
 			);
 
 			# Whether to open ports in the firewall for Steam Retome Play.

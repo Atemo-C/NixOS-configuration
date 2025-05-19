@@ -1,6 +1,7 @@
-{ config, pkgs, ... }: let
+{ config, lib, pkgs, ... }: let
 
-	hyprland = config.home-manager.users.${config.userName}.wayland.windowManager.hyprland.enable;
+	# Hyprland check for Hyprland and Hyprland utilities-specific theming.
+	hyprland = config.enableHyprland;
 
 in {
 
@@ -15,8 +16,8 @@ in {
 		${config.userName} = {
 			# Settings to write to the dconf configuration system.
 			# Here, sets the desired window icons layout.
-			dconf.settings = if hyprland then
-				{ "org/gnome/desktop/wm/preferences" = { button-layout = "icon,appmenu:"; }; } else {};
+			dconf.settings = lib.optionalAttrs hyprland
+				{ "org/gnome/desktop/wm/preferences" = { button-layout = "icon,appmenu:"; }; };
 
 			gtk = {
 				# Enable GTK 2/3 configuration.
@@ -53,8 +54,8 @@ in {
 		root = {
 			# Settings to write to the dconf configuration system.
 			# Here, sets the desired window icons layout.
-			dconf.settings = if hyprland then
-				{ "org/gnome/desktop/wm/preferences" = { button-layout = "icon,appmenu:"; }; } else {};
+			dconf.settings = lib.optionalAttrs hyprland
+				{ "org/gnome/desktop/wm/preferences" = { button-layout = "icon,appmenu:"; }; };
 
 			gtk = {
 				# Enable GTK 2/3 configuration.

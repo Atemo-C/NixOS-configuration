@@ -1,4 +1,4 @@
-{ config, ... }: let
+{ config, lib, ... }: let
 
 	# Define the list of colors shared across terminals.
 	Background    = "000000"; Foreground    = "eeeeee";
@@ -11,6 +11,10 @@
 	normalRed     = "ff0000";    dimRed     = "b30000";    brightRed     = "ff6666";
 	normalWhite   = "e6e6e6";    dimWhite   = "b3b3b3";    brightWhite   = "ffffff";
 	normalYellow  = "ffc000";    dimYellow  = "b38600";    brightYellow  = "ffd966";
+
+	# Alacritty check for Alacritty-specific theming.
+	# Alacritty is toggleable in the `./Programs/Terminal-emulators.nix` module.
+	alacritty = config.home-manager.users.${config.userName}.programs.alacritty.enable;
 
 in {
 
@@ -41,7 +45,7 @@ in {
 	};
 
 	# Alacritty colors.
-	home-manager.users.${config.userName}.programs.alacritty.settings.colors = {
+	home-manager.users.${config.userName}.programs.alacritty.settings.colors = lib.optionalAttrs alacritty {
 		primary = {
 			background = "#${Background}";
 			foreground = "#${Foreground}";

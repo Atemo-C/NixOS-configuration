@@ -1,7 +1,11 @@
-{ config, pkgs, ... }: let
+{ config, lib, pkgs, ... }: let
 
+	# Alacritty terminal emulator; Toggleable in this module.
 	alacritty = config.home-manager.users.${config.userName}.programs.alacritty.enable;
-	hyprland = config.home-manager.users.${config.userName}.wayland.windowManager.hyprland.enable;
+
+	# Hyprland check for autostarting a terminal emulator daemon.
+	# Hyprland is toggleable in the `./Hyprland/Enable.nix` module.
+	hyprland = config.enableHyprland;
 
 in {
 
@@ -9,21 +13,21 @@ in {
 	environment.variables = { TERMINAL = "alacritty"; };
 
 	home-manager.users.${config.userName} = {
-	programs.alacritty = {
+	programs.alacritty = rec {
 		# Whetehr to enable the Alacritty, a cross-platform, GPU-accelerated terminal emulator.
 		enable = true;
 
 		# Alacritty configuration.
-		settings.window = if alacritty then {
+		settings.window = lib.optionalAttrs enable {
 				dynamic_padding = true;
 				opacity = 0.8;
-			} else {};
+			};
 		};
 
 		# Start the terminal as a background daemon in the Hyprland if it is used.
-		wayland.windowManager.hyprland.settings.exec-once = if alacritty && hyprland then [
+		wayland.windowManager.hyprland.settings.exec-once = lib.optionals (alacritty && hyprland) [
 			"alacritty --daemon"
-		] else [];
+		];
 	};
 
 }

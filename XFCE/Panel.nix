@@ -1,4 +1,10 @@
-{ config, ... }: { home-manager.users.${config.userName}.xfconf.settings.xfce4-panel = {
+{ config, lib, ... }: let
+
+	# Check for the XFCE desktop environment.
+	# XFCE can be enabled in the ./XFCE/XFCE.nix module.
+	xfce = config.services.xserver.desktopManager.xfce.enable;
+
+in { home-manager.users.${config.userName}.xfconf.settings.xfce4-panel = lib.optionalAttrs xfce {
 
 	# Define the top panel.
 	"panels" = [ 1 ];

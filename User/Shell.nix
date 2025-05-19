@@ -17,7 +17,6 @@
 			h = "Hyprland";
 			m = "micro";
 			x = "exit";
-			r = "run0";
 
 			# Finding text in a directory.
 			fdtext = ''grep -Rn -e "text"'';
@@ -38,25 +37,25 @@
 			backup = ''rsync -av --delete --delete-excluded --exclude-from="${config.users.users.${config.userName}.home}/.exclude.txt" --progress -h ${config.users.users.${config.userName}.home}/ /run/media/${config.userName}/744GB-HDD-EXT/Backups-Rsync/'';
 
 			# Remapping mouse extra button to F13.
-			f13 = "run0 evsieve --input /dev/input/by-id/usb-1bcf_USB_Optical_Mouse-event-mouse grab --map btn:extra key:f13 --output";
+			f13 = "sudo evsieve --input /dev/input/by-id/usb-1bcf_USB_Optical_Mouse-event-mouse grab --map btn:extra key:f13 --output";
 
 			# Remapping mouse side buttons to LMB.
-			lmb = "run0 evsieve --input /dev/input/by-id/usb-1bcf_USB_Optical_Mouse-event-mouse grab --map btn:side btn:left --map btn:extra btn:left --output";
+			lmb = "sudo evsieve --input /dev/input/by-id/usb-1bcf_USB_Optical_Mouse-event-mouse grab --map btn:side btn:left --map btn:extra btn:left --output";
 
 			# Toggling recent files.
-			enable-recent-files = "run0 rm -v -i ~/.local/share/recently-used.xbel";
-			disable-recent-files = "run0 rm -v -i ~/.local/share/recently-used.xbel; touch ~/.local/share/recently-used.xbel && run0 chattr -V +i ~/.local/share/recently-used.xbel";
+			enable-recent-files = "sudo rm -v -i ~/.local/share/recently-used.xbel";
+			disable-recent-files = "sudo rm -v -i ~/.local/share/recently-used.xbel; touch ~/.local/share/recently-used.xbel && sudo chattr -V +i ~/.local/share/recently-used.xbel";
 
 			# NixOS.
-			channel-list = "run0 nix-channel --list";
-			channel-change = "run0 nix-channel --add https://channels.nixos.org/nixos-XX.XX nixos && micro /etc/nixos/User/Home-Manager.nix";
-			nix-list = "run0 nixos-rebuild list-generations";
-			nix-clean = "run0 nix-collect-garbage -d --quiet";
-			nix-test = ''set -x CURRENTDIR $(pwd) && cd /tmp/ && run0 nixos-rebuild test --quiet; cd "$CURRENTDIR"'';
-			nix-update-now = "run0 nixos-rebuild switch --quiet";
-			nix-update-boot = "run0 nixos-rebuild boot --quiet";
-			nix-upgrade-now = "run0 nixos-rebuild switch --upgrade --quiet";
-			nix-upgrade-boot = "run0 nixos-rebuild boot --upgrade --quiet";
+			channel-list = "sudo nix-channel --list";
+			channel-change = "sudo nix-channel --add https://channels.nixos.org/nixos-XX.XX nixos && micro /etc/nixos/User/Home-Manager.nix";
+			nix-list = "sudo nixos-rebuild list-generations";
+			nix-clean = "sudo nix-collect-garbage -d --quiet";
+			nix-test = ''set -x CURRENTDIR $(pwd) && cd /tmp/ && sudo nixos-rebuild test --quiet; cd "$CURRENTDIR"'';
+			nix-update-now = "sudo nixos-rebuild switch --quiet";
+			nix-update-boot = "sudo nixos-rebuild boot --quiet";
+			nix-upgrade-now = "sudo nixos-rebuild switch --upgrade --quiet";
+			nix-upgrade-boot = "sudo nixos-rebuild boot --upgrade --quiet";
 
 			# Flatpaks and FlatHub.
 			enable-flathub = "flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo && flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo";

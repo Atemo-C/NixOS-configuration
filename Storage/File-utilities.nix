@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: { environment.systemPackages = [
+{ config, lib, pkgs, ... }: { environment.systemPackages = [
 
 	# Archiving-only formats support and utilities.
 	pkgs.binutils   # ar
@@ -46,9 +46,6 @@
 	# Backup program with an easy-to-use interface. (For user files.)
 	pkgs.kdePackages.kbackup
 
-	# A new bootable USB solution.
-	pkgs.ventoy-full
-
 	# Thumbnailing utilties and media formats support.
 	pkgs.poppler                   # .pdf
 	pkgs.f3d                       # General 3D files thumbnailing
@@ -63,7 +60,7 @@
 	pkgs.webp-pixbuf-loader        # .webp
 
 	# General image files thumbnailing for XFCE's Thunar.
-	(if config.programs.thunar.enable then pkgs.xfce.tumbler else null)
+	(lib.optionalAttrs config.programs.thunar.enable pkgs.xfce.tumbler)
 
 	# Command line utilities for working with .desktop files.
 	pkgs.desktop-file-utils

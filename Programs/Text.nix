@@ -1,6 +1,8 @@
-{ config, pkgs, ... }: let
+{ config, lib, pkgs, ... }: let
 
-	hyprland = config.home-manager.users.${config.userName}.wayland.windowManager.hyprland.enable;
+	# Hyprland check for clipboard management.
+	# Hyprland is toggleable in the `./Hyprland/Enable.nix` module.
+	hyprland = config.enableHyprland;
 
 in {
 
@@ -46,8 +48,7 @@ in {
 	programs.nano.enable = false;
 
 	# Start the clipboard manager in Hyprland if it is used.
-	home-manager.users.${config.userName}.wayland.windowManager.hyprland.settings.exec-once = if hyprland then [
-		"wl-paste -t text --watch clipman store --no-persist --max-items=100"
-	] else [];
+	home-manager.users.${config.userName}.wayland.windowManager.hyprland.settings.exec-once =
+		lib.optionalAttrs hyprland [ "wl-paste -t text --watch clipman store --no-persist --max-items=100" ];
 
 }

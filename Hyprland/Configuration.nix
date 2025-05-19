@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: { home-manager.users.${config.userName}.wayland.windowManager.hyprland = {
+{ config, lib, pkgs, ... }: { home-manager.users.${config.userName}.wayland.windowManager.hyprland = rec {
 
 	# Whether to enable the Hyprland Wayland compositor.
 	# It can be changed in the `./Hyprland/Enable.nix` module, or changed as `enableHyprland = true; / false;`.
@@ -11,7 +11,7 @@
 #	package = lib.optionalAttrs hyprland (pkgs.hyprland.override { legacyRenderer = true; });
 
 	# Hyprland settings. They are arranged in a custom order.
-	settings = lib.optionalAttrs hyprland rec {
+	settings = lib.optionalAttrs enable rec {
 		# Active window border colour and group background.
 		general."col.active_border" = "rgb(0080ff)";
 			group."col.border_active" = general."col.active_border";

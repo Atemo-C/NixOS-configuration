@@ -1,6 +1,8 @@
-{ config, pkgs, ... }: let
+{ config, lib, pkgs, ... }: let
 
-	hyprland = config.home-manager.users.${config.userName}.wayland.windowManager.hyprland.enable;
+	# Hyprland check for screenshot and color picking utilities.
+	# Hyprland is toggleable in the `./Hyprland/Enable.nix` module.
+	hyprland = config.enableHyprland;
 
 in { environment.systemPackages = [
 	# Extremely simplistic image viewing.
@@ -47,12 +49,12 @@ in { environment.systemPackages = [
 
 ] ++ (
 	# Only install these packages if Hyprland is enabled.
-	if hyprland then [
+	lib.optionalAttrs hyprland [
 		# Take screenshots with grimblast.
 		pkgs.grimblast
 
 		# Pick a color on the monitor with Hyprpicker.
 		pkgs.hyprpicker
-	] else []
+	]
 
 ); }

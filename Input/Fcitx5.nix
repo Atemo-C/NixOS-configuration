@@ -1,11 +1,13 @@
-{ config, pkgs, ... }: let
+{ config, lib, pkgs, ... }: let
 
-	hyprland = config.home-manager.users.${config.userName}.wayland.windowManager.hyprland.enable;
+	# Hyprland check for Fcitx5.
+	# Hyprland is toggleable in the `./Hyprland/Enable.nix` module.
+	hyprland = config.enableHyprland;
 
 in {
 
-	i18n.inputMethod = if hyprland then {
-		# If Hyprland is enabled, enable an additional input method type.
+	i18n.inputMethod = lib.optionalAttrs hyprland {
+		# Enable an additional input method type in Hyprland.
 		enable = true;
 
 		# Additional input method type to be used.
@@ -16,10 +18,10 @@ in {
 			pkgs.fcitx5-gtk
 			pkgs.fcitx5-configtool
 		];
-	} else {};
+	};
 
-	# If Hyprland is enabled, start the relevant additional input method type when logging into Hyprland.
-	home-manager.users.${config.userName}.wayland.windowManager.hyprland.settings.exec-once = if hyprland then
-		[ "fcitx5" ] else [];
+	# Start the relevant additional input method type when logging into Hyprland.
+	home-manager.users.${config.userName}.wayland.windowManager.hyprland.settings.exec-once =
+		lib.optionalAttrs hyprland [ "fcitx5" ];
 
 }
