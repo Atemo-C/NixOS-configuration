@@ -72,7 +72,7 @@
 		# Shadows.
 		decoration.shadow = {
 			# Whether to enable drop shadows on windows.
-			enable = true;
+			enabled = true;
 
 			# In what power to render the falloff; More power = The faster the falloff.
 			render_power = 8;
