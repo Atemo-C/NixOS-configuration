@@ -29,6 +29,7 @@
 
 	./Hyprland/Configuration.nix
 	./Hyprland/Dunst.nix
+	./Hyprland/Enable.nix
 	./Hyprland/Utilities.nix
 	./Hyprland/Waybar.nix
 
