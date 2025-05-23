@@ -14,4 +14,17 @@
 		pkgs.pmutils
 	];
 
+	# Service to use `pm-suspend` when invoking `systemctl suspend`, see the comment above.
+#	systemd.services."systemd-suspend" = {
+#		description = "System Suspend with pm-suspend";
+#		serviceConfig = {
+#			Type = "oneshot";
+#			Environment = "PATH=${pkgs.pmutils}/bin";
+#			ExecStart = [
+#				""
+#				"${pkgs.pmutils}/bin/pm-suspend"
+#			];
+#		};
+#	};
+
 }

@@ -10,7 +10,7 @@ When using this configuration, make sure to read and modify each module of inter
 
 ## [2.1] BIOS boot.
 **This only applies if you are booting in BIOS mode.**
-In the [`Boot.nix`](https://github.com/Atemo-C/NixOS-configuration/blob/main/Boot.nix) module, you will find the option to set the storage device on which the `Limine` bootloader should be installed onto *[(`boot.loader.limine.biosDevice`)](https://github.com/Atemo-C/NixOS-configuration/blob/main/Boot.nix#L10)*. You need to set this value for it to be installed. \
+In the [`Boot.nix`](https://github.com/Atemo-C/NixOS-configuration/blob/main/Boot.nix) module, you will find the option to set the storage device on which the `Limine` bootloader should be installed onto *[(`boot.loader.limine.biosDevice`)](https://github.com/Atemo-C/NixOS-configuration/blob/main/Boot.nix#L19)*. You need to set this value for it to be installed. \
 Be careful: Using `/dev/sdX` is not recommended, for if you use multiple drives, these names may change upon reboots or other hardware/software changes. Instead, it is recommended to use the disk's ID, found in `/dev/disk/by-id`. An example using a Samsung NVME SSD is provided in the configuration.
 
 ## [2.2] User name & description.
@@ -22,7 +22,7 @@ To see which modules use these variables, open a terminal emulator where this co
 *"`-n`" shows the relevant line number at the end of the file name.*
 
 ## [2.3] Host name.
-In the [`Networking.nix`](https://github.com/Atemo-C/NixOS-configuration/blob/main/Networking.nix) module, you can set the PC's name over the network at [`networking.hostName`](https://github.com/Atemo-C/NixOS-configuration/blob/main/Networking.nix#L14).
+In the [`Networking.nix`](https://github.com/Atemo-C/NixOS-configuration/blob/main/Networking.nix) module, you can set the PC's name over the network at [`networking.hostName`](https://github.com/Atemo-C/NixOS-configuration/blob/main/Networking.nix#L18).
 
 ## [2.4] NixOS state version.
 If you have initially installed NixOS with a version different from the one present in this configuration, you will need to change its value *(currently, [`25.05`](https://github.com/Atemo-C/NixOS-configuration/blob/main/Nix-settings.nix#L5)* to the desired one in the [`Nix-settings.nix`](https://github.com/Atemo-C/NixOS-configuration/blob/main/Nix-settings.nix) module. \
@@ -33,7 +33,7 @@ To enable support for NVIDIA GPUs *(16XX+ 20XX+)* with the relevant proprietary 
 
 ## [2.6] Flatpaks & Flathub.
 Currently, the Flathub Flatpak repository cannot be easily declaratively defined in NixOS & Home Manager by themselves. As such, it needs to be manually added with a shell command after installation. \
-If you are using the FISH shell, I added an abbreviation that will do it for you: [`enable-flathub`](https://github.com/Atemo-C/NixOS-configuration/blob/main/User/Shell.nix#L62).
+If you are using the FISH shell, I added an abbreviation that will do it for you: [`enable-flathub`](https://github.com/Atemo-C/NixOS-configuration/blob/main/User/Shell.nix#L61).
 
 ## [2.7] Guest additions.
 If you are installing on a virtual machine, you might consider uncommenting the relevant Guest agents/additions in the [`configuration.nix`](https://github.com/Atemo-C/NixOS-configuration/blob/main/configuration.nix) module.
@@ -41,6 +41,10 @@ If you are installing on a virtual machine, you might consider uncommenting the 
 ## [2.8] Desktop environment.
 This configuration is aimed and sometimes assumes *(to be fixed)* the use of the [Hyprland](https://hyprland.org/) Wayland compositor. However, you can enable the [XFCE](https://xfce.org/) desktop environment instead by uncommenting the relevant modules in the [`configuration.nix`](https://github.com/Atemo-C/NixOS-configuration/blob/main/configuration.nix) module, as long as you also disable Hyprland in the [`./Hyprland/Enable.nix`](https://github.com/Atemo-C/NixOS-configuration/blob/main/Hyprland/Enable.nix) module. \
 &nbsp;
+
+## [2.9] Suspend action.
+By default, `systemctl suspend` should just work. However, on some older hardware with certain firmware bugs and other quirks, it might not work properly. This is the case on my ThinkPad L510 (see https://github.com/NixOS/nixpkgs/issues/409934 for more details). \
+If this is the case for your computer, you can uncomment a custom suspend override in the [`Power.nix`](https://github.com/Atemo-C/NixOS-configuration/blob/main/Power.nix#L17) module, which will use `pm-suspend` from the [`pmutils`]() package to suspend.
 
 # [3] Use cases & features implementation.
 
