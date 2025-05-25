@@ -1,338 +1,199 @@
 #!/bin/dash
 
-# Set some text formatting shortcuts.
+# Set some text formatting shortcuts for printf.
 err=$(tput bold)$(tput setaf 1)Error$(tput sgr0)
 arg=$(tput bold)$(tput setaf 2)
 exe=$(tput bold)$(tput setaf 3)
 ico=$(tput bold)$(tput setaf 6)
 web=$(tput setaf 4)
-dim=$(tput dim)
+bol=$(tput bold)
 c=$(tput sgr0)
 
-# Shortcut for the script.
-Script() {
-	nohup dash "/etc/nixos/Scripts/Power.sh" > /dev/null 2>&1 & exit
-}
+# Set some text formatting shortcuts for dunstify.
+herr="<b><span foreground='#ff0000'>Error</span></b>"
+hexe1="<b><span foreground='#ffc000'>"
+hexe2="</span></b>"
 
 # Check if the number of arguments is greater than 1.
 [ "$#" -gt 1 ] && {
-	echo \
-		"${err}: Invalid number of arguments (${arg}$#${c}).\n" \
-		"\nSee the ${arg}--about${c} / ${arg}--help${c} argument.\n"
+	printf "%s: Invalid number of arguments '%s%d%s'.\n\n" \
+		"$err" "$arg" "$#" "$c"
+
+	printf "See the %s--about%s / %s--help%s / %s-h%s argument.\n" \
+		"$arg" "$c" "$arg" "$c" "$arg" "$c"
 
 	exit 1
 }
 
-# Check for the --about or --help argument.
-[ "$1" = "--about" ] || [ "$1" = "--help" ] && {
-	echo \
-		"${ico}  ${arg}Power.sh${c}\n" \
-		"\nThis script lets you execute power actions within the ${exe}Hyprland${c} Wayland compositor, using ${exe}Tofi${c} to display the menu.\n" \
-		"\nIt allows for:" \
-		"\n• Turning off the active monitor(s)." \
-		"\n• Suspending to RAM." \
-		"\n• Hibernating ${dim}(suspsending to disk)${c}." \
-		"\n• Hybrid sleep ${dim}(suspsend to RAM and disk)${c}." \
-		"\n• Reboot." \
-		"\n• Reboot to the UEFI firmware ${dim}(only appears when booted in EFI mode)${c}." \
-		"\n• Power off." \
-		"\n• Halt ${dim}(an archaic way to turn the device off, and power has to be manually turned off afterwards)${c}." \
-		"\n• Logging out of ${exe}Hyprland${c}.\n" \
-		"\n• When using the ${arg}--about${c} or ${arg}--help${c} argument, this message is displayed." \
-		"\n• When using the ${arg}--check${c} argument, required dependencies will be checked." \
-		"\n• When no argument is given, the power action selection process starts.\n" \
-		"\nCredits:" \
-		"\n${exe}Tofi${c}: ${web}https://github.com/philj56/tofi${c}\n"
-	exit
+# Check for the `--about` & `--help` arguments.
+[ "$1" = "--about" ] || [ "$1" = "--help" ] || [ "$1" = "-h" ] && {
+	printf "%s  %sPower.sh%s\n\n" \
+		"$ico" "$arg" "$c"
+
+	printf "%s[ Description ]%s\n" \
+		"$bol" "$c"
+
+	printf " This script lets you execute power actions within the %sHyprland%s Wayland compositor.\n\n" \
+		"$exe" "$c"
+
+	printf "%s[ Arguments ]%s\n" \
+		"$bol" "$c"
+
+	printf " %s--about%s / %s--help%s / %s-h%s \n" \
+		"$arg" "$c" "$arg" "$c" "$arg" "$c"
+
+	printf "  Display this message.\n\n"
+
+	printf " No argument: Display a power action menu.\n\n"
+
+	printf "%s[ Credits ]%s\n" \
+		"$bol" "$c"
+
+	printf " %sFuzzel%s: %shttps://codeberg.org/dnkl/fuzzel?ref=mark.stosberg.com%s\n" \
+		"$exe" "$c" "$web" "$c"
+
+	exit 0
 }
 
-# Check for the --check argument.
-[ "$1" = "--check" ] && {
-	echo "${ico}  ${arg}Power.sh${c}\n"
-
-	# Check if Dunst is installed.
-	command -v dunstify > /dev/null 2>&1 && {
-		echo "✅ ${exe}Dunst${c} is installed."
-	} ||
-		echo "❌ ${exe}Dunst${c} is not installed. It is required to display graphical notifications. The script will not run without it."
-
-	# Check if Tofi is installed.
-	command -v tofi > /dev/null 2>&1 && {
-		echo "✅ ${exe}Tofi${c} is installed."
-	} ||
-		echo "❌ ${exe}Tofi is not installed. It is required to display the graphical menu. The script will not run without it."
-
-	# Check if Hyprland is the active Wayland compositor.
-	[ "$XDG_CURRENT_DESKTOP" = "Hyprland" ] && {
-		echo "✅ ${exe}Hyprland${c} is the active Wayland compositor."
-	} ||
-		echo "❌ ${exe}Hyprland${c} is not the currently active Wayland compositor. The script will not run outside of Hyprland."
-
-	exit
-}
-
-# When no argument is provided, start the power action selection process.
+# When no argument is provided, start the power action selection.
 [ "$1" = "" ] && {
 	# Check if Dunst is installed.
-	command -v dunstify || {
-		echo "${err}: Dunst could not be found. It is required to display graphical notifications."
+	command -v dunstify > /dev/null 2>&1 || {
+		printf "%s: %sDunst%s could not be found. It is required to display graphical notifications.\n" \
+			"$err" "$exe" "$c"
+
 		exit 1
 	}
 
 	# Check if Hyprland is the active Wayland compositor.
 	[ "$XDG_CURRENT_DESKTOP" = "Hyprland" ] || {
-		dunstify "Error: This power utility can only be used with the Hyprland Wayland compositor."
-		echo "${err}: This power utility can only be used with the ${exe}Hyprland${c} Wayland compositor."
+		dunstify -u critical "  Power.sh" "$herr: This script can only be used with the $hexe1 Hyprland$hexe2 Wayland compositor."
+
+		printf "%s: This script can only be used within the %sHyprland%s Wayland Compositor.\n" \
+			"$err" "$exe" "$c"
+
 		exit 1
 	}
 
-	# Check if Tofi is installed.
-	command -v tofi || {
-		dunstify "Error: Tofi could not be found. It is necessary to display the graphical menu."
-		echo "${err}: ${exe}Tofi${c} could not be found. It is necessary to display the graphical menu."
+	# Check if Fuzzel is installed.
+	command -v fuzzel > /dev/null 2>&1 || {
+		dunstify -u critical "  Power.sh" "$herr:$hexe1 Fuzzel$hexe2 could not be found. It is required to show graphical menus."
+
+		printf "%s: %sFuzzel%s could not be found. It is required to show graphical menus.\n" \
+			"$err" "$exe" "$c"
+
 		exit 1
 	}
 
-	# Create the Confirmation list, used in prompts where user confirmation is preferrable.
-	Confirmations="
-  No
+	# Create the confirmation list, used in prompts where user confirmation is preferrable.
+	confirmations="  No
   Yes
   Back"
 
-	# Set the size of the Tofi menu for the main selection and for the height of the confirmation dialogues.
-	Width="187"
-	Height="309"
-	ConfHeight="120"
+	# Main loop for the power action selection.
+	while true; do
+		# Gather the number of active monitors.
+		count=$(hyprctl monitors -j | jq length)
 
-	# Gather the number of active monitors.
-	Count=$(hyprctl monitors | grep -c "Monitor")
+		# Choose the correct orthography depending on the monitor count, & add the relevant one to the options list.
+		[ "$count" -eq 1 ] && {
+			options="󰍹  Turn off display"
+		}
 
-	# Choose the correct orthography depending on the monitor count, and add the relevant one to the Options list.
-	[ "$Count" -eq 1 ] && {
-		Options="󰍹  Turn off display"
-	}
+		[ "$count" -ge 2 ] && {
+			options="󰍹  Turn off displays"
+		}
 
-	[ "$Count" -ge 2 ] && {
-		Options="󰍹  Turn off displays"
-	}
-
-	# Add some of the other entries to the Options list.
-	Options="
-$Options
+		# Add more entries to the options list.
+		options="$options
 󰒲  Suspend
 󰒲  Hibernate
 󱌂  Hybrid sleep
 󰜉  Reboot"
 
-	# If booted in EFI mode, add the relevant option to the Options list, and change the size of the Tofi menu.
-	[ -d "/sys/firmware/efi" ] && Options="
-$Options
+		# If booted in EFI mode, add the relevant option to the options list, & change the size of the menu.
+		[ -d "/sys/firmware/efi" ] && options="$options
   Reboot to UEFI firmware"
-	Width="236"
-	Height="344"
 
-	# Add the remaining entries to the Options list.
-	Options="
-$Options
+		# Add the remaining entries to the options list.
+		options="$options
   Power off
 󰺟  Halt
 󰿅  Log out
  ‎
 󰗼  Exit"
 
-	# Let the user select an option.
-	Choice=$(printf '%s\n' "$Options" | tofi \
-		--width "$Width" \
-		--height "$Height" \
-		--prompt-text " " \
-		"$@"
-	)
-
-	# Define the actions for every choice.
-	[ "$Choice" = "󰍹  Turn off display" ] || [ "$Choice" = "󰍹  Turn off displays" ] && {
-		sleep 0.2
-		hyprctl dispatcher dpms off
-		exit
-	}
-
-	[ "$Choice" = "󰒲  Suspend" ] && {
-		Answer=$(printf '%s\n' "$Confirmations" | tofi \
-			--width 140 \
-			--height "$ConfHeight" \
-			--prompt-text "Suspend?"
+		# Let the user select an option.
+		choice=$(printf '%s\n' "$options" | fuzzel \
+			--no-icons \
+			--lines 11 \
+			--width 28 \
+			--dmenu "$@"
 		)
 
-		[ "$Answer" = "  No" ] && {
+		# Turning off monitors.
+		[ "$choice" = "󰍹  Turn off display" ] || [ "$choice" = "󰍹  Turn off displays" ] && {
+			sleep 0.2
+			hyprctl dispatcher dpms off
 			exit
 		}
 
-		[ "$Answer" = "  Yes" ] && {
-			systemctl suspend
-			exit
+		# Common handler for confirmation prompts.
+		[ "$choice" = "󰒲  Suspend" ] || [ "$choice" = "󰒲  Hibernate" ] || [ "$choice" = "󱌂  Hybrid sleep" ] || \
+		[ "$choice" = "󰜉  Reboot" ] || [ "$choice" = "  Reboot to UEFI firmware" ] || \
+		[ "$choice" = "  Power off" ] || [ "$choice" = "󰺟  Halt" ] || [ "$choice" = "󰿅  Log out" ] && {
+			# Set prompt, width, and notifications (if desired) based on choice.
+			[ "$choice" = "󰒲  Suspend" ]                 && prompt="Suspend?"                 && width=9
+			[ "$choice" = "󰒲  Hibernate" ]               && prompt="Hibernate?"               && width=14
+			[ "$choice" = "󱌂  Hybrid sleep" ]            && prompt="Hybrid sleep?"            && width=17
+			[ "$choice" = "󰜉  Reboot" ]                  && prompt="Reboot?"                  && width=11
+			[ "$choice" = "  Reboot to UEFI firmware" ] && prompt="Reboot to UEFI firmware?" && width=28
+			[ "$choice" = "  Power off" ]               && prompt="Power off?"               && width=14
+			[ "$choice" = "󰺟  Halt" ]                    && prompt="Halt?"                    && width=9
+			[ "$choice" = "󰿅  Log out" ]                 && prompt="Log out?"                 && width=12
+			[ "$choice" = "󰺟  Halt" ] && {
+				dunstify "  Power.sh" "Manually turn off the power once the system is halted. This is archaic."
+				echo "Manually turn off the power once the system is halted. This is archaic."
+			}
+
+			# Create the main confirmation menu.
+			answer=$(printf '%s\n' "$confirmations" | fuzzel --no-icons --dmenu \
+				--lines 3 \
+				--width "$width" \
+				--prompt "$prompt"
+			)
+
+			# Set the "no" and "back" actions for confirmations.
+			[ "$answer" = "  No" ] && exit
+			[ "$answer" = "  Back" ] && continue
+
+			# Execute the selected action.
+			[ "$answer" = "  Yes" ] && {
+				[ "$choice" = "󰒲  Suspend" ]                 && systemctl suspend
+				[ "$choice" = "󰒲  Hibernate" ]               && systemctl hibernate
+				[ "$choice" = "󱌂  Hybrid sleep" ]            && systemctl hybrid-sleep
+				[ "$choice" = "󰜉  Reboot" ]                  && systemctl reboot
+				[ "$choice" = "  Reboot to UEFI firmware" ] && systemctl reboot --firmware-setup
+				[ "$choice" = "  Power off" ]               && systemctl poweroff
+				[ "$choice" = "󰺟  Halt" ]                    && run0 systemctl halt
+				[ "$choice" = "󰿅  Log out" ]                 && hyprctl dispatch exit
+				exit
+			}
 		}
 
-		[ "$Answer" = "  Back" ] && {
-			Script
-		}
-	}
+		# Spacer loops back.
+		[ "$choice" = " ‎" ] && continue
 
-	[ "$Choice" = "󰒲  Hibernate" ] && {
-		Answer=$(printf '%s\n' "$Confirmations" | tofi \
-			--width 156 \
-			--height "$ConfHeight" \
-			--prompt-text "Hibernate?"
-		)
-
-		[ "$Answer" = "  No" ] && {
-			exit
-		}
-
-		[ "$Answer" = "  Yes" ] && {
-			systemctl hibernate
-			exit
-		}
-
-		[ "$Answer" = "  Back" ] && {
-			Script
-		}
-	}
-
-	[ "$Choice" = "󱌂  Hybrid sleep" ] && {
-		Answer=$(printf '%s\n' "$Confirmations" | tofi \
-			--width 180 \
-			--height "$ConfHeight" \
-			--prompt-text "Hybrid sleep?"
-		)
-
-		[ "$Answer" = "  No" ] && {
-			exit
-		}
-
-		[ "$Answer" = "  Yes" ] && {
-			systemctl hybrid-sleep
-			exit
-		}
-
-		[ "$Answer" = "  Back" ] && {
-			Script
-		}
-	}
-
-	[ "$Choice" = "󰜉  Reboot" ] && {
-		Answer=$(printf '%s\n' "$Confirmations" | tofi \
-			--width 131 \
-			--height "$ConfHeight" \
-			--prompt-text "Reboot?"
-		)
-
-		[ "$Answer" = "  No" ] && {
-			exit
-		}
-
-		[ "$Answer" = "  Yes" ] && {
-			systemctl reboot
-		}
-
-		[ "$Answer" = "  Back" ] && {
-			Script
-		}
-	}
-
-	[ "$Choice" = "  Reboot to UEFI firmware" ] && {
-		Answer=$(printf '%s\n' "$Confirmations" | tofi \
-			--width 268 \
-			--height "$ConfHeight" \
-			--prompt-text "Reboot to UEFI firmware?"
-		)
-
-		[ "$Answer" = "  No" ] && {
-			exit
-		}
-
-		[ "$Answer" = "  Yes" ] && {
-			systemctl reboot --firmware-setup
-		}
-
-		[ "$Answer" = "  Back" ] && {
-			Script
-		}
-	}
-
-	[ "$Choice" = "  Power off" ] && {
-		Answer=$(printf '%s\n' "$Confirmations" | tofi \
-			--width 156 \
-			--height "$ConfHeight" \
-			--prompt-text "Power off?"
-		)
-
-		[ "$Answer" = "  No" ] && {
-			exit
-		}
-
-		[ "$Answer" = "  Yes" ] && {
-			systemctl poweroff
-		}
-
-		[ "$Answer" = "  Back" ] && {
-			Script
-		}
-	}
-
-	[ "$Choice" = "󰺟  Halt" ] && {
-		dunstify "Manually turn off the power once the system is halted. This is archaic."
-		echo "Manually turn off the power once the system is halted. This is archaic."
-		Answer=$(printf '%s\n' "$Confirmations" | tofi \
-			--width 116 \
-			--height "$ConfHeight" \
-			--prompt-text "Halt?"
-		)
-
-		[ "$Answer" = "  No" ] && {
-			exit
-		}
-
-		[ "$Answer" = "  Yes" ] && {
-			run0 systemctl halt
-		}
-
-		[ "$Answer" = "  Back" ] && {
-			Script
-		}
-	}
-
-	[ "$Choice" = "󰿅  Log out" ] && {
-		Answer=$(printf '%s\n' "$Confirmations" | tofi \
-			--width 236 \
-			--height "$ConfHeight" \
-			--prompt-text "Log out of Hyprland?"
-		)
-
-		[ "$Answer" = "  No" ] && {
-			exit
-		}
-
-		[ "$Answer" = "  Yes" ] && {
-			hyprctl dispatch exit
-			exit
-		}
-
-		[ "$Answer" = "  Back" ] && {
-			Script
-		}
-	}
-
-	[ "$Choice" = " ‎" ] && {
-		Script
-	}
-
-	[ "$Choice" = "󰗼  Exit" ] && {
-		exit
-	}
+		# Exiting.
+		[ "$choice" = "󰗼  Exit" ] || [ "$choice" = "" ] && exit
+	done
 }
 
 # Error out if an invalid argument is given.
-echo \
-	"${err}: Invalid argument '${arg}$*${c}'.\n" \
-	"\nSee the ${arg}--about${c} / ${arg}--help${c} argument.\n"
+printf "%s: Invalid argument '%s%s%s'.\n\n" \
+	"$err" "$arg" "$*" "$c"
+
+printf "See the %s--about%s / %s--help%s / %s-h%s argument.\n" \
+	"$arg" "$c" "$arg" "$c" "$arg" "$c"
 
 exit 1
