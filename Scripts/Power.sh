@@ -25,7 +25,7 @@ hexe2="</span></b>"
 	exit 1
 }
 
-# Check for the `--about` & `--help` arguments.
+# Check for the `--about` / `--help` / `-h` arguments.
 [ "$1" = "--about" ] || [ "$1" = "--help" ] || [ "$1" = "-h" ] && {
 	printf "%s  %sPower.sh%s\n\n" \
 		"$ico" "$arg" "$c"
@@ -91,6 +91,8 @@ hexe2="</span></b>"
   Back"
 
 	# Main loop for the power action selection.
+	lines="10"
+	width="21"
 	while true; do
 		# Gather the number of active monitors.
 		count=$(hyprctl monitors -j | jq length)
@@ -104,6 +106,14 @@ hexe2="</span></b>"
 			options="󰍹  Turn off displays"
 		}
 
+		# Add a lock screen option if `hyprlock` is installed.
+		command -v hyprlock > /dev/null 2>&1 && {
+			options="$options
+  Lock session"
+
+			lines=$((lines + 1))
+		}
+
 		# Add more entries to the options list.
 		options="$options
 󰒲  Suspend
@@ -112,8 +122,13 @@ hexe2="</span></b>"
 󰜉  Reboot"
 
 		# If booted in EFI mode, add the relevant option to the options list, & change the size of the menu.
-		[ -d "/sys/firmware/efi" ] && options="$options
+		[ -d "/sys/firmware/efi" ] && {
+			options="$options
   Reboot to UEFI firmware"
+
+			lines=$((lines + 1))
+			width="28"
+		}
 
 		# Add the remaining entries to the options list.
 		options="$options
@@ -126,8 +141,8 @@ hexe2="</span></b>"
 		# Let the user select an option.
 		choice=$(printf '%s\n' "$options" | fuzzel \
 			--no-icons \
-			--lines 11 \
-			--width 28 \
+			--lines "$lines" \
+			--width "$width" \
 			--dmenu "$@"
 		)
 
@@ -138,19 +153,25 @@ hexe2="</span></b>"
 			exit
 		}
 
+		# Locking the session.
+		[ "$choice" = "  Lock session" ] && {
+			hyprlock
+			exit
+		}
+
 		# Common handler for confirmation prompts.
 		[ "$choice" = "󰒲  Suspend" ] || [ "$choice" = "󰒲  Hibernate" ] || [ "$choice" = "󱌂  Hybrid sleep" ] || \
 		[ "$choice" = "󰜉  Reboot" ] || [ "$choice" = "  Reboot to UEFI firmware" ] || \
 		[ "$choice" = "  Power off" ] || [ "$choice" = "󰺟  Halt" ] || [ "$choice" = "󰿅  Log out" ] && {
-			# Set prompt, width, and notifications (if desired) based on choice.
-			[ "$choice" = "󰒲  Suspend" ]                 && prompt="Suspend?"                 && width=9
-			[ "$choice" = "󰒲  Hibernate" ]               && prompt="Hibernate?"               && width=14
-			[ "$choice" = "󱌂  Hybrid sleep" ]            && prompt="Hybrid sleep?"            && width=17
-			[ "$choice" = "󰜉  Reboot" ]                  && prompt="Reboot?"                  && width=11
-			[ "$choice" = "  Reboot to UEFI firmware" ] && prompt="Reboot to UEFI firmware?" && width=28
-			[ "$choice" = "  Power off" ]               && prompt="Power off?"               && width=14
-			[ "$choice" = "󰺟  Halt" ]                    && prompt="Halt?"                    && width=9
-			[ "$choice" = "󰿅  Log out" ]                 && prompt="Log out?"                 && width=12
+			# Set prompt, width, & notifications (if desired) based on choice.
+			[ "$choice" = "󰒲  Suspend" ]                 && prompt="Suspend? "                 && width=13
+			[ "$choice" = "󰒲  Hibernate" ]               && prompt="Hibernate? "               && width=15
+			[ "$choice" = "󱌂  Hybrid sleep" ]            && prompt="Hybrid sleep? "            && width=18
+			[ "$choice" = "󰜉  Reboot" ]                  && prompt="Reboot? "                  && width=12
+			[ "$choice" = "  Reboot to UEFI firmware" ] && prompt="Reboot to UEFI firmware? " && width=29
+			[ "$choice" = "  Power off" ]               && prompt="Power off? "               && width=15
+			[ "$choice" = "󰺟  Halt" ]                    && prompt="Halt? "                    && width=10
+			[ "$choice" = "󰿅  Log out" ]                 && prompt="Log out? "                 && width=13
 			[ "$choice" = "󰺟  Halt" ] && {
 				dunstify "  Power.sh" "Manually turn off the power once the system is halted. This is archaic."
 				echo "Manually turn off the power once the system is halted. This is archaic."
@@ -163,7 +184,7 @@ hexe2="</span></b>"
 				--prompt "$prompt"
 			)
 
-			# Set the "no" and "back" actions for confirmations.
+			# Set the "no" & "back" actions for confirmations.
 			[ "$answer" = "  No" ] && exit
 			[ "$answer" = "  Back" ] && continue
 
