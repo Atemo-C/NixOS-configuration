@@ -23,15 +23,8 @@ scr="/etc/nixos/Scripts/"
 
 # Set a shortcut for adding programs to the list.
 add() {
-	if [ "$1" = "-" ]; then
-		# If first argument is "-", add entry without checking for a command
-		programs="$programs
+	[ "$1" = "-" ] || command -v "$1" >/dev/null 2>&1 && programs="$programs
 $2"
-	else
-		# Otherwise, check if command exists
-		command -v "$1" >/dev/null 2>&1 && programs="$programs
-$2"
-	fi
 }
 
 # Set a shortcut for launching programs and detaching them cleanly from the script.
