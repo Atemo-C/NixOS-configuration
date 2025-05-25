@@ -1,10 +1,10 @@
 #!/bin/dash
 
 # Set some text formatting shortcuts for printf.
-err=$(tput bold)$(tput setaf 1)Error$(tput sgr0)
-arg=$(tput bold)$(tput setaf 2)
-exe=$(tput bold)$(tput setaf 3)
-ico=$(tput bold)$(tput setaf 6)
+err=$(tput bold; tput setaf 1)Error$(tput sgr0)
+arg=$(tput bold; tput setaf 2)
+exe=$(tput bold; tput setaf 3)
+ico=$(tput bold; tput setaf 6)
 web=$(tput setaf 4)
 bol=$(tput bold)
 c=$(tput sgr0)
@@ -91,9 +91,10 @@ hexe2="</span></b>"
   Back"
 
 	# Main loop for the power action selection.
-	lines="10"
-	width="21"
-	while true; do
+	while :; do
+		lines="10"
+		width="21"
+
 		# Gather the number of active monitors.
 		count=$(hyprctl monitors -j | jq length)
 
