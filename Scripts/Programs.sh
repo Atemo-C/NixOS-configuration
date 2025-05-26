@@ -1,35 +1,49 @@
 #!/bin/dash
 
-# Set some text formatting shortcuts for printf.
-err=$(tput bold; tput setaf 1)Error$(tput sgr0)
+# Set text formatting shortcuts for `printf`.
 arg=$(tput bold; tput setaf 2)
+bol=$(tput bold)
+c=$(tput sgr0)
+err=$(tput bold; tput setaf 1)Error$(tput sgr0)
 exe=$(tput bold; tput setaf 3)
 ico=$(tput bold; tput setaf 6)
 web=$(tput setaf 4)
-bol=$(tput bold)
-c=$(tput sgr0)
 
-# Set some text formatting shortcuts for dunstify.
+# Set text formatting shortcuts for `dunstify`.
 herr="<b><span foreground='#ff0000'>Error</span></b>"
 hexe1="<b><span foreground='#ffc000'>"
 hexe2="</span></b>"
 
-# Wayland/X11 shortcuts for annoying Electron programs.
-way="--ozone-platform=wayland"
-#x11="--ozne-platform=x11"
-
 # Shortcut for scripts.
-scr="/etc/nixos/Scripts/"
+scr="/etc/nixos/Scripts"
 
-# Set a shortcut for adding programs to the list.
+# Function to add a program to the list if it exists.
+# (`addX` functions include a check to see if there is nothingness before them, to avoid extra entry at the top.)
+# `add alacritty "Alacritty terminal emulator"` will launch `alacritty`
 add() {
-	[ "$1" = "-" ] || command -v "$1" >/dev/null 2>&1 && programs="$programs
-$2"
+	command -v "$1" >/dev/null 2>&1 || return
+	[ -z "$programs" ] && programs="$2|$1" || programs="$programs
+$2|$1"
 }
 
-# Set a shortcut for launching programs and detaching them cleanly from the script.
+# Function to add a program to the list if it exists, but with a custom launch command.
+# `add amfora "Terminal Gemini client" "$TERMINAL -e amfora"` will launch `amfora` in your default terminal.
+adda() {
+	command -v "$1" >/dev/null 2>&1 || return
+	[ -z "$programs" ] && programs="$2|$3" || programs="$programs
+$2|$3"
+}
+
+# Function to add a custom program, separator, script, etc to the script.
+# `[ -f "$HOME/Programs/Duck" ] && addc "The beautiful duck webpage" "xdg-open duckduckgo.com"` will launch DuckDuckGo in your default browser.
+addc() {
+	[ -z "$programs" ] && programs="$1|$2" || programs="$programs
+$1|$2"
+}
+
+# Function to cleanly detach lanuched programs from the script.
 f() {
-    nohup "$@" > /dev/null 2>&1 & exit
+	nohup "$@" > /dev/null 2>&1 & exit
 }
 
 # Check if the number of arguments is greater than 1.
@@ -105,7 +119,7 @@ f() {
 		exit 1
 	}
 
-	# Define the height of the program menu, in accordance with the screen selotion.
+	# Calculate the height of the program menu, in accordance with the screen resolution.
 	# • List monitors.
 	# • List the 20 lines above "focused: yes".
 	# • Reverse the sorting order.
@@ -119,13 +133,13 @@ f() {
 	)
 	lines=$(( vertical / 28 ))
 
-	# This is the program list. Add elements of your choosing.
-	# Once done, remember to add their actions in the graphical menu below the list.
-	programs="                     󰌧  Run launcher
- ‎"
-
+	# This is the program list. Add elements of your choosing and they will appear in the menu if present.
+	# Remember to use the proper function (`add`, `adda`, or `addc`).
+	programs=""
+	addc "                     󰌧  Run launcher" "fuzzel --no-icons"
+	addc " ‎" ""
 	add alacritty              "  Alacritty            Terminal emulator"
-	add amfora                 "  Amfora               Terminal Gemini client"
+	adda amfora                "  Amfora               Terminal Gemini client" "$TERMINAL -e amfora"
 	add lagrange               "  Lagrange             Graphical Gemini client"
 	add audacious              "  Audacious            Audio player"
 	add easyeffects            "  EasyEffects          Live audio effects"
@@ -134,22 +148,19 @@ f() {
 	add qpwgraph               "󰤽  qpwgraph             Audio patchbay"
 	add tenacity               "  Tenacity             Audio editor"
 	add blender                "󰂫  Blender              3D modeling"
-	add cura                   "  Cura                 3D printing"
+	adda cura                  "  Cura                 3D printing" "cura -platformtheme gtk3"
 	add btop                   "  BTOP                 Terminal system monitor"
 	add cpu-x                  "  CPU-X                Detailed processor information"
 	add missioncenter          "  Mission Center       Graphical system monitor"
 	add com.usebottles.bottles "󱌐  Bottles ( )         Run Windows programs in Bottles"
-	add calcurse               "  Calcurse             Terminal calendar"
+	adda calcurse              "  Calcurse             Terminal calendar" "$TERMINAL -e calcurse"
 
-	[ -f "/run/current-system/sw/share/applications/cups.desktop" ] && add - \
-		"  CUPS                 Printer configuration"
+	[ -f "/run/current-system/sw/share/applications/cups.desktop" ] && addc \
+		"  CUPS                 Printer configuration" "xdg-open https://localhost:631"
 
-	[ -f "/etc/nixos/Scripts/Crosshair/Crosshair.sh" ] && {
-		add - "  Enable crosshair     A simple red-dot crosshair"
-		add - "󰽅  Disable crosshair    Kill the active crosshair"
-
-		# Set shortcuts for the crosshair's path.
-		cross="/etc/nixos/Scripts/Crosshair/Crosshair.sh"
+	[ -f "$scr/Crosshair/Crosshair.sh" ] && {
+		addc "  Enable crosshair     A simple red-dot crosshair" "dash $scr/Crosshair/Crosshair --start"
+		addc "󰽅  Disable crosshair    Kill the active crosshair" "dash $scr/Crosshair/Crosshair --stop"
 	}
 
 	add desmume                              "  DeSmuME              Nintendo DS/I emulator"
@@ -157,7 +168,7 @@ f() {
 	add pcsx2-qt                             "  PCSX2                PlayStation 2 emulator"
 	add rpcs3                                "  RPCS3                PlayStation 3 emulator"
 	add prismlauncher                        "󰍳  PrismLauncher        Minecraft Launcher"
-	add mcpelauncher-ui-qt                   "󰍳  MC Bedrock Launcher  Minecraft Bedrock"
+	adda mcpelauncher-ui-qt                  "󰍳  MC Bedrock Launcher  Minecraft Bedrock" "mcpelauncher-ui-qt -platformtheme gtk3"
 	add luanti                               "󰍳  Luanti (Minetest)    Open source voxel game engine"
 	add page.codeberg.JakobDev.jdNBTExplorer "󰍳  NBT Explorer ( )    NBT Explorer and editor"
 	add org.vinegarhq.Sober                  "  Sober ( )           Roblox client"
@@ -172,22 +183,22 @@ f() {
 	add gnome-disks                          "  Freetube             Watch YouTube videos"
 	add gnome-disks                          "󰋊  Gnome disk utility   GNOME's disk utility"
 	add gparted                              "󰋊  Gparted              Partition manager"
-	add ncdu                                 "󰋊  ncdu                 Disk usage"
-	add timeshift                            "󰁯  Timeshift           System restore"
+	adda ncdu                                "󰋊  ncdu                 Disk usage" "$TERMINAL -e ncdu"
+	adda timeshift                           "󰁯  Timeshift           System restore" "timeshift-launcher"
 	add thunar                               "  Thunar               File manager"
 	add com.github.tchx84.Flatseal           "  Flatseal ( )        Manage flatpak permissions"
 	add galculator                           "  Galculator           Calculator"
 	add gcolor3                              "  Gcolor               Advanced color picker"
-	add hyprpicker                           "  Hyprpicker           Screen color picker"
+	adda hyprpicker                          "  Hyprpicker           Screen color picker" "$scr/Picker.sh"
 	add gimp                                 "  GIMP                 GNU Image Manipulation Program"
-	add hyprpaper                            "  Hyprpaper            Set desktop background/wallpaper"
+	adda hyprpaper                           "  Hyprpaper            Set desktop background/wallpaper" "$scr/Hyprpaper.sh"
 	add inkscape                             "  Inkscape             Vector graphics (SVG) editor"
 	add krita                                "  Krita                Digital painting"
-	add otd                                  "  OpenTabletDriver     Configure your drawing tablet"
+	adda otd                                 "  OpenTabletDriver     Configure your drawing tablet" "otd-gui"
 	add upscayl                              "  Upscayl              Upscale images"
 
-	[ -f "$HOME/Programs/Kurso de Esperanto/kursokape" ] && add - \
-	"  Kurso de Esperanto   Esperanto learning program"
+	[ -f "$HOME/Programs/Kurso de Esperanto/kursokape" ] && addc \
+		"  Kurso de Esperanto   Esperanto learning program" "QT_QPA_PLATFORM=xcb steam-run $HOME/Programs/Kurso de Esperanto/kursokape"
 
 	add keepassxc             "  KeePassXC            Password manager"
 	add kdenlive              "  Kdenlive             Video editor"
@@ -195,96 +206,35 @@ f() {
 	add libreoffice           "󰏆  LibreOffice          Office suite"
 	add simple-scan           "󰚫  Simple scan          Document scanner"
 	add librewolf             "  LibreWolf            Web browser"
-	add librewolf             "  LibreWolf - private  Web browser (private window)"
+	adda librewolf            "  LibreWolf - private  Web browser (private window)" "librewolf --private-window"
 	add tor-browser           "󰗹  Torbrowser launcher  Tor browser"
-	add nmtui                 "󰛳  Network Manager      Manage WiFi and Ethernet"
+	adda nmtui                "󰛳  Network Manager      Manage WiFi and Ethernet" "$TERMINAL -e nmtui"
 	add qbittorrent           "  qBittorrent          Torrent manager"
 	add xfburn                "  Xfburn               Disc burning"
 	add speedtest             "󰓅  Speedtest            Test internet speed"
 	add virt-manager          "󰪫  Virt Manager         Virtual machines using QEMU/KVM"
-	add - " ‎"
-	add - "󰗼  Exit"
+	addc " ‎" continue
+	addc "󰗼  Exit" exit
 
 	# Main loop for the program selection.
 	while :; do
-
-		# Show the program menu.
-		program=$(printf '%s\n' "$programs" | fuzzel \
+		# Show the program menu (only display the first field before the delimiter).
+		program=$(printf '%s\n' "$programs" | awk -F'|' '{print $1}' | fuzzel \
 			--no-icons \
 			--lines "$lines" \
 			--width 58 \
 			--dmenu "$@"
 		)
 
-		# Define the action of every entry.
+		# Exit if no selection or "Exit" is chosen.
+		[ -z "$program" ] || [ "$program" = "󰗼  Exit" ] && exit
+
+		# Continue if a spacer is chosen.
 		[ "$program" = " ‎" ] && continue
-		[ "$program" = "                     󰌧  Run launcher" ] && f fuzzel
-		[ "$program" = "  Alacritty            Terminal emulator" ] && f alacritty
-		[ "$program" = "  Amfora               Terminal Gemini client" ] && f "$TERMINAL" -e amfora
-		[ "$program" = "  Lagrange             Graphical Gemini client" ] && f lagrange
-		[ "$program" = "  Audacious            Audio player" ] && f audacious
-		[ "$program" = "  EasyEffects          Live audio effects" ] && f easyeffects
-		[ "$program" = "  EasyTAG              Audio tag editor" ] && f easytag
-		[ "$program" = "  PWvucontrol          Audio volume settings" ] && f pwvucontrol
-		[ "$program" = "󰤽  qpwgraph             Audio patchbay" ] && f qpwgraph
-		[ "$program" = "  Tenacity             Audio editor" ] && f tenacity
-		[ "$program" = "󰂫  Blender              3D modeling" ] && f blender
-		[ "$program" = "  Cura                 3D printing" ] && f cura -platformtheme gtk3
-		[ "$program" = "  BTOP                 Terminal system monitor" ] && f "$TERMINAL" -e btop
-		[ "$program" = "  CPU-X                Detailed processor information" ] && f cpu-x
-		[ "$program" = "  Mission Center       Graphical system monitor" ] && f missioncenter
-		[ "$program" = "󱌐  Bottles ( )         Run Windows programs in Bottles" ] && f com.usebottles.bottles
-		[ "$program" = "  Calcurse             Terminal calendar" ] && f "$TERMINAL" calcurse
-		[ "$program" = "  CUPS                 Printer configuration" ] && f xdg-open "https://localhost:631"
-		[ "$program" = "  Enable crosshair     A simple red-dot crosshair" ] && f dash "$cross" --start
-		[ "$program" = "󰽅  Disable crosshair    Kill the active crosshair" ] && f dash "$cross" --stop
-		[ "$program" = "  DeSmuME              Nintendo DS/I emulator" ] && f desmume
-		[ "$program" = "  DuckStation          Playstation 1 emulator" ] && f duckstation
-		[ "$program" = "  PCSX2                PlayStation 2 emulator" ] && f pcsx2-qt
-		[ "$program" = "  RPCS3                PlayStation 3 emulator" ] && f rpcs3
-		[ "$program" = "󰍳  PrismLauncher        Minecraft Launcher" ] && f prismlauncher
-		[ "$program" = "󰍳  MC Bedrock Launcher  Minecraft Bedrock" ] && f mcpelauncher-ui-qt -platformtheme gtk3
-		[ "$program" = "󰍳  Luanti (Minetest)    Open source voxel game engine" ] && f luanti
-		[ "$program" = "󰍳  NBT Explorer ( )    NBT Explorer and editor" ] && f page.codeberg.JakobDev.jdNBTExplorer
-		[ "$program" = "  Sober ( )           Roblox client" ] && f org.vinegarhq.Sober
-		[ "$program" = "  Steam                Valve winning by doing nothing" ] && f steam
-		[ "$program" = "  Jstest               Gamepad / controller tester" ] && f jstest-gtk
-		[ "$program" = "  Keymapp              Layout tool for ZSA keyboards" ] && f keymapp
-		[ "$program" = "  SC-Controller        Remap controllers" ] && f sc-controller
-		[ "$program" = "󰍽  Xclicker             X11 autocliker (for XWayland)" ] && f xclicker
-		[ "$program" = "󰙯  Vesktop              Discord, but Vencorded" ] && f vesktop "$way"
-		[ "$program" = "󰭻  Element              Matrix client" ] && f element-desktop "$way"
-		[ "$program" = "󰭻  Revolt               FOSS alternative to Discord" ] && f revolt-desktop "$way"
-		[ "$program" = "  Freetube             Watch YouTube videos" ] && f freetube "$way"
-		[ "$program" = "󰋊  Gnome disk utility   GNOME's disk utility" ] && f gnome-disks
-		[ "$program" = "󰋊  Gparted              Partition manager" ] && f gparted
-		[ "$program" = "󰋊  ncdu                 Disk usage" ] && f "$TERMINAL" -e ncdu
-		[ "$program" = "󰁯  Timeshift           System restore" ] && f timeshift-launcher
-		[ "$program" = "  Thunar               File manager" ] && f thunar
-		[ "$program" = "  Flatseal ( )        Manage flatpak permissions" ] && f com.github.tchx84.Flatseal
-		[ "$program" = "  Galculator           Calculator" ] && f galculator
-		[ "$program" = "  Gcolor               Advanced color picker" ] && f gcolor3
-		[ "$program" = "  Hyprpicker           Screen color picker" ] && f dash "$scr"/Picker.sh
-		[ "$program" = "  GIMP                 GNU Image Manipulation Program" ] && f gimp
-		[ "$program" = "  Hyprpaper            Set desktop background/wallpaper" ] && f dash "$scr"/Hyprpaper.sh
-		[ "$program" = "  Inkscape             Vector graphics (SVG) editor" ] && f inkscape
-		[ "$program" = "  Krita                Digital painting" ] && f krita
-		[ "$program" = "  OpenTabletDriver     Configure your drawing tablet" ] && f otd-gui
-		[ "$program" = "  Upscayl              Upscale images" ] && f upscayl
-		[ "$program" = "  KeePassXC            Password manager" ] && f keepassxc
-		[ "$program" = "  Kdenlive             Video editor" ] && f kdenlive
-		[ "$program" = "󰑋  OBS studio ( )      Video recording and streaming" ] && f com.obsproject.Studio
-		[ "$program" = "󰏆  LibreOffice          Office suite" ] && f soffice
-		[ "$program" = "󰚫  Simple scan          Document scanner" ] && f simple-scan
-		[ "$program" = "  LibreWolf            Web browser" ] && f librewolf
-		[ "$program" = "  LibreWolf - private  Web browser (private window)" ] && f librewolf --private-window
-		[ "$program" = "󰗹  Torbrowser launcher  Tor browser" ] && f tor-browser
-		[ "$program" = "󰛳  Network Manager      Manage WiFi and Ethernet" ] && f "$TERMINAL" -e nmtui
-		[ "$program" = "  qBittorrent          Torrent manager" ] && f qbittorrent
-		[ "$program" = "  Xfburn               Disc burning" ] && f xfburn
-		[ "$program" = "󰓅  Speedtest            Test internet speed" ] && f speedtest
-		[ "$program" = "󰪫  Virt Manager         Virtual machines using QEMU/KVM" ] && f virt-manager
-		[ "$program" = "󰗼  Exit" ] || [ "$program" = "" ] && exit
+
+		# Find the matching command and execute it.
+		cmd=$(printf '%s\n' "$programs" | grep "^$program|" | awk -F'|' '{print $2}')
+		[ -n "$cmd" ] && eval "f $cmd"
 	done
 }
 
