@@ -120,17 +120,7 @@ f() {
 	}
 
 	# Calculate the height of the program menu, in accordance with the screen resolution.
-	# • List monitors.
-	# • List the 20 lines above "focused: yes".
-	# • Reverse the sorting order.
-	# • Grep any lines with x.
-	# • Keep only the first one.
-	# • Trim the output to only keep the vertical resolution.
-	# • Divide it by 28 for a reasonable size.
-	#   (Depending on the bar size and fuzzel configuration, this needs to change.)
-	vertical=$(hyprctl monitors | grep -B20 "focused: yes" \
-		| tac | grep x | head -n 1 | awk -F 'x|@' '{print $2}'
-	)
+	vertical=$(hyprctl monitors -j | jq '.[] | select(.focused == true) | .height')
 	lines=$(( vertical / 28 ))
 
 	# This is the program list. Add elements of your choosing and they will appear in the menu if present.
