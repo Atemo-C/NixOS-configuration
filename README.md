@@ -12,7 +12,7 @@ Relevant changes will include, but will probably not be limited to:
 - Pulling some of my configuration files from [my dotfiles](https://github.com/Atemo-C/Dotfiles) to here.
 
 ### My reasons to switch.
-Here are some of the reasons I am making the switch to Niri
+Here are some of the reasons I am making the switch to Niri:
 - Less resource usage and a bit faster on my machines _(especially noticeable on my older laptops)_.
 - Actually runs on my ThinkPad L510 _(as such, XFCE is no longer needed, as I only had it for computers where Hyprland does not work)_.
 - The concept of this scrollable _(not-really-automatic-but-tilling)_ Wayland compositor intruiges me, and I quite like it for now.
