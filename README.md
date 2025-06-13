@@ -1,3 +1,33 @@
+# ⚠️ [ ENVIRONMENT CHANGE NOTICE ] ⚠️
+## Hyprland+XFCE -> Niri
+Work is ongoing in the background in preparation to switch from a Hyprland+XFCE setup to a purely Niri one.
+
+### Upcoming changes.
+Relevant changes will include, but will probably not be limited to:
+- Removing the Hyprland Wayland compositor.
+- Removing the XFCE desktop environment.
+- Adapting the relevant shell scripts, where possible, to work with Niri _(this will also allow me to complete https://github.com/Atemo-C/NixOS-configuration/issues/3)_.
+- Cleaning up other modules & making the syntax and comments across them more consisent.
+- Pulling some of my configuration files from [my dotfiles](https://github.com/Atemo-C/Dotfiles) to here.
+
+### My reasons to switch.
+Here are some of the reasons I am making the switch to Niri
+- Less resource usage and a bit faster on my machines _(especially noticeable on my older laptops)_.
+- Actually runs on my ThinkPad L510 _(as such, XFCE is no longer needed, as I only had it for computers where Hyprland does not work)_.
+- The concept of this scrollable _(not-really-automatic-but-tilling)_ Wayland compositor intruiges me, and I quite like it for now.
+- It allows me to take a step back and refresh a lot of other things that I used to use until now, such as my default terminal emulator, or how I handle some configuration files.
+- It allows me to experiment with a pure Wayland-only setup _(though, XWaylandsatellite will probably end up being used at some point)_.
+- IT allows me to notice and potentially fix issues that I did not notice in Hyprland, such as QT apps not liking the `gtk2` engine for theming in a pure Wayland environment _(this one hurts my soul)_.
+
+---
+
+For now, the configuration will not change. I am testing everything on my side and will upload everything once the work is complete.
+Yep, another bit commit coming up.
+
+---
+---
+---
+
 ![image](https://github.com/Atemo-C/NixOS-configuration/blob/main/Desktop.webp)
 
 # [1] General information.
