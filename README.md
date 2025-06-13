@@ -6,6 +6,7 @@ Work is ongoing in the background in preparation to switch from a Hyprland+XFCE 
 Relevant changes will include, but will probably not be limited to:
 - Removing the Hyprland Wayland compositor.
 - Removing the XFCE desktop environment.
+- Adding the Niri Wayland compositor.
 - Adapting the relevant shell scripts, where possible, to work with Niri _(this will also allow me to complete https://github.com/Atemo-C/NixOS-configuration/issues/3)_.
 - Cleaning up other modules & making the syntax and comments across them more consisent.
 - Pulling some of my configuration files from [my dotfiles](https://github.com/Atemo-C/Dotfiles) to here.
