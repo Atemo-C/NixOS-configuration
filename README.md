@@ -2,6 +2,12 @@
 ## Hyprland+XFCE -> Niri
 Work is ongoing in the background in preparation to switch from a Hyprland+XFCE setup to a purely Niri one.
 
+## Update as of the 26th of July, 2025
+My networking has been really unstable over the past two months, and I have been quite busy doing a lot of things tech related…not.
+Worry not, work is still ongoing despite the hurdles, and I am now daily driving the very same NixOS + Niri configuration that will soon come here.
+However, there are still things that I need to finish, such as repolishing a few of the reworked modules, update and overhaul the README, work around certain of Niri's annoying limitations in some scripts, continue testing dialy to catch any glaring bugs and issues, and wait for some pull requests in nixpkgs to be merged for a fully fucntionaly system (we do be hating when the calculator can't build and thus blocks super critical security updates, thanks for nothin', NixOS!).
+Anywho, you may continue to read what I wrote a few weeks…months(?) ago below.
+
 ### Upcoming changes.
 Relevant changes will include, but will probably not be limited to:
 - Removing the Hyprland Wayland compositor.
@@ -18,12 +24,12 @@ Here are some of the reasons I am making the switch to Niri:
 - The concept of this scrollable _(not-really-automatic-but-tilling)_ Wayland compositor intruiges me, and I quite like it for now.
 - It allows me to take a step back and refresh a lot of other things that I used to use until now, such as my default terminal emulator, or how I handle some configuration files.
 - It allows me to experiment with a pure Wayland-only setup _(though, XWaylandsatellite will probably end up being used at some point)_.
-- IT allows me to notice and potentially fix issues that I did not notice in Hyprland, such as QT apps not liking the `gtk2` engine for theming in a pure Wayland environment _(this one hurts my soul)_.
+- It allows me to notice and potentially fix issues that I did not notice in Hyprland, such as QT apps not liking the `gtk2` engine for theming in a pure Wayland environment _(this one hurts my soul (but I found a solution))_.
 
 ---
 
 For now, the configuration will not change. I am testing everything on my side and will upload everything once the work is complete.
-Yep, another bit commit coming up.
+Yep, another big commit coming up.
 
 ---
 ---
