@@ -1,12 +1,34 @@
 # ⚠️ [ ENVIRONMENT CHANGE NOTICE ] ⚠️
 ## Hyprland+XFCE -> Niri
 Work is ongoing in the background in preparation to switch from a Hyprland+XFCE setup to a purely Niri one.
+Currently, in this repository, you will see the "old" configuration until I have fully updated everything, so, no worries, it will not change every five seconds under your fingers.
+
+### Done:
+*(last updated: 03/08/2025)*
+- All desktop modules
+- All gpu modules
+- All hardware modules
+- All icons
+- All input modules
+- All program modules
+- All shell scripts
+- Crazy mindmap of the entire configuration, because why not?
+
+### To be done:
+*(last updated: 03/08/2025)*
+- All storage modules
+- All theming modules
+- All uncategorized modules
+- All user modules
+- All virtualisation modules
+- Main configuration.nix (trivial)
+- Brand new README.md
 
 ## Update as of the 26th of July, 2025
 My networking has been really unstable over the past two months, and I have been quite busy doing a lot of things tech related…not.
 Worry not, work is still ongoing despite the hurdles, and I am now daily driving the very same NixOS + Niri configuration that will soon come here.
-However, there are still things that I need to finish, such as repolishing a few of the reworked modules, update and overhaul the README, work around certain of Niri's annoying limitations in some scripts, continue testing dialy to catch any glaring bugs and issues, and wait for some pull requests in nixpkgs to be merged for a fully fucntionaly system (we do be hating when the calculator can't build and thus blocks super critical security updates, thanks for nothin', NixOS!).
-Anywho, you may continue to read what I wrote a few weeks…months(?) ago below.
+However, there are still things that I need to finish, such as repolishing a few of the reworked modules, update and overhaul the README, work around certain of Niri's annoying limitations in some places, continue testing daily to catch any glaring bugs and issues, and wait for some pull requests in nixpkgs to be merged for a fully fucntionaly system (we do be hating when the calculator can't build and thus blocks super critical security updates, thanks for nothing, NixOS! Ended up just making my own better).
+Anyway, you may continue to read what I wrote a few weeks…months(?) ago below.
 
 ### Upcoming changes.
 Relevant changes will include, but will probably not be limited to:
