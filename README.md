@@ -13,11 +13,11 @@ Currently, in this repository, you will see the "old" configuration until I have
 - All program modules
 - All shell scripts
 - All storage modules
+- All theming modules
 - Crazy mindmap of the entire configuration, because why not?
 
 ### To be done:
 *(last updated: 04/08/2025)*
-- All theming modules
 - All uncategorized modules
 - All user modules
 - All virtualisation modules
