@@ -5,24 +5,24 @@ Currently, in this repository, you will see the "old" configuration until I have
 
 ### Done:
 *(last updated: 06/08/2025)*
-- All desktop modules
-- All gpu modules
-- All hardware modules
-- All icons
-- All input modules
-- All program modules
-- All shell scripts
-- All storage modules
-- All theming modules
-- All uncategorized modules
-- Crazy mindmap of the entire configuration, because why not?
+- [x] All desktop modules
+- [x] All gpu modules
+- [x] All hardware modules
+- [x] All icons
+- [x] All input modules
+- [x] All program modules
+- [x] All shell scripts
+- [x] All storage modules
+- [x] All theming modules
+- [x] All uncategorized modules
+- [x] Crazy mindmap of the entire configuration, because why not?
 
 ### To be done:
 *(last updated: 06/08/2025)*
-- All user modules
-- All virtualisation modules
-- Main configuration.nix (trivial)
-- Brand new README.md
+- [ ] All user modules
+- [ ] All virtualisation modules
+- [ ] Main configuration.nix (trivial)
+- [ ] Brand new README.md
 
 ## Update as of the 26th of July, 2025
 My networking has been really unstable over the past two months, and I have been quite busy doing a lot of things tech related…not.
