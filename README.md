@@ -15,13 +15,13 @@ Currently, in this repository, you will see the "old" configuration until I have
 - [x] All storage modules
 - [x] All theming modules
 - [x] All uncategorized modules
-- [x] Crazy mindmap of the entire configuration, because why not?
 - [x] All user modules
 - [x] All virtualisation modules
+- [x] Main configuration.nix
+- [x] Crazy mindmap of the entire configuration, because why not?
 
 ### To be done:
 *(last updated: 06/08/2025)*
-- [ ] Main configuration.nix (trivial)
 - [ ] Brand new README.md
 
 ## Update as of the 26th of July, 2025
