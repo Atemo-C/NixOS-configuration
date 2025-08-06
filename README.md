@@ -16,11 +16,11 @@ Currently, in this repository, you will see the "old" configuration until I have
 - [x] All theming modules
 - [x] All uncategorized modules
 - [x] Crazy mindmap of the entire configuration, because why not?
+- [x] All user modules
+- [x] All virtualisation modules
 
 ### To be done:
 *(last updated: 06/08/2025)*
-- [ ] All user modules
-- [ ] All virtualisation modules
 - [ ] Main configuration.nix (trivial)
 - [ ] Brand new README.md
 
