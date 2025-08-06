@@ -4,7 +4,7 @@ Work is ongoing in the background in preparation to switch from a Hyprland+XFCE 
 Currently, in this repository, you will see the "old" configuration until I have fully updated everything, so, no worries, it will not change every five seconds under your fingers.
 
 ### Done:
-*(last updated: 04/08/2025)*
+*(last updated: 06/08/2025)*
 - All desktop modules
 - All gpu modules
 - All hardware modules
@@ -14,11 +14,11 @@ Currently, in this repository, you will see the "old" configuration until I have
 - All shell scripts
 - All storage modules
 - All theming modules
+- All uncategorized modules
 - Crazy mindmap of the entire configuration, because why not?
 
 ### To be done:
-*(last updated: 04/08/2025)*
-- All uncategorized modules
+*(last updated: 06/08/2025)*
 - All user modules
 - All virtualisation modules
 - Main configuration.nix (trivial)
