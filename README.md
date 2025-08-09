@@ -4,7 +4,7 @@ Work is ongoing in the background in preparation to switch from a Hyprland+XFCE 
 Currently, in this repository, you will see the "old" configuration until I have fully updated everything, so, no worries, it will not change every five seconds under your fingers.
 
 ### Done:
-*(last updated: 06/08/2025)*
+*(last updated: 09/08/2025)*
 - [x] All desktop modules
 - [x] All gpu modules
 - [x] All hardware modules
@@ -21,8 +21,11 @@ Currently, in this repository, you will see the "old" configuration until I have
 - [x] Crazy mindmap of the entire configuration, because why not?
 
 ### To be done:
-*(last updated: 06/08/2025)*
+*(last updated: 09/08/2025)*
 - [ ] Brand new README.md
+
+### Note
+Before finishing up the brand new `README.md` file, I am testing the new configuration on a broader range of hardware (including laptops), and am testing most functionality to assure there has been no major regression and to polish the rest of the features. It is coming along very nicely, and it should be ready to be uploaded here within the month of August.
 
 ## Update as of the 26th of July, 2025
 My networking has been really unstable over the past two months, and I have been quite busy doing a lot of things tech related…not.
