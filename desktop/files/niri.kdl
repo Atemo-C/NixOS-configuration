@@ -279,7 +279,7 @@ animations {
 // Layout configuration.
 layout {
 	// Gaps around (inside & outside) windows in pixels.
-	gaps 1
+	gaps 0
 
 	// Set the widths that the `switch-preset-column-width` action toggles between.
 	preset-column-widths {
@@ -299,7 +299,7 @@ layout {
 	}
 
 	// Border configuration.
-	border {
+	/-border {
 		// Width of the border in pixels.
 		width 1
 
@@ -313,8 +313,20 @@ layout {
 		urgent-color "#ff0060"
 	}
 
-	// Disable the focus ring.
-	focus-ring { off; }
+	// Focus ring configuration.
+	focus-ring {
+		// Width of the focus ring in pixels.
+		width 1
+
+		// Color of the active focus ring.
+		active-color "#0080ff"
+
+		// Color of the inactive focus ring.
+		inactive-color "#1c1c1c"
+
+		// Color of the border around windows that request your attention.
+		urgent-color "#ff0060"
+	}
 
 	// Tab indicator configuration.
 	tab-indicator {
@@ -339,9 +351,9 @@ layout {
 	struts {
 		// Set a negative strut for the top and bottom to minimize wasted space.
 		// Set a 1px wide strut on the sides to allow easy window switching with the mouse.
-		left 1
-		right 1
-		top -1
+		left 0
+		right 0
+		top 1
 		bottom -1
 	}
 
