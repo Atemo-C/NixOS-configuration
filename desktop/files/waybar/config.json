@@ -1,0 +1,229 @@
+[{
+	// Whether the bar is displayed in front of (top) or behind (bottom) the windows.
+	"layer": "top",
+
+	// Modules to display on the left.
+	"modules-left": [
+		"image#programs",   "custom/spacer",
+		"image#files",      "custom/spacer",
+		"image#screenshot", "custom/spacer",
+		"image#clipboard",  "custom/spacer",
+		"image#picker",     "custom/spacer",
+		"tray",             "custom/bigspacer",
+		"image#power"
+	],
+
+	// Modules to display on the center.
+	"modules-center": [ "niri/workspaces" ],
+
+	// Modules to display on the right.
+	"modules-right": [
+		"image#cpu",   "cpu",    "temperature", "custom/spacer",
+		"image#ram",   "memory", "custom/spacer",
+		"battery",     "custom/spacer",
+		"backlight",   "custom/spacer",
+		"wireplumber", "custom/spacer",
+		"clock",       "custom/bigspacer",
+		"image#close"
+	],
+
+	// Normal-sized transparent spacer module.
+	"custom/spacer": {
+		"format": "  ",
+		"interval": "once",
+		"tooltip": false
+	},
+
+	// Large-sized transparent spacer module.
+	"custom/bigspacer": {
+		"format": "    ",
+		"interval": "once",
+		"tooltip": false
+	},
+
+	// Program launcher module.
+	// • [LMB] Open a custom program launcher.
+	// • [RMB] Open a generic run laucher.
+	"image#programs": {
+		"on-click": "/etc/nixos/scripts/programs.sh",
+		"on-click-right": "fuzzel --no-icons",
+		"path": "/etc/nixos/icons/programs.svg",
+		"size": 22
+	},
+
+	// File manager shortcut module.
+	// • [LMB] Open the file manager in the `$HOME` directory.
+	// • [RMB] Open the file manager in another desired directory.
+	"image#files": {
+		"on-click": "$FILEMANAGER",
+		"on-click-right": "$FILEMANAGER $HOME/Downloads",
+		"path": "/etc/nixos/icons/files.svg",
+		"size": 22
+	},
+
+	// Screenshot shortcut module.
+	// • [LMB] Take a screenshot of a region on the screen without saving.
+	// • [RMB] Take a screenshot of the active monitor without saving.
+	// • [MMB] Take a screenshot of the active window without saving.
+	// • [BMB] Take a screenshot of a region on the screen.
+	// • [FMB] Take a screenshot of the active monitor.
+	// • [U/D] Take a screenshot of the active window.
+	"image#screenshot": {
+		"on-click": "/etc/nixos/scripts/screenshot.sh --copy area",
+		"on-click-right": "/etc/nixos/scripts/screenshot.sh --copy monitor",
+		"on-click-middle": "/etc/nixos/scripts/screenshot.sh --copy window",
+		"on-click-backward": "/etc/nixos/scripts/screenshot.sh --save area",
+		"on-click-forward": "/etc/nixos/scripts/screenshot.sh --save monitor",
+		"on-scroll-down": "/etc/nixos/scripts/screenshot.sh --save window",
+		"on-scroll-up": "/etc/nixos/scripts/screenshot.sh --save window",
+		"path": "/etc/nixos/icons/screenshot.svg",
+		"size": 22
+	},
+
+	// Clipboard module.
+	// • [LMB] Open a clipboard manager.
+	// • [RMB] Open a clipboard text file.
+	// • [MMB] Clear the clipboard content of the clipboard manager.
+	// • [F/BMB] Open a bookmarks text file.
+	"image#clipboard": {
+		"on-click": "clipman pick -t CUSTOM -T \"fuzzel -d --no-icons\"",
+		"on-click-right": "$TERMINAL $EDITOR $HOME/Documents/Clipboard.txt",
+		"on-click-middle": "clipman clear --all & dunstify -t 1500 'Clipboard cleared.'",
+		"on-click-backward": "$TERMINAL $EDITOR $HOME/Documents/Bookmarks.txt",
+		"on-click-forward": "$TERMINAL $EDITOR $HOME/Documents/Bookmarks.txt",
+		"path": "/etc/nixos/icons/clipboard.svg",
+		"size": 22
+	},
+
+	// Color picker module.
+	// • [LMB] Pick a color anywhere on the desktop.
+	// • [RMB] Open a graphical color picker.
+	"image#picker": {
+		"on-click": "niri msg pick-color",
+		"on-click-right": "gcolor3",
+		"path": "/etc/nixos/icons/picker.svg",
+		"size": 22
+	},
+
+	// System tray module.
+	"tray": {
+		"icon-size": 22,
+		"reverse-direction": true,
+		"spacing": 8
+	},
+
+	// Power menu module.
+	"image#power": {
+		"on-click": "/etc/nixos/scripts/power.sh",
+		"path": "/etc/nixos/icons/power.svg",
+		"size": 22
+	},
+
+	// CPU monitoring modules.
+	// • [LMB] Open a system resources monitor.
+	// • [RMB] Show detailed current system temperatures at a glance.
+	// • [MMB] Show detailed current memory usage at a glance.
+	"image#cpu": {
+		"on-click": "$TERMINAL -e btop",
+		"on-click-right": "dunstify \"$(sensors)\"",
+		"on-click-middle": "dunstify \"$(free -mht)\"",
+		"path": "/etc/nixos/icons/cpu.svg",
+		"size": 22
+	},
+	"cpu": {
+		"format": "{usage}% ",
+		"interval": 1,
+		"on-click": "$TERMINAL -e btop",
+		"on-click-right": "dunstify \"$(sensors)\"",
+		"on-click-middle": "dunstify \"$(free -mht)\""
+	},
+	"temperature": {
+		"critical-threshold": 75,
+		"format": "{temperatureC}°C",
+
+		// R5 PC
+		//"hwmon-path": "/sys/class/hwmon/hwmon1/temp1_input",
+
+		// HP 250 G6
+		"hwmon-path": "/sys/class/hwmon/hwmon6/temp1_input",
+
+		"interval": 1,
+		"on-click": "$TERMINAL -e btop",
+		"on-click-right": "dunstify \"$(sensors)\"",
+		"on-click-middle": "dunstify \"$(free -mht)\""
+	},
+
+	// RAM monitoring modules.
+	// • [LMB] Open a system resources monitor.
+	// • [RMB] Show detailed current memory usage at a glance.
+	// • [MMB] Show detailed current system temperatures at a glance.
+	"image#ram": {
+		"on-click": "$TERMINAL -e btop",
+		"on-click-right": "dunstify \"$(sensors)\"",
+		"on-click-middle": "dunstify \"$(free -mht)\"",
+		"path": "/etc/nixos/icons/ram.svg",
+		"size": 22
+	},
+	"memory": {
+		"format": "{percentage}%",
+		"interval": 1,
+		"on-click": "$TERMINAL -e btop",
+		"on-click-right": "dunstify \"$(sensors)\"",
+		"on-click-middle": "dunstify \"$(free -mht)\""
+	},
+
+	// Battery monitoring module.
+	// • [LMB] Would open a menu to select a power profile mode on compatible systems.
+	// • [RMB] Would show a detailed battery readout at a glance.
+	"battery": {
+		"states": {
+			"warning": 35,
+			"critical": 20,
+		},
+		"format": "{icon} {capacity}%",
+		"format-icons": [ " ", " ", " ", " ", " " ],
+		"on-click": "dunstify \"Battery information\" \"$(acpi -bi)\""
+	},
+
+	// Backlight module.
+	// • [SCRL UP] Would increase the screen brightness.
+	// • [SCRL DN] Would decrease the screen brightness.
+	"backlight": {
+		"format": "{icon}{percent}%",
+		"format-icons": [ "󰃜 ", "󰃞 ", "󰃟 ", "󰃠 ", "󰃚 " ]
+	},
+
+	// Audio output monitoring and control module.
+	// • [LMB] Opens a sound control program.
+	// • [RMB] Opens an audio patchbay.
+	// • [MMB] Toggles muting the output volume.
+	// • [SCRL UP] Increases the output volume by 1%.
+	// • [SCRL DN] Decreases the output volume by 1%.
+	"wireplumber": {
+		"format": "{icon} {volume}%",
+		"format-icons": [ " ", " ", " " ],
+		"format-muted": " ",
+		"on-click": "pwvucontrol",
+		"on-click-right": "qpwgraph",
+		"on-click-middle": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+	},
+
+	// Date and time module.
+	// • [LMB] Opens a calendar.
+	"clock": {
+		//"format": "{:%d/%m/%Y %H:%M:%S}",
+		"format": "{:%d/%m %Hh%M}",
+		"interval": 1,
+		"on-click": "$TERMINAL -e calcurse",
+		"tooltip-format": "<tt>{calendar}</tt>"
+	},
+
+	// Close/kill button module.
+	// • [LMB] Closes the focused window.
+	// • [RMB (hold)] Select a window to kill/force quit.
+	"image#close": {
+		"on-click": "niri msg action close-window",
+		"path": "/etc/nixos/icons/close.svg",
+		"size": 22
+	}
+}]

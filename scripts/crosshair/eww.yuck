@@ -1,0 +1,15 @@
+(defwindow crosshair
+	:monitor 0
+	:geometry (geometry
+		:width "4px"
+		:height "4px"
+		:anchor "center"
+	)
+	:stacking "fg"
+	:windowtype "dock"
+	:focusable false
+	(box
+		:class "crosshair"
+		:style "border-radius: 50%; background-color: #ff0000;"
+	)
+)

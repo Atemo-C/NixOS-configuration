@@ -1,0 +1,49 @@
+* {
+	font-family: monospace;
+	font-size: 16px;
+	margin: 0;
+	padding: 0;
+	border-radius: 0px;
+}
+
+#image {
+	background-color: rgba(0, 0, 0, 0);
+	margin: 2px 2px;
+	padding: 2px 2px;
+}
+
+window#waybar {
+	background: rgba(0, 0, 0, 0.8);
+	color: #ffffff;
+	border-bottom: 2px solid transparent;
+}
+
+tooltip {
+	background: #1d1d1d;
+	border: 2px solid #0080ff;
+}
+
+tooltip label {
+	color: #ffffff;
+}
+
+#workspaces button {
+	border-bottom: 2px solid transparent;
+	color: #005ab3;
+	padding: 0 8px;
+	font-weight: bold;
+}
+
+#workspaces button.active {
+	background-color: rgba(255, 255, 255, 0.2);
+	border-bottom: 2px solid #ffffff;
+	color: #00ffff;
+}
+
+#workspaces button.empty {
+	color: #555555;
+}
+
+#workspaces button.urgent {
+	background-color: rgba (255, 0, 0, 0.4);
+}

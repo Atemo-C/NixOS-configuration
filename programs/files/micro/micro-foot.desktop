@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+NoDisplay=true
+Icon=micro
+Exec=foot -e micro %F %f
+Name=Micro (foot)
+Comment=Open this file in the Micro text editor
+Terminal=false
+StartupNotify=false

@@ -1,0 +1,210 @@
+{
+	"$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+	"logo": "none",
+	"modules": [
+		"break",
+		{
+			"key": "  Central processing unit",
+			"keyColor": "Cyan",
+			"type": "custom"
+		},
+		{
+			"format": "{1}",
+			"key": "Model",
+			"keyColor": "Magenta",
+			"type": "cpu"
+		},
+		{
+			"format": "{3} cores and {4} threads at {7}",
+			"key": "Cores",
+			"type": "cpu"
+		},
+		"break",
+		{
+			"key": "  Graphics processing unit",
+			"type": "custom"
+		},
+		{
+			"format": "  {1} {2}",
+			"key": "Model",
+			"keyColor": "Magenta",
+			"type": "gpu"
+		},
+		{
+			"format": "{3}",
+			"key": "Drivers",
+			"type": "gpu"
+		},
+		"break",
+		{
+			"key": "  Random access memory",
+			"type": "custom"
+		},
+		{
+			"format": "{2}",
+			"key": "Total physical memory",
+			"keyColor": "Magenta",
+			"type": "memory"
+		},
+		{
+			"format": " {1} ({3})",
+			"key": "Used physical memory",
+			"type": "memory"
+		},
+		"break",
+		{
+			"key": "  Virtual \"swap\" memory",
+			"type": "custom"
+		},
+		{
+			"format": "{2}",
+			"key": "Total swap",
+			"keyColor": "Magenta",
+			"type": "swap"
+		},
+		{
+			"format": " {1} ({3})",
+			"key": "Used swap",
+			"type": "swap"
+		},
+		"break",
+		{
+			"key": "  Attached storage",
+			"type": "custom"
+		},
+		{
+			"format": "[{10}] = {1} / {2} [{3}]",
+			"key": "Storage",
+			"keyColor": "Magenta",
+			"type": "disk"
+		},
+		"break",
+		{
+			"key": "  Attached displays",
+			"type": "custom"
+		},
+		{
+			"format": "[{6}] = 󰨤  {1}×{2}@{3}Hz, 󰲏  {4}×{5} 󰑵  {8}°",
+			"key": "Dipslay",
+			"keyColor": "Magenta",
+			"type": "display"
+		},
+		"break",
+		{
+			"key": "  Attached batteries",
+			"type": "custom"
+		},
+		{
+			"format": "{1} {2} ({3}), {4} {5} {6} {7}",
+			"key": "Battery",
+			"keyColor": "Magenta",
+			"type": "battery"
+		},
+		"break",
+		"break",
+		{
+			"key": "  User & host",
+			"type": "custom"
+		},
+		{
+			"format": "  {1}",
+			"key": "  Username",
+			"keyColor": "Magenta",
+			"type": "title"
+		},
+		{
+			"format": "{6}",
+			"key": "  User shell",
+			"keyColor": "Magenta",
+			"type": "shell"
+		},
+		{
+			"format": " {2}",
+			"key": "  Host name",
+			"keyColor": "Magenta",
+			"type": "title"
+		},
+		{
+			"format": "{1} ({4})",
+			"key": "  Local IPv4",
+			"keyColor": "Magenta",
+			"type": "localip"
+		},
+		"break",
+		{
+			"key": "  System",
+			"type": "custom"
+		},
+		{
+			"format": "{3}",
+			"key": "  Operating system",
+			"keyColor": "Magenta",
+			"type": "os"
+		},
+		{
+			"format": "    {1} {2}",
+			"key": "  Linux kernel",
+			"keyColor": "Magenta",
+			"type": "kernel"
+		},
+		{
+			"format": "   {1}d {2}h {3}m {4}s",
+			"key": "  System uptime",
+			"keyColor": "Magenta",
+			"type": "uptime"
+		},
+		"break",
+		{
+			"key": "  Environment",
+			"type": "custom"
+		},
+		{
+			"format": "{2}",
+			"key": "  Wayland compositor",
+			"keyColor": "Magenta",
+			"type": "wm"
+		},
+		{
+			"format": " {1}",
+			"key": "  Terminal emulator",
+			"keyColor": "Magenta",
+			"type": "terminal"
+		},
+		{
+			"format": "     {1}",
+			"key": "  Terminal font",
+			"keyColor": "Magenta",
+			"type": "terminalfont"
+		},
+		"break",
+		{
+			"key": "  Theming",
+			"type": "custom"
+		},
+		{
+			"format": " {2}",
+			"key": "  Program font",
+			"keyColor": "Magenta",
+			"type": "font"
+		},
+		{
+			"format": "{1}",
+			"key": "  Program theme",
+			"keyColor": "Magenta",
+			"type": "theme"
+		},
+		{
+			"format": "  {1}",
+			"key": "  Icons theme",
+			"keyColor": "Magenta",
+			"type": "icons"
+		},
+		{
+			"format": " {1}",
+			"key": "  Cursor theme",
+			"keyColor": "Magenta",
+			"type": "cursor"
+		},
+		"break"
+	]
+}

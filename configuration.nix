@@ -1,89 +1,73 @@
-# NixOS configuration file; Imports all desired modules.
-# Modules in categories are split in their own, well, categories.
-# Feel free to refer to `README.md`.
+{ ... }: { imports = [
 
-{ config, ... }: { imports = [
+	./desktop/dunst.nix
+	./desktop/fuzzel.nix
+	./desktop/niri.nix
+	./desktop/swaylock.nix
+	./desktop/utilities.nix
+	./desktop/waybar.nix
 
-	./Android.nix
-	./Audio.nix
-#	./Bluetooth.nix
-	./Boot.nix
-	./Kernel.nix
-	./Locale.nix
-#	./Monitors.nix
-	./Networking.nix
-	./Nix-settings.nix
-	./Packaging.nix
-	./Polkit.nix
-	./Power.nix
-	./Printing.nix
-	./SSH.nix
-	./Temporary.nix
-	./Time.nix
+	#./gpu/nvidia.nix
+	./gpu/shared.nix
 
-#	./GPU/NVIDIA.nix
-	./GPU/Shared.nix
+	#./hardware/devices/hp-250-g6.nix
+	#./hardware/devices/r5-pc.nix
+	#./hardware/devices/thinkpad-l510.nix
 
-	./hardware-configuration.nix
-#	./Hardware-overrides.nix
+	#./hardware/generated/hp-250-g6.nix
+	#./hardware/generated/r5-pc.nix
 
-	./Hyprland/Configuration.nix
-	./Hyprland/Dunst.nix
-	./Hyprland/Enable.nix
-	./Hyprland/Utilities.nix
-	./Hyprland/Waybar.nix
+	./input/keyboard-layout.nix
+	./input/opentabletdriver.nix
+	./input/utilities.nix
+	./input/zsa.nix
 
-	./Input/Fcitx5.nix
-	./Input/Keyboard-layout.nix
-#	./Input/OpenTabletDriver.nix
-	./Input/Power-button.nix
-	./Input/Utilities.nix
-#	./Input/ZSA.nix
+	./programs/3d.nix
+	./programs/accessories.nix
+	./programs/gaming.nix
+	./programs/internet.nix
+	./programs/multimedia.nix
+	./programs/office.nix
+	./programs/shell-utilities.nix
+	./programs/system-info.nix
+	./programs/terminal-emulator.nix
+	./programs/text.nix
 
-	./Programs/3D.nix
-	./Programs/Accessories.nix
-	./Programs/Gaming.nix
-	./Programs/Gstreamer.nix
-	./Programs/Images.nix
-	./Programs/Internet.nix
-	./Programs/Office.nix
-	./Programs/System-info.nix
-	./Programs/Terminal-emulators.nix
-	./Programs/Terminal-utilities.nix
-	./Programs/Text.nix
-	./Programs/Video.nix
+	./storage/file-management.nix
+	./storage/file-utilities.nix
+	./storage/filesystems.nix
+	./storage/mounts.nix
 
-	./Storage/File-management.nix
-	./Storage/File-utilities.nix
-	./Storage/Filesystem-services.nix
-	./Storage/Filesystem-settings.nix
-	./Storage/Filesystem-support.nix
-	./Storage/Optical-media.nix
-#	./Storage/Storage-mounts.nix
+	./theming/fonts.nix
+	./theming/icons.nix
+	./theming/programs.nix
+	./theming/terminal-colors.nix
 
-	./Theming/Fonts.nix
-	./Theming/Terminal-colors.nix
-	./Theming/Program-themes.nix
-	./Theming/Icon-themes.nix
-	./Theming/Settings.nix
+	./uncategorized/android.nix
+	./uncategorized/audio.nix
+	./uncategorized/bluetooth.nix
+	./uncategorized/boot.nix
+	./uncategorized/locale.nix
+	./uncategorized/networking.nix
+	./uncategorized/nix-settings.nix
+	./uncategorized/packaging.nix
+	./uncategorized/power.nix
+	./uncategorized/printing.nix
+	./uncategorized/ssh.nix
+	./uncategorized/temporary.nix
 
-	./User/Home-manager.nix
-	./User/Name.nix
-	./User/Settings.nix
-	./User/Shell.nix
+	./user/home-manager.nix
+	./user/name.nix
+	./user/settings.nix
+	./user/shell.nix
 
-#	./Virtualisation/Guest/HyperV.nix
-#	./Virtualisation/Guest/QEMU-KVM.nix
-#	./Virtualisation/Guest/VirtualBox.nix
-#	./Virtualisation/Guest/VMWare.nix
-#	./Virtualisation/Guest/XE.nix
+	#./virtualisation/guest/hyperv.nix
+	#./virtualisation/guest/qemu.nix
+	#./virtualisation/guest/virtualbox.nix
+	#./virtualisation/guest/vmware-xe.nix
 
-#	./Virtualisation/Host/Docker.nix
-#	./Virtualisation/Host/Virt-manager.nix
-#	./Virtualisation/Host/Virtualbox.nix
-#	./Virtualisation/Host/Waydroid.nix
-
-#	./XFCE/Panel.nix
-#	./XFCE/XFCE.nix
-
+	#./virtualisation/host/docker.nix
+	#./virtualisation/host/virt-manager.nix
+	#./virtualisation/host/virtualbox.nix
+	#./virtualisation/host/waydroid.nix
 ]; }
