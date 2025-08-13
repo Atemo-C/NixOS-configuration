@@ -22,6 +22,10 @@
 			# Open-source Discord-like chat platform.
 			revolt-desktop
 
+			# Cross platform Adobe Flash Player emulator.
+			# Note: Not necessarily an "internet" app, but come on, Flash games!
+			ruffle
+
 			# Graphical librespeed client.
 			speedtest
 
