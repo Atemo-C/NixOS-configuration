@@ -133,6 +133,7 @@ adda hyprpaper "  Hyprpaper            Set desktop background/wallpaper" \
 
 add inkscape   "  Inkscape             Vector graphics (SVG) editor"
 add jstest-gtk "  Jstest               Gamepad / controller tester"
+add keymapp    "  Keymapp              Layout tool for ZSA keyboards"
 add kdenlive   "  Kdenlive             Video editor"
 add keepassxc  "  KeePassXC            Password manager"
 add krita      "  Krita                Digital painting"
