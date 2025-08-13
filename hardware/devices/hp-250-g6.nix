@@ -23,6 +23,9 @@
 		# Whether to enable the FWup firmware update manager.
 		fwupd.enable = true;
 
+		# Whether to enable preload.
+		preload.enable = true;
+
 		# Keyboard layout to use (priority over `./input/keyboard-layout.nix`).
 		xserver.xkb = {
 			layout = lib.mkForce "fr";

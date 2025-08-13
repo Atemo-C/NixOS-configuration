@@ -19,6 +19,11 @@
 	# Only disable if not using cellular data (tethering from a mobile device does not count).
 	systemd.services.ModemManager.enable = lib.mkIf config.networking.networkmanager.enable false;
 
-	# Whether to enable the FWup firmware update manager.
-	services.fwupd.enable = true;
+	services = {
+		# Whether to enable the FWup firmware update manager.
+		fwupd.enable = true;
+
+		# Whether to enable preload.
+		preload.enable = true;
+	};
 }
