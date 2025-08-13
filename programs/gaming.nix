@@ -19,7 +19,7 @@
 		ferium
 
 		# Full-featured Minecraft launcher.
-		#prismlauncher
+		prismlauncher
 
 		# Minecraft Bedrock Launcher.
 		mcpelauncher-ui-qt
