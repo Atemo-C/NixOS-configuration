@@ -142,6 +142,7 @@ add krita      "  Krita                Digital painting"
 "  Kurso de Esperanto   Esperanto learning program" \
 "QT_QPA_PLATFORM=xcb steam-run $HOME/Programs/Kurso de Esperanto/kursokape"
 
+add  lact        "  LACT                 Configure and overclock GPUs"
 add  lagrange    "  Lagrange             Graphical Gemini client"
 add  libreoffice "󰏆  LibreOffice          Office suite"
 add  librewolf   "  LibreWolf            Web browser"

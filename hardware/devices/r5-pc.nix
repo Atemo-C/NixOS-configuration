@@ -31,6 +31,9 @@
 		# Whether to enable the FWup firmware update manager.
 		fwupd.enable = true;
 
+		# Whether to enable LACT, a tool for monitoring, configuring and overclocking GPUs.
+		lact.enable = true;
+
 		# Whether to enable preload.
 		preload.enable = true;
 	};
