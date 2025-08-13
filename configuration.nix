@@ -33,6 +33,8 @@
 	./programs/terminal-emulator.nix
 	./programs/text.nix
 
+	./scripts/crosshair/crosshair.nix
+
 	./storage/file-management.nix
 	./storage/file-utilities.nix
 	./storage/filesystems.nix
