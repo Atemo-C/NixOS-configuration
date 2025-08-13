@@ -193,9 +193,13 @@ binds {
 	// Close the active window.
 	Super+Shift+C { close-window; }
 
-	// Screen brightness control.
-	XF86MonBrightnessUp         allow-when-locked=true { spawn "brightnessctl" "set" "2%+"; }
-	XF86MonBrightnessDown       allow-when-locked=true { spawn "brightnessctl" "set" "2%-"; }
+	// Screen brightness control for integrated monitors.
+	XF86MonBrightnessUp   allow-when-locked=true { spawn "brightnessctl" "set" "2%+"; }
+	XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "set" "2%-"; }
+
+	// Screen brightness control for external monitors.
+	Shift+XF86MonBrightnessUp   allow-when-locked=true { spawn "ddcutil" "--display" "1" "setvcp" "10" "+" "1"; }
+	Shift+XF86MonBrightnessDown allow-when-locked=true { spawn "ddcutil" "--display" "1" "setvcp" "10" "-" "1"; }
 
 	// Media control.
 	XF86AudioPlay allow-when-locked=true { spawn "playerctl" "play-pause"; }

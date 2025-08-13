@@ -8,8 +8,16 @@
 		loader.efi.canTouchEfiVariables = lib.mkIf config.boot.loader.limine.enable true;
 	};
 
-	# Program that allows manually modifying the EFI boot manager and its entries.
-	environment.systemPackages = [ pkgs.efibootmgr ];
+	# Whether to enable i2c devices support.
+	hardware.i2c.enable = true
+
+	environment.systemPackages = with pkgs; [
+		# Program to manually modify the EFI boot manager and its entries.
+		efibootmgr
+
+		# Query and change Linux monitor settings using DDC/CI and USB.
+		ddcutil
+	];
 
 	# Name of the system over the network.
 	# [a-z] [A-Z] [0-9] [ - ]
