@@ -92,6 +92,18 @@
 			'';
 			destination = "/share/thumbnailers/kra.thumbnailer";
 		})
+
+		# Thumbnailing for audio files within Thunar.
+		(pkgs.writeTextFile {
+			name = "audio-thumbnails";
+			text = ''
+				[Thumbnailer Entry]
+				TryExec=ffmpeg
+				Exec=sh -c "${pkgs.ffmpeg-full}/bin/ffmpeg -y -i %i %o -fs %s"
+				MimeType=audio/mpeg
+			'';
+			destination = "/share/thumbnailers/ffmpegaudio.thumbnailer";
+		})
 	]);
 
 	# Whether to enable the image thumbnailer for the Thunar file manager.
