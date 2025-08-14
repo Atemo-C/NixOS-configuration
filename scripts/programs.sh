@@ -173,6 +173,7 @@ add  qbittorrent           "  qBittorrent          Torrent manager"
 add  qpwgraph              "󰤽  qpwgraph             Audio patchbay"
 add  revolt-desktop        "󰭻  Revolt               FOSS alternative to Discord"
 add  rpcs3                 "  RPCS3                PlayStation 3 emulator"
+add  ruffle                "  Ruffle               Adobe Flash emulator"
 add  sc-controller         "  SC-Controller        Remap controllers"
 add  simple-scan           "󰚫  Simple scan          Document scanner"
 adda org.vinegarhq.Sober  "  Sober ( )           Roblox client" \
