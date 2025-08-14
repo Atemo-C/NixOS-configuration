@@ -63,19 +63,12 @@
 
 	// Screenshot shortcut module.
 	// • [LMB] Take a screenshot of a region on the screen without saving.
-	// • [RMB] Take a screenshot of the active monitor without saving.
-	// • [MMB] Take a screenshot of the active window without saving.
-	// • [BMB] Take a screenshot of a region on the screen.
-	// • [FMB] Take a screenshot of the active monitor.
-	// • [U/D] Take a screenshot of the active window.
+	// • [RMB] Take a screenshot of a region on the screen and save.
+	// • [MMB] Show a menu to access more screenshot options.
 	"image#screenshot": {
-		"on-click": "/etc/nixos/scripts/screenshot.sh --copy area",
-		"on-click-right": "/etc/nixos/scripts/screenshot.sh --copy monitor",
-		"on-click-middle": "/etc/nixos/scripts/screenshot.sh --copy window",
-		"on-click-backward": "/etc/nixos/scripts/screenshot.sh --save area",
-		"on-click-forward": "/etc/nixos/scripts/screenshot.sh --save monitor",
-		"on-scroll-down": "/etc/nixos/scripts/screenshot.sh --save window",
-		"on-scroll-up": "/etc/nixos/scripts/screenshot.sh --save window",
+		"on-click": "dash -c '/etc/nixos/scripts/screenshot.sh --copy area && systemctl restart --user waybar.service'",
+		"on-click-right": "dash -c '/etc/nixos/scripts/screenshot.sh --save area && systemctl restart --user waybar.service'",
+		"on-click-middle": "/etc/nixos/scripts/screenshot-selection.sh",
 		"path": "/etc/nixos/icons/screenshot.svg",
 		"size": 22
 	},
@@ -99,7 +92,7 @@
 	// • [LMB] Pick a color anywhere on the desktop.
 	// • [RMB] Open a graphical color picker.
 	"image#picker": {
-		"on-click": "niri msg pick-color",
+		"on-click": "dash -c 'niri msg pick-color && systemctl restart --user waybar.service'",
 		"on-click-right": "gcolor3",
 		"path": "/etc/nixos/icons/picker.svg",
 		"size": 22
