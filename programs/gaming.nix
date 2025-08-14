@@ -71,9 +71,6 @@
 		};
 	};
 
-	# List of TCP ports on which incoming connections are accepted for self-hosted game servers.
-	networking.firewall.allowedTCPPorts = [ 42069 ];
-
 	boot = {
 		# Runtime parameters of the Linux Kernel to enhance gaming performance and to help future-proof.
 		kernel.sysctl = {
