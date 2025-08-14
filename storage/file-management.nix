@@ -44,9 +44,13 @@
 			settings.icons.separator = "  ";
 		};
 
-		# Neat custom actions for Thunar.
-		systemd.user.tmpfiles.rules = lib.optional config.programs.thunar.enable
-		"L %h/.config/Thunar/uca.xml - - - - /etc/nixos/storage/files/thunar-custom-actions.xml";
+		systemd.user.tmpfiles.rules = [
+			# Mimeapps configuration.
+			"L %h/.config/mimeapps.list - - - - /etc/nixos/storage/files/mimeaps.list"
+		] ++ lib.optional config.programs.thunar.enable
+
+			# Custom actions for the Thunar file manager.
+			"L %h/.config/Thunar/uca.xml - - - - /etc/nixos/storage/files/thunar-custom-actions.xml";
 	};
 
 	# Add `lsd` shell abbreviations.

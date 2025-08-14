@@ -1,0 +1,24 @@
+[Default Applications]
+application/octet-stream=micro-footclient.desktop
+application/pdf=xreader.desktop
+application/vnd.adobe.flash.movie=rs.ruffle.Ruffle.desktop
+application/xml=micro-footclient.desktop
+application/x-modrinth-modpack+zip=org.prismlauncher.PrismLauncher.desktop
+application/x-zerosize=micro-footclient.desktop
+
+audio/x-vorbis+ogg=audacious.desktop
+
+image/gif=lximage-qt.desktop
+image/jpeg=lximage-qt.desktop
+image/jxl=lximage-qt.desktop
+image/png=lximage-qt.desktop
+image/svg+xml=lximage-qt.desktop
+image/webp=lximage-qt.desktop
+
+inode/directory=thunar.desktop
+
+text/css=micro-footclient.desktop
+text/html=micro-footclient.desktop
+text/plain=micro-footclient.desktop
+
+x-scheme-handler/discord=vesktop.desktop
