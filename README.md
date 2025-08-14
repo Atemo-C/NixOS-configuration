@@ -5,9 +5,9 @@ This NixOS configuration is almost exactly what I use on my own systems. \
 It is a single-user setup with the [Niri](https://github.com/YaLTeR/niri) Wayland compositor as its base environment. It uses NixOS unstable under the hood, with some help from [Home Manager](https://github.com/nix-community/home-manager). \
 It is a successor to [my old NixOS configuration](https://github.com/Atemo-C/OLD-NixOS-Configuration), which is now archived. \
 When using this configuration, make sure to read and modify each module of interest to you. It is, after all, made for myself first. It is assumed that you have prior experience with NixOS *(without flakes)*, or you **will** be lost. \
-To see a mindmap that connects basically everything in this configuration, you may download the [`.minder`](https://github.com/Atemo-C/NixOS-configuration/blob/main/Configuration.minder). It is to be opened with [ElementaryOS' Minder program](https://github.com/phase1geo/Minder).
+To see a mindmap that connects basically everything in this configuration, you may download the [`.minder`](https://github.com/Atemo-C/NixOS-configuration/blob/main/Configuration.minder) file in this repository. It is to be opened with [ElementaryOS' Minder program](https://github.com/phase1geo/Minder).
 
-# To know and do when using this configuration.
+# To know and do when using this configuration. ‎
 ## Permissions of `/etc/nixos/*`
 To make the experience as painless as possible, I recommend to run `sudo chown your-user-name:users -R /etc/nixos/`. This allows the entire `/etc/nixos/` dierctory and all of its files to have user read and write access, without the need for a password.
 
@@ -17,7 +17,7 @@ This configuration splits hardware modules into two:
 - The manually-written hardware configuration file in the [`./hardware/devices/`](https://github.com/Atemo-C/NixOS-configuration/blob/main/hardware/devices/) directory, renamed to fit the device that is targeted.
 
 The automatically-generated hradware configuration files are untouched from the ones created by running `nixos-generate-config --root /path/to/system`. \
-The manually-written hardware configuration files contains settings such as, but not necessarily limited to:
+The manually-written hardware configuration files contains settings such as, but not limited to:
 - Kernel version
 - If the system boots in EFI or BIOS mode
 - Hostname
@@ -37,7 +37,7 @@ To see which modules use these variables, open a console where this configuratio
 To enable support for NVIDIA GPUs *(16XX+ 20XX+)* with the relevant proprietary drivers, you can uncomment the `./nvidia.nix` import in the [`configuration.nix`](https://github.com/Atemo-C/NixOS-configuration/blob/main/configuration.nix) module. In here, you will also find literally every module that can be commented in/out for your needs.
 
 ## Flatpak and Flathub.
-Currently, the Flathub FLatpak repository cannot be cleanly declaratively defined in NixOS and Home Manager by themselves. Instead of implementing hacky and ugly workarounds, I added shell abbreviations to enable Flathub when `services.flatpaks.enable` is `true`, if you use the [FISH](https://fishshell.com/) shell for the user. It is the `enable-flathub` abbreviation, in the [`./user/shell.nix`](https://github.com/Atemo-C/NixOs-configuration/blob/main/user/shell.nix) module.
+Currently, the Flathub Flatpak repository cannot be cleanly declaratively defined in NixOS and Home Manager by themselves. Instead of implementing hacky and ugly workarounds, I added shell abbreviations to enable Flathub when `services.flatpaks.enable` is `true`, if you use the [FISH](https://fishshell.com/) shell for the user. It is the `enable-flathub` abbreviation, in the [`./user/shell.nix`](https://github.com/Atemo-C/NixOs-configuration/blob/main/user/shell.nix) module.
 
 # Use cases and features implementation.
 ## Targeted usecase.
@@ -64,10 +64,10 @@ Help is available in:
 - The [Nix.dev](https://nix.dev/) documentation for the Nix ecosystem.
 
 A searchable list of available packages for NixOS can be found here: \
-[NixOS package search](https://search.nixos.org/packages)
+[NixOS package search](https://search.nixos.org/packages?channel=unstable)
 
 A searchable list of available options for NixOS can be found here: \
-[NixOS options search](https://search.nixos.org/options)
+[NixOS options search](https://search.nixos.org/options?channel=unstable)
 
 A (slow) list of available options for Home Manager can be found here: \
 [Home Manager search](https://nix-community.github.io/home-manager/options.xhtml)
