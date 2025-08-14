@@ -449,6 +449,7 @@ window-rule {
 	match app-id=r#"thunar$"# title="^Rename.*$"
 	match app-id=r#"dash-calculator.sh$"#
 	match app-id=r#"org.gnome.Nautilus$"# title="^Select a background image$"
+	match app-id=r#"rs.ruffle.Ruffle$"#
 	open-floating true
 	border { width 2; }
 }
