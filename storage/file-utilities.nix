@@ -79,6 +79,19 @@
 		mcomix                    # .cbr
 		nufraw-thumbnailer        # .raw
 		webp-pixbuf-loader        # .webp
+
+		# Thumbnailing for Krita within Thunar.
+		# https://github.com/NixOS/nixpkgs/issues/287003
+		(pkgs.writeTextFile {
+			name = "krita-thumbnails";
+			text = ''
+				[Thumbnailer Entry]
+				TryExec=unzip
+				Exec=sh -c "${pkgs.unzip}/bin/unzip -p %i preview.png > %o"
+				MimeType=application/x-krita;
+			'';
+			destination = "/share/thumbnailers/kra.thumbnailer";
+		})
 	]);
 
 	# Whether to enable the image thumbnailer for the Thunar file manager.
