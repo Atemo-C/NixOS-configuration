@@ -18,12 +18,13 @@
 
 	// Modules to display on the right.
 	"modules-right": [
-		"image#cpu",   "cpu",    "temperature", "custom/spacer",
-		"image#ram",   "memory", "custom/spacer",
-		"battery",     "custom/spacer",
-		"backlight",   "custom/spacer",
-		"wireplumber", "custom/spacer",
-		"clock",       "custom/bigspacer",
+		"image#cpu",         "cpu",    "temperature", "custom/spacer",
+		"image#ram",         "memory", "custom/spacer",
+		"battery",           "custom/spacer",
+		"backlight",         "custom/spacer",
+		"custom/brightness", "custom/spacer",
+		"wireplumber",       "custom/spacer",
+		"clock",             "custom/bigspacer",
 		"image#close"
 	],
 
@@ -166,8 +167,7 @@
 	},
 
 	// Battery monitoring module.
-	// • [LMB] Would open a menu to select a power profile mode on compatible systems.
-	// • [RMB] Would show a detailed battery readout at a glance.
+	// • [LMB] Show a detailed battery readout at a glance.
 	"battery": {
 		"states": {
 			"warning": 35,
@@ -179,11 +179,24 @@
 	},
 
 	// Backlight module.
-	// • [SCRL UP] Would increase the screen brightness.
-	// • [SCRL DN] Would decrease the screen brightness.
+	// • [SCRL UP] Increase the screen brightness.
+	// • [SCRL DN] Decrease the screen brightness.
 	"backlight": {
 		"format": "{icon}{percent}%",
 		"format-icons": [ "󰃜 ", "󰃞 ", "󰃟 ", "󰃠 ", "󰃚 " ]
+	},
+
+	// Custom brightness module for external monitors.
+	// • [SCRL UP] Increase the external monitor brightness.
+	// • [SCRL DN] Decrease the external monitor brightness.
+	"custom/brightness": {
+		"exec": "ddcutil --display 1 getvcp 10 | grep \"Brightness\" | awk '{print $9}' | tr -d ','",
+		"exec-if": "sleep 1",
+		"format": "{icon}{}%",
+		"format-icons": [ "󰃜 ", "󰃞 ", "󰃟 ", "󰃠 ", "󰃚 " ],
+		"interval": "once",
+		"on-scroll-up": "ddcutil --display 1 setvcp 10 + 2",
+		"on-scroll-down": "ddcutil --display 1 setvcp 10 - 2"
 	},
 
 	// Audio output monitoring and control module.
