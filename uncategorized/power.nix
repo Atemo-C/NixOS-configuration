@@ -3,9 +3,15 @@
 		# Show battery status and other ACPI information.
 		acpi
 
-		# Read and control device brightness.
+		# Read and control integrated device brightness.
 		brightnessctl
+
+		# Query and change Linux montor settings using DDC/CI and USB.
+		ddcutil
 	];
+
+	# Whether to enable i2c devices support.
+	hardware.i2c.enable = true;
 
 	services = {
 		# Configure `systemd-logind` to ignore power button actions, letting the user customize them.
