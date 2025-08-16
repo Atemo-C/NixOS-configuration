@@ -27,7 +27,7 @@
 
 			main = rec {
 				# Use a font defined in the `./theming/fonts.nix` module.
-				font = "monospace:size=12";
+				font = "monospace:size=12.5";
 
 				# Horizontal, vertical, and inner padding in pixels.
 				horizontal-pad = 6;
