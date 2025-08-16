@@ -19,17 +19,17 @@
 
 # Text formatting shortcuts for console messages using `printf`.
 clr=$(tput sgr0)
-err=$(tput bold; tput setaf 1)Error$(tput sgr0)
+err=$(tput bold; tput setaf 1)Error$(tput sgr0):
 exe=$(tput bold; tput setaf 3)
 ico=$(tput bold; tput setaf 6)
-war=$(tput bold; tput setaf 5)Warning$(tput sgr0)
+war=$(tput bold; tput setaf 5)Warning$(tput sgr0):
 
 # Text formatting for graphical notifications using `dunstify`.
 bspan="</span></b>"
-derr="<b><span foreground='#ff0000'>Error:</span></b>"
+derr="<b><span foreground='#ff0000'>Error</span></b>:"
 dexe="<b><span foreground='#ffc000'>"
 dico="<b><span foreground='#00ffff'>"
-dwar="<b><span foreground='#ff0080'>Warning:</span></b>"
+dwar="<b><span foreground='#ff0080'>Warning</span></b>:"
 
 # Check if Dunst is installed.
 command -v dunstify > /dev/null 2>&1 || {
@@ -172,7 +172,7 @@ cp "$background" "$HOME/.config/hypr/backgroundimage" || {
 
 	# Create a blurred and slightly darkened version of the lockscreen image background.
 	[ "$magick_dep" = "true" ] && {
-		magick "$background" -brightness-contrast -9 -gaussian-blur 9x9 "$OHME/.config/hypr/lockscreenimage.jpg" || {
+		magick "$background" -brightness-contrast -9 -gaussian-blur 9x9 "$HOME/.config/hypr/lockscreenimage.jpg" || {
 			printf "%s An error occured during the creation of the lockscreen image. Using a non-transformed image instead.\n" "$war"
 
 			warify "Lockscreen image creation failure" \
@@ -183,9 +183,9 @@ cp "$background" "$HOME/.config/hypr/backgroundimage" || {
 			[ "$hyprpaper_is_kill" = "false" ] && { exit 6; }
 		}
 		[ "$hyprpaper_is_kill" = "false" ] && { exit 5; }
-		exit
+		exit 4
 	}
-	exit 4
+	exit
 }
 
 # If an error occures or the file picker is closed, display an error message.
