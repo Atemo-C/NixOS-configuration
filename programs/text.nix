@@ -68,7 +68,21 @@ in {
 		# Whether to enable the LanguageTool server, a multilingual spelling, style, and grammar checker.
 		enable = false;
 
+		# Which clients to allow access from.
+		allowOrigin = lib.mkIf enable "*";
+
+		# Whether to make the server listen on all interfaces.
+		public = lib.mkIf enable true;
+
+		# Port to listen to.
+		port = lib.mkIf (enable && public) 3621;
+
 		# Limit the maximum memory usage of the JVM running LanguageTool.
 		jvmOptions = lib.optional enable "-Xmx2048m";
 	};
+
+	# Port for a public LanguageTool server.
+	networking.firewall.allowedTCPPorts = lib.optional (
+		config.services.languagetool.enable && config.services.languagetool.public
+	) 3621;
 }
