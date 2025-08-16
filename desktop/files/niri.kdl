@@ -81,11 +81,11 @@ binds {
 	Super+8 { focus-workspace 8; }
 
 	// Switch a workspace (directional).
-	Super+Page_Up { focus-workspace-up; }
+	Super+Page_Up   { focus-workspace-up; }
 	Super+Page_Down { focus-workspace-down; }
 
-	Super+Control+WheelScrollUp cooldown-ms=75 { focus-workspace-up; }
-	Super+Control+WheelScrollDown cooldown-ms=75 { focus-workspace-down; }
+	Super+Alt+WheelScrollDown cooldown-ms=75 { focus-workspace-down; }
+	Super+Alt+WheelScrollUp   cooldown-ms=75 { focus-workspace-up; }
 
 	// Move the active window to a workspace (numerical).
 	Super+Shift+Ampersand  { move-window-to-workspace 1; }
@@ -110,20 +110,20 @@ binds {
 	Super+Shift+Page_Up   { move-window-to-workspace-up; }
 	Super+Shift+Page_Down { move-window-to-workspace-down; }
 
-	Super+Shift+WheelScrollUp cooldown-ms=150   { move-window-to-workspace-up; }
-	Super+Shift+WheelScrollDown cooldown-ms=150 { move-window-to-workspace-down; }
+	Super+Alt+Control+WheelScrollDown cooldown-ms=150 { move-window-to-workspace-down; }
+	Super+Alt+Control+WheelScrollUp   cooldown-ms=150 { move-window-to-workspace-up; }
 
 	// Window focus switch.
-	Super+Left             { focus-column-left; }
-	Super+Down             { focus-window-down; }
-	Super+Up               { focus-window-up; }
-	Super+Right            { focus-column-right; }
-	Super+Home             { focus-column-first; }
-	Super+End              { focus-column-last; }
-	Super+WheelScrollDown  { focus-window-down; }
-	Super+WheelScrollUp    { focus-window-up; }
-	Super+WheelScrollLeft  { focus-column-left; }
-	Super+WheelScrollRight { focus-column-right; }
+	Super+Left                    { focus-column-left; }
+	Super+Down                    { focus-window-down; }
+	Super+Up                      { focus-window-up; }
+	Super+Right                   { focus-column-right; }
+	Super+Home                    { focus-column-first; }
+	Super+End                     { focus-column-last; }
+	Super+WheelScrollDown         { focus-column-right; }
+	Super+WheelScrollUp           { focus-column-left; }
+	Super+Control+WheelScrollDown { focus-window-down; }
+	Super+Control+WheelScrollUp   { focus-window-up; }
 
 	// Move windows.
 	Super+Shift+Left  { move-column-left; }
@@ -221,6 +221,11 @@ binds {
 	Super+XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SOURCE@" "0.01-"; }
 	Super+XF86AudioMute        allow-when-locked=true { spawn "wpctl" "set-mute"   "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
 	XF86AudioMicMute           allow-when-locked=true { spawn "wpctl" "set-mute"   "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
+
+	// Power menu.
+	XF86PowerOff allow-when-locked=true { spawn "/etc/nixos/scripts/power.sh"; }
+	XF86Sleep    allow-when-locked=true { spawn "/etc/nixos/scripts/power.sh"; }
+	XF86Suspend  allow-when-locked=true { spawn "/etc/nixos/scripts/power.sh"; }
 
 	// Copying screenshots.
 	Print       { spawn "/etc/nixos/scripts/screenshot.sh" "--copy" "area"; }
