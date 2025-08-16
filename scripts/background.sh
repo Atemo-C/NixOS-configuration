@@ -145,7 +145,7 @@ cp "$background" "$HOME/.config/hypr/backgroundimage" || {
 		printf "ipc = off\n"
 	} > "$HOME/.config/hypr/hyprpaper.conf"
 
-	# Close Hyprpaper if it is alreadi running.
+	# Close Hyprpaper if it is already running.
 	pkill --exact "hyprpaper" || true;
 
 	# Wait until Hyprpaper is no longer running before restarting it.
