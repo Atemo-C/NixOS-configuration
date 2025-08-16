@@ -52,7 +52,7 @@ Currently, the Flathub Flatpak repository cannot be cleanly declaratively define
 - Computers with:
 	- A non-x86_64 *(AMD64)* CPU architecture.
 	- Hybrid GPU setup *(NVIDIA PRIME, etc)*.
-	- Less than 2GiB of RAM *(swap WILL be heavily used with less than 6)*.
+	- Less than 2GiB of RAM *(swap WILL be heavily used with less than 6 when building the system)*.
 	- Less than 48GiB of storage *(some Nix storage optimizations are already enabled)*.
 
 # Some useful NixOS resources and credits.
