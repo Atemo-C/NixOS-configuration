@@ -14,8 +14,15 @@
 	hardware.i2c.enable = true;
 
 	services = {
-		# Configure `systemd-logind` to ignore power button actions, letting the user customize them.
-		logind.extraConfig = ''HandlePowerKey=ignore'';
+		logind = {
+			# Configure `systemd-logind` to ignore power button actions, letting the user customize them.
+			extraConfig = ''HandlePowerKey=ignore'';
+
+			# For laptops, what to do with different lid actions.
+			lidSwitch = "suspend";
+			lidSwitchExternalPower = "suspend";
+			lidSwitchDocked = "ignore";
+		};
 
 		# Whether to enable the Upower DBus service.
 		# It provides power management support to applications.
