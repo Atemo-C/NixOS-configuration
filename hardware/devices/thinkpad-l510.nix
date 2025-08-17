@@ -47,4 +47,24 @@
 		layout = lib.mkForce "fr";
 		variant = lib.mkForce "";
 	};
+
+	# zram, because 2GB of RAM is not enough for tasks like web browsing or updating the system.
+	zramSwap = rec {
+		# Whether to enable in-memory compression devices and swap space provided by the zram kernel module.
+		enable = true;
+
+		# Compression algorithm to use.
+		# `842`, `lzo`, `lzo-rle`, `lz4`, `lz4hc`, `zstd`, or other.
+		algorithm = lib.mkIf enable "zstd";
+
+		# Maximum total amount of memory that can be stored in the zram swap devices.
+		# Run `zramctl` to check how good memory is compressed.
+		memoryPercent = lib.mkIf enable 85;
+
+		# Priority of the zram swap device.
+		# It should be a number higher than the priority of your disk-based swap devices,
+		# so that the system will fill the zram swap device before falling bcak to disk swap.
+		priority = lib.mkIf enable 50;
+	};
+
 }
