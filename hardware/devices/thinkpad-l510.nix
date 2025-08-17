@@ -59,7 +59,7 @@
 
 		# Maximum total amount of memory that can be stored in the zram swap devices.
 		# Run `zramctl` to check how good memory is compressed.
-		memoryPercent = lib.mkIf enable 85;
+		memoryPercent = lib.mkIf enable 90;
 
 		# Priority of the zram swap device.
 		# It should be a number higher than the priority of your disk-based swap devices,
