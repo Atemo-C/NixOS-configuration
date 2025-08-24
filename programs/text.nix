@@ -75,14 +75,13 @@ in {
 		public = lib.mkIf config.services.languagetool.enable false;
 
 		# Port to listen to.
-		port = lib.mkIf (config.services.languagetool.enable && config.services.languagetool.public) 6969;
+		port = lib.mkIf (config.services.languagetool.enable && config.services.languagetool.public) 4321;
 
 		# Limit the maximum memory usage of the JVM running LanguageTool.
 		jvmOptions = lib.optional config.services.languagetool.enable "-Xmx2048m";
 	};
 
-	# Port for a public LanguageTool server.
 	networking.firewall.allowedTCPPorts = lib.optional (
 		config.services.languagetool.enable && config.services.languagetool.public
-	) 3621;
+	) config.services.languagetool.port;
 }
