@@ -69,7 +69,7 @@ in {
 		enable = true;
 
 		# Which clients to allow access from.
-		allowOrigin = lib.mkIf config.services.lanugagetool.enable "*";
+		allowOrigin = lib.mkIf config.services.languagetool.enable "*";
 
 		# Whether to make the server listen on all interfaces.
 		public = lib.mkIf config.services.languagetool.enable false;
