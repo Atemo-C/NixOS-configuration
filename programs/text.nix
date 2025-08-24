@@ -64,21 +64,21 @@ in {
 		fish.shellAbbrs = lib.mkIf (config.programs.fish.enable && micro) { m = "micro"; };
 	};
 
-	services.languagetool = rec {
+	services.languagetool = {
 		# Whether to enable the LanguageTool server, a multilingual spelling, style, and grammar checker.
-		enable = false;
+		enable = true;
 
 		# Which clients to allow access from.
-		allowOrigin = lib.mkIf enable "*";
+		allowOrigin = lib.mkIf config.services.lanugagetool.enable "*";
 
 		# Whether to make the server listen on all interfaces.
-		public = lib.mkIf enable true;
+		public = lib.mkIf config.services.languagetool.enable false;
 
 		# Port to listen to.
-		port = lib.mkIf (enable && public) 3621;
+		port = lib.mkIf (config.services.languagetool.enable && config.services.languagetool.public) 6969;
 
 		# Limit the maximum memory usage of the JVM running LanguageTool.
-		jvmOptions = lib.optional enable "-Xmx2048m";
+		jvmOptions = lib.optional config.services.languagetool.enable "-Xmx2048m";
 	};
 
 	# Port for a public LanguageTool server.
