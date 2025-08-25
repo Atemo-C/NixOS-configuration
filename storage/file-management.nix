@@ -41,7 +41,7 @@
 			enable = true;
 
 			# Default size of the separator between icons and normal text.
-			settings.icons.separator = "  ";
+			settings.icons.separator = lib.mkIf enable "  ";
 		};
 
 		systemd.user.tmpfiles.rules = [

@@ -1,4 +1,4 @@
-{ config, ... }: {
+{ ... }: {
 	# Which version of NixOS was initially installed on the current system.
 	# There is no need to change it post-installation, even when upgrading to a newer NixOS version.
 	# Only change it if you are fully re-installing with a different version.

@@ -27,12 +27,12 @@
 
 		packages = with pkgs; [
 			# Ubuntu Nerd Fonts.
-			pkgs.nerd-fonts.ubuntu
-			pkgs.nerd-fonts.ubuntu-mono
+			nerd-fonts.ubuntu
+			nerd-fonts.ubuntu-mono
 
 			# Additional symbols & interlingual support.
-			pkgs.noto-fonts-cjk-sans
-			pkgs.noto-fonts
+			noto-fonts-cjk-sans
+			noto-fonts
 		];
 	};
 

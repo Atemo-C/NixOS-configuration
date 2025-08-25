@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }: let
+{ config, lib, ... }: let
 	# Shortcuts to check if Foot and the Foot server are enabled.
 	# Foot and the Foot server are toggleable here;
 	foot       = config.home-manager.users.${config.userName}.programs.foot.enable;

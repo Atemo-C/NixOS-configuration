@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }: {
+{ config, lib, ... }: {
 	virtualisation.libvirtd = {
 		# Whether to enable libvirtd, a daemon that manages virtual machines.
 		enable = true;

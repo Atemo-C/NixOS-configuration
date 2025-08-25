@@ -1,4 +1,4 @@
-{ config, ... }: { services = {
+{ ... }: { services = {
 	# Whether to enable the Spice guest vdagent daemon.
 	spice-vdagentd.enable = true;
 

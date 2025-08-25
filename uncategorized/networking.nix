@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }: {
+{ config, lib, ... }: {
 	networking = {
 		# Fork the dhcpcd device to the background to improve boot times.
 		dhcpcd.wait = "background";

@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }: {
+{ config, lib, ... }: {
 	virtualisation.docker = rec {
 		# Whether to enable Docker.
 		enable = true;

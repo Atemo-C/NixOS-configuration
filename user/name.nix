@@ -1,4 +1,4 @@
-{ config, lib, ... }: {
+{ lib, ... }: {
 	options = {
 		# Define the `userName` option.
 		userName = lib.mkOption {

@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }: let
+{ lib, pkgs, ... }: let
 	# List of hard disk drives that should not be awakened by smartd during standby.
 	spinningrust = [
 		"/dev/disk/by-id/ata-ata-ST3500418AS_5VMETGG9"

@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }: {
+{ config, lib, ... }: {
 	home-manager.users.${config.userName} = lib.mkIf config.programs.niri.enable rec {
 		programs.waybar = {
 			# Whether to enable the Waybar bar.

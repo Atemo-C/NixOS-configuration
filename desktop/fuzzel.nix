@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }: {
+{ config, lib, ... }: {
 	home-manager.users.${config.userName}.programs.fuzzel = lib.mkIf config.programs.niri.enable {
 		# Whether to enable the Fuzzel launcher.
 		enable = true;

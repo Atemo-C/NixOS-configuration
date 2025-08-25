@@ -85,7 +85,7 @@ in {
 		upscayl
 	]);
 
-	home-manager.users.${config.userName} = rec {
+	home-manager.users.${config.userName} = {
 		# Whether to enable yt-dlp, a CLI tool to download videos from YouTube and other websites; Fork of yt-dl.
 		programs.yt-dlp.enable = true;
 

@@ -1,4 +1,4 @@
-{ config, ... }: { boot.loader = {
+{ ... }: { boot.loader = {
 	limine = {
 		# Whether to enable the Limine bootloader.
 		enable = true;

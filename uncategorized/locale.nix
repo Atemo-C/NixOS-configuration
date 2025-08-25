@@ -1,4 +1,4 @@
-{ config, ... }: {
+{ ... }: {
 	i18n = {
 		# Default language of the system.
 		defaultLocale = "en_US.UTF-8";
