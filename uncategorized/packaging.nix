@@ -18,12 +18,15 @@
 		enable = true;
 	};
 
-	# Add shell abbreviations for enabling the Flathub repository and to update Flatpaks.
-	programs.fish.shellAbbrs = lib.mkIf (config.programs.fish.enable && config.services.flatpak.enable) rec {
-		# Enable the Flathub repository.
-		enable-flathub = "flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo";
+	# Enable Flathub globally if not already present.
+	systemd.services.flatpak-repo = lib.mkIf config.services.flatpak.enable {
+		wantedBy = [ "multi-user.target" ];
+		path = [ pkgs.flatpak ];
+		script = ''flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo'';
+	};
 
-		# Upgrade Flatpaks.
+	# Add shell abbreviations for updating flatpaks.
+	programs.fish.shellAbbrs = lib.mkIf (config.programs.fish.enable && config.services.flatpak.enable) rec {
 		update-flatpak = "flatpak update -y && flatpak remove --unused -y";
 		flatpak-update = update-flatpak;
 		upgrade-flatpak = update-flatpak;

@@ -36,9 +36,6 @@ To see which modules use these variables, open a console where this configuratio
 ## NVIDIA GPUs and `configuration.nix`.
 To enable support for NVIDIA GPUs *(16XX+ 20XX+)* with the relevant proprietary drivers, you can uncomment the `./nvidia.nix` import in the [`configuration.nix`](https://github.com/Atemo-C/NixOS-configuration/blob/main/configuration.nix) module. In here, you will also find literally every module that can be commented in/out for your needs.
 
-## Flatpak and Flathub.
-Currently, the Flathub Flatpak repository cannot be cleanly declaratively defined in NixOS and Home Manager by themselves. Instead of implementing hacky and ugly workarounds, I added shell abbreviations to enable Flathub when `services.flatpaks.enable` is `true`, if you use the [FISH](https://fishshell.com/) shell for the user. It is the `enable-flathub` abbreviation, in the [`./user/shell.nix`](https://github.com/Atemo-C/NixOs-configuration/blob/main/user/shell.nix) module.
-
 # Use cases and features implementation.
 ## Targeted usecase.
 - Single user.
