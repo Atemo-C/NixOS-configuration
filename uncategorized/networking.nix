@@ -10,6 +10,9 @@
 	# Add the user to the `networkmanager` group for NetworkManager control.
 	users.users.${config.userName}.extraGroups = lib.optional config.networking.networkmanager.enable "networkmanager";
 
+	# Disable NetworkManager's `wait-online` service to improve boot times.
+	systemd.services.NetworkManager-wait-online.enable = lib.optional config.networking.networkmanager.enable false;
+
 	# Install an applet to graphically configure the network within the system tray.
 	programs.nm-applet.enable = lib.mkIf (config.networking.networkmanager.enable && config.programs.niri.enable) true;
 }
