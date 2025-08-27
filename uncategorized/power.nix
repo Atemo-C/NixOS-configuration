@@ -14,9 +14,9 @@
 	hardware.i2c.enable = true;
 
 	services = {
-		logind = {
+		logind.settings.Login = {
 			# Configure `systemd-logind` to ignore power button actions, letting the user customize them.
-			settings.Login.HandlePowerKey = "ignore";
+			HandlePowerKey = "ignore";
 
 			# For laptops, what to do with different lid actions.
 			lidSwitch = "suspend";
