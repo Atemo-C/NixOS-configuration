@@ -16,7 +16,7 @@
 	services = {
 		logind = {
 			# Configure `systemd-logind` to ignore power button actions, letting the user customize them.
-			extraConfig = ''HandlePowerKey=ignore'';
+			settings.logind.HandlePowerKey = "ignore";
 
 			# For laptops, what to do with different lid actions.
 			lidSwitch = "suspend";
