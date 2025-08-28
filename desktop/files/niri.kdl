@@ -43,9 +43,9 @@ input {
 }
 
 // Output configuration for the Acer XV242Y, plugged in via DisplayPort
-/-output "DP-1" {
+/-output "DP-3" {
 	// Mode (resolution & refresh rate) of the output (<width>x<height>@<refresh rate>).
-	mode "1920x1080@119.98200"
+	mode "1920x1080@119.982"
 
 	// Whether this output should be the one to get focus at startup.
 	focus-at-startup
