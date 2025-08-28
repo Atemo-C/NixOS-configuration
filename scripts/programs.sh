@@ -168,19 +168,17 @@ add  prismlauncher         "󰍳  PrismLauncher        Minecraft Launcher"
 "  Power menu           Suspend, reboot, power off…" \
 "/etc/nixos/scripts/power.sh"
 
-add  pwvucontrol           "  PWvucontrol          Audio volume settings"
-add  qbittorrent           "  qBittorrent          Torrent manager"
-add  qpwgraph              "󰤽  qpwgraph             Audio patchbay"
-add  revolt-desktop        "󰭻  Revolt               FOSS alternative to Discord"
-add  rpcs3                 "  RPCS3                PlayStation 3 emulator"
-add  ruffle                "  Ruffle               Adobe Flash emulator"
-add  sc-controller         "  SC-Controller        Remap controllers"
-add  simple-scan           "󰚫  Simple scan          Document scanner"
-adda org.vinegarhq.Sober  "  Sober ( )           Roblox client" \
-"sh -c 'DISPLAY=:12 org.vinegarhq.Sober'"
-
-add  speedtest "󰓅  Speedtest            Test internet speed"
-adda steam     "  Steam                Valve winning by doing nothing" \
+add  pwvucontrol        "  PWvucontrol          Audio volume settings"
+add  qbittorrent        "  qBittorrent          Torrent manager"
+add  qpwgraph           "󰤽  qpwgraph             Audio patchbay"
+add  revolt-desktop     "󰭻  Revolt               FOSS alternative to Discord"
+add  rpcs3              "  RPCS3                PlayStation 3 emulator"
+add  ruffle             "  Ruffle               Adobe Flash emulator"
+add  sc-controller      "  SC-Controller        Remap controllers"
+add  simple-scan        "󰚫  Simple scan          Document scanner"
+add org.vinegarhq.Sober "  Sober ( )           Roblox client"
+add  speedtest          "󰓅  Speedtest            Test internet speed"
+adda steam              "  Steam                Valve winning by doing nothing" \
 "sh -c 'DISPLAY=:12 steam'"
 
 add  tenacity           "  Tenacity             Audio editor"
