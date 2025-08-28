@@ -177,7 +177,7 @@ add  ruffle                "  Ruffle               Adobe Flash emulator"
 add  sc-controller         "  SC-Controller        Remap controllers"
 add  simple-scan           "󰚫  Simple scan          Document scanner"
 adda org.vinegarhq.Sober  "  Sober ( )           Roblox client" \
-"sh -c 'DISPLAY=:12 org.vinegarhq.Sober --bootstrap'"
+"sh -c 'DISPLAY=:12 org.vinegarhq.Sober'"
 
 add  speedtest "󰓅  Speedtest            Test internet speed"
 adda steam     "  Steam                Valve winning by doing nothing" \
