@@ -81,13 +81,14 @@ lines=24
 # The program list. Add elements of your choosing and they will appear in the menu if present on your system.
 # Remember to use the appropriate functions (`add`, `adda`, or `addc`).
 programs=""
-addc                         "                     󰌧  Run launcher" "fuzzel --no-icons"
-addc " ‎"                    ""
-adda amfora                  "  Amfora               Terminal Gemini client" "$TERMINAL -e amfora"
-add  audacious               "  Audacious            Audio player"
-add  blender                 "󰂫  Blender              3D modeling"
-add  com.userbottles.bottles "󱌐  Bottles ( )         Run Windows programs in Bottles"
-adda btop                    "  BTOP                 Terminal system monitor" "$TERMINAL -e btop"
+addc                          "                     󰌧  Run launcher" "fuzzel --no-icons"
+addc " ‎"                     ""
+adda amfora                   "  Amfora               Terminal Gemini client" "$TERMINAL -e amfora"
+add  audacious                "  Audacious            Audio player"
+add  io.github.kolunmi.Bazaar "  Bazaar ( )          Flatpak application store"
+add  blender                  "󰂫  Blender              3D modeling"
+add  com.userbottles.bottles  "󱌐  Bottles ( )         Run Windows programs in Bottles"
+adda btop                     "  BTOP                 Terminal system monitor" "$TERMINAL -e btop"
 
 [ -f "/etc/nixos/scripts/calculator.sh" ] && command -v bc && addc \
 "  Calculator           Simple terminal-based calculator" \
