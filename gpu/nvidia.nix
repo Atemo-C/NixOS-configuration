@@ -2,9 +2,14 @@
 	# Use the proprietary NVIDIA drivers (16XX and later only).
 	services.xserver.videoDrivers = [ "nvidia" ];
 
-	# Make resuming more stable.
-	boot.kernelParams = lib.optional (lib.elem "nvidia" config.services.xserver.videoDrivers)
-	"nvidia.NVreg_PreserveVideoMemoryAllocations=1";
+	# NVIDIA drivers settings to apply from boot.
+	boot.kernelParams = lib.optionals (lib.elem "nvidia" config.services.xserver.videoDrivers) [
+		"nvidia.NVreg_EnableResizableBar=1" # Enable reBAR. Thanks to LACT for showing me it was off.
+		"nvidia.NVreg_PreserveVideoMemoryAllocations=1" # Make resuming more stable.
+		"nvidia.NVreg_RegistryDwords=RmEnableAggressiveVblank=1" # Lower latency during gaming. Remove if causes issues.
+		"nvidia.NVreg_UsePageAttributeTable=1" # Fixes poor CPU performances in a lot of cases.
+		"nvidia.NVreg_TemporaryFilePath=/var/tmp" # Store temporary files on disk and not on ram (/tmp).
+	];
 
 	hardware = lib.mkIf (lib.elem "nvidia" config.services.xserver.videoDrivers) {
 		nvidia = {
