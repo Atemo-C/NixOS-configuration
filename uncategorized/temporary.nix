@@ -3,30 +3,30 @@
 # • Inactive workarounds are on the bottom, commented out. They are mostly here to remind me how to fix things.
 { config, lib, pkgs, ... }: {
 	environment.etc = lib.mkIf (lib.elem "nvidia" config.services.xserver.videoDrivers) {
+		# Apply various NVIDIA-specific fixes to various programs.
+		# See the issue below as an example of what affected programs can act like otherwise.
 		# https://github.com/YaLTeR/niri/issues/1962
-		"nvidia/nvidia-application-profiles-rc.d/50-limit-free-buffer-pool-in-niri.json".text = lib.mkIf
-		config.programs.niri.enable ''
-{
-	"rules": [{
-		"pattern": {
-			"feature": "procname",
-			"matches": "niri"
-		},
-		"profile": "Limit Free Buffer Pool on the Niri Wayland compositor"
-	}],
-	"profiles": [{
-		"name": "Limit Free Buffer Pool on the Niri Wayland compositor",
-		"settings": [{
-			"key": "GLVidHeapReuseRatio",
-			"value": 0
-		}]
-	}]
-}
-		'';
+		"nvidia/nvidia-application-profiles-rc.d/50-limit-free-buffer-pool-fix.json".text = builtins.toJSON {
+			rules = map (proc: {
+				pattern = {
+					feature = "procname";
+					matches = proc;
+				};
+				profile = "No VidMem Reuse";
+			}) [
+				".Discord-wrapped"
+				".DiscordCanary-wrapped"
+				"electron"
+				".electron-wrapped"
+				".Hyprland-wrapped"
+				"losslesscut"
+				"librewolf-wrapped"
+				"librewolf"
+				"niri"
+			];
+		};
 
-		# Add Firefox workarounds for NVIDIA GPUs to Librewolf.
-		"nvidia/nvidia-application-profiles-rc.d/60-librewolf-firefox.json".text = lib.mkIf
-		(lib.elem pkgs.librewolf config.environment.systemPackages) ''
+		"nvidia/nvidia-application-profiles-rc.d/60-librewolf-firefox.json".text = ''
 {
 	"rules": [{
 		"pattern": ".librewolf-wrapped",
