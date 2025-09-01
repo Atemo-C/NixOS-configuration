@@ -8,7 +8,7 @@
 			"disk"
 			"input"
 			"plugdev"
-			"renderer"
+			"render"
 			"storage"
 			"video"
 			"wheel"
