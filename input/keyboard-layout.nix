@@ -1,4 +1,4 @@
-{ ... }: {
+{ config, ... }: {
 	# Keyboard layout to use.
 	# To see a complete list of layouts, variants, and other settings:
 	# • https://gist.github.com/jatcwang/ae3b7019f219b8cdc6798329108c9aee
