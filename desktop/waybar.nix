@@ -6,7 +6,7 @@
 		# Whether to enable Waybar systemd integration; Useful for auto-starting with the desktop.
 		programs.waybar.systemd.enable = lib.mkIf enable true;
 
-		# Link the configuration file.
+		# Link the configuration files for Waybar.
 		systemd.user.tmpfiles.rules = lib.optionals programs.waybar.enable [
 			"L %h/.config/waybar/config - - - - /etc/nixos/desktop/files/waybar/config.json"
 			"L %h/.config/waybar/style.css - - - - /etc/nixos/desktop/files/waybar/style.css"
