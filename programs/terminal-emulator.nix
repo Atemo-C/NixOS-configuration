@@ -1,14 +1,10 @@
 { config, lib, ... }: let
 	# Shortcuts to check if Foot and the Foot server are enabled.
-	# Foot and the Foot server are toggleable here;
 	foot       = config.home-manager.users.${config.userName}.programs.foot.enable;
 	footserver = config.home-manager.users.${config.userName}.programs.foot.server.enable;
-
 in {
 	# Set the default terminal emulator.
-	environment.variables = lib.mkIf foot {
-		TERMINAL = if (foot && footserver) then "footclient" else "foot";
-	};
+	environment.variables = lib.mkIf foot { TERMINAL = if (foot && footserver) then "footclient" else "foot"; };
 
 	home-manager.users.${config.userName}.programs.foot = rec {
 		# Whether to enable the Foot terminal emulator.
