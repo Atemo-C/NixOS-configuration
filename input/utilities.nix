@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }: lib.optionals config.programs.niri.enable { environment.systemPackages = with pkgs; [
+{ config, lib, pkgs, ... }: lib.mkIf config.programs.niri.enable { environment.systemPackages = with pkgs; [
 	evhz          # Show mouse refresh rate.
 	evsieve       # Utility for mapping events from Linux event devices.
 	jstest-gtk    # Graphical joystic tester.
