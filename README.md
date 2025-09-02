@@ -4,8 +4,7 @@
 This NixOS configuration is almost exactly what I use on my own systems. \
 It is a single-user setup with the [Niri](https://github.com/YaLTeR/niri) Wayland compositor as its base environment. It uses NixOS unstable under the hood, with some help from [Home Manager](https://github.com/nix-community/home-manager). \
 It is a successor to [my old NixOS configuration](https://github.com/Atemo-C/OLD-NixOS-Configuration), which is now archived. \
-When using this configuration, make sure to read and modify each module of interest to you. It is, after all, made for myself first. It is assumed that you have prior experience with NixOS *(without flakes)*, or you **will** be lost. \
-To see a mindmap that connects basically everything in this configuration, you may download the [`.minder`](https://github.com/Atemo-C/NixOS-configuration/blob/main/Configuration.minder) file in this repository. It is to be opened with [ElementaryOS' Minder program](https://github.com/phase1geo/Minder).
+When using this configuration, make sure to read and modify each module of interest to you. It is, after all, made for myself first. It is assumed that you have prior experience with NixOS *(without flakes)*, or you **will** be lost.
 
 # To know and do when using this configuration. ‎
 ## Permissions of `/etc/nixos/*`
