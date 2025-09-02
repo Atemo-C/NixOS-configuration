@@ -22,50 +22,28 @@
 		lhasa lha # LHa
 		unzip     # zip
 
-		# Do The Right Extraction: A tool for taking the hassle out of extracting archives.
-		dtrx
+		dtrx # Do The Right Extraction: A tool for taking the hassle out of extracting archives.
 
-		# A tool to get/set ATA/SATA drive parameters under Linux.
-		hdparm
+		# Disk and storage utilities.
+		hdparm # A tool to get/set ATA/SATA drive parameters under Linux.
+		ncdu   # Disk usage analyzer with an ncurses interface
 
-		# Disk usage analyzer with an ncurses interface
-		ncdu
+		# Desktop and file utilities.
+		desktop-file-utils # Command line utilities for working with .desktop files.
+		shared-mime-info   # A database of common MIME types.
 
-		# Command line utilities for working with .desktop files.
-		desktop-file-utils
-
-		# A database of common MIME types.
-		shared-mime-info
-
-		# A tool and library for reading digital audio from CDs.
-		cdparanoia
-
-		# A tool for recording audio or data CD-Rs in disk-at-once (DAO) mode.
-		cdrdao
-
-		# Highly portable CD/DVD/BluRay command line recording software.
-		cdrtools
-
-		# Tools for mastering Blu-ray and DVD+-RW/+-R media.
-		dvdplusrwtools
-
-		# https://www.gnu.org/software/vcdimager/
-		vcdimager
+		# CD/DVD utilities.
+		cdparanoia     # A tool and library for reading digital audio from CDs.
+		cdrdao         # A tool for recording audio or data CD-Rs in disk-at-once (DAO) mode.
+		cdrtools       # Highly portable CD/DVD/BluRay command line recording software.
+		dvdplusrwtools # Tools for mastering Blu-ray and DVD+-RW/+-R media.
+		vcdimager      # https://www.gnu.org/software/vcdimager/
 	] ++ lib.optionals config.programs.niri.enable (with pkgs; [
-		# Archive manager for the GNOME desktop environment.
-		file-roller
-
-		# GNOME's disk utility.
-		gnome-disk-utility
-
-		# Graphical disk partitioning tool.
-		gparted
-
-		# System restore tool for Linux. (As well as a dependency for it.)
-		timeshift xorg.xhost
-
-		# Disc burner and project creator for Xfce.
-		xfce.xfburn
+		file-roller          # Archive manager for the GNOME desktop environment.
+		gnome-disk-utility   # GNOME's disk utility.
+		gparted              # Graphical disk partitioning tool.
+		timeshift xorg.xhost # System restore tool for Linux. (As well as a dependency for it.)
+		xfce.xfburn          # Disc burner and project creator for Xfce.
 	]) ++ lib.optionals config.programs.thunar.enable (with pkgs; [
 		# Thumbnailing utilties and media formats support.
 		poppler                   # .pdf
