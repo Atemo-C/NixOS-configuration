@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }: let niri = config.programs.niri.enable; fish = config.programs.fish.enable in {
+{ config, lib, pkgs, ... }: let niri = config.programs.niri.enable; fish = config.programs.fish.enable; in {
 	# Whether to enable the Niri Wayland compositor.
 	programs.niri.enable = true;
 
