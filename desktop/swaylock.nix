@@ -1,5 +1,5 @@
-{ config, lib, ... }: {
-	home-manager.users.${config.userName}.programs.swaylock = lib.mkIf config.programs.niri.enable rec {
+{ config, lib, ... }: lib.mkIf config.programs.niri.enable {
+	home-manager.users.${config.userName}.programs.swaylock = rec {
 		# Whether to enable Swaylock, a screen locking program for most Wayland compositors.
 		enable = true;
 
