@@ -1,9 +1,4 @@
-{ config, lib, pkgs, ... }: {
-	environment.systemPackages = lib.optionals config.programs.niri.enable (with pkgs; [
-		# Mind-mapping utility.
-		minder
-
-		# Offline password manager.
-		keepassxc
-	]);
-}
+{ config, lib, pkgs, ... }: lib.mkIf config.programs.niri.enable { environment.systemPackages = with pkgs; [
+	minder    # Mind-mapping utility.
+	keepassxc # Offline password manager.
+]; }
