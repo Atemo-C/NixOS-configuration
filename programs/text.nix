@@ -5,7 +5,6 @@
 	# Shortcuts to check if the Foot terminal is installed.
 	foot = config.home-manager.users.${config.userName}.programs.foot.enable;
 	footserver = config.home-manager.users.${config.userName}.programs.foot.server.enable;
-
 in {
 	environment = {
 		systemPackages = with pkgs; [
@@ -25,26 +24,17 @@ in {
 			# Micro text editor.
 			micro-with-wl-clipboard
 		] ++ lib.optionals config.programs.niri.enable (with pkgs; [
-			# An emoji picker for linux that can be integrated into various scripts.
-			bemoji
-
-			# A simple clipboard manager for Wayland.
-			clipman
-
-			# GNOME Character Map, based on the Unicode Character Database.
-			gucharmap
-
-			# Command-line copy/paste utilities for Wayland.
-			# It currently needs to be manually added in the `./desktop/files/niri.kdl` file:
-			# `wl-paste -t text --watch clipman store --no-persist --max-items=100`
-			wl-clipboard
+			bemoji # An emoji picker for linux that can be integrated into various scripts.
+			clipman # A simple clipboard manager for Wayland.
+			gucharmap # GNOME Character Map, based on the Unicode Character Database.
+			wl-clipboard # Command-line copy/paste utilities for Wayland.
 		]);
 
 		# Set the default text editor.
 		variables = lib.mkIf micro { EDITOR = "micro"; };
 	};
 
-	# Link the configuration files of the Micro text editor to the right places.
+	# Link the configuration files of the Micro text editor.
 	home-manager.users.${config.userName}.systemd.user.tmpfiles.rules = lib.optionals micro [
 		"L %h/.config/micro/settings.json - - - - /etc/nixos/programs/files/micro/settings.json"
 		"L %h/.config/micro/init.lua - - - - /etc/nixos/programs/files/micro/init.lua"
@@ -56,13 +46,11 @@ in {
 		"L %h/.local/share/applications/micro-foot.desktop - - - - /etc/nixos/programs/files/micro/micro-foot.desktop"
 	] else []);
 
-	programs = {
-		# Whether to let enabled the GNU NANO text editor.
-		nano.enable = false;
+	# Whether to let enabled the GNU NANO text editor.
+	programs.nano.enable = false;
 
-		# Add a shell abbreviation for Micro.
-		fish.shellAbbrs = lib.mkIf (config.programs.fish.enable && micro) { m = "micro"; };
-	};
+	# Add a shell abbreviation for Micro.
+	programs.fish.shellAbbrs = lib.mkIf (config.programs.fish.enable && micro) { m = "micro"; };
 
 	services.languagetool = {
 		# Whether to enable the LanguageTool server, a multilingual spelling, style, and grammar checker.
