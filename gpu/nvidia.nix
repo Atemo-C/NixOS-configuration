@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }: let nvid = lib.elem "nvidia" config.services.xserver.videoDrivers in rec {
+{ config, lib, pkgs, ... }: let nvid = lib.elem "nvidia" config.services.xserver.videoDrivers; in rec {
 	# Use the proprietary NVIDIA drivers (16XX and later only).
 	services.xserver.videoDrivers = [ "nvidia" ];
 
