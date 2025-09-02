@@ -1,52 +1,29 @@
 { config, lib, pkgs, ... }: {
 	environment.systemPackages = lib.optionals config.programs.niri.enable (with pkgs; [
-		# Nintendo DS(i) emulator.
-		#desmume
-
-		# PlayStation 2 emulator.
-		#pcsx2
-
-		# PlayStation 3 emulator.
-		#rpcs3
-
-		# XBOX emulator.
-		#xemu
-
-		# Java, for Minecraft.
-		jdk24
-
-		# CLI program for managing Minecraft mods and modpacks from Modrinth, CurseForge, and GitHub Releases.
-		ferium
-
-		# Full-featured Minecraft launcher.
-		prismlauncher
-
-		# Minecraft Bedrock Launcher.
-		mcpelauncher-ui-qt
-
-		# Inifinite-world block sandbox; Previously known as Minetest.
-		luanti
-
-		# Native GOG, Epic, and Amazon Games launcher.
-		heroic
+		#desmume            # Nintendo DS(i) emulator.
+		#pcsx2              # PlayStation 2 emulator.
+		#rpcs3              # PlayStation 3 emulator.
+		#xemu               # XBOX emulator.
+		jdk24              # Java, for Minecraft.
+		ferium             # CLI program for managing Minecraft mods and modpacks from various sources.
+		prismlauncher      # Full-featured Minecraft launcher.
+		mcpelauncher-ui-qt # Minecraft Bedrock Launcher.
+		luanti             # Inifinite-world block sandbox; Previously known as Minetest.
+		heroic             # Native GOG, Epic, and Amazon Games launcher.
 	]);
 
 	programs = rec {
-		gamemode = {
-			# Whether to enable GameMode to optimize system performances on demand when gaming.
-			enable = true;
+		# Whether to enable GameMode to optimize system performances on demand when gaming.
+		gamemode.enable = true;
 
-			# Disable the screen saver when using gamemode.
-			settings.general.inhibit_screensaver = lib.mkIf gamemode.enable 0;
-		};
+		# Disable the screen saver when using gamemode.
+		gamemode.settings.general.inhibit_screensaver = lib.mkIf gamemode.enable 0;
 
-		gamescope = {
-			# Whether to enable the Gamescope compositor and session.
-			enable = true;
+		# Whether to enable the Gamescope compositor and session.
+		gamescope.enable = true;
 
-			# Whether to add `cap_sys_nice` capability to GamesScope, so that it may renice itself.
-			capSysNice = lib.mkIf gamescope.enable true;
-		};
+		# Whether to add `cap_sys_nice` capabilities to GameScope, so that it may renice itself.
+		gamescope.capSysNice = lib.mkIf gamescope.enable true;
 
 		steam = {
 			# Whether to enable Steam.
@@ -61,10 +38,10 @@
 
 			# Additional packages to add to the Steam environment.
 			extraPackages = lib.optional (steam.enable && gamescope.enable) pkgs.gamescope ++
-				lib.optional (steam.enable && gamemode.enable) pkgs.gamemode;
+			lib.optional (steam.enable && gamemode.enable) pkgs.gamemode;
 
 			# Whether to enable the GameScope session for Steam.
-			gamescopeSession.enable = lib.mkIf steam.enable true;
+			gamescopeSession.enable = lib.mkIf (steam.enable && gamescope.enable) true;
 
 			# Whether to open ports in the firewall for Steam Remote Play.
 			remotePlay.openFirewall = lib.mkIf steam.enable true;
@@ -83,7 +60,7 @@
 		kernelParams = [ "preempt=full" ];
 	};
 
-	# Remove certain resource limits for programs that needs them gone, mostly for heavier emulators.
+	# Remove certain resource limits for programs that needs them gone; Mostly for heavier emulators.
 	security.pam.loginLimits = [
 		{
 			domain = "*";
