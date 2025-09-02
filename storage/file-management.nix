@@ -2,11 +2,8 @@
 	environment = {
 		# File management utilities to install.
 		systemPackages = with pkgs; [
-			# Alternative to the `find` command.
-			fd
-
-			# Alternative to `rm` and `trash-cli`.
-			trashy
+			fd     # Alternative to the `find` command.
+			trashy # Alternative to `rm` and `trash-cli`.
 		];
 
 		# Set the default file manager.
@@ -44,6 +41,7 @@
 			settings.icons.separator = lib.mkIf enable "  ";
 		};
 
+		# Link conifguration files.
 		systemd.user.tmpfiles.rules = [
 			# Mimeapps configuration.
 			"L %h/.config/mimeapps.list - - - - /etc/nixos/storage/files/mimeaps.list"
