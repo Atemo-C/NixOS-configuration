@@ -3,7 +3,7 @@
 		# Whether to enable Swaylock, a screen locking program for most Wayland compositors.
 		enable = true;
 
-		settings = lib.mkIf enable {
+		settings = {
 			# Whether to ignore empty passwords and not validate them.
 			ignore-empty-password = true;
 
