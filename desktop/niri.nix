@@ -12,4 +12,8 @@
 		# XWayland integration.
 		systemPackages = [ pkgs.xwayland-satellite ];
 	};
+
+	# Link the configuration file of Niri.
+	systemd.user.tmpfiles.users.${config.userName}.rules = lib.optional config.programs.niri.enable
+	"L %h/.config/niri/config.kdl - - - - /etc/nixos/desktop/files/niri.kdl";
 }
