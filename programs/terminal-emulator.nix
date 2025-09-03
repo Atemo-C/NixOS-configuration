@@ -6,7 +6,7 @@ in {
 	# Set the default terminal emulator.
 	environment.variables = lib.mkIf foot { TERMINAL = if (foot && footserver) then "footclient" else "foot"; };
 
-	home-manager.users.${config.userName}.programs.foot = rec {
+	home-manager.users.${config.userName}.programs.foot = {
 		# Whether to enable the Foot terminal emulator.
 		enable = true;
 
