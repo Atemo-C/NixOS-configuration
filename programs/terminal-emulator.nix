@@ -15,7 +15,7 @@ in {
 		server.enable = true;
 
 		# Foot configuration (colors are set in the `./theming/terminal-colors.nix` module).
-		settings = enable {
+		settings = {
 			# Opacity of the window background.
 			colors.alpha = "0.8";
 
