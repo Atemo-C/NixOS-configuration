@@ -4,5 +4,5 @@
 
 	# Whether to start the OpenTabletDriver daemon as a systemd user service.
 	# It allows for it to auto-start with the desktop.
-	daemon.enable = lib.mkIf enable true;
+	daemon.enable = true;
 }; }
