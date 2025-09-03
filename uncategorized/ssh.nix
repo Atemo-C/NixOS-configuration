@@ -3,7 +3,7 @@
 	enable = true;
 
 	# Which ports the SSH daemon sohuld listen to.
-	ports = 2077;
+	ports = [ 0309 ];
 
 	# Login is allowed only for the listed users.
 	settings.AllowUsers = [ "${config.userName}" ];
