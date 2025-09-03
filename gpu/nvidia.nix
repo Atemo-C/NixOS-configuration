@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }: let nvid = lib.elem "nvidia" config.services.xserver.videoDrivers; in rec {
+{ config, lib, pkgs, ... }: let nvid = lib.elem "nvidia" config.services.xserver.videoDrivers; in {
 	# Use the proprietary NVIDIA drivers (16XX and later only).
 	services.xserver.videoDrivers = [ "nvidia" ];
 
@@ -30,7 +30,7 @@
 	};
 
 	# CUDA packages.
-	environment.systemPackages = lib.optionals hardware.nvidia-container-toolkit.enable (with pkgs.cudaPackages; [
+	environment.systemPackages = lib.optionals config.hardware.nvidia-container-toolkit.enable (with pkgs.cudaPackages; [
 		cudnn
 		cutensor
 	]);
