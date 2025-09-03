@@ -1,13 +1,8 @@
 { pkgs, ... }: {
 	environment.systemPackages = with pkgs; [
-		# Show battery status and other ACPI information.
-		acpi
-
-		# Read and control integrated device brightness.
-		brightnessctl
-
-		# Query and change Linux montor settings using DDC/CI and USB.
-		ddcutil
+		acpi          # Show battery status and other ACPI information.
+		brightnessctl # Read and control integrated device brightness.
+		ddcutil       # Query and change Linux montor settings using DDC/CI and USB.
 	];
 
 	# Whether to enable i2c devices support.
