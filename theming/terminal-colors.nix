@@ -9,11 +9,6 @@
 	normalRed     = "ff0000";    dimRed     = "b30000";    brightRed     = "ff6666";
 	normalWhite   = "e6e6e6";    dimWhite   = "b3b3b3";    brightWhite   = "ffffff";
 	normalYellow  = "ffc000";    dimYellow  = "b38600";    brightYellow  = "ffd966";
-
-	# Shortcut to check if Foot is enabled.
-	# Foot is toggleable in the `./programs/terminal-emulators.nix` module.
-	foot = config.home-manager.users.${config.userName}.programs.foot.enable;
-
 in {
 	# Linux console (TTY) colors.
 	console = {
@@ -42,7 +37,7 @@ in {
 	};
 
 	# Colors of the Foot terminal emulator.
-	home-manager.users.${config.userName}.programs.foot.settings.colors = lib.mkIf foot {
+	home-manager.users.${config.userName}.programs.foot.settings.colors = {
 		# Foreground color (default text).
 		foreground = Foreground;
 
