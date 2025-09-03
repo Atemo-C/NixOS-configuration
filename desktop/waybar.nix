@@ -4,7 +4,7 @@
 		programs.waybar.enable = true;
 
 		# Whether to enable Waybar systemd integration; Useful for auto-starting with the desktop.
-		programs.waybar.systemd.enable = lib.mkIf programs.waybar.enable true;
+		programs.waybar.systemd.enable = true;
 
 		# Link the configuration files for Waybar.
 		systemd.user.tmpfiles.rules = lib.optionals programs.waybar.enable [
