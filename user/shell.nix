@@ -2,12 +2,12 @@
 	# The path to the user's shell.
 	users.users.${config.userName}.shell = lib.mkIf config.programs.fish.enable pkgs.fish;
 
-	programs.fish = rec {
+	programs.fish = {
 		# Whether to configure FISH as an interactive shell.
 		enable = true;
 
 		# Set of basic shell abbreviations.
-		shellAbbrs = lib.mkIf enable rec {
+		shellAbbrs = rec {
 			# Short abbreviations.
 			c = "clear";
 			x = "exit";
@@ -81,7 +81,7 @@
 		};
 	};
 
-	# Link the configuration file to the right place.
+	# Link the configuration file of the FISH shell.
 	systemd.user.tmpfiles.users.${config.userName}.rules = lib.optional config.programs.fish.enable
 	"L %h/.config/fish/config.fish - - - - /etc/nixos/user/files/config.fish";
 }
