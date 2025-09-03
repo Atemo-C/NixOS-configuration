@@ -17,17 +17,10 @@
 
 			# List of Thunar plugins to install.
 			plugins = with pkgs.xfce; [
-				# Plugin providing file context menus for achives.
-				thunar-archive-plugin
-
-				# Plugin providing support for Subversion and Git.
-				thunar-vcs-plugin
-
-				# Plugin for automatic management of removable drives and media.
-				#thunar-volman
-
-				# Plugin providing tagging and renaming features for media files.
-				thunar-media-tags-plugin
+				thunar-archive-plugin    # Plugin providing file context menus for achives.
+				thunar-vcs-plugin        # Plugin providing support for Subversion and Git.
+				#thunar-volman            # Plugin for automatic management of removable drives and media.
+				thunar-media-tags-plugin # Plugin providing tagging and renaming features for media files.
 			];
 		};
 
