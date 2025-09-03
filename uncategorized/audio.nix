@@ -29,10 +29,10 @@
 			easytag               # View and edit tags for various audio files.
 			pwvucontrol           # Graphical volume control.
 			qpwgraph              # Graph manager ("patchbay") for PipeWire.
-			soundfont-arachno     # Frank Wen's pro-quality GM/GS MIDI soundfont. {Old reliable, decent, MIT.}
+			#soundfont-arachno     # Frank Wen's pro-quality GM/GS MIDI soundfont. {Old reliable, decent, MIT.}
 			soundfont-fluid       # General MIDI-compliant bank. {Awesome quality, complete, unfree.}
-			soundfont-generaluser # Acoustic grand piano MIDI soundfont. {Great quality, piano-focused, CC 3.0.}
-			soundfont-ydp-grand   # 259 instrument presets and 11 drum kits. {Good very quality, complete, GS 2.0.}
+			#soundfont-generaluser # Acoustic grand piano MIDI soundfont. {Great quality, piano-focused, CC 3.0.}
+			#soundfont-ydp-grand   # 259 instrument presets and 11 drum kits. {Good very quality, complete, GS 2.0.}
 			tenacity              # Sound editor.
 		];
 	};
