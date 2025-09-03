@@ -24,7 +24,7 @@
 	};
 
 	# Whether to install the Firefox web browser.
-	programs.firefox.enable;
+	programs.firefox.enable = true;
 
 	# Which package of Firefox (or fork of it) to install.
 	programs.firefox.package = pkgs.librewolf;

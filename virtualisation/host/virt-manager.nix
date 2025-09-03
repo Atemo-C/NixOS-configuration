@@ -6,5 +6,5 @@
 	users.users.${config.userName}.extraGroups = lib.optional config.virtualisation.libvirtd.enable "libvirtd";
 
 	# Whether to enable the Virt Manager virtual machine manager.
-	programs.virt-manager.enable = lib.mkIf (config.virtualisation.libvirtd.enable && config.programs.niri.enable) true
+	programs.virt-manager.enable = lib.mkIf (config.virtualisation.libvirtd.enable && config.programs.niri.enable) true;
 }
