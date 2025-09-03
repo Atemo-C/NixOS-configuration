@@ -155,6 +155,7 @@ adda nmtui "󰛳  Network Manager      Manage WiFi and Ethernet" \
 "$TERMINAL -e nmtui"
 
 add  com.obsproject.Studio "󰑋  OBS studio ( )      Video recording and streaming"
+add  obs                   "󰑋  OBS studio           Video recording and streaming"
 add  otg-gui               "  OpenTabletDriver     Configure your drawing tablet"
 add  pcsx2-qt              "  PCSX2                PlayStation 2 emulator"
 add  prismlauncher         "󰍳  PrismLauncher        Minecraft Launcher"
