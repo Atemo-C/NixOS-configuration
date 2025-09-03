@@ -38,14 +38,17 @@
 		cdrtools       # Highly portable CD/DVD/BluRay command line recording software.
 		dvdplusrwtools # Tools for mastering Blu-ray and DVD+-RW/+-R media.
 		vcdimager      # https://www.gnu.org/software/vcdimager/
+
+		# Graphical programs.
 	] ++ lib.optionals config.programs.niri.enable (with pkgs; [
 		file-roller          # Archive manager for the GNOME desktop environment.
 		gnome-disk-utility   # GNOME's disk utility.
 		gparted              # Graphical disk partitioning tool.
 		timeshift xorg.xhost # System restore tool for Linux. (As well as a dependency for it.)
 		xfce.xfburn          # Disc burner and project creator for Xfce.
-	]) ++ lib.optionals config.programs.thunar.enable (with pkgs; [
+
 		# Thumbnailing utilties and media formats support.
+	]) ++ lib.optionals config.programs.thunar.enable (with pkgs; [
 		poppler                   # .pdf
 		f3d                       # General 3D files thumbnailing
 		ffmpegthumbnailer         # General video files thumbnailing
