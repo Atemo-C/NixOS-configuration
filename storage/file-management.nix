@@ -7,7 +7,7 @@
 		];
 
 		# Set the default file manager.
-		variables = lib.mkIf config.programs.thunar.enable { FILEMANAGER = "thunar"; };
+		variables.FILEMANAGER = lib.mkIf config.programs.thunar.enable "thunar";
 	};
 
 	programs = rec {
@@ -16,32 +16,32 @@
 			enable = true;
 
 			# List of Thunar plugins to install.
-			plugins = lib.optionals thunar.enable (with pkgs.xfce; [
+			plugins = with pkgs.xfce; [
 				# Plugin providing file context menus for achives.
 				thunar-archive-plugin
 
+				# Plugin providing support for Subversion and Git.
+				thunar-vcs-plugin
+
 				# Plugin for automatic management of removable drives and media.
-				thunar-volman
+				#thunar-volman
 
 				# Plugin providing tagging and renaming features for media files.
 				thunar-media-tags-plugin
-			]);
+			];
 		};
 
 		# Enable Xfconf for Thunar, the Xfce configuration storage system.
 		xfconf.enable = thunar.enable;
 	};
 
-	home-manager.users.${config.userName} = {
-		programs.lsd = rec {
-			# Whether to enable LSD, an alternative to the `ls` command.
-			enable = true;
+	# Whether to enable LSD, an alternative to the `ls` command.
+	home-manager.users.${config.userName}.programs.lsd.enable = true;
 
-			# Default size of the separator between icons and normal text.
-			settings.icons.separator = lib.mkIf enable "  ";
-		};
+	# Default size of the separator between icons and normal text.
+	home-manager.users.${config.userName}.programs.lsd.settings.icons.separator = "  ";
 
-		# Link conifguration files.
+		# Link configuration files.
 		systemd.user.tmpfiles.rules = [
 			# Mimeapps configuration.
 			"L %h/.config/mimeapps.list - - - - /etc/nixos/storage/files/mimeaps.list"
