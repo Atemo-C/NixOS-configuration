@@ -10,7 +10,7 @@
 	services.xserver.xkb.variant = "intl";
 
 	# Export the used keyboard layout. Some programs rely on this setting for it to be properly applied.
-	environment.variables.XKB_DEFAULT_LAYOUT = services.xserver.xkb.layout;
+	environment.variables.XKB_DEFAULT_LAYOUT = configservices.xserver.xkb.layout;
 	environment.variables.XKB_DEFAULT_VARIANT = config.services.xserver.xkb.variant;
 
 	# Whether to let the virtual console's (TTY's) keyboard layout be the same as the one configured above.
