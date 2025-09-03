@@ -6,17 +6,12 @@
 	users.users.${config.userName}.extraGroups = lib.optional config.programs.adb.enable "adbusers";
 
 	environment.systemPackages = with pkgs; [
-		# Implementation of Microsoft's Media Transfer Protocol (MTP).
-		libmtp
+		libmtp # Implementation of Microsoft's Media Transfer Protocol (MTP).
+		jmtpfs # FUSE filesystem for MTP devices.
 
-		# FUSE filesystem for MTP devices.
-		jmtpfs
 	] ++ lib.optionals config.programs.adb.enable (with pkgs; [
-		# Reverse tethering over ADB.
-		gnirehtet
-
-		# Tool suite used to flash firmware onto Samsung Galaxy devices.
-		heimdall
+		gnirehtet # Reverse tethering over ADB.
+		heimdall  # Tool suite used to flash firmware onto Samsung Galaxy devices.
 
 		# Display and control Android devices over USB or TCP/IP.
 	]) ++ lib.optional (config.programs.adb.enable && config.programs.niri.enable) pkgs.scrcpy;
