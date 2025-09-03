@@ -64,7 +64,7 @@ in {
 
 	programs.obs-studio = lib.mkIf config.programs.niri.enable {
 		# Whether to enable OBS.
-		enale = true;
+		enable = true;
 
 		# OBS plugins to install.
 		plugins = with pkgs.obs-studio-plugins; [
