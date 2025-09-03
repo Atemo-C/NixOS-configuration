@@ -20,7 +20,7 @@
 		programs.fastfetch.enable = true;
 
 		# Link the configuration file of Fastfetch.
-		systemd.user.tmpfiles.rules = lib.opional programs.fastfetch.enable
+		systemd.user.tmpfiles.rules = lib.optional programs.fastfetch.enable
 		"L %h/.config/fastfetch/config.jsonc - - - - /etc/nixos/programs/files/fastfetch.jsonc";
 	};
 
