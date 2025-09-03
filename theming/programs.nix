@@ -52,13 +52,13 @@ gtk-enable-mnemonics = 0
 				};
 			};
 
-			qt = {
-				# Whether to enable QT configuration through Home Manager.
-				enable = true;
-
-				# Make QT follow GSettings where possible.
-				platformTheme = "gnome";
-			};
+#			qt = {
+#				# Whether to enable QT configuration through Home Manager.
+#				enable = true;
+#
+#				# Make QT follow GSettings where possible.
+#				platformTheme = "gnome";
+#			};
 		};
 
 		# GTK theming for the root user.
