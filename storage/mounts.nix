@@ -1,4 +1,4 @@
-{ config, ... }: { filesystems = {
+{ config, ... }: { fileSystems = {
 	# Mount for 1TB Toshiba DT01ACA100 7200RPM HDD.
 	"/run/media/${config.userName}/1TB-GPT-TOSHIBA" = {
 		device  = "/dev/disk/by-id/ata-TOSHIBA_DT01ACA100_448164BNS-part1";
