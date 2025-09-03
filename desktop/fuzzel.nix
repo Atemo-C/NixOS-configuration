@@ -3,12 +3,12 @@
 	enable = true;
 
 	# Width of the border in pixels.
-	border.width = 2;
+	settings.border.width = 2;
 
 	# Rounding of the corners in pixels.
-	border.radius = 0;
+	settings.border.radius = 0;
 
-	colors = rec {
+	settings.colors = rec {
 		background      = "0d0d0dcc";
 		border          = "0080ffcc";
 		input           = "e6ffffff";
@@ -20,7 +20,7 @@
 		text            = "ffffffff";
 	};
 
-	main = rec {
+	settings.main = rec {
 		# Use a font defined in the `./theming/fonts.nix` module.
 		font = "monospace:size=12.5";
 
