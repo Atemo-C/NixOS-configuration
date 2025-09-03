@@ -1,15 +1,15 @@
 { config, lib, pkgs, ... }: {
-	services = rec {
+	services = {
 		printing = {
 			# Whether to enable printing support through the CUPS daemon.
 			enable = true;
 
 			# Additional drivers.
-			drivers = lib.optionals printing.enable (with pkgs; [
+			drivers = with pkgs; [
 				#gutenprint                   # Drivers for many different printers from many different vendors.
 				#gutenprintBin                # Additional, binary-only drivers for some printers.
 				#hplip                        # Drivers for HP printers.
-				hplipWithPlugin              # Drivers for HP printers, with the proprietary plugin.
+				#hplipWithPlugin              # Drivers for HP printers, with the proprietary plugin.
 				#postscript-lexmark           # Postscript drivers for Lexmark.
 				#samsung-unified-linux-driver # Proprietary Samsung Drivers.
 				#splix                        # Drivers for printers supporting SPL (Samsung Printer Language).
@@ -18,17 +18,17 @@
 				#cnijfilter2                  # Drivers for some Canon Pixma devices (Unfree).
 				#epson-escpr2                 # Drivers for newer Epson devices.
 				#epson-escpr                  # Drivers for some other Epson devices.
-			]);
+			];
 		};
-		avahi = lib.mkIf printing.enable rec {
+		avahi = lib.mkIf config.services.printing.enable {
 			# Whether to run the Avahi daemon for printer/scanner device discovery.
 			enable = true;
 
 			# Whether to enable the mDNS & NSS plug-in for IPv4.
-			nssmdns4 = lib.mkIf enable true;
+			nssmdns4 = true;
 
 			# Whether to open the port 5353 in the firewall for remote printers.
-			openFirewall = lib.mkIf enable true;
+			openFirewall = true;
 		};
 	};
 
