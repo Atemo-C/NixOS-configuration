@@ -108,9 +108,7 @@ command -v eww > /dev/null 2>&1 && [ -f "/etc/nixos/scripts/crosshair/eww.yuck" 
 adda cupsd "  CUPS                 Printer configuration" \
 "xdg-open https://localhost:631"
 
-adda cura "  Cura                 3D printing" \
-"sh -c 'DISPLAY=:12 cura'"
-
+add  cura            "  Cura                 3D printing"
 add  desmume         "  DeSmuME              Nintendo DS/I emulator"
 add  easyeffects     "  EasyEffects          Live audio effects"
 add  easytag         "  EasyTAG              Audio tag editor"
@@ -123,13 +121,9 @@ add  foot                       "  Foot (standalone)    Terminal emulator"
 add  gcolor3                    "  Gcolor3              Advanced color picker"
 add  gimp                       "  GIMP                 GNU Image Manipulation Program"
 add  gnome-disks                "󰋊  Gnome disk utility   GNOME's disk utility"
-adda  gparted                   "󰋊  Gparted              Partition manager" \
-"sh -c 'DISPLAY=:12 gparted'"
-
-adda heroic                     "  Heroic               Launcher for GOG, Epic, Amazon games" \
-"sh -c 'DISPLAY=:12 heroic --enable-features=UseOzonePlatform --ozone-platform=x11'"
-
-adda hyprpaper "  Hyprpaper            Set desktop background/wallpaper" \
+add  gparted                    "󰋊  Gparted              Partition manager"
+add  heroic                     "  Heroic               Launcher for GOG, Epic, Amazon games"
+adda hyprpaper                  "  Hyprpaper            Set desktop background/wallpaper" \
 "dash /etc/nixos/scripts/background.sh"
 
 add inkscape   "  Inkscape             Vector graphics (SVG) editor"
@@ -169,30 +163,26 @@ add  prismlauncher         "󰍳  PrismLauncher        Minecraft Launcher"
 "  Power menu           Suspend, reboot, power off…" \
 "/etc/nixos/scripts/power.sh"
 
-add  pwvucontrol        "  PWvucontrol          Audio volume settings"
-add  qbittorrent        "  qBittorrent          Torrent manager"
-add  qpwgraph           "󰤽  qpwgraph             Audio patchbay"
-add  revolt-desktop     "󰭻  Revolt               FOSS alternative to Discord"
-add  rpcs3              "  RPCS3                PlayStation 3 emulator"
-add  ruffle             "  Ruffle               Adobe Flash emulator"
-add  sc-controller      "  SC-Controller        Remap controllers"
-add  simple-scan        "󰚫  Simple scan          Document scanner"
-add org.vinegarhq.Sober "  Sober ( )           Roblox client"
-add  speedtest          "󰓅  Speedtest            Test internet speed"
-adda steam              "  Steam                Valve winning by doing nothing" \
-"sh -c 'DISPLAY=:12 steam'"
-
-add  tenacity           "  Tenacity             Audio editor"
-add  thunar             "  Thunar               File manager"
-adda timeshift-launcher "󰁯  Timeshift            System restore" \
-"sh -c 'DISPLAY=:12 timeshift-launcher'"
-
-add  tor-browser        "󰗹  Torbrowser           Web browsing through Tor"
-add  upscayl            "  Upscayl              Upscale images"
-add  vesktop            "󰙯  Vesktop              Discord, but Vencorded"
-add  virt-manager       "󰪫  Virt Manager         Virtual machines using QEMU/KVM"
-adda xclicker           "󰍽  Xclicker             X11 autocliker (for XWayland)" \
-"sh -c 'DISPLAY=:12 xclicker'"
+add  pwvucontrol         "  PWvucontrol          Audio volume settings"
+add  qbittorrent         "  qBittorrent          Torrent manager"
+add  qpwgraph            "󰤽  qpwgraph             Audio patchbay"
+add  revolt-desktop      "󰭻  Revolt               FOSS alternative to Discord"
+add  rpcs3               "  RPCS3                PlayStation 3 emulator"
+add  ruffle              "  Ruffle               Adobe Flash emulator"
+add  sc-controller       "  SC-Controller        Remap controllers"
+add  simple-scan         "󰚫  Simple scan          Document scanner"
+add  org.vinegarhq.Sober "  Sober ( )           Roblox client"
+add  speedtest           "󰓅  Speedtest            Test internet speed"
+add  steam               "  Steam                Valve winning by doing nothing"
+add  tenacity            "  Tenacity             Audio editor"
+add  thunar              "  Thunar               File manager"
+add  timeshift-launcher  "󰁯  Timeshift            System restore"
+add  tor-browser         "󰗹  Torbrowser           Web browsing through Tor"
+add  upscayl             "  Upscayl              Upscale images"
+add  vesktop             "󰙯  Vesktop              Discord, but Vencorded"
+add  virt-manager        "󰪫  Virt Manager         Virtual machines using QEMU/KVM"
+adda xclicker            "󰍽  Xclicker             X11 autocliker (for XWayland)" \
+"sh -c 'DISPLAY=:0 xclicker'"
 
 add xfburn "  Xfburn               Disc burning"
 
