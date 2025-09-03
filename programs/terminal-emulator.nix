@@ -12,10 +12,10 @@ in {
 
 		# Whether to enable the Foot terminal emulator's server.
 		# Lower memory usage, but worse performances across opened terminal instances if one is struggling.
-		server.enable = lib.mkIf enable true;
+		server.enable = true;
 
 		# Foot configuration (colors are set in the `./theming/terminal-colors.nix` module).
-		settings = lib.mkIf enable {
+		settings = enable {
 			# Opacity of the window background.
 			colors.alpha = "0.8";
 
