@@ -24,9 +24,9 @@ in {
 			# Micro text editor.
 			micro-with-wl-clipboard
 		] ++ lib.optionals config.programs.niri.enable (with pkgs; [
-			bemoji # An emoji picker for linux that can be integrated into various scripts.
-			clipman # A simple clipboard manager for Wayland.
-			gucharmap # GNOME Character Map, based on the Unicode Character Database.
+			bemoji       # An emoji picker for linux that can be integrated into various scripts.
+			clipman      # A simple clipboard manager for Wayland.
+			gucharmap    # GNOME Character Map, based on the Unicode Character Database.
 			wl-clipboard # Command-line copy/paste utilities for Wayland.
 		]);
 
