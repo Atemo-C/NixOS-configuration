@@ -13,7 +13,7 @@
 	};
 
 	# Define the `userTitle` option.
-	userTitle = lib.mkoption {
+	userTitle = lib.mkOption {
 		# Set the type of the module (string).
 		type = lib.types.str;
 
