@@ -66,11 +66,17 @@ in {
 		# Whether to enable OBS.
 		enable = true;
 
+		# NVIDIA hardware acceleration.
+		package = lib.mkIf (lib.elem "nvidia" config.services.xserver.videoDrivers) (
+			pkgs.obs-studio.override { cudaSupport = true; }
+		);
+
 		# OBS plugins to install.
 		plugins = with pkgs.obs-studio-plugins; [
-			obs-gstreamer # Source, encoder and video filter plugin to use GStreamer elements/pipelines.
-			obs-vaapi     # VAAPI support via GStreamer.
-			obs-vkcapture # Linux Vulkan/OpenGL game capture.
+			obs-gstreamer              # Source, encoder and video filter plugin to use GStreamer elements/pipelines.
+			obs-pipewire-audio-capture # Audio device and application capture for OBS Studio using PipeWire
+			obs-vaapi                  # VAAPI support via GStreamer.
+			obs-vkcapture              # Linux Vulkan/OpenGL game capture.
 		];
 	};
 
