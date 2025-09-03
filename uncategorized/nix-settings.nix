@@ -4,14 +4,12 @@
 	# Only change it if you are fully re-installing with a different version.
 	system.stateVersion = "25.11";
 
-	nix.settings = {
-		# Whether to save disk space by hard-linking files in the store that have identical contents.
-		auto-optimise-store = true;
+	# Whether to save disk space by hard-linking files in the store that have identical contents.
+	nix.settings.auto-optimise-store = true;
 
-		# Increase the size of the download buffer for Nix.
-		download-buffer-size = 629145600;
+	# Increase the size of the download buffer for Nix.
+	nix.settings.download-buffer-size = 629145600;
 
-		# Enable the nix-command feature.
-		experimental-features = [ "nix-command" ];
-	};
+	# Enable the nix-command feature.
+	nix.settings.experimental-features = [ "nix-command" ];
 }
