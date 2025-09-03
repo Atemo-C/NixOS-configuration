@@ -31,10 +31,10 @@ in {
 		]);
 
 		# Set the default text editor.
-		variables = lib.mkIf micro { EDITOR = "micro"; };
+		variables.EDITOR = lib.mkIf micro "micro";
 	};
 
-	# Link the configuration files of the Micro text editor.
+	# Link configuration files linked to the Micro text editor.
 	home-manager.users.${config.userName}.systemd.user.tmpfiles.rules = lib.optionals micro [
 		"L %h/.config/micro/settings.json - - - - /etc/nixos/programs/files/micro/settings.json"
 		"L %h/.config/micro/init.lua - - - - /etc/nixos/programs/files/micro/init.lua"
