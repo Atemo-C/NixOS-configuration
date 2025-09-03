@@ -62,6 +62,18 @@ in {
 			"L %h/.config/yt-dlp/config - - - - /etc/nixos/programs/files/yt-dlp.conf";
 	};
 
+	programs.obs-studio = lib.mkIf config.programs.niri.enable {
+		# Whether to enable OBS.
+		enale = true;
+
+		# OBS plugins to install.
+		plugins = with pkgs.obs-studio-plugins; [
+			obs-gstreamer # Source, encoder and video filter plugin to use GStreamer elements/pipelines.
+			obs-vaapi     # VAAPI support via GStreamer.
+			obs-vkcapture # Linux Vulkan/OpenGL game capture.
+		];
+	};
+
 	# Shell abbreviations for various programs installed in this module.
 	programs.fish.shellAbbrs = lib.mkIf config.programs.fish.enable {
 		# Losslessly optimize all JPEG and PNG images in the current directory.
