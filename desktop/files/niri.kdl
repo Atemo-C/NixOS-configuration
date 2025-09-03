@@ -378,7 +378,6 @@ layout {
 // spawn-at-startup "fcitx5"
 spawn-at-startup "hyprpaper"
 spawn-at-startup "thunar" "--daemon"
-spawn-at-startup "xwayland-satellite" ":12"
 spawn-at-startup "wl-paste" "-t" "text" "--watch" "clipman" "store" "--no-persist" "--max-items=100"
 spawn-at-startup "/etc/nixos/scripts/polkit-agent.sh"
 
@@ -392,9 +391,6 @@ screenshot-path null
 environment {
 	// Set the current desktop name.
 	XDG_CURRENT_DESKTOP "niri"
-
-	// Enable Xwayland integration using XWayland-satellite.
-	DISPLAY ":12"
 
 	// GTK: Use wayland if available.
 	GDK_BACKEND "wayland"
