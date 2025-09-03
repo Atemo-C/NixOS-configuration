@@ -1,22 +1,31 @@
-{ config, lib, pkgs, ... }: { environment = rec {
-	# Non-graphical programs.
-	systemPackages = with pkgs; [
-		amfora # CLI Gemini client.
-		tor    # Anonymizing overlay network.
+{ config, lib, pkgs, ... }: {
+	environment = {
+		systemPackages = with pkgs; [
+			# Non-graphical programs.
+			amfora # CLI Gemini client.
+			tor    # Anonymizing overlay network.
 
-	# Graphical programs.
-	] ++ lib.optionals config.programs.niri.enable (with pkgs; [
-		element-desktop # Matrix client.
-		lagrange        # Graphical Gemini client.
-		librewolf       # Fork of the Firefox web browser focused on privacy and security.
-		qbittorrent     # BitTorrent client.
-		revolt-desktop  # Open-source Discord-like chat platform.
-		ruffle          # Adobe Flash Player emulator.
-		speedtest       # Graphical librespeed client.
-		tor-browser     # Privacy-focused, Firefox-based browser routing traffic through the Tor network.
-		vesktop         # Alternative Discord client with Vencord built-in.
-	]);
+			# Graphical programs.
+		] ++ lib.optionals config.programs.niri.enable (with pkgs; [
+			element-desktop # Matrix client.
+			lagrange        # Graphical Gemini client.
+			qbittorrent     # BitTorrent client.
+			revolt-desktop  # Open-source Discord-like chat platform.
+			ruffle          # Adobe Flash Player emulator.
+			speedtest       # Graphical librespeed client.
+			tor-browser     # Privacy-focused, Firefox-based browser routing traffic through the Tor network.
+			vesktop         # Alternative Discord client with Vencord built-in.
+		]);
 
-	# Default web browser (change with the desired browser installed in `environment.systemPackages`).
-	variables = lib.mkIf (lib.elem pkgs.librewolf systemPackages) { BROWSER = "librewolf"; };
-}; }
+		# Default web browser to use.
+		variables.BROWSER = lib.mkIf (
+			config.programs.firefox.enable && config.programs.firefox.package == pkgs.librewolf
+		) "librewolf";
+	};
+
+	# Whether to install the Firefox web browser.
+	programs.firefox.enable;
+
+	# Which package of Firefox (or fork of it) to install.
+	programs.firefox.package = pkgs.librewolf;
+}
