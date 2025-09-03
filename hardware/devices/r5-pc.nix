@@ -32,11 +32,11 @@
 
 		# Maximum total amount of memory that can be stored in the zram swap devices.
 		# Run `zramctl` to check how much memory is compressed.
-		memoryPercent = lib.mkIf enable 20;
+		memoryPercent = 20;
 
 		# Priority of the zram swap device.
 		# It should be a number higher than the priority of your disk-based swap devices,
 		# so that the system will fill the zram swap device before falling bcak to disk swap.
-		priority = lib.mkIf enable 50;
+		priority = 50;
 	};
 }
