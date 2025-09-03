@@ -1,12 +1,15 @@
 { config, lib, pkgs, ... }: {
 	environment.systemPackages = with pkgs; [
+		# Non-graphical programs.
 		btop          # A monitor of resources.
+		cpu-x         # See information on CPU, motherboard and more.
 		lm_sensors    # Tools for reading hardware sensors.
 		smartmontools # Tools for monitoring the health of hard drives.
 		mprime        # Mersenne prime search / System stability tester (torture).
 		lshw          # Provide detailed information on the hardware configuration of the machine.
+
+		# Graphical programs.
 	] ++ lib.optionals config.programs.niri.enable (with pkgs; [
-		cpu-x          # See information on CPU, motherboard and more.
 		mission-center # Monitor your CPU, Memory, Disk, Network and GPU usage graphically.
 		vulkan-tools   # Vulkan tools and utilties.
 		mesa-demos     # Collection of demos and test programs for OpenGL and Mesa.
