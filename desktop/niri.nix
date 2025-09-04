@@ -3,7 +3,7 @@
 	programs.niri.enable = true;
 
 	# Shell abbreviation for starting Niri.
-	programs.fish.shellAbbrs = lib.mkIf (niri && fish) { n = "niri-session -c /etc/nixos/desktop/files/niri.kdl"; };
+	programs.fish.shellAbbrs = lib.mkIf (niri && fish) { n = "niri-session"; };
 
 	environment = lib.mkIf niri {
 		# Ozone Wayland support for Chromium and Electron-based programs.
