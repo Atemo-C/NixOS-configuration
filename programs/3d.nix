@@ -15,7 +15,7 @@
 		#sweethome3d.furniture-editor
 	];
 
-	# CUDA for Blender when available.
+	# CUDA for Blender when available. Comment this part out if you dread long compile times…
 	nixpkgs.config = lib.mkIf (lib.elem "nvidia" config.services.xserver.videoDrivers) {
 		packageOverrides = self : rec { blender = self.blender.override { cudaSupport = true; }; };
 	};
