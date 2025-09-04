@@ -25,6 +25,9 @@
 			persistencedSha256 = "sha256-2g5z7Pu8u2EiAh5givP5Q1Y4zk4Cbb06W37rf768NFU=";
 		};
 
+		# Whether to enable power management through systemd.
+		nvidia.powerManagement.enable = true;
+
 		# Whether to enable dynamic CDI configuration for NVIDIA GPUs.
 		nvidia-container-toolkit.enable = false;
 	};
