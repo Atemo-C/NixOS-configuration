@@ -40,6 +40,7 @@ in {
 		"L %h/.config/micro/init.lua - - - - /etc/nixos/programs/files/micro/init.lua"
 		"L %h/.config/micro/colorschemes/atemo-colors.micro - - - - /etc/nixos/programs/files/micro/colors.micro"
 		"L %h/.config/micro/bindings.json - - - - /etc/nixos/programs/files/micro/bindings.json"
+		"L %h/.config/micro/syntax/nix.yaml - - - - /etc/nixos/programs/files/micro/nix.yaml"
 	] ++ (if footserver then [
 		"L %h/.local/share/applications/micro-footclient.desktop - - - - /etc/nixos/programs/files/micro/micro-footclient.desktop"
 	] else if foot then [

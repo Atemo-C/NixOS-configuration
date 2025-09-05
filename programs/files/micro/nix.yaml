@@ -1,0 +1,44 @@
+filetype: nix
+
+detect:
+    filename: "\\.nix$"
+
+rules:
+    - special: "\\b(null|self|super|true|false|abort)\\b"
+
+    - statement: "\\b(let|in|with|import|rec|inherit)\\b"
+    - identifier: "[A-Za-z0-9_-]+(\ =|;|}.| &&|\\)|\ \\()"
+
+    - symbol.operator: "([~^.:;,+*|=!\\%@]|<|>|/|-|&)"
+    - symbol.brackets: "([(){}]|\\[|\\])"
+
+    - constant.bool.true: "\\b(true)\\b"
+    - constant.bool.false: "\\b(false)\\b"
+
+    - constant.number: "\\b[0-9](_?[0-9])*(\\.([0-9](_?[0-9])*)?)?(e[0-9](_?[0-9])*)?\\b"
+
+    - constant.string:
+        start: "\""
+        end: "\""
+        rules: []
+
+    - constant.string:
+        start: "''"
+        end: "''"
+        rules: []
+
+    - comment:
+        start: "#"
+        end: "$"
+        rules:
+            - todo: "(TODO|XXX|FIXME):?"
+            - underlined.url: "https?://[\\w\\-./?=&%#]+"
+            - underlined.url: "http?://[\\w\\-./?=&%#]+"
+
+    - comment:
+        start: "/\\*"
+        end: "\\*/"
+        rules:
+            - todo: "(TODO|XXX|FIXME):?"
+            - underlined.url: "https?://[\\w\\-./?=&%#]+"
+            - underlined.url: "http?://[\\w\\-./?=&%#]+"
