@@ -7,7 +7,7 @@ rules:
     - special: "\\b(null|self|super|true|false|abort)\\b"
 
     - statement: "\\b(let|in|with|import|rec|inherit)\\b"
-    - identifier: "[A-Za-z0-9_-]+(\ =|;|}.| &&|\\)|\ \\()"
+    - identifier: "[A-Za-z0-9_-]+(\ *=|;|}.| &&|\\)|\ *\\(|\ *{)"
 
     - symbol.operator: "([~^.:;,+*|=!\\%@]|<|>|/|-|&)"
     - symbol.brackets: "([(){}]|\\[|\\])"
