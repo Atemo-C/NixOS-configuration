@@ -1,14 +1,14 @@
 { config, lib, ... }: let
 	# Define the list of colors shared across terminals.
 	Background    = "000000";    Foreground = "eeeeee";
-	normalBlack   = "161616";    dimBlack   = "060606";    brightBlack   = "333333";
-	normalBlue    = "0080ff";    dimBlue    = "005ab3";    brightBlue    = "66b3ff";
-	normalCyan    = "00ffff";    dimCyan    = "00b3b3";    brightCyan    = "66ffff";
-	normalGreen   = "00ff00";    dimGreen   = "00b300";    brightGreen   = "66ff66";
-	normalMagenta = "ff0080";    dimMagenta = "b3005a";    brightMagenta = "ff66b3";
-	normalRed     = "ff0000";    dimRed     = "b30000";    brightRed     = "ff6666";
-	normalWhite   = "e6e6e6";    dimWhite   = "b3b3b3";    brightWhite   = "ffffff";
-	normalYellow  = "ffc000";    dimYellow  = "b38600";    brightYellow  = "ffd966";
+	normalBlack   = "242424";    dimBlack   = "141414";    brightBlack   = "525252";
+	normalBlue    = "006cff";    dimBlue    = "004cb3";    brightBlue    = "66b3ff";
+	normalCyan    = "00d0ff";    dimCyan    = "0092b3";    brightCyan    = "66e3ff";
+	normalGreen   = "00cc00";    dimGreen   = "008000";    brightGreen   = "80ff80";
+	normalMagenta = "d000ff";    dimMagenta = "a247b3";    brightMagenta = "ec80ff";
+	normalRed     = "e60000";    dimRed     = "990000";    brightRed     = "ff6666";
+	normalWhite   = "e6e6e6";    dimWhite   = "999999";    brightWhite   = "ffffff";
+	normalYellow  = "ffc000";    dimYellow  = "b38600";    brightYellow  = "ffe880";
 in {
 	# Linux console (TTY) colors.
 	console = {
