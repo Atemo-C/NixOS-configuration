@@ -10,6 +10,7 @@
 		mcpelauncher-ui-qt # Minecraft Bedrock Launcher.
 		luanti             # Inifinite-world block sandbox; Previously known as Minetest.
 		heroic             # Native GOG, Epic, and Amazon Games launcher.
+		vintagestory       # Indie sandbox game about innovation and exploration.
 	]);
 
 	programs = rec {
