@@ -31,6 +31,7 @@ rules:
         start: "#"
         end: "$"
         rules:
+            - comment.code: "`[^`]+`"
             - todo: "(TODO|XXX|FIXME):?"
             - underlined.url: "https?://[\\w\\-./?=&%#]+"
             - underlined.url: "http?://[\\w\\-./?=&%#]+"
@@ -39,6 +40,7 @@ rules:
         start: "/\\*"
         end: "\\*/"
         rules:
+            - comment.code: "`[^`]+`"
             - todo: "(TODO|XXX|FIXME):?"
             - underlined.url: "https?://[\\w\\-./?=&%#]+"
             - underlined.url: "http?://[\\w\\-./?=&%#]+"

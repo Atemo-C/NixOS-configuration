@@ -1,5 +1,6 @@
 color-link color-column "black"
 color-link comment "blue"
+color-link comment.code "bold blue"
 color-link constant.bool "bold cyan"
 color-link constant.bool.false "underline bold red"
 color-link constant.bool.string "yellow"
