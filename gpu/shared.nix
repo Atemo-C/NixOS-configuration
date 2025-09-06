@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }: { hardware.graphics = {
+{ config, lib, pkgs, ... }: { hardware.graphics = {
 	# Whether to enable hardware accelerated graphics drivers.
 	enable = true;
 
