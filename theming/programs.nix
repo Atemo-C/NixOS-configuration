@@ -63,8 +63,16 @@ gtk-enable-mnemonics = 0
 
 		# GTK theming for the root user.
 		root = {
-			# Disable window buttons (minimize, maximize, close…) if desired.
-			dconf.settings = { "org/gnome/desktop/wm/preferences" = { button-layout = "icon,appmenu:"; }; };
+			dconf.settings = {
+				# Disable window buttons (minimize, maximize, close…) if desired.
+				"org/gnome/desktop/wm/preferences" = { button-layout = "icon,appmenu:"; };
+
+				# Whether to automatically hide scrollbars.
+				"org/gnome/desktop/interface" = { overlay-scrolling = false; };
+
+				# Whether to show status shapes in buttons etc.
+				"org/gnome/desktop/a11y/interface" = { show-status-shapes = true; };
+			};
 
 			gtk = {
 				# Enable GTK configuration.
