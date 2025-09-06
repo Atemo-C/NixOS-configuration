@@ -5,10 +5,10 @@
 
 	# Set the drive to install Limine onto.
 	# You can see its name by running `ls /dev/disk/by-id`.
-	boot.limine.biosDevice = "/dev/disk/by-id/disk-stuff-here";
+	boot.loader.limine.biosDevice = "/dev/disk/by-id/disk-stuff-here";
 
 	# Disable support for EFI booting.
-	boot.limine.efiSupport = false;
+	boot.loader.limine.efiSupport = false;
 
 	# Name of the system over the network.
 	# [a-z] [A-Z] [0-9] [ - ]
@@ -42,7 +42,7 @@
 
 		# Maximum total amount of memory that can be stored in the zram swap devices.
 		# Run `zramctl` to check how much memory is compressed.
-		memoryPercent = 80;
+		memoryPercent = 100;
 
 		# Priority of the zram swap device.
 		# It should be a number higher than the priority of your disk-based swap devices,
