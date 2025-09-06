@@ -15,15 +15,16 @@ This configuration splits hardware modules into two:
 - The automatically-generated hardware configuration file in the [`./hardware/generated/`](https://github.com/Atemo-C/NixOS-configuration/blob/main/hardware/generated/) directory, renamed to fit the device that is targeted.
 - The manually-written hardware configuration file in the [`./hardware/devices/`](https://github.com/Atemo-C/NixOS-configuration/blob/main/hardware/devices/) directory, renamed to fit the device that is targeted.
 
-The automatically-generated hradware configuration files are untouched from the ones created by running `nixos-generate-config --root /path/to/system`. \
+The automatically-generated hardware configuration files are untouched from the ones created by running `nixos-generate-config --root /path/to/system`. \
 The manually-written hardware configuration files contains settings such as, but not limited to:
 - Kernel version
 - If the system boots in EFI or BIOS mode
 - Hostname
-- Optional NetworkManager modules
+- Optional network modules
 - Workarounds for specific hardware/firmware bugs
 - Default keyboard layout with priority over the [`./input/keyboard-layout.nix`](https://github.com/Atemo-C/NixOS-configuration/blob/main/input/keyboard-layout.nix) module
 - Firmware update manager with [fwupd](https://fwupd.org/)
+
 Naturally, you can see the already-present files to see what you should configure yourself.
 
 ## User name and title.
