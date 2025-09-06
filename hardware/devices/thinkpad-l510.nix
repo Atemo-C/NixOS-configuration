@@ -24,7 +24,7 @@
 		description               = "System suspend with pm-suspend";
 		serviceConfig.Type        = "oneshot";
 		serviceConfig.Environment = "PATH=${pkgs.pmutils}/bin";
-		serviceConfig.ExecStart   = "" "${pkgs.pmutils}/bin/pm-suspend";
+		serviceConfig.ExecStart   = [ "" "${pkgs.pmutils}/bin/pm-suspend" ];
 	};
 
 	# Small collection of scripts that handle suspend and resume on behalf of HAL.
