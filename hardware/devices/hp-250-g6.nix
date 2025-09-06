@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }: {
 	# Select the Linux Kernel version to use.
 	# https://wiki.nixos.org/wiki/Linux_kernel#List_available_kernels
-	boot.kernelPackages = pkgs.linuxPackages_latest;
+	boot.kernelPackages = pkgs.linuxPackages_zen;
 
 	# Program that allows manually modifying the EFI boot manager and its entries.
 	environment.systemPackages = [ pkgs.efibootmgr ];

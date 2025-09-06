@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }: {
 	# Select the Linux Kernel version to use.
 	# https://wiki.nixos.org/wiki/Linux_kernel#List_available_kernels
-	boot.kernelPackages = pkgs.linuxPackages_latest;
+	boot.kernelPackages = pkgs.linuxPackages_zen;
 
 	# Set the drive to install Limine onto.
 	# You can see its name by running `ls /dev/disk/by-id`.
