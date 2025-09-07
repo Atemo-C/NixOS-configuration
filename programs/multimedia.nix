@@ -126,7 +126,7 @@ in {
 		lofi-rain       = ''mpv --quiet --no-video "https://www.youtube.com/watch?v=-OekvEFm1lo"'';
 		lofi-sad        = ''mpv --quiet --no-video "https://www.youtube.com/watch?v=P6Segk8cr-c"'';
 		lofi-sleep      = ''mpv --quiet --no-video "https://www.youtube.com/watch?v=28KRPhVzCus"'';
-		lofi-stduy      = ''mpv --quiet --no-video "https://www.youtube.com/watch?v=jfKfPfyJRdk"'';
+		lofi-study      = ''mpv --quiet --no-video "https://www.youtube.com/watch?v=jfKfPfyJRdk"'';
 		lofi-summer     = ''mpv --quiet --no-video "https://www.youtube.com/watch?v=SXySxLgCV-8"'';
 		lofi-synthwave  = ''mpv --quiet --no-video "https://www.youtube.com/watch?v=4xDzrJKXOOY"'';
 		nightinthewoods = ''mpv --quiet --no-video "https://www.youtube.com/watch?v=AsLKfqA73uE"'';
