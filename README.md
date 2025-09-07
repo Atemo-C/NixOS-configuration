@@ -8,7 +8,7 @@ When using this configuration, make sure to read and modify each module of inter
 
 # To know and do when using this configuration. ‎
 ## Permissions of `/etc/nixos/*`
-To make the experience as painless as possible, I recommend to run `sudo chown your-user-name:users -R /etc/nixos/`. This allows the entire `/etc/nixos/` dierctory and all of its files to have user read and write access, without the need for a password.
+To make the experience as painless as possible, the entire `/etc/nixos/` dierctory and all of its files have user read and write access, without the need for a password. If this is a security concern for you, considering disabling this in the [`./uncategorized/nix-settings.nix`](https://github.com/Atemo-C/NixOS-configuration/blob/main/uncategorized/nix-settings.nix) module.
 
 ## Hardware configuration files.
 This configuration splits hardware modules into two:
