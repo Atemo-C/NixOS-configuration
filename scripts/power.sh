@@ -98,14 +98,14 @@ while :; do
 
 		lines=$((lines + 1))
 		width="28"
+	}
 
-		# Add the remaining entries to the list.
-		items="$items
+	# Add the remaining entries to the list.
+	items="$items
   Power off
 󰿅  Leave Niri
  ‎
 󰗼  Exit"
-	}
 
 	# Select one of the options in the list.
 	choice=$(printf '%s\n' "$items" | fuzzel \
