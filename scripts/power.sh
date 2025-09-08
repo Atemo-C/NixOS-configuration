@@ -182,6 +182,7 @@ while :; do
 					systemctl stop --user easyeffects.service && systemctl reboot
 				}
 				systemctl reboot
+			}
 
 			[ "$choice" = "  Reboot to UEFI firmware" ] && {
 				[ "$easyeffects" = "true" ] && {
@@ -199,7 +200,6 @@ while :; do
 
 			[ "$choice" = "󰿅  Leave Niri" ] && { pkill cmd-polkit & niri msg action quit --skip-confirmation; }
 			exit
-			}
 		}
 	}
 
