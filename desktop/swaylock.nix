@@ -18,7 +18,7 @@
 			scaling = "fill";
 
 			# Whether to show the numbers of failed unlocking attempts.
-			show-failed-attemps = true;
+			show-failed-attempts = true;
 
 			# Whether to show the keyboard layout.
 			show-keyboard-layout = true;
