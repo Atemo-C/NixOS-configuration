@@ -153,7 +153,7 @@ while :; do
 			[ "$choice" = "󰜉  Reboot" ]                  && systemctl reboot
 			[ "$choice" = "  Reboot to UEFI firmware" ] && systemctl reboot --firmware-setup
 			[ "$choice" = "  Power off" ]               && systemctl poweroff
-			[ "$choice" = "󰿅  Leave Niri" ]              && pkill cmd-polkit & niri msg action quit --skip-confirmation
+			[ "$choice" = "󰿅  Leave Niri" ]              && { pkill cmd-polkit & niri msg action quit --skip-confirmation; }
 			exit
 		}
 	}
