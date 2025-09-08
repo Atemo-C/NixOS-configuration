@@ -60,6 +60,9 @@ command -v swaylock > /dev/null 2>&1 || {
 	swaylock_dep=false
 }; [ "$swaylock_dep" = "false" ] || { swaylock_dep=true; }
 
+# Check if EasyEffects is running (it can hang the system on shutdown).
+systemctl --user is-active --quiet easyeffects.service && easyeffects=true || easyeffects=false
+
 # Confirmation list, used in prompts where user confirmation is preferrable.
 areyousure="  No
   Yes
@@ -147,14 +150,56 @@ while :; do
 
 		# Execute the selected actions.
 		[ "$answer" = "  Yes" ] && {
-			[ "$choice" = "󰒲  Suspend" ]                 && { swaylock & systemctl suspend; }
-			[ "$choice" = "󰒲  Hibernate" ]               && { swaylock & systemctl hibernate; }
-			[ "$choice" = "󱌂  Hybrid sleep" ]            && { swaylock & systemctl hybrid-sleep; }
-			[ "$choice" = "󰜉  Reboot" ]                  && systemctl reboot
-			[ "$choice" = "  Reboot to UEFI firmware" ] && systemctl reboot --firmware-setup
-			[ "$choice" = "  Power off" ]               && systemctl poweroff
-			[ "$choice" = "󰿅  Leave Niri" ]              && { pkill cmd-polkit & niri msg action quit --skip-confirmation; }
+			[ "$choice" = "󰒲  Suspend" ] && {
+				[ "$swaylock_dep" = "true" ] && {
+					swaylock & systemctl suspend
+					exit
+				}
+				systemctl suspend
+				exit
+			}
+
+			[ "$choice" = "󰒲  Hibernate" ] && {
+				[ "$swaylock_dep" = "true" ] && {
+					swaylock & systemctl hibernate
+					exit
+				}
+				systemctl hibernate
+				exit
+			}
+
+			[ "$choice" = "󱌂  Hybrid sleep" ] && {
+				[ "$swaylock_dep" = "true" ] && {
+					swaylock & systemctl hybrid-sleep;
+					exit
+				}
+				systemctl hybrid-sleep
+				exit
+			}
+
+			[ "$choice" = "󰜉  Reboot" ] && {
+				[ "$easyeffects" = "true" ] && {
+					systemctl stop --user easyeffects.service && systemctl reboot
+				}
+				systemctl reboot
+
+			[ "$choice" = "  Reboot to UEFI firmware" ] && {
+				[ "$easyeffects" = "true" ] && {
+					systemctl stop --user easyeffects.service && systemctl reboot --firmware-setup
+				}
+				systemctl reboot --firmware-setup
+			}
+
+			[ "$choice" = "  Power off" ] && {
+				[ "$easyeffects" = "true" ] && {
+					systemctl stop --user easyeffects.service && systemctl poweroff
+				}
+				systemctl poweroff
+			}
+
+			[ "$choice" = "󰿅  Leave Niri" ] && { pkill cmd-polkit & niri msg action quit --skip-confirmation; }
 			exit
+			}
 		}
 	}
 
