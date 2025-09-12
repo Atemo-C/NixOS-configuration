@@ -13,4 +13,15 @@
 
 	# Install an applet to graphically configure the network within the system tray.
 	programs.nm-applet.enable = lib.mkIf (config.networking.networkmanager.enable && config.programs.niri.enable) true;
+
+	networking.stevenblack.enable = {
+		# Whether to enable stevenblack hosts file blocklist.
+		true;
+
+		# Additional blocklist extensions to enable.
+		networking.stevenblack.block = [
+			"fakenews"
+			"gambling"
+		];
+	};
 }
