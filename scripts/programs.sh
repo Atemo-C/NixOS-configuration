@@ -87,7 +87,7 @@ adda amfora                   "  Amfora               Terminal Gemini client"
 add  audacious                "  Audacious            Audio player"
 add  io.github.kolunmi.Bazaar "  Bazaar ( )          Flatpak application store"
 add  blender                  "󰂫  Blender              3D modeling"
-add  com.userbottles.bottles  "󱌐  Bottles ( )         Run Windows programs in Bottles"
+add  com.usebottles.bottles   "󱌐  Bottles ( )         Run Windows programs in Bottles"
 adda btop                     "  BTOP                 Terminal system monitor" "$TERMINAL -e btop"
 
 [ -f "/etc/nixos/scripts/calculator.sh" ] && command -v bc && addc \
