@@ -46,7 +46,9 @@
 			".6" = "cd ../../../../../";
 
 			# Backup user files. Change the backup directory as needed.
-			backup = ''rsync -av --delete --delete-excluded --exclude-from="${config.users.users.atemo.home}/.exclude.txt" --progress -h ${config.users.users.atemo.home}/ /run/media/atemo/744GB-HDD-EXT/Backups-Rsync/'';
+			backup = ''rsync -av --progress -h --delete --delete-excluded --exclude-from="${config.users.users.${config.userName}.home}/.exclude.txt" ${config.users.users.${config.userName}.home}/ /run/media/${config.userName}/744GB-HDD-EXT/Backups-Rsync/'';
+
+			reverse-backup = ''rsync -av --progress -h /run/media/${config.userName}/744GB-HDD-EXT/Backups-Rsync/ ${config.users.users.${config.userName}.home}/'';
 
 			# Toggling recent files.
 			enable-recent-files = "sudo rm -v -i ~/.local/share/recently-used.xbel";
