@@ -476,6 +476,7 @@ window-rule {
 // Open certain windows in their full size.
 window-rule {
 	match app-id=r#"^gimp$"#
+	match app-id=r#"^UltiMaker-Cura$"#
 	default-column-width { proportion 1.0; }
 }
 
