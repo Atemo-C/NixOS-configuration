@@ -45,7 +45,7 @@ dwar="<b><span foreground='#ff0080'>Warning</span></b>:"
 
 # Check if Dunst is installed.
 command -v dunstify > /dev/null 2>&1 || {
-	printf "%s: %sDunst%s was not found. Graphical notifications disabled. Continuing.\n" \
+	printf "%s %sDunst%s was not found. Graphical notifications disabled. Continuing.\n" \
 	"$war" "$exe" "$clr"
 
 	dunst_dep=false
@@ -184,7 +184,7 @@ cp "$wallpaper" "$HOME/.config/hypr/wallpaper" || {
 		"$war" "$exe" "$clr"
 
 		warify "Hyprpaper not terminated" \
-		"${dwar}: ${dexe}Hyprpaper${bspan} could not be terminated. Please try to restart it yourself. Proceeding to apply the lockscreen image…"
+		"${dwar} ${dexe}Hyprpaper${bspan} could not be terminated. Please try to restart it yourself. Proceeding to apply the lockscreen image…"
 
 		hyprpaper_is_kill=false
 	}
@@ -220,7 +220,7 @@ cp "$wallpaper" "$HOME/.config/hypr/wallpaper" || {
 	printf "%s An error occured during the selection of the wallpaper, or the selection was cancelled. Exiting.\n" "$err"
 
 	errify "Error" \
-	"${derr}: An error occured during the selection of the wallpaper, or the selection was cancelled. Exiting"
+	"${derr} An error occured during the selection of the wallpaper, or the selection was cancelled. Exiting"
 
 	exit 10
 }
