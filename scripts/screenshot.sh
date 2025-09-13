@@ -1,7 +1,7 @@
 #!/usr/bin/env dash
 
 # This script was written for my NixOS configuration.
-# https://github.com/Atemo-C/NixOS-configuration/blob/main/scripts/background.sh
+# https://github.com/Atemo-C/NixOS-configuration/blob/main/scripts/screenshot.sh
 #
 # Required dependencies
 #──────────────────────
