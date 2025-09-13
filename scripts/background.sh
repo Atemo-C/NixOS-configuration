@@ -5,10 +5,10 @@
 #
 # Required dependencies
 #──────────────────────
-# • DASH      http://gondor.apana.org.au/~herbert/dash
-# • Niri      https://github.com/YaLTeR/niri
-# • Hyprpaper https://github.com/hyprwm/hyprpaper
-# • Zenity    https://gitlab.gnome.org/GNOME/zenity
+# • DASH        http://gondor.apana.org.au/~herbert/dash
+# • Niri        https://github.com/YaLTeR/niri
+# • Hyprpaper   https://github.com/hyprwm/hyprpaper
+# • Zenity      https://gitlab.gnome.org/GNOME/zenity
 # • ImageMagick https://imagemagick.org
 #
 # Recommended dependencies
@@ -17,18 +17,16 @@
 #
 # Exit codes
 #───────────
-# ✔ [0] Sucess.
-# ✘ [1] The Niri Wayland compositor was not detected.
-# ✘ [2] Hyprpaper was not detected.
-# ✘ [3] Zenity was not detected.
-# ✘ [4] The selected file does not seem to be a valid image.
-# ✘ [5] Hyprpaper's configuration could not be updated.
-# ✓ [6] The lockscreen image was updated, but Hyprland needs to be manually restarted.
-# ✓ [7] The lockscreen image uses the normal wallpaper, and Hyprland needs to be manually restarted.
-# ~ [8] The lockscreen image could not be updated, and Hyprland needs to be manually restarted.
-# ~ [9] The lockscreen image could not be updated.
-# ✓ [10] Wallpaper applied, but no lockscreen image was applied as ImageMagick is missing.
-# ~ [11] [10], and Hyprpaper needs to be manually restarted.
+# ✔ [0]  Sucess.
+# ✘ [1]  The Niri Wayland compositor was not detected.
+# ✘ [2]  Hyprpaper was not detected.
+# ✘ [3]  Zenity was not detected.
+# ✘ [4]  ImageMagick was not detected.
+# ✘ [5]  The selected file does not seem to be a valid image.
+# ✘ [6]  Hyprpaper's configuration could not be updated.
+# ✓ [7]  The lockscreen image was updated, but Hyprland needs to be manually restarted.
+# ✓ [8]  The lockscreen image uses the normal wallpaper, and Hyprland needs to be manually restarted.
+# ~ [9]  The lockscreen image could not be updated, and Hyprland needs to be manually restarted.
 
 # Text formatting shortcuts for console messages using `printf`.
 clr=$(tput sgr0)
@@ -99,13 +97,13 @@ command -v zenity > /dev/null 2>&1 || {
 
 # Check if ImageMagick is installed.
 command -v magick > /dev/null 2>&1 || {
-	printf "%s %sImageMagick%s not found. It is needed to create the modified lockscreen wallpaper, and to check if the selected file is a valid image. The normal wallpaper will be used instead; No lockscreen image will be applied, and it will be assumed that the image is valid. Continuing.\n" \
+	printf "%s %sImageMagick%s not found. It is needed to create the modified lockscreen wallpaper, and to check if the selected file is a valid image. Exiting.\n" \
 	"$war" "$exe" "$clr"
 
 	warify "ImageMagick not found." \
-	"${dwar} ${dexe}ImageMagick${bspan} not found. It is needed to create the modified lockscreen wallpaper, and to check if the selected file is a valid image. The normal wallpaper will be used instead, and it will be assumed that the image is valid. Continuing."
+	"${dwar} ${dexe}ImageMagick${bspan} not found. It is needed to create the modified lockscreen wallpaper, and to check if the selected file is a valid image. Exiting."
 
-	magick_dep=false
+	exit 4
 }
 
 # Check for a valid directory to start the file picker in.
@@ -127,7 +125,7 @@ wallpaper=$(zenity \
 out=$?
 
 # If possible, check if the selected file is a valid image.
-[ "$out" = "0" ] && [ "$magick_dep" != "false" ] && {
+[ "$out" = "0" ] && {
 	magick identify "$wallpaper" > /dev/null 2>&1 || {
 		printf "%s %s%s%s is not a valid image. Exiting.\n" \
 		"$err" "$ico" "$wallpaper" "$clr"
@@ -135,7 +133,7 @@ out=$?
 		errify "Invalid image" \
 		"${derr} ${dico}${wallpaper}${bspan} is not a valid image. Exiting."
 
-		exit 4
+		exit 5
 	}
 }
 
@@ -165,7 +163,7 @@ cp "$wallpaper" "$HOME/.config/hypr/wallpaper" || {
 		errify "Could not update configuration" \
 		"${derr} An error occured when writing the configuration file of ${dexe}Hyprpaper${bspan}. Exiting."
 
-		exit 5
+		exit 6
 	}
 
 	# Close Hyprpaper if it is already running.
@@ -194,38 +192,31 @@ cp "$wallpaper" "$HOME/.config/hypr/wallpaper" || {
 	[ "$hyprpaper_is_kill" != "false" ] && nohup hyprpaper > /dev/null 2>&1 &
 
 	# Create a blurred and slightly darkened version of the lockscreen image.
-	[ "$magick_dep" != "false" ] && {
-		magick "$wallpaper" -quality 100 -brightness-contrast -9 -gaussian-blur 7x7 \
-		"$HOME/.config/hypr/lockscreenimage.jpg" || {
-			printf "%s An error occured during the creation of the lockscreen image. Using the original image instead.\n" "$war"
+	magick "$wallpaper" -quality 100 -brightness-contrast -9 -gaussian-blur 7x7 \
+	"$HOME/.config/hypr/lockscreenimage.jpg" || {
+		printf "%s An error occured during the creation of the lockscreen image. Using the original image instead.\n" "$war"
 
-			warify "Lockscreen image creation failure" \
-			"${dwar} An error occured during the creation of the lockscreen image. Using the original image instead."
+		warify "Lockscreen image creation failure" \
+		"${dwar} An error occured during the creation of the lockscreen image. Using the original image instead."
 
-			magick "$wallpaper" -quality 100 "$HOME/.config/hypr/lockscreenimage.jpg" || {
-				printf "%s An error occured when attempting to use the original image. Exiting.\n" "$err"
-				# The lockscreen image could not be updated, and Hyprland needs to be restarted.
-				[ "$hyprpaper_is_kill" = "false" ] && { exit 8; }
+		magick "$wallpaper" -quality 100 "$HOME/.config/hypr/lockscreenimage.jpg" || {
+			printf "%s An error occured when attempting to use the original image. Exiting.\n" "$err"
+			# The lockscreen image could not be updated, and Hyprland needs to be restarted.
+			[ "$hyprpaper_is_kill" = "false" ] && { exit 9; }
 
-				# The lockscreen image could not be updated.
-				exit 9
-			}
-
-			# The lockscreen image uses the normal wallpaper, and Hyprland needs to be restarted.
-			[ "$hyprpaper_is_kill" = "false" ] && { exit 7; }
+			# The lockscreen image could not be updated.
+			exit 9
 		}
 
-		# The lockscreen image was updated, but Hyprland needs to be restarted.
-		[ "$hyprpaper_is_kill" = "false" ] && { exit 6; }
-
-		# Success.
-		exit 0
+		# The lockscreen image uses the normal wallpaper, and Hyprland needs to be restarted.
+		[ "$hyprpaper_is_kill" = "false" ] && { exit 8; }
 	}
-	# [10], and Hyprpaper needs to be manually restarted.
-	[ "$hyprpaper_is_kill" = "false" ] && { exit 11; }
 
-	# Wallpaper applied, but no lockscreen image was applied as ImageMagick is missing.
-	exit 10;
+	# The lockscreen image was updated, but Hyprland needs to be restarted.
+	[ "$hyprpaper_is_kill" = "false" ] && { exit 7; }
+
+	# Success.
+	exit 0
 }
 
 # If an error occurs or the file picker is closed, display an error message.
@@ -235,7 +226,7 @@ cp "$wallpaper" "$HOME/.config/hypr/wallpaper" || {
 	errify "Error" \
 	"${derr}: An error occured during the selection of the wallpaper, or the selection was cancelled. Exiting"
 
-	exit 8
+	exit 10
 }
 
 # ⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠗⣪⣵⣶⠞⣃⣄⡻⠇⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
