@@ -6,10 +6,10 @@
 # Required dependencies
 #──────────────────────
 # • DASH        http://gondor.apana.org.au/~herbert/dash
-# • Niri        https://github.com/YaLTeR/niri
 # • Hyprpaper   https://github.com/hyprwm/hyprpaper
-# • Zenity      https://gitlab.gnome.org/GNOME/zenity
 # • ImageMagick https://imagemagick.org
+# • Niri        https://github.com/YaLTeR/niri
+# • Zenity      https://gitlab.gnome.org/GNOME/zenity
 #
 # Recommended dependencies
 #─────────────────────────
