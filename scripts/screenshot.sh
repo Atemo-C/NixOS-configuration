@@ -250,8 +250,19 @@ See the ${darg}--about${bspan} / ${darg}--help${bspan} / ${darg}-h${bspan} argum
 				exit 0
 			}
 		done
-		exit 0
 	}
+}
+
+# Error when no argument is given.
+[ "$1" = "" ] && {
+	printf "%s No argument was given.\n\n" "$err"
+	printf "See the %s--about%s / %s--help%s / %s-h%s argument.\n" "$arg" "$clr" "$arg" "$clr" "$arg" "$clr"
+
+	notify "Missing argument" \
+	"${derr} No argument was given.
+See the ${darg}--about${bspan} / ${darg}--help${bspan} / ${darg}-h${bspan} argument."
+
+	exit 1
 }
 
 # Error when an invalid argument is given.
