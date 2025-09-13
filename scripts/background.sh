@@ -26,7 +26,8 @@
 # ✘ [6]  Hyprpaper's configuration could not be updated.
 # ✓ [7]  The lockscreen image was updated, but Hyprland needs to be manually restarted.
 # ✓ [8]  The lockscreen image uses the normal wallpaper, and Hyprland needs to be manually restarted.
-# ~ [9]  The lockscreen image could not be updated, and Hyprland needs to be manually restarted.
+# ~ [9]  The lockscreen image could not be updated.
+# ~ [10] The lockscreen image could not be updated, and Hyprland needs to be manually restarted.
 
 # Text formatting shortcuts for console messages using `printf`.
 clr=$(tput sgr0)
@@ -201,21 +202,16 @@ cp "$wallpaper" "$HOME/.config/hypr/wallpaper" || {
 
 		magick "$wallpaper" -quality 100 "$HOME/.config/hypr/lockscreenimage.jpg" || {
 			printf "%s An error occured when attempting to use the original image. Exiting.\n" "$err"
-			# The lockscreen image could not be updated, and Hyprland needs to be restarted.
 			[ "$hyprpaper_is_kill" = "false" ] && { exit 9; }
 
-			# The lockscreen image could not be updated.
 			exit 9
 		}
 
-		# The lockscreen image uses the normal wallpaper, and Hyprland needs to be restarted.
 		[ "$hyprpaper_is_kill" = "false" ] && { exit 8; }
 	}
 
-	# The lockscreen image was updated, but Hyprland needs to be restarted.
 	[ "$hyprpaper_is_kill" = "false" ] && { exit 7; }
 
-	# Success.
 	exit 0
 }
 
