@@ -1,21 +1,34 @@
 #!/usr/bin/env dash
 
-# Credits.
-# • DASH:        http://gondor.apana.org.au/~herbert/dash
-# • Dunst:       https://dunst-project.org
-# • Hyprpaper:   https://github.com/hyprwm/hyprpaper
-# • ImageMagick: https://imagemagick.org
-# • Zenity:      https://gitlab.gnome.org/GNOME/zenity
-
-# Exit codes.
-# • 0: Success.
-# • 1: Niri was not detected.
-# • 2: A dependency was not detected.
-# • 3: The selected image background was not a valid image.
-# • 4: The background image was applied, but the lockscreen image was not updated.
-# • 5: Success, but Hyprpaper needs to be restarted manually.
-# • 6: The background image was applied, but the lockscreen image was not updated, and Hyprpaper nedes to be restarted manually.
-# • 7: An error occured during the selection of the background image, or the background image selector was closed before selecting one.
+# This script was written for my NixOS configuration.
+# https://github.com/Atemo-C/NixOS-configuration/blob/main/scripts/background.sh
+#
+# Required dependencies
+#──────────────────────
+# • DASH      http://gondor.apana.org.au/~herbert/dash
+# • Niri      https://github.com/YaLTeR/niri
+# • Hyprpaper https://github.com/hyprwm/hyprpaper
+# • Zenity    https://gitlab.gnome.org/GNOME/zenity
+# • ImageMagick https://imagemagick.org
+#
+# Recommended dependencies
+#─────────────────────────
+# • Dunst https://dunst-project.org
+#
+# Exit codes
+#───────────
+# ✔ [0] Sucess.
+# ✘ [1] The Niri Wayland compositor was not detected.
+# ✘ [2] Hyprpaper was not detected.
+# ✘ [3] Zenity was not detected.
+# ✘ [4] The selected file does not seem to be a valid image.
+# ✘ [5] Hyprpaper's configuration could not be updated.
+# ✓ [6] The lockscreen image was updated, but Hyprland needs to be manually restarted.
+# ✓ [7] The lockscreen image uses the normal wallpaper, and Hyprland needs to be manually restarted.
+# ~ [8] The lockscreen image could not be updated, and Hyprland needs to be manually restarted.
+# ~ [9] The lockscreen image could not be updated.
+# ✓ [10] Wallpaper applied, but no lockscreen image was applied as ImageMagick is missing.
+# ~ [11] [10], and Hyprpaper needs to be manually restarted.
 
 # Text formatting shortcuts for console messages using `printf`.
 clr=$(tput sgr0)
@@ -33,11 +46,11 @@ dwar="<b><span foreground='#ff0080'>Warning</span></b>:"
 
 # Check if Dunst is installed.
 command -v dunstify > /dev/null 2>&1 || {
-	printf "%s %sDunst%s was not found. Graphical notifications disabled.\n" \
+	printf "%s: %sDunst%s was not found. Graphical notifications disabled. Continuing.\n" \
 	"$war" "$exe" "$clr"
 
 	dunst_dep=false
-}; [ "$dunst_dep" = false ] || { dunst_dep=true; }
+}
 
 # Functions for graphical notifications using dunstify.
 errify() { [ "$dunst_dep" = "false" ] || dunstify -u critical "$1" "$2"; }
@@ -47,108 +60,118 @@ warify() { [ "$dunst_dep" = "false" ] || dunstify "$1" "$2"; }
 [ "$#" -ne 0 ] && {
 	printf "%s This script does not support command-line arguments. Ignoring.\n" "$war"
 
-	warnify "Arguments not supported" \
+	warify "Arguments not supported" \
 	"${dwar} This script does not support command-line arguments. Ignoring."
 }
 
 # Check if Niri is the active Wayland compositor.
 [ "$XDG_CURRENT_DESKTOP" = "niri" ] || {
-	printf "%s This script must be used in the %sNiri%s Wayland compositor. Exiting.\n" \
+	printf "%s This script has been designed for the %sNiri%s Wayland compositor. Exiting.\n" \
 	"$err" "$exe" "$clr"
 
 	errify "Not using Niri" \
-	"${derr} This script must be used in the ${dexe}Niri${bspan} Wayland compositor. Exiting."
+	"${derr} This script has been designed for the %sNiri%s Wayland compositor. Exiting."
 
 	exit 1
 }
 
 # Check if Hyprpaper is installed.
 command -v hyprpaper > /dev/null 2>&1 || {
-	printf "%s %sHyprpaper%s not found. It is needed to apply the background image. Exiting.\n" \
+	printf "%s %sHyprpaper%s not found. It is needed to apply the wallpaper. Exiting.\n" \
 	"$err" "$exe" "$clr"
 
 	errify "Hyprpaper not found" \
-	"${derr} ${dexe}Hyprpaper${bspan} not found. It is needed to apply the background image. Exiting."
+	"${derr} ${dexe}Hyprpaper${bspan} not found. It is needed to apply the wallpaper. Exiting."
 
 	exit 2
 }
 
 # Check if Zenity is installed.
 command -v zenity > /dev/null 2>&1 || {
-	printf "%s %sZenity%s not found. It is needed to select the background image. Exiting.\n" \
+	printf "%s %sZenity%s not found. It is needed to select the wallpaper. Exiting.\n" \
 	"$err" "$exe" "$clr"
 
 	errify "Zenity not found" \
-	"${derr} ${dexe}Zenity${bspan} not found. It is needed to select the background image. Exiting."
+	"${derr} ${dexe}Zenity${bspan} not found. It is needed to select the wallpaper. Exiting."
 
-	exit 2
+	exit 3
 }
 
 # Check if ImageMagick is installed.
 command -v magick > /dev/null 2>&1 || {
-	printf "%s %sImageMagick%s not found. It is needed to create the modified lockscreen background image and to check if the selected image is valid in the first place. The normal background image will be used for it instead, and it will simply be assumed that the image is valid. Continuing.\n" \
+	printf "%s %sImageMagick%s not found. It is needed to create the modified lockscreen wallpaper, and to check if the selected file is a valid image. The normal wallpaper will be used instead; No lockscreen image will be applied, and it will be assumed that the image is valid. Continuing.\n" \
 	"$war" "$exe" "$clr"
 
-	warify "ImageMagick not found" \
-	"${dwar} ${dexe}ImageMagick${bspan} not found. It is needed to create the modified lockscreen background image and to check if the selected image is valid in the first place. The normal background image will be used for it instead, and it will simply be assumed that the image is valid. Continuing."
+	warify "ImageMagick not found." \
+	"${dwar} ${dexe}ImageMagick${bspan} not found. It is needed to create the modified lockscreen wallpaper, and to check if the selected file is a valid image. The normal wallpaper will be used instead, and it will be assumed that the image is valid. Continuing."
 
 	magick_dep=false
-}; [ "$magick_dep" = false ] || { magick_dep=true; }
+}
 
 # Check for a valid directory to start the file picker in.
 bgdir="$HOME/Images/Backgrounds/"
 [ -d "$bgdir" ] || bgdir="$XDG_PICTURES_DIR/"
 [ -d "$bgdir" ] || bgdir="$HOME/"
 
-# Check if Hyprpaper's configuration file's directory exists, create it if not.
+# Check if Hyprpaper's configuration file's directory exists; Create it if not.
 [ -d "$HOME/.config/hypr" ] || { mkdir -p "$HOME/.config/hypr"; }
 
-# Select the background image to be used.
-background=$(zenity \
+# Select the wallpaper to be used.
+wallpaper=$(zenity \
 	--file-selection \
 	--filename="$bgdir" \
 	--file-filter="*.png *.jpg *.jpeg *.webp *.jxl" \
-	--title="Select a background image"
+	--title="Select a wallpaper"
 )
 
-# If possible, check if the selected file is a valid image.
 out=$?
-[ "$out" = "0" ] && [ "$magick_dep" = "true" ] && {
-	magick identify "$background" > /dev/null 2>&1 || {
+
+# If possible, check if the selected file is a valid image.
+[ "$out" = "0" ] && [ "$magick_dep" != "false" ] && {
+	magick identify "$wallpaper" > /dev/null 2>&1 || {
 		printf "%s %s%s%s is not a valid image. Exiting.\n" \
-		"$err" "$ico" "$background" "$clr"
+		"$err" "$ico" "$wallpaper" "$clr"
 
 		errify "Invalid image" \
-		"${derr} ${dico}${background}${bspan} is not a valid image. Exiting."
+		"${derr} ${dico}${wallpaper}${bspan} is not a valid image. Exiting."
 
-		exit 3
+		exit 4
 	}
 }
 
-# Copy the background image to Hyprpaper's configuration file's directory to ensure its permanence.
-cp "$background" "$HOME/.config/hypr/backgroundimage" || {
+# Copy the wallpaper to Hyprpaper's configuration file's directory to ensure its permanence.
+cp "$wallpaper" "$HOME/.config/hypr/wallpaper" || {
 	printf "%s %s%s%s image could not be copied. Using the original image's path.\n" \
-	"$war" "$ico" "$background" "$clr"
+	"$war" "$ico" "$wallpaper" "$clr"
 
-	warify "Background image not copied" \
-	"${dwar} ${dico}${background}${bspan} could not be copied. Using the original image's path."
+	warify "Wallpaper image not copied" \
+	"${dwar} ${dico}${wallpaper}${bspan} could not be copied. Using the original image's path."
 
 	original=true
-}; [ "$original" = "true" ] || { background="$HOME/.config/hypr/backgroundimage"; }
+}; [ "$original" != "true" ] && { wallpaper="$HOME/.config/hypr/wallpaper"; }
 
-# Write the output to Hyprpaper's configuration file and restart it.
+
+# Write the output to Hyprpaper's configuration file.
 [ "$out" = "0" ] && {
 	{
-		printf "preload = %s\n" "$background"
-		printf "wallpaper = ,%s\n" "$background"
+		printf "preload = %s\n" "$wallpaper"
+		printf "wallpaper = ,%s\n" "$wallpaper"
 		printf "splash = false\n"
 		printf "ipc = off\n"
-	} > "$HOME/.config/hypr/hyprpaper.conf"
+	} > "$HOME/.config/hypr/hyprpaper.conf" || {
+		printf "%s An error occured when writing the configuration file of %sHyprpaper%s. Exiting.\n" \
+		"$err" "$exe" "$clr"
+
+		errify "Could not update configuration" \
+		"${derr} An error occured when writing the configuration file of ${dexe}Hyprpaper${bspan}. Exiting."
+
+		exit 5
+	}
 
 	# Close Hyprpaper if it is already running.
 	pkill --exact "hyprpaper" || true;
 
-	# Wait until Hyprpaper is no longer running before restarting it.
+	# Wait until Hyprpaper is no longer running before starting it with the updated configuration.
 	timeout=5
 	count=0
 	while pgrep -x "hyprpaper" > /dev/null 2>&1 && [ "$count" -lt $((timeout*50)) ]; do
@@ -165,35 +188,68 @@ cp "$background" "$HOME/.config/hypr/backgroundimage" || {
 		"${dwar}: ${dexe}Hyprpaper${bspan} could not be terminated. Please try to restart it yourself. Proceeding to apply the lockscreen image…"
 
 		hyprpaper_is_kill=false
-	}; [ "$hyprpaper_is_kill" = "false" ] || { hyprpaper_is_kill=true; }
+	}
 
 	# Start Hyprpaper with the updated configuration.
-	[ "$hyprpaper_is_kill" = "true" ] && { nohup hyprpaper > /dev/null 2>&1; }
+	[ "$hyprpaper_is_kill" != "false" ] && nohup hyprpaper > /dev/null 2>&1 &
 
-	# Create a blurred and slightly darkened version of the lockscreen image background.
-	[ "$magick_dep" = "true" ] && {
-		magick "$background" -brightness-contrast -9 -gaussian-blur 9x9 "$HOME/.config/hypr/lockscreenimage.jpg" || {
-			printf "%s An error occured during the creation of the lockscreen image. Using a non-transformed image instead.\n" "$war"
+	# Create a blurred and slightly darkened version of the lockscreen image.
+	[ "$magick_dep" != "false" ] && {
+		magick "$wallpaper" -quality 100 -brightness-contrast -9 -gaussian-blur 7x7 \
+		"$HOME/.config/hypr/lockscreenimage.jpg" || {
+			printf "%s An error occured during the creation of the lockscreen image. Using the original image instead.\n" "$war"
 
 			warify "Lockscreen image creation failure" \
-			"${dwar} An error occured during the creation of the lockscreen image. Using a non-transformed image instead."
+			"${dwar} An error occured during the creation of the lockscreen image. Using the original image instead."
 
-			magick "$background" -quality 100 "$HOME/.config/hypr/lockscreenimage.jpg"
+			magick "$wallpaper" -quality 100 "$HOME/.config/hypr/lockscreenimage.jpg" || {
+				printf "%s An error occured when attempting to use the original image. Exiting.\n" "$err"
+				# The lockscreen image could not be updated, and Hyprland needs to be restarted.
+				[ "$hyprpaper_is_kill" = "false" ] && { exit 8; }
 
-			[ "$hyprpaper_is_kill" = "false" ] && { exit 6; }
+				# The lockscreen image could not be updated.
+				exit 9
+			}
+
+			# The lockscreen image uses the normal wallpaper, and Hyprland needs to be restarted.
+			[ "$hyprpaper_is_kill" = "false" ] && { exit 7; }
 		}
-		[ "$hyprpaper_is_kill" = "false" ] && { exit 5; }
-		exit 4
+
+		# The lockscreen image was updated, but Hyprland needs to be restarted.
+		[ "$hyprpaper_is_kill" = "false" ] && { exit 6; }
+
+		# Success.
+		exit 0
 	}
-	exit
+	# [10], and Hyprpaper needs to be manually restarted.
+	[ "$hyprpaper_is_kill" = "false" ] && { exit 11; }
+
+	# Wallpaper applied, but no lockscreen image was applied as ImageMagick is missing.
+	exit 10;
 }
 
-# If an error occures or the file picker is closed, display an error message.
+# If an error occurs or the file picker is closed, display an error message.
 [ "$out" = "1" ] && {
-	printf "%s An error occured during the selection of the background image, or the background image selector was closed before selecting one. Exiting.\n" "$err"
+	printf "%s An error occured during the selection of the wallpaper, or the selection was cancelled. Exiting.\n" "$err"
 
-	notify "Error" \
-	"${derr}: An error occured during the selection of the background image, or the background image selector was closed before selecting one. Exiting."
+	errify "Error" \
+	"${derr}: An error occured during the selection of the wallpaper, or the selection was cancelled. Exiting"
 
-	exit 7
+	exit 8
 }
+
+# ⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠗⣪⣵⣶⠞⣃⣄⡻⠇⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+# ⣿⣿⣿⣿⣿⣿⣿⣿⡿⢡⣾⣿⣿⠁⠚⠧⠿⠛⠜⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿
+# ⣿⣿⣿⣿⣿⣿⣿⣿⡇⣿⡿⣛⣋⢅⣤⣷⡯⣥⣒⠎⣙⡛⠿⠿⠿⢋⡇⣿⣿
+# ⣿⣿⣿⣿⣿⣿⣿⣿⢡⣴⣾⠏⣴⣯⣍⠻⣿⣮⠻⢷⣌⢻⣧⢰⣶⡟⡅⣿⣿
+# ⣿⣿⣿⣿⣿⣿⡿⣥⣾⣿⠇⣾⢿⣧⣤⣤⣌⡟⢳⠿⠛⠀⣿⠸⢋⣼⣿⣿⣿
+# ⣿⣿⣿⣿⣿⣿⠁⣿⣿⠏⣾⢟⣨⣛⠻⣛⣻⡻⣿⣶⣮⢐⢡⣾⡈⣿⣿⣿⣿
+# ⣿⣿⣿⣿⣿⢒⠀⠿⡿⢸⡏⠼⢢⡩⣅⠈⢹⣿⢿⡛⢗⢸⢘⣟⣣⣿⣿⣿⣿
+# ⣿⣿⣿⡿⣣⣿⢿⡷⣭⠘⡀⠐⣻⣷⠪⣛⠦⣤⣤⣬⡤⢠⡈⢼⣇⣿⣿⣿⣿
+# ⣿⣿⡟⣰⣿⣿⣦⡛⢷⣾⣿⠡⣿⣿⣿⣶⣿⣷⣶⠶⣶⣆⢩⢸⣿⣿⣿⣿⣿
+# ⣿⣿⢱⣿⣿⣿⣿⣿⡦⠙⣿⣟⠹⣿⣿⣿⣿⣯⣷⣿⣿⢣⣿⡇⢿⣿⣿⣿⣿
+# ⣿⡏⣿⣿⣿⣿⣿⠟⣵⣷⠹⣿⣷⣤⣉⣥⣛⠘⣋⠛⢣⣿⣿⡇⣠⡹⣿⣿⣿
+# ⣿⣧⠻⣿⣿⡿⢋⣾⣿⣿⣧⠹⠿⡿⠿⢿⣿⠿⢋⣔⣻⠿⣫⣾⣿⣿⡌⢿⣿
+# I see you there, looking at my code.
+# Lucky for you, you are not a deer.
+# If you are… I believe you might like my truck.
