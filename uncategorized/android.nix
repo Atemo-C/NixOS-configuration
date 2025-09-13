@@ -16,9 +16,7 @@
 		# Display and control Android devices over USB or TCP/IP.
 	]) ++ lib.optional (config.programs.adb.enable && config.programs.niri.enable) pkgs.scrcpy;
 
-	# ADB shell abbreviations.
-	programs.fish.shellAbbrs = lib.mkIf config.programs.adb.enable [
-		# Fix audio playback crashing the entire system on LineageOS-based Android distributions.
-		fix-los-audio = "adb shell device_config put media_solutions com.android.settingslib.media.flags.use_media_router2_for_info_media_manager false && adb reboot"
-	];
+	# Fix audio playback crashing the entire system on LineageOS-based Android distributions.
+	programs.fish.shellAbbrs.fix-los-audio = lib.mkIf config.programs.adb.enable
+	"adb shell device_config put media_solutions com.android.settingslib.media.flags.use_media_router2_for_info_media_manager false && adb reboot";
 }
