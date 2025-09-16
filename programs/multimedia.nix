@@ -117,6 +117,7 @@ in {
 		# Listen to various online audio streams with MPV.
 		lofi-asian      = ''mpv --quiet --no-video "https://www.youtube.com/watch?v=Na0w3Mz46GA"'';
 		lofi-escape     = ''mpv --quiet --no-video "https://www.youtube.com/watch?v=S_MOd40zlYU"'';
+		lofi-guitar     = ''mpv --quiet --no-video "https://www.youtube.com/watch?v=E_XmwjgRLz8"'';
 		lofi-jazz       = ''mpv --quiet --no-video "https://www.youtube.com/watch?v=HuFYqnbVbzY"'';
 		lofi-medieval   = ''mpv --quiet --no-video "https://www.youtube.com/watch?v=IxPANmjPaek"'';
 		lofi-piano      = ''mpv --quiet --no-video "https://www.youtube.com/watch?v=TtkFsfOP9QI"'';
