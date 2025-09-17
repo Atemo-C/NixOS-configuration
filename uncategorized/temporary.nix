@@ -42,6 +42,13 @@
 		'';
 	};
 
+	# Consistent firmware paths for libvirtd.
+	# https://github.com/NixOS/nixpkgs/issues/378894
+	# https://github.com/NixOS/nixpkgs/pull/421549
+	nixpkgs.overlays = lib.mkIf config.virtualisation.libvirtd.enable [
+		(self: super: { nixosModules.libvirtd = { imports = [ ./temporary-libvirtd.nix ]; }; })
+	];
+
 #	# https://github.com/NixOS/nixpkgs/issues/361592
 #	security.pam.services.systemd-run0 = {
 #		setEnvironment = true;
