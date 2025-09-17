@@ -7,7 +7,4 @@
 
 	# Whether to enable the Virt Manager virtual machine manager.
 	programs.virt-manager.enable = lib.mkIf (config.virtualisation.libvirtd.enable && config.programs.niri.enable) true;
-
-	# Link qemu firmware files to `/run/current-system/sw/share/qemu/` to make them more accessible.
-	environment.pathsToLink = lib.mkIf config.virtualisation.libvirtd.enable [ "/share/qemu" ];
 }
