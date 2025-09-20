@@ -45,6 +45,9 @@
 			"......" = "cd ../../../../../";
 			".6" = "cd ../../../../../";
 
+			# See what process systemd had to kill after a 1m30 timeout.
+			killed = "journalctl -b-1 | grep killed";
+
 			# Backup user files. Change the backup directory as needed.
 			backup = ''rsync -av --progress -h --delete --delete-excluded --exclude-from="${config.users.users.${config.userName}.home}/.exclude.txt" ${config.users.users.${config.userName}.home}/ /run/media/${config.userName}/744GB-HDD-EXT/Backups-Rsync/'';
 
