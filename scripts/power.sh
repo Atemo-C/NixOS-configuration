@@ -179,7 +179,7 @@ while :; do
 
 			[ "$choice" = "󰜉  Reboot" ] && {
 				[ "$easyeffects" = "true" ] && {
-					systemctl stop --user easyeffects.service && systemctl reboot
+					systemctl kill --user easyeffects.service && systemctl reboot
 				}
 				systemctl reboot
 			}
