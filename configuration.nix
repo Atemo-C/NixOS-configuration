@@ -71,6 +71,7 @@
 	./uncategorized/audio.nix        # Audio configuration and utilities.
 	./uncategorized/bluetooth.nix    # Bluetooth support.
 	./uncategorized/boot.nix         # Boot configuration.
+	./uncategorized/cachyos-opti.nix # Optimizations pulled straight from CachyOS. Needs tweaking for each system.
 	./uncategorized/locale.nix       # Locale configuration (language, time, currency, measurement…)
 	./uncategorized/networking.nix   # Networking configuration.
 	./uncategorized/nix-settings.nix # Nix settings.
