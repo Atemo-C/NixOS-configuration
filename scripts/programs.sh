@@ -181,7 +181,7 @@ add  timeshift-launcher  "󰁯  Timeshift            System restore"
 add  tor-browser         "󰗹  Torbrowser           Web browsing through Tor"
 add  upscayl             "  Upscayl              Upscale images"
 add  vesktop             "󰙯  Vesktop              Discord, but Vencorded"
-add  vintagestory        "  Vinate Story         Sandbox game of innovation and exploration"
+add  vintagestory        "  Vintage Story        Sandbox game of innovation and exploration"
 add  virt-manager        "󰪫  Virt Manager         Virtual machines using QEMU/KVM"
 adda xclicker            "󰍽  Xclicker             X11 autocliker (for XWayland)" \
 "sh -c 'DISPLAY=:0 xclicker'"
