@@ -16,6 +16,7 @@ in {
 	environment.systemPackages = with pkgs; [
 		#v4l-utils   # V4L utilities and libv4l, providing common image formats regardless of the v4l device.
 		ffmpeg-full # A complete solution to record, convert, stream audio and video.
+		gallery-dl  # Dowload image galleries
 		libde265    # Open h.265 video codec implementation.
 		dcmtk       # Collection of libraries and applications implementing large parts of the DICOM standard.
 		imagemagick # Software suite to create, edit, compose, and convert bitmap images.
