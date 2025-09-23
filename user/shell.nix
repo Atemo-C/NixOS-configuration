@@ -2,6 +2,9 @@
 	# The path to the user's shell.
 	users.users.${config.userName}.shell = lib.mkIf config.programs.fish.enable pkgs.fish;
 
+	# Disable man pages caching generation for FISH if taking too long on rebuilds.
+	documentation.man.generateCaches = lib.mkIf programs.fish.enable false;
+
 	programs.fish = {
 		# Whether to configure FISH as an interactive shell.
 		enable = true;
