@@ -1,8 +1,8 @@
 // Input devices configuration.
 input {
 	// Keyboard configuration.
-	/-keyboard {
-		xkb {
+	keyboard {
+		/-xkb {
 			// Keyboard layout to use.
 			layout "fr,us"
 
