@@ -1,4 +1,7 @@
 { ... }: { boot.loader = {
+	# Whether to let the boot loader modify EFI entries.
+	efi.canTouchEfiVariables = true;
+
 	# Whether to enable the Limine bootloader.
 	limine.enable = true;
 
