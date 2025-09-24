@@ -78,8 +78,8 @@
 			rmnixiso = "sudo nix-store --delete --ignore-liveness /nix/store/name-of-the-iso-here-linux.iso";
 
 			# Download the latest stable NixOS `.iso` image (graphical and minimal).
-			downloadnix = ''wget -v "https://channels.nixos.org/nixos-25.05/latest-nixos-graphical-x86_64-linux.iso"'';
-			downloadminix = ''wget -v "https://channels.nixos.org/nixos-25.05/latest-nixos-minimal-x86_64-linux.iso"'';
+			downloadnix = ''wget -v "https://channels.nixos.org/nixos-unstable/latest-nixos-graphical-x86_64-linux.iso"'';
+			downloadminix = ''wget -v "https://channels.nixos.org/nixos-unstable/latest-nixos-minimal-x86_64-linux.iso"'';
 
 			# Writing an `.iso` file to a drive.
 			writeiso = "sudo dd bs=4M if=/path/to/file.iso of=/path/to/drive conv=fsync oflag=direct status=progress";
