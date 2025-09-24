@@ -22,7 +22,7 @@
 	systemd.services.flatpak-repo = lib.mkIf config.services.flatpak.enable {
 		wantedBy = [ "multi-user.target" ];
 		path = [ pkgs.flatpak ];
-		script = ''flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo'';
+		script = ''flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo'';
 	};
 
 	# Add shell abbreviations for updating flatpaks.
