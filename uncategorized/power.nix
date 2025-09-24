@@ -14,8 +14,8 @@
 			HandlePowerKey = "ignore";
 
 			# For laptops, what to do with different lid actions.
-			lidSwitch = "suspend";
-			lidSwitchExternalPower = "suspend";
+			lidSwitch = "ignore";
+			lidSwitchExternalPower = "ignore";
 			lidSwitchDocked = "ignore";
 		};
 
