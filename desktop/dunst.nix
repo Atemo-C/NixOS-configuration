@@ -25,7 +25,7 @@
 			width = "(16, 640)";
 
 			# Horizontal and vertical offset from the corner of the screen in pixels.
-			offset = "(6, 28)";
+			offset = "(16, 16)";
 
 			# Maximum and minimum width for the progress bar in pixels.
 			progress_bar_max_width = 600;
