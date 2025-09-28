@@ -139,7 +139,7 @@ out=$?
 }
 
 # Copy the wallpaper to Hyprpaper's configuration file's directory to ensure its permanence.
-cp "$wallpaper" "$HOME/.config/hypr/wallpaper" || {
+magick "$wallpaper" -quality 100 "$HOME/.config/hypr/wallpaper.jpg" || {
 	printf "%s %s%s%s image could not be copied. Using the original image's path.\n" \
 	"$war" "$ico" "$wallpaper" "$clr"
 
@@ -147,7 +147,7 @@ cp "$wallpaper" "$HOME/.config/hypr/wallpaper" || {
 	"${dwar} ${dico}${wallpaper}${bspan} could not be copied. Using the original image's path."
 
 	original=true
-}; [ "$original" != "true" ] && { wallpaper="$HOME/.config/hypr/wallpaper"; }
+}; [ "$original" != "true" ] && { wallpaper="$HOME/.config/hypr/wallpaper.jpg"; }
 
 
 # Write the output to Hyprpaper's configuration file.
