@@ -18,13 +18,13 @@
 
 	// Modules to display on the right.
 	"modules-right": [
-		"image#cpu",         "cpu",    "temperature", "custom/spacer",
-		"image#ram",         "memory", "custom/spacer",
-		"battery",           "custom/spacer",
-		"backlight",         "custom/spacer",
-		"custom/brightness", "custom/spacer",
-		"wireplumber",       "custom/spacer",
-		"clock",             "custom/bigspacer",
+		"image#cpu", "cpu",    "temperature", "custom/spacer",
+		"image#ram", "memory", "custom/spacer",
+		"battery",
+		"backlight",
+		"custom/brightness",
+		"wireplumber", "custom/spacer",
+		"clock",       "custom/bigspacer",
 		"image#close"
 	],
 
@@ -136,10 +136,10 @@
 		"format": "{temperatureC}°C",
 
 		// R5 PC
-		//"hwmon-path": "/sys/class/hwmon/hwmon1/temp1_input",
+		"hwmon-path": "/sys/class/hwmon/hwmon1/temp1_input",
 
 		// HP 250 G6
-		"hwmon-path": "/sys/class/hwmon/hwmon6/temp1_input",
+		//"hwmon-path": "/sys/class/hwmon/hwmon6/temp1_input",
 
 		"interval": 1,
 		"on-click": "$TERMINAL -e btop",
@@ -169,11 +169,12 @@
 	// Battery monitoring module.
 	// • [LMB] Show a detailed battery readout at a glance.
 	"battery": {
+		"exec-if": "ls /sys/class/power_supply/BAT* > /dev/null 2>&1",
 		"states": {
 			"warning": 35,
 			"critical": 20,
 		},
-		"format": "{icon} {capacity}%",
+		"format": "{icon} {capacity}%  ",
 		"format-icons": [ " ", " ", " ", " ", " " ],
 		"on-click": "dunstify \"Battery information\" \"$(acpi -bi)\""
 	},
@@ -182,7 +183,8 @@
 	// • [SCRL UP] Increase the screen brightness.
 	// • [SCRL DN] Decrease the screen brightness.
 	"backlight": {
-		"format": "{icon}{percent}%",
+		"exec-if": "ls /sys/class/backlight/* > /dev/null 2>&1",
+		"format": "{icon}{percent}%  ",
 		"format-icons": [ "󰃜 ", "󰃞 ", "󰃟 ", "󰃠 ", "󰃚 " ]
 	},
 
@@ -191,8 +193,7 @@
 	// • [SCRL DN] Decrease the external monitor brightness.
 	"custom/brightness": {
 		"exec": "ddcutil --display 1 getvcp 10 | grep \"Brightness\" | awk '{print $9}' | tr -d ','",
-		"exec-if": "sleep 1",
-		"format": "{icon}{}%",
+		"format": "{icon}{}%  ",
 		"format-icons": [ "󰃜 ", "󰃞 ", "󰃟 ", "󰃠 ", "󰃚 " ],
 		"interval": "once",
 		"on-scroll-up": "ddcutil --display 1 setvcp 10 + 2",
