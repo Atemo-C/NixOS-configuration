@@ -49,7 +49,7 @@ in {
 		kdePackages.kdenlive # Video editor based on the MLT and KDE Frameworks.
 		krita                # Painting and animation program.
 		lxqt.lximage-qt      # Image viewer.
-		upscayl              # AI image upscaler.
+		#upscayl              # AI image upscaler.
 	]);
 
 	home-manager.users.${config.userName} = {
