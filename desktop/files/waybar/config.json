@@ -193,6 +193,7 @@
 	// • [SCRL DN] Decrease the external monitor brightness.
 	"custom/brightness": {
 		"exec": "ddcutil --display 1 getvcp 10 | grep \"Brightness\" | awk '{print $9}' | tr -d ','",
+		"exec-if": "ddcutil detect",
 		"format": "{icon}{}%  ",
 		"format-icons": [ "󰃜 ", "󰃞 ", "󰃟 ", "󰃠 ", "󰃚 " ],
 		"interval": "once",
