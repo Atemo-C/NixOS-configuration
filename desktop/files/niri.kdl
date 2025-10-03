@@ -2,14 +2,6 @@
 input {
 	// Keyboard configuration.
 	keyboard {
-		/-xkb {
-			// Keyboard layout to use.
-			layout "fr,us"
-
-			// Keyboard layout variant to use.
-			variant ",intl"
-		}
-
 		// Delay in milliseconds before a key is held down.
 		repeat-delay 250
 
@@ -31,6 +23,10 @@ input {
 	// [ adaptive | flat ]
 	trackpoint { accel-profile "flat"; }
 
+	// Acceleration profile for trackballs.
+	// [ adaptive | flat ]
+	trackball { accel-profile "flat"; }
+
 	// Whether to disable Niri handling the power button instead of systemd or yourself.
 	disable-power-key-handling
 
@@ -43,12 +39,16 @@ input {
 }
 
 // Output configuration for the Acer XV242Y, plugged in via DisplayPort
-/-output "DP-3" {
+/-output "DP-1" {
 	// Mode (resolution & refresh rate) of the output (<width>x<height>@<refresh rate>).
 	mode "1920x1080@119.982"
 
 	// Whether this output should be the one to get focus at startup.
 	focus-at-startup
+
+	// Whether to enable variable refresh rate (VRR) on demand.
+	// When on demand, it will be enabled with windows that have the `variable-refresh-rate` window rule.
+	variable-refresh-rate on-demand=true
 }
 
 // Bindings.
@@ -479,6 +479,14 @@ window-rule {
 	match app-id=r#"^gimp$"#
 	match app-id=r#"^UltiMaker-Cura$"#
 	default-column-width { proportion 1.0; }
+}
+
+// Windows affected by variable refresh rate.
+window-rule {
+	match app-id=r#"^Better than Adventure.*$"# title="^Better than Adventure.*$"
+	match app-id=r#"^steam_app_.*$"#
+	variable-refresh-rate true
+	open-fullscreen true
 }
 
 // Place the background within the backdrop.
