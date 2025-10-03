@@ -10,7 +10,7 @@
 		isNormalUser = true;
 	};
 
-	home-manager.users.${config.userName}.usersDirs = {
+	home-manager.users.${config.userName}.xdg.userDirs = {
 		# Whether to manage `$XDG_CONFIG_HOME/user-dirs.dirs`.
 		enable = true;
 
@@ -18,13 +18,13 @@
 		createDirectories = true;
 
 		# Directories to configure.
-		desktop     = "${config.home.homeDirectory}/Other/Desktop";
-		documents   = "${config.home.homeDirectory}/Documents";
-		download    = "${config.home.homeDirectory}/Downloads";
-		music       = "${config.home.homeDirectory}/Audio/Music";
-		pictures    = "${config.home.homeDirectory}/Images";
-		publicShare = "${config.home.homeDirectory}/Other/Public";
-		templates   = "${config.home.homeDirectory}/Other/Templates";
-		videos      = "${config.home.homeDirectory}/Videos";
+		desktop     = "${config.users.users.${config.userName}.home}/Other/Desktop";
+		documents   = "${config.users.users.${config.userName}.home}/Documents";
+		download    = "${config.users.users.${config.userName}.home}/Downloads";
+		music       = "${config.users.users.${config.userName}.home}/Audio/Music";
+		pictures    = "${config.users.users.${config.userName}.home}/Images";
+		publicShare = "${config.users.users.${config.userName}.home}/Other/Public";
+		templates   = "${config.users.users.${config.userName}.home}/Other/Templates";
+		videos      = "${config.users.users.${config.userName}.home}/Videos";
 	};
 }
