@@ -2,7 +2,6 @@
 	environment.systemPackages = lib.optionals config.programs.niri.enable (with pkgs; [
 		#desmume            # Nintendo DS(i) emulator.
 		#pcsx2              # PlayStation 2 emulator.
-		#rpcs3              # PlayStation 3 emulator.
 		#xemu               # XBOX emulator.
 		jdk24              # Java, for Minecraft.
 		ferium             # CLI program for managing Minecraft mods and modpacks from various sources.
@@ -25,6 +24,9 @@
 
 		# Whether to add `cap_sys_nice` capabilities to GameScope, so that it may renice itself.
 		gamescope.capSysNice = lib.mkIf gamescope.enable true;
+
+		# PlayStation 3 emulator.
+		rpcs3.enable = true;
 
 		steam = {
 			# Whether to enable Steam.
@@ -60,20 +62,4 @@
 		# Additional kernel parameters to help.
 		kernelParams = [ "preempt=full" ];
 	};
-
-	# Remove certain resource limits for programs that needs them gone; Mostly for heavier emulators.
-	security.pam.loginLimits = [
-		{
-			domain = "*";
-			type = "hard";
-			item = "memlock";
-			value = "unlimited";
-		}
-		{
-			domain = "*";
-			type = "soft";
-			item = "memlock";
-			value = "unlimited";
-		}
-	];
 }

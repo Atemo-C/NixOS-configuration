@@ -1,4 +1,7 @@
 { ... }: { imports = [
+	# Custom modules imported globally.
+	./custom-modules/programs/rpcs3.nix
+
 	./desktop/dunst.nix     # Dunst notification daemon.
 	./desktop/fuzzel.nix    # Fuzzel graphical menu.
 	./desktop/niri.nix      # Niri Wayland compositor.
