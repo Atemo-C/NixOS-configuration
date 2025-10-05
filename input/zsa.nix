@@ -3,5 +3,5 @@
 	keymapp.enable = lib.mkIf config.programs.niri.enable true;
 
 	# Whether to enable wally-cli, a CLI flashing utility for ZSA keyboards.
-	wally-cli = true;
+	wally-cli.enable = true;
 }; }
