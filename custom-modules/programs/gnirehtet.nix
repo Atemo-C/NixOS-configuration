@@ -7,6 +7,6 @@
 	config = lib.mkIf cfg.enable {
 		environment.systemPackages = [ cfg.package ];
 		programs.adb.enable = true;
-		users.users.${config.userName}.extraGroups = "adbusers";
+		users.users.${config.userName}.extraGroups = [ "adbusers" ];
 	};
 }
