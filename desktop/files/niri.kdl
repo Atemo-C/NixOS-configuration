@@ -198,8 +198,13 @@ binds {
 	XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "set" "2%-"; }
 
 	// Screen brightness control for external monitors.
-	Shift+XF86MonBrightnessUp   allow-when-locked=true { spawn "ddcutil" "--display" "1" "setvcp" "10" "+" "2"; }
-	Shift+XF86MonBrightnessDown allow-when-locked=true { spawn "ddcutil" "--display" "1" "setvcp" "10" "-" "2"; }
+	// https://github.com/rockowitz/ddcutil/issues/110
+	Shift+XF86MonBrightnessUp   allow-when-locked=true {
+		spawn "ddcutil" "--bus" "7" "--disable-dynamic-sleep" "--noverify" "--skip-ddc-checks" "--sleep-multiplier" "0.13" "setvcp" "10" "+" "2"
+	}
+	Shift+XF86MonBrightnessDown allow-when-locked=true {
+		spawn "ddcutil" "--bus" "7" "--disable-dynamic-sleep" "--noverify" "--skip-ddc-checks" "--sleep-multiplier" "0.13" "setvcp" "10" "-" "2";
+	}
 
 	// Media control.
 	XF86AudioPlay allow-when-locked=true { spawn "playerctl" "play-pause"; }
