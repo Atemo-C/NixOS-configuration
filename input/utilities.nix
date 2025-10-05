@@ -13,5 +13,5 @@
 	programs.ydotool.enable = true;
 
 	# Add the user to the `ydotool` group.
-	users.users.${config.userName}.extraGroups = "ydotool";
+	users.users.${config.userName}.extraGroups = [ "ydotool" ];
 }
