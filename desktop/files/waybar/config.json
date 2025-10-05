@@ -192,13 +192,14 @@
 	// • [SCRL UP] Increase the external monitor brightness.
 	// • [SCRL DN] Decrease the external monitor brightness.
 	"custom/brightness": {
-		"exec": "ddcutil --display 1 getvcp 10 | grep \"Brightness\" | awk '{print $9}' | tr -d ','",
+		"exec": "ddcutil --bus 7 --disable-dynamic-sleep --noverify --skip-ddc-checks --sleep-multiplier 0.13 getvcp 10 | grep \"Brightness\" | awk '{print $9}' | tr -d ','",
 		"exec-if": "ddcutil detect",
+		"exec-on-event": true,
 		"format": "{icon}{}%  ",
 		"format-icons": [ "󰃜 ", "󰃞 ", "󰃟 ", "󰃠 ", "󰃚 " ],
 		"interval": "once",
-		"on-scroll-up": "ddcutil --display 1 setvcp 10 + 2",
-		"on-scroll-down": "ddcutil --display 1 setvcp 10 - 2"
+		"on-scroll-up": "ddcutil --bus 7 --disable-dynamic-sleep --noverify --skip-ddc-checks --sleep-multiplier 0.13 setvcp 10 + 2",
+		"on-scroll-down": "ddcutil --bus 7 --disable-dynamic-sleep --noverify --skip-ddc-checks --sleep-multiplier 0.13 setvcp 10 - 2"
 	},
 
 	// Audio output monitoring and control module.
