@@ -1,4 +1,4 @@
-{ config, ... }: { programs = {
+{ config, lib, ... }: { programs = {
 	# Whether to enable Keymapp, a graphical application for ZSA keyboards.
 	keymapp.enable = lib.mkIf config.programs.niri.enable true;
 
