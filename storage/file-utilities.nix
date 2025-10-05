@@ -41,8 +41,6 @@
 
 		# Graphical programs.
 	] ++ lib.optionals config.programs.niri.enable (with pkgs; [
-		file-roller          # Archive manager for the GNOME desktop environment.
-		gnome-disk-utility   # GNOME's disk utility.
 		gparted              # Graphical disk partitioning tool.
 		timeshift xorg.xhost # System restore tool for Linux. (As well as a dependency for it.)
 		xfce.xfburn          # Disc burner and project creator for Xfce.
@@ -86,6 +84,14 @@
 			destination = "/share/thumbnailers/ffmpegaudio.thumbnailer";
 		})
 	]);
+
+	programs = {
+		# Whether to enable File Roller, an archive manager for GNOME.
+		file-roller.enable = true;
+
+		# Whether to enable GNOME Disks daemon, a program designed to be a UDisks2 graphical front-end.
+		gnome-disks.enable = true;
+	};
 
 	# Whether to enable the image thumbnailer for the Thunar file manager.
 	services.tumbler.enable = lib.mkIf config.programs.thunar.enable true;
