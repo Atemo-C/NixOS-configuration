@@ -25,6 +25,7 @@
 		pathsToLink = [ "/share/soundfonts" ];
 
 		systemPackages = with pkgs; [
+			alsa-utils            # Various audio utilities for ALSA.
 			audacious             # Audio player.
 			easytag               # View and edit tags for various audio files.
 			pwvucontrol           # Graphical volume control.
