@@ -8,4 +8,4 @@
 
 	# Keyring utility from the GNOME desktop.
 	services.gnome.gnome-keyring.enable = true;
-};
+}
