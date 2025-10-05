@@ -1,6 +1,8 @@
 { ... }: { imports = [
 	# Custom modules imported globally.
+	./custom-modules/programs/keymapp.nix
 	./custom-modules/programs/rpcs3.nix
+	./custom-modules/programs/wally-cli.nix
 
 	./desktop/dunst.nix     # Dunst notification daemon.
 	./desktop/fuzzel.nix    # Fuzzel graphical menu.
