@@ -54,6 +54,7 @@
 
 		# Updated Vintagestory version.
 		# https://github.com/NixOS/nixpkgs/issues/449182
+		# https://github.com/NixOS/nixpkgs/pull/449177
 		(self: super: {
 			vintagestory = super.vintagestory.overrideAttrs (oldAttrs: rec {
 				version = "1.21.4";
