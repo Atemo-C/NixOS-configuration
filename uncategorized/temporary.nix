@@ -42,11 +42,27 @@
 		'';
 	};
 
-	# Consistent firmware paths for libvirtd.
-	# https://github.com/NixOS/nixpkgs/issues/378894
-	# https://github.com/NixOS/nixpkgs/pull/421549
-	nixpkgs.overlays = lib.mkIf config.virtualisation.libvirtd.enable [
-		(self: super: { nixosModules.libvirtd = { imports = [ ./temporary-libvirtd.nix ]; }; })
+	nixpkgs.overlays = [
+		# Consistent firmware paths for libvirtd.
+		# https://github.com/NixOS/nixpkgs/issues/378894
+		# https://github.com/NixOS/nixpkgs/pull/421549
+		(self: super: {
+			nixosModules.libvirtd = lib.mkIf config.virtualisation.libvirtd.enable {
+				imports = [ ./temporary-libvirtd.nix ];
+			};
+		})
+
+		# Updated Vintagestory version.
+		# https://github.com/NixOS/nixpkgs/issues/449182
+		(self: super: {
+			vintagestory = super.vintagestory.overrideAttrs (oldAttrs: rec {
+				version = "1.21.4";
+				src = super.fetchurl {
+					url = "https://cdn.vintagestory.at/gamefiles/stable/vs_client_linux-x64_${version}.tar.gz";
+					hash = "sha256-npffJgxgUMefX9OiveNk1r4kVqsMaVCC1jcWaibz9l8=";
+				};
+			});
+		})
 	];
 
 #	# https://github.com/NixOS/nixpkgs/issues/361592
