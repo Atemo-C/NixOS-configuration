@@ -52,27 +52,27 @@
 			};
 		})
 
-		# Updated Vintagestory version.
-		# https://github.com/NixOS/nixpkgs/issues/449182
-		# https://github.com/NixOS/nixpkgs/pull/449177
-		(self: super: {
-			vintagestory = super.vintagestory.overrideAttrs (oldAttrs: rec {
-				version = "1.21.4";
-				src = super.fetchurl {
-					url = "https://cdn.vintagestory.at/gamefiles/stable/vs_client_linux-x64_${version}.tar.gz";
-					hash = "sha256-npffJgxgUMefX9OiveNk1r4kVqsMaVCC1jcWaibz9l8=";
-				};
-			});
-		})
+#		# [Fixed] Updated Vintagestory version.
+#		# https://github.com/NixOS/nixpkgs/issues/449182
+#		# https://github.com/NixOS/nixpkgs/pull/449177
+#		(self: super: {
+#			vintagestory = super.vintagestory.overrideAttrs (oldAttrs: rec {
+#				version = "1.21.4";
+#				src = super.fetchurl {
+#					url = "https://cdn.vintagestory.at/gamefiles/stable/vs_client_linux-x64_${version}.tar.gz";
+#					hash = "sha256-npffJgxgUMefX9OiveNk1r4kVqsMaVCC1jcWaibz9l8=";
+#				};
+#			});
+#		})
 	];
 
-#	# https://github.com/NixOS/nixpkgs/issues/361592
+#	# [Fixed] https://github.com/NixOS/nixpkgs/issues/361592
 #	security.pam.services.systemd-run0 = {
 #		setEnvironment = true;
 #		pamMount = false;
 #	};
 
-# https://github.com/NixOS/nixpkgs/issues/404912
+# [Fixed] https://github.com/NixOS/nixpkgs/issues/404912
 # https://github.com/NixOS/nixpkgs/pull/404963
 #	nixpkgs.overlays = [
 #		(self: super: {
