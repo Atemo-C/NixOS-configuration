@@ -60,7 +60,7 @@ while true; do
 		printf "%s" "$i" | grep -q '^[+-\*\/]' && { i="$last_result$i"; }
 
 		# Use `bc` to evaluate the expression.
-		result=$(printf "%s\n" "$i" | bc 2>/dev/null) || { printf "" && continue; }
+		result=$(printf "scale=10\n%s\n" "$i" | bc 2>/dev/null) || { printf "" && continue; }
 
 		# Print the result and update the `last_result` variable.
 		printf "%s%s%s\n" "$exe" "$result" "$ico"
