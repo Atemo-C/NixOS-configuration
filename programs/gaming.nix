@@ -3,7 +3,7 @@
 		#desmume            # Nintendo DS(i) emulator.
 		#pcsx2              # PlayStation 2 emulator.
 		#xemu               # XBOX emulator.
-		jdk24              # Java, for Minecraft.
+		jdk25              # Java, for Minecraft.
 		ferium             # CLI program for managing Minecraft mods and modpacks from various sources.
 		prismlauncher      # Full-featured Minecraft launcher.
 		mcpelauncher-ui-qt # Minecraft Bedrock Launcher.
