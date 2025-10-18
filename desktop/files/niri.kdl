@@ -497,6 +497,12 @@ window-rule {
 	open-fullscreen true
 }
 
+// Resize certain windows to specific sizes.
+window-rule {
+	match app-id=r#".scrcpy-wrapped"# title="SM-A528B"
+	default-column-width { proportion 0.2475; }
+}
+
 // Place the background within the backdrop.
 layer-rule {
 	match namespace="^hyprpaper$"
