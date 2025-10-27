@@ -1,11 +1,6 @@
 { ... }: { imports = [
 	# Custom modules imported globally.
-	./custom-modules/programs/gnirehtet.nix
-	./custom-modules/programs/heimdall.nix
-	./custom-modules/programs/keymapp.nix
-	./custom-modules/programs/rpcs3.nix
-	./custom-modules/programs/scrcpy.nix
-	./custom-modules/programs/wally-cli.nix
+	./custom-modules/all.nix
 
 	./desktop/dunst.nix     # Dunst notification daemon.
 	./desktop/fuzzel.nix    # Fuzzel graphical menu.

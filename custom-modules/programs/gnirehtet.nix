@@ -1,6 +1,11 @@
 { config, lib, pkgs, ... }: let cfg = config.programs.gnirehtet; in {
+	meta.maintainers = [ lib.maintainers.atemo-c ];
+
 	options.programs.gnirehtet = {
-		enable = lib.mkEnableOption "Reverse tethering over adb for Android";
+		enable = lib.mkEnableOption ''
+			Whether to install gnirehtet, a tool for reverse tethering Android devices over ADB.
+		'';
+
 		package = lib.mkPackageOption pkgs "gnirehtet" {};
 	};
 
