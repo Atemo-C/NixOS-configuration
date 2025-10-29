@@ -114,24 +114,5 @@ in {
 
 		# Download videos from websites like X/Twitter directly with FFmpeg.
 		ffx = lib.mkIf ffm ''ffmpeg -hide_banner -i "https://url-here.m3u8" -c copy -bsf:a aac_adtstoasc name.mp4'';
-
-		# Listen to various online audio streams with MPV.
-		lofi-asian      = ''mpv --quiet --no-video "https://www.youtube.com/watch?v=Na0w3Mz46GA"'';
-		lofi-escape     = ''mpv --quiet --no-video "https://www.youtube.com/watch?v=S_MOd40zlYU"'';
-		lofi-guitar     = ''mpv --quiet --no-video "https://www.youtube.com/watch?v=E_XmwjgRLz8"'';
-		lofi-jazz       = ''mpv --quiet --no-video "https://www.youtube.com/watch?v=HuFYqnbVbzY"'';
-		lofi-medieval   = ''mpv --quiet --no-video "https://www.youtube.com/watch?v=IxPANmjPaek"'';
-		lofi-piano      = ''mpv --quiet --no-video "https://www.youtube.com/watch?v=TtkFsfOP9QI"'';
-		lofi-pomodoro   = ''mpv --quiet --no-video "https://www.youtube.com/watch?v=1oDrJba2PSs"'';
-		lofi-pov        = ''mpv --quiet --no-video "https://www.youtube.com/watch?v=uFlzUaisbig"'';
-		lofi-purr       = ''mpv --quiet --no-video "https://www.youtube.com/watch?v=xORCbIptqcc"'';
-		lofi-rain       = ''mpv --quiet --no-video "https://www.youtube.com/watch?v=-OekvEFm1lo"'';
-		lofi-sad        = ''mpv --quiet --no-video "https://www.youtube.com/watch?v=P6Segk8cr-c"'';
-		lofi-sleep      = ''mpv --quiet --no-video "https://www.youtube.com/watch?v=28KRPhVzCus"'';
-		lofi-study      = ''mpv --quiet --no-video "https://www.youtube.com/watch?v=jfKfPfyJRdk"'';
-		lofi-summer     = ''mpv --quiet --no-video "https://www.youtube.com/watch?v=SXySxLgCV-8"'';
-		lofi-synthwave  = ''mpv --quiet --no-video "https://www.youtube.com/watch?v=4xDzrJKXOOY"'';
-		nightinthewoods = ''mpv --quiet --no-video "https://www.youtube.com/watch?v=AsLKfqA73uE"'';
-		tunic           = ''mpv --quiet --no-video "https://www.youtube.com/watch?v=gzWd5hjcaPo"'';
 	};
 }
