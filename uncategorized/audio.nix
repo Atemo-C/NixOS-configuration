@@ -9,7 +9,7 @@
 		pipewire.pulse.enable = true;
 
 		# Whether to enable the playerctld daemon for easy multimedia control.
-		playerctld.enable = true;
+		playerctld.enable = lib.mkIf config.services.pipewire.enable true;
 
 		# Whether to enable live audio effects using EasyEffects.
 		easyeffects.enable = lib.mkIf config.services.pipewire.enable true;
@@ -61,7 +61,7 @@
 		fish.shellAbbrs = lib.mkIf config.programs.fish.enable (
 			let
 				# Base MPV command.
-				mpvcmd = ''mpv --quiet --no-video "https://www.youtube.com/watch?v="'';
+				mpv-ytb = ''mpv --quiet --no-video "https://www.youtube.com/watch?v="'';
 
 				# List of audio streams.
 				streams = [
@@ -86,9 +86,9 @@
 
 				# Generate the full abbreviations.
 				abbrs = builtins.listToAttrs (
-					map (s: {
-						name = s.name;
-						value = ''${mpvcmd}${s.id}"'';
+					map (stream: {
+						name = stream.name;
+						value = ''${mpv-ytb}${stream.id}"'';
 					}) streams
 				);
 			in abbrs
