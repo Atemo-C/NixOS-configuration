@@ -7,7 +7,6 @@
 	jxl = lib.elem pkgs.libjxl      config.environment.systemPackages;
 	par = lib.elem pkgs.parallel    config.environment.systemPackages;
 	png = lib.elem pkgs.oxipng      config.environment.systemPackages;
-	ytd = config.home-manager.users.${config.userName}.programs.yt-dlp.enable;
 in {
 	# Video4Linux2 kernel module.
 	#boot.extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
@@ -16,7 +15,7 @@ in {
 	environment.systemPackages = with pkgs; [
 		#v4l-utils   # V4L utilities and libv4l, providing common image formats regardless of the v4l device.
 		ffmpeg-full # A complete solution to record, convert, stream audio and video.
-		gallery-dl  # Dowload image galleries
+		gallery-dl  # Dowload image galleries.
 		libde265    # Open h.265 video codec implementation.
 		dcmtk       # Collection of libraries and applications implementing large parts of the DICOM standard.
 		imagemagick # Software suite to create, edit, compose, and convert bitmap images.
@@ -24,6 +23,7 @@ in {
 		jpegoptim   # JPEG optimiser.
 		libjxl      # JPEL XL image format reference implementation.
 		libwebp     # Tools and library for the WebP image format.
+		yt-dlp      # CLI tool to download videos from YouTube and other websites; Fork of yt-dl.
 
 		# Open-source multimedia framework.
 		gst_all_1.gst-editing-services
@@ -52,16 +52,11 @@ in {
 		#upscayl              # AI image upscaler.
 	]);
 
-	home-manager.users.${config.userName} = {
-		# Whether to enable yt-dlp, a CLI tool to download videos from YouTube and other websites; Fork of yt-dl.
-		programs.yt-dlp.enable = true;
-
-		# Link the configuration files for yt-dlp and mpv.
-		systemd.user.tmpfiles.rules = [
-			"L %h/.config/mpv/mpv.conf - - - - /etc/nixos/programs/files/mpv.conf"
-		] ++ lib.optional ytd
-			"L %h/.config/yt-dlp/config - - - - /etc/nixos/programs/files/yt-dlp.conf";
-	};
+	# Link YT-DLP's and MPV's configuration files.
+	systemd.user.tmpfiles.users.${config.userName}.rules = [
+		"L %h/.config/mpv/mpv.conf - - - - /etc/nixos/programs/files/mpv.conf"
+		"L %h/.config/yt-dlp/config - - - - /etc/nixos/programs/files/yt-dlp.conf"
+	];
 
 	programs.obs-studio = lib.mkIf config.programs.niri.enable {
 		# Whether to enable OBS.

@@ -53,6 +53,6 @@
 	environment.systemPackages = lib.optionals config.hardware.nvidia-container-toolkit.enable (with pkgs.cudaPackages; [
 		cudnn
 		cutensor
-		cudatoolkit
+#		cudatoolkit
 	]);
 }

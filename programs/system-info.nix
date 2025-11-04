@@ -3,6 +3,7 @@
 		# Non-graphical programs.
 		btop          # A monitor of resources.
 		cpu-x         # See information on CPU, motherboard and more.
+		fastfetch     # Fast system information tool like Neofetch.
 		lm_sensors    # Tools for reading hardware sensors.
 		smartmontools # Tools for monitoring the health of hard drives.
 		mprime        # Mersenne prime search / System stability tester (torture).
@@ -15,18 +16,13 @@
 		mesa-demos     # Collection of demos and test programs for OpenGL and Mesa.
 	]);
 
-	home-manager.users.${config.userName} = rec {
-		# Whether to enable Fastfetch, a fast system information tool like Neofetch.
-		programs.fastfetch.enable = true;
-
-		# Link the configuration file of Fastfetch.
-		systemd.user.tmpfiles.rules = lib.optional programs.fastfetch.enable
-		"L %h/.config/fastfetch/config.jsonc - - - - /etc/nixos/programs/files/fastfetch.jsonc";
-	};
+	# Link Fastfetch's configuration file.
+	systemd.user.tmpfiles.users.${config.userName}.rules =
+		[ "L %h/.config/fastfetch/config.jsonc - - - - /etc/nixos/programs/files/fastfetch.jsonc" ];
 
 	# Shell abbreviations for BTOP and Fastfetch.
 	programs.fish.shellAbbrs = lib.mkIf config.programs.fish.enable {
 		b = lib.mkIf (lib.elem pkgs.btop config.environment.systemPackages) "btop";
-		f = lib.mkIf config.home-manager.users.${config.userName}.programs.fastfetch.enable "fastfetch";
+		f = lib.mkIf (lib.elem pkgs.fastfetch config.environment.systemPackages) "fastfetch";
 	};
 }

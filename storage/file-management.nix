@@ -34,16 +34,16 @@
 
 		# Default size of the separator between icons and normal text.
 		programs.lsd.settings.icons.separator = "  ";
-
-		# Link configuration files.
-		systemd.user.tmpfiles.rules = [
-			# Mimeapps configuration.
-			"L %h/.config/mimeapps.list - - - - /etc/nixos/storage/files/mimeaps.list"
-		] ++ lib.optional config.programs.thunar.enable
-
-			# Custom actions for the Thunar file manager.
-			"L %h/.config/Thunar/uca.xml - - - - /etc/nixos/storage/files/thunar-custom-actions.xml";
 	};
+
+	# Link configuration files.
+	systemd.user.tmpfiles.users.${config.userName}.rules = [
+		# Mimeapps configuration.
+		"L %h/.config/mimeapps.list - - - - /etc/nixos/storage/files/mimeaps.list"
+	] ++ lib.optional config.programs.thunar.enable
+
+		# Custom actions for the Thunar file manager.
+		"L %h/.config/Thunar/uca.xml - - - - /etc/nixos/storage/files/thunar-custom-actions.xml";
 
 	# Add `lsd` shell abbreviations.
 	programs.fish.shellAbbrs = lib.mkIf (config.programs.fish.enable &&

@@ -34,8 +34,8 @@ in {
 		variables.EDITOR = lib.mkIf micro "micro";
 	};
 
-	# Link configuration files linked to the Micro text editor.
-	home-manager.users.${config.userName}.systemd.user.tmpfiles.rules = lib.optionals micro [
+	# Link Micro's configuration files.
+	systemd.user.tmpfiles.users.${config.userName}.rules = [
 		"L %h/.config/micro/settings.json - - - - /etc/nixos/programs/files/micro/settings.json"
 		"L %h/.config/micro/init.lua - - - - /etc/nixos/programs/files/micro/init.lua"
 		"L %h/.config/micro/colorschemes/atemo-colors.micro - - - - /etc/nixos/programs/files/micro/colors.micro"
