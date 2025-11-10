@@ -1,4 +1,5 @@
-{ config, lib, ... }: lib.mkIf config.programs.niri.enable { home-manager.users.${config.userName}.services.dunst = {
+{ config, lib, ... }: lib.mkIf config.programs.niri.enable {
+home-manager.users.${config.userName}.services.dunst = {
 	# Whether to display and send graphical notifications with Dunst.
 	enable = true;
 
