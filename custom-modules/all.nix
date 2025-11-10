@@ -13,6 +13,9 @@
 	./programs/rpcs3.nix
 	./programs/scrcpy.nix
 
+	./programs/niri/ozoneWayland.nix
+	./programs/niri/xwayland.nix
+
 	./programs/soundfont/arachno.nix
 	./programs/soundfont/fluid.nix
 	./programs/soundfont/generaluser.nix

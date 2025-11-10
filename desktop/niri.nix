@@ -1,20 +1,24 @@
-{ config, lib, pkgs, ... }: {
-	# Whether to enable the Niri Wayland compositor.
-	programs.niri.enable = true;
+{ config, lib, ... }: {
+	programs = {
+		niri = {
+			# Whether to enable the Niri Wayland compositor.
+			enable = true;
 
-	# Shell abbreviation for starting Niri.
-	programs.fish.shellAbbrs = lib.mkIf ( config.programs.niri.enable && config.programs.fish.enable)
-	{ n = "niri-session"; };
+			# Whether to enable XWayland support.
+			xwayland.enable = true;
 
-	environment = lib.mkIf config.programs.niri.enable {
-		# Ozone Wayland support for Chromium and Electron-based programs.
-		sessionVariables.NIXOS_OZONE_WL = "1";
+			# Whether to enable Ozone Wayland support for Chromium and Electron-based programs.
+			ozoneWayland.enable = true;
+		};
 
-		# XWayland integration.
-		systemPackages = [ pkgs.xwayland-satellite ];
+		# Start Niri by simply typing `n` if using the FISH shell.
+		fish.shellAbbrs.n = lib.mkIf (
+			config.programs.fish.enable
+			&& config.programs.niri.enable
+		) "niri-session";
 	};
 
-	# Link the configuration file of Niri.
+	# Link Niri's configuration file.
 	systemd.user.tmpfiles.users.${config.userName}.rules = lib.optional config.programs.niri.enable
 	"L %h/.config/niri/config.kdl - - - - /etc/nixos/desktop/files/niri.kdl";
 }
