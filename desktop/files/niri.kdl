@@ -39,9 +39,12 @@ input {
 }
 
 // Output configuration for the Acer XV242Y, plugged in via DisplayPort
-/-output "DP-1" {
+/-output "DP-3" {
 	// Mode (resolution & refresh rate) of the output (<width>x<height>@<refresh rate>).
 	mode "1920x1080@119.982"
+
+	// Position of the monitor.
+	position x=0 y=0
 
 	// Whether this output should be the one to get focus at startup.
 	focus-at-startup
@@ -49,6 +52,12 @@ input {
 	// Whether to enable variable refresh rate (VRR) on demand.
 	// When on demand, it will be enabled with windows that have the `variable-refresh-rate` window rule.
 	variable-refresh-rate on-demand=true
+}
+
+// Output configuration for the Acer G205HV, plugged in via HDMI through a VGA adapter.
+/-output "HDMI-A-2" {
+	// Position of the monitor.
+	position x=1920 y=-88
 }
 
 // Bindings.
@@ -200,10 +209,10 @@ binds {
 	// Screen brightness control for external monitors.
 	// https://github.com/rockowitz/ddcutil/issues/110
 	Shift+XF86MonBrightnessUp   allow-when-locked=true {
-		spawn "ddcutil" "--bus" "7" "--disable-dynamic-sleep" "--noverify" "--skip-ddc-checks" "--sleep-multiplier" "0.13" "setvcp" "10" "+" "2"
+		spawn "ddcutil" "--bus" "13" "--disable-dynamic-sleep" "--noverify" "--skip-ddc-checks" "--sleep-multiplier" "0.13" "setvcp" "10" "+" "2"
 	}
 	Shift+XF86MonBrightnessDown allow-when-locked=true {
-		spawn "ddcutil" "--bus" "7" "--disable-dynamic-sleep" "--noverify" "--skip-ddc-checks" "--sleep-multiplier" "0.13" "setvcp" "10" "-" "2";
+		spawn "ddcutil" "--bus" "13" "--disable-dynamic-sleep" "--noverify" "--skip-ddc-checks" "--sleep-multiplier" "0.13" "setvcp" "10" "-" "2";
 	}
 
 	// Media control.
@@ -213,7 +222,6 @@ binds {
 	XF86AudioNext    allow-when-locked=true { spawn "playerctl" "next"; }
 	XF86AudioRewind  allow-when-locked=true { spawn "playerctl" "position" "2-"; }
 	XF86AudioForward allow-when-locked=true { spawn "playerctl" "position" "2+"; }
-
 
 	// Media audio control.
 	Shift+XF86AudioRaiseVolume allow-when-locked=true { spawn "playerctl" "volume" "0.01%+"; }
@@ -290,11 +298,13 @@ animations {
 	//off
 
 	// Slow down or speed up animations by this factor. Values below 1 speed animations up.
-	slowdown 0.75
+	slowdown 0.7
 }
 
 // Layout configuration.
 layout {
+	always-center-single-column
+
 	// Gaps around (inside & outside) windows in pixels.
 	gaps 0
 
@@ -309,25 +319,9 @@ layout {
 
 	// Set the heights that the `switch-preset-window-height` action toggles between.
 	preset-window-heights {
-		// proportions 0.33333
+		proportion 0.25
 		proportion 0.5
-		// proportions 0.66667
 		proportion 1.0
-	}
-
-	// Border configuration.
-	/-border {
-		// Width of the border in pixels.
-		width 1
-
-		// Color of the active border.
-		active-color "#0080ff"
-
-		// Color of the inactive border.
-		inactive-color "#1c1c1c"
-
-		// Color of the border around windows that request your attention.
-		urgent-color "#ff0060"
 	}
 
 	// Focus ring configuration.
@@ -492,6 +486,7 @@ window-rule {
 // Windows affected by variable refresh rate.
 window-rule {
 	match app-id=r#"^Better than Adventure.*$"# title="^Better than Adventure.*$"
+	match app-id=r#"Vintage Story"# title="Vintage Story"
 	match app-id=r#"^steam_app_.*$"#
 	variable-refresh-rate true
 	open-fullscreen true
