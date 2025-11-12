@@ -61,7 +61,7 @@
 		fish.shellAbbrs = lib.mkIf config.programs.fish.enable (
 			let
 				# Base MPV command.
-				mpv-ytb = ''mpv --quiet --no-video "https://www.youtube.com/watch?v="'';
+				mpv-ytb = ''mpv --quiet --no-video "https://www.youtube.com/watch?v='';
 
 				# List of audio streams.
 				streams = [
