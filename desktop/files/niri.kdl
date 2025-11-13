@@ -335,7 +335,7 @@ layout {
 		// Color of the inactive focus ring.
 		inactive-color "#1c1c1c"
 
-		// Color of the border around windows that request your attention.
+		// Color of the focus ring around windows that request your attention.
 		urgent-color "#ff0060"
 	}
 
@@ -439,8 +439,18 @@ overview {
 // Whether to disable the hotkey overlay when starting niri.
 hotkey-overlay { skip-at-startup; }
 
-// • Open certain windows as floating by default.
-// • Make their borders bigger.
+// Floating windows have a bigger focus ring and have shadows.
+window-rule {
+	match is-floating=true
+	shadow {
+		on
+		spread 3
+		offset x=0 y=0
+	}
+	focus-ring { width 2; }
+}
+
+// Open certain windows as floating by default.
 window-rule {
 	match app-id=r#"firefox$"# title="^Picture-in-Picture$"
 	match app-id=r#"librewolf$"# title="^Picture-in-Picture$"
@@ -455,7 +465,6 @@ window-rule {
 	match app-id=r#"rs.ruffle.Ruffle$"#
 	match app-id=r#"org.gnome.FileRoller$"#
 	open-floating true
-	border { width 2; }
 }
 
 // Block out certain programs from screen capture.
@@ -470,10 +479,10 @@ window-rule {
 	block-out-from "screencast"
 }
 
-// Remove borders of certain windows.
+// Remove the focus ring of certain windows.
 window-rule {
 	match app-id=r#"^org.vinegarhq.Sober$"#
-	border { width 0; }
+	focus-ring { width 0; }
 }
 
 // Open certain windows in their full size.
@@ -502,4 +511,13 @@ window-rule {
 layer-rule {
 	match namespace="^hyprpaper$"
 	place-within-backdrop true
+}
+
+layer-rule {
+	match namespace="launcher"
+	shadow {
+		on
+		spread 3
+		offset x=0 y=0
+	}
 }
