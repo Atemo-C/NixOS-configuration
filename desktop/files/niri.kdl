@@ -444,7 +444,7 @@ window-rule {
 	match is-floating=true
 	shadow {
 		on
-		spread 3
+		spread 4
 		offset x=0 y=0
 	}
 	focus-ring { width 2; }
@@ -517,7 +517,7 @@ layer-rule {
 	match namespace="launcher"
 	shadow {
 		on
-		spread 3
+		spread 4
 		offset x=0 y=0
 	}
 }
