@@ -39,7 +39,7 @@ input {
 }
 
 // Output configuration for the Acer XV242Y, plugged in via DisplayPort
-/-output "DP-3" {
+/-output "Acer Technologies XV242Y TL1EE0018521" {
 	// Mode (resolution & refresh rate) of the output (<width>x<height>@<refresh rate>).
 	mode "1920x1080@119.982"
 
@@ -55,7 +55,7 @@ input {
 }
 
 // Output configuration for the Acer G205HV, plugged in via HDMI through a VGA adapter.
-/-output "HDMI-A-2" {
+/-output "Acer Technologies Acer G205HV LRJ0W0204300" {
 	// Position of the monitor.
 	position x=1920 y=-88
 }
