@@ -12,7 +12,7 @@
 	padding: 2px 2px
 }
 
-#image:hover, #tray:hover, #cpu:hover, #temperature:hover, #memory:hover, #battery:hover, #backlight:hover, #wireplumber:hover, #clock:hover { background-color: rgba(255, 255, 255, 0.15); }
+#image:hover, #tray:hover, #cpu:hover, #temperature:hover, #memory:hover, #battery:hover, #backlight:hover, #wireplumber:hover, #clock:hover { background-color: rgba(255, 255, 255, 0.18); }
 
 window#waybar {
 	background: rgba(0, 0, 0, 0.8);
@@ -21,11 +21,14 @@ window#waybar {
 }
 
 tooltip {
-	background: #1d1d1d;
+	background: #0d0d0d;
 	border: 2px solid #0080ff
 }
 
-tooltip label { color: #ffffff; }
+tooltip label {
+	color: #ffffff;
+	padding: 3px
+}
 
 #workspaces button {
 	border-bottom: 2px solid transparent;

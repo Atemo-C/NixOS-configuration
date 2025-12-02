@@ -1,214 +1,359 @@
-#!/usr/bin/env dash
+#!/run/current-system/sw/bin/dash
 
-# Credits.
-# • DASH:     http://gondor.apana.org.au/~herbert/dash
-# • Fuzzel:   https://codeberg.org/dnkl/fuzzel
-# • Swaylock: https://github.com/jirutka/swaylock-effects
-
-# Text formatting shortcuts for console messages using `printf`.
-clr=$(tput sgr0)
-err=$(tput bold; tput setaf 1)Error$(tput sgr0)
-exe=$(tput bold; tput setaf 3)
-war=$(tput bold; tput setaf 5)Warning$(tput sgr0)
-
-# Text formatting for graphical notifications using `dunstify`.
-bspan="</span></b>"
-derr="<b><span foreground='#ff0000'>Error</span></b>"
-dexe="<b><span foreground='#ffc000'>"
-
-# Check for any argument that may be present.
-[ "$#" -ne 0 ] && { printf "%s: This script does not support command-line arguments. Ignoring.\n" "$war"; }
-
-# Check if Dunst is installed.
-command -v dunstify > /dev/null 2>&1 || {
-	printf "%s: %sDunst%s could not be found. Graphical notifications disabled. Continuing.\n" "$war" "$exe" "$clr"
-
-	dunst_dep=false
-}; [ "$dunst_dep" = false ] || { dunst_dep=true; }
-
-# Function for graphical notifications using dunstify.
-notify() { [ "$dunst_dep" = "false" ] || dunstify -u critical "$1" "$2"; }
-
-# Check if Niri is the active Wayland compositor.
-[ "$XDG_CURRENT_DESKTOP" = "niri" ] || {
-	printf "%s: This script is made to be used within the %sNiri%s Wayland compositor. Exiting.\n" "$err" "$exe" "$clr"
-
-	notify "Niri not detected" \
-	"${derr}: This script is made to be used within the ${dexe}Niri${bspan} Wayland compositor. Exiting."
-
+# Function to start a selected program by its executable name.
+l() {
+	command -v "$@" > /dev/null 2>&1 && {
+		nohup "$@" > /dev/null 2>&1 & exit 0
+	}
+	command -v dunstify > /dev/null 2>&1 && dunstify -u critical "$1 not found"
+	printf "%s was not found. Is it installed?\n" "$1"
 	exit 1
 }
 
-# Check if Fuzzel is installed.
-command -v fuzzel > /dev/null 2>&1 || {
-	printf "%s: %sFuzzel%s could not be found. It is necessary to display the power menu. Exiting\n" "$err" "$exe" "$clr"
-
-	notify "Fuzzel not found" \
-	"${derr}: ${dexe}Fuzzel${bspan} could not be found. It is necessary to display the power menu. Exiting"
-
+# Function to start a selected program with custom arguments.
+la() {
+	command -v "$1" > /dev/null 2>&1 && {
+		shift
+		nohup "$@" > /dev/null 2>&1 & exit 0
+	}
+	command -v dunstify > /dev/null 2>&1 && dunstify -u critical "$1 not found"
+	printf '%s was not found. Is it installed?\n' "$1"
 	exit 1
 }
 
-# Function to add a program to the list.
-add() {
-	command -v "$1" > /dev/null 2>&1 || return
-	[ -z "$programs" ] && programs="$2|$1" || programs="$programs
-$2|$1"
+# Function to start a selected program not in default executable paths.
+lc() {
+	[ -f "$1" ] && [ -x "$1" ] && {
+		shift
+		nohup "$@" > /dev/null 2>&1 & exit 0
+	}
+	command -v dunstify > /dev/null 2>&1 && \
+		dunstify -u critical "$1 not found" "$1 is missing or is not executable."
+	printf '%s not found or not executable.\n' "$1"
+	exit 1
 }
 
-# Function to add a program to the list, but with a custom launch command.
-adda() {
-	command -v "$1" > /dev/null 2>&1 || return
-	[ -z "$programs" ] && programs="$2|$3" || programs="$programs
-$2|$3"
-}
+# The program list.
+program=$({
+	printf "%b\n" "Run launcher\000icon\037application-default-icon"
+	printf "\n"
+	printf "%b\n" "Amfora                 Terminal Gemini client\000icon\037rocket"
+	printf "%b\n" "Audacious              Audio player\000icon\037audacious"
+	printf "%b\n" "Blender                3D modeling and animation\000icon\037blender"
+	printf "%b\n" "Bottles               Run Windows programs in Bottles\000icon\037bottles_wine"
+	printf "%b\n" "BTOP++                 Terminal system monitor\000icon\037htop"
+	printf "%b\n" "Calculator             Terminal calculator\000icon\037accessories-calculator"
+	printf "%b\n" "Calcurse               Terminal calendar\000icon\037calendar"
+	printf "%b\n" "Character map          Browse charcaters\000icon\037accessories-character-map"
+	printf "%b\n" "CPU-X                  Detailed processor information\000icon\037cpu"
+	printf "%b\n" "Crosshair ON           Activate a red-dot crosshair\000icon\037eyewitness"
+	printf "%b\n" "Crosshair OFF          Disable a red-dot crosshair\000icon\037eyewitness"
+	printf "%b\n" "CUPS                   Printer/scanner configuration\000icon\037cups"
+	printf "%b\n" "DeSmuME                Nintendo DS(i) emulator\000icon\037desmume"
+	printf "%b\n" "Disks                  GNOME's disks utility\000icon\037gnome-disks"
+	printf "%b\n" "Simple Scan            Document scanner\000icon\037scanner"
+	printf "%b\n" "Easy Effects           Live audio effects\000icon\037easyeffects"
+	printf "%b\n" "EasyTag                Audio tag editor\000icon\037easytag"
+	printf "%b\n" "Element                Matrix client\000icon\037element"
+	printf "%b\n" "Flatseal              Manage Flatpak permissions\000icon\037com.github.tchx84.Flatseal"
+	printf "%b\n" "Foot (client)          Terminal emulator\000icon\037utilities-terminal"
+	printf "%b\n" "Foot (standalone)      Terminal emulator\000icon\037utilities-terminal"
+	printf "%b\n" "Gcolor3                Advanced color picker\000icon\037colorpicker"
+	printf "%b\n" "GIMP                   GNU Image Manipulation Program\000icon\037gimp"
+	printf "%b\n" "Gparted                Partition manager\000icon\037gparted"
+	printf "%b\n" "Heroic                 Launcher for GOG, Epic, Amazon games\000icon\037games"
+	printf "%b\n" "Hyprpaper              Set the desktop wallpaper/background\000icon\037wallpaper"
+	printf "%b\n" "Inkscape               Vector graphics (SVG) editor\000icon\037inkscape"
+	printf "%b\n" "jdNBTExplorer          Minecraft NBT explorer and editor\000icon\037dconf-editor"
+	printf "%b\n" "jstest-gtk             Gamepad/controller tester\000icon\037games"
+	printf "%b\n" "Kdenlive               Video editor\000icon\037kdenlive"
+	printf "%b\n" "KeePassXC              Password manager\000icon\037keepassxc"
+	printf "%b\n" "Keymapp                Layout and heatmap tool for ZSA keyboards\000icon\037input-keyboard"
+	printf "%b\n" "Krita                  Digital painting\000icon\037krita"
+	printf "%b\n" "Kurso de Esperanto     Esperanto learning program\000icon\037preferences-desktop-locale"
+	printf "%b\n" "LACT                   Configure and overclock GPUs\000icon\037hardware"
+	printf "%b\n" "Lagrange               Graphical Gemini client\000icon\037rocket"
+	printf "%b\n" "LibreOffice            Office suite\000icon\037libreoffice"
+	printf "%b\n" "LibreOffice Base       · Databases\000icon\037libreoffice-base"
+	printf "%b\n" "LibreOffice Calc       · Spreadsheets\000icon\037libreoffice-calc"
+	printf "%b\n" "LibreOffice Draw       · Drawing\000icon\037libreoffice-draw"
+	printf "%b\n" "LibreOffice Math       · Mathematics\000icon\037libreoffice-math"
+	printf "%b\n" "LibreOffice Writer     · Word processing\000icon\037libreoffice-writer"
+	printf "%b\n" "LibreOffice Impress    · Presentations\000icon\037libreoffice-impress"
+	printf "%b\n" "LibreWolf              Web browser\000icon\037kali-volafox"
+	printf "%b\n" "LibreWolf - private    Web browser (private window)\000icon\037view-private"
+	printf "%b\n" "Luanti (Minetest)      Open-source voxel game engine\000icon\037minetest"
+	printf "%b\n" "Micro                  Terminal text editor\000icon\037accessories-text-editor"
+	printf "%b\n" "Minder                 Mind-mapping utility\000icon\037application-default-icon"
+	printf "%b\n" "MC Bedrock Launcher    Minecraft Bedrock launcher\000icon\037minecraft"
+	printf "%b\n" "Mission Center         Graphical system monitor\000icon\037utilities-system-monitor"
+	printf "%b\n" "ncdu                   Terminal disk usage analyzer\000icon\037disk-usage-analyzer"
+	printf "%b\n" "NixOS manual           Offline manual for NixOS\000icon\037help-browser"
+	printf "%b\n" "NVIDIA settings        NVIDIA GPU control panel\000icon\037nvidia"
+	printf "%b\n" "OrcaSlicer             3D-printing slicer\000icon\037orca"
+	printf "%b\n" "OBS Studio             Video recording and streaming\000icon\037obs"
+	printf "%b\n" "OpenTabletDriver       Configure connected drawing tablets\000icon\037input-tablet"
+	printf "%b\n" "PCSX2                  PlayStation 2 emulator\000icon\037pcsx2"
+	printf "%b\n" "PrismLauncher          Minecraft launcher\000icon\037minecraft"
+	printf "%b\n" "Power                  Suspend, reboot, power off…\000icon\037system-shutdown"
+	printf "%b\n" "pwvucontrol            Audio volume control\000icon\037preferences-desktop-sound"
+	printf "%b\n" "qBittorrent            Torrent manager\000icon\037transmission"
+	printf "%b\n" "qpwgraph               PipeWire patchbay\000icon\037audio-input-line"
+	printf "%b\n" "Revolt                 FOSS alternative to Discord\000icon\037empathy"
+	printf "%b\n" "RPCS3                  PlayStation 3 emulator\000icon\037games"
+	printf "%b\n" "Ruffle                 Adobe Flash emulator\000icon\037flash"
+	printf "%b\n" "Speedtest              Test internet speed\000icon\037preferences-system-network"
+	printf "%b\n" "Steam                  Valve can count to 3\000icon\037steam"
+	printf "%b\n" "Tenacity               Audio editor\000icon\037audacity"
+	printf "%b\n" "Thunar                 File manager\000icon\037system-file-manager"
+	printf "%b\n" "Timeshift              System restore\000icon\037timeshift"
+	printf "%b\n" "Tor browser            Web browsing through the Tor network\000icon\037browser-tor"
+	printf "%b\n" "Upscayl                Upscale images\000icon\037showimage"
+	printf "%b\n" "Vesktop                Discord with built-in Vencord\000icon\037discord"
+	printf "%b\n" "Vintage Story          Sandbox game of innovation and exploration\000icon\037minecraft"
+	printf "%b\n" "Virt Manager           Virtual machines using libvirt (QEMU/KVM)\000icon\037virt-manager"
+	printf "%b\n" "Xclicker               X11/XWayland autoclicker\000icon\037input-mouse"
+	printf "%b\n" "Xfburn                 Disc burning\000icon\037brasero"
+	printf "\n"
+	printf "%b\n" "Exit\000icon\037x"
+} | fuzzel --lines 24 --width 63 --dmenu)
 
-# Function to add a fully custom program path, script, separator, etc.
-addc() {
-	[ -z "$programs" ] && programs="$1|$2" || programs="$programs
-$1|$2"
-}
+# The actions to run upon selection of a program.
+[ "$program" = "Run launcher" ] &&
+l fuzzel
 
-# Function to cleanly detach launched programs from the script.
-f() { nohup "$@" > /dev/null 2>&1 & exit; }
+[ "$program" = "Amfora                 Terminal Gemini client" ] &&
+la amfora "$TERMINAL" -e amfora
 
-# Set the height of the program menu.
-# In the future, it could potentially be automatically calculated.
-#	vertical=$(niri msg outputs | jq '.[] | select(.focused == true) | .height')
-#  lines=$(( vertical / 28 ))
-lines=24
+[ "$program" = "Audacious              Audio player" ] &&
+l audacious
 
-# The program list. Add elements of your choosing and they will appear in the menu if present on your system.
-# Remember to use the appropriate functions (`add`, `adda`, or `addc`).
-programs=""
-addc                          "                     󰌧  Run launcher" "fuzzel --no-icons"
-addc " ‎"                     ""
-adda amfora                   "  Amfora               Terminal Gemini client" "$TERMINAL -e amfora"
-add  audacious                "  Audacious            Audio player"
-add  io.github.kolunmi.Bazaar "  Bazaar ( )          Flatpak application store"
-add  blender                  "󰂫  Blender              3D modeling"
-add  com.usebottles.bottles   "󱌐  Bottles ( )         Run Windows programs in Bottles"
-adda btop                     "  BTOP                 Terminal system monitor" "$TERMINAL -e btop"
+[ "$program" = "Blender                3D modeling and animation" ] &&
+l blender
 
-[ -f "/etc/nixos/scripts/calculator.sh" ] && command -v bc && addc \
-"  Calculator           Simple terminal-based calculator" \
-"footclient --app-id \"dash-calculator.sh\" --window-size-chars 54x22 dash /etc/nixos/scripts/calculator.sh"
+[ "$program" = "Bottles               Run Windows programs in Bottles" ] &&
+l com.usebottles.bottles
 
-adda calcurse "  Calcurse             Terminal calendar" "$TERMINAL -e calcurse"
-add  cpu-x    "  CPU-X                Detailed processor information"
+[ "$program" = "BTOP++                 Terminal system monitor" ] &&
+la btop "$TERMINAL" -e btop
 
-command -v eww > /dev/null 2>&1 && [ -f "/etc/nixos/scripts/crosshair/eww.yuck" ] && {
-	addc "  Crosshair ON         Activate a simple red-dot crosshair" \
-	"eww -c /etc/nixos/scripts/crosshair/ open crosshair"
+[ "$program" = "Calculator             Terminal calculator" ] &&
+lc "/etc/nixos/scripts/calculator.sh" \
+"$TERMINAL" --app-id "dash-calculator.sh" --window-size-chars 54x22 "/etc/nixos/scripts/calculator.sh"
 
-	addc "󰽅  Crosshair OFF        Disable the active red-dor crosshhair." \
-	"eww -c /etc/nixos/scripts/crosshair/ close crosshair"
-}
+[ "$program" = "Calcurse               Terminal calendar" ] &&
+la calcurse "$TERMINAL" -e calcurse
 
-adda cupsd "  CUPS                 Printer configuration" \
-"xdg-open https://localhost:631"
+[ "$program" = "Character map          Browse charcaters" ] &&
+l gucharmap
 
-add  cura            "  Cura                 3D printing"
-add  desmume         "  DeSmuME              Nintendo DS/I emulator"
-add  easyeffects     "  EasyEffects          Live audio effects"
-add  easytag         "  EasyTAG              Audio tag editor"
-adda element-desktop "󰭻  Element              Matrix client" \
-"element-desktop code --password-store=gnome-libsecret"
+[ "$program" = "CPU-X                  Detailed processor information" ] &&
+l cpu-x
 
-add  com.github.tchx84.Flatseal "  Flatseal ( )        Manage flatpak permissions"
-add  footclient                 "  Foot (client)        Terminal emulator"
-add  foot                       "  Foot (standalone)    Terminal emulator"
-add  gcolor3                    "  Gcolor3              Advanced color picker"
-add  gimp                       "  GIMP                 GNU Image Manipulation Program"
-add  gnome-disks                "󰋊  Gnome disk utility   GNOME's disk utility"
-add  gparted                    "󰋊  Gparted              Partition manager"
-add  heroic                     "  Heroic               Launcher for GOG, Epic, Amazon games"
-adda hyprpaper                  "  Hyprpaper            Set desktop background/wallpaper" \
-"dash /etc/nixos/scripts/background.sh"
+[ "$program" = "Crosshair ON           Activate a red-dot crosshair" ] &&
+lc "/etc/nixos/scripts/crosshair/eww.yuck" \
+eww -c /etc/nixos/scripts/crosshair/ open crosshair
 
-add inkscape   "  Inkscape             Vector graphics (SVG) editor"
-add jstest-gtk "  Jstest               Gamepad / controller tester"
-add keymapp    "  Keymapp              Layout tool for ZSA keyboards"
-add kdenlive   "  Kdenlive             Video editor"
-add keepassxc  "  KeePassXC            Password manager"
-add krita      "  Krita                Digital painting"
+[ "$program" = "Crosshair OFF          Disable a red-dot crosshair" ] &&
+lc "/etc/nixos/scripts/crosshair/eww.yuck" \
+eww -c /etc/nixos/scripts/crosshair/ close crosshair
 
-[ -f "$HOME/Programs/Kurso de Esperanto/kursokape" ] && addc \
-"  Kurso de Esperanto   Esperanto learning program" \
-"QT_QPA_PLATFORM=xcb steam-run $HOME/Programs/Kurso de Esperanto/kursokape"
+[ "$program" = "CUPS                   Printer/scanner configuration" ] &&
+la cupsd "$BROWSER" "http://localhost:631"
 
-add  lact        "  LACT                 Configure and overclock GPUs"
-add  lagrange    "  Lagrange             Graphical Gemini client"
-add  libreoffice "󰏆  LibreOffice          Office suite"
-add  librewolf   "  LibreWolf            Web browser"
-adda librewolf   "  LibreWolf - private  Web browser (private window)" \
-"librewolf --private-window"
+[ "$program" = "DeSmuME                Nintendo DS(i) emulator" ] &&
+l desmume
 
-add  luanti             "󰍳  Luanti (Minetest)    Open source voxel game engine"
-add  mcpelauncher-ui-qt "󰍳  MC Bedrock Launcher  Minecraft Bedrock"
-add  minder             "  Minder               Mind-mapping utility"
-add  missioncenter      "  Mission Center       Graphical system monitor"
-adda ncdu "󰋊  ncdu                 Disk usage" \
-"$TERMINAL -e ncdu"
+[ "$program" = "Disks                  GNOME's disks utility" ] &&
+l gnome-disks
 
-adda nmtui "󰛳  Network Manager      Manage WiFi and Ethernet" \
-"$TERMINAL -e nmtui"
+[ "$program" = "Simple Scan            Document scanner" ] &&
+l simple-scan
 
-add  com.obsproject.Studio "󰑋  OBS studio ( )      Video recording and streaming"
-add  obs                   "󰑋  OBS studio           Video recording and streaming"
-add  otg-gui               "  OpenTabletDriver     Configure your drawing tablet"
-add  pcsx2-qt              "  PCSX2                PlayStation 2 emulator"
-add  prismlauncher         "󰍳  PrismLauncher        Minecraft Launcher"
+[ "$program" = "Easy Effects           Live audio effects" ] &&
+l easyeffects
 
-[ -f "/etc/nixos/scripts/power.sh" ] && addc \
-"  Power menu           Suspend, reboot, power off…" \
-"/etc/nixos/scripts/power.sh"
+[ "$program" = "EasyTag                Audio tag editor" ] &&
+l easytag
 
-add  pwvucontrol         "  PWvucontrol          Audio volume settings"
-add  qbittorrent         "  qBittorrent          Torrent manager"
-add  qpwgraph            "󰤽  qpwgraph             Audio patchbay"
-add  revolt-desktop      "󰭻  Revolt               FOSS alternative to Discord"
-add  rpcs3               "  RPCS3                PlayStation 3 emulator"
-add  ruffle              "  Ruffle               Adobe Flash emulator"
-add  sc-controller       "  SC-Controller        Remap controllers"
-add  simple-scan         "󰚫  Simple scan          Document scanner"
-add  org.vinegarhq.Sober "  Sober ( )           Roblox client"
-add  speedtest           "󰓅  Speedtest            Test internet speed"
-add  steam               "  Steam                Valve winning by doing nothing"
-add  tenacity            "  Tenacity             Audio editor"
-add  thunar              "  Thunar               File manager"
-add  timeshift-launcher  "󰁯  Timeshift            System restore"
-add  tor-browser         "󰗹  Torbrowser           Web browsing through Tor"
-add  upscayl             "  Upscayl              Upscale images"
-add  org.upscayl.Upscayl "  Upscayl ( )         Upscale images"
-add  vesktop             "󰙯  Vesktop              Discord, but Vencorded"
-add  vintagestory        "  Vintage Story        Sandbox game of innovation and exploration"
-add  virt-manager        "󰪫  Virt Manager         Virtual machines using QEMU/KVM"
-adda xclicker            "󰍽  Xclicker             X11 autocliker (for XWayland)" \
-"sh -c 'DISPLAY=:0 xclicker'"
+[ "$program" = "Element                Matrix client" ] &&
+la element-desktop element-desktop code --password-store=gnome-libsecret
 
-add xfburn "  Xfburn               Disc burning"
+[ "$program" = "Flatseal              Manage Flatpak permissions" ] &&
+l com.github.tchx84.Flatseal
 
-addc " ‎" continue
-addc "󰗼  Exit" exit
+[ "$program" = "Foot (client)         Terminal emulator" ] &&
+l footclient
 
-# Loop for the program selection.
-while :; do
-	# Show the program menu.
-	program=$(printf '%s\n' "$programs" | awk -F '|' '{print $1}' | fuzzel \
-		--no-icons \
-		--lines "$lines" \
-		--width 58 \
-		--dmenu "$@"
-	)
+[ "$program" = "Foot (standalone)     Terminal emulator" ] &&
+l foot
 
-	# Exit if no selection or "Exit" is chosen.
-	[ -z "$program" ] || [ "$program" = "󰗼  Exit" ] && exit
+[ "$program" = "Gcolor3                Advanced color picker" ] &&
+l gcolor3
 
-	# Continue if a spacer is chosen.
-	[ "$program" = " ‎" ] && continue
+[ "$program" = "GIMP                   GNU Image Manipulation Program" ] &&
+l gimp
 
-	# Find the matching command and execute it.
-	cmd=$(printf '%s\n' "$programs" | grep "^$program|" | awk -F'|' '{print $2}')
-	[ -n "$cmd" ] && eval "f $cmd"
-done
+[ "$program" = "Gparted                Partition manager" ] &&
+l gparted
+
+[ "$program" = "Heroic                 Launcher for GOG, Epic, Amazon games" ] &&
+l heroic
+
+[ "$program" = "Hyprpaper              Set the desktop wallpaper" ] &&
+lc "/etc/nixos/scripts/background.sh" "/etc/nixos/scripts/background.sh"
+
+[ "$program" = "Inkscape               Vector graphics (SVG) editor" ] &&
+l inkscape
+
+[ "$program" = "jdNBTExplorer          Minecraft NBT explorer and editor" ] &&
+l page.codeberg.JakobDev.jdNBTExplorer
+
+[ "$program" = "jstest-gtk             Gamepad/controller tester" ] &&
+l jstest-gtk
+
+[ "$program" = "Kdenlive               Video editor" ] &&
+l kdenlive
+
+[ "$program" = "KeePassXC              Password manager" ] &&
+l keepassxc
+
+[ "$program" = "Keymapp                Layout and heatmap tool for ZSA keyboards" ] &&
+l keymapp
+
+[ "$program" = "Krita                  Digital painting" ] &&
+l krita
+
+[ "$program" = "Kurso de Esperanto     Esperanto learning program" ] &&
+lc "$HOME/Programs/Kurso de Esperanto/kursokape" "$HOME/Programs/Kurso de Esperanto/kursokape"
+
+[ "$program" = "LACT                   Configure and overclock GPUs" ] &&
+l lact
+
+[ "$program" = "Lagrange               Graphical Gemini client" ] &&
+l lagrange
+
+[ "$program" = "LibreOffice            Office suite" ] &&
+l libreoffice
+
+[ "$program" = "LibreOffice Base       · Databases" ] &&
+la libreoffice libreoffice --base
+
+[ "$program" = "LibreOffice Calc       · Spreadsheets" ] &&
+la libreoffice libreoffice --calc
+
+[ "$program" = "LibreOffice Draw       · Drawing" ] &&
+la libreoffice libreoffice --draw
+
+[ "$program" = "LibreOffice Math       · Mathematics" ] &&
+la libreoffice libreoffice --math
+
+[ "$program" = "LibreOffice Writer     · Word processing" ] &&
+la libreoffice libreoffice --writer
+
+[ "$program" = "LibreOffice Impress    · Presentations" ] &&
+la libreoffice libreoffice --impress
+
+[ "$program" = "LibreWolf              Web browser" ] &&
+l librewolf
+
+[ "$program" = "LibreWolf - private    Web browser (private window)" ] &&
+la librewolf librewolf --private-window
+
+[ "$program" = "Luanti (Minetest)      Open-source voxel game engine" ] &&
+l luanti
+
+[ "$program" = "Micro                  Terminal text editor" ] &&
+la micro "$TERMINAL" -e micro
+
+[ "$program" = "Minder                 Mind-mapping utility" ] &&
+l minder
+
+[ "$program" = "MC Bedrock Launcher    Minecraft Bedrock launcher" ] &&
+l mcpelauncher-ui-qt
+
+[ "$program" = "Mission Center         Graphical system monitor" ] &&
+l missioncenter
+
+[ "$program" = "ncdu                   Terminal disk usage analyzer" ] &&
+la ncdu "$TERMINAL" -e ncdu "$HOME/"
+
+[ "$program" = "NixOS manual           Offline manual for NixOS" ] &&
+la nix "$BROWSER" "/run/current-system/sw/share/doc/nixos/index.html"
+
+[ "$program" = "NVIDIA settings        NVIDIA GPU control panel" ] &&
+l nvidia-settings
+
+[ "$program" = "OrcaSlicer             3D-printing slicer" ] &&
+la orca-slicer GBM_BACKEND=dri XDG_SESSION_TYPE=x11 orca-slicer
+
+[ "$program" = "OBS Studio             Video recording and streaming" ] &&
+l obs
+
+[ "$program" = "OpenTabletDriver       Configure connected drawing tablets" ] &&
+l otg-gui
+
+[ "$program" = "PCSX2                  PlayStation 2 emulator" ] &&
+l pcsx2-qt
+
+[ "$program" = "PrismLauncher          Minecraft launcher" ] &&
+l prismlauncher
+
+[ "$program" = "Power                  Suspend, reboot, power off…" ] &&
+lc "/etc/nixos/scripts/power.sh" "/etc/nixos/scripts/power.sh"
+
+[ "$program" = "pwvucontrol            Audio volume control" ] &&
+l pwvucontrol
+
+[ "$program" = "qBittorrent            Torrent manager" ] &&
+l qbittorrent
+
+[ "$program" = "qpwgraph               PipeWire patchbay" ] &&
+l qpwgraph
+
+[ "$program" = "Revolt                 FOSS alternative to Discord" ] &&
+l revolt-desktop
+
+[ "$program" = "RPCS3                  PlayStation 3 emulator" ] &&
+l rpcs3
+
+[ "$program" = "Ruffle                 Adobe Flash emulator" ] &&
+l ruffle
+
+[ "$program" = "Speedtest              Test internet speed" ] &&
+l speedtest
+
+[ "$program" = "Steam                  Valve can count to 3" ] &&
+l steam
+
+[ "$program" = "Tenacity               Audio editor" ] &&
+l tenacity
+
+[ "$program" = "Thunar                 File manager" ] &&
+l thunar
+
+[ "$program" = "Timeshift              System restore" ] &&
+l timeshift-launcher
+
+[ "$program" = "Tor browser            Web browsing through the Tor network" ] &&
+l tor-browser
+
+[ "$program" = "Upscayl                Upscale images" ] &&
+l upscayl
+
+[ "$program" = "Vesktop                Discord with built-in Vencord" ] &&
+l vesktop
+
+[ "$program" = "Vintage Story          Sandbox game of innovation and exploration" ] &&
+l vintagestory
+
+[ "$program" = "Virt Manager           Virtual machines using libvirt (QEMU/KVM)" ] &&
+l virt-manager
+
+[ "$program" = "Xclicker               X11/XWayland autoclicker" ] &&
+la xclicker DISPLAY=:0 xclicker
+
+[ "$program" = "Xfburn                 Disc burning" ] &&
+l xfburn
+
+[ "$program" = "" ] || [ "$program" = "Exit" ] && exit 0

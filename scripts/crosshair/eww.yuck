@@ -1,5 +1,5 @@
 (defwindow crosshair
-	:monitor 0
+	:monitor 1
 	:geometry (geometry
 		:width "4px"
 		:height "4px"
