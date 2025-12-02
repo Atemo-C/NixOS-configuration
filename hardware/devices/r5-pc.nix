@@ -20,9 +20,6 @@
 
 		# Whether to enable LACT, a tool for monitoring, configuring, and overclocking GPUs.
 		lact.enable = true;
-
-		# Whether to enable preload.
-		preload.enable = true;
 	};
 
 	# zram swap (memory compresssion); Just in case..
