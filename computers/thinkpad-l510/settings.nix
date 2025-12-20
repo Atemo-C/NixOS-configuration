@@ -22,6 +22,15 @@
 		"/nix"options = [ "compress=zstd:3" "noatime" ];
 	};
 
+	# Extra packages for hardware acceleration.
+	hardware.graphics.extraPackages = lib.optionals config.hardware.graphics.enable (with pkgs; [
+		# VA-API for older Intel GPUs using the i915 driver.
+		intel-vaapi-driver
+
+		# OpenCL for Intel GPUs.
+		intel-compute-runtime
+	]);
+
 	# Set the computer's name on the network.
 	networking.hostName = "ThinkPad-L510";
 
