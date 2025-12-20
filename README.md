@@ -261,7 +261,7 @@ This includes things such as:
 - The user's name and title. \
 https://github.com/Atemo-C/NixOS-configuration/blob/experimental/user/name.nix
 - Whether to enable support for NVIDIA GPUs (1650 and above). \
-(https://github.com/Atemo-C/NixOS-configuration/blob/experimental/gpu/nvidia.nix
+https://github.com/Atemo-C/NixOS-configuration/blob/experimental/gpu/nvidia.nix
 - Various other settings, programs, etc.
 
 ### Installing NixOS
