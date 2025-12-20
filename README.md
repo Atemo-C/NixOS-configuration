@@ -206,3 +206,106 @@ In this live environment, you can install whichever text editor you may wish wan
 ```shell
 your-editor /mnt/etc/nixos/computers/your-computer-name/settings.nix
 ```
+8. In it, we will find our UUID for the encrypted storage partitions.
+We will add them to `boot.initrd.luks.devices`, and set up other settings, such as:
+- The computer's host name.
+- The keyboard layout(s) to be used on it.
+- Whether to enable/disable Modem Manager for cellular data.
+- Filesystem-specific options (Btrfs compression, etc).
+- Any other device-specific configuration that you may want.
+In this example, I will be configuring my HP 250 G6:
+```nix
+{ ... }: {
+	boot = {
+		# Define the LUKS-encrypted storage devices (swap and root).
+		initrd.luks.devices = {
+			swap.device = "/dev/disk/by-uuid/56c4a6c9-e2d5-4b02-a13d-45ad9302a19e";
+			root.device = "/dev/disk/by-uuid/80ef44a6-7ee0-4001-bc09-7b5fcd11b46e";
+		};
+
+		# Whether to let the installation process modify EFI boot variables.
+		# If you have errors when updating NixOS after it has already been installed, as in,
+		# if the bootloader fails to "install" again after a rebuild, it is safe to trun this of.
+		loader.efi.canTouchEfiVariables = true;
+	};
+
+	# Filesystem options.
+	fileSystems = {
+		"/".options = [ "compress=zstd:3" ];
+		"/home".options = [ "compress=zstd:3" ];
+		"/nix"options = [ "compress=zstd:3" "noatime" ];
+	};
+
+	# Set the computer's name on the network.
+	networking.hostName = "HP-250-G6";
+
+	# Keyboard layout settings.
+	# To see a complete list of layouts, variants, and other settings:
+	# • https://gist.github.com/jatcwang/ae3b7019f219b8cdc6798329108c9aee
+	#
+	# To see why this list cannot easily be seen within NixOS:
+	# • https://github.com/NixOS/nixpkgs/issues/254523
+	# • https://github.com/NixOS/nixpkgs/issues/286283
+	services.xserver.xkb = {
+		layout = "fr,us";
+		variant = ",intl";
+	};
+
+	# Disable the ModemManager service to improve boto times and save resources.
+	# Only enable if using cellular data (tethering from a mobile device does not count).
+	systemd.services.ModemManager.enable = false;
+}
+```
+9. Modify the rest of the NixOS configuration to fit your own needs.
+This includes things such as:
+- The user's name and title.
+https://github.com/Atemo-C/NixOS-configuration/blob/experimental/user/name.nix
+- Whether to enable support for NVIDIA GPUs (1650 and above).
+(https://github.com/Atemo-C/NixOS-configuration/blob/experimental/gpu/nvidia.nix
+- Various other settings, programs, etc.
+
+### Installing NixOS
+1. Install NixOS. You may choose to set or skip the root password.
+```shell
+nixos-install --no-root-password
+```
+2. Once it has installed, set your user's password.
+```shell
+nixos-enter --root /mnt
+passwd your-user-here
+exit
+```
+3. You can now safely power off the system, remove the installation medium, and boot into the full NixOS installation.
+
+# Use cases and feature implementation
+## Targeted use-case
+- Single user.
+- Personal computing.
+- x86_64 desktop and laptops.
+
+## Not yet implemented or thoroughly tested, including but not limited to:
+- Accessiblity features.
+- Touchscreen support.
+- Remote desktop through RDP or other.
+- Computers with:
+	- A non-x86_64 CPU architecture.
+	- Hybrid GPU setup (e.g. NVIDIA PRIME).
+	- Less than 2 GiB of RAM (swap will be heavily used with less than 6 when building the system).
+	- Less than 32 GiB of storage (some Nix storage optimizations are already enabled).
+
+# Some useful NixOS resources
+Help is available in:
+- The configuration.nix(5) man page.
+- The on-device manual by running `nixos-help`.
+- The online manual at https://nixos.org/manual/nixos/unstable/index.html
+- The NixOS Wiki at https://wiki.nixos.org
+- The Nix.dev documentation for the nix ecosystem at https://nix.dev.
+
+• A searchable list of available packages can be found here: \
+https://search.nixos.org/packages?channel=unstable
+
+• A searchable list of available options can be found here: \
+https://search.nixos.org/options?channel=unstable
+
+• A list of available options for Home Manager can be found here: \
+https://nix-community.github.io/home-manager/options.xhtml
