@@ -195,14 +195,14 @@ mkdir /mnt/etc/nixos/computers/your-computer-name
 mv ~/hardware-configuration.nix /mnt/etc/nixos/computers/your-computer-name/
 ```
 6. Get the UUID of your encrypted storage partitions.
-We will directly write them to `/mnt/etc/nixos/computers/your-computer-name/your-computer-name.nix`.
+We will directly write them to `/mnt/etc/nixos/computers/your-computer-name/settings.nix`.
 This module is where we will manually configure the device-specific options.
 ```shell
-blkid /dev/sda2 >> /mnt/etc/nixos/computers/your-computer-name/your-computer-name.nix
-blkid /dev/sda3 >> /mnt/etc/nixos/computers/your-computer-name/your-computer-name.nix
+blkid /dev/sda2 >> /mnt/etc/nixos/computers/your-computer-name/settings.nix
+blkid /dev/sda3 >> /mnt/etc/nixos/computers/your-computer-name/settings.nix
 ```
 7. Open this module with your preferred text editor.
 In this live environment, you can install whichever text editor you may wish want with `nix-env -iA nixos.package-here`.
 ```shell
-your-editor /mnt/etc/nixos/computers/your-computer-name/your-computer-name.nix
+your-editor /mnt/etc/nixos/computers/your-computer-name/settings.nix
 ```
