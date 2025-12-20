@@ -299,7 +299,7 @@ Help is available in:
 - The on-device manual by running `nixos-help`.
 - The online manual at https://nixos.org/manual/nixos/unstable/index.html
 - The NixOS Wiki at https://wiki.nixos.org
-- The Nix.dev documentation for the nix ecosystem at https://nix.dev.
+- The Nix.dev documentation for the nix ecosystem at https://nix.dev
 
 • A searchable list of available packages can be found here: \
 https://search.nixos.org/packages?channel=unstable
