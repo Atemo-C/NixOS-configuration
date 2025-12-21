@@ -242,7 +242,7 @@ See the ${darg}--about${bspan} / ${darg}--help${bspan} / ${darg}-h${bspan} argum
 				oxipng --strip all "$image".png || {
 					printf "%s An error occured when optimizing the image. Ignoring." "$war"
 
-					notify "Unable to optimize" \
+					errify "Unable to optimize" \
 					"${dwar} An error occured when optimizing the image. Ignoring."
 
 					exit 6
@@ -258,7 +258,7 @@ See the ${darg}--about${bspan} / ${darg}--help${bspan} / ${darg}-h${bspan} argum
 	printf "%s No argument was given.\n\n" "$err"
 	printf "See the %s--about%s / %s--help%s / %s-h%s argument.\n" "$arg" "$clr" "$arg" "$clr" "$arg" "$clr"
 
-	notify "Missing argument" \
+	errify "Missing argument" \
 	"${derr} No argument was given.
 See the ${darg}--about${bspan} / ${darg}--help${bspan} / ${darg}-h${bspan} argument."
 
@@ -269,7 +269,7 @@ See the ${darg}--about${bspan} / ${darg}--help${bspan} / ${darg}-h${bspan} argum
 printf "%s Invalid argument '%s%s%s'.\n\n" "$err" "$arg" "$*" "$clr"
 printf "See the %s--about%s / %s--help%s / %s-h%s argument.\n" "$arg" "$clr" "$arg" "$clr" "$arg" "$clr"
 
-notify "Invalid argument" \
+errify "Invalid argument" \
 "${derr} Invalid argument '${darg}${*}${bspan}'
 See the ${darg}--about${bspan} / ${darg}--help${bspan} / ${darg}-h${bspan} argument."
 
