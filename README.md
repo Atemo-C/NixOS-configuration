@@ -282,6 +282,8 @@ exit
 - Single user.
 - Personal computing.
 - x86_64 desktop and laptops.
+- The default **user** shell is the FISH shell.
+- This entire configuration is for me, it may not work well for you.
 
 ## Not yet implemented or thoroughly tested, including but not limited to:
 - Accessiblity features.

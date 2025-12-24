@@ -1,4 +1,4 @@
-{ config, lib, ... }: { hardware.opentabletdriver = {
+{ ... }: { hardware.opentabletdriver = {
 	# Whether to enable OpenTabletDriver.
 	# This automatically replaces the default graphic tablet drivers if conflicting.
 	enable = true;

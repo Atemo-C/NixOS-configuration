@@ -1,6 +1,6 @@
-{ config, lib, ... }: { programs.zsa = {
+{ ... }: { programs.zsa = {
 	# Graphical application for ZSA keyboards.
-	keymapp.enable = lib.mkIf config.programs.niri.enable true;
+	keymapp.enable = true;
 
 	# CLI flashing utility for ZSA keyboards.
 	wally-cli.enable = true;
