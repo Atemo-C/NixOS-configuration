@@ -32,6 +32,12 @@ python3Packages.buildPythonApplication rec {
 		runHook postInstall
 	'';
 
+	postPatch = ''
+	substituteInPlace main_window.py \
+		--replace 'self.user_data_base_path = os.path.join(project_root_dir, DEFAULT_USER_DATA_PATH)' \
+			'self.user_data_base_path = os.path.join(os.environ.get("XDG_DATA_HOME", os.path.expanduser("~/.local/share")), "${pname}")'
+	'';
+
 	meta = with lib; {
 		description = "A desktop application designed to conrtol RGB LEDs of the MidiPlus SmartPad and similar 8×8 MIDI controllers.";
 		homepage = "https://github.com/Reg0lino/MidiPlusSmartPadRGBEditor";
