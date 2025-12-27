@@ -1,56 +1,52 @@
-// Input devices configuration.
 input {
-	// Keyboard configuration.
 	keyboard {
-		// Delay in milliseconds before a key is held down.
-		repeat-delay 250
+		// Delay in milliseconds before a held-down key repeats.
+		repeat-delay 224
 
-		// Rate in characters per second to repeat when a held-down key is held down.
-		repeat-rate 30
+		// Rate in characters per second to repeat when holding down a key.
+		repeat-rate 32
 
-		// Whether to activate the numlock at startup.
+		// Activate the keyboard's numlock at startup.
 		numlock
 	}
 
-	// Whether to enable tap-to-click on the touchpad.
+	// Enable tap-to-click on touchpads.
 	touchpad { tap; }
 
 	// Acceleration profile for the mouse.
-	// [ adaptive | flat ]
 	mouse { accel-profile "flat"; }
 
-	// Acceleration profile for the trackpoint.
-	// [ adaptive | flat ]
+	// Acceleration profile for tackpoints.
 	trackpoint { accel-profile "flat"; }
 
 	// Acceleration profile for trackballs.
-	// [ adaptive | flat ]
 	trackball { accel-profile "flat"; }
 
-	// Whether to disable Niri handling the power button instead of systemd or yourself.
+	// Disable Niri handling the power button.
+	// The power button will instead summon `/etc/nixos/scripts/power-menu/power.sh`.
 	disable-power-key-handling
 
-	// Focus windows & outputs automatically when moving the cursor into them.
+	// Focus windows and outputs automatically when moving the mouse over them.
 	// Setting `max-scroll-amount="0%"` makes it work only on windows already fully on screen.
 	focus-follows-mouse max-scroll-amount="90%"
 
-	// Whether switching to the same workspace twice will switch back-&-forth between the current & last one.
+	// Switching to the same workspace twice will switch back-and-forth between the current and last one.
 	workspace-auto-back-and-forth
 }
 
 // Output configuration for the Acer XV242Y, plugged in via DisplayPort
 output "Acer Technologies XV242Y TL1EE0018521" {
-	// Mode (resolution & refresh rate) of the output (<width>x<height>@<refresh rate>).
+	// Mode (resolution and refresh rate) of the output (<width>x<height>@<refresh rate>).
 	mode "1920x1080@119.982"
 
 	// Position of the monitor.
 	position x=0 y=0
 
-	// Whether this output should be the one to get focus at startup.
+	// Focus this output at startup.
 	focus-at-startup
 
-	// Whether to enable variable refresh rate (VRR) on demand.
-	// When on demand, it will be enabled with windows that have the `variable-refresh-rate` window rule.
+	// Enable variable refresh rate.
+	// When on-demand, it will be enabled with windows that have the `variable-refresh-rate` window rule.
 	variable-refresh-rate on-demand=true
 }
 
@@ -64,13 +60,13 @@ output "Acer Technologies Acer G205HV LRJ0W0204300" {
 binds {
 	// Switch between keyboard layouts.
 	Super+L {
-		spawn "sh" "-c" "niri msg action switch-layout prev && dunstify -t 2500 \"Keyboard layout changed\" \"$(niri msg keyboard-layouts)\" "
+		spawn-sh "niri msg action switch-layout prev && dunstify -t 2500 \"Keyboard layout changed\" \"$(niri msg keyboard-layouts)\""
 	}
 
-	// Show a list of important bindings.
+	// Show a list of important key bindings.
 	Super+H { show-hotkey-overlay; }
 
-	// Switch workspaces (numerical).
+	// Focus workspaces (numerical unshifted).
 	Super+Ampersand  { focus-workspace 1; }
 	Super+Eacute     { focus-workspace 2; }
 	Super+Quotedbl   { focus-workspace 3; }
@@ -80,6 +76,7 @@ binds {
 	Super+Egrave     { focus-workspace 7; }
 	Super+Underscore { focus-workspace 8; }
 
+	// Focus workspaces (numerical).
 	Super+1 { focus-workspace 1; }
 	Super+2 { focus-workspace 2; }
 	Super+3 { focus-workspace 3; }
@@ -89,14 +86,15 @@ binds {
 	Super+7 { focus-workspace 7; }
 	Super+8 { focus-workspace 8; }
 
-	// Switch a workspace (directional).
+	// Focus workspace (directional).
 	Super+Page_Up   { focus-workspace-up; }
 	Super+Page_Down { focus-workspace-down; }
 
+	// Focus workspace (directional, scrolling).
 	Super+Alt+WheelScrollDown cooldown-ms=75 { focus-workspace-down; }
 	Super+Alt+WheelScrollUp   cooldown-ms=75 { focus-workspace-up; }
 
-	// Move the active window to a workspace (numerical).
+	// Move the active window to a workspace (numerical unshifted).
 	Super+Shift+Ampersand  { move-window-to-workspace 1; }
 	Super+Shift+Eacute     { move-window-to-workspace 2; }
 	Super+Shift+Quotedbl   { move-window-to-workspace 3; }
@@ -106,6 +104,7 @@ binds {
 	Super+Shift+Egrave     { move-window-to-workspace 7; }
 	Super+Shift+Underscore { move-window-to-workspace 8; }
 
+	// Move the active window to a workspace (numerical).
 	Super+Shift+1 { move-window-to-workspace 1; }
 	Super+Shift+2 { move-window-to-workspace 2; }
 	Super+Shift+3 { move-window-to-workspace 3; }
@@ -119,6 +118,7 @@ binds {
 	Super+Shift+Page_Up   { move-window-to-workspace-up; }
 	Super+Shift+Page_Down { move-window-to-workspace-down; }
 
+	// Move the active window to a workspace (directional, scrolling).
 	Super+Alt+Control+WheelScrollDown cooldown-ms=150 { move-window-to-workspace-down; }
 	Super+Alt+Control+WheelScrollUp   cooldown-ms=150 { move-window-to-workspace-up; }
 
@@ -143,10 +143,10 @@ binds {
 	Super+Shift+End   { move-column-to-last; }
 
 	// Monitor focus switch.
-	Super+Ctrl+Left  { focus-column-left; }
+	Super+Ctrl+Left  { focus-monitor-left; }
 	Super+Ctrl+Down  { focus-monitor-down; }
 	Super+Ctrl+Up    { focus-monitor-up; }
-	Super+Ctrl+Right { focus-column-right; }
+	Super+Ctrl+Right { focus-monitor-right; }
 
 	// Move windows to a monitor.
 	Super+Ctrl+Shift+Left  { move-window-to-monitor-left; }
@@ -203,67 +203,75 @@ binds {
 	Super+Shift+C { close-window; }
 
 	// Screen brightness control for integrated monitors.
-	XF86MonBrightnessUp   allow-when-locked=true { spawn "brightnessctl" "set" "2%+"; }
-	XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "set" "2%-"; }
+	XF86MonBrightnessUp   allow-when-locked=true { spawn-sh "brightnessctl set 2%+"; }
+	XF86MonBrightnessDown allow-when-locked=true { spawn-sh "brightnessctl set 2%-"; }
 
 	// Screen brightness control for external monitors.
 	// https://github.com/rockowitz/ddcutil/issues/110
 	Shift+XF86MonBrightnessUp   allow-when-locked=true {
-		spawn "ddcutil" "--bus" "7" "--disable-dynamic-sleep" "--noverify" "--skip-ddc-checks" "--sleep-multiplier" "0.7" "setvcp" "10" "+" "2"
+		spawn-sh "ddcutil --bus 7 --disable-dynamic-sleep --noverify --skip-ddc-checks --sleep-multiplier 0 setvcp 10 + 2"
 	}
 	Shift+XF86MonBrightnessDown allow-when-locked=true {
-		spawn "ddcutil" "--bus" "7" "--disable-dynamic-sleep" "--noverify" "--skip-ddc-checks" "--sleep-multiplier" "0.7" "setvcp" "10" "-" "2";
+		spawn-sh "ddcutil --bus 7 --disable-dynamic-sleep --noverify --skip-ddc-checks --sleep-multiplier 0 setvcp 10 - 2";
 	}
 
 	// Media control.
-	XF86AudioPlay    allow-when-locked=true { spawn "playerctl" "play-pause"; }
-	XF86AudioStop    allow-when-locked=true { spawn "playerctl" "stop"; }
-	XF86AudioPrev    allow-when-locked=true { spawn "playerctl" "previous"; }
-	XF86AudioNext    allow-when-locked=true { spawn "playerctl" "next"; }
-	XF86AudioRewind  allow-when-locked=true { spawn "playerctl" "position" "2-"; }
-	XF86AudioForward allow-when-locked=true { spawn "playerctl" "position" "2+"; }
+	XF86AudioPlay    allow-when-locked=true { spawn-sh "playerctl play-pause"; }
+	XF86AudioStop    allow-when-locked=true { spawn-sh "playerctl stop"; }
+	XF86AudioPrev    allow-when-locked=true { spawn-sh "playerctl previous"; }
+	XF86AudioNext    allow-when-locked=true { spawn-sh "playerctl next"; }
+	XF86AudioRewind  allow-when-locked=true { spawn-sh "playerctl position 2-"; }
+	XF86AudioForward allow-when-locked=true { spawn-sh "playerctl position 2+"; }
 
 	// Media audio control.
-	Shift+XF86AudioRaiseVolume allow-when-locked=true { spawn "playerctl" "volume" "0.01%+"; }
-	Shift+XF86AudioLowerVolume allow-when-locked=true { spawn "playerctl" "volume" "0.01%-"; }
+	Shift+XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "playerctl volume 0.01%+"; }
+	Shift+XF86AudioLowerVolume allow-when-locked=true { spawn-sh "playerctl volume 0.01%-"; }
 
 	// Output audio control.
-	XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.01+"; }
-	XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.01-"; }
-	XF86AudioMute        allow-when-locked=true { spawn "wpctl" "set-mute"   "@DEFAULT_AUDIO_SINK@" "toggle"; }
+	XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.01+"; }
+	XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.01-"; }
+	XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute   @DEFAULT_AUDIO_SINK@ toggle"; }
 
 	// Input audio control.
-	Super+XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SOURCE@" "0.01+"; }
-	Super+XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SOURCE@" "0.01-"; }
-	Super+XF86AudioMute        allow-when-locked=true { spawn "wpctl" "set-mute"   "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
-	XF86AudioMicMute           allow-when-locked=true { spawn "wpctl" "set-mute"   "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
+	Super+XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 0.01+"; }
+	Super+XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 0.01-"; }
+	Super+XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute   @DEFAULT_AUDIO_SOURCE@ toggle"; }
+	XF86AudioMicMute           allow-when-locked=true { spawn-sh "wpctl set-mute   @DEFAULT_AUDIO_SOURCE@ toggle"; }
+
+	// CD/DVD tray control.
+	XF86Eject { spawn-sh "eject -T"; }
+
+	// OBS recording control.
+	Alt+Super+R { spawn-sh "obs-cmd --websocket obsws://localhost:3621 recording start"; }
+	Alt+Super+P { spawn-sh "obs-cmd --websocket obsws://localhost:3621 recording toggle-pause"; }
+	Alt+Super+S { spawn-sh "obs-cmd --websocket obsws://localhost:3621 recording stop"; }
 
 	// Power menu.
-	XF86PowerOff allow-when-locked=true { spawn "/etc/nixos/scripts/power.sh"; }
-	XF86Sleep    allow-when-locked=true { spawn "/etc/nixos/scripts/power.sh"; }
-	XF86Suspend  allow-when-locked=true { spawn "/etc/nixos/scripts/power.sh"; }
+	XF86PowerOff allow-when-locked=true { spawn "/etc/nixos/scripts/power-menu/power.sh"; }
+	XF86Sleep    allow-when-locked=true { spawn "/etc/nixos/scripts/power-menu/power.sh"; }
+	XF86Suspend  allow-when-locked=true { spawn "/etc/nixos/scripts/power-menu/power.sh"; }
 
 	// Copying screenshots.
-	Print       { spawn "/etc/nixos/scripts/screenshot.sh" "--copy" "area"; }
-	Ctrl+Print  { spawn "/etc/nixos/scripts/screenshot.sh" "--copy" "monitor"; }
-	Shift+Print { spawn "/etc/nixos/scripts/screenshot.sh" "--copy" "window"; }
+	Print       { spawn-sh "/etc/nixos/scripts/screenshot/screenshot.sh --copy area"; }
+	Ctrl+Print  { spawn-sh "/etc/nixos/scripts/screenshot/screenshot.sh --copy monitor"; }
+	Shift+Print { spawn-sh "/etc/nixos/scripts/screenshot/screenshot.sh --copy window"; }
 
 	// Saving screenshots.
-	Super+Print       { spawn "/etc/nixos/scripts/screenshot.sh" "--save" "area"; }
-	Super+Ctrl+Print  { spawn "/etc/nixos/scripts/screenshot.sh" "--save" "monitor"; }
-	Super+Shift+Print { spawn "/etc/nixos/scripts/screenshot.sh" "--save" "window"; }
+	Super+Print       { spawn-sh "/etc/nixos/scripts/screenshot/screenshot.sh --save area"; }
+	Super+Ctrl+Print  { spawn-sh "/etc/nixos/scripts/screenshot/screenshot.sh --save monitor"; }
+	Super+Shift+Print { spawn-sh "/etc/nixos/scripts/screenshot/screenshot.sh --save window"; }
 
 	// Open a terminal emulator.
 	Super+Return { spawn-sh "$TERMINAL"; }
 
 	// Open a program launcher.
-	Alt+Return { spawn "/etc/nixos/scripts/programs.sh"; }
+	Alt+Return { spawn "/etc/nixos/scripts/program-launcher/launcher.sh"; }
 
 	// Open a run launcher.
-	Alt+Shift+Return { spawn "fuzzel" "--no-icons" "--width" "50"; }
+	Alt+Shift+Return { spawn-sh "fuzzel --no-icons --width 50"; }
 
 	// Open an emoji picker.
-	Alt+Shift+E { spawn "bemoji" "--private"; }
+	Alt+Shift+E { spawn-sh "bemoji --private"; }
 
 	// Select from the clipboard.
 	Super+Shift+V { spawn-sh "clipman pick -t CUSTOM -T 'fuzzel -d --no-icons --width 60'"; }
@@ -272,10 +280,10 @@ binds {
 	Super+Control+V { spawn-sh "clipman clear --all && dunstify 'Clipboard cleared.'"; }
 
 	// Opan a permanent "clipboard" file.
-	Alt+Shift+V { spawn-sh "$TERMINAL -e micro $HOME/Documents/Clipboard.txt"; }
+	Alt+Shift+V { spawn-sh "$TERMINAL -e $EDITOR $HOME/Documents/Clipboard.txt"; }
 
 	// Toggle showing/hiding Waybar when launched.
-	Super+B { spawn "pkill" "-SIGUSR1" "waybar"; }
+	Super+B { spawn-sh "pkill -SIGUSR1 waybar"; }
 
 	// Exit out of Niri.
 	Super+Shift+E   { quit; }
@@ -294,15 +302,16 @@ binds {
 
 // Animation settings.
 animations {
-	// Whether to disable animations.
+	// Disable animations.
 	//off
 
 	// Slow down or speed up animations by this factor. Values below 1 speed animations up.
-	slowdown 0.7
+	slowdown 0.6
 }
 
 // Layout configuration.
 layout {
+	// Always center the active window if it is a single column on the screen.
 	always-center-single-column
 
 	// Gaps around (inside & outside) windows in pixels.
@@ -347,7 +356,7 @@ layout {
 		// Length of the indicator.
 		length total-proportion=1.0
 
-		// Whether to put the tab indicator "within" the column, rather than outside.
+		// Put the tab indicator "within" the column, rather than outside.
 		// This will include it in column sizing and avoid overlaying adjacent columns.
 		place-within-column
 
@@ -373,17 +382,14 @@ layout {
 	background-color "transparent"
 }
 
-
-// Miscellaneous settings.
-
 // Programs that should appear on startup.
 // spawn-at-startup "fcitx5"
 spawn-at-startup "hyprpaper"
-spawn-at-startup "thunar" "--daemon"
-spawn-at-startup "wl-paste" "-t" "text" "--watch" "clipman" "store" "--no-persist" "--max-items=100"
+spawn-sh-at-startup "thunar --daemon"
+spawn-sh-at-startup "wl-paste -t text --watch clipman store --no-persist --max-items=100"
 spawn-at-startup "/etc/nixos/scripts/polkit-agent.sh"
 
-// Whether to disable client-side decorations.
+// Disable client-side decorations.
 prefer-no-csd
 
 // Disable saving screenshots by default, letting scripts handle saving instead.
@@ -415,18 +421,12 @@ environment {
 
 // Cursor configuration.
 cursor {
-	// Cursor theme.
-	xcursor-theme "Bibata-Modern-Ice"
-
 	// Cursor size.
 	xcursor-size 24
 }
 
 // Overview configuration.
 overview {
-	// Color of the backdrop.
-	backdrop-color "#17171a"
-
 	// Configuration of shadows around workspaces in the overview.
 	workspace-shadow {
 		softness 40
@@ -436,7 +436,7 @@ overview {
 	}
 }
 
-// Whether to disable the hotkey overlay when starting niri.
+// Disable the hotkey overlay when starting niri.
 hotkey-overlay { skip-at-startup; }
 
 // Floating windows have a bigger focus ring and have shadows.
@@ -513,6 +513,7 @@ layer-rule {
 	place-within-backdrop true
 }
 
+// Add shadows around most layer-based application launchers.
 layer-rule {
 	match namespace="launcher"
 	shadow {
