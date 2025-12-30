@@ -53,16 +53,15 @@
 		})
 
 		# Updated Vintagestory version.
-		# https://github.com/NixOS/nixpkgs/issues/470441
-		(self: super: {
-			vintagestory = super.vintagestory.overrideAttrs (oldAttrs: rec {
-				version = "1.21.6";
-				src = super.fetchurl {
-					url = "https://cdn.vintagestory.at/gamefiles/stable/vs_client_linux-x64_${version}.tar.gz";
-					hash = "sha256-i1IsxT+pjkKbJjHwnMcyb12nxe21mwvnoRGHMabMETY=";
-				};
-			});
-		})
+#		(self: super: {
+#			vintagestory = super.vintagestory.overrideAttrs (oldAttrs: rec {
+#				version = "1.21.6";
+#				src = super.fetchurl {
+#					url = "https://cdn.vintagestory.at/gamefiles/stable/vs_client_linux-x64_${version}.tar.gz";
+#					hash = "sha256-i1IsxT+pjkKbJjHwnMcyb12nxe21mwvnoRGHMabMETY=";
+#				};
+#			});
+#		})
 	];
 
 #	# [Fixed] https://github.com/NixOS/nixpkgs/issues/361592
