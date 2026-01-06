@@ -233,7 +233,7 @@ In this example, I will be configuring my HP 250 G6:
 	fileSystems = {
 		"/".options = [ "compress=zstd:3" ];
 		"/home".options = [ "compress=zstd:3" ];
-		"/nix"options = [ "compress=zstd:3" "noatime" ];
+		"/nix".options = [ "compress=zstd:3" "noatime" ];
 	};
 
 	# Set the computer's name on the network.
