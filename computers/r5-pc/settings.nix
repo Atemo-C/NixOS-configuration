@@ -16,7 +16,7 @@
 	fileSystems = {
 		"/".options = [ "compress=zstd:3" ];
 		"/home".options = [ "compress=zstd:3" ];
-		"/nix"options = [ "compress=zstd:3" "noatime" ];
+		"/nix".options = [ "compress=zstd:3" "noatime" ];
 	};
 
 	# Extra packages for hardware acceleration.
