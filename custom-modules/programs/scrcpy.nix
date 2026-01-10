@@ -13,8 +13,7 @@
 	};
 
 	config = lib.mkIf cfg.enable {
-		environment.systemPackages = [ cfg.package ];
-		programs.adb.enable = true;
+		environment.systemPackages = [ cfg.package pkgs.android-tools ];
 		users.users.${config.userName}.extraGroups = [ "adbusers" ];
 	};
 }
