@@ -1,4 +1,4 @@
-{ config, lib, ... }: { programs = {
+{ config, lib, pkgs, ... }: { programs = {
 	# Reverse tethering over ADB for Android.
 	gnirehtet.enable = true;
 
@@ -17,7 +17,10 @@
 	# Shortcut to fix audio playback crashing certain LineageOS-based Android distributions.
 	fish.shellAbbrs.fix-los-audio = lib.mkIf (
 		config.programs.fish.enable
-		&& config.programs.adb.enable
+		&& (lib.elem "pkgs.android-tools" config.environment.systemPackages)
 	)
 	"adb shell device_config put media_solutions com.android.settingslib.media.flags.use_media_router2_for_info_media_manager false && adb reboot";
-}; }
+};
+
+environment.systemPackages = [ pkgs.android-tools ];
+}
