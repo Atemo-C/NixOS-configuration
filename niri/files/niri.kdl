@@ -386,7 +386,7 @@ layout {
 // spawn-at-startup "fcitx5"
 spawn-at-startup "hyprpaper"
 spawn-sh-at-startup "thunar --daemon"
-spawn-sh-at-startup "wl-paste -t text --watch clipman store --no-persist --max-items=100"
+spawn-sh-at-startup "wl-paste --type text/plain --watch clipman store --max-items=128"
 spawn-at-startup "/etc/nixos/scripts/polkit-agent.sh"
 
 // Disable client-side decorations.
@@ -504,7 +504,7 @@ window-rule {
 // Resize certain windows to specific sizes.
 window-rule {
 	match app-id=r#".scrcpy-wrapped"# title="SM-A528B"
-	default-column-width { proportion 0.2475; }
+	default-column-width { proportion 0.246; }
 }
 
 // Place the background within the backdrop.
