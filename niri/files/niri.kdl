@@ -498,6 +498,7 @@ window-rule {
 	match app-id=r#"^Better than Adventure.*$"# title="^Better than Adventure.*$"
 	match app-id=r#"Vintage Story"# title="Vintage Story"
 	match app-id=r#"^steam_app_.*$"#
+	match app-id=r#"nfsw.exe"#
 	variable-refresh-rate true
 	open-fullscreen true
 }
