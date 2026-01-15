@@ -464,6 +464,7 @@ window-rule {
 	match app-id=r#"org.gnome.Nautilus$"# title="^Select a background image$"
 	match app-id=r#"rs.ruffle.Ruffle$"#
 	match app-id=r#"org.gnome.FileRoller$"#
+	match app-id=r#"^wine.*$"# title="Wine"
 	open-floating true
 }
 
