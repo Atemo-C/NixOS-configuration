@@ -75,6 +75,22 @@ else
 	exit 1
 fi; spacer
 
+# Check if `jq` is available.
+printf "%s Checking if %sjq%s is available…\n" "$CHK" "$CMD" "$CLR"
+if command -v jq >/dev/null 2>&1;
+then
+	printf "%s %sjq%s found; Niri's configuration can be parsed.\n" "$SUC" "$CMD" "$CLR"
+else
+	printf "%s %s%sjq%s%s not found; Niri's configuration cannot be pasred. Exiting…%s\n" \
+	"$ERR" "$RBG" "$CMD" "$CLR" "$RBG" "$CLR"
+
+	errify "Menu progarm not found" \
+	"${DERR} ${DCMD}jq${DCLR} not found; Niri's configuration cannot be parsed. Exiting…"
+
+	ending
+	exit 1
+fi; spacer
+
 # Check if `swaylock` is available.
 printf "%s Checking if %sswaylock%s is available…\n" "$CHK" "$CMD" "$CLR"
 if command -v swaylock >/dev/null 2>&1;
