@@ -1,3 +1,9 @@
+# Note!
+Currently, I am doing some work in the experimental branch as well as separate work and testing on a fully clean/fresh installation on my HP 250 G6 laptop. I have discovered a lot of cruft that can now be removed, a lot of improvements and bug fixes, as well as other things. \
+This current configuration is still what I use on my main PC, and as such, it will be kept up-to-date, no problem there. However, improvements mentioned earlier will come at a later date this year, for I have lots of things to do, but it is very exciting indeed!
+
+---
+
 ![Screenshot of the desktop on my HP 250 G6](https://github.com/Atemo-C/NixOS-configuration/blob/main/Desktop.webp)
 
 # General information.
