@@ -1,6 +1,7 @@
 # Note!
 Currently, I am doing some work in the experimental branch as well as separate work and testing on a fully clean/fresh installation on my HP 250 G6 laptop. I have discovered a lot of cruft that can now be removed, a lot of improvements and bug fixes, as well as other things. \
-This current configuration is still what I use on my main PC, and as such, it will be kept up-to-date, no problem there. However, improvements mentioned earlier will come at a later date this year, for I have lots of things to do, but it is very exciting indeed!
+This current configuration is still what I use on my main PC, and as such, it will be kept up-to-date, no problem there. However, improvements mentioned earlier will come at a later date this year, for I have lots of things to do, but it is very exciting indeed! \
+A list of improvements that have been achieved in the experimental branch and/or the installation on my HP 250 G6 can be found [here](https://github.com/Atemo-C/NixOS-configuration?tab=readme-ov-file#improvements), at the bottom of this README.
 
 ---
 
@@ -76,3 +77,20 @@ A (slow) list of available options for Home Manager can be found here: \
 [Home Manager search](https://nix-community.github.io/home-manager/options.xhtml)
 
 The beautiful wallpaper in the screenshot is made by [t1na](https://www.deviantart.com/t1na).
+
+---
+
+# Improvements
+Refer to the very top of this README!
+Things already improved in testing that will be here sooner or later:
+- Default terminal emulator is now handled properly with `xdg-terinal-exec`, allowing the removal of weird .desktop files and other entries, as well as a much cleaner and easier configuration of the default terminal emulator to use.
+- Addition of certain useful nix utilties, such as `nix-prefetch-github`
+- Declarative configuration of Flatpaks to be installed with [nix-flatpak](https://github.com/gmodena/nix-flatpak) installed without Flakes.
+- Simplifed theming configuration, as well as environment variables for theming to shorten paths and so on.
+- Enabling binaries in `~/.local/bin/` to be detected.
+- Removal of now unecessary workarounds to fix certain bugs in nixpkgs that have been fixed.
+- More logical fragmentation of the configuration, and less of it.
+- Consistent syntax and formatting accross all modules and shell scripts.
+- Simpler and more thoroughly tested shell scripts.
+- Less resource usage (RAM, CPU) by default, whilst improving functionality.
+- More…
