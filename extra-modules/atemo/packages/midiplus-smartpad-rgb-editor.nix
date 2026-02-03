@@ -1,6 +1,6 @@
-{ lib, stdenv, fetchFromGitHub, python3Packages }:
-python3Packages.buildPythonApplication rec {
+{ lib, stdenv, fetchFromGitHub, python3Packages }: python3Packages.buildPythonApplication rec {
 	pname = "midiplus-smartpad-rgb-editor";
+
 	version = "0.1.1";
 
 	src = fetchFromGitHub {
