@@ -1,34 +1,34 @@
 { config, lib, pkgs, ... }: {
 	programs = {
 		# CLI Gemini client.
-		amfora.enable = true;
+		amfora.install = true;
 
 		# Matrix client.
-		element-desktop.enable = true;
+		element-desktop.install = true;
 
 		# Graphical Gemini client.
-		lagrange.enable = true;
+		lagrange.install = false;
 
 		# BitTorrent client.
-		qbittorrent.enable = true;
+		qbittorrent.install = true;
 
 		# Open-source Disocrd-like chat platform.
-		revolt-desktop.enable = true;
+		revolt-desktop.install = true;
 
 		# Adobe Flash Player emulator.
-		ruffle.enable = true;
+		ruffle.install = true;
 
 		# Graphical librespeed client.
-		speedtest.enable = true;
+		speedtest.install = true;
 
 		# Anonymizing overlay network.
-		tor.enable = true;
+		tor.install = true;
 
 		# Privacy-focused, Firefox-based browser routing traffic through the Tor network.
-		tor-browser.enable = true;
+		tor-browser.install = true;
 
 		# Alternative Discord client with Vencord built-in.
-		vesktop.enable = true;
+		vesktop.install = true;
 
 		firefox = {
 			# Whether to install the Firefox web browser.

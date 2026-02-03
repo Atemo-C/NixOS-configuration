@@ -1,0 +1,250 @@
+[{
+	// Whether the bar is displayed in front of (top) or behind (bottom) the windows.
+	"layer": "top",
+
+	// Position of the bar.
+	"position": "top",
+
+	// Modules to be displayed on the left/top.
+	"modules-left": [
+		"image#programs", "custom/spacer",
+		"image#files", "custom/spacer",
+		"image#screenshot", "custom/spacer",
+		"image#clipboard", "custom/spacer",
+		"image#picker", "custom/spacer",
+		"tray", "custom/bigspacer",
+		"image#power"
+	],
+
+	// Modules to be displayed on the center.
+	"modules-center": [
+		"image#overview", "custom/midspacer",
+		"niri/workspaces", "custom/midspacer",
+		"image#windowlist"
+	],
+
+	// Modules to be displayed on the right/bottom.
+	"modules-right": [
+		"image#cpu", "cpu", "temperature", "custom/midspacer",
+		"image#ram", "memory", "custom/midspacer",
+		"battery",
+		"backlight",
+		"custom/ddcbacklight",
+		"wireplumber#output", "custom/midspacer",
+		"wireplumber#input", "custom/midspacer",
+		"image#calendar", "clock", "custom/bigspacer",
+		"image#close"
+	],
+
+	// Normal-sized transparent spacer.
+	"custom/spacer": {
+		"format": " ",
+		"interval": "once",
+		"tooltip": false
+	},
+
+	// Bigger transparent spacer.
+	"custom/midspacer": {
+		"format": "  ",
+		"interval": "once",
+		"tooltip": false
+	},
+
+	// Bigger-er transparent spacer.
+	"custom/bigspacer": {
+		"format": "   ",
+		"interval": "once",
+		"tooltip": false
+	},
+
+	// Program launcher shortcut.
+	"image#programs": {
+		"on-click": "/etc/nixos/scripts/programs/program-launcher.sh",
+		"on-click-right": "/etc/nixos/scripts/programs/right-click.sh",
+		"exec": "/etc/nixos/scripts/programs/tooltip.sh",
+		"size": 24
+	},
+
+	// File manager shortcut.
+	"image#files": {
+		"on-click": "$FILEMANAGER",
+		"on-click-right": "$FILEMANAGER $(xdg-user-dir DOWNLOAD)",
+		"exec": "/etc/nixos/desktop/scripts/files/tooltip.sh",
+		"size": 24
+	},
+
+	// Screenshot shortcut.
+	"image#screenshot": {
+		"on-click": "/etc/nixos/scripts/screenshots/screenshot.sh --copy area; systemctl restart --user waybar.service",
+		"on-click-right": "/etc/nixos/scripts/screenshots/right-click.sh",
+		"on-click-middle": "/etc/nixos/scripts/screenshots/screenshot.sh --save area; systemctl restart --user waybar.service",
+		"exec": "/etc/nixos/scripts/screenshot/tooltip.sh",
+		"size": 24
+	},
+
+	// Clipboard shortcut.
+	"image#clipboard": {
+		"on-click": "clipman pick -t CUSTOM -T \"fuzzel -d --no-icons\"",
+		"on-click-right": "xdg-terminal $EDITOR $HOME/Documents/Clipboard.txt",
+		"on-click-middle": "clipman clear --all & dunstify -t 1500 'Clipboard cleared.'",
+		"exec": "/etc/nixos/scripts/clipboard/tooltip.sh",
+		"size": 24
+	},
+
+	// Color picker shortcut.
+	"image#picker": {
+		"on-click": "dash -d 'niri msg pick-color && systemctl restart --user waybar.service'",
+		"on-right-click": "gcolor3",
+		"exec": "/etc/nixos/scripts/color-picker/tooltip.sh",
+		"size": 24
+	},
+
+	// System tray.
+	"tray": {
+		"icon-size": 24,
+		"reverse-direction": true,
+		"spacing": 8
+	},
+
+	// Power menu shortcut.
+	"image#power": {
+		"on-click": "/etc/nixos/scripts/power-menu/power.sh",
+		"exec": "/etc/nixos/scripts/power-menu/tooltip.sh",
+		"size": 24
+	},
+
+	// Overview shortcut.
+	"image#overview": {
+		"on-click": "niri msg action toggle-overview",
+		"exec": "/etc/nixos/scripts/overview/tooltip.sh",
+		"size": 24
+	},
+
+	// Window list shortcut.
+	"image#windowlist": {
+		"on-click": "dunstify 'WIP' 'Not yet implemented.'",
+		"exec": "/etc/nixos/scripts/window-list/tooltip.sh",
+		"size": 24
+	},
+
+	// CPU monitoring.
+	"image#cpu": {
+		"on-click": "xdg-terminal btop",
+		"on-click-right": "dunstify \"$(sensors)\"",
+		"on-click-middle": "dunstify \"$(free -mh)\"",
+		"exec": "/etc/nixos/scripts/cpu/tooltip.sh",
+		"size": 24
+	},
+	"cpu": {
+		"format": "{usage}% ",
+		"interval": 1,
+		"on-click": "xdg-terminal btop",
+		"on-click-right": "dunstify \"$(sensors)\"",
+		"on-click-middle": "dunstify \"$(free -mh)\""
+	},
+	"temperature": {
+		"critical-threshold": 75,
+		"format": "{temperatureC}°C",
+
+		// R5 PC
+		"hwmon-path": "/sys/class/hwmon/hwmon1/temp1_input",
+
+		// HP 250 G6
+		//"hwmon-path": "/sys/class/hwmon/hwmon6/temp1_input",
+
+		"interval": 1,
+		"on-click": "xdg-terminal btop",
+		"on-click-right": "dunstify \"$(sensors)\"",
+		"on-click-middle": "dunstify \"$(free -mh)\""
+	},
+
+	// RAM monitoring.
+	"image#ram": {
+		"on-click": "xdg-terminal btop",
+		"on-click-right": "dunstify \"$(sensors)\"",
+		"on-click-middle": "dunstify \"$(free -mh)\"",
+		"exec": "/etc/nixos/scripts/ram/tooltip.sh",
+		"size": 24
+	},
+	"memory": {
+		"format": "{percentage}%",
+		"interval": 1,
+		"on-click": "xdg-terminal btop",
+		"on-click-right": "dunstify \"$(sensors)\"",
+		"on-click-middle": "dunstify \"$(free -mh)\""
+	},
+
+	// Battery monitoring.
+	"battery": {
+		"exec-if": "ls /sys/class/power_supply/BAT* > /dev/null 2>&1",
+		"states": {
+			"warning": 35,
+			"critical": 20,
+		},
+		"format": "{icon} {capacity}%  ",
+		"format-icons": [ " ", " ", " ", " ", " " ],
+		"on-click": "dunstify \"Battery information\" \"$(acpi -bi)\""
+	},
+
+	// Backlight module.
+	"backlight": {
+		"exec-if": "ls /sys/class/backlight/* > /dev/null 2>&1",
+		"format": "{icon}{percent}%  ",
+		"format-icons": [ "󰃜 ", "󰃞 ", "󰃟 ", "󰃠 ", "󰃚 " ]
+	},
+
+	// Backlight module for external monitors.
+	"custom/ddcbacklight": {
+		"exec": "ddcutil --bus 7 --disable-dynamic-sleep --noverify --skip-ddc-checks --sleep-multiplier 0.13 getvcp 10 | grep \"Brightness\" | awk '{print $9}' | tr -d ','",
+		"exec-if": "echo 'test'",
+		"exec-on-event": true,
+		"format": "{icon}{}%  ",
+		"format-icons": [ "󰃜 ", "󰃞 ", "󰃟 ", "󰃠 ", "󰃚 " ],
+		"interval": "once",
+		"on-scroll-up": "ddcutil --bus 7 --disable-dynamic-sleep --noverify --skip-ddc-checks --sleep-multiplier 0.13 setvcp 10 + 2",
+		"on-scroll-down": "ddcutil --bus 7 --disable-dynamic-sleep --noverify --skip-ddc-checks --sleep-multiplier 0.13 setvcp 10 - 2"
+	},
+
+	// Audio output monitoring and control.
+	"wireplumber#output": {
+		"format": "{icon} {volume}%",
+		"format-icons": [ " ", " ", " " ],
+		"format-muted": " ",
+		"node-type": "Audio/Sink",
+		"on-click": "pwvucontrol",
+		"on-click-right": "qpwgraph",
+		"on-click-middle": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+	},
+
+	"wireplumber#input": {
+		"format": "{icon} {volume}%",
+		"format-icons": [ " ", " ", " " ],
+		"format-muted": " X",
+		"node-type": "Audio/Source",
+		"on-click": "pwvucontrol",
+		"on-click-right": "qpwgraph",
+		"on-click-middle": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+	},
+
+	// Date and time module.
+	"image#calendar": {
+		"on-click": "xdg-terminal calcurse",
+		"exec": "/etc/nixos/scripts/calendar/tooltip.sh",
+		"size": 24
+	},
+	"clock": {
+		//"format": "{:%d/%m/%Y %H:%M:%S}",
+		"format": "{:%d/%m %Hh%M}",
+		"interval": 1,
+		"on-click": "xdg-terminal calcurse",
+		"tooltip-format": "<tt>{calendar}</tt>"
+	},
+
+	// Close/kill button.
+	"image#close": {
+		"on-click": "niri msg action close-window",
+		"on-click-right": "/etc/nixos/scripts/close/kill-window.sh",
+		"exec": "/etc/nixos/scripts/close/tooltip.sh",
+		"size": 24
+	}
+}]

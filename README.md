@@ -18,6 +18,15 @@ https://github.com/nix-community/home-manager
 It uses lots of custom Nix modules, most simply replacing package lists by `programs.` options whenever possible. This is mostly a stylistic choice, but some modules do add some functionality and pre-configurations. \
 https://github.com/Atemo-C/NixOS-configuration/blob/experimental/nix-modules/
 
+# A weird way to install packages
+You might notice that the vast majority of packages installed here are actually "enabled", just like most `programs.<name>.enable` options. Well, not quite, still. \
+For reasons that are beyond me, the use of `environment.systemPackages = with pkgs; [];` *and* `programs.<name>.enable` infuriates me, and it is also not the least confusing thing for new users. \
+So I have implemented something that is ever-so-slightly more logical to my silly brain:
+- `programs.<name>.enable`, which is already present in NixOS, for installed programs that come with more advanced configurations or have additional options attached to them;
+- `programs.<name>.install`, which simply installs a package with no additional configuration.
+This also makes conditionals easier to wrap my head around, and avoids silly things like having an infinite recursion when I try to disable `programs.nano.enable` only if another text editor is installed (here, `micro`). \
+Nothing stops you from not using these, but note that some of these modules do actually add some functionality. For example, my module for Vintage Story has an option to open relevant firewall ports for local LAN and worldwide online play from one's singleplayer world, not unlike Steam has for Remote Play.
+
 # Made for a specific installation
 This NixOS configuration is not made to be something anyone can just use on their own systems; Not without tweaks, at least. I have a pretty consistent way of setting up most of my computers when I install NixOS. \
 Below are the steps I take to install NixOS on my devices.

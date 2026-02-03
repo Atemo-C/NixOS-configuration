@@ -7,55 +7,58 @@
 
 	programs = rec {
 		# Collection of libraries and applications implementing large parts of the DICOM standard.
-		dcmtk.enable = true;
+		dcmtk.install = true;
+
+		# Tool to read, write, and edit EXIF meta information.
+		exiftool.install = true;
 
 		# Download image galleries.
-		gallery-dl.enable = true;
+		gallery-dl.install = true;
 
 		# Color picker.
-		gcolor3.enable = true;
+		gcolor3.install = true;
 
 		# The GNU Image Manipulation Program.
-		gimp.enable = true;
+		gimp.install = true;
 
 		# Software suite to create, edit, compose, and convert bitmap images.
-		imagemagick.enable = true;
+		imagemagick.install = true;
 
 		# Vector graphics editor.
-		inkscape.enable = true;
+		inkscape.install = true;
 
 		# JPEG optimiser.
-		jpegoptim.enable = true;
+		jpegoptim.install = true;
 
 		# Video editor based on the MLT and KDE Frameworks.
-		kdenlive.enable = true;
+		kdenlive.install = true;
 
 		# Painting and animation program.
-		krita.enable = true;
+		krita.install = true;
 
 		# Open h.265 video codec implementation.
-		libde265.enable = true;
+		libde265.install = true;
 
 		# JPEG XL image format reference implementation.
-		libjxl.enable = true;
+		libjxl.install = true;
 
 		# Tools and librarry for the WebP image format.
-		libwebp.enable = true;
+		libwebp.install = true;
 
 		# Image viewer.
-		lxqt.lximage-qt.enable = true;
+		lxqt.lximage-qt.install = true;
 
 		# PNG optimizer.
-		oxipng.enable = true;
+		oxipng.install = true;
 
 		# CLI tool to download videos from YouTube and other websites; Fork of yt-dl.
-		yt-dlp.enable = true;
+		yt-dlp.install = true;
 
 		# V4L utilities and lib4vl, providing common image formats regardless of the v4l device.
-		v4l-utils.enable = true;
+		v4l-utils.install = true;
 
 		ffmpeg = {
-			# Whether to install FFmpeg, complete solution to record, convert, stream audio and video.
+			# Whether to enable FFmpeg, complete solution to record, convert, stream audio and video.
 			enable = true;
 
 			# Which FFmpeg package to install.
@@ -63,7 +66,7 @@
 		};
 
 		gstreamer = {
-			# Whether to install GStreamer, an open-source multimedia framework.
+			# Whether to enable GStreamer, an open-source multimedia framework.
 			enable = true;
 
 			# Which GStreamer plugins to install.
@@ -119,50 +122,45 @@
 		fish.shellAbbrs = {
 			# Losslessly optimize all JPEG images in the current directory.
 			# The original files are overridden.
-			opti-jpg = lib.mkIf jpegoptim.enable "jpegoptim -s -v *.jp{,e}g";
+			opti-jpg = lib.mkIf jpegoptim.install "jpegoptim -s -v *.jp{,e}g";
 
 			# Losslessly optimize all PNG images in the current directory.
 			# The original files are overridden.
-			opti-png = lib.mkIf oxipng.enable "oxipng --strip all -v *.png";
+			opti-png = lib.mkIf oxipng.install "oxipng --strip all -v *.png";
 
 			# Losslessly convert all JPEG images to JPEG XL ones in the current directory.
 			# The original files are kept.
-			jpg-jxl = lib.mkIf (
-				libjxl.enable
-				&& config.programs.parallel.enable
-			) "parallel cjxl -e 8 '{}' '{.}'.jxl -v ::: *.jp{,e}g";
+			jpg-jxl = lib.mkIf (libjxl.install && config.programs.parallel.enable)
+			"parallel cjxl -e 8 '{}' '{.}'.jxl -v ::: *.jp{,e}g";
 
 			# Losslessly convert all PNG images to JPEG XL ones in the current directory.
 			# The original files are kept.
-			png-jxl = lib.mkIf (
-				libjxl.enable
-				&& config.programs.parallel.enable
-			) "parallel cjxl -e 8 '{}' '{.}'.jxl -d 0 -v ::: *.png";
+			png-jxl = lib.mkIf (libjxl.install && config.programs.parallel.enable)
+			"parallel cjxl -e 8 '{}' '{.}'.jxl -d 0 -v ::: *.png";
 
 			# Losslessly convert JPEG XL images to PNG ones in the current directory.
 			# The original files are kept.
-			jxl-png = lib.mkIf (
-				libjxl.enable
-				&& config.programs.parallel.enable
-			) "parallel djxl '{}' '{.}'.png -v ::: *.jxl";
+			jxl-png = lib.mkIf (libjxl.install && config.programs.parallel.enable)
+			"parallel djxl '{}' '{.}'.png -v ::: *.jxl";
 
 			# Losslessly convert JPEG XL images to JPEG ones in the current directory.
-			jxl-jpg = lib.mkIf (
-				libjxl.enable
-				&& config.programs.parallel.enable
-			) "parallel djxl '{}' '{.}'.jpg -v ::: *.jxl";
+			jxl-jpg = lib.mkIf (libjxl.install && config.programs.parallel.enable)
+			"parallel djxl '{}' '{.}'.jpg -v ::: *.jxl";
 
 			# Batch download images normally and through a Tor proxy.
-			imgdl = lib.mkIf gallery-dl.enable "gallery-dl";
-			imgdl-tor = lib.mkIf gallery-dl.enable "gallery-dl --proxy socks5://localhost:9050";
+			imgdl = lib.mkIf gallery-dl.install "gallery-dl";
+			imgdl-tor = lib.mkIf (gallery-dl.install && config.programs.tor.install)
+			"gallery-dl --proxy socks5://localhost:9050";
 
 			# Download videos normally and through a Tor proxy.
-			yt = lib.mkIf yt-dlp.enable "yt-dlp -t sleep";
-			yt-tor = lib.mkIf yt-dlp.enable "yt-dlp -t sleep --proxy socks5://localhost:9050";
+			yt = lib.mkIf yt-dlp.install "yt-dlp -t sleep";
+			yt-tor = lib.mkIf (yt-dlp.install && config.programs.tor.install)
+			"yt-dlp -t sleep --proxy socks5://localhost:9050";
 
 			# Dowlond audio normally and through a Tor proxy.
-			ytmp3 = lib.mkIf yt-dlp.enable "yt-dlp -t sleep -x --audio-format mp3 --audio-quality 0";
-			ytmp3-tor = lib.mkIf yt-dlp.enable "yt-dlp -t sleep -x --audio-format mp3 --audio-quality 0 --proxy socks5://localhost:9050";
+			ytmp3 = lib.mkIf yt-dlp.install "yt-dlp -t sleep -x --audio-format mp3 --audio-quality 0";
+			ytmp3-tor = lib.mkIf (yt-dlp.install && config.programs.tor.install)
+			"yt-dlp -t sleep -x --audio-format mp3 --audio-quality 0 --proxy socks5://localhost:9050";
 
 			# Hide the banner when using FFmpeg.
 			ffmpeg = lib.mkIf ffmpeg.enable "ffmpeg -hide_banner";
@@ -173,6 +171,6 @@
 	};
 
 	systemd.user.tmpfiles.users.${config.userName}.rules = []
-	++ lib.optional config.programs.mpv.enable "L %h/.config/mpv/mpv.conf - - - - /etc/nixos/programs/files/mpv.conf"
-	++ lib.optional config.programs.yt-dlp.enable "L %h/.config/yt-dlp/config - - - - /etc/nixos/programs/files/yt-dlp.conf";
+	++ lib.optional config.programs.mpv.enable "L %h/.config/mpv/mpv.conf - - - - /etc/nixos/files/mpv.conf"
+	++ lib.optional config.programs.yt-dlp.enable "L %h/.config/yt-dlp/config - - - - /etc/nixos/files/yt-dlp.conf";
 }

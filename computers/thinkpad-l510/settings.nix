@@ -1,14 +1,15 @@
-{ ... }: {
+{ pkgs, ... }: {
 	boot = {
-		# Define the LUKS-encrypted storage devices (root and swap).
+		# Paths of LUKS-encrypted storage devices necessary for the system.
+		# Optional ones (e.g. removable encrypted drives) should not be put here.
 		initrd.luks.devices = {
-			root.device = "/dev/disk/by-uuid/UUID-HERE";
-			swap.device = "/dev/disk/by-uuid/UUID-HERE";
+			root.device = "/dev/disk/by-uuid/11111111-1111-1111-1111-111111111111";
+			swap.device = "/dev/disk/by-uuid/22222222-2222-2222-2222-222222222222";
 		};
 
 		loader.limine = {
 			# Set the drive to install the Limine bootloader onto.
-			biosDevice = "/dev/disk/by-id/ID-HERE";
+			biosDevice = "/dev/disk/by-id/ata-WDC_WD1600BEVS-08VAT2_WD-WXP1A30R8683";
 
 			# Disable support for EFI booting.
 			efiSupport = false;
@@ -17,30 +18,26 @@
 
 	# Filesystem options.
 	fileSystems = {
+		# ZSTD compression for the root `/` and `/home/` volumes.
 		"/".options = [ "compress=zstd:3" ];
 		"/home".options = [ "compress=zstd:3" ];
+
+		# ZSTD compression and no access time updae for the `/nix/` volume.
 		"/nix".options = [ "compress=zstd:3" "noatime" ];
 	};
 
-	# Extra packages for hardware acceleration.
-	hardware.graphics.extraPackages = lib.optionals config.hardware.graphics.enable (with pkgs; [
-		# VA-API for older Intel GPUs using the i915 driver.
-		intel-vaapi-driver
-
-		# OpenCL for Intel GPUs.
-		intel-compute-runtime
-	]);
+	# VA-API user mode driver for 6th gen and older Intel iGPUs.
+	hardware.graphics.extraPackages = [ pkgs.intel-vaapi-driver ];
 
 	# Set the computer's name on the network.
-	networking.hostName = "ThinkPad-L510";
+	networking.hostName = "THINKPAD-L510";
 
 	programs.pmutils = {
-		# Whether to enable a small collection of scripts that handle suspend and resume on behalf of HAL.
+		# whether to enable pmutils, a small collection of scripts handling suspend and resume on behalf of HAl.
 		enable = true;
 
-		# Whether `pm-suspend` should be used when invoking `systemctl supsend`.
-		# This can be useful on devices where suspend does not work otherwise (e.g. ThinkPad L510).
-		replaceSuspend = true;
+		# Whether pmutils commands should replace their systemctl equivalent for suspend/hibernation actions.
+		replaceAll = true;
 	};
 
 	# Keyboard layout settings.
@@ -51,11 +48,14 @@
 	# • https://github.com/NixOS/nixpkgs/issues/254523
 	# • https://github.com/NixOS/nixpkgs/issues/286283
 	services.xserver.xkb = {
+		# Keyboard layout, or multiple keyboard layouts separated by a comma.
 		layout = "fr,us";
+
+		# Keyboard layout variant, or multiple keyboard variants separated by a comma.
 		variant = ",intl";
 	};
 
-	# Disable the ModemManager service to improve boto times and save resources.
-	# Only enable if using cellular data (tethering from a mobile device does not count).
+	# Whether to enable the ModemManager service for using cellular data.
+	# Disable this if you do not use it, to improve boot times.
 	systemd.services.ModemManager.enable = false;
 }

@@ -1,7 +1,7 @@
-{ ... }:  { programs = {
+{ ... }: { programs = {
 	# Mind-mapping utility.
-	minder.enable = true;
+	minder.install = true;
 
 	# Offline password manager.
-	keepassxc.enable = true;
+	keepassxc.install = true;
 }; }

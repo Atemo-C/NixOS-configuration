@@ -1,15 +1,15 @@
 { pkgs, ... }: { programs = {
-	# PFD rendering library.
-	poppler-utils.enable = true;
+	# PDF rendering library.
+	poppler-utils.install = true;
 
 	# Document viewer.
-	xreader.enable = true;
+	xreader.install = true;
 
 	libreoffice = {
-		# Whether to install LibreOffice, a comprehensive productivity suite.
+		# Whether to enable the LibreOffice suite.
 		enable = true;
 
-		# Which LibreOffice package to install.
+		# Which package to use for LibreOffice.
 		package = pkgs.libreoffice-fresh;
 	};
 }; }

@@ -1,0 +1,49 @@
+* {
+	font-family: monospace;
+	font-size: 16px;
+	margin: 0;
+	padding: 0;
+	border-radius: 0px
+}
+
+#image {
+	background-color: rgba(0, 0, 0, 0);
+	margin: 2px 2px;
+	padding: 2px 2px
+}
+
+#image:hover, #tray:hover, #cpu:hover, #temperature:hover, #memory:hover, #battery:hover, #backlight:hover, #wireplumber:hover, #clock:hover { background-color: rgba(255, 255, 255, 0.18); }
+
+window#waybar {
+/*	background: rgba(0, 0, 0, 0.8);*/
+	background: rgb(0, 0, 0);
+	color: #ffffff;
+	border-bottom: 2px solid transparent
+}
+
+tooltip {
+	background: #0d0d0d;
+	border: 2px solid #0080ff
+}
+
+tooltip label {
+	color: #ffffff;
+	padding: 3px
+}
+
+#workspaces button {
+	border-bottom: 2px solid transparent;
+	color: #005ab3;
+	padding: 0 8px;
+	font-weight: bold
+}
+
+#workspaces button.active {
+	background-color: rgba(255, 255, 255, 0.2);
+	border-bottom: 2px solid #ffffff;
+	color: #00ffff
+}
+
+#workspaces button.empty { color: #555555; }
+
+#workspaces button.urgent { background-color: rgba (255, 0, 0, 0.4); }

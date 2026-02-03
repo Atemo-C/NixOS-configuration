@@ -4,7 +4,7 @@
 printf "%s/apps/scalable/diodon.svg\n" "$ICON_THEME_PATH"
 
 # Tooltip title.
-printf "<b>               Overview</b>\r\r"
+printf "<b>            Overview</b>\r\r"
 
 # Tolltip content.
-printf "<span foreground='#00c0ff'>󰍽</span> Left │ Toggle the workspaces overview"
+printf "<span foreground='#00c0ff'>󰍽</span> L │ Toggle the workspaces overview"

@@ -1,30 +1,35 @@
 { lib, pkgs, ... }: { programs = rec {
 	# Nintendo DS(i) emulator.
-	desmume.enable = true;
+	desmume.install = true;
 
 	# CLI program for managing Minecraft mods and modpacks from various sources.
-	ferium.enable = true;
+	ferium.install = true;
 
 	# Native GOG, Epic, and Amaon Games launcher.
-	heroic.enable = false;
+	heroic.install = false;
 
 	# Modern GBA emulator with a focus on accuracy.
-	mgba.enable = true;
+	mgba.install = true;
 
 	# PlayStation 2 emulator.
-	pcsx2.enable = true;
+	pcsx2.install = true;
 
 	# Full-featured Minecraft launcher.
-	prismlauncher.enable = true;
+	prismlauncher.install = true;
 
 	# PlayStation 3 emulator.
 	rpcs3.enable = true;
 
-	# Indie sandbox game about innovation and exploration.
-	vintagestory.enable = true;
-
 	# XBOX emulator.
-	xemu.enable = true;
+	xemu.install = true;
+
+	vintagestory = {
+		# Whether to install Vintage Story, and indie sandbox game about innovation and exploration.
+		enable = true;
+
+		# Whether to open ports in the firewall for local game discovery and UDNPD device discovery.
+		openFirewall = true;
+	};
 
 	gamemode = {
 		# Whether to enale GameMode to optimize system performances on demand when gaming.

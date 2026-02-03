@@ -1,36 +1,37 @@
-{ ... }: {
+{ pkgs, ... }: {
 	boot = {
-		# Define the LUKS-encrypted storage devices (root and swap).
+		# Paths of LUKS-encrypted storage devices necessary for the system.
+		# Optional ones (e.g. removable encrypted drives) should not be put here.
 		initrd.luks.devices = {
-			root.device = "/dev/disk/by-uuid/UUID-HERE";
-			swap.device = "/dev/disk/by-uuid/UUID-HERE";
+			root.device = "/dev/disk/by-uuid/11111111-1111-1111-1111-111111111111";
+			swap.device = "/dev/disk/by-uuid/22222222-2222-2222-2222-222222222222";
 		};
 
-		# Whether to let the installation process modify EFI boot variables.
-		# If you have errors when updating NixOS after it has been installed,
-		# as in, the bootloader fails to "install" again, it is safe to turn this off.
+		# Whether the installation process is allowed to modify EFI boot variables.
+		# Once installed, if after an update, it fails to "install" again,
+		# it should be entirey safe to turn this option off.
 		loader.efi.canTouchEfiVariables = true;
 	};
 
 	# Filesystem options.
 	fileSystems = {
+		# ZSTD compression for the root `/` and `/home/` volumes.
 		"/".options = [ "compress=zstd:3" ];
 		"/home".options = [ "compress=zstd:3" ];
+
+		# ZSTD compression and no access time updae for the `/nix/` volume.
 		"/nix".options = [ "compress=zstd:3" "noatime" ];
 	};
 
-	# Extra packages for hardware acceleration.
-	hardware.graphics.extraPackages = lib.optionals config.hardware.graphics.enable (with pkgs; [
-		# OpenCL for AMD GPUs.
-		rocmPackages.clr.icd
-	]);
+	# Import the proprietary NVIDIA drivers module (for 165X and above GPUs).
+	imports = [ /etc/nixos/gpu/nvidia.nix ];
 
 	# Set the computer's name on the network.
 	networking.hostName = "R5-PC";
 
 	services = {
 		# Whether to enable LACT, a tool for monitoring, configuring, and overclocking GPUs.
-		lact.enable = true;
+		lact.enable = lib.mkIf (lib.elem "nvidia" config.xserver.videoDrivers) true;
 
 		# Keyboard layout settings.
 		# To see a complete list of layouts, variants, and other settings:
@@ -39,13 +40,16 @@
 		# To see why this list cannot easily be seen within NixOS:
 		# • https://github.com/NixOS/nixpkgs/issues/254523
 		# • https://github.com/NixOS/nixpkgs/issues/286283
-		xserver.xkb = {
+		services.xserver.xkb = {
+			# Keyboard layout, or multiple keyboard layouts separated by a comma.
 			layout = "us,fr";
+
+			# Keyboard layout variant, or multiple keyboard variants separated by a comma.
 			variant = "intl,";
 		};
 	};
 
-	# Disable the ModemManager service to improve boto times and save resources.
-	# Only enable if using cellular data (tethering from a mobile device does not count).
+	# Whether to enable the ModemManager service for using cellular data.
+	# Disable this if you do not use it, to improve boot times.
 	systemd.services.ModemManager.enable = false;
 }

@@ -1,32 +1,30 @@
-{ ... }: {
+{ pkgs, ... }: {
 	boot = {
-		# Define the LUKS-encrypted storage devices (root and swap).
+		# Paths of LUKS-encrypted storage devices necessary for the system.
+		# Optional ones (e.g. removable encrypted drives) should not be put here.
 		initrd.luks.devices = {
 			root.device = "/dev/disk/by-uuid/80ef44a6-7ee0-4001-bc09-7b5fcd11b46e";
 			swap.device = "/dev/disk/by-uuid/56c4a6c9-e2d5-4b02-a13d-45ad9302a19e";
 		};
 
-		# Whether to let the installation process modify EFI boot variables.
-		# If you have errors when updating NixOS after it has been installed,
-		# as in, the bootloader fails to "install" again, it is safe to turn this off.
+		# Whether the installation process is allowed to modify EFI boot variables.
+		# Once installed, if after an update, it fails to "install" again,
+		# it should be entirey safe to turn this option off.
 		loader.efi.canTouchEfiVariables = false;
 	};
 
 	# Filesystem options.
 	fileSystems = {
+		# ZSTD compression for the root `/` and `/home/` volumes.
 		"/".options = [ "compress=zstd:3" ];
 		"/home".options = [ "compress=zstd:3" ];
+
+		# ZSTD compression and no access time updae for the `/nix/` volume.
 		"/nix".options = [ "compress=zstd:3" "noatime" ];
 	};
 
-	# Extra packages for hardware acceleration.
-	hardware.graphics.extraPackages = lib.optionals config.hardware.graphics.enable (with pkgs; [
-		# VA-API for modern Intel GPUs.
-		intel-media-driver
-
-		# OpenCL for Intel GPUs.
-		intel-compute-runtime
-	]);
+	# Intel Media Driver for VAAPI for Broadwell (7th Gen) and above Intel iGPUs.
+	hardware.graphics.extraPackages = [ pkgs.intel-media-driver ];
 
 	# Set the computer's name on the network.
 	networking.hostName = "HP-250-G6";
@@ -39,11 +37,14 @@
 	# • https://github.com/NixOS/nixpkgs/issues/254523
 	# • https://github.com/NixOS/nixpkgs/issues/286283
 	services.xserver.xkb = {
+		# Keyboard layout, or multiple keyboard layouts separated by a comma.
 		layout = "fr,us";
+
+		# Keyboard layout variant, or multiple keyboard variants separated by a comma.
 		variant = ",intl";
 	};
 
-	# Disable the ModemManager service to improve boto times and save resources.
-	# Only enable if using cellular data (tethering from a mobile device does not count).
+	# Whether to enable the ModemManager service for using cellular data.
+	# Disable this if you do not use it, to improve boot times.
 	systemd.services.ModemManager.enable = false;
 }
