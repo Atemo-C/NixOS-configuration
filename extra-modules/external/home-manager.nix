@@ -12,7 +12,7 @@ in {
 		users = {
 			# Version of Home Manager first installed on the system.
 			# Here, it is assumed that it is the same as NixOS.
-			atemo.home.stateVersion = "${config.system.stateVersion}";
+			${config.userName}.home.stateVersion = "${config.system.stateVersion}";
 			root.home.stateVersion = "${config.system.stateVersion}";
 		};
 	};
