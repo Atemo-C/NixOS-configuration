@@ -203,11 +203,11 @@ while :; do
 		"Lagrange               Graphical Gemini client") l lagrange;;
 		"LibreOffice            Office suite") l libreoffice;;
 		"LibreOffice Base       · Databases") la libreoffice libreoffice --base;;
-		"LibreOffice Base       · Calc") la libreoffice libreoffice --calc;;
-		"LibreOffice Base       · Draw") la libreoffice libreoffice --draw;;
-		"LibreOffice Base       · Math") la libreoffice libreoffice --math;;
-		"LibreOffice Base       · Writer") la libreoffice libreoffice --writer;;
-		"LibreOffice Base       · Impress") la libreoffice libreoffice --impress;;
+		"LibreOffice Calc       · Spreadsheets") la libreoffice libreoffice --calc;;
+		"LibreOffice Draw       · Drawing") la libreoffice libreoffice --draw;;
+		"LibreOffice Math       · Mathematics") la libreoffice libreoffice --math;;
+		"LibreOffice Writer     · Word processing") la libreoffice libreoffice --writer;;
+		"LibreOffice Impress    · Presentation") la libreoffice libreoffice --impress;;
 		"LibreWolf              Web browser") l librewolf --new-window;;
 		"LibreWolf - private    Web browser (private window)") la librewolf librewolf --private-window;;
 		"Luanti (Minetest)      Open-source voxel game engine") l luanti;;
