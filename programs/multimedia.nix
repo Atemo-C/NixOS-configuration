@@ -21,6 +21,9 @@
 		# Command-line tool for creating, editing, and getting information about GIF images and animations.
 		gifsicle.install = true;
 
+		# GIF encoder based on libimagequant (pngquant).
+		gifski.install = true;
+
 		# The GNU Image Manipulation Program.
 		gimp.install = true;
 
