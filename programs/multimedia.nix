@@ -18,6 +18,9 @@
 		# Color picker.
 		gcolor3.install = true;
 
+		# Command-line tool for creating, editing, and getting information about GIF images and animations.
+		gifsicle.install = true;
+
 		# The GNU Image Manipulation Program.
 		gimp.install = true;
 
