@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+<action>
+	<icon>utilities-terminal</icon>
+	<name>Open terminal here</name>
+	<submenu></submenu>
+	<unique-id>1754598617503592-1</unique-id>
+	<command>xdg-terminal-exec --working-directory %f</command>
+	<description>Open a terminal in the current directory</description>
+	<range></range>
+	<patterns>*</patterns>
+	<startup-notify/>
+	<directories/>
+</action>
+<action>
+	<icon>folder-red-important</icon>
+	<name>Open root window</name>
+	<submenu></submenu>
+	<unique-id>1754675608694655-1</unique-id>
+	<command>pkexec env XDG_RUNTIME_DIR=&quot;$XDG_RUNTIME_DIR&quot; WAYLAND_DISPLAY=&quot;$WAYLAND_DISPLAY&quot; thunar %f</command>
+	<description>Open this directory with a root instance</description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<directories/>
+</action>
+<action>
+	<icon>imagemagick</icon>
+	<name>Optimize PNG image(s)</name>
+	<submenu>Image manipulation</submenu>
+	<unique-id>1754676849130250-2</unique-id>
+	<command>for file in %F; do oxipng --strip all &quot;$file&quot; &amp;&amp; dunstify -t 2500 &quot;Image optimization&quot; &quot;Image(s) optimized&quot;; done</command>
+	<description>Optimize the selected PNG image(s) with oxipng</description>
+	<range>*</range>
+	<patterns>*.png</patterns>
+	<image-files/>
+</action>
+<action>
+	<icon>imagemagick</icon>
+	<name>Optimize JPEG image(s)</name>
+	<submenu>Image manipulation</submenu>
+	<unique-id>1754683716215358-3</unique-id>
+	<command>for file in %F; do jpegoptim -s -v &quot;$file&quot; &amp;&amp; dunstify -t 2500 &quot;Image optimization&quot; &quot;Image(s) optimized&quot;; done</command>
+	<description>Optimize the selected JPEG image(s) with jpegoptim</description>
+	<range>*</range>
+	<patterns>*.jpg;*.jpeg</patterns>
+	<image-files/>
+</action>
+<action>
+	<icon>imagemagick</icon>
+	<name>Convert to JPEG XL</name>
+	<submenu>Image manipulation</submenu>
+	<unique-id>1754684963643767-4</unique-id>
+	<command>for file in %f; do cjxl -e 9 -d 0 &quot;$file&quot; &quot;$(basename &quot;$file&quot; | sed &apos;s/\.[^.]*$//&apos;)&quot;.jxl &amp;&amp; dunstify &quot;Image convertion&quot; &quot;$file converted to JPEG XL&quot;; done</command>
+	<description>Convert the selected image(s) to JPEG XL</description>
+	<range>*</range>
+	<patterns>*jpg;*.jpeg;*.png</patterns>
+	<image-files/>
+</action>
+</actions>

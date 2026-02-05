@@ -1,0 +1,38 @@
+[Default Applications]
+application/json=micro.desktop
+applications/pdf=xreader.desktop
+application/vnd.adobe.flash.movie=rs.ruffle.Ruffle.desktop
+application/xml=micro.desktop
+application/x-modrinth-modpack+zip=org.prismlauncher.PrismLauncher.desktop
+
+# Audio files.
+audio/flac=audacious.desktop
+audio/mpeg=audacious.desktop
+audio/vnd.wave=audacious.desktop
+audio/x-opus+ogg=audacious.desktop
+audio/x-vorbis+ogg=audacious.desktop
+
+# Image files.
+image/gif=lximage-qt.desktop
+image/jpeg=lximage-qt.desktop
+image/jxl=lximage-qt.desktop
+image/png=lximage-qt.desktop
+image/svg+xml=lximage-qt.desktop
+image/webp=lximage-qt.desktop
+image/x-panasonic-rw2=lximage-qt.desktop
+
+# Basically the file manager.
+inode/directory=thunar.desktop
+
+# Text files.
+text/css=micro.desktop
+text/html=micro.desktop
+text/plain=micro.desktop
+
+# Video files.
+video/webm=mpv.desktop
+
+# Web links and more.
+x-scheme-handler/http=librewolf.desktop
+x-scheme-handler/https=librewolf.desktop
+x-scheme-handler/discord=vesktop.desktop
