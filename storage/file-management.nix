@@ -25,10 +25,10 @@
 
 		# Whether to enable Xfconf, the Xfce configuratioon system.
 		# Thunar likes to have it around.
-		xfconf.enable = lib.mkIf programs.thunar.enable = true;
+		xfconf.enable = lib.mkIf programs.thunar.enable true;
 
 		# Shell abbreviations for `lsd`.
-		fish.shellAbbrs = lib.mkIf programs.lsd.install {
+		fish.shellAbbrs = lib.mkIf programs.lsd.install rec {
 			# List.
 			l = "lsd --group-dirs first";
 			list = l;
