@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ config, lib, pkgs, ... }: {
 	boot = {
 		# Paths of LUKS-encrypted storage devices necessary for the system.
 		# Optional ones (e.g. removable encrypted drives) should not be put here.
@@ -31,7 +31,7 @@
 
 	services = {
 		# Whether to enable LACT, a tool for monitoring, configuring, and overclocking GPUs.
-		lact.enable = lib.mkIf (lib.elem "nvidia" config.xserver.videoDrivers) true;
+		lact.enable = lib.mkIf (lib.elem "nvidia" config.services.xserver.videoDrivers) true;
 
 		# Keyboard layout settings.
 		# To see a complete list of layouts, variants, and other settings:
