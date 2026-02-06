@@ -3,7 +3,7 @@
 # • Set `boot.loader.limine.biosDevice` to the storage device where Limine is installed (e.g. `/dev/sda`).
 # • Set `boot.loader.limine.efiSupport` to `false`.
 # Additionally, you may want to overwride the Linux kernel version used if it does not work on your hardware.
-{ config, lib, ... }: let efiSupport = config.boot.loader.limine.efiSupport; in {
+{ config, lib, pkgs, ... }: let efiSupport = config.boot.loader.limine.efiSupport; in {
 	boot = {
 		# Runtime parameters of the Linux Kernel to enhance performances in certain areas (like gaming),
 		# and to help future-proof.
