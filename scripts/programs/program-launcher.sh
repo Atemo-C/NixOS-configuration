@@ -64,6 +64,7 @@ while :; do
 		printf "%b\n" " ‎"
 		printf "%b\n" "Amfora                 Terminal Gemini client\000icon\037rocket"
 		printf "%b\n" "Audacious              Audio player\000icon\037audacious"
+		printf "%b\n" "Audacity               Audio editor\000icon\037audacity"
 		printf "%b\n" "Blender                3D modeling and animation\000icon\037blender"
 		printf "%b\n" "Bottles               Run Windows programs in Bottles\000icon\037com.usebottles.bottles"
 		printf "%b\n" "BTOP++                 Terminal system monitor\000icon\037btop"
@@ -127,7 +128,6 @@ while :; do
 		printf "%b\n" "Ruffle                 Adobe Flash emulator\000icon\037rs.ruffle.Ruffle"
 		printf "%b\n" "Speedtest              Test internet speed\000icon\037xyz.ketok.Speedtest"
 		printf "%b\n" "Steam                  Valve can count to 3\000icon\037steam"
-		printf "%b\n" "Tenacity               Audio editor\000icon\037audacity"
 		printf "%b\n" "Thunar                 File manager\000icon\037system-file-manager"
 		printf "%b\n" "Tor browser            Web browsing through the Tor network\000icon\037browser-tor"
 		printf "%b\n" "Upscayl                Upscale images\000icon\037org.upscayl.Upscayl"
@@ -147,6 +147,7 @@ while :; do
 		"Run launcher") l fuzzel;;
 		"Amfora                 Terminal Gemini client") la amfora xdg-terminal-exec amfora;;
 		"Audacious              Audio player") l audacious;;
+		"Audacity               Audio editor") l audacity;;
 		"Blender                3D modeling and animation") l blender;;
 		"Bottles               Run Windows programs in Bottles") l com.usebottles.bottles;;
 		"BTOP++                 Terminal system monitor") la btop xdg-terminal-exec btop;;
@@ -237,7 +238,6 @@ while :; do
 		"Ruffle                 Adobe Flash emulator") l ruffle;;
 		"Speedtest              Test internet speed") l speedtest;;
 		"Steam                  Valve can count to 3") l steam;;
-		"Tenacity               Audio editor") l tenacity;;
 		"Thunar                 File manager") l thunar;;
 		"Tor browser            Web browsing through the Tor network") l tor-browser;;
 		"Upscayl                Upscale images") l upscayl;;
