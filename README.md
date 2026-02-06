@@ -3,6 +3,8 @@
 ![Screenshot of my current desktop](https://github.com/Atemo-C/NixOS-configuration/blob/experimental/Desktop.webp)
 Wallpaper created by Dzaka. \
 https://www.dzaka.fr/galerie/frontpage
+Default wallpaper of this NixOS configuration created by byrotek. \
+https://www.deviantart.com/byrotek
 
 # General information
 This NixOS configuration is almost exactly what I use on my own systems. \
