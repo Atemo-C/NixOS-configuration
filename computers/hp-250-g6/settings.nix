@@ -23,8 +23,13 @@
 		"/nix".options = [ "compress=zstd:3" "noatime" ];
 	};
 
-	# Intel Media Driver for VAAPI for Broadwell (7th Gen) and above Intel iGPUs.
-	hardware.graphics.extraPackages = [ pkgs.intel-media-driver ];
+	hardware = {
+		# Whether to enable support for Bluetooth.
+		bluetooth.enable = true;
+
+		# Intel Media Driver for VAAPI for Broadwell (7th Gen) and above Intel iGPUs.
+		graphics.extraPackages = [ pkgs.intel-media-driver ];
+	};
 
 	# Set the computer's name on the network.
 	networking.hostName = "HP-250-G6";

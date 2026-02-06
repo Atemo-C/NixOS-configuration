@@ -26,8 +26,13 @@
 		"/nix".options = [ "compress=zstd:3" "noatime" ];
 	};
 
-	# VA-API user mode driver for 6th gen and older Intel iGPUs.
-	hardware.graphics.extraPackages = [ pkgs.intel-vaapi-driver ];
+	hardware = {
+		# Whether to enable support for Bluetooth.
+		hardware.bluetooth.enable = true;
+
+		# VA-API user mode driver for 6th gen and older Intel iGPUs.
+		graphics.extraPackages = [ pkgs.intel-vaapi-driver ];
+	};
 
 	# Set the computer's name on the network.
 	networking.hostName = "THINKPAD-L510";
