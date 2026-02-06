@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }: {
+{ config, pkgs, ... }: {
 	fonts = {
 		# Whether to enable a basic set of fonts to provide a reasonable coverage of Unicode.
 		# Especially useful for emojis (Noto Color Emoji) and legacy characters support.
