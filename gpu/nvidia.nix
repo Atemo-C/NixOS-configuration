@@ -60,4 +60,44 @@
 		substituters = [ "https://cache.nixos-cuda.org" ];
 		trusted-public-keys = [ "cache.nixos-cuda.org:74DUi4Ye579gUqzH4ziL9IyiJBlDpMRn9MBN8oNan9M=" ];
 	};
+
+	# Apply various NVIDIA-specific fixes to various programs.
+	# See the issue below as an example of what affected programs can act like otherwise.
+	# https://github.com/YaLTeR/niri/issues/1962
+	environment.etc = {
+		"nvidia/nvidia-application-profiles-rc.d/50-limit-free-buffer-pool-fix.json".text = builtins.toJSON {
+			rules = map (proc: {
+				pattern = {
+					feature = "procname";
+					matches = proc;
+				};
+				profile = "No VidMem Reuse";
+			}) [
+				".Discord-wrapped"
+				".DiscordCanary-wrapped"
+				"electron"
+				".electron-wrapped"
+				".Hyprland-wrapped"
+				"losslesscut"
+				"librewolf-wrapped"
+				"librewolf"
+				"niri"
+			];
+		};
+
+		"nvidia/nvidia-application-profiles-rc.d/60-librewolf-firefox.json".text = ''
+{
+	"rules": [{
+		"pattern": ".librewolf-wrapped",
+		"profile": "ForceSeparateTrimThread",
+
+		"pattern": ".librewolf-wrapped",
+		"profile": "FA0",
+
+		"pattern": ".librewolf-wrapped",
+		"profile": "DedicatedHwStatePerCtx"
+	}]
+}
+		'';
+	};
 }
