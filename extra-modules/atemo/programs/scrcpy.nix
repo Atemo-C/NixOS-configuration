@@ -5,8 +5,12 @@
 		Whether to enable scrcpy, a utility to display and control Android devices over USB or TCP/IP.
 	'';
 
-	config.environment.systemPackages = lib.optionals cfg.enable (with pkgs; [
-		scrcpy
-		android-tools
-	]);
+	config = {
+		environment.systemPackages = with pkgs; [
+			scrcpy
+			android-tools
+		];
+
+		users.users.${config.userName}.extraGroups = [ "adbusers" ];
+	};
 }

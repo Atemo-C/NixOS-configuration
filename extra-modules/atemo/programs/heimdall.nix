@@ -5,8 +5,12 @@
 		Whether to enable heimdall, a cross-platfrom open-source tool suite used to flash firmware onto Samsung Galaxy devices.
 	'';
 
-	config.environment.systemPackages = lib.optionals cfg.enable (with pkgs; [
-		heimdall
-		android-tools
-	]);
+	config = lib.mkIf cfg.enable {
+		environment.systemPackages = with pkgs; [
+			heimdall
+			android-tools
+		];
+
+		users.users.${config.userName}.extraGroups = [ "adbusers" ];
+	};
 }

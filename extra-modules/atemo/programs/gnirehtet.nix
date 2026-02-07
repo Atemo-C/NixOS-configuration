@@ -5,8 +5,12 @@
 		Whether to enable gnirehtet, allowing reverse-tethering over ADB for Android.
 	'';
 
-	config.environment.systemPackages = lib.optionals cfg.enable (with pkgs; [
-		gnirehtet
-		android-tools
-	]);
+	config = lib.mkIf cfg.enable {
+		environment.systemPackages = with pkgs; [
+			gnirehtet
+			android-tools
+		];
+
+		users.users.${config.userName}.extraGroups = [ "adbusers" ];
+	};
 }
