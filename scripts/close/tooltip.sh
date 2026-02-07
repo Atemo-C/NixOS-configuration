@@ -1,7 +1,7 @@
 #!/run/current-system/sw/bin/dash
 
 # Icon path.
-printf "%s/apps/scalable/diodon.svg\n" "$ICON_THEME_PATH"
+printf "%s/apps/scalable/x.svg\n" "$ICON_THEME_PATH"
 
 # Tooltip title.
 printf "<b>            Close</b>\r\r"

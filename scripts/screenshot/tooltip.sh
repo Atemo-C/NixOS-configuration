@@ -1,7 +1,7 @@
 #!/run/current-system/sw/bin/dash
 
 # Icon path.
-printf "%s/apps/scalable/gnome-screenshot.svg\n" "$HOME"
+printf "%s/apps/scalable/gnome-screenshot.svg\n" "ICON_THEME_PATH"
 
 # Tooltip title.
 printf "<b>                  Screenshot</b>\r\r"

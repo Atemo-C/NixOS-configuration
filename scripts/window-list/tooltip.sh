@@ -1,7 +1,7 @@
 #!/run/current-system/sw/bin/dash
 
 # Icon path.
-printf "%s/apps/scalable/multitasking-view.svg\n" "$ICON_THEME_PATH"
+printf "%s/apps/scalable/preferences-system-windows.svg\n" "$ICON_THEME_PATH"
 
 # Tooltip title.
 printf "<b>   Window list</b>\r\r"

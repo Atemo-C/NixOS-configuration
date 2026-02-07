@@ -1,7 +1,7 @@
 #!/run/current-system/sw/bin/dash
 
 # Icon path.
-printf "%s/apps/scalable/diodon.svg\n" "$ICON_THEME_PATH"
+printf "%s/apps/scalable/gnome-dev-memory.svg\n" "$ICON_THEME_PATH"
 
 # Tooltip title.
 printf "<b>              RAM monitoring</b>\r\r"
