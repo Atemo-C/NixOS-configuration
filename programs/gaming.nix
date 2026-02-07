@@ -1,5 +1,5 @@
 { lib, pkgs, ... }: {
-	flatpak.packages = [
+	services.flatpak.packages = [
 		# Easy-to-use wineprefix manager.
 		"com.usebottles.bottles"
 
