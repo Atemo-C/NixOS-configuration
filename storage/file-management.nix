@@ -121,5 +121,9 @@
 		# Custom actions for Thunar.
 		(lib.optional programs.thunar.enable
 		"L %h/.config/Thunar/uca.xml - - - - /etc/nixos/files/thunar-custom-actions.xml")
+
+		# XFCE4 helpers configuration file for Thunar.
+		(lib.optional programs.thunar.enable
+		"L %h/.config/xfce4/helpers.rc - - - - /etc/nixos/files/xfce4-helpers.rc")
 	];
 }
