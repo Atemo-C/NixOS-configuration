@@ -23,5 +23,5 @@
 	systemd.services.NetworkManager-wait-online.enable = false;
 
 	# Add the user to the `networkmanager` group for NetworkManager control.
-	users.users.${config.userName}.extraGroups = lib.optinoal config.networking.networkmanager.enable "networkmanager";
+	users.users.${config.userName}.extraGroups = lib.optional config.networking.networkmanager.enable "networkmanager";
 }
