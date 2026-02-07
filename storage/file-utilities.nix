@@ -15,8 +15,8 @@
 		dar.install = true; # DAR
 		tarlz.install = true; # tarlz
 		unar.install = true; # unarchiver
-		lhasa.install = true; # LHa
-		lha.install = true; # LHa
+		lhasa.install = false; # LHa
+		lha.install = false; # LHa
 		unzip.install = true; # zip
 
 		# General archiving utilities.
