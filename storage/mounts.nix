@@ -10,6 +10,6 @@
 
 	# Import more advanced mount options for specific storage devices.
 	imports = [
-		"./160GB-HDD.nix"
+		./160GB-HDD.nix
 	];
 }
