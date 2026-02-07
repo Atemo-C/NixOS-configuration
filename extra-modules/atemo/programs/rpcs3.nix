@@ -6,7 +6,7 @@
 	'';
 
 	config = lib.mkIf cfg.enable {
-		environment.systemPackages = pkgs.rpcs3;
+		environment.systemPackages = [ pkgs.rpcs3 ];
 
 		security.pam.loginLimits = [
 			{

@@ -40,7 +40,7 @@
 		# To see why this list cannot easily be seen within NixOS:
 		# • https://github.com/NixOS/nixpkgs/issues/254523
 		# • https://github.com/NixOS/nixpkgs/issues/286283
-		services.xserver.xkb = {
+		xserver.xkb = {
 			# Keyboard layout, or multiple keyboard layouts separated by a comma.
 			layout = "us,fr";
 

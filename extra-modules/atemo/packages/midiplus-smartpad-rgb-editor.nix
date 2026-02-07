@@ -1,6 +1,6 @@
-{ lib, stdenv, fetchFromGitHub, python3Packages }: python3Packages.buildPythonApplication rec {
+{ lib, stdenv, fetchFromGitHub, python3Packages }:
+python3Packages.buildPythonApplication rec {
 	pname = "midiplus-smartpad-rgb-editor";
-
 	version = "0.1.1";
 
 	src = fetchFromGitHub {
@@ -30,6 +30,12 @@
 			--add-flags $out/libexec/midiplus-smartpad-rgb-editor/smartpad_rgb_app.py \
 			--prefix PYTHONPATH : $PYTHONPATH:$out/libexec/midiplus-smartpad-rgb-editor
 		runHook postInstall
+	'';
+
+	postPatch = ''
+	substituteInPlace main_window.py \
+		--replace 'self.user_data_base_path = os.path.join(project_root_dir, DEFAULT_USER_DATA_PATH)' \
+			'self.user_data_base_path = os.path.join(os.environ.get("XDG_DATA_HOME", os.path.expanduser("~/.local/share")), "${pname}")'
 	'';
 
 	meta = with lib; {

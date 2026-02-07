@@ -37,7 +37,7 @@
 	};
 
 	# Import the proprietary NVIDIA drivers module (for 165X and above GPUs).
-	imports = [ /etc/nixos/gpu/nvidia.nix ];
+	imports = [ ..//gpu/nvidia.nix ];
 
 	# Set the computer's name on the network.
 	networking.hostName = "R5-PC";
@@ -53,7 +53,7 @@
 		# To see why this list cannot easily be seen within NixOS:
 		# • https://github.com/NixOS/nixpkgs/issues/254523
 		# • https://github.com/NixOS/nixpkgs/issues/286283
-		services.xserver.xkb = {
+		xserver.xkb = {
 			# Keyboard layout, or multiple keyboard layouts separated by a comma.
 			layout = "us,fr";
 

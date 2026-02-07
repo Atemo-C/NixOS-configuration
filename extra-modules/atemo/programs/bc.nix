@@ -5,5 +5,5 @@
 		Whether to install bc, the GNU software calculator.
 	'';
 
-	config.environment.systemPackages = lib.optional cfg.enable pkgs.bc;
+	config.environment.systemPackages = lib.optional cfg.install pkgs.bc;
 }

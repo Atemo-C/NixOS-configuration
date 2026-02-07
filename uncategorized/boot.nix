@@ -13,14 +13,14 @@
 			"vm.max_map_count" = 2147483642;
 		};
 
+		# Select the Linux Kernel version to use.
+		# https://wiki.nixos.org/wiki/Linux_kernel#List_available_kernels
+		kernelPackages = pkgs.linuxPackages_zen;
+
 		# Additional kernel parameters to help performances in certain areas.
 		kernelParams = [ "preempt=full" ];
 
 		loader = {
-			# Select the Linux Kernel version to use.
-			# https://wiki.nixos.org/wiki/Linux_kernel#List_available_kernels
-			kernelPackages = pkgs.linuxPackages_zen;
-
 			limine = {
 				# Whether to enable the Limine bootloader.
 				# Note that when using Limine as the bootloader, `systemctl kexec` will not work out of the box.

@@ -12,11 +12,11 @@
 	};
 
 	config = {
-		hardware.zsa.enable = lib.mkIf (cfg.keymapp.enable || cfg.wally-cli.enable) true;
+		hardware.keyboard.zsa.enable = lib.mkIf (cfg.keymapp.enable || cfg.wally-cli.enable) true;
 
-		environment.systemPackages = with pkgs; [
-			(lib.optional cfg.keymapp.enable pkgs.keymapp)
-			(lib.optional cfg.wally-cli.enable pkgs.wally-cli)
-		];
+		environment.systemPackages = lib.concatLists (with pkgs;[
+			(lib.optional cfg.keymapp.enable keymapp)
+			(lib.optional cfg.wally-cli.enable wally-cli)
+		]);
 	};
 }

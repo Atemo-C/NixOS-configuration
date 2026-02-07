@@ -2,32 +2,32 @@
 	meta.maintainers = [ lib.maintainers.atemo-c ];
 
 	options.programs.soundfont = {
-		arachno.install = lib.mkEnableOption ''
-			Whether to install the arachno MIDI soundfont, a genreal MIDI-compliant bank, aimed at enhancing the realism of your MIDI files and arrangements.
+		arachno.enable = lib.mkEnableOption ''
+			Whether to enable the arachno MIDI soundfont, a genreal MIDI-compliant bank, aimed at enhancing the realism of your MIDI files and arrangements.
 		'';
 
-		fluid.install = lib.mkEnableOption ''
-			Whether to install the fluid MIDI soundfont, Frank wen's pro-quality GM/GS soundfont
+		fluid.enable = lib.mkEnableOption ''
+			Whether to enable the fluid MIDI soundfont, Frank wen's pro-quality GM/GS soundfont
 		'';
 
-		generaluser.install = lib.mkEnableOption ''
-			Whether to install the generaluser MIDI soundfont, a general MIDI SoundFont with a low memory footprint.
+		generaluser.enable = lib.mkEnableOption ''
+			Whether to enable the generaluser MIDI soundfont, a general MIDI SoundFont with a low memory footprint.
 		'';
 
-		ydp-grand.install = lib.mkEnableOption ''
-			Whether to install the ydp-grand MIDI soundfont, an acoustic grand piano soundfont.
+		ydp-grand.enable = lib.mkEnableOption ''
+			Whether to enable the ydp-grand MIDI soundfont, an acoustic grand piano soundfont.
 		'';
 
 		config.environment = {
 			systemPackages = with pkgs; [
-				(lib.mkIf cfg.arachno.install soundfont-arachno)
-				(lib.mkIf cfg.fluid.install soundfont-fluid)
-				(lib.mkIf cfg.generaluser.install soundfont-generaluser)
-				(lib.mkIf cfg.ydp-grand.install soundfont-ydp-grand)
+				(lib.mkIf cfg.arachno.enable soundfont-arachno)
+				(lib.mkIf cfg.fluid.enable soundfont-fluid)
+				(lib.mkIf cfg.generaluser.enable soundfont-generaluser)
+				(lib.mkIf cfg.ydp-grand.enable soundfont-ydp-grand)
 			];
 
 			pathsToLink = lib.optional
-			(cfg.arachno.install || cfg.fluid.install || cfg.generaluser.install || cfg.ydp-grand.install)
+			(cfg.arachno.enable || cfg.fluid.enable || cfg.generaluser.enable || cfg.ydp-grand.enable)
 			"/share/soundfonts";
 		};
 	};

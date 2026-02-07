@@ -1,6 +1,6 @@
 { config, lib, ... }: { programs = {
 	# Android SDK platform tools.
-	android-tools.install = true;
+	android-tools.enable = true;
 
 	# Reverse tethering over ADB for Android.
 	gnirehtet.enable = true;

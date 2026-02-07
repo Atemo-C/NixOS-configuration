@@ -10,7 +10,7 @@
 		jstest-gtk.install = true;
 
 		# RGB editor for the MiDiPlus SmartPad.
-		midiplus-smartpad-rgb-editor.install = true;
+		#midiplus-smartpad-rgb-editor.install = true;
 
 		# User-mode driver and GUI for Steam Controller and other controllers.
 		sc-controller.install = true;

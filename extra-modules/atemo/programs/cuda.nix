@@ -15,9 +15,9 @@
 		'';
 	};
 
-	config.environment.systemPackages = [
-		(lib.optional cfg.cudnn.install pkgs.cudnn)
-		(lib.optional cfg.cudatoolkit.install pkgs.cudatoolkit)
-		(lib.optional cfg.libcutensor.install pkgs.libcutensor)
-	];
+	config.environment.systemPackages = lib.concatLists (with pkgs; [
+		(lib.optional cfg.cudnn.install cudnn)
+		(lib.optional cfg.cudatoolkit.install cudatoolkit)
+		(lib.optional cfg.libcutensor.install libcutensor)
+	]);
 }

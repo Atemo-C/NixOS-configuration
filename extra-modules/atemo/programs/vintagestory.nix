@@ -30,8 +30,8 @@
 			allowedTCPPorts = lib.optional (cfg.openFirewall.global || cfg.openFirewall.lan) 42420;
 
 			allowedUDPPorts = [
-				(lib.mkIf cfg.openFirewall.global "1900")
-				(lib.mkIf (cfg.openFirewall.lan || cfg.openFirewall.global) "42420")
+				(lib.mkIf cfg.openFirewall.global 1900)
+				(lib.mkIf (cfg.openFirewall.lan || cfg.openFirewall.global) 42420)
 			];
 		};
 	};

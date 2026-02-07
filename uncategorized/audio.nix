@@ -18,10 +18,10 @@
 
 	programs = lib.mkIf config.services.pipewire.enable {
 		# Various utilities for ALSA.
-		alsa-utils.enable = true;
+		alsa-utils.install = true;
 
 		# Lightweight and versatile audio player.
-		audacious.install = true;
+		audacious.enable = true;
 
 		# Sound editor with graphical UI.
 		audacity.install = true;

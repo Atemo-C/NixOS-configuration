@@ -5,7 +5,7 @@
 
 		# Whether to compile Blender with CUDA support.
 		# Rebuilding the system could take longer due to potential compillation.
-		cudaSupport = lib.mkIf (lib.elem "nvidia" config.services.xserevr.videoDrivers) true;
+		cudaSupport = lib.mkIf (lib.elem "nvidia" config.services.xserver.videoDrivers) true;
 	};
 
 	# Fast and minimalist 3D viewer using VTK.

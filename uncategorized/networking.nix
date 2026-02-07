@@ -29,7 +29,7 @@
 			enable = true;
 
 			# Whether to use DNS-over-TLS.
-			extraConfig = "DNSOverTLS=yes";
+			settings.Resolve.DNSOverTLS = true;
 		};
 
 		timesyncd = {
@@ -52,5 +52,5 @@
 	systemd.services.NetworkManager-wait-online.enable = false;
 
 	# Add the user to the `networkmanager` group for NetworkManager control.
-	users.users.${config.userName}.extraGroups = lib.optionl config.programs.networkmanager.enable "networkmanager";
+	users.users.${config.userName}.extraGroups = lib.optinoal config.networking.networkmanager.enable "networkmanager";
 }

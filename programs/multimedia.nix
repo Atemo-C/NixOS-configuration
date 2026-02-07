@@ -25,13 +25,13 @@
 		gifski.install = true;
 
 		# The GNU Image Manipulation Program.
-		gimp.install = true;
+		gimp.enable = true;
 
 		# Software suite to create, edit, compose, and convert bitmap images.
-		imagemagick.install = true;
+		imagemagick.enable = true;
 
 		# Vector graphics editor.
-		inkscape.install = true;
+		inkscape.enable = true;
 
 		# JPEG optimiser.
 		jpegoptim.install = true;
@@ -52,13 +52,13 @@
 		libwebp.install = true;
 
 		# Image viewer.
-		lxqt.lximage-qt.install = true;
+		lximage-qt.install = true;
 
 		# PNG optimizer.
 		oxipng.install = true;
 
 		# CLI tool to download videos from YouTube and other websites; Fork of yt-dl.
-		yt-dlp.install = true;
+		yt-dlp.enable = true;
 
 		# V4L utilities and lib4vl, providing common image formats regardless of the v4l device.
 		v4l-utils.install = true;
@@ -106,7 +106,8 @@
 			# Whether to compile OBS with CUDA support.
 			# This would make NixOS rebuilds take a LONG time when OBS has to be built,
 			# however, the CUDA binary cache is enabled, and it *should* solve this issue.
-			cudaSupport = lib.mkIf (lib.elem "nvidia" config.services.xserver.videoDrivers) true;
+			package = if lib.elem "nvidia" config.services.xserver.videoDrivers then
+			pkgs.obs-studio.override { cudaSupport = true; } else pkgs.obs-studio;
 
 			# OBS plugins to install.
 			plugins = with pkgs.obs-studio-plugins; [
@@ -159,13 +160,13 @@
 			"gallery-dl --proxy socks5://localhost:9050";
 
 			# Download videos normally and through a Tor proxy.
-			yt = lib.mkIf yt-dlp.install "yt-dlp -t sleep";
-			yt-tor = lib.mkIf (yt-dlp.install && config.programs.tor.install)
+			yt = lib.mkIf yt-dlp.enable "yt-dlp -t sleep";
+			yt-tor = lib.mkIf (yt-dlp.enable && config.programs.tor.install)
 			"yt-dlp -t sleep --proxy socks5://localhost:9050";
 
 			# Dowlond audio normally and through a Tor proxy.
-			ytmp3 = lib.mkIf yt-dlp.install "yt-dlp -t sleep -x --audio-format mp3 --audio-quality 0";
-			ytmp3-tor = lib.mkIf (yt-dlp.install && config.programs.tor.install)
+			ytmp3 = lib.mkIf yt-dlp.enable "yt-dlp -t sleep -x --audio-format mp3 --audio-quality 0";
+			ytmp3-tor = lib.mkIf (yt-dlp.enable && config.programs.tor.install)
 			"yt-dlp -t sleep -x --audio-format mp3 --audio-quality 0 --proxy socks5://localhost:9050";
 
 			# Hide the banner when using FFmpeg.

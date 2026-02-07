@@ -1,9 +1,13 @@
 { config, lib, pkgs, ... }: let cfg = config.programs.android-tools; in {
 	meta.maintainers = [ lib.maintainers.atemo-c ];
 
-	options.programs.android-tools.install = lib.mkEnableOption ''
-		Whether to install android-tools, the Android SDK platform tools.
+	options.programs.android-tools.enable = lib.mkEnableOption ''
+		Whether to enable android-tools, the Android SDK platform tools.
 	'';
 
-	config.environment.systemPackages = lib.optional cfg.install pkgs.android-tools;
+	config = lib.mkIf cfg.enable {
+		environment.systemPackages = [ pkgs.android-tools ];
+
+		users.users.${config.userName}.extraGroups = [ "adbusers" ];
+	};
 }

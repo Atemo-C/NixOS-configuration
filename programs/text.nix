@@ -24,7 +24,7 @@
 			enable = true;
 
 			# Which Hunspell dictionaries to install.
-			dictionaries = with pkgs.hunstpellDicts; [
+			dictionaries = with pkgs.hunspellDicts; [
 				en_GB-ize
 				en_US
 				fr-any
@@ -44,7 +44,7 @@
 	};
 
 	# Set the default text editor.
-	variables.EDITOR = lib.mkIf programs.micro.enable "micro";
+	environment.variables.EDITOR = lib.mkIf programs.micro.enable "micro";
 
 	# Link Micro's configuration files.
 	systemd.user.tmpfiles.users.${config.userName}.rules = lib.optionals programs.micro.enable [
@@ -69,10 +69,10 @@
 		port = 2222;
 
 		# Limit the maximum memory usage of the JVM running LanguageTool.
-		jvmOptions = "-Xmx2048m";
+		jvmOptions = [ "-Xmx2048m" ];
 	};
 
 	# Open the relevant firewall port used by the LanguageTool server.
-	networking.firewall.allowedTCPPorts = lib.optional (services.languagetool.enable && services.languetool.public)
+	networking.firewall.allowedTCPPorts = lib.optional (services.languagetool.enable && services.languagetool.public)
 	services.languagetool.port;
 }

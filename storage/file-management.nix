@@ -10,7 +10,7 @@
 			# List of Thunar plugins to install.
 			plugins = with pkgs; [
 				# Plugin providing file context menus for archives.
-				thunar-archive-plugins
+				thunar-archive-plugin
 
 				# Plugin providing support for Subversion and Git.
 				thunar-vcs-plugin
@@ -112,7 +112,7 @@
 	# Link file management, Thunar, and other related files.
 	systemd.user.tmpfiles.users.${config.userName}.rules = lib.concatLists [
 		# Default programs to start when opening a file.
-		"L %h/.config/mimeapps.list - - - - /etc/nixos/files/mimeapps.list"
+		[ "L %h/.config/mimeapps.list - - - - /etc/nixos/files/mimeapps.list" ]
 
 		# LSD configuration file.
 		(lib.optional programs.lsd.install

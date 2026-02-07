@@ -21,7 +21,7 @@
 
 		# General archiving utilities.
 		dtrx.install = true; # Do The Right Extraction: A tool for taking the hassle out of extracting archives.
-		file-roller.install = true; # Archive manager for GNOME
+#		file-roller.install = true; # Archive manager for GNOME
 
 		# Disk and storage utilities.
 		gparted.install = true; # Graphical disk partitioning tool.

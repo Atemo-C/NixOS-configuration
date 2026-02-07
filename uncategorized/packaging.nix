@@ -7,7 +7,7 @@
 
 	services.flatpak = {
 		# Whether to enable the Flatpak packaging system.
-		# The GTK desktop needs to be configured; However, Niri does it already for us here.
+		# The GTK desktop needs to be configured.
 		enable = true;
 
 		# Flatpak programs for managing Flatpak applications and permissions.
@@ -17,8 +17,15 @@
 		];
 	};
 
+	# Configure XDG Desktop Portals for Flatpak.
+	xdg.portal = lib.mkIf services.flatpak.enable {
+		configPackages = [ pkgs.xdg-desktop-portal-gtk ];
+		extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+		enable = true;
+	};
+
 	# Import the Nix Flatpak module if using Flatpaks.
-	imports = lib.mkIf services.flatpak.enable [ /etc/nixos/extra-modules/external/nix-flatpak.nix ];
+	imports = lib.optional services.flatpak.enable ../extra-modules/external/nix-flatpak.nix;
 
 	# Add shell abbreviations for managing Flatpak.
 	programs.fish.shellAbbrs = lib.mkIf services.flatpak.enable rec {

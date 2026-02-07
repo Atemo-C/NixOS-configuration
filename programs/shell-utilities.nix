@@ -18,7 +18,7 @@
 	parallel.enable = true;
 
 	# Whether to enable shellcheck, a hell script analysis tool.
-	shellchek.enable = true;
+	shellcheck.enable = true;
 
 	# Simplified and community-driven man pages, written in Rust.
 	tlrc.install = true;

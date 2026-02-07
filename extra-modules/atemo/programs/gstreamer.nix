@@ -15,6 +15,6 @@
 	};
 
 	config = lib.mkIf cfg.enable {
-		environment.systemPackages = [ pkgs.gst_all_1.gstreamer cfg.plugins ];
+		environment.systemPackages = [ pkgs.gst_all_1.gstreamer ] ++ cfg.plugins;
 	};
 }

@@ -36,8 +36,13 @@
 			# Whether to install Vintage Story, and indie sandbox game about innovation and exploration.
 			enable = true;
 
-			# Whether to open ports in the firewall for local game discovery and UDNPD device discovery.
-			openFirewall = true;
+			openFirewall = {
+				# Whether to open ports in the firewall for local game discovery.
+				lan = true;
+
+				# Whether to open ports in the firewall for global game discovery and UDNPD device discovery.
+				global = true;
+			};
 		};
 
 		gamemode = {

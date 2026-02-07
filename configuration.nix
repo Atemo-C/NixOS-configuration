@@ -77,21 +77,22 @@
 	# Extra modules.
 	./extra-modules/atemo/config/username.nix
 
-	./extra-modules/atemo/packages/midiplus-smartpad-rgb-editor.nix
-
 	./extra-modules/atemo/programs/acpi.nix
 	./extra-modules/atemo/programs/alsa-utils.nix
 	./extra-modules/atemo/programs/amfora.nix
 	./extra-modules/atemo/programs/android-tools.nix
+	./extra-modules/atemo/programs/aspell.nix
 	./extra-modules/atemo/programs/audacious.nix
 	./extra-modules/atemo/programs/audacity.nix
 	./extra-modules/atemo/programs/bc.nix
 	./extra-modules/atemo/programs/binutils.nix
 	./extra-modules/atemo/programs/blender.nix
 	./extra-modules/atemo/programs/brightnessctl.nix
+	./extra-modules/atemo/programs/btop.nix
 	./extra-modules/atemo/programs/bzip3.nix
 	./extra-modules/atemo/programs/calcurse.nix
 	./extra-modules/atemo/programs/cmd-polkit.nix
+	./extra-modules/atemo/programs/cpu-x.nix
 	./extra-modules/atemo/programs/cuda.nix
 	./extra-modules/atemo/programs/dar.nix
 	./extra-modules/atemo/programs/dash.nix
@@ -108,12 +109,13 @@
 	./extra-modules/atemo/programs/evsieve.nix
 	./extra-modules/atemo/programs/exfatprogs.nix
 	./extra-modules/atemo/programs/exiftool.nix
+	./extra-modules/atemo/programs/fastfetch.nix
 	./extra-modules/atemo/programs/f2fs-tools.nix
 	./extra-modules/atemo/programs/f3d.nix
 	./extra-modules/atemo/programs/ferium.nix
 	./extra-modules/atemo/programs/ffmpeg.nix
 	./extra-modules/atemo/programs/ffmpegthumbnailer.nix
-	./extra-modules/atemo/programs/file-roller.nix
+#	./extra-modules/atemo/programs/file-roller.nix
 	./extra-modules/atemo/programs/freetype.nix
 	./extra-modules/atemo/programs/fuzzel.nix
 	./extra-modules/atemo/programs/gallery-dl.nix
@@ -126,38 +128,54 @@
 	./extra-modules/atemo/programs/gnome-epub-thumbnailer.nix
 	./extra-modules/atemo/programs/gparted.nix
 	./extra-modules/atemo/programs/gstreamer.nix
+	./extra-modules/atemo/programs/gucharmap.nix
 	./extra-modules/atemo/programs/hdparm.nix
 	./extra-modules/atemo/programs/heimdall.nix
 	./extra-modules/atemo/programs/heroic.nix
 	./extra-modules/atemo/programs/hfsprogs.nix
+	./extra-modules/atemo/programs/hunspell.nix
 	./extra-modules/atemo/programs/icoextract.nix
 	./extra-modules/atemo/programs/imagemagick.nix
 	./extra-modules/atemo/programs/inkscape.nix
 	./extra-modules/atemo/programs/jfsutils.nix
 	./extra-modules/atemo/programs/jmtpfs.nix
+	./extra-modules/atemo/programs/jpegoptim.nix
 	./extra-modules/atemo/programs/jq.nix
 	./extra-modules/atemo/programs/jstest-gtk.nix
+	./extra-modules/atemo/programs/kdenlive.nix
 	./extra-modules/atemo/programs/keepassxc.nix
 	./extra-modules/atemo/programs/kimageformats.nix
+	./extra-modules/atemo/programs/krita.nix
 	./extra-modules/atemo/programs/lagrange.nix
 	./extra-modules/atemo/programs/lha.nix
 	./extra-modules/atemo/programs/lhasa.nix
 	./extra-modules/atemo/programs/libarchive.nix
+	./extra-modules/atemo/programs/libde265.nix
 	./extra-modules/atemo/programs/libgsf.nix
 	./extra-modules/atemo/programs/libmtp.nix
 	./extra-modules/atemo/programs/libreoffice.nix
+	./extra-modules/atemo/programs/libjxl.nix
+	./extra-modules/atemo/programs/libwebp.nix
+	./extra-modules/atemo/programs/lm_sensors.nix
 	./extra-modules/atemo/programs/lsd.nix
+	./extra-modules/atemo/programs/lshw.nix
 	./extra-modules/atemo/programs/lz4.nix
 	./extra-modules/atemo/programs/lzip.nix
 	./extra-modules/atemo/programs/lzop.nix
+	./extra-modules/atemo/programs/lximage-qt.nix
+	./extra-modules/atemo/programs/mesa-demos.nix
 	./extra-modules/atemo/programs/mgba.nix
+	./extra-modules/atemo/programs/micro.nix
 	./extra-modules/atemo/programs/midiplus-smartpad-rgb-editor.nix
 	./extra-modules/atemo/programs/minder.nix
+	./extra-modules/atemo/programs/mprime.nix
 	./extra-modules/atemo/programs/mpv.nix
+	./extra-modules/atemo/programs/mission-center.nix
 	./extra-modules/atemo/programs/ncdu.nix
 	./extra-modules/atemo/programs/nilfs-utils.nix
 	./extra-modules/atemo/programs/niri.nix
 	./extra-modules/atemo/programs/nufraw-thumbnailer.nix
+	./extra-modules/atemo/programs/oxipng.nix
 	./extra-modules/atemo/programs/p7zip.nix
 	./extra-modules/atemo/programs/parallel.nix
 	./extra-modules/atemo/programs/pcsx2.nix
@@ -176,6 +194,7 @@
 	./extra-modules/atemo/programs/scrcpy.nix
 	./extra-modules/atemo/programs/shellcheck.nix
 	./extra-modules/atemo/programs/simple-scan.nix
+	./extra-modules/atemo/programs/smartmontools.nix
 	./extra-modules/atemo/programs/soundfont.nix
 	./extra-modules/atemo/programs/speedtest.nix
 	./extra-modules/atemo/programs/swaylock.nix
@@ -187,8 +206,10 @@
 	./extra-modules/atemo/programs/unar.nix
 	./extra-modules/atemo/programs/unzip.nix
 	./extra-modules/atemo/programs/usbutils.nix
+	./extra-modules/atemo/programs/v4l-utils.nix
 	./extra-modules/atemo/programs/vesktop.nix
 	./extra-modules/atemo/programs/vintagestory.nix
+	./extra-modules/atemo/programs/vulkan-tools.nix
 	./extra-modules/atemo/programs/wbg.nix
 	./extra-modules/atemo/programs/webp-pixbuf-loader.nix
 	./extra-modules/atemo/programs/wget.nix
@@ -198,6 +219,7 @@
 	./extra-modules/atemo/programs/xfsdump.nix
 	./extra-modules/atemo/programs/xfsprogs.nix
 	./extra-modules/atemo/programs/xreader.nix
+	./extra-modules/atemo/programs/yt-dlp.nix
 	./extra-modules/atemo/programs/zenity.nix
 	./extra-modules/atemo/programs/zsa.nix
 

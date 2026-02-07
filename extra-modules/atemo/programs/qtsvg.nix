@@ -7,8 +7,8 @@
 		'';
 
 		package = lib.mkPackageOption pkgs "kdePackages.qtsvg" {
-			default = [ "kdePackages.qtsvg" ];
-			example = [ "libsForQt5.qt5.qtsvg" ];
+			default = [ "kdePackages" "qtsvg" ];
+			example = [ "libsForQt5" "qt5" "qtsvg" ];
 		};
 	};
 

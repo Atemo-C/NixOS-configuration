@@ -7,7 +7,7 @@
 		element-desktop.install = true;
 
 		# Graphical Gemini client.
-		lagrange.install = false;
+		lagrange.enable = false;
 
 		# BitTorrent client.
 		qbittorrent.install = true;
@@ -40,8 +40,7 @@
 	};
 
 	# Default web browser to use.
-	environment.variables.BROWSER = lib.mkIf (
-		config.programs.firefox.enable
-		&& config.programs.firefox.package == pkgs.librewolf
-	) "librewolf" || lib.mkIf config.programs.firefox.enable "firefox";
+	environment.variables.BROWSER = if
+	(config.programs.firefox.enable && config.programs.firefox.package == pkgs.librewolf)
+	then "librewolf" else "firefox";
 }

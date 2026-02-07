@@ -1,7 +1,13 @@
-{ config, lib, ... }: {
+{ config, lib, pkgs, ... }: {
 	programs = {
-		# A monitor of resources.
-		btop.install = true;
+		btop = {
+			# Whethre to enable BTOP, a monitor of resources.
+			enable = true;
+
+			# Variant to install, depending on the GPU.
+			package = if lib.elem "nvidia" config.services.xserver.videoDrivers then pkgs.btop-cuda
+			else pkgs.btop;
+		};
 
 		# See information on CPU, motherboard and more.
 		cpu-x.install = true;
@@ -31,13 +37,13 @@
 		mesa-demos.install = true;
 
 		# Shell abbreviations for BTOP and Fastfetch.
-		programs.fish.shellAbbrs = {
-			b = lib.mkIf config.programs.btop.install "btop";
+		fish.shellAbbrs = {
+			b = lib.mkIf config.programs.btop.enable "btop";
 			f = lib.mkIf config.programs.fastfetch.install "fastfetch";
 		};
 	};
 
 	# Link Fastfetch's configuration file.
-	systemd.user.tmpfiles.users.${config.userName}.rules = lib.optinoal config.programs.fastfetch.enable
+	systemd.user.tmpfiles.users.${config.userName}.rules = lib.optional config.programs.fastfetch.install
 	"L %h/.config/fastfetch/config.jsonc - - - - /etc/nixos/files/fastfetch.jsonc";
 }

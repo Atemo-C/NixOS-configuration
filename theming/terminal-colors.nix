@@ -35,4 +35,43 @@ in {
 		# Enable setting virtual console options (such as colors) as early as possible (in initrd).
 		earlySetup = true;
 	};
+
+	# Colors of the Foot terminal emulator.
+	programs.foot.settings.colors = {
+		# Foreground color (default text).
+		foreground = Foreground;
+
+		# Background color (its opacity is configured further down).
+		background = Background;
+
+		# Normal colors.
+		regular0 = normalBlack;
+		regular1 = normalRed;
+		regular2 = normalGreen;
+		regular3 = normalYellow;
+		regular4 = normalBlue;
+		regular5 = normalMagenta;
+		regular6 = normalCyan;
+		regular7 = normalWhite;
+
+		# Bright colors.
+		bright0 = brightBlack;
+		bright1 = brightRed;
+		bright2 = brightGreen;
+		bright3 = brightYellow;
+		bright4 = brightBlue;
+		bright5 = brightMagenta;
+		bright6 = brightCyan;
+		bright7 = brightWhite;
+
+		# Dim colors.
+		dim0 = dimBlack;
+		dim1 = dimRed;
+		dim2 = dimGreen;
+		dim3 = dimYellow;
+		dim4 = dimBlue;
+		dim5 = dimMagenta;
+		dim6 = dimCyan;
+		dim7 = dimWhite;
+	};
 }

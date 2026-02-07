@@ -8,7 +8,7 @@
 		# Some programs and Flatpaks require or benefit from it.
 		fontDir.enable = true;
 
-		fontConfig = {
+		fontconfig = {
 			# Whether to generate system fonts cache for 32-bit applications.
 			cache32Bit = true;
 

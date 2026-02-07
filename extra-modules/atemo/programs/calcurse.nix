@@ -5,5 +5,5 @@
 		Whether to install Calcurse, a calendar and scheduling application for the command line.
 	'';
 
-	config.environment.systemPackages = lib.optional cfg.enable pkgs.calcurse;
+	config.environment.systemPackages = lib.optional cfg.install pkgs.calcurse;
 }

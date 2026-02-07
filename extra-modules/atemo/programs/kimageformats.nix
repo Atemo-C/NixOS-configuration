@@ -5,5 +5,5 @@
 		Whether to install kimageformats, additional image formats provided by KDE.
 	'';
 
-	config.environment.systemPackages = lib.optional cfg.install pkgs.kimageformats;
+	config.environment.systemPackages = lib.optional cfg.install pkgs.kdePackages.kimageformats;
 }
