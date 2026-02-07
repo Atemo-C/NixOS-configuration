@@ -88,12 +88,14 @@
 	./extra-modules/atemo/programs/audacious.nix
 	./extra-modules/atemo/programs/audacity.nix
 	./extra-modules/atemo/programs/bc.nix
+	./extra-modules/atemo/programs/bemoji.nix
 	./extra-modules/atemo/programs/binutils.nix
 	./extra-modules/atemo/programs/blender.nix
 	./extra-modules/atemo/programs/brightnessctl.nix
 	./extra-modules/atemo/programs/btop.nix
 	./extra-modules/atemo/programs/bzip3.nix
 	./extra-modules/atemo/programs/calcurse.nix
+	./extra-modules/atemo/programs/clipman.nix
 	./extra-modules/atemo/programs/cmd-polkit.nix
 	./extra-modules/atemo/programs/cpu-x.nix
 	./extra-modules/atemo/programs/cuda.nix
@@ -216,6 +218,7 @@
 	./extra-modules/atemo/programs/wbg.nix
 	./extra-modules/atemo/programs/webp-pixbuf-loader.nix
 	./extra-modules/atemo/programs/wget.nix
+	./extra-modules/atemo/programs/wl-clipboard.nix
 	./extra-modules/atemo/programs/xclicker.nix
 	./extra-modules/atemo/programs/xemu.nix
 	./extra-modules/atemo/programs/xfburn.nix

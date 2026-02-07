@@ -15,21 +15,21 @@
 		bemoji.install = true;
 
 		# Whether to install clipman. a simple clipboard manager for Wayland.
-		clipman.install = lib.mkIf programs.niri.enable true;
+		clipman.install = true;
 
 		# Whether to enable dconf.
 		dconf.enable = true;
 
 		# Whether to install wl-clipboard. command-line copy/paste utilities for Wayland.
-		wl-clipboard.install = lib.mkIf programs.niri.enable true;
+		wl-clipboard.install = true;
 
 		# Whether to install cmd-polkit for Polkit authentification used in dmenu-like menus.
 		# Required by `/etc/nixos/scripts/cmd-polkit-fuzzel.sh`.
-		cmd-polkit.install = lib.mkIf programs.niri.enable true;
+		cmd-polkit.install = true;
 
 		# Whether to install the Dunst notification daemon.
 		# Required for most notifications.
-		dunst.install = lib.mkIf programs.niri.enable true;
+		dunst.install = true;
 
 		# Whether to install the Fuzzel menu.
 		# Required by:
@@ -37,26 +37,26 @@
 		# `/etc/nixos/scripts/power/power-menu.sh`
 		# `/etc/nixos/scripts/programs/program-launcher.sh`
 		# `/etc/nixos/scripts/screenshots/screenshot-selector.sh`.
-		fuzzel.install = lib.mkIf programs.niri.enable true;
+		fuzzel.install = true;
 
 		# Whether to install the Swaylock session locking utility.
 		# Optional for `/etc/nixos/scripts/power/power-menu.sh`.
-		swaylock.install = lib.mkIf programs.niri.enable true;
+		swaylock.install = true;
 
 		# Whether to install the Waybar bar.
-		waybar.enable = lib.mkIf programs.niri.enable true;
+		waybar.enable = true;
 
 		# Whether to install the wbg wallpaper utility.
 		# Required by `/etc/nixos/scripts/wallpaper/wallpaper-selector.sh`.
 		# Currently, wbg is limited; But it is the lightest utility I found.
-		wbg.install = lib.mkIf programs.niri.enable true;
+		wbg.install = true;
 
 		# Whether to install the zenity graphical dialogs utility for shell scripts.
 		# Required by `/etc/nixos/scripts/wallpaper/wallpaper-selector.sh`.
-		zenity.install = lib.mkIf programs.niri.enable true;
+		zenity.install = true;
 
 		# Shell abbreviation to start Niri by typing `n`.
-		fish.shellAbbrs.n = lib.mkIf programs.niri.enable "niri-session";
+		fish.shellAbbrs.n = "niri-session";
 	};
 
 	# Link relevant configuration files.
