@@ -17,6 +17,9 @@
 		# Whether to install clipman. a simple clipboard manager for Wayland.
 		clipman.install = lib.mkIf programs.niri.enable true;
 
+		# Whether to enable dconf.
+		dconf.enable = true;
+
 		# Whether to install wl-clipboard. command-line copy/paste utilities for Wayland.
 		wl-clipboard.install = lib.mkIf programs.niri.enable true;
 
