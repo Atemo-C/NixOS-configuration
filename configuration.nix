@@ -61,6 +61,7 @@
 	./uncategorized/power.nix
 	./uncategorized/printing.nix
 	./uncategorized/ssh.nix
+	./uncategorized/zram.nix
 
 	# User modules.
 	./user/name.nix
