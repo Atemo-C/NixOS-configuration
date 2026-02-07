@@ -75,9 +75,9 @@
 		"L %h/.config/swaylock/config - - - - /etc/nixos/files/swaylock.conf")
 
 		# Waybar's configuration files.
-		(lib.optionals programs.waybar.enable = [
-			"L %h/.config/waybar/config - - - - /etc/nixos/files/waybar/config.json"
-			"L %h/.config/waybar/style.css - - - - /etc/nixos/files/waybar/style.css"
-		])
+		(lib.optional programs.waybar.enable
+		"L %h/.config/waybar/config - - - - /etc/nixos/files/waybar/config.json")
+		(lib.optional programs.waybar.enable
+		"L %h/.config/waybar/style.css - - - - /etc/nixos/files/waybar/style.css")
 	];
 }
