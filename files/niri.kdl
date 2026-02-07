@@ -386,6 +386,7 @@ layout {
 spawn-at-startup "wbg -s /etc/nixos/files/images/wallpaper"
 spawn-sh-at-startup "wl-paste --type text/plain --watch clipman store --max-items=128"
 spawn-at-startup "/etc/nixos/scripts/cmd-polkit-fuzzel.sh"
+spawn-sh-at-startup "foot --server"
 
 // Disable client-side decorations.
 prefer-no-csd
