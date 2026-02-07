@@ -5,9 +5,17 @@
 	# If the above is enabled, also apply this rule to temporary nix shell instances.
 	environment.sessionVariables.NIXPKGS_ALLOW_UNFREE = lib.mkIf nixpkgs.config.allowUnfree "1";
 
-	# Whether to enable the Flatpak packaging system.
-	# The GTK desktop needs to be configured; However, Niri does it already for us here.
-	services.flatpak.enable = true;
+	services.flatpak = {
+		# Whether to enable the Flatpak packaging system.
+		# The GTK desktop needs to be configured; However, Niri does it already for us here.
+		enable = true;
+
+		# Flatpak programs for managing Flatpak applications and permissions.
+		packages = [
+			"com.github.tchx84.Flatseal"
+			"io.github.flattool.Warehouse"
+		];
+	};
 
 	# Import the Nix Flatpak module if using Flatpaks.
 	imports = lib.mkIf services.flatpak.enable [ /etc/nixos/extra-modules/external/nix-flatpak.nix ];
