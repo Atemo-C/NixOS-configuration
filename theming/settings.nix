@@ -13,7 +13,7 @@
 		${config.userName} = {
 			dconf.settings = {
 				# Disable window buttons (minimize, maximize, close).
-				"org/gnome/desktop/wm/preferences" = lib.mkIf config.programs.niri.enable { button-layout = "icon,appmenu"; };
+				"org/gnome/desktop/wm/preferences" = lib.mkIf config.programs.niri.enable { button-layout = "icon,appmenu:"; };
 
 				# Whether to automatically hide scrollbars.
 				"org/gnome/desktop/interface" = { overlay-scrolling = false; };
