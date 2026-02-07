@@ -180,8 +180,8 @@ while :; do
 		"EasyTag                Audio tag editor") l easytag;;
 		"Element                Matrix client") l element-desktop;;
 		"Flatseal              Manage Flatpak permissions") l com.github.tchx84.Flatseal;;
-		"Foot (client)         Terminal emulator") l footclient;;
-		"Foot (standalone)     Terminal emulator") l foot;;
+		"Foot (client)          Terminal emulator") l footclient;;
+		"Foot (standalone)      Terminal emulator") l foot;;
 		"Gcolor3                Advanced color picker") l gcolor3;;
 		"GIMP                   GNU Image Manipulation Program") l gimp;;
 		"Gparted                Partition manager") l gparted;;
