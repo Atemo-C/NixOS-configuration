@@ -198,7 +198,7 @@ rm /mnt/etc/nixos/configuration.nix
 ```
 4. Clone this repository to `/mnt/etc/nixos/`.
 ```shell
-git clone https://github.com/Atemo-C/NixOS-configuration/tree/experimental /mnt/etc/nixos/
+git clone https://github.com/Atemo-C/NixOS-configuration -b experimental /mnt/etc/nixos/
 ```
 5. Move your hardware configuration file to `/mnt/etc/nixos/computers/your-comuputer-name`.
 Replace `your-computer-name` with the name of your computer.
