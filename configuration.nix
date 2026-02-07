@@ -38,7 +38,6 @@
 	./programs/text.nix
 
 	# Storage configuration and utilities.
-	./storage/160GB-HDD.nix
 	./storage/file-management.nix
 	./storage/file-utilities.nix
 	./storage/filesystems.nix
