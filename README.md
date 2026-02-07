@@ -3,6 +3,10 @@ Currently, I am doing some work in the experimental branch as well as separate w
 This current configuration is still what I use on my main PC, and as such, it will be kept up-to-date, no problem there. However, improvements mentioned earlier will come at a later date this year, for I have lots of things to do, but it is very exciting indeed! \
 A list of improvements that have been achieved in the experimental branch and/or the installation on my HP 250 G6 can be found [here](https://github.com/Atemo-C/NixOS-configuration?tab=readme-ov-file#improvements), at the bottom of this README.
 
+## Update
+Nearly done! I have grinded a lot in the past few days in the experimental branch, and have begun testing on a few fresh clean installations.
+There are still quite a few things that need testing, fixing…but I am getting there.
+
 ---
 
 ![Screenshot of the desktop on my HP 250 G6](https://github.com/Atemo-C/NixOS-configuration/blob/main/Desktop.webp)
