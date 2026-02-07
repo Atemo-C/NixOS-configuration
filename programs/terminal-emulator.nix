@@ -1,5 +1,5 @@
-{ config, ... }: { programs = {
-	foot = {
+{ config, ... }: {
+	programs.foot = {
 		# Whether to enable the Foot terminal emulator.
 		enable = true;
 
@@ -24,4 +24,4 @@
 	# Whether to enable `xdg-terminal-exec`;
 	# The proposed Default Terminal Execution Specification.
 	xdg.terminal-exec.enable = true;
-}; }
+}
