@@ -50,9 +50,9 @@
 	systemd.user.tmpfiles.users.${config.userName}.rules = lib.optionals programs.micro.enable [
 		"L %h/.config/micro/settings.json - - - - /etc/nixos/files/micro/settings.json"
 		"L %h/.config/micro/init.lua - - - - /etc/nixos/files/micro/init.lua"
-		"L %h/.config/micro/colorschemes/atemo-colors.micro - - - - /etc/nixos/files/micro/colors.micro"
+		"L %h/.config/micro/colorschemes/atemo-colors.micro - - - - /etc/nixos/files/micro/colorschemes/atemo-colors.micro"
 		"L %h/.config/micro/bindings.json - - - - /etc/nixos/files/micro/bindings.json"
-		"L %h/.config/micro/syntax/nix.yaml - - - - /etc/nixos/files/micro/nix.yaml"
+		"L %h/.config/micro/syntax/nix.yaml - - - - /etc/nixos/files/micro/syntax/nix.yaml"
 	];
 
 	services.languagetool = {
