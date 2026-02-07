@@ -16,6 +16,6 @@
 		key-bindings.search-start = "Control+Shift+f";
 
 		# NUmber of lines to keep in memory.
-		scrollbcak.lines = 10000;
+		scrollback.lines = 10000;
 	};
 }; }
