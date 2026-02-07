@@ -1,4 +1,7 @@
 { ... }: { imports = [
+	# Niri Wayland compositor and essential utilities.
+	./niri.nix
+
 	# HP 250 G6 laptop.
 #	./computers/hp-250-g6/hardware-configuration.nix
 #	./computers/hp-250-g6/settings.nix
