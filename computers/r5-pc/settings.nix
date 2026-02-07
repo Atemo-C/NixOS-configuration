@@ -3,8 +3,21 @@
 		# Paths of LUKS-encrypted storage devices necessary for the system.
 		# Optional ones (e.g. removable encrypted drives) should not be put here.
 		initrd.luks.devices = {
-			root.device = "/dev/disk/by-uuid/11111111-1111-1111-1111-111111111111";
-			swap.device = "/dev/disk/by-uuid/22222222-2222-2222-2222-222222222222";
+			root = {
+				# Storage device's UUID.
+				device = "/dev/disk/by-uuid/11111111-1111-1111-1111-111111111111";
+
+				# Whether to allow discards (only for SSDs).
+				allowDiscards = true;
+			};
+
+			swap = {
+				# Storage device's UUID.
+				device = "/dev/disk/by-uuid/22222222-2222-2222-2222-222222222222";
+
+				# Whether to allow discards (only for SSDs).
+				allowDiscards = true;
+			};
 		};
 
 		# Whether the installation process is allowed to modify EFI boot variables.
