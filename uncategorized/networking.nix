@@ -3,13 +3,8 @@
 		# Fork the dhcpcd device to the background to improve boot times.
 		dhcpcd.wait = "background";
 
-		networkmanager = {
-			# Whether to enable NetworkManager for easy network management.
-			enable = true;
-
-			# Set the DNS resolver to be used.
-			dns = lib.mkIf config.services.resolved.enable "systemd-resolved";
-		};
+		# Whether to enable NetworkManager for easy network management.
+		networkmanager.enable = true;
 
 		stevenblack = {
 			# Whether to enable stevenblack hosts file blocking.
@@ -22,30 +17,6 @@
 
 	# Install an applet to configure the networking within the system tray.
 	programs.nm-applet.enable = lib.mkIf config.networking.networkmanager.enable true;
-
-	services = {
-		resolved = {
-			# Whether to enable the systemd-resolved DNS resolver.
-			enable = true;
-
-			# Whether to use DNS-over-TLS.
-			settings.Resolve.DNSOverTLS = true;
-		};
-
-		timesyncd = {
-			# Main server to sync time with.
-			servers = [ "time.cloudflare.com" ];
-
-			# Fallback servers to sync time with.
-			fallbackServers = [
-				"time.google.com"
-				"0.arch.pool.ntp.org"
-				"1.arch.pool.ntp.org"
-				"2.arch.pool.ntp.org"
-				"3.arch.pool.ntp.org"
-			];
-		};
-	};
 
 	# Disable NetworkManager's `wait-online` service to improve boot times.
 	# If something relies on networking as soon as possible during boot, set to `true`.
