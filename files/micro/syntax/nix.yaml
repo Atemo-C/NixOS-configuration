@@ -1,3 +1,5 @@
+filetype: nix
+
 detect:
     filename: "\\.nix$"
 
