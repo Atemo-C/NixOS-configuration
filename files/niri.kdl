@@ -247,9 +247,9 @@ binds {
 	Alt+Super+S { spawn-sh "obs-cmd --websocket obsws://localhost:3621 recording stop"; }
 
 	// Power menu.
-	XF86PowerOff allow-when-locked=true { spawn "/etc/nixos/scripts/power/power-menu.sh"; }
-	XF86Sleep allow-when-locked=true { spawn "/etc/nixos/scripts/power/power-menu.sh"; }
-	XF86Suspend  allow-when-locked=true { spawn "/etc/nixos/scripts/power/power-menu.sh"; }
+	XF86PowerOff allow-when-locked=true { spawn-sh "/etc/nixos/scripts/power/power-menu.sh"; }
+	XF86Sleep allow-when-locked=true { spawn-sh "/etc/nixos/scripts/power/power-menu.sh"; }
+	XF86Suspend  allow-when-locked=true { spawn-sh "/etc/nixos/scripts/power/power-menu.sh"; }
 
 	// Copying screenshots.
 	Print { spawn-sh "/etc/nixos/scripts/screenshots/screenshot.sh --copy area"; }
@@ -262,10 +262,10 @@ binds {
 	Super+Shift+Print { spawn-sh "/etc/nixos/scripts/screenshots/screenshot.sh --save window"; }
 
 	// Open a terminal emulator.
-	Super+Return { spawn "xdg-terminal"; }
+	Super+Return { spawn "xdg-terminal-exec"; }
 
 	// Open a program launcher.
-	Alt+Return { spawn "/etc/nixos/scripts/programs/program-launcherK.sh"; }
+	Alt+Return { spawn-sh "/etc/nixos/scripts/programs/program-launcher.sh"; }
 
 	// Open a run launcher.
 	Alt+Shift+Return { spawn-sh "fuzzel --no-icons --width 50"; }
@@ -383,9 +383,9 @@ layout {
 }
 
 // Programs that should appear on startup.
-spawn-at-startup "wbg -s /etc/nixos/files/images/wallpaper"
+spawn-sh-at-startup "wbg -s /etc/nixos/files/images/wallpaper"
 spawn-sh-at-startup "wl-paste --type text/plain --watch clipman store --max-items=128"
-spawn-at-startup "/etc/nixos/scripts/cmd-polkit-fuzzel.sh"
+spawn-sh-at-startup "/etc/nixos/scripts/cmd-polkit-fuzzel.sh"
 spawn-sh-at-startup "foot --server"
 
 // Disable client-side decorations.
