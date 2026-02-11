@@ -118,7 +118,7 @@
 		prompt=$(printf "%s\n" "$msg" | jq -rc '.prompt // "Password:"')
 
 		# Request password with Fuzzel.
-		response=$(fuzzel --dmenu --prompt-color=ff000000 --prompt-only="$prompt" --password "$@")
+		response=$(fuzzel --dmenu --prompt-color=ff0000 --prompt-only="$prompt" --password "$@")
 
 		# Respond based on whether a password was provided.
 		[ -z "$response" ] && { printf '{"action":"cancel"}\n' && continue; }

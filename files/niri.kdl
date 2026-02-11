@@ -247,9 +247,9 @@ binds {
 	Alt+Super+S { spawn-sh "obs-cmd --websocket obsws://localhost:3621 recording stop"; }
 
 	// Power menu.
-	XF86PowerOff allow-when-locked=true { spawn-sh "/etc/nixos/scripts/power/power-menu.sh"; }
-	XF86Sleep allow-when-locked=true { spawn-sh "/etc/nixos/scripts/power/power-menu.sh"; }
-	XF86Suspend  allow-when-locked=true { spawn-sh "/etc/nixos/scripts/power/power-menu.sh"; }
+	XF86PowerOff allow-when-locked=true { spawn-sh "noctalia-shell ipc call ssionMenu toggle"; }
+	XF86Sleep allow-when-locked=true { spawn-sh "noctalia-shell ipc call ssionMenu toggle"; }
+	XF86Suspend  allow-when-locked=true { spawn-sh "noctalia-shell ipc call ssionMenu toggle"; }
 
 	// Copying screenshots.
 	Print { spawn-sh "/etc/nixos/scripts/screenshots/screenshot.sh --copy area"; }
@@ -265,25 +265,19 @@ binds {
 	Super+Return { spawn "xdg-terminal-exec"; }
 
 	// Open a program launcher.
-	Alt+Return { spawn-sh "/etc/nixos/scripts/programs/program-launcher.sh"; }
+	Alt+Return { spawn-sh "noctalia-shell ipc call launcher toggle"; }
 
 	// Open a run launcher.
-	Alt+Shift+Return { spawn-sh "fuzzel --no-icons --width 50"; }
+	Alt+Shift+Return { spawn-sh "noctalia-shell ipc call controlCenter toggle"; }
 
 	// Open an emoji picker.
-	Alt+Shift+E { spawn-sh "bemoji --private"; }
+	Alt+Shift+E { spawn-sh "noctalia-shell ipc call launcher emoji"; }
 
 	// Select from the clipboard.
-	Super+Shift+V { spawn-sh "clipman pick -t CUSTOM -T 'fuzzel -d --no-icons --width 60'"; }
-
-	// Clear the clipboard.
-	Super+Control+V { spawn-sh "clipman clear --all && dunstify 'Clipboard cleared.'"; }
+	Super+Shift+V { spawn-sh "noctalia-shell ipc call launcher clipboard'"; }
 
 	// Opan a permanent "clipboard" file.
 	Alt+Shift+V { spawn-sh "xdg-terminal-exec $EDITOR $HOME/Documents/Clipboard.txt"; }
-
-	// Toggle showing/hiding Waybar when launched.
-	Super+B { spawn-sh "pkill -SIGUSR1 waybar"; }
 
 	// Exit out of Niri.
 	Super+Shift+E { quit; }
