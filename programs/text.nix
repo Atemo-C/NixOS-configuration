@@ -57,7 +57,7 @@
 
 	services.languagetool = {
 		# Whether to enable the LanguageTool server, a multilingual spelling, style, and grammar checker.
-		enable = lib.mkIf (lib.elem config.networking.hostName [ "R5-PC" ]) true;
+		enable = if (lib.elem config.networking.hostName [ "R5-PC" ]) then true else false;
 
 		# Which clients to allow access from.
 		allowOrigin = "*";
