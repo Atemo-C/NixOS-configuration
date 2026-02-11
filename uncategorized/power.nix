@@ -30,5 +30,9 @@
 		# Whether to enable the Upower DBus service.
 		# It provides power management support to applications.
 		upower.enable = true;
+
+		# Whether to enable power-profiles-daemon, a DBus daemon that allows
+		# changing system behavior based upon user-selected power profiles.
+		power-profiles-daemon.enable = true;
 	};
 }
