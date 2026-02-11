@@ -5,6 +5,9 @@
 # Additionally, you may want to overwride the Linux kernel version used if it does not work on your hardware.
 { config, lib, pkgs, ... }: let efiSupport = config.boot.loader.limine.efiSupport; in {
 	boot = {
+		# Whether to enable systemd in initrd.
+		initrd.systemd.enable = true;
+
 		# Runtime parameters of the Linux Kernel to enhance performances in certain areas (like gaming),
 		# and to help future-proof.
 		kernel.sysctl = {

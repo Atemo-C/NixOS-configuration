@@ -4,7 +4,7 @@
 		amfora.install = true;
 
 		# Matrix client.
-		element-desktop.install = true;
+		element-desktop.install = false;
 
 		# Graphical Gemini client.
 		lagrange.enable = false;
@@ -26,9 +26,6 @@
 
 		# Privacy-focused, Firefox-based browser routing traffic through the Tor network.
 		tor-browser.install = true;
-
-		# Alternative Discord client with Vencord built-in.
-		vesktop.install = true;
 
 		firefox = {
 			# Whether to install the Firefox web browser.

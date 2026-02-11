@@ -18,9 +18,6 @@
 		# Tools for working with USB devices, such as `lsusb`.
 		usbutils.install = true;
 
-		# Autoclicker for X11/XWayland programs.
-		xclicker.install = true;
-
 		# Generic Linux command-line automation tool.
 		ydotool.enable = true;
 	};

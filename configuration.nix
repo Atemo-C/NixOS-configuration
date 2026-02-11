@@ -88,14 +88,12 @@
 	./extra-modules/atemo/programs/audacious.nix
 	./extra-modules/atemo/programs/audacity.nix
 	./extra-modules/atemo/programs/bc.nix
-	./extra-modules/atemo/programs/bemoji.nix
 	./extra-modules/atemo/programs/binutils.nix
 	./extra-modules/atemo/programs/blender.nix
 	./extra-modules/atemo/programs/brightnessctl.nix
 	./extra-modules/atemo/programs/btop.nix
 	./extra-modules/atemo/programs/bzip3.nix
 	./extra-modules/atemo/programs/calcurse.nix
-	./extra-modules/atemo/programs/clipman.nix
 	./extra-modules/atemo/programs/cmd-polkit.nix
 	./extra-modules/atemo/programs/cpu-x.nix
 	./extra-modules/atemo/programs/cuda.nix
@@ -106,7 +104,6 @@
 	./extra-modules/atemo/programs/desktop-file-utils.nix
 	./extra-modules/atemo/programs/desmume.nix
 	./extra-modules/atemo/programs/dtrx.nix
-	./extra-modules/atemo/programs/dunst.nix
 	./extra-modules/atemo/programs/easytag.nix
 	./extra-modules/atemo/programs/efibootmgr.nix
 	./extra-modules/atemo/programs/element-desktop.nix
@@ -179,6 +176,7 @@
 	./extra-modules/atemo/programs/ncdu.nix
 	./extra-modules/atemo/programs/nilfs-utils.nix
 	./extra-modules/atemo/programs/niri.nix
+	./extra-modules/atemo/programs/noctalia-shell.nix
 	./extra-modules/atemo/programs/nufraw-thumbnailer.nix
 	./extra-modules/atemo/programs/oxipng.nix
 	./extra-modules/atemo/programs/p7zip.nix
@@ -202,7 +200,6 @@
 	./extra-modules/atemo/programs/smartmontools.nix
 	./extra-modules/atemo/programs/soundfont.nix
 	./extra-modules/atemo/programs/speedtest.nix
-	./extra-modules/atemo/programs/swaylock.nix
 	./extra-modules/atemo/programs/tarlz.nix
 	./extra-modules/atemo/programs/tlrc.nix
 	./extra-modules/atemo/programs/tor-browser.nix
@@ -212,21 +209,16 @@
 	./extra-modules/atemo/programs/unzip.nix
 	./extra-modules/atemo/programs/usbutils.nix
 	./extra-modules/atemo/programs/v4l-utils.nix
-	./extra-modules/atemo/programs/vesktop.nix
 	./extra-modules/atemo/programs/vintagestory.nix
 	./extra-modules/atemo/programs/vulkan-tools.nix
-	./extra-modules/atemo/programs/wbg.nix
 	./extra-modules/atemo/programs/webp-pixbuf-loader.nix
 	./extra-modules/atemo/programs/wget.nix
-	./extra-modules/atemo/programs/wl-clipboard.nix
-	./extra-modules/atemo/programs/xclicker.nix
 	./extra-modules/atemo/programs/xemu.nix
 	./extra-modules/atemo/programs/xfburn.nix
 	./extra-modules/atemo/programs/xfsdump.nix
 	./extra-modules/atemo/programs/xfsprogs.nix
 	./extra-modules/atemo/programs/xreader.nix
 	./extra-modules/atemo/programs/yt-dlp.nix
-	./extra-modules/atemo/programs/zenity.nix
 	./extra-modules/atemo/programs/zsa.nix
 
 	./extra-modules/external/home-manager.nix

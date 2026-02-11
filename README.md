@@ -11,8 +11,9 @@ This NixOS configuration is almost exactly what I use on my own systems. \
 It is a successor to my old NixOS configuration, which is now archived. \
 https://github.com/Atemo-C/OLD-NixOS-Configuration
 
-It is a single-user setup, using the Niri Wayland compositor as the Wayland compositor. \
-https://github.com/YaLTeR/niri
+It is a single-user setup, using the Niri Wayland compositor as the Wayland compositor, and the Noctalia shell as its desktop shell, replacing a few utilities previously used. \
+https://github.com/YaLTeR/niri \
+https://github.com/noctalia-dev/noctalia-shell
 
 It is based entirely on NixOS unstable, and relies partially on Home Manager (but does not use Flakes). \
 https://github.com/nix-community/home-manager

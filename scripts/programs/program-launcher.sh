@@ -131,11 +131,8 @@ while :; do
 		printf "%b\n" "Thunar                 File manager\000icon\037system-file-manager"
 		printf "%b\n" "Tor browser            Web browsing through the Tor network\000icon\037browser-tor"
 		printf "%b\n" "Upscayl                Upscale images\000icon\037org.upscayl.Upscayl"
-		printf "%b\n" "Vesktop                Discord with built-in Vencord\000icon\037vesktop"
 		printf "%b\n" "Vintage Story          Sandbox game of innovation and exploration\000icon\037vintagestory"
 		printf "%b\n" "Virt Manager           Virtual machines using libvirt (QEMU/KVM)\000icon\037virt-manager"
-		printf "%b\n" "Wallpaper              Set the desktop wallpaper/background\000icon\037wallpaper"
-		printf "%b\n" "Xclicker               X11/Xwayland autoclicker\000icon\037input-mouse"
 		printf "%b\n" "Xemu                   Original Xbox emulator\000icon\037xemu"
 		printf "%b\n" "Xfburn                 Disc burning\000icon\037stock_xfburn"
 		printf "\n"
@@ -241,16 +238,8 @@ while :; do
 		"Thunar                 File manager") l thunar;;
 		"Tor browser            Web browsing through the Tor network") l tor-browser;;
 		"Upscayl                Upscale images") l upscayl;;
-		"Vesktop                Discord with built-in Vencord") l vesktop;;
 		"Vintage Story          Sandbox game of innovation and exploration") l vintagestory;;
 		"Virt Manager           Virtual machines using libvirt (QEMU/KVM)") l virt-manager;;
-
-		"Hyprpaper              Set the desktop wallpaper")
-			lc /etc/nixos/scripts/wallpaper/wallpaper-selector.sh \
-			/etc/nixos/scripts/wallpaper/wallpaper-selector.sh
-		;;
-
-		"Xclicker               X11/Xwayland autoclicker") l xclicker;;
 		"Xemu                   Original Xbox emulator") l xemu;;
 		"Xfburn                 Disc burning") l xfburn;;
 

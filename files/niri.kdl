@@ -383,8 +383,7 @@ layout {
 }
 
 // Programs that should appear on startup.
-spawn-sh-at-startup "wbg -s /etc/nixos/files/images/wallpaper"
-spawn-sh-at-startup "wl-paste --type text/plain --watch clipman store --max-items=128"
+spawn-at-startup "noctalia-shell"
 spawn-sh-at-startup "/etc/nixos/scripts/cmd-polkit-fuzzel.sh"
 spawn-sh-at-startup "foot --server"
 
@@ -511,7 +510,7 @@ window-rule {
 
 // Place the background within the backdrop.
 layer-rule {
-	match namespace="wallpaper"
+	match namespace="^noctalia-overview*"
 	place-within-backdrop true
 }
 

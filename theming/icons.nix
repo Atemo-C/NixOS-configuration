@@ -76,7 +76,4 @@
 			};
 		};
 	};
-
-	# Define the ICON_THEME_PATH environment variable.
-	environment.variables.ICON_THEME_PATH="${config.home-manager.users.${config.userName}.home.homeDirectory}/.nix-profile/share/icons/${config.home-manager.users.${config.userName}.gtk.iconTheme.name}/";
 }
