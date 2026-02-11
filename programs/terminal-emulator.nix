@@ -1,4 +1,4 @@
-{ config, ... }: {
+{ config, lib, ... }: {
 	programs.foot = {
 		# Whether to enable the Foot terminal emulator.
 		enable = true;
@@ -26,7 +26,7 @@
 	xdg.terminal-exec.enable = true;
 
 	# Set the default terminal emulator.
-	environment = lib.mkIf conifg.programs.foot.enable {
+	environment = lib.mkIf config.programs.foot.enable {
 		variables.TERMINAL = "footclient";
 		etc."xdg-terminals.list".text = "footclient.desktop";
 	};
