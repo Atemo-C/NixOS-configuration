@@ -280,7 +280,7 @@ binds {
 	Super+Control+V { spawn-sh "clipman clear --all && dunstify 'Clipboard cleared.'"; }
 
 	// Opan a permanent "clipboard" file.
-	Alt+Shift+V { spawn-sh "xdg-terminal $EDITOR $HOME/Documents/Clipboard.txt"; }
+	Alt+Shift+V { spawn-sh "xdg-terminal-exec $EDITOR $HOME/Documents/Clipboard.txt"; }
 
 	// Toggle showing/hiding Waybar when launched.
 	Super+B { spawn-sh "pkill -SIGUSR1 waybar"; }
