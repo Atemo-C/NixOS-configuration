@@ -465,6 +465,8 @@ window-rule {
 	match app-id=r#"thunar"# title="^Rename.*$"
 	match app-id=r#"^wine.*"# title="Wine"
 	open-floating true
+	geometry-corner-radius 6
+	clip-to-geometry true
 }
 
 // Block out certain programs from screen capture and screncasts.
