@@ -135,10 +135,10 @@ binds {
 	Super+Control+WheelScrollUp { focus-window-up; }
 
 	// Move windows.
-	Super+Shift+Left { move-column-left; }
-	Super+Shift+Down { move-window-down; }
-	Super+Shift+Up { move-window-up; }
-	Super+Shift+Right { move-column-right; }
+	Super+Shift+Left { move-column-left-or-to-monitor-left; }
+	Super+Shift+Down { move-window-down-or-to-workspace-down; }
+	Super+Shift+Up { move-window-up-or-to-workspace-up; }
+	Super+Shift+Right { move-column-right-or-to-monitor-right; }
 	Super+Shift+Home { move-column-to-first; }
 	Super+Shift+End { move-column-to-last; }
 
