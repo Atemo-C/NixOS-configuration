@@ -1,8 +1,7 @@
 # EXPERIMENTAL BRANCH!
 # ASSUME THAT EVERYTHING HERE IS BROKEN AND UNFINSHED!
 ![Screenshot of my current desktop](https://github.com/Atemo-C/NixOS-configuration/blob/experimental/Desktop.webp)
-Wallpaper created by Dzaka. \
-https://www.dzaka.fr/galerie/frontpage
+Wallpaper from the game OneShot. \
 Default wallpaper of this NixOS configuration created by byrotek. \
 https://www.deviantart.com/byrotek
 
