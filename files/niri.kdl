@@ -384,6 +384,7 @@ layout {
 
 // Programs that should appear on startup.
 spawn-at-startup "noctalia-shell"
+spawn-sh-at-startup "thunar --daemon"
 spawn-sh-at-startup "/etc/nixos/scripts/cmd-polkit-fuzzel.sh"
 spawn-sh-at-startup "foot --server"
 
