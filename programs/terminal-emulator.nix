@@ -24,4 +24,10 @@
 	# Whether to enable `xdg-terminal-exec`;
 	# The proposed Default Terminal Execution Specification.
 	xdg.terminal-exec.enable = true;
+
+	# Set the default terminal emulator.
+	environment = lib.mkIf conifg.programs.foot.enable {
+		variables.TERMINAL = "footclient";
+		etc."xdg-terminals.list".text = "footclient.desktop";
+	};
 }
