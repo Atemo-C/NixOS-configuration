@@ -94,7 +94,6 @@ while :; do
 		printf "%b\n" "Keymapp                Layout and heatmap tool for ZSA keyboards\000icon\037input-keyboard"
 		printf "%b\n" "Keypunch               Typing speed tests\000icon\037dev.bragefuglseth.Keypunch.Devel"
 		printf "%b\n" "Krita                  Digital painting\000icon\037krita"
-		printf "%b\n" "Kurso de Esperanto     Esperanto learning program\000icon\037preferences-desktop-locale"
 		printf "%b\n" "LACT                   Configure and overclock GPUs\000icon\037hardware"
 		printf "%b\n" "Lagrange               Graphical Gemini client\000icon\037fi.skyjake.Lagrange"
 		printf "%b\n" "LibreOffice            Office suite\000icon\037libreoffice"
@@ -180,12 +179,6 @@ while :; do
 		"Keymapp                Layout and heatmap tool for ZSA keyboards") l keymapp;;
 		"Keypunch               Typing speed tests") l keypunch;;
 		"Krita                  Digital painting") l krita;;
-
-		"Kurso de Esperanto     Esperanto learning program")
-			lc "$HOME/Programs/Kurso de Esperanto/kursokape" \
-			"$HOME/Programs/Kurso de Esperanto/kursokape"
-		;;
-
 		"LACT                   Configure and overclock GPUs") l lact;;
 		"Lagrange               Graphical Gemini client") l lagrange;;
 		"LibreOffice            Office suite") l libreoffice;;
