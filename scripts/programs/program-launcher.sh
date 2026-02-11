@@ -158,17 +158,6 @@ while :; do
 		"Calcurse               Terminal calendar") la calcurse xdg-terminal-exec calcurse;;
 		"Character map          Browse charcaters") l gucharmap;;
 		"CPU-X                  Detailed processor information") l cpu-x;;
-
-		"Crosshair ON           Activate a red-dot crosshair")
-			lc /etc/nixos/scrips/crosshair/eww.yuck \
-			eww -c /etc/nixos/scripts/crosshair/ open crosshair
-		;;
-
-		"Crosshair OFF          Disable a red-dot crosshair")
-			lc /etc/nixos/scrips/crosshair/eww.yuck \
-			eww -c /etc/nixos/scripts/crosshair/ close crosshair
-		;;
-
 		"CUPS                   Printer/scanner configuration") la cupsd xdg-open "http://localhost:631";;
 		"DeSmuME                Nintendo DS(i) emulator") l desmume;;
 		"Disks                  GNOME's disks utility") l gnome-disks;;
