@@ -62,7 +62,7 @@ Once you have booted, make sure to configure your keyboard layout and networking
 ## Installing NixOS
 
 ### Partitioning
-In my installations, I usually use an encrypted, single-drive setup, with encrypted backups to other drives on an EFI system. You can easily adapt the following steps for a multi-drive setup and a BIOS-only system. Which key you will have to press will also depend on if your storeg device is completely clean or has existing data on it. Read your screen carefully.\
+In my installations, I usually use an encrypted, single-drive setup, with encrypted backups to other drives on an EFI system. You can easily adapt the following steps for a multi-drive setup and a BIOS-only system. Which key you will have to press will also depend on if your storage device is completely clean or has existing data on it. Read your screen carefully.\
 I will be using command-line utilities, but plenty of graphical ones and alternative command-line ones exists.\
 All data WILL be erased on the selected drive. Be careful.
 
