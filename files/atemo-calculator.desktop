@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=Calculator
+GenericName=Calculator
+Comment=Console-based calculator based on GNU BC.
+
+Icon=calculator
+Type=Application
+Categories=Utility;
+Keywords=calculator;terminal;
+
+Exec=/etc/nixos/scripts/calculator.sh
+StartupNotify=false
+Terminal=true
