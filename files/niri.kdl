@@ -252,14 +252,14 @@ binds {
 	XF86Suspend  allow-when-locked=true { spawn-sh "noctalia-shell ipc call ssionMenu toggle"; }
 
 	// Copying screenshots.
-	Print { spawn-sh "/etc/nixos/scripts/screenshots/screenshot.sh --copy area"; }
-	Ctrl+Print { spawn-sh "/etc/nixos/scripts/screenshots/screenshot.sh --copy monitor"; }
-	Shift+Print { spawn-sh "/etc/nixos/scripts/screenshots/screenshot.sh --copy window"; }
+	Print { spawn-sh "/etc/nixos/scripts/screenshot/screenshot.sh --copy area"; }
+	Ctrl+Print { spawn-sh "/etc/nixos/scripts/screenshot/screenshot.sh --copy monitor"; }
+	Shift+Print { spawn-sh "/etc/nixos/scripts/screenshot/screenshot.sh --copy window"; }
 
 	// Saving screenshots.
-	Super+Print { spawn-sh "/etc/nixos/scripts/screenshots/screenshot.sh --save area"; }
-	Super+Ctrl+Print { spawn-sh "/etc/nixos/scripts/screenshots/screenshot.sh --save monitor"; }
-	Super+Shift+Print { spawn-sh "/etc/nixos/scripts/screenshots/screenshot.sh --save window"; }
+	Super+Print { spawn-sh "/etc/nixos/scripts/screenshot/screenshot.sh --save area"; }
+	Super+Ctrl+Print { spawn-sh "/etc/nixos/scripts/screenshot/screenshot.sh --save monitor"; }
+	Super+Shift+Print { spawn-sh "/etc/nixos/scripts/screenshot/screenshot.sh --save window"; }
 
 	// Open a terminal emulator.
 	Super+Return { spawn "xdg-terminal-exec"; }
