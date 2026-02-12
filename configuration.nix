@@ -188,6 +188,7 @@
 	./extra-modules/atemo/programs/prismlauncher.nix
 	./extra-modules/atemo/programs/pwvucontrol.nix
 	./extra-modules/atemo/programs/qbittorrent.nix
+	./extra-modules/atemo/programs/qtox.nix
 	./extra-modules/atemo/programs/qpwgraph.nix
 	./extra-modules/atemo/programs/qtsvg.nix
 	./extra-modules/atemo/programs/revolt-desktop.nix

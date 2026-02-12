@@ -12,6 +12,9 @@
 		# BitTorrent client.
 		qbittorrent.install = true;
 
+		# Qt Tox client.
+		qtox.install = true;
+
 		# Open-source Disocrd-like chat platform.
 		revolt-desktop.install = true;
 
