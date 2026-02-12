@@ -1,6 +1,4 @@
-# EXPERIMENTAL BRANCH!
-# ASSUME THAT EVERYTHING HERE IS BROKEN AND UNFINSHED!
-![Screenshot of my current desktop](https://github.com/Atemo-C/NixOS-configuration/blob/experimental/Desktop.webp)
+![Screenshot of my current desktop](https://github.com/Atemo-C/NixOS-configuration/blob/Desktop.webp)
 Wallpaper by byrotek. \
 https://www.deviantart.com/byrotek
 
@@ -17,7 +15,7 @@ It is based entirely on NixOS unstable, and relies partially on Home Manager (bu
 https://github.com/nix-community/home-manager
 
 It uses lots of custom Nix modules, most simply replacing package lists by `programs.` options whenever possible. This is mostly a stylistic choice, but some modules do add some functionality and pre-configurations. \
-https://github.com/Atemo-C/NixOS-configuration/blob/experimental/nix-modules/
+https://github.com/Atemo-C/NixOS-configuration/blob/nix-modules/
 
 # A weird way to install packages
 You might notice that the vast majority of packages installed here are actually "enabled", just like most `programs.<name>.enable` options. Well, not quite, still. \
@@ -197,7 +195,7 @@ rm /mnt/etc/nixos/configuration.nix
 ```
 4. Clone this repository to `/mnt/etc/nixos/`.
 ```shell
-git clone https://github.com/Atemo-C/NixOS-configuration -b experimental /mnt/etc/nixos/
+git clone https://github.com/Atemo-C/NixOS-configuration /mnt/etc/nixos/
 ```
 5. Move your hardware configuration file to `/mnt/etc/nixos/computers/your-comuputer-name`.
 Replace `your-computer-name` with the name of your computer.
@@ -280,9 +278,9 @@ In this example, I will be configuring my HP 250 G6:
 9. Modify the rest of the NixOS configuration to fit your own needs.
 This includes things such as:
 - The user's name and title. \
-https://github.com/Atemo-C/NixOS-configuration/blob/experimental/user/name.nix
-- Whether to enable support for NVIDIA GPUs (1650 and above). \
-https://github.com/Atemo-C/NixOS-configuration/blob/experimental/gpu/nvidia.nix
+https://github.com/Atemo-C/NixOS-configuration/blob/user/name.nix
+- Configuring support for NVIDIA GPUs (1650 and above). \
+https://github.com/Atemo-C/NixOS-configuration/blob/gpu/nvidia.nix
 - Various other settings, programs, etc.
 
 ### Installing NixOS
