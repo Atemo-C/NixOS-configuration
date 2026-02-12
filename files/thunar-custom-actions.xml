@@ -5,7 +5,7 @@
 	<name>Open terminal here</name>
 	<submenu></submenu>
 	<unique-id>1754598617503592-1</unique-id>
-	<command>xdg-terminal-exec --working-directory %f</command>
+	<command>xdg-terminal-exec --dir=%f</command>
 	<description>Open a terminal in the current directory</description>
 	<range></range>
 	<patterns>*</patterns>
