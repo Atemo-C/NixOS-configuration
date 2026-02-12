@@ -117,7 +117,7 @@
 	./extra-modules/atemo/programs/ferium.nix
 	./extra-modules/atemo/programs/ffmpeg.nix
 	./extra-modules/atemo/programs/ffmpegthumbnailer.nix
-#	./extra-modules/atemo/programs/file-roller.nix
+	./extra-modules/atemo/programs/fileroller.nix
 	./extra-modules/atemo/programs/freetype.nix
 	./extra-modules/atemo/programs/fuzzel.nix
 	./extra-modules/atemo/programs/gallery-dl.nix
