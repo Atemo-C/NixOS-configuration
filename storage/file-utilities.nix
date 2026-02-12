@@ -1,64 +1,54 @@
 { config, lib, pkgs, ... }: {
-	environment.systemPackages = with pkgs; [
+	programs = {
 		# Archiving-only formats support and utilities.
-		binutils   # ar
-		cpio       # cpio
-		libarchive # libarchive
-		gnutar     # GNU tar
+		binutils.install = true; # ar
+		libarchive.install = true; # libarchive
 
 		# Compression-only formats support and utilities.
-		bzip3 # bzip3
-		gzip  # gzip
-		lrzip # lrzip
-		lz4   # LZ4
-		lzip  # lzip
-		lzop  # lzop
+		bzip3.install = true; # bzip3
+		lz4.install = true; # LZ4
+		lzip.install = true; # lzip
+		lzop.install = true; # lzop
 
 		# Archiving and compression formats support and utilities.
-		p7zip     # gzip bzip2 LZMA xz zstd ZIP RAR 7z CAB
-		dar       # DAR
-		tarlz     # tarlz
-		unar      # unarchiver
-		lhasa lha # LHa
-		unzip     # zip
+		p7zip.install = true; # gzip bzip2 LZMA xz zstd ZIP RAR 7z CAB
+		dar.install = true; # DAR
+		tarlz.install = true; # tarlz
+		unar.install = true; # unarchiver
+		lhasa.install = false; # LHa
+		lha.install = false; # LHa
+		unzip.install = true; # zip
 
-		dtrx # Do The Right Extraction: A tool for taking the hassle out of extracting archives.
+		# General archiving utilities.
+		dtrx.install = true; # Do The Right Extraction: A tool for taking the hassle out of extracting archives.
+		fileroller.install = true; # Archive manager for GNOME
 
 		# Disk and storage utilities.
-		hdparm # A tool to get/set ATA/SATA drive parameters under Linux.
-		ncdu   # Disk usage analyzer with an ncurses interface
+		gparted.install = true; # Graphical disk partitioning tool.
+		gnome-disks.enable = true; # UDisks2 graphical front-end
+		hdparm.install = true; # A tool to get/set ATA/SATA drive parameters under Linux.
+		ncdu.install = true; # Disk usage analyzer with an ncurses interface
 
-		# Desktop and file utilities.
-		desktop-file-utils # Command line utilities for working with .desktop files.
-		shared-mime-info   # A database of common MIME types.
+		# Desktop and file utilities
+		desktop-file-utils.install = true;
 
-		# CD/DVD utilities.
-		cdparanoia     # A tool and library for reading digital audio from CDs.
-		cdrdao         # A tool for recording audio or data CD-Rs in disk-at-once (DAO) mode.
-		cdrtools       # Highly portable CD/DVD/BluRay command line recording software.
-		dvdplusrwtools # Tools for mastering Blu-ray and DVD+-RW/+-R media.
-		vcdimager      # https://www.gnu.org/software/vcdimager/
+		# Thumbnailing utilities and media and font formats support.
+		ffmpegthumbnailer.install = true; # General video files thumbnailing
+		freetype.install = true; # Font files
+		gnome-epub-thumbnailer.install = true; # .epub .mobi
+		icoextract.install = true; # Windows .ico files
+		kimageformats.install = true; # Various image formats
+		qtsvg.enable = true; # .svg
+		libgsf.install = true; # .odf
+		nufraw-thumbnailer.install = true; # .raw
+		poppler.install = true; # .pdf
+		webp-pixbuf-loader.install = true; # .webp
 
-		# Graphical programs.
-	] ++ lib.optionals config.programs.niri.enable (with pkgs; [
-		gparted              # Graphical disk partitioning tool.
-		timeshift xorg.xhost # System restore tool for Linux. (As well as a dependency for it.)
-		xfce.xfburn          # Disc burner and project creator for Xfce.
+		# Other programs.
+		xfburn.enable = true;
+	};
 
-		# Thumbnailing utilties and media formats support.
-	]) ++ lib.optionals config.programs.thunar.enable (with pkgs; [
-		poppler                   # .pdf
-		f3d                       # General 3D files thumbnailing
-		ffmpegthumbnailer         # General video files thumbnailing
-		freetype                  # Font files
-		gnome-epub-thumbnailer    # .epub .mobi
-		kdePackages.kimageformats # Various image formats
-		kdePackages.qtsvg         # .svg
-		libgsf                    # .odf
-		mcomix                    # .cbr
-		nufraw-thumbnailer        # .raw
-		webp-pixbuf-loader        # .webp
-
+	environment.systemPackages = with pkgs; [
 		# Thumbnailing for Krita within Thunar.
 		# https://github.com/NixOS/nixpkgs/issues/287003
 		(pkgs.writeTextFile {
@@ -70,7 +60,7 @@
 				MimeType=application/x-krita;
 			'';
 			destination = "/share/thumbnailers/kra.thumbnailer";
-		})
+	})
 
 		# Thumbnailing for audio files within Thunar.
 		(pkgs.writeTextFile {
@@ -83,15 +73,7 @@
 			'';
 			destination = "/share/thumbnailers/ffmpegaudio.thumbnailer";
 		})
-	]);
-
-	programs = {
-		# Whether to enable File Roller, an archive manager for GNOME.
-		file-roller.enable = true;
-
-		# Whether to enable GNOME Disks daemon, a program designed to be a UDisks2 graphical front-end.
-		gnome-disks.enable = true;
-	};
+	];
 
 	# Whether to enable the image thumbnailer for the Thunar file manager.
 	services.tumbler.enable = lib.mkIf config.programs.thunar.enable true;

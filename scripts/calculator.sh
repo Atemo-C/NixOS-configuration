@@ -1,55 +1,60 @@
-#!/usr/bin/env dash
+#!/run/current-system/sw/bin/dash
 
-# Credits.
-# • DASH:   http://gondor.apana.org.au/~herbert/dash
-# • GNU bc: https://www.gnu.org/software/bc
+# Check for any command-line arguments, and ignore them if any is detected.
+[ "$#" -gt 0 ] && {
+	printf "This script does not support command-line arguments. Ignoring.\n"
+	nohup "$0" >/dev/null 2>&1 & exit
+}
 
-# Text formatting shortcuts for console messages using `printf`.
-arg=$(tput bold; tput setaf 2)
-clr=$(tput sgr0)
-err=$(tput bold; tput setaf 1)Error$(tput sgr0)
-exe=$(tput bold; tput setaf 3)
-ico=$(tput bold; tput setaf 6)
-war=$(tput bold; tput setaf 5)Warning$(tput sgr0)
-
-# Check for any argument that may be present.
-[ "$#" -ne 0 ] && { printf "%s: This script does not support command-line arguments. Ignoring.\n" "$war"; }
-
-# Check if bc is installed.
-command -v bc > /dev/null 2>&1 || {
-	printf "%s: %sbc%s could not be found. It is necessary for calculations. Exiting.\n" "$err" "$exe" "$clr"
-
+# Check if `bc` is available.
+command -v bc >/dev/null 2>&1 || {
+	printf "bc could not be found; It is necessary for calculations. Exiting…\n"
 	exit 1
 }
 
-# Calculator instructions.
+# Calculator instrultions.
 calcinst() {
+	# Text formatting outputs for the calculator.
+	ARG=$(tput bold; tput setaf 2)
+	CMD=$(tput bold; tput setaf 3)
+	CLR=$(tput sgr0)
+	ICO=$(tput bold; tput setaf 6)
+
+	# Clear the buffer.
 	clear
-	printf "%s Calculator%s │ Enter a simple expression to calculate.\n" "$ico" "$clr"
-	printf "• Type '%sq%s', '%sx%s', or '%sexit%s' to exit.\n" "$arg" "$clr" "$arg" "$clr" "$arg" "$clr"
-	printf "• Type '%sclear%s' to clear the screen.\n" "$arg" "$clr"
-	printf "• Type '%sc%s' or '%sclean%s' to clear the last result.%s\n\n" "$arg" "$clr" "$arg" "$clr" "$ico"
+
+	# Show the instructions.
+	printf "%s Calculator%s │ Enter a simple expression to calculate.\n" "$ICO" "$CLR"
+	printf "• Type '%sq%s', '%sx%s', or '%sexit%s' to exit.\n" "$ARG" "$CLR" "$ARG" "$CLR" "$ARG" "$CLR"
+	printf "• Type '%sclear%s' to clear the screen.\n" "$ARG" "$CLR"
+	printf "• Type '%sc%s' or '%sclean%s' to clear the last result.%s\n\n" "$ARG" "$CLR" "$ARG" "$CLR" "$ICO"
 }
 
-# Show the instructions on the initial appearance.
+# Show the instructions upon initial appearance.
 calcinst
 
-# Create the last_result variable and set it to 0.
+# Create the `last_result` variable and set it to 0.
 last_result=0
 
 # Calculation loop.
-while true; do
+while :; do
 	# Listen for user input in the variable `i`.
 	read -r i
 
-	# Exit if `q`, `x`, or `exit` are typed.
-	[ "$i" = "q" ] || [ "$i" = "x" ] || [ "$i" = "exit" ] && { exit; }
+	# Action do execute upon typing something.
+	case "$i" in
+		# Exit.
+		"q"|"x"|"exit") exit 0;;
 
-	# Clear the screen if `c` or `clear` are typed.
-	[ "$i" = "clear" ] && { calcinst && continue; }
+		# Clear the screen.
+		"clear") calcinst && continue;;
 
-	# Clear the last result if `ESCAPE` is pressed.
-	[ "$i" = "c" ] || [ "$i" = "clean" ] && { last_result=0 && continue; }
+		# Clear the last result.
+		"c"|"clean")
+			printf "%sLast result cleared (0).%s\n" "$CLR" "$ICO"
+			last_result=0
+			continue;;
+	esac
 
 	# Prevent unnecessary scrolling when pressing `Enter` alone.
 	[ -z "$i" ] && { tput cuu1 && tput el && continue; }
@@ -63,7 +68,7 @@ while true; do
 		result=$(printf "scale=10\n%s\n" "$i" | bc 2>/dev/null) || { printf "" && continue; }
 
 		# Print the result and update the `last_result` variable.
-		printf "%s%s%s\n" "$exe" "$result" "$ico"
+		printf "%s%s%s\n" "$CMD" "$result" "$ICO"
 		last_result="$result"
 	}
 done

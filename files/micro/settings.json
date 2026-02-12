@@ -1,0 +1,32 @@
+{
+    "*.conf": {
+        "filetype": "nix"
+    },
+    "*.dirs": {
+        "filetype": "nix"
+    },
+    "*.jsonc": {
+        "filetype": "json"
+    },
+    "*.kdl": {
+        "filetype": "c"
+    },
+    "*.sav": {
+        "filetype": "nix"
+    },
+    "autosu": true,
+    "colorcolumn": 110,
+    "colorscheme": "atemo-colors",
+    "diffgutter": true,
+    "eofnewline": false,
+    "hltaberrors": true,
+    "hltrailingws": true,
+    "matchbracestyle": "highlight",
+    "relativeruler": true,
+    "rmtrailingws": true,
+    "ruler": false,
+    "savehistory": false,
+    "softwrap": true,
+    "tabsize": 3,
+    "wordwrap": true
+}

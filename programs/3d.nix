@@ -1,22 +1,14 @@
-{ config, lib, pkgs, ... }: lib.mkIf config.programs.niri.enable {
-	environment.systemPackages = with pkgs; [
-		blender       # 3D creation, animation, publishing system.
-		cura-appimage # 3D printer slicing utility.
+{ config, lib, ... }: { programs = {
+	blender = {
+		# Whether to enable Blender, a 3D creation, animation, and publishing system.
+		enable = true;
 
-		# Disign and visualize your future home (version before it sucked).
-		# Warning: For some reason, installing it breaks Flatpaks???
-		# https://github.com/NixOS/nixpkgs/issues/365726
-		#sweethome3d.application
-
-		# Easily create SH3T files and edit the properties of the texture images it contains.
-		#sweethome3d.textures-editor
-
-		# Quickly create SH3F files and edit the properties of the 3D models it contains.
-		#sweethome3d.furniture-editor
-	];
-
-	# CUDA for Blender when available. Comment this part out if you dread long compile times…
-	nixpkgs.config = lib.mkIf (lib.elem "nvidia" config.services.xserver.videoDrivers) {
-		packageOverrides = self : rec { blender = self.blender.override { cudaSupport = true; }; };
+		# Whether to compile Blender with CUDA support.
+		# Rebuilding the system could take longer due to potential compillation.
+		cudaSupport = lib.mkIf (lib.elem "nvidia" config.services.xserver.videoDrivers) true;
 	};
-}
+
+	# Fast and minimalist 3D viewer using VTK.
+	# Can be used by thumbnailers to generate thumbnails of 3D files.
+	f3d.install = true;
+}; }

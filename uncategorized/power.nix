@@ -1,12 +1,20 @@
-{ pkgs, ... }: {
-	environment.systemPackages = with pkgs; [
-		acpi          # Show battery status and other ACPI information.
-		brightnessctl # Read and control integrated device brightness.
-		ddcutil       # Query and change Linux montor settings using DDC/CI and USB.
-	];
+{ config, lib, ... }: {
+	programs = {
+		# Show battery status and other ACPI information.
+		acpi.install = true;
 
-	# Whether to enable i2c devices support.
-	hardware.i2c.enable = true;
+		# Read and control integrated device brightness.
+		brightnessctl.install = true;
+
+		# Query and change Linux monitor settings using DDC/CI and USB.
+		ddcutil.install = lib.mkIf config.services.ddccontrol.enable true;
+	};
+
+	# whether to enable ddccontrol for controlling displays.
+	services.ddccontrol.enable = true;
+
+	# Add the user to the `i2c` group.
+	users.users.${config.userName}.extraGroups = lib.optional config.services.ddccontrol.enable "i2c";
 
 	services = {
 		logind.settings.Login = {
@@ -22,5 +30,9 @@
 		# Whether to enable the Upower DBus service.
 		# It provides power management support to applications.
 		upower.enable = true;
+
+		# Whether to enable power-profiles-daemon, a DBus daemon that allows
+		# changing system behavior based upon user-selected power profiles.
+		power-profiles-daemon.enable = true;
 	};
 }

@@ -1,5 +1,15 @@
-{ config, lib, pkgs, ... }: lib.mkIf config.programs.niri.enable { environment.systemPackages = with pkgs; [
-	libreoffice-fresh # Comprehensive productivity suite; A variant of OpenOffice.org, itself of StarOffice.
-	poppler-utils     # PDF rendering library.
-	xreader           # Document viewer.
-]; }
+{ pkgs, ... }: { programs = {
+	# PDF rendering library.
+	poppler-utils.install = true;
+
+	# Document viewer.
+	xreader.install = true;
+
+	libreoffice = {
+		# Whether to enable the LibreOffice suite.
+		enable = true;
+
+		# Which package to use for LibreOffice.
+		package = pkgs.libreoffice-fresh;
+	};
+}; }

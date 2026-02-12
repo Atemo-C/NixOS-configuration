@@ -1,9 +1,9 @@
-{ config, lib, ... }: { services.openssh = {
+{ config, ... }: { services.openssh = {
 	# Whether to enable the OpenSSH daemon.
 	enable = true;
 
 	# Which ports the SSH daemon sohuld listen to.
-	ports = [ 0309 ];
+	ports = [ 6321 ];
 
 	# Login is allowed only for the listed users.
 	settings.AllowUsers = [ "${config.userName}" ];

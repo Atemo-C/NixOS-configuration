@@ -1,104 +1,226 @@
 { ... }: { imports = [
-	# Custom modules imported globally.
-	./custom-modules/all.nix
+	# Niri Wayland compositor and essential utilities.
+	./niri.nix
 
-	./desktop/dunst.nix     # Dunst notification daemon.
-	./desktop/fuzzel.nix    # Fuzzel graphical menu.
-	./desktop/niri.nix      # Niri Wayland compositor.
-	./desktop/swaylock.nix  # Swaylock screen locking utility.
-	./desktop/utilities.nix # Various desktop utilities (polkit, keyring, wallpaper…)
-	./desktop/waybar.nix    # Waybar bar.
-	/* Symlinked files:
-	./desktop/files/waybar/config.json > $HOME/.config/waybar/config
-	./desktop/files/waybar/style.css   > $HOME/.config/waybar/style.css
-	./desktop/files/niri.kdl           > $HOME/.config/niri/config.kdl
-	*/
+	# HP 250 G6 laptop.
+#	./computers/hp-250-g6/hardware-configuration.nix
+#	./computers/hp-250-g6/settings.nix
 
-	#./gpu/nvidia.nix # NVIDIA GPU (16XX and later only) drivers only.
-	./gpu/shared.nix # Shared graphic drivers and 3D acceleration.
+	# QEMU/KVM virtual machine.
+#	./computers/qemu-kvm/hardware-configuration.nix
+#	./computers/qemu-kvm/settings.nix
 
-	# Manual hardware configuration settings.
-	#./hardware/devices/hp-250-g6.nix     # Laptop,  2019,      UEFI, Intel graphics.
-	#/hardware/devices/r5-pc.nix         # Desktop, custom,    UEFI, NVIDIA graphics (+ integrated AMD as backup).
-	#./hardware/devices/thinkpad-l510.nix # Laptop,  2009(ish), BIOS, Intel graphics.
+	# R5 desktop PC.
+#	./computers/r5-pc/hardware-configuration.nix
+#	./computers/r5-pc/settings.nix
 
-	# Automatically-generated hardware configuration files - Do not touch them unless you fully reinstall.
-	#./hardware/generated/hp-250-g6.nix
-	#./hardware/generated/r5-pc.nix
+	# ThinkPad L510 laptop.
+#	./computers/thinkpad-l510/hardware-configuration.nix
+#	./computers/thinkpad-l510/settings.nix
 
-	./input/keyboard-layout.nix  # Keyboard layout configuration across all environments.
-	./input/opentabletdriver.nix # OpenTabletDriver as replacement for default drawing tablet drivers.
-	./input/utilities.nix        # Various input utilities (joystick tester, autoclicker…)
-	./input/zsa.nix              # Support for ZSA keyboards.
+	# 3D accelaretd graphics.
+	./gpu/shared.nix
 
-	./programs/3d.nix                # 3D modeling and printing.
-	./programs/accessories.nix       # Various accessories (mind mapper, password manager…)
-	./programs/gaming.nix            # Gaming and gaming optimisations.
-	./programs/internet.nix          # Web browsing, downloading, torrent management, socials…
-	./programs/multimedia.nix        # Images, videos, and other goodies (./uncategorized/audio.nix for audio).
-	./programs/office.nix            # Office programs (office suite, document viewer…)
-	./programs/shell-utilities.nix   # Various shell utilities (shell, calendar, calculator, git…)
-	./programs/system-info.nix       # System monitoring, benchmarking, and information gathering.
-	./programs/terminal-emulator.nix # Terminal emulator.
-	./programs/text.nix              # Text editing, character selection, clipboard management, and spell checking.
-	/* Symlinked files:
-	./programs/files/micro/bindings.json            > $HOME/.config/micro/bindings.json
-	./programs/files/micro/colors.json              > $HOME/.config/micro/colorschemes/atemo-colors.micro
-	./programs/files/micro/init.lua                 > $HOME/.config/micro/init.lua
-	./programs/files/micro/micro-foot.desktop       > $HOME/.local/share/applications/micro-foot.desktop
-	./programs/files/micro/micro-footclient.desktop > $HOME/.local/share/applications/micro-footclient.desktop
-	./programs/files/micro/nix.yaml                 > $HOME/.config/syntax/nix.yaml
-	./programs/files/micro/settings.json            > $HOME/.config/settings.json
-	./programs/files/fastfetch.jsonc                > $HOME/.config/fastfetch/config.json
-	./programs/files/mpv.conf                       > $HOME/.config/mpv/mpv.conf
-	./programs/files/yt-dlp                         > $HOME/.config/yt-dlp/config
-	*/
+	# Input configuration and utilities.
+	./input/keyboard-layout.nix
+	./input/opentabletdriver.nix
+	./input/utilities.nix
+	./input/zsa.nix
 
-	./scripts/crosshair/crosshair.nix # Simple red dot crosshair using an eww widget.
+	# Various programs.
+	./programs/3d.nix
+	./programs/accessories.nix
+	./programs/android.nix
+	./programs/gaming.nix
+	./programs/internet.nix
+	./programs/multimedia.nix
+	./programs/office.nix
+	./programs/shell-utilities.nix
+	./programs/system-info.nix
+	./programs/terminal-emulator.nix
+	./programs/text.nix
 
-	./storage/file-management.nix # File management utilities.
-	./storage/file-utilities.nix  # Various file utilites (archive formats support, CD/DVD burning, backups…)
-	./storage/filesystems.nix     # Filesystem settings and filesystems support.
-	./storage/mounts.nix          # Storage mounts (fstab).
-	/* Symlinked files:
-	./storage/files/mimeapps.list             > $HOME/.config/mimeapps.list
-	./storage/files/thunar-custom-actions.xml > $HOME/.config/Thunar/uca.xml
-	*/
+	# Storage configuration and utilities.
+	./storage/file-management.nix
+	./storage/file-utilities.nix
+	./storage/filesystems.nix
+	./storage/mounts.nix
 
-	./theming/fonts.nix           # Font configuration.
-	./theming/icons.nix           # Icon and cursor theme and configuration.
-	./theming/programs.nix        # Program theme and configuration.
-	./theming/terminal-colors.nix # Terminal colorscheme.
+	# Theming modules.
+	./theming/fonts.nix
+	./theming/icons.nix
+	./theming/settings.nix
+	./theming/terminal-colors.nix
 
-	./uncategorized/android.nix      # Android utilities and ADB support.
-	./uncategorized/audio.nix        # Audio configuration and utilities.
-	./uncategorized/bluetooth.nix    # Bluetooth support.
-	./uncategorized/boot.nix         # Boot configuration.
-	./uncategorized/cachyos-opti.nix # Optimizations pulled straight from CachyOS. Needs tweaking for each system.
-	./uncategorized/locale.nix       # Locale configuration (language, time, currency, measurement…)
-	./uncategorized/networking.nix   # Networking configuration.
-	./uncategorized/nix-settings.nix # Nix settings.
-	./uncategorized/packaging.nix    # Packaging configuration and supports (unfree software, Flatpak…)
-	./uncategorized/power.nix        # Power settings.
-	./uncategorized/printing.nix     # Printing and scanning support and utilities.
-	./uncategorized/ssh.nix          # OpenSSH configuration.
-	./uncategorized/temporary.nix    # Module containing various past and present fixes.
+	# Other modules (but still as important!).
+	./uncategorized/audio.nix
+	./uncategorized/bluetooth.nix
+	./uncategorized/boot.nix
+	./uncategorized/locale.nix
+	./uncategorized/networking.nix
+	./uncategorized/nix-settings.nix
+	./uncategorized/packaging.nix
+	./uncategorized/power.nix
+	./uncategorized/printing.nix
+	./uncategorized/ssh.nix
+	./uncategorized/zram.nix
 
-	./user/home-manager.nix # Support for Home Manager, managed system-wide.
-	./user/name.nix         # Module where the user name and title are defined.
-	./user/settings.nix     # User settings (extra groups, home directory, user type…)
-	./user/shell.nix        # User shell and shell configuration (here, FISH).
-	/* Symlinked files:
-	./user/files/config.fish > $HOME/.config/fish/config.fish
-	*/
+	# User modules.
+	./user/name.nix
+	./user/settings.nix
+	./user/shell.nix
 
-	#./virtualisation/guest/hyperv.nix     # Guest utilities for HyperV.
-	#./virtualisation/guest/qemu.nix       # Guest utilities for QEMU.
-	#./virtualisation/guest/virtualbox.nix # Guest utilities for VirtualBox.
-	#./virtualisation/guest/vmware-xe.nix  # Guest utilities for VMware.
+	# Virtualisation modules.
+#	./virtualisation/docker.nix
+#	./virtualisation/virt-manager.nix
+#	./virtualisation/virtualbox.nix
+#	./virtualisation/android.nix
 
-	#./virtualisation/host/docker.nix       # Docker support.
-	#./virtualisation/host/virt-manager.nix # QEMU/KVM and VirtManager support.
-	#./virtualisation/host/virtualbox.nix   # VirtualBox support.
-	#./virtualisation/host/waydroid.nix     # Waydroid support (Android).
+
+	# Extra modules.
+	./extra-modules/atemo/config/username.nix
+
+	./extra-modules/atemo/programs/acpi.nix
+	./extra-modules/atemo/programs/alsa-utils.nix
+	./extra-modules/atemo/programs/amfora.nix
+	./extra-modules/atemo/programs/android-tools.nix
+	./extra-modules/atemo/programs/aspell.nix
+	./extra-modules/atemo/programs/audacious.nix
+	./extra-modules/atemo/programs/audacity.nix
+	./extra-modules/atemo/programs/bc.nix
+	./extra-modules/atemo/programs/binutils.nix
+	./extra-modules/atemo/programs/blender.nix
+	./extra-modules/atemo/programs/brightnessctl.nix
+	./extra-modules/atemo/programs/btop.nix
+	./extra-modules/atemo/programs/bzip3.nix
+	./extra-modules/atemo/programs/calcurse.nix
+	./extra-modules/atemo/programs/cmd-polkit.nix
+	./extra-modules/atemo/programs/cpu-x.nix
+	./extra-modules/atemo/programs/cuda.nix
+	./extra-modules/atemo/programs/dar.nix
+	./extra-modules/atemo/programs/dash.nix
+	./extra-modules/atemo/programs/dcmtk.nix
+	./extra-modules/atemo/programs/ddcutil.nix
+	./extra-modules/atemo/programs/desktop-file-utils.nix
+	./extra-modules/atemo/programs/desmume.nix
+	./extra-modules/atemo/programs/dtrx.nix
+	./extra-modules/atemo/programs/easytag.nix
+	./extra-modules/atemo/programs/efibootmgr.nix
+	./extra-modules/atemo/programs/element-desktop.nix
+	./extra-modules/atemo/programs/evhz.nix
+	./extra-modules/atemo/programs/evsieve.nix
+	./extra-modules/atemo/programs/exfatprogs.nix
+	./extra-modules/atemo/programs/exiftool.nix
+	./extra-modules/atemo/programs/fastfetch.nix
+	./extra-modules/atemo/programs/f2fs-tools.nix
+	./extra-modules/atemo/programs/f3d.nix
+	./extra-modules/atemo/programs/ferium.nix
+	./extra-modules/atemo/programs/ffmpeg.nix
+	./extra-modules/atemo/programs/ffmpegthumbnailer.nix
+	./extra-modules/atemo/programs/fileroller.nix
+	./extra-modules/atemo/programs/freetype.nix
+	./extra-modules/atemo/programs/fuzzel.nix
+	./extra-modules/atemo/programs/gallery-dl.nix
+	./extra-modules/atemo/programs/gcolor3.nix
+	./extra-modules/atemo/programs/gh.nix
+	./extra-modules/atemo/programs/gifsicle.nix
+	./extra-modules/atemo/programs/gifski.nix
+	./extra-modules/atemo/programs/gimp.nix
+	./extra-modules/atemo/programs/gnirehtet.nix
+	./extra-modules/atemo/programs/gnome-epub-thumbnailer.nix
+	./extra-modules/atemo/programs/gparted.nix
+	./extra-modules/atemo/programs/gstreamer.nix
+	./extra-modules/atemo/programs/gucharmap.nix
+	./extra-modules/atemo/programs/hdparm.nix
+	./extra-modules/atemo/programs/heimdall.nix
+	./extra-modules/atemo/programs/heroic.nix
+	./extra-modules/atemo/programs/hfsprogs.nix
+	./extra-modules/atemo/programs/hunspell.nix
+	./extra-modules/atemo/programs/icoextract.nix
+	./extra-modules/atemo/programs/imagemagick.nix
+	./extra-modules/atemo/programs/inkscape.nix
+	./extra-modules/atemo/programs/jfsutils.nix
+	./extra-modules/atemo/programs/jmtpfs.nix
+	./extra-modules/atemo/programs/jpegoptim.nix
+	./extra-modules/atemo/programs/jq.nix
+	./extra-modules/atemo/programs/jstest-gtk.nix
+	./extra-modules/atemo/programs/kdenlive.nix
+	./extra-modules/atemo/programs/keepassxc.nix
+	./extra-modules/atemo/programs/kimageformats.nix
+	./extra-modules/atemo/programs/krita.nix
+	./extra-modules/atemo/programs/lagrange.nix
+	./extra-modules/atemo/programs/lha.nix
+	./extra-modules/atemo/programs/lhasa.nix
+	./extra-modules/atemo/programs/libarchive.nix
+	./extra-modules/atemo/programs/libde265.nix
+	./extra-modules/atemo/programs/libgsf.nix
+	./extra-modules/atemo/programs/libmtp.nix
+	./extra-modules/atemo/programs/libreoffice.nix
+	./extra-modules/atemo/programs/libjxl.nix
+	./extra-modules/atemo/programs/libwebp.nix
+	./extra-modules/atemo/programs/lm_sensors.nix
+	./extra-modules/atemo/programs/lsd.nix
+	./extra-modules/atemo/programs/lshw.nix
+	./extra-modules/atemo/programs/lz4.nix
+	./extra-modules/atemo/programs/lzip.nix
+	./extra-modules/atemo/programs/lzop.nix
+	./extra-modules/atemo/programs/lximage-qt.nix
+	./extra-modules/atemo/programs/mesa-demos.nix
+	./extra-modules/atemo/programs/mgba.nix
+	./extra-modules/atemo/programs/micro.nix
+	./extra-modules/atemo/programs/midiplus-smartpad-rgb-editor.nix
+	./extra-modules/atemo/programs/minder.nix
+	./extra-modules/atemo/programs/mprime.nix
+	./extra-modules/atemo/programs/mpv.nix
+	./extra-modules/atemo/programs/mission-center.nix
+	./extra-modules/atemo/programs/ncdu.nix
+	./extra-modules/atemo/programs/nilfs-utils.nix
+	./extra-modules/atemo/programs/niri.nix
+	./extra-modules/atemo/programs/noctalia-shell.nix
+	./extra-modules/atemo/programs/nufraw-thumbnailer.nix
+	./extra-modules/atemo/programs/oxipng.nix
+	./extra-modules/atemo/programs/p7zip.nix
+	./extra-modules/atemo/programs/parallel.nix
+	./extra-modules/atemo/programs/pcsx2.nix
+	./extra-modules/atemo/programs/pmutils.nix
+	./extra-modules/atemo/programs/poppler-utils.nix
+	./extra-modules/atemo/programs/poppler.nix
+	./extra-modules/atemo/programs/prismlauncher.nix
+	./extra-modules/atemo/programs/pwvucontrol.nix
+	./extra-modules/atemo/programs/qbittorrent.nix
+	./extra-modules/atemo/programs/qtox.nix
+	./extra-modules/atemo/programs/qpwgraph.nix
+	./extra-modules/atemo/programs/qtsvg.nix
+	./extra-modules/atemo/programs/rpcs3.nix
+	./extra-modules/atemo/programs/ruffle.nix
+	./extra-modules/atemo/programs/sc-controller.nix
+	./extra-modules/atemo/programs/scrcpy.nix
+	./extra-modules/atemo/programs/shellcheck.nix
+	./extra-modules/atemo/programs/simple-scan.nix
+	./extra-modules/atemo/programs/smartmontools.nix
+	./extra-modules/atemo/programs/soundfont.nix
+	./extra-modules/atemo/programs/speedtest.nix
+	./extra-modules/atemo/programs/tarlz.nix
+	./extra-modules/atemo/programs/tlrc.nix
+	./extra-modules/atemo/programs/tor-browser.nix
+	./extra-modules/atemo/programs/tor.nix
+	./extra-modules/atemo/programs/udftools.nix
+	./extra-modules/atemo/programs/unar.nix
+	./extra-modules/atemo/programs/unzip.nix
+	./extra-modules/atemo/programs/usbutils.nix
+	./extra-modules/atemo/programs/v4l-utils.nix
+	./extra-modules/atemo/programs/vintagestory.nix
+	./extra-modules/atemo/programs/vulkan-tools.nix
+	./extra-modules/atemo/programs/webp-pixbuf-loader.nix
+	./extra-modules/atemo/programs/wget.nix
+	./extra-modules/atemo/programs/xemu.nix
+	./extra-modules/atemo/programs/xfburn.nix
+	./extra-modules/atemo/programs/xfsdump.nix
+	./extra-modules/atemo/programs/xfsprogs.nix
+	./extra-modules/atemo/programs/xreader.nix
+	./extra-modules/atemo/programs/yt-dlp.nix
+	./extra-modules/atemo/programs/zsa.nix
+
+	./extra-modules/external/home-manager.nix
+	./extra-modules/external/nix-flatpak.nix
 ]; }

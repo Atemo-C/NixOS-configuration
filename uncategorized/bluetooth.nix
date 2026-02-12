@@ -1,7 +1,5 @@
+# Bluetooth support is configured through your device's `settings.nix` module.
 { config, lib, ... }: {
-	# Whether to enable support for Bluetooth.
-	hardware.bluetooth.enable = true;
-
 	# Whether to activate the Blueman Bluetooth service.
 	services.blueman.enable = lib.mkIf (config.hardware.bluetooth.enable && config.programs.niri.enable) true;
 

@@ -1,19 +1,18 @@
+# Make sure to configure your keyboard layout in your device's `settings.nix` module.
+# This module makes sure it is applied in most places on the system, without headaches.
 { config, ... }: {
-	# Keyboard layout settings.
-	# To see a complete list of layouts, variants, and other settings:
-	# • https://gist.github.com/jatcwang/ae3b7019f219b8cdc6798329108c9aee
-	#
-	# To see why this list cannot easily be seen within NixOS:
-	# • https://github.com/NixOS/nixpkgs/issues/254523
-	# • https://github.com/NixOS/nixpkgs/issues/286283
-	services.xserver.xkb.layout = "us";
-	services.xserver.xkb.variant = "intl";
+	# Set the keyboard layout settings environment variables.
+	# Some programs rely on these variables for the keboard settings to be applied.
+	environment.variables = {
+		XKB_DEFAULT_LAYOUT = config.services.xserver.xkb.layout;
+		XKB_DEFAULT_VARIANT = config.services.xserver.xkb.variant;
+	};
 
-	# Export the used keyboard layout. Some programs rely on this setting for it to be properly applied.
-	environment.variables.XKB_DEFAULT_LAYOUT = configservices.xserver.xkb.layout;
-	environment.variables.XKB_DEFAULT_VARIANT = config.services.xserver.xkb.variant;
-
-	# Whether to let the virtual console's (TTY's) keyboard layout be the same as the one configured above.
-	# If false, it needs to be manually configured with the `console.keyMap` option.
+	# Whether to let the TTY's keyboard layout be the same as in graphical environments.
+	# If `false`, it needs to be configured using the `console.keyMap` option.
 	console.useXkbConfig = true;
+
+	# Whether to let Kmscon's keyboard layout be the same as in graphical environments.
+	# If `false`, it needs to be configured using the `services.kmscon.extraConfig` option.
+	services.kmscon.useXkbConfig = true;
 }

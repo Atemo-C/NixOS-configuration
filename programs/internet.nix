@@ -1,31 +1,43 @@
 { config, lib, pkgs, ... }: {
-	environment = {
-		systemPackages = with pkgs; [
-			# Non-graphical programs.
-			amfora # CLI Gemini client.
-			tor    # Anonymizing overlay network.
+	programs = {
+		# CLI Gemini client.
+		amfora.install = true;
 
-			# Graphical programs.
-		] ++ lib.optionals config.programs.niri.enable (with pkgs; [
-			element-desktop # Matrix client.
-			lagrange        # Graphical Gemini client.
-			qbittorrent     # BitTorrent client.
-			revolt-desktop  # Open-source Discord-like chat platform.
-			ruffle          # Adobe Flash Player emulator.
-			speedtest       # Graphical librespeed client.
-			tor-browser     # Privacy-focused, Firefox-based browser routing traffic through the Tor network.
-			vesktop         # Alternative Discord client with Vencord built-in.
-		]);
+		# Matrix client.
+		element-desktop.install = false;
 
-		# Default web browser to use.
-		variables.BROWSER = lib.mkIf (
-			config.programs.firefox.enable && config.programs.firefox.package == pkgs.librewolf
-		) "librewolf";
+		# Graphical Gemini client.
+		lagrange.enable = false;
+
+		# BitTorrent client.
+		qbittorrent.install = true;
+
+		# Qt Tox client.
+		qtox.install = true;
+
+		# Adobe Flash Player emulator.
+		ruffle.install = true;
+
+		# Graphical librespeed client.
+		speedtest.install = true;
+
+		# Anonymizing overlay network.
+		tor.install = true;
+
+		# Privacy-focused, Firefox-based browser routing traffic through the Tor network.
+		tor-browser.install = true;
+
+		firefox = {
+			# Whether to install the Firefox web browser.
+			enable = true;
+
+			# Which package of Firefox (or fork of it) to install.
+			package = pkgs.librewolf;
+		};
 	};
 
-	# Whether to install the Firefox web browser.
-	programs.firefox.enable = true;
-
-	# Which package of Firefox (or fork of it) to install.
-	programs.firefox.package = pkgs.librewolf;
+	# Default web browser to use.
+	environment.variables.BROWSER = if
+	(config.programs.firefox.enable && config.programs.firefox.package == pkgs.librewolf)
+	then "librewolf" else "firefox";
 }

@@ -1,4 +1,4 @@
-{ config, lib, ... }: let
+{ ... }: let
 	# Define the list of colors shared across terminals.
 	Background    = "000000";    Foreground = "eeeeee";
 	normalBlack   = "242424";    dimBlack   = "141414";    brightBlack   = "525252";
@@ -12,7 +12,7 @@
 in {
 	# Linux console (TTY) colors.
 	console = {
-		# The 16 colors palette used by the virtual consoles.
+		# THe 16 colors palette used by the virtual consoles.
 		colors = [
 			Background
 			normalRed
@@ -37,7 +37,7 @@ in {
 	};
 
 	# Colors of the Foot terminal emulator.
-	home-manager.users.${config.userName}.programs.foot.settings.colors = {
+	programs.foot.settings.colors = {
 		# Foreground color (default text).
 		foreground = Foreground;
 

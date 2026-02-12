@@ -1,17 +1,27 @@
-{ config, lib, pkgs, ... }: {
-	environment.systemPackages = with pkgs; [
-		evsieve       # Utility for mapping events from Linux event devices.
-		usbutils      # Tools for working with USB devices, such as `lsusb`.
-	] ++ lib.optionals config.programs.niri.enable (with pkgs; [
-		evhz          # Show mouse refresh rate.
-		jstest-gtk    # Graphical joystic tester.
-		#sc-controller # User-mode driver and GUI for configuring any controller.
-		xclicker      # Autoclicker for XWayland programs.
-	]);
+{ config, lib, ... }: {
+	programs = {
+		# Show mouse refresh rate under Linux + evdev.
+		evhz.install = true;
 
-	# Whether to enable ydotool system service and ydotool for members of `programs.ydotool.group`.
-	programs.ydotool.enable = true;
+		# Utility for mapping events from Linux event devices.
+		evsieve.install = true;
+
+		# Simple joystick tester based on Gtk+.
+		jstest-gtk.install = true;
+
+		# RGB editor for the MiDiPlus SmartPad.
+		#midiplus-smartpad-rgb-editor.install = true;
+
+		# User-mode driver and GUI for Steam Controller and other controllers.
+		sc-controller.install = true;
+
+		# Tools for working with USB devices, such as `lsusb`.
+		usbutils.install = true;
+
+		# Generic Linux command-line automation tool.
+		ydotool.enable = true;
+	};
 
 	# Add the user to the `ydotool` group.
-	users.users.${config.userName}.extraGroups = [ "ydotool" ];
+	users.users.${config.userName}.extraGroups = lib.optional config.programs.ydotool.enable "ydotool";
 }

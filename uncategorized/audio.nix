@@ -10,9 +10,6 @@
 
 		# Whether to enable the playerctld daemon for easy multimedia control.
 		playerctld.enable = lib.mkIf config.services.pipewire.enable true;
-
-		# Whether to enable live audio effects using EasyEffects.
-		easyeffects.enable = lib.mkIf config.services.pipewire.enable true;
 	};
 
 	# Whether to enable the Realtimekit service.
@@ -21,27 +18,22 @@
 
 	programs = lib.mkIf config.services.pipewire.enable {
 		# Various utilities for ALSA.
-		alsa-utils.enable = true;
+		alsa-utils.install = true;
 
 		# Lightweight and versatile audio player.
 		audacious.enable = true;
 
+		# Sound editor with graphical UI.
+		audacity.install = true;
+
 		# View and edit tags for various audio files
-		easytag.enable = true;
+		easytag.install = true;
 
 		# PipeWire volume control.
-		pwvucontrol.enable = true;
+		pwvucontrol.install = true;
 
 		# QT graph manager for PipeWire, similar to QjackCtl.
-		qpwgraph.enable = true;
-
-		audacity = {
-			# Whether to enable Audacity, a sound editor with graphical UI.
-			enable = true;
-
-			# Which Audacity package to install.
-			package = pkgs.tenacity;
-		};
+		qpwgraph.install = true;
 
 		soundfont = {
 			# Frank Wen's pro-quality GM/GS soundfont. (MIT)
@@ -58,7 +50,7 @@
 		};
 
 		# Shell abbreviations for listening to various online audio streams with MPV.
-		fish.shellAbbrs = lib.mkIf config.programs.fish.enable (
+		fish.shellAbbrs = (
 			let
 				# Base MPV command.
 				mpv-ytb = ''mpv --quiet --no-video "https://www.youtube.com/watch?v='';

@@ -1,58 +1,105 @@
-{ config, lib, pkgs, ... }: {
-	# Use the proprietary NVIDIA drivers for 16XX and later GPUs.
+{ config, lib, ... }: {
+	# Use the proprietary NVIDIA drivers for 165X and later GPUs.
 	services.xserver.videoDrivers = [ "nvidia" ];
 
 	# NVIDIA driver settings to apply from boot.
-	boot.kernelParams = lib.optionals (lib.elem "nvidia" config.services.xserver.videoDrivers) [
-		"nvidia.NVreg_EnableResizableBar=1"                      # Enable reBAR.
-		"nvidia.NVreg_PreserveVideoMemoryAllocations=1"          # Make resuming more stable.
-		"nvidia.NVreg_RegistryDwords=RmEnableAggressiveVblank=1" # Lower latency during gaming. Remove if causes issues.
-		"nvidia.NVreg_UsePageAttributeTable=1"                   # Fixes poor CPU performances in a lot of cases.
-		"nvidia.NVreg_TemporaryFilePath=/var/tmp"                # Store temporary files on disk and not on ram (/tmp).
+	boot.kernelParams = [
+		# Enable resizable BAR support.
+		"nvidia.NVreg_EnableResizableBar=1"
+
+		# Skip over zeroing graphics memory buffers at alloc time.
+		# https://github.com/CachyOS/CachyOS-Settings/blob/master/usr/lib/modprobe.d/nvidia.conf#L20
+		"nvidia.NVreg_IntitializeSystemMemoryAllocations=0"
+
+		# Make resuming more stable.
+		"nvidia.NVreg_PreserveVideoMemoryAllocations=1"
+
+		# Lower latency when gaming; Could potentially cause some issues.
+		"nvidia.NVreg_RegistryDwords=RmEnableAggressiveVblank=1"
+
+		# Fixes poor CPU performances in some cases.
+		"nvidia.NVreg_UsePageAttributeTable=1"
 	];
 
-	hardware = lib.mkIf (lib.elem "nvidia" config.services.xserver.videoDrivers) {
-		# Whether to enable the open-source NVIDIA kernel modules (recommended for 560+ drivers).
-		nvidia.open = true;
+	hardware = {
+		nvidia = {
+			# Whether to enable the open-source NVIDIA kernel modules (recommended for 560+ drivers).
+			open = true;
 
-		# The driver package to use.
-		nvidia.package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
-			# Stable "Production" drivers (575).
-			#version            = "575.64.05";
-			#sha256_64bit       = "sha256-hfK1D5EiYcGRegss9+H5dDr/0Aj9wPIJ9NVWP3dNUC0=";
-			#sha256_aarch64     = "sha256-GRE9VEEosbY7TL4HPFoyo0Ac5jgBHsZg9sBKJ4BLhsA=";
-			#openSha256         = "sha256-mcbMVEyRxNyRrohgwWNylu45vIqF+flKHnmt47R//KU=";
-			#settingsSha256     = "sha256-o2zUnYFUQjHOcCrB0w/4L6xI1hVUXLAWgG2Y26BowBE=";
-			#persistencedSha256 = "sha256-2g5z7Pu8u2EiAh5givP5Q1Y4zk4Cbb06W37rf768NFU=";
-
-			# Latest "production" drivers (580.8X).
-			version            = "580.95.05";
-			sha256_64bit       = "sha256-hJ7w746EK5gGss3p8RwTA9VPGpp2lGfk5dlhsv4Rgqc=";
-			sha256_aarch64     = "sha256-zLRCbpiik2fGDa+d80wqV3ZV1U1b4lRjzNQJsLLlICk=";
-			openSha256         = "sha256-RFwDGQOi9jVngVONCOB5m/IYKZIeGEle7h0+0yGnBEI=";
-			settingsSha256     = "sha256-F2wmUEaRrpR1Vz0TQSwVK4Fv13f3J9NJLtBe4UP2f14=";
-			persistencedSha256 = "sha256-QCwxXQfG/Pa7jSTBB0xD3lsIofcerAWWAHKvWjWGQtg=";
-
-			# Latest "Beta" drivers (580.6X).
-			#version = "580.65.06";
-			#sha256_64bit = "sha256-BLEIZ69YXnZc+/3POe1fS9ESN1vrqwFy6qGHxqpQJP8=";
-			#sha256_aarch64 = "sha256-4CrNwNINSlQapQJr/dsbm0/GvGSuOwT/nLnIknAM+cQ=";
-			#openSha256 = "sha256-BKe6LQ1ZSrHUOSoV6UCksUE0+TIa0WcCHZv4lagfIgA=";
-			#settingsSha256 = "sha256-9PWmj9qG/Ms8Ol5vLQD3Dlhuw4iaFtVHNC0hSyMCU24=";
-			#persistencedSha256 = "sha256-ETRfj2/kPbKYX1NzE0dGr/ulMuzbICIpceXdCRDkAxA=";
+			# Whether to enable power management through systemd; Often necessary for stable suspend.
+			powerManagement.enable = true;
 		};
-
-		# Whether to enable power management through systemd; Often necessary for stable suspend.
-		nvidia.powerManagement.enable = true;
 
 		# Whether to enable dynamic CDI configuration for NVIDIA GPUs.
 		nvidia-container-toolkit.enable = false;
 	};
 
-	# CUDA packages.
-	environment.systemPackages = lib.optionals config.hardware.nvidia-container-toolkit.enable (with pkgs.cudaPackages; [
-		cudnn
-		cutensor
-#		cudatoolkit
-	]);
+	# CUDA packages to install.
+	programs.cuda = lib.mkIf config.hardware.nvidia-container-toolkit.enable {
+		cudnn.install = true;
+		libcutensor.install = true;
+		cudatoolkit.install = true;
+	};
+
+	# Apply some extra udev rules for NVIDIA GPUs (165X and later).
+	# https://github.com/CachyOS/CachyOS-Settings/blob/master/usr/lib/udev/rules.d/71-nvidia.rules
+	services.udev.extraRules = ''
+		ACTION=="add|bind", SUBSYSTEM=="pci", DRIVERS=="nvidia", \
+			ATTR{vendor}=="0x10de", ATTR{class}=="0x03[0-9]*", \
+			TEST=="power/control", ATTR{power/control}="auto"
+
+		ACTION=="remove|unbind", SUBSYSTEM=="pci", DRIVERS=="nvidia", \
+			ATTR{vendor}=="0x10de", ATTR{class}=="0x03[0-9]*", \
+			TEST=="power/control", ATTR{power/control}="on"
+	'';
+
+	# Add the CUDA binary cache to avoid having to rebuild from source too often.
+	# There can be some edge cases where this is not ideal.
+	# https://wiki.nixos.org/wiki/CUDA#Setting_up_CUDA_Binary_Cache
+	nix.settings = {
+		substituters = [ "https://cache.nixos-cuda.org" ];
+		trusted-public-keys = [ "cache.nixos-cuda.org:74DUi4Ye579gUqzH4ziL9IyiJBlDpMRn9MBN8oNan9M=" ];
+	};
+
+	# Apply various NVIDIA-specific fixes to various programs.
+	# See the issue below as an example of what affected programs can act like otherwise.
+	# https://github.com/YaLTeR/niri/issues/1962
+	environment.etc = {
+		"nvidia/nvidia-application-profiles-rc.d/50-limit-free-buffer-pool-fix.json".text = builtins.toJSON {
+			rules = map (proc: {
+				pattern = {
+					feature = "procname";
+					matches = proc;
+				};
+				profile = "No VidMem Reuse";
+			}) [
+				".Discord-wrapped"
+				".DiscordCanary-wrapped"
+				"electron"
+				".electron-wrapped"
+				".Hyprland-wrapped"
+				"losslesscut"
+				"librewolf-wrapped"
+				"librewolf"
+				"niri"
+				"quickshell"
+				"quickshell-wrapped"
+			];
+		};
+
+		"nvidia/nvidia-application-profiles-rc.d/60-librewolf-firefox.json".text = ''
+{
+	"rules": [{
+		"pattern": ".librewolf-wrapped",
+		"profile": "ForceSeparateTrimThread",
+
+		"pattern": ".librewolf-wrapped",
+		"profile": "FA0",
+
+		"pattern": ".librewolf-wrapped",
+		"profile": "DedicatedHwStatePerCtx"
+	}]
+}
+		'';
+	};
 }

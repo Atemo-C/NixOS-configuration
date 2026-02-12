@@ -91,5 +91,5 @@
 
 	# Link the configuration file of the FISH shell.
 	systemd.user.tmpfiles.users.${config.userName}.rules = lib.optional config.programs.fish.enable
-	"L %h/.config/fish/config.fish - - - - /etc/nixos/user/files/config.fish";
+	"L %h/.config/fish/config.fish - - - - /etc/nixos/files/config.fish";
 }

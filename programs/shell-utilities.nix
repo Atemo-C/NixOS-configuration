@@ -1,20 +1,37 @@
-{ config, pkgs, ... }: {
-	environment.systemPackages = with pkgs; [
-		bc         # GNU software calculator.
-		calcurse   # A calendar and scheduling application for the command line.
-		dash       # A POSIX-compliant implementation of `/bin/sh` that aims to be as small as possible.
-		gh         # GitHub CLI tool.
-		jq         # Lightweight and flexible command-line JSON processor.
-		parallel   # Shell tool for executing jobs in parallel.
-		shellcheck # Shell script analysis tool.
-		tlrc       # Simplified and community-driven man pages, written in Rust.
-		wget       # Tool for retrieving files using HTTP, HTTPS, and FTP.
-	];
-	programs = {
-		# Whether to enable bat, a `cat (1)` clone with syntax highlighting and Git integration.
-		bat.enable = true;
+{ ... }: { programs = {
+	# GNU software calculator.
+	bc.install = true;
 
-		# Whether to enable git, a distributed version control system.
-		git.enable = true;
-	};
-}
+	# A calendar and scheduling application for the command line.
+	calcurse.install = true;
+
+	# A POSIX-compliant implementation of `/bin/sh` that aims to be as small as possible.
+	dash.install = true;
+
+	# GitHub CLI tool.
+	gh.install = true;
+
+	# Lightweight and flexible command-line JSON processor.
+	jq.install = true;
+
+	# Whether to enable parallel, a hell toll for executing jobs in parallel.
+	parallel.enable = true;
+
+	# Whether to enable shellcheck, a hell script analysis tool.
+	shellcheck.enable = true;
+
+	# Simplified and community-driven man pages, written in Rust.
+	tlrc.install = true;
+
+	# Tool for retrieving files using HTTP, HTTPS, and FTP.
+	wget.install = true;
+
+	# Whether to enable bat, a `cat (1)` clone with syntax highlighting and Git integration.
+	bat.enable = true;
+
+	# Whether interactive shells should show which Nix package (if any) provides a missing command.
+	command-not-found.enable = true;
+
+	# Whether to enable git, a distributed version control system.
+	git.enable = true;
+}; }

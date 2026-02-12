@@ -1,65 +1,87 @@
-{ config, lib, pkgs, ... }: {
-	environment.systemPackages = lib.optionals config.programs.niri.enable (with pkgs; [
-		#desmume            # Nintendo DS(i) emulator.
-		#pcsx2              # PlayStation 2 emulator.
-		#xemu               # XBOX emulator.
-		jdk25              # Java, for Minecraft.
-		ferium             # CLI program for managing Minecraft mods and modpacks from various sources.
-		prismlauncher      # Full-featured Minecraft launcher.
-		mcpelauncher-ui-qt # Minecraft Bedrock Launcher.
-		luanti             # Inifinite-world block sandbox; Previously known as Minetest.
-		heroic             # Native GOG, Epic, and Amazon Games launcher.
-		vintagestory       # Indie sandbox game about innovation and exploration.
-	]);
+{ lib, pkgs, ... }: {
+	services.flatpak.packages = [
+		# Easy-to-use wineprefix manager.
+		"com.usebottles.bottles"
+
+		# Open source gaming platform for GNU/Linux.
+		"net.lutris.Lutris"
+	];
 
 	programs = rec {
-		# Whether to enable GameMode to optimize system performances on demand when gaming.
-		gamemode.enable = true;
+		# Nintendo DS(i) emulator.
+		desmume.install = true;
 
-		# Disable the screen saver when using gamemode.
-		gamemode.settings.general.inhibit_screensaver = lib.mkIf gamemode.enable 0;
+		# CLI program for managing Minecraft mods and modpacks from various sources.
+		ferium.install = true;
 
-		# Whether to enable the Gamescope compositor and session.
-		gamescope.enable = true;
+		# Native GOG, Epic, and Amaon Games launcher.
+		heroic.install = false;
 
-		# Whether to add `cap_sys_nice` capabilities to GameScope, so that it may renice itself.
-		gamescope.capSysNice = lib.mkIf gamescope.enable true;
+		# Modern GBA emulator with a focus on accuracy.
+		mgba.install = true;
+
+		# PlayStation 2 emulator.
+		pcsx2.install = true;
+
+		# Full-featured Minecraft launcher.
+		prismlauncher.install = true;
 
 		# PlayStation 3 emulator.
 		rpcs3.enable = true;
 
-		steam = {
-			# Whether to enable Steam.
+		# XBOX emulator.
+		xemu.install = true;
+
+		vintagestory = {
+			# Whether to install Vintage Story, and indie sandbox game about innovation and exploration.
 			enable = true;
 
-			# Whether to enable loading the extest library into Steam to translate X11 input events to uinput events.
+			openFirewall = {
+				# Whether to open ports in the firewall for local game discovery.
+				lan = true;
+
+				# Whether to open ports in the firewall for global game discovery and UDNPD device discovery.
+				global = true;
+			};
+		};
+
+		gamemode = {
+			# Whether to enale GameMode to optimize system performances on demand when gaming.
+			enable = true;
+
+			# Disable any screen saver when using gamemode.
+			settings.general.inhibit_screensaver = 0;
+		};
+
+		gamescope = {
+			# Whether to enable the Gamescope compositor and session.
+			enable = true;
+
+			# Whether to add `cap_sys_nice` capablilities to GameScope, so that it may renice itself.
+			capSysNice = true;
+		};
+
+		steam = {
+			# Whether to perpetuate the cycle of the PC gamer.
+			enable = true;
+
+			# Whether to enable loading the extest library into Steam.
+			# This is to translate X11 input events to uinput events,
 			# e.g. for using Steam Input on Wayland.
-			extest.enable = lib.mkIf steam.enable true;
+			extest.enable = true;
 
 			# Extra packages to be used as compatibility tools for Steam on Linux.
-			extraCompatPackages = lib.optional steam.enable pkgs.proton-ge-bin;
+			extraCompatPackages = [ pkgs.proton-ge-bin ];
 
 			# Additional packages to add to the Steam environment.
-			extraPackages = lib.optional (steam.enable && gamescope.enable) pkgs.gamescope ++
-			lib.optional (steam.enable && gamemode.enable) pkgs.gamemode;
+			extraPackages = lib.optional gamescope.enable pkgs.gamescope
+			++ lib.optional gamemode.enable pkgs.gamemode;
 
-			# Whether to enable the GameScope session for Steam.
-			gamescopeSession.enable = lib.mkIf (steam.enable && gamescope.enable) true;
+			# Whether to enale the GameScope session for Steam.
+			gamescopeSession.enable = lib.mkIf gamescope.enable true;
 
 			# Whether to open ports in the firewall for Steam Remote Play.
-			remotePlay.openFirewall = lib.mkIf steam.enable true;
+			remotePlay.openFirewall = true;
 		};
-	};
-
-	boot = {
-		# Runtime parameters of the Linux Kernel to enhance gaming performance and to help future-proof.
-		kernel.sysctl = {
-			"kernel.sched_cfs_bandwidth_slice_us" = 3000;
-			"net.ipv4.tcp_fin_timeout" = 5;
-			"vm.max_map_count" = 2147483642;
-		};
-
-		# Additional kernel parameters to help.
-		kernelParams = [ "preempt=full" ];
 	};
 }

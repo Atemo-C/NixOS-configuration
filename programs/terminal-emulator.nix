@@ -1,32 +1,32 @@
-{ config, lib, ... }: let
-	# Shortcuts to check if Foot and the Foot server are enabled.
-	foot       = config.home-manager.users.${config.userName}.programs.foot.enable;
-	footserver = config.home-manager.users.${config.userName}.programs.foot.server.enable;
-in {
-	# Set the default terminal emulator.
-	environment.variables = lib.mkIf foot { TERMINAL = if (foot && footserver) then "footclient" else "foot"; };
-
-	home-manager.users.${config.userName}.programs.foot = {
+{ lib, ... }: rec {
+	programs.foot = {
 		# Whether to enable the Foot terminal emulator.
 		enable = true;
 
-		# Whether to enable the Foot terminal emulator's server.
-		# Lower memory usage, but worse performances across opened terminal instances if one is struggling.
-		server.enable = true;
-
-		# Foot configuration (colors are set in the `./theming/terminal-colors.nix` module).
+		# Foot's settigs.
 		settings = {
 			# Opacity of the window background.
-			colors.alpha = "0.8";
+			# The colorscheme can be edited in the `/etc/nixos/theming/terminal-colors.nix` module.
+			colors.alpha = "0.9";
 
-			# Use the monospace font defined in the `./theming/fonts.nix` module.
+			# Use the default monospace font with a custom size.
+			# Fonts are handled in the `/etc/nixos/theming/fonts.nix` module.
 			main.font = "monospace:size=12";
 
-			# Modified search key bindings.
+			# Modified search key binding that feels more natural.
 			key-bindings.search-start = "Control+Shift+f";
 
-			# Number of lines to keep in memory.
+			# NUmber of lines to keep in memory.
 			scrollback.lines = 10000;
 		};
+	};
+
+	xdg.terminal-exec = {
+		# Whether to enable `xdg-terminal-exec`;
+		# The proposed Default Terminal Execution Specification.
+		enable = true;
+
+		# Set the default terminal emulator.
+		settings.default = lib.optional programs.foot.enable "+footclient.desktop";
 	};
 }

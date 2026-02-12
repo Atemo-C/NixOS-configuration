@@ -1,113 +1,183 @@
-{ config, lib, pkgs, ... }: let
-	# Shortcuts to check if various programs are installed.
-	# All but `parallel` can be found here; `parallel` can be found in the `./programs/shell-utilities.nix` module.
-	ffm = lib.elem pkgs.ffmpeg-full config.environment.systemPackages;
-	gal = lib.elem pkgs.gallery-dl  config.environment.systemPackages;
-	jpg = lib.elem pkgs.jpegoptim   config.environment.systemPackages;
-	jxl = lib.elem pkgs.libjxl      config.environment.systemPackages;
-	par = lib.elem pkgs.parallel    config.environment.systemPackages;
-	png = lib.elem pkgs.oxipng      config.environment.systemPackages;
-in {
+{ config, lib, pkgs, ... }: {
 	# Video4Linux2 kernel module.
-	#boot.extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
-	#boot.initrd.kernelModules = [ "v4l2loopback" ];
-
-	environment.systemPackages = with pkgs; [
-		#v4l-utils   # V4L utilities and libv4l, providing common image formats regardless of the v4l device.
-		ffmpeg-full # A complete solution to record, convert, stream audio and video.
-		gallery-dl  # Dowload image galleries.
-		libde265    # Open h.265 video codec implementation.
-		dcmtk       # Collection of libraries and applications implementing large parts of the DICOM standard.
-		imagemagick # Software suite to create, edit, compose, and convert bitmap images.
-		oxipng      # PNG optimiser.
-		jpegoptim   # JPEG optimiser.
-		libjxl      # JPEL XL image format reference implementation.
-		libwebp     # Tools and library for the WebP image format.
-		yt-dlp      # CLI tool to download videos from YouTube and other websites; Fork of yt-dl.
-
-		# Open-source multimedia framework.
-		gst_all_1.gst-editing-services
-		gst_all_1.gst-libav
-		gst_all_1.gst-plugins-bad
-		gst_all_1.gst-plugins-base
-		gst_all_1.gst-plugins-good
-		gst_all_1.gst-plugins-rs
-		gst_all_1.gst-plugins-ugly
-		gst_all_1.gst-vaapi
-		gst_all_1.gstreamer
-
-		# General-purpose media player; Fork of MPlayer and mplayer2.
-		# Includes some plugins.
-		(pkgs.mpv.override { scripts = with pkgs.mpvScripts; [
-			mpris
-			sponsorblock
-		]; } )
-	] ++ lib.optionals config.programs.niri.enable (with pkgs; [
-		gcolor3              # Color picker.
-		gimp3                # The GNU Image Manipulation Program.
-		inkscape             # Vector graphics editor.
-		kdePackages.kdenlive # Video editor based on the MLT and KDE Frameworks.
-		krita                # Painting and animation program.
-		lxqt.lximage-qt      # Image viewer.
-		#upscayl              # AI image upscaler.
-	]);
-
-	# Link YT-DLP's and MPV's configuration files.
-	systemd.user.tmpfiles.users.${config.userName}.rules = [
-		"L %h/.config/mpv/mpv.conf - - - - /etc/nixos/programs/files/mpv.conf"
-		"L %h/.config/yt-dlp/config - - - - /etc/nixos/programs/files/yt-dlp.conf"
-	];
-
-	programs.obs-studio = lib.mkIf config.programs.niri.enable {
-		# Whether to enable OBS.
-		enable = true;
-
-		# NVIDIA hardware acceleration.
-		package = lib.mkIf (lib.elem "nvidia" config.services.xserver.videoDrivers) (
-			pkgs.obs-studio.override { cudaSupport = true; }
-		);
-
-		# OBS plugins to install.
-		plugins = with pkgs.obs-studio-plugins; [
-			obs-gstreamer              # Source, encoder and video filter plugin to use GStreamer elements/pipelines.
-			obs-pipewire-audio-capture # Audio device and application capture for OBS Studio using PipeWire
-			obs-vaapi                  # VAAPI support via GStreamer.
-			obs-vkcapture              # Linux Vulkan/OpenGL game capture.
-		];
+	boot = {
+		extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
+		initrd.kernelModules = [ "v4l2loopback" ];
 	};
 
-	# Shell abbreviations for various programs installed in this module.
-	programs.fish.shellAbbrs = lib.mkIf config.programs.fish.enable {
-		# Losslessly optimize all JPEG and PNG images in the current directory.
-		# The original files are overridden.
-		opti-jpg = lib.mkIf jpg "jpegoptim -s -v *.jp{,e}g";
-		opti-png = lib.mkIf png "oxipng --strip all -v *.png";
+	programs = rec {
+		# Collection of libraries and applications implementing large parts of the DICOM standard.
+		dcmtk.install = true;
 
-		# Losslessly convert all JPEG and PNG images to JPEG XL ones in the current directory.
-		# The original files are kept.
-		jpg-jxl = lib.mkIf (jxl && par) "parallel cjxl -e 9 '{}' '{.}'.jxl -v ::: *.jp{,e}g";
-		png-jxl = lib.mkIf (jxl && par) "parallel cjxl -e 9 '{}' '{.}'.jxl -d 0 -v ::: *.png";
+		# Tool to read, write, and edit EXIF meta information.
+		exiftool.install = true;
 
-		# Convert `.jxl` images to `.png` ones in the current directory.
-		# The original files are kept.
-		jxl-png = lib.mkIf (jxl && par) "parallel djxl '{}' '{.}'.png -v ::: *.jxl";
+		# Download image galleries.
+		gallery-dl.install = true;
 
-		# Batch download images normally and through a Tor proxy.
-		imgdl     = lib.mkIf gal "gallery-dl";
-		imgdl-tor = lib.mkIf gal "gallery-dl --proxy socks5://localhost:9050";
+		# Color picker.
+		gcolor3.install = true;
 
-		# Simple yt-dlp shortcut normally and through a Tor proxy.
-		yt     = lib.mkIf ytd "yt-dlp -t sleep";
-		yt-tor = lib.mkIf ytd "yt-dlp -t sleep --proxy socks5://localhost:9050";
+		# Command-line tool for creating, editing, and getting information about GIF images and animations.
+		gifsicle.install = true;
 
-		# Highest-quality MP3 audio-only download normally and through a Tor proxy.
-		ytmp3     = lib.mkIf ytd "yt-dlp -t sleep -x --audio-format mp3 --audio-quality 0";
-		ytmp3-tor = lib.mkIf ytd "yt-dlp -t sleep -x --audio-format mp3 --audio-quality 0 --proxy socks5://localhost:9050";
+		# GIF encoder based on libimagequant (pngquant).
+		gifski.install = true;
 
-		# Hide the banner when using FFmpeg.
-		ffmpeg = lib.mkIf ffm "ffmpeg -hide_banner";
+		# The GNU Image Manipulation Program.
+		gimp.enable = true;
 
-		# Download videos from websites like X/Twitter directly with FFmpeg.
-		ffx = lib.mkIf ffm ''ffmpeg -hide_banner -i "https://url-here.m3u8" -c copy -bsf:a aac_adtstoasc name.mp4'';
+		# Software suite to create, edit, compose, and convert bitmap images.
+		imagemagick.enable = true;
+
+		# Vector graphics editor.
+		inkscape.enable = true;
+
+		# JPEG optimiser.
+		jpegoptim.install = true;
+
+		# Video editor based on the MLT and KDE Frameworks.
+		kdenlive.install = true;
+
+		# Painting and animation program.
+		krita.install = true;
+
+		# Open h.265 video codec implementation.
+		libde265.install = true;
+
+		# JPEG XL image format reference implementation.
+		libjxl.install = true;
+
+		# Tools and librarry for the WebP image format.
+		libwebp.install = true;
+
+		# Image viewer.
+		lximage-qt.install = true;
+
+		# PNG optimizer.
+		oxipng.install = true;
+
+		# CLI tool to download videos from YouTube and other websites; Fork of yt-dl.
+		yt-dlp.enable = true;
+
+		# V4L utilities and lib4vl, providing common image formats regardless of the v4l device.
+		v4l-utils.install = true;
+
+		ffmpeg = {
+			# Whether to enable FFmpeg, complete solution to record, convert, stream audio and video.
+			enable = true;
+
+			# Which FFmpeg package to install.
+			package = pkgs.ffmpeg-full;
+		};
+
+		gstreamer = {
+			# Whether to enable GStreamer, an open-source multimedia framework.
+			enable = true;
+
+			# Which GStreamer plugins to install.
+			plugins = with pkgs.gst_all_1; [
+				gst-editing-services
+				gst-libav
+				gst-plugins-bad
+				gst-plugins-base
+				gst-plugins-good
+				gst-plugins-rs
+				gst-plugins-ugly
+				gst-vaapi
+			];
+		};
+
+		mpv = {
+			# Whether to install MPV, a general-purpose media player; Fork of MPlayer and mplayer2.
+			enable = true;
+
+			# MPV plugins to install.
+			plugins = with pkgs.mpvScripts; [
+				mpris
+				sponsorblock
+			];
+		};
+
+		obs-studio = {
+			# Whether to install OBS, free and open-source software for video recording and live streaming.
+			enable = true;
+
+			# Whether to compile OBS with CUDA support.
+			# This would make NixOS rebuilds take a LONG time when OBS has to be built,
+			# however, the CUDA binary cache is enabled, and it *should* solve this issue.
+			package = if lib.elem "nvidia" config.services.xserver.videoDrivers then
+			pkgs.obs-studio.override { cudaSupport = true; } else pkgs.obs-studio;
+
+			# OBS plugins to install.
+			plugins = with pkgs.obs-studio-plugins; [
+				# Source, encoder and video filter plugin to use GStreamer elements/pipelines.
+				obs-gstreamer
+
+				# Audio device and application capture for OBS Studio using PipeWire.
+				obs-pipewire-audio-capture
+
+				# VAAPI support via GStreamer.
+				obs-vaapi
+
+				# Linux Vulkan/OpenGL game capture.
+				obs-vkcapture
+			];
+		};
+
+		# Shell abbreviations for various programs installed in this module.
+		fish.shellAbbrs = {
+			# Losslessly optimize all JPEG images in the current directory.
+			# The original files are overridden.
+			opti-jpg = lib.mkIf jpegoptim.install "jpegoptim -s -v *.jp{,e}g";
+
+			# Losslessly optimize all PNG images in the current directory.
+			# The original files are overridden.
+			opti-png = lib.mkIf oxipng.install "oxipng --strip all -v *.png";
+
+			# Losslessly convert all JPEG images to JPEG XL ones in the current directory.
+			# The original files are kept.
+			jpg-jxl = lib.mkIf (libjxl.install && config.programs.parallel.enable)
+			"parallel cjxl -e 8 '{}' '{.}'.jxl -v ::: *.jp{,e}g";
+
+			# Losslessly convert all PNG images to JPEG XL ones in the current directory.
+			# The original files are kept.
+			png-jxl = lib.mkIf (libjxl.install && config.programs.parallel.enable)
+			"parallel cjxl -e 8 '{}' '{.}'.jxl -d 0 -v ::: *.png";
+
+			# Losslessly convert JPEG XL images to PNG ones in the current directory.
+			# The original files are kept.
+			jxl-png = lib.mkIf (libjxl.install && config.programs.parallel.enable)
+			"parallel djxl '{}' '{.}'.png -v ::: *.jxl";
+
+			# Losslessly convert JPEG XL images to JPEG ones in the current directory.
+			jxl-jpg = lib.mkIf (libjxl.install && config.programs.parallel.enable)
+			"parallel djxl '{}' '{.}'.jpg -v ::: *.jxl";
+
+			# Batch download images normally and through a Tor proxy.
+			imgdl = lib.mkIf gallery-dl.install "gallery-dl";
+			imgdl-tor = lib.mkIf (gallery-dl.install && config.programs.tor.install)
+			"gallery-dl --proxy socks5://localhost:9050";
+
+			# Download videos normally and through a Tor proxy.
+			yt = lib.mkIf yt-dlp.enable "yt-dlp -t sleep";
+			yt-tor = lib.mkIf (yt-dlp.enable && config.programs.tor.install)
+			"yt-dlp -t sleep --proxy socks5://localhost:9050";
+
+			# Dowlond audio normally and through a Tor proxy.
+			ytmp3 = lib.mkIf yt-dlp.enable "yt-dlp -t sleep -x --audio-format mp3 --audio-quality 0";
+			ytmp3-tor = lib.mkIf (yt-dlp.enable && config.programs.tor.install)
+			"yt-dlp -t sleep -x --audio-format mp3 --audio-quality 0 --proxy socks5://localhost:9050";
+
+			# Hide the banner when using FFmpeg.
+			ffmpeg = lib.mkIf ffmpeg.enable "ffmpeg -hide_banner";
+
+			# Download videos from websites like X/Twitter directly with FFMpeg.
+			ffx = lib.mkIf ffmpeg.enable ''ffmpeg -hide_banner -i "https://url-here.m3u8" -c copy -bsf:a aac_adtstoasc name.mp4'';
+		};
 	};
+
+	systemd.user.tmpfiles.users.${config.userName}.rules = []
+	++ lib.optional config.programs.mpv.enable "L %h/.config/mpv/mpv.conf - - - - /etc/nixos/files/mpv.conf"
+	++ lib.optional config.programs.yt-dlp.enable "L %h/.config/yt-dlp/config - - - - /etc/nixos/files/yt-dlp.conf";
 }
