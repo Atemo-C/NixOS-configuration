@@ -1,4 +1,4 @@
-{ config, lib, ... }: {
+{ lib, ... }: rec {
 	programs.foot = {
 		# Whether to enable the Foot terminal emulator.
 		enable = true;
@@ -21,13 +21,12 @@
 		};
 	};
 
-	# Whether to enable `xdg-terminal-exec`;
-	# The proposed Default Terminal Execution Specification.
-	xdg.terminal-exec.enable = true;
+	xdg.terminal-exec = {
+		# Whether to enable `xdg-terminal-exec`;
+		# The proposed Default Terminal Execution Specification.
+		enable = true;
 
-	# Set the default terminal emulator.
-	environment = lib.mkIf config.programs.foot.enable {
-		variables.TERMINAL = "footclient";
-		etc."xdg-terminals.list".text = "footclient.desktop";
+		# Set the default terminal emulator.
+		settings.default = lib.optional programs.foot.enable "+footclient.desktop";
 	};
 }
