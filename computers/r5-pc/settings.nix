@@ -5,7 +5,7 @@
 		initrd.luks.devices = {
 			root = {
 				# Storage device's UUID.
-				device = "/dev/disk/by-uuid/11111111-1111-1111-1111-111111111111";
+				device = "/dev/disk/by-uuid/b0c283e9-b6b4-4f2c-a4e9-84aab0f852fd";
 
 				# Whether to allow discards (only for SSDs).
 				allowDiscards = true;
@@ -13,7 +13,7 @@
 
 			swap = {
 				# Storage device's UUID.
-				device = "/dev/disk/by-uuid/22222222-2222-2222-2222-222222222222";
+				device = "/dev/disk/by-uuid/df027139-9425-4520-9477-ad78876d27fd";
 
 				# Whether to allow discards (only for SSDs).
 				allowDiscards = true;
@@ -37,7 +37,7 @@
 	};
 
 	# Import the proprietary NVIDIA drivers module (for 165X and above GPUs).
-	imports = [ ..//gpu/nvidia.nix ];
+	imports = [ ../../gpu/nvidia.nix ];
 
 	# Set the computer's name on the network.
 	networking.hostName = "R5-PC";

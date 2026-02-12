@@ -37,7 +37,7 @@
 	# CUDA packages to install.
 	programs.cuda = lib.mkIf config.hardware.nvidia-container-toolkit.enable {
 		cudnn.install = true;
-		cutensor.install = true;
+		libcutensor.install = true;
 		cudatoolkit.install = true;
 	};
 
