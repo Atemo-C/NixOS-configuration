@@ -191,7 +191,6 @@
 	./extra-modules/atemo/programs/qtox.nix
 	./extra-modules/atemo/programs/qpwgraph.nix
 	./extra-modules/atemo/programs/qtsvg.nix
-	./extra-modules/atemo/programs/revolt-desktop.nix
 	./extra-modules/atemo/programs/rpcs3.nix
 	./extra-modules/atemo/programs/ruffle.nix
 	./extra-modules/atemo/programs/sc-controller.nix

@@ -15,9 +15,6 @@
 		# Qt Tox client.
 		qtox.install = true;
 
-		# Open-source Disocrd-like chat platform.
-		revolt-desktop.install = true;
-
 		# Adobe Flash Player emulator.
 		ruffle.install = true;
 
