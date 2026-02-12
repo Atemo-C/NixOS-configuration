@@ -83,6 +83,7 @@
 				"librewolf"
 				"niri"
 				"quickshell"
+				"quickshell-wrapped"
 			];
 		};
 
