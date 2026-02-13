@@ -30,7 +30,7 @@
 	# Add shell abbreviations for managing Flatpak.
 	programs.fish.shellAbbrs = lib.mkIf services.flatpak.enable rec {
 		# Upgrade flatpaks and remove unsused ones.
-		update-flatpak  = "flatpak update -y && flatpak remove --unsused -y";
+		update-flatpak  = "flatpak update -y && flatpak remove --unused -y";
 		flatpak-update  = update-flatpak;
 		upgrade-flatpak = update-flatpak;
 		flatpak-upgrade = update-flatpak;
