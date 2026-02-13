@@ -4,7 +4,7 @@
 { config, ... }: {
 	# Mount for encrypted 160GB HDD.
 	fileSystems."/run/media/${config.userName}/160GB-HDD" = {
-		device = "/dev/disk/by-uuid/9574ec1c-2e52-4fc4-bdfd-60335c3a8ae5/160GB-HDD";
+		device = "/dev/disk/by-uuid/b8f90684-4d55-4166-865b-dec7c50c775f";
 		fsType = "btrfs";
 		options = [
 			"defaults"
@@ -21,7 +21,7 @@
 
 	# Non-essential encrypted drive (boot will not fail if these are not present).
 	environment.etc.crypttab.text = ''
-		160GB-HDD /dev/disk/by-uuid/9574ec1c-2e52-4fc4-bdfd-60335c3a8ae5 none luks,nofail,noauto
+		160GB-HDD UUID=9574ec1c-2e52-4fc4-bdfd-60335c3a8ae5 /etc/nixos/storage/keys/160gb-hdd.key luks,nofail,noauto
 	'';
 
 	# Udev rules to unlock the encrypted drive when detected.
