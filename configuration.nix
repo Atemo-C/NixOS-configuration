@@ -112,6 +112,7 @@
 	./extra-modules/atemo/programs/exfatprogs.nix
 	./extra-modules/atemo/programs/exiftool.nix
 	./extra-modules/atemo/programs/fastfetch.nix
+	./extra-modules/atemo/programs/fd.nix
 	./extra-modules/atemo/programs/f2fs-tools.nix
 	./extra-modules/atemo/programs/f3d.nix
 	./extra-modules/atemo/programs/ferium.nix
@@ -204,6 +205,7 @@
 	./extra-modules/atemo/programs/tlrc.nix
 	./extra-modules/atemo/programs/tor-browser.nix
 	./extra-modules/atemo/programs/tor.nix
+	./extra-modules/atemo/programs/trashy.nix
 	./extra-modules/atemo/programs/udftools.nix
 	./extra-modules/atemo/programs/unar.nix
 	./extra-modules/atemo/programs/unzip.nix
