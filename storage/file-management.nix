@@ -1,5 +1,11 @@
 { config, lib, pkgs, ... }: rec {
 	programs = {
+		# Alternative to the `find` command.
+		fd.install = true;
+
+		# Alternative to `rm` and `trash-cli`.
+		trashy.install = true;
+
 		# Next generation ls command.
 		lsd.install = true;
 
