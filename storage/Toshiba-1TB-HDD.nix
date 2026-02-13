@@ -4,7 +4,7 @@
 { config, ... }: {
 	# Mount for encrypted 1TB HDD.
 	fileSystems."/run/media/${config.userName}/Toshiba-1TB-HDD" = {
-		device = "/dev/disk/by-uuid/d5eabc1d-397e-4817-a72a-246b439f50c5";
+		device = "/dev/disk/by-uuid/692420d5-37b0-4b6c-9684-b037e560231b";
 		fsType = "btrfs";
 		options = [
 			"defaults"
@@ -21,7 +21,7 @@
 
 	# Non-essential encrypted drive (boot will not fail if these are not present).
 	environment.etc.crypttab.text = ''
-		Toshiba-1TB-HDD UUID=3927d66d-0fb7-46f5-9aa9-e6363be5dfae none luks,nofail,noauto
+		Toshiba-1TB-HDD UUID=a862bcd8-b129-411e-9d04-fe5c930bf4ee /etc/nixos/storage/keys/toshiba-1tb-hdd.key luks,nofail,noauto
 	'';
 
 	# Udev rules to unlock the encrypted drive when detected.
