@@ -147,6 +147,7 @@
 	./extra-modules/atemo/programs/jstest-gtk.nix
 	./extra-modules/atemo/programs/kdenlive.nix
 	./extra-modules/atemo/programs/keepassxc.nix
+	./extra-modules/atemo/programs/keypunch.nix
 	./extra-modules/atemo/programs/kimageformats.nix
 	./extra-modules/atemo/programs/krita.nix
 	./extra-modules/atemo/programs/lagrange.nix
