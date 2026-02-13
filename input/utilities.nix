@@ -9,6 +9,9 @@
 		# Simple joystick tester based on Gtk+.
 		jstest-gtk.install = true;
 
+		# Typing speed test and practice.
+		keypunch.install = true;
+
 		# RGB editor for the MiDiPlus SmartPad.
 		#midiplus-smartpad-rgb-editor.install = true;
 
