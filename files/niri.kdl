@@ -247,9 +247,9 @@ binds {
 	Alt+Super+S { spawn-sh "obs-cmd --websocket obsws://localhost:3621 recording stop"; }
 
 	// Power menu.
-	XF86PowerOff allow-when-locked=true { spawn-sh "noctalia-shell ipc call ssionMenu toggle"; }
-	XF86Sleep allow-when-locked=true { spawn-sh "noctalia-shell ipc call ssionMenu toggle"; }
-	XF86Suspend  allow-when-locked=true { spawn-sh "noctalia-shell ipc call ssionMenu toggle"; }
+	XF86PowerOff allow-when-locked=true { spawn-sh "noctalia-shell ipc call sessionMenu toggle"; }
+	XF86Sleep allow-when-locked=true { spawn-sh "noctalia-shell ipc call sessionMenu toggle"; }
+	XF86Suspend  allow-when-locked=true { spawn-sh "noctalia-shell ipc call sessionMenu toggle"; }
 
 	// Copying screenshots.
 	Print { spawn-sh "/etc/nixos/scripts/screenshot/screenshot.sh --copy area"; }
