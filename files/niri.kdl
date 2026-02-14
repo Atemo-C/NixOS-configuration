@@ -297,7 +297,7 @@ binds {
 // Animation settings.
 animations {
 	// Disable animations.
-	//off
+	off
 
 	// Slow down or speed up animations by this factor. Values below 1 speed animations up.
 	slowdown 0.6
