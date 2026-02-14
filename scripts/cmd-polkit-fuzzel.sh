@@ -31,17 +31,6 @@
 		|| printf "%s Command-line arguments are ignored in this script.\n" "$WAR"
 	spacer
 
-	# Check if `dunstify` is available.
-	printf "%s Checking if %sdunstify%s is available…\n" "$CHK" "$CMD" "$CLR"
-	command -v dunstify >/dev/null 2>&1 \
-		&& printf "%s %sdunstify%s found; Graphical notifications enabled.\n" "$SUC" "$CMD" "$CLR" \
-		&& dunst_dep=true \
-		|| printf "%s %sdunstify%s not found; Graphical notifications disabled.\n" "$WAR" "$CMD" "$CLR"
-	spacer
-
-	# Function for graphical notifications using `dunstify`.
-	errify() { [ "$dunst_dep" = "true" ] && dunstify -u critical "$1" "$2"; }
-
 	# Check if `niri` is the active Wayland compositor.
 	printf "%s Checking if %sniri%s is the active desktop…\n" "$CHK" "$CMD" "$CLR"
 	if [ "$XDG_CURRENT_DESKTOP" = "niri" ];
