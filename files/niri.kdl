@@ -59,9 +59,7 @@ input {
 // Bindings.
 binds {
 	// Switch between keyboard layouts.
-	Super+L {
-		spawn-sh "niri msg action switch-layout prev && dunstify -t 2500 \"Keyboard layout changed\" \"$(niri msg keyboard-layouts)\""
-	}
+	Super+L { spawn-sh "niri msg action switch-layout next"; }
 
 	// Show a list of important key bindings.
 	Super+H { show-hotkey-overlay; }
