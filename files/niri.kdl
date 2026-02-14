@@ -461,6 +461,7 @@ window-rule {
 	match app-id=r#"thunar"# title="File Operation Progress"
 	match app-id=r#"thunar"# title="^Rename.*$"
 	match app-id=r#"^wine.*"# title="Wine"
+	match app-id=r#"^fnf.*"# title="^Friday Night Funkin'.*$"
 	open-floating true
 }
 
