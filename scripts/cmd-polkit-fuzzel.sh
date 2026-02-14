@@ -16,11 +16,6 @@
 	spacer() { printf "─────────┤\n"; }
 	ending() { printf "─────────┘\n"; }
 
-	# Text formatting shortcuts for graphical notifications.
-	DERR="<b><span foreground='#e60000'>Error</span></b>:"
-	DCMD="<b><span foreground='#00d0ff'>"
-	DCLR="</span></b>"
-
 	# Print the beginning separator for console log messages.
 	printf "─────────┐\n"
 
@@ -40,9 +35,6 @@
 		printf "%s %s%sniri%s%s is not the active desktop. Exiting…%s\n" \
 		"$ERR" "$RBG" "$CMD" "$CLR" "$RBG" "$CLR"
 
-		errify "Unsupported environment" \
-		"${DERR} ${DCMD}niri${DCLR} is not the active desktop. Exiting…"
-
 		ending
 		exit 1
 	fi; spacer
@@ -55,9 +47,6 @@
 	else
 		printf "%s %s%sfuzzel%s%s not found; The power menu cannot be displayed. Exiting…%s\n" \
 		"$ERR" "$RBG" "$CMD" "$CLR" "$RBG" "$CLR"
-
-		errify "Menu program not found" \
-		"${DERR} ${DCMD}fuzzel${DCLR} not found; The power menu cannot be displayed. Exiting…"
 
 		ending
 		exit 1
@@ -72,9 +61,6 @@
 		printf "%s %s%sjq%s%s not found; Niri's configuration cannot be pasred. Exiting…%s\n" \
 		"$ERR" "$RBG" "$CMD" "$CLR" "$RBG" "$CLR"
 
-		errify "Menu progarm not found" \
-		"${DERR} ${DCMD}jq${DCLR} not found; Niri's configuration cannot be parsed. Exiting…"
-
 		ending
 		exit 1
 	fi; spacer
@@ -87,9 +73,6 @@
 	else
 		printf "%s %s%scmd-polkit-agent%s%s not found; The password prompt cannot be displayed. Exiting…%s\n" \
 		"$ERR" "$RBG" "$CMD" "$CLR" "$RBG" "$CLR"
-
-		errify "Polkit agent not found" \
-		"${DERR} ${DCMD}cmd-polkit-agent${DCLR} not found; The password prompt cannot be displayed. Exiting…"
 
 		ending
 		exit 1
