@@ -297,7 +297,7 @@ binds {
 // Animation settings.
 animations {
 	// Disable animations.
-	//off
+	off
 
 	// Slow down or speed up animations by this factor. Values below 1 speed animations up.
 	slowdown 0.6
@@ -435,8 +435,6 @@ hotkey-overlay { skip-at-startup; }
 // Floating windows have a bigger focus ring and have shadows.
 window-rule {
 	match is-floating=true
-	geometry-corner-radius 6
-	clip-to-geometry true
 	shadow {
 		on
 		spread 4
@@ -461,6 +459,9 @@ window-rule {
 	match app-id=r#"thunar"# title="File Operation Progress"
 	match app-id=r#"thunar"# title="^Rename.*$"
 	match app-id=r#"^wine.*"# title="Wine"
+	match app-id=r#"steam_proton"#
+	match app-id=r#"^fnf.*"# title="^Friday Night Funkin'.*$"
+	match app-id=r"funkin.exe"#
 	open-floating true
 }
 
