@@ -16,11 +16,6 @@
 	spacer() { printf "─────────┤\n"; }
 	ending() { printf "─────────┘\n"; }
 
-	# Text formatting shortcuts for graphical notifications.
-	DERR="<b><span foreground='#e60000'>Error</span></b>:"
-	DCMD="<b><span foreground='#00d0ff'>"
-	DCLR="</span></b>"
-
 	# Print the beginning separator for console log messages.
 	printf "─────────┐\n"
 
@@ -31,17 +26,6 @@
 		|| printf "%s Command-line arguments are ignored in this script.\n" "$WAR"
 	spacer
 
-	# Check if `dunstify` is available.
-	printf "%s Checking if %sdunstify%s is available…\n" "$CHK" "$CMD" "$CLR"
-	command -v dunstify >/dev/null 2>&1 \
-		&& printf "%s %sdunstify%s found; Graphical notifications enabled.\n" "$SUC" "$CMD" "$CLR" \
-		&& dunst_dep=true \
-		|| printf "%s %sdunstify%s not found; Graphical notifications disabled.\n" "$WAR" "$CMD" "$CLR"
-	spacer
-
-	# Function for graphical notifications using `dunstify`.
-	errify() { [ "$dunst_dep" = "true" ] && dunstify -u critical "$1" "$2"; }
-
 	# Check if `niri` is the active Wayland compositor.
 	printf "%s Checking if %sniri%s is the active desktop…\n" "$CHK" "$CMD" "$CLR"
 	if [ "$XDG_CURRENT_DESKTOP" = "niri" ];
@@ -50,9 +34,6 @@
 	else
 		printf "%s %s%sniri%s%s is not the active desktop. Exiting…%s\n" \
 		"$ERR" "$RBG" "$CMD" "$CLR" "$RBG" "$CLR"
-
-		errify "Unsupported environment" \
-		"${DERR} ${DCMD}niri${DCLR} is not the active desktop. Exiting…"
 
 		ending
 		exit 1
@@ -67,9 +48,6 @@
 		printf "%s %s%sfuzzel%s%s not found; The power menu cannot be displayed. Exiting…%s\n" \
 		"$ERR" "$RBG" "$CMD" "$CLR" "$RBG" "$CLR"
 
-		errify "Menu program not found" \
-		"${DERR} ${DCMD}fuzzel${DCLR} not found; The power menu cannot be displayed. Exiting…"
-
 		ending
 		exit 1
 	fi; spacer
@@ -83,9 +61,6 @@
 		printf "%s %s%sjq%s%s not found; Niri's configuration cannot be pasred. Exiting…%s\n" \
 		"$ERR" "$RBG" "$CMD" "$CLR" "$RBG" "$CLR"
 
-		errify "Menu progarm not found" \
-		"${DERR} ${DCMD}jq${DCLR} not found; Niri's configuration cannot be parsed. Exiting…"
-
 		ending
 		exit 1
 	fi; spacer
@@ -98,9 +73,6 @@
 	else
 		printf "%s %s%scmd-polkit-agent%s%s not found; The password prompt cannot be displayed. Exiting…%s\n" \
 		"$ERR" "$RBG" "$CMD" "$CLR" "$RBG" "$CLR"
-
-		errify "Polkit agent not found" \
-		"${DERR} ${DCMD}cmd-polkit-agent${DCLR} not found; The password prompt cannot be displayed. Exiting…"
 
 		ending
 		exit 1
