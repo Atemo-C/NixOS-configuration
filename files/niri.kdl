@@ -435,8 +435,6 @@ hotkey-overlay { skip-at-startup; }
 // Floating windows have a bigger focus ring and have shadows.
 window-rule {
 	match is-floating=true
-	geometry-corner-radius 6
-	clip-to-geometry true
 	shadow {
 		on
 		spread 4
