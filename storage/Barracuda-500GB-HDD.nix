@@ -2,7 +2,7 @@
 # https://github.com/NixOS/nixpkgs/issues/74281
 # Thank you!
 { config, ... }: {
-	# Mount for encrypted 160GB HDD.
+	# Mount for encrypted 500GB HDD.
 	fileSystems."/run/media/${config.userName}/Barracuda-500GB-HDD" = {
 		device = "/dev/disk/by-uuid/80e367a7-a19f-4008-b2b3-53b12f85eb4a";
 		fsType = "btrfs";
@@ -21,12 +21,12 @@
 
 	# Non-essential encrypted drive (boot will not fail if these are not present).
 	environment.etc.crypttab.text = ''
-		160GB-HDD UUID=abdb06a5-c449-4d12-a670-a14d1021d7ed /etc/nixos/storage/keys/barracuda-500gb-hdd.key luks,nofail,noauto
+		Barracuda-500GB-HDD UUID=abdb06a5-c449-4d12-a670-a14d1021d7ed /etc/nixos/storage/keys/barracuda-500gb-hdd.key luks,nofail,noauto
 	'';
 
 	# Udev rules to unlock the encrypted drive when detected.
 	services.udev.extraRules = ''
 		SUBSYSTEM=="block" ENV{ID_WWN}=="0x5000c50027e4ac34",\
-		ENV{SYSTEMD_WANTS}="systemd-cryptsetup@160GB-HDD.service"
+		ENV{SYSTEMD_WANTS}="systemd-cryptsetup@Barracuda-500GB-HDD.service"
 	'';
 }

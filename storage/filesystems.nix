@@ -4,7 +4,7 @@
 		"/dev/disk/by-id/ata-ata-ST3500418AS_5VMETGG9"
 		"/dev/disk/by-id/ata-TOSHIBA_DT01ACA100_448164BNS"
 		"/dev/disk/by-id/ata-WD10SPZX-22Z10T1_WD-WX11A49DKLYU"
-		"/dev/disk/by-id/wwn-0x5000039ffbc08b6c"
+		"/dev/disk/by-id/ata-WDC_WD1600BEVS-08VAT2_WD-WXP1A30R8683"
 	];
 in {
 	# Names of supported filesystem type, or an attribute set of file system types and their states.
