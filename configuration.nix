@@ -147,7 +147,7 @@
 	./extra-modules/atemo/programs/jstest-gtk.nix
 	./extra-modules/atemo/programs/kdenlive.nix
 	./extra-modules/atemo/programs/keepassxc.nix
-	./extra-modules/atemo/programs/keypunch.nix
+#	./extra-modules/atemo/programs/keypunch.nix
 	./extra-modules/atemo/programs/kimageformats.nix
 	./extra-modules/atemo/programs/krita.nix
 	./extra-modules/atemo/programs/lagrange.nix
@@ -207,6 +207,7 @@
 	./extra-modules/atemo/programs/tor-browser.nix
 	./extra-modules/atemo/programs/tor.nix
 	./extra-modules/atemo/programs/trashy.nix
+	./extra-modules/atemo/programs/typioca.nix
 	./extra-modules/atemo/programs/udftools.nix
 	./extra-modules/atemo/programs/unar.nix
 	./extra-modules/atemo/programs/unzip.nix
