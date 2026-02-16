@@ -21,7 +21,7 @@
 
 	# Non-essential encrypted drive (boot will not fail if these are not present).
 	environment.etc.crypttab.text = ''
-		160GB-HDD UUID=abdb06a5-c449-4d12-a670-a14d1021d7ed /etc/nixos/storage/keys/barracuda-500gb-hdd.key luks,nofail,noauto
+		Barracuda-500GB-HDD UUID=abdb06a5-c449-4d12-a670-a14d1021d7ed /etc/nixos/storage/keys/barracuda-500gb-hdd.key luks,nofail,noauto
 	'';
 
 	# Udev rules to unlock the encrypted drive when detected.
