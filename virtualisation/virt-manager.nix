@@ -17,7 +17,7 @@
 
 			seccomp_sandbox = 0
 		'';
-	}
+	};
 
 	# Allow drm device renderD* to be used for 3D acceleration when using NVIDIA drivers.
 	# https://github.com/virt-manager/virt-manager/issues/938#issuecomment-3814628493
