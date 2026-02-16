@@ -10,13 +10,16 @@
 		jstest-gtk.install = true;
 
 		# Typing speed test and practice.
-		keypunch.install = true;
+		keypunch.install = false;
 
 		# RGB editor for the MiDiPlus SmartPad.
-		#midiplus-smartpad-rgb-editor.install = true;
+		midiplus-smartpad-rgb-editor.install = true;
 
 		# User-mode driver and GUI for Steam Controller and other controllers.
 		sc-controller.install = true;
+
+		# Console-based typing speed test and practice.
+		typioca.install = true;
 
 		# Tools for working with USB devices, such as `lsusb`.
 		usbutils.install = true;
