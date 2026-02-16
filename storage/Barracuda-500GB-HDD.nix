@@ -27,6 +27,6 @@
 	# Udev rules to unlock the encrypted drive when detected.
 	services.udev.extraRules = ''
 		SUBSYSTEM=="block" ENV{ID_WWN}=="0x5000c50027e4ac34",\
-		ENV{SYSTEMD_WANTS}="systemd-cryptsetup@160GB-HDD.service"
+		ENV{SYSTEMD_WANTS}="systemd-cryptsetup@Barracuda-500GB-HDD.service"
 	'';
 }
