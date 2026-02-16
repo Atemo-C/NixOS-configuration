@@ -2,7 +2,7 @@
 # https://github.com/NixOS/nixpkgs/issues/74281
 # Thank you!
 { config, ... }: {
-	# Mount for encrypted 160GB HDD.
+	# Mount for encrypted 500GB HDD.
 	fileSystems."/run/media/${config.userName}/Barracuda-500GB-HDD" = {
 		device = "/dev/disk/by-uuid/80e367a7-a19f-4008-b2b3-53b12f85eb4a";
 		fsType = "btrfs";
