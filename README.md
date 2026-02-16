@@ -1,6 +1,6 @@
 ![Screenshot of my current desktop](https://github.com/Atemo-C/NixOS-configuration/blob/main/Desktop.webp)
-Wallpaper by byrotek. \
-https://www.deviantart.com/byrotek
+Wallpaper by t1na. \
+https://www.deviantart.com/t1na
 
 # General information
 This NixOS configuration is almost exactly what I use on my own systems. \
