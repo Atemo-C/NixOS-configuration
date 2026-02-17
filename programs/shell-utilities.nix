@@ -17,6 +17,9 @@
 	# Whether to enable parallel, a hell toll for executing jobs in parallel.
 	parallel.enable = true;
 
+	# Readline wrapper for console programs.
+	rlwrap.install = true;
+
 	# Whether to enable shellcheck, a hell script analysis tool.
 	shellcheck.enable = true;
 
