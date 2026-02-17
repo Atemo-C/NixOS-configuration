@@ -8,6 +8,6 @@ Type=Application
 Categories=Utility;
 Keywords=calculator;terminal;
 
-Exec=/etc/nixos/scripts/calculator.sh
+Exec=rlwrap /etc/nixos/scripts/calculator.sh
 StartupNotify=false
 Terminal=true
