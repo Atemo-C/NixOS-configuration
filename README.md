@@ -330,3 +330,6 @@ https://search.nixos.org/options?channel=unstable
 
 • A list of available options for Home Manager can be found here: \
 https://nix-community.github.io/home-manager/options.xhtml
+
+## A little note about the license
+Whilst all of my own files fall under the Zero-Clause BSD license, some that are not mine may not. For example, certain plugins of installed software linked in configuration files.

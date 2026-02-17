@@ -519,3 +519,6 @@ layer-rule {
 		offset x=0 y=0
 	}
 }
+
+// Include the Noctalia Shell's configuration for colorschemes.
+include "./noctalia.kdl"
