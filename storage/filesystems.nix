@@ -15,6 +15,7 @@ in {
 	# Packages providing support and tools for additional filesystems.
 	# Gparted will be very happy about that.
 	programs = {
+		e2fsprogs.install = true;
 		exfatprogs.install = true;
 		f2fs-tools.install = true;
 		hfsprogs.install = true;
