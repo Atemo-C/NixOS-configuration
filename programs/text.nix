@@ -31,13 +31,8 @@
 			];
 		};
 
-		micro = {
-			# Whether to enable the Micro text editor.
-			enable = true;
-
-			# Which package of Micro to install.
-			package = pkgs.micro-with-wl-clipboard;
-		};
+		# Whether to enable the Micro text editor.
+		micro.enable = true;
 
 		# Shell abbreviation to start Micro.
 		fish.shellAbbrs.m = lib.mkIf programs.micro.enable "micro";
