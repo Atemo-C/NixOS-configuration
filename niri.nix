@@ -21,8 +21,6 @@
 		# Whether to install the Fuzzel menu.
 		# Required by:
 		# `/etc/nixos/scripts/cmd-polkit-fuzzel.sh`.
-		# `/etc/nixos/scripts/power/power-menu.sh`
-		# `/etc/nixos/scripts/programs/program-launcher.sh`
 		# `/etc/nixos/scripts/screenshots/screenshot-selector.sh`.
 		fuzzel.install = true;
 
@@ -40,12 +38,16 @@
 
 	# Link relevant configuration files.
 	systemd.user.tmpfiles.users.${config.userName}.rules = lib.concatLists [
-		# Niri's configuration file.
+		# Niri's configuration directory.
 		(lib.optional programs.niri.enable
-		"L %h/.config/niri/config.kdl - - - - /etc/nixos/files/niri.kdl")
+		"L %h/.config/niri/ - - - - /etc/nixos/files/niri/")
 
 		# Fuzzel's configuration file.
 		(lib.optional programs.fuzzel.install
 		"L %h/.config/fuzzel/fuzzel.ini - - - - /etc/nixos/files/fuzzel.ini")
+
+		# Noctalia's configuration directory.
+		(lib.optional programs.noctalia-shell.install
+		"L %h/.config/noctalia/ - - - - /etc/nixos/files/noctalia/")
 	];
 }

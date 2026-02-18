@@ -31,13 +31,8 @@
 			];
 		};
 
-		micro = {
-			# Whether to enable the Micro text editor.
-			enable = true;
-
-			# Which package of Micro to install.
-			package = pkgs.micro-with-wl-clipboard;
-		};
+		# Whether to enable the Micro text editor.
+		micro.enable = true;
 
 		# Shell abbreviation to start Micro.
 		fish.shellAbbrs.m = lib.mkIf programs.micro.enable "micro";
@@ -46,14 +41,9 @@
 	# Set the default text editor.
 	environment.variables.EDITOR = lib.mkIf programs.micro.enable "micro";
 
-	# Link Micro's configuration files.
-	systemd.user.tmpfiles.users.${config.userName}.rules = lib.optionals programs.micro.enable [
-		"L %h/.config/micro/settings.json - - - - /etc/nixos/files/micro/settings.json"
-		"L %h/.config/micro/init.lua - - - - /etc/nixos/files/micro/init.lua"
-		"L %h/.config/micro/colorschemes/atemo-colors.micro - - - - /etc/nixos/files/micro/colorschemes/atemo-colors.micro"
-		"L %h/.config/micro/bindings.json - - - - /etc/nixos/files/micro/bindings.json"
-		"L %h/.config/micro/syntax/nix.yaml - - - - /etc/nixos/files/micro/syntax/nix.yaml"
-	];
+	# Link Micro's configuration directory.
+	systemd.user.tmpfiles.users.${config.userName}.rules = lib.optional programs.micro.enable
+	"L %h/.config/micro/ - - - - /etc/nixos/files/micro/";
 
 	services.languagetool = {
 		# Whether to enable the LanguageTool server, a multilingual spelling, style, and grammar checker.

@@ -1,6 +1,6 @@
 { config, lib, pkgs, ... }: let
 	cfg = config.programs.midiplus-smartpad-rgb-editor;
-	pkg = pkgs.callPackage /etc/nixos/extra-modules/atemo/packages/midiplus-smartpad-rgb-editor.nix {};
+	pkg = pkgs.callPackage ../packages/midiplus-smartpad-rgb-editor.nix {};
 in {
 	meta.maintainers = [ lib.maintainers.atemo-c ];
 
