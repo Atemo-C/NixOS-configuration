@@ -104,6 +104,7 @@
 	./extra-modules/atemo/programs/desktop-file-utils.nix
 	./extra-modules/atemo/programs/desmume.nix
 	./extra-modules/atemo/programs/dtrx.nix
+	./extra-modules/atemo/programs/e2fsprogs.nix
 	./extra-modules/atemo/programs/easytag.nix
 	./extra-modules/atemo/programs/efibootmgr.nix
 	./extra-modules/atemo/programs/element-desktop.nix
