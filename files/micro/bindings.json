@@ -41,7 +41,7 @@
     "Ctrl-Shift-Right": "SelectWordRight",
     "Ctrl-Shift-Up": "SelectToStart",
     "Ctrl-Up": "CursorStart",
-    "Ctrl-c": "CopyLine|Copy",
+    "Ctrl-c": "Copy|CopyLine",
     "Ctrl-d": "DuplicateLine",
     "Ctrl-e": "CommandMode",
     "Ctrl-f": "Find",
