@@ -277,7 +277,7 @@
                     "middleClickExec": "",
                     "middleClickUpdateText": false,
                     "parseJson": false,
-                    "rightClickExec": "noctalia-shell ipc call sesstionMenu lockAndSuspend",
+                    "rightClickExec": "noctalia-shell ipc call sessionMenu lockAndSuspend",
                     "rightClickUpdateText": true,
                     "showIcon": true,
                     "textCollapse": "",
