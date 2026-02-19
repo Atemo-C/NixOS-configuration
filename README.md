@@ -281,7 +281,7 @@ This includes things such as:
 https://github.com/Atemo-C/NixOS-configuration/blob/main/user/name.nix
 - Configuring support for NVIDIA GPUs (1650 and above). \
 https://github.com/Atemo-C/NixOS-configuration/blob/main/gpu/nvidia.nix
-- Various other settings, programs, etc.
+- Various other settings, programs, etc. These can include spellcheck languages to install, the timezone to configure, and more. Again, checking every module is recommended.
 
 ### Installing NixOS
 1. Install NixOS. You may choose to set or skip the root password.
