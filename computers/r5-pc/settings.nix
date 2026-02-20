@@ -5,7 +5,7 @@
 		initrd.luks.devices = {
 			root = {
 				# Storage device's UUID.
-				device = "/dev/disk/by-uuid/b0c283e9-b6b4-4f2c-a4e9-84aab0f852fd";
+				device = "/dev/disk/by-uuid/ace2fbf2-34f6-4491-a164-738ccc593dff";
 
 				# Whether to allow discards (only for SSDs).
 				allowDiscards = true;
@@ -13,7 +13,7 @@
 
 			swap = {
 				# Storage device's UUID.
-				device = "/dev/disk/by-uuid/df027139-9425-4520-9477-ad78876d27fd";
+				device = "/dev/disk/by-uuid/22c0aeb7-ce73-45ff-b443-014d3d94a35b";
 
 				# Whether to allow discards (only for SSDs).
 				allowDiscards = true;
