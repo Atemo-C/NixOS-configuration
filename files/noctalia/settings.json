@@ -760,7 +760,7 @@
         "wifiDetailsViewMode": "grid"
     },
     "wallpaper": {
-        "automationEnabled": true,
+        "automationEnabled": false,
         "directory": "/home/atemo/Images/Backgrounds/Landscape",
         "enableMultiMonitorDirectories": false,
         "enabled": true,
@@ -786,7 +786,7 @@
         "transitionType": "fade",
         "useSolidColor": false,
         "useWallhaven": false,
-        "viewMode": "recursive",
+        "viewMode": "browse",
         "wallhavenApiKey": "",
         "wallhavenCategories": "111",
         "wallhavenOrder": "desc",
