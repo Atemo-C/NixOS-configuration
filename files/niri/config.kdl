@@ -365,8 +365,8 @@ layout {
 		// Set a 1px wide strut on the sides to allow easy window switching with the mouse.
 		left 0
 		right 0
-		top 1
-		bottom -1
+		top 2
+		bottom 0
 	}
 
 	// Set the default background color when no image is used.
