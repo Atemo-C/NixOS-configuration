@@ -10,7 +10,6 @@
 			"defaults"
 			"rw"
 			"nofail"
-			"noauto"
 			"users"
 			"exec"
 			"compress=zstd:3"
@@ -21,7 +20,7 @@
 
 	# Non-essential encrypted drive (boot will not fail if these are not present).
 	environment.etc.crypttab.text = ''
-		160GB-HDD UUID=9574ec1c-2e52-4fc4-bdfd-60335c3a8ae5 /etc/nixos/storage/keys/160gb-hdd.key luks,nofail,noauto
+		160GB-HDD UUID=9574ec1c-2e52-4fc4-bdfd-60335c3a8ae5 /etc/nixos/storage/keys/160gb-hdd.key luks,nofail
 	'';
 
 	# Udev rules to unlock the encrypted drive when detected.
