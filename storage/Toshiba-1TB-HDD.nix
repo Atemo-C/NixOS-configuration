@@ -10,7 +10,6 @@
 			"defaults"
 			"rw"
 			"nofail"
-			"noauto"
 			"users"
 			"exec"
 			"compress=zstd:3"
@@ -21,7 +20,7 @@
 
 	# Non-essential encrypted drive (boot will not fail if these are not present).
 	environment.etc.crypttab.text = ''
-		Toshiba-1TB-HDD UUID=a862bcd8-b129-411e-9d04-fe5c930bf4ee /etc/nixos/storage/keys/toshiba-1tb-hdd.key luks,nofail,noauto
+		Toshiba-1TB-HDD UUID=a862bcd8-b129-411e-9d04-fe5c930bf4ee /etc/nixos/storage/keys/toshiba-1tb-hdd.key luks,nofail
 	'';
 
 	# Udev rules to unlock the encrypted drive when detected.
