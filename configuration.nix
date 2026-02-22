@@ -138,6 +138,7 @@
 	./extra-modules/atemo/programs/heroic.nix
 	./extra-modules/atemo/programs/hfsprogs.nix
 	./extra-modules/atemo/programs/hunspell.nix
+	./extra-modules/atemo/programs/hydra-check.nix
 	./extra-modules/atemo/programs/icoextract.nix
 	./extra-modules/atemo/programs/imagemagick.nix
 	./extra-modules/atemo/programs/inkscape.nix
