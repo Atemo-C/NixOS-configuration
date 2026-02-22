@@ -16,9 +16,4 @@
 
 	# Design and visualize your future home.
 	services.flatpak.packages = [ "com.sweethome3d.Sweethome3d" ];
-
-	# Fix for certain Java programs running under XWayland.
-	environment.variables._JAVA_AWT_WM_NONREPARENTING = lib.mkIf
-	(lib.elem "com.sweethome3d.Sweethome3d" config.services.flatpak.packages)
-	"1";
 }

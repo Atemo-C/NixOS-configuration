@@ -408,6 +408,9 @@ environment {
 
 	// Force Clutter applications to use the Wayland backend.
 	CLUTTER_BACKEND "wayland"
+
+	// Fix certian Java programs running under xwayland-satellite.
+	_JAVA_AWT_WM_NONREPARENTING "1"
 }
 
 // Cursor configuration.
