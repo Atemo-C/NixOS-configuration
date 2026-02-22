@@ -330,7 +330,7 @@
                 },
                 {
                     "deviceNativePath": "__default__",
-                    "displayMode": "alwaysShow",
+                    "displayMode": "icon-always",
                     "hideIfIdle": false,
                     "hideIfNotDetected": true,
                     "id": "Battery",
