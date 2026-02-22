@@ -61,10 +61,10 @@
 		public = false;
 
 		# Port to listen to.
-		port = 2222;
+		port = 8081;
 
 		# Limit the maximum memory usage of the JVM running LanguageTool.
-		jvmOptions = [ "-Xmx2048m" ];
+		jvmOptions = [ "-Xmx1024m" ];
 	};
 
 	# Open the relevant firewall port used by the LanguageTool server.
