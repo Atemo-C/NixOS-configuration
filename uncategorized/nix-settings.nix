@@ -16,6 +16,10 @@
 		experimental-features = [ "nix-command" ];
 	};
 
+	# Check hydra for the build status of a package.
+	# e.g. `hydra-check --channel unstable galculator`.
+	programs.hydra-check.install = true;
+
 	# Make the `/etc/nixos/` directory and its files owned by the user.
 	# This is for easier editing; Remove if this is a security concern for you.
 	# Note that some scripts and other functionaly of this configuration relies on
