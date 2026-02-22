@@ -36,12 +36,12 @@ Item {
   property var cfg: pluginApi?.pluginSettings || ({})
   property var defaults: pluginApi?.manifest?.metadata?.defaultSettings || ({})
 
-  property bool hideInactive: cfg.hideInactive ?? defaults.hideInactive
-  property bool removeMargins: cfg.removeMargins ?? defaults.removeMargins
-  property int iconSpacing: cfg.iconSpacing || Style.marginXS
-
-  property string activeColorKey: cfg.activeColor ?? defaults.activeColor
-  property string inactiveColorKey: cfg.inactiveColor ?? defaults.inactiveColor
+  property bool hideInactive: cfg.hideInactive ?? defaults.hideInactive ?? false
+  property bool enableToast: cfg.enableToast ?? defaults.enableToast ?? true
+  property bool removeMargins: cfg.removeMargins ?? defaults.removeMargins ?? false
+  property int iconSpacing: cfg.iconSpacing ?? defaults.iconSpacing ?? 4
+  property string activeColorKey: cfg.activeColor ?? defaults.activeColor ?? "primary"
+  property string inactiveColorKey: cfg.inactiveColor ?? defaults.inactiveColor ?? "none"
 
   readonly property color activeColor: Color.resolveColorKey(activeColorKey)
   readonly property color inactiveColor: inactiveColorKey === "none" ? Qt.alpha(Color.mOnSurfaceVariant, 0.3) : Color.resolveColorKey(inactiveColorKey)

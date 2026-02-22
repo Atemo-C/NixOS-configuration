@@ -6,10 +6,14 @@
     "activeColor": {
       "desc": "Color of the icons when active.",
       "label": "Active icon color"
-    },
+    },  
     "hideInactive": {
       "desc": "Hide microphone, camera, and screen icons when there are inactive.",
       "label": "Hide inactive states"
+    },
+    "enableToast": {
+      "desc": "Show toast messages when one of the states changes.",
+      "label": "Enable toast notifications"
     },
     "inactiveColor": {
       "desc": "Color of the icons when inactive.",

@@ -65,6 +65,7 @@
                 {
                     "colorizeSystemIcon": "none",
                     "enableColorization": false,
+                    "generalTooltipText": "Niri overview",
                     "hideMode": "alwaysExpanded",
                     "icon": "box-multiple",
                     "id": "CustomButton",
@@ -80,7 +81,9 @@
                     "parseJson": false,
                     "rightClickExec": "",
                     "rightClickUpdateText": false,
+                    "showExecTooltip": false,
                     "showIcon": true,
+                    "showTextTooltip": false,
                     "textCollapse": "",
                     "textCommand": "",
                     "textIntervalMs": 3000,
@@ -107,7 +110,6 @@
                     "labelMode": "index",
                     "occupiedColor": "secondary",
                     "pillSize": 0.6,
-                    "reverseScroll": false,
                     "showApplications": false,
                     "showBadge": true,
                     "showLabelsOnlyWhenOccupied": true,
@@ -116,6 +118,7 @@
                 {
                     "colorizeSystemIcon": "none",
                     "enableColorization": false,
+                    "generalTooltipText": "Random wallpaper / Select wallpaper",
                     "hideMode": "alwaysExpanded",
                     "icon": "wallpaper",
                     "id": "CustomButton",
@@ -131,7 +134,9 @@
                     "parseJson": false,
                     "rightClickExec": "noctalia-shell ipc call wallpaper toggle",
                     "rightClickUpdateText": true,
+                    "showExecTooltip": false,
                     "showIcon": true,
+                    "showTextTooltip": false,
                     "textCollapse": "",
                     "textCommand": "",
                     "textIntervalMs": 3000,
@@ -163,6 +168,7 @@
                 {
                     "colorizeSystemIcon": "none",
                     "enableColorization": false,
+                    "generalTooltipText": "File manager",
                     "hideMode": "alwaysExpanded",
                     "icon": "folder",
                     "id": "CustomButton",
@@ -178,7 +184,9 @@
                     "parseJson": false,
                     "rightClickExec": "",
                     "rightClickUpdateText": false,
+                    "showExecTooltip": false,
                     "showIcon": true,
+                    "showTextTooltip": false,
                     "textCollapse": "",
                     "textCommand": "",
                     "textIntervalMs": 3000,
@@ -194,6 +202,7 @@
                 {
                     "colorizeSystemIcon": "none",
                     "enableColorization": false,
+                    "generalTooltipText": "Aera screenshot / Screenshot menu",
                     "hideMode": "alwaysExpanded",
                     "icon": "screenshot",
                     "id": "CustomButton",
@@ -209,7 +218,9 @@
                     "parseJson": false,
                     "rightClickExec": "/etc/nixos/scripts/screenshot/screenshot-selection.sh",
                     "rightClickUpdateText": true,
+                    "showExecTooltip": false,
                     "showIcon": true,
+                    "showTextTooltip": false,
                     "textCollapse": "",
                     "textCommand": "",
                     "textIntervalMs": 3000,
@@ -259,11 +270,13 @@
                     "showNetworkStats": false,
                     "showSwapUsage": true,
                     "textColor": "none",
-                    "useMonospaceFont": true
+                    "useMonospaceFont": true,
+                    "usePadding": false
                 },
                 {
                     "colorizeSystemIcon": "none",
                     "enableColorization": false,
+                    "generalTooltipText": "Power & session menu",
                     "hideMode": "alwaysExpanded",
                     "icon": "power",
                     "id": "CustomButton",
@@ -279,7 +292,9 @@
                     "parseJson": false,
                     "rightClickExec": "noctalia-shell ipc call sessionMenu lockAndSuspend",
                     "rightClickUpdateText": true,
+                    "showExecTooltip": false,
                     "showIcon": true,
+                    "showTextTooltip": false,
                     "textCollapse": "",
                     "textCommand": "",
                     "textIntervalMs": 3000,
@@ -346,6 +361,7 @@
                     "textColor": "none"
                 },
                 {
+                    "applyToAllMonitors": false,
                     "displayMode": "alwaysShow",
                     "iconColor": "none",
                     "id": "Brightness",
@@ -363,6 +379,7 @@
                 {
                     "colorizeSystemIcon": "none",
                     "enableColorization": false,
+                    "generalTooltipText": "Close program / Kill program",
                     "hideMode": "alwaysExpanded",
                     "icon": "skull",
                     "id": "CustomButton",
@@ -378,7 +395,9 @@
                     "parseJson": false,
                     "rightClickExec": "kill -9 \"$(niri msg focused-window | sed -n 's/^  PID: //p')\"",
                     "rightClickUpdateText": true,
+                    "showExecTooltip": false,
                     "showIcon": true,
+                    "showTextTooltip": false,
                     "textCollapse": "",
                     "textCommand": "",
                     "textIntervalMs": 3000,
@@ -497,6 +516,7 @@
         "colorizeIcons": false,
         "deadOpacity": 0.6,
         "displayMode": "auto_hide",
+        "dockType": "floating",
         "enabled": false,
         "floatingRatio": 1,
         "inactiveIndicators": false,
@@ -507,6 +527,8 @@
         ],
         "pinnedStatic": false,
         "position": "bottom",
+        "showFrameIndicator": true,
+        "sitOnFrame": false,
         "size": 1
     },
     "general": {
@@ -538,6 +560,9 @@
             "keyLeft": [
                 "Left"
             ],
+            "keyRemove": [
+                "Del"
+            ],
             "keyRight": [
                 "Right"
             ],
@@ -554,6 +579,7 @@
         ],
         "lockScreenTint": 0,
         "radiusRatio": 0,
+        "reverseScroll": false,
         "scaleRatio": 0.9500000000000001,
         "screenRadiusRatio": 0.5,
         "shadowDirection": "center",
@@ -591,10 +617,12 @@
         "weatherShowEffects": false
     },
     "network": {
+        "airplaneModeEnabled": false,
         "bluetoothDetailsViewMode": "grid",
         "bluetoothHideUnnamedDevices": false,
         "bluetoothRssiPollIntervalMs": 10000,
         "bluetoothRssiPollingEnabled": false,
+        "disableDiscoverability": false,
         "wifiDetailsViewMode": "grid",
         "wifiEnabled": true
     },
@@ -609,9 +637,12 @@
     },
     "notifications": {
         "backgroundOpacity": 0.5,
+        "clearDismissed": true,
         "criticalUrgencyDuration": 30,
+        "density": "default",
         "enableBatteryToast": true,
         "enableKeyboardLayoutToast": true,
+        "enableMarkdown": false,
         "enableMediaToast": false,
         "enabled": true,
         "location": "top_right",
@@ -689,45 +720,47 @@
                 "keybind": "4"
             },
             {
-                "action": "logout",
+                "action": "rebootToUefi",
                 "command": "",
                 "countdownEnabled": true,
                 "enabled": true,
                 "keybind": "5"
             },
             {
-                "action": "shutdown",
+                "action": "logout",
                 "command": "",
                 "countdownEnabled": true,
                 "enabled": true,
                 "keybind": "6"
+            },
+            {
+                "action": "shutdown",
+                "command": "",
+                "countdownEnabled": true,
+                "enabled": true,
+                "keybind": "7"
             }
         ],
-        "showHeader": true
+        "showHeader": true,
+        "showKeybinds": true
     },
     "settingsVersion": 53,
     "systemMonitor": {
         "batteryCriticalThreshold": 15,
         "batteryWarningThreshold": 35,
         "cpuCriticalThreshold": 90,
-        "cpuPollingInterval": 1000,
         "cpuWarningThreshold": 80,
         "criticalColor": "",
         "diskAvailCriticalThreshold": 20,
         "diskAvailWarningThreshold": 30,
         "diskCriticalThreshold": 80,
-        "diskPollingInterval": 30000,
         "diskWarningThreshold": 70,
         "enableDgpuMonitoring": false,
         "externalMonitor": "resources || missioncenter || jdsystemmonitor || corestats || system-monitoring-center || gnome-system-monitor || plasma-systemmonitor || mate-system-monitor || ukui-system-monitor || deepin-system-monitor || pantheon-system-monitor",
         "gpuCriticalThreshold": 90,
-        "gpuPollingInterval": 3000,
         "gpuWarningThreshold": 80,
-        "loadAvgPollingInterval": 3000,
         "memCriticalThreshold": 90,
-        "memPollingInterval": 1000,
         "memWarningThreshold": 80,
-        "networkPollingInterval": 1000,
         "swapCriticalThreshold": 50,
         "swapWarningThreshold": 20,
         "tempCriticalThreshold": 85,
