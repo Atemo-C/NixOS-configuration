@@ -38,6 +38,17 @@
 			# Use `null` if the menu should be displayed until the user manually selects an entry.
 			timeout = 1;
 		};
+
+		# Whether to enable the Plymouth boot splash screen.
+		plymouth.enable = true;
+	};
+
+	services.displayManager.ly = {
+		# Whether to enable ly as the display manager.
+		enable = true;
+
+		# Wether to enable supprt for X11 in ly.
+		x11Support = false;
 	};
 
 	# Whether to install efibootmgr, a program that allows manually modifying the EFI boot manager and its entries.
