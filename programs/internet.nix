@@ -4,7 +4,7 @@
 		amfora.install = true;
 
 		# Matrix client.
-		element-desktop.install = false;
+		element-desktop.install = true;
 
 		# Graphical Gemini client.
 		lagrange.enable = false;
