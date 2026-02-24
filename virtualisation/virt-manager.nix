@@ -3,20 +3,26 @@
 		# Whether to enable libvirtd, a daemon that manages virtual machines.
 		enable = true;
 
-		# When using an NVIDIA GPU, enable access to the EGL render node.
-		# https://github.com/virt-manager/virt-manager/issues/938#issuecomment-3009548239
-		qemu.verbatimConfig = lib.mkIf (lib.elem "nvidia" config.services.xserver.videoDrivers) ''
-			namespaces = []
+		qemu = {
+			# When using an NVIDIA GPU, enable access to the EGL render node.
+			# https://github.com/virt-manager/virt-manager/issues/938#issuecomment-3009548239
+			verbatimConfig = lib.mkIf (lib.elem "nvidia" config.services.xserver.videoDrivers) ''
+				namespaces = []
 
-			cgroup_device_acl = [
-				"/dev/null", "/dev/full", "/dev/zero",
-				"/dev/random", "/dev/urandom",
-				"/dev/ptmx", "/dev/kvm",
-				"/dev/nvidiactl", "/dev/nvidia0", "/dev/nvidia-modeset", "/dev/dri/renderD128"
-			]
+				cgroup_device_acl = [
+					"/dev/null", "/dev/full", "/dev/zero",
+					"/dev/random", "/dev/urandom",
+					"/dev/ptmx", "/dev/kvm",
+					"/dev/nvidiactl", "/dev/nvidia0", "/dev/nvidia-modeset", "/dev/dri/renderD128"
+				]
 
-			seccomp_sandbox = 0
-		'';
+				seccomp_sandbox = 0
+			'';
+
+			# Include `virtiofsd` within libvirtd's QEMU instance.
+			# This allows, for example, the use of shared folders.
+			vhostUserPackages = [ pkgs.virtiofsd ];
+		};
 	};
 
 	# Allow drm device renderD* to be used for 3D acceleration when using NVIDIA drivers.
@@ -26,8 +32,11 @@
 	'';
 
 	# Add the user to the `libvirtd` group.
-	users.users.${config.userName}.extraGroups = lib.optional config.virtualisation.libvirtd.enable "libvirtd";
+	users.users.${config.userName}.extraGroups = "libvirtd";
 
 	# Whether to enable the Virt Manager virtual machine manager.
-	programs.virt-manager.enable = lib.mkIf config.virtualisation.libvirtd.enable true;
+	programs.virt-manager.enable = true;
+
+	# Allow the `virbr0` network bridge through the firewall.
+	networking.firewall.trustedInterfaces = [ "virbr0" ];
 }
