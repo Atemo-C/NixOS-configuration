@@ -32,7 +32,7 @@
 	'';
 
 	# Add the user to the `libvirtd` group.
-	users.users.${config.userName}.extraGroups = "libvirtd";
+	users.users.${config.userName}.extraGroups = [ "libvirtd" ];
 
 	# Whether to enable the Virt Manager virtual machine manager.
 	programs.virt-manager.enable = true;
