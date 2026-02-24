@@ -8,5 +8,5 @@
 	};
 
 	# Add the user to the `vboxusers` group.
-	users.extraGroups.vboxusers.members = lib.optional config.virtualisation.virtualbox.host.enable "${config.userName}";
+	users.extraGroups.vboxusers.members = [ "${config.userName}" ];
 }
