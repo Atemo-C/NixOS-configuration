@@ -86,6 +86,9 @@
 
 			# Creating an `.iso` file from a physical media.
 			mkiso = "dd if=/dev/cdrom of=/path/to/the-iso.iso bs=4M status=progress";
+
+			# Creating an `.iso` file from a file or directory.
+			mkisofromfile = "mkisofs -lJR -o output.iso";
 		};
 	};
 
