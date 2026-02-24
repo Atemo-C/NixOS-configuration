@@ -74,7 +74,7 @@
 #	./virtualisation/docker.nix
 #	./virtualisation/virt-manager.nix
 #	./virtualisation/virtualbox.nix
-#	./virtualisation/android.nix
+#	./virtualisation/waydroid.nix
 
 
 	# Extra modules.
