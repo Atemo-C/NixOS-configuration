@@ -161,8 +161,8 @@ binds {
 	Super+Shift+Plus { set-window-height "+1"; }
 
 	// Move the focused window in and out of a column.
-	Mod+Comma { consume-or-expel-window-left; }
-	Mod+Period { consume-or-expel-window-right; }
+	Mod+Alt+Left { consume-or-expel-window-left; }
+	Mod+Alt+Right { consume-or-expel-window-right; }
 
 	// Toggle floating mode for the current window.
 	Super+F { toggle-window-floating; }
