@@ -1,7 +1,7 @@
 { config, ... }: {
 	programs = {
 		# Mind-mapping utility.
-		minder.install = true;
+		minder.install = false;
 
 		# Offline password manager.
 		keepassxc.install = true;
