@@ -205,6 +205,7 @@
 	./extra-modules/atemo/programs/smartmontools.nix
 	./extra-modules/atemo/programs/soundfont.nix
 	./extra-modules/atemo/programs/speedtest.nix
+	./extra-modules/atemo/programs/swayidle.nix
 	./extra-modules/atemo/programs/tarlz.nix
 	./extra-modules/atemo/programs/tlrc.nix
 	./extra-modules/atemo/programs/tor-browser.nix

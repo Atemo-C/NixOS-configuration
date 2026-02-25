@@ -34,6 +34,14 @@ input {
 	workspace-auto-back-and-forth
 }
 
+// Events that happen with laptop lids and tablet events.
+switch-events {
+	// When closing the lid, lock the session and suspend the device.
+	lid-close { spawn "noctalia-shell" "ipc" "call" "sessionMenu" "lockAndSuspend"; }
+
+	// There will be "tablet" events here whenever I get a touchscreen device of my own.
+}
+
 // Output configuration for the Acer XV242Y, plugged in via DisplayPort
 /-output "Acer Technologies XV242Y TL1EE0018521" {
 	// Mode (resolution and refresh rate) of the output (<width>x<height>@<refresh rate>).
@@ -380,6 +388,7 @@ spawn-sh-at-startup "thunar --daemon"
 spawn-sh-at-startup "/etc/nixos/scripts/cmd-polkit-fuzzel.sh"
 spawn-sh-at-startup "foot --server"
 spawn-sh-at-startup "[ -f ly-session.log ] && rm ly-session.log"
+spawn-sh-at-startup "swayidle -w timeout 300 'noctalia-shell ipc call lockScreen lock' timeout 600 'niri msg action power-off-monitors'"
 
 // Disable client-side decorations.
 prefer-no-csd
