@@ -539,7 +539,7 @@
         "autoStartAuth": false,
         "avatarImage": "/home/atemo/Images/Profile pictures/Atemo/Profile.png",
         "boxRadiusRatio": 1,
-        "clockFormat": "hh\\nmm",
+        "clockFormat": "dddd dd/MM/yy hh:mm:ss",
         "clockStyle": "custom",
         "compactLockScreen": false,
         "dimmerOpacity": 0,
