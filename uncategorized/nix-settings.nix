@@ -20,6 +20,13 @@
 	# e.g. `hydra-check --channel unstable galculator`.
 	programs.hydra-check.install = true;
 
+	# Use `run0` instead of `sudo`.
+	# If this causes any compatibility issues for you, disable these two options.
+	security = {
+		sudo.enable = false;
+		run0.enableSudoAlias = lib.mkIf (!config.security.sudo.enable) true;
+	};
+
 	# Make the `/etc/nixos/` directory and its files owned by the user.
 	# This is for easier editing; Remove if this is a security concern for you.
 	# Note that some scripts and other functionaly of this configuration relies on
