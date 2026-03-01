@@ -123,7 +123,7 @@
                     "icon": "wallpaper",
                     "id": "CustomButton",
                     "ipcIdentifier": "random_wallpaper",
-                    "leftClickExec": "noctalia-shell ipc call wallpaper random",
+                    "leftClickExec": "noctalia-shell ipc call wallpaper toggle",
                     "leftClickUpdateText": true,
                     "maxTextLength": {
                         "horizontal": 10,
@@ -257,7 +257,7 @@
                     "diskPath": "/",
                     "iconColor": "none",
                     "id": "SystemMonitor",
-                    "showCpuFreq": true,
+                    "showCpuFreq": false,
                     "showCpuTemp": true,
                     "showCpuUsage": true,
                     "showDiskAvailable": false,
@@ -271,7 +271,7 @@
                     "showSwapUsage": true,
                     "textColor": "none",
                     "useMonospaceFont": true,
-                    "usePadding": false
+                    "usePadding": true
                 },
                 {
                     "colorizeSystemIcon": "none",
@@ -414,7 +414,7 @@
         }
     },
     "brightness": {
-        "brightnessStep": 1,
+        "brightnessStep": 2,
         "enableDdcSupport": false,
         "enforceMinimum": true
     },
