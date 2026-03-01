@@ -36,6 +36,25 @@
 		};
 	};
 
+	services.tor = {
+		# Whether to enable the Tor daemon.
+		# By default, it runs without relay, exit, bridge, or client connectivity.
+		enable = true;
+
+		# Whether to enable the use of GeoIP databases.
+		# Disabling this will disable by-country statistics fro bridges and relays,
+		# and some client and third-party software functionality.
+		enableGeoIP = false;
+
+		# Whether to enable routing of application connections.
+		# You might want to disable this if you plan running a dedicated Tor relay.
+		client.enable = true;
+
+		# Whether to build `/etc/tor/torsocks.conf`,
+		# containing the specificed global torsocks configruation.
+		torsocks.enable = true;
+	};
+
 	# Default web browser to use.
 	environment.variables.BROWSER = if
 	(config.programs.firefox.enable && config.programs.firefox.package == pkgs.librewolf)
