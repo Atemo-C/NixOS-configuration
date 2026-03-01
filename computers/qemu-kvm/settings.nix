@@ -49,7 +49,21 @@
 		};
 	};
 
-	# Whether to enable the ModemManager service for using cellular data.
-	# Disable this if you do not use it, to improve boot times.
-	systemd.services.ModemManager.enable = false;
+	systemd = {
+		# Whether to enable the ModemManager service for using cellular data.
+		# Disable this if you do not use it, to improve boot times.
+		services.ModemManager.enable = false;
+
+		# Ensure that the spice vdagent is running.
+		# https://github.com/NixOS/nixpkgs/issues/481078
+		# https://github.com/NixOS/nixpkgs/pull/266080
+		user.services.spice-vdagent = {
+			description = "spice-vdagent user daemon";
+			after = [ "spice-vdagentd.service" "graphical-session.target" ];
+			requires = [ "graphical-session.target" ];
+			wantedBy = [ "graphical-session.target" ];
+			serviceConfig.ExecStart = "${pkgs.spice-vdagent}/bin/spice-vdagent -x";
+			unitConfig.ConditionPathExists = "/run/spice-vdagentd/spice-vdagent-sock";
+		};
+	}
 }

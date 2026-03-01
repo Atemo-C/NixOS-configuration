@@ -39,6 +39,14 @@
 		fish.shellAbbrs.n = "niri-session";
 	};
 
+	# GSettings/dconf workaround for certain programs. Not ideal, but…yeah.
+	# https://github.com/thomX75/nixos-modules/blob/main/Glib-Schemas-Fix/glib-schemas-fix.nix
+	# https://github.com/NixOS/nixpkgs/issues/149812
+	environment = {
+		extraInit = ''export XDG_DATA_DIRS="$XDG_DATA_DIRS:${pkgs.gtk3}/share/gsettings-schemas/${pkgs.gtk3.name}"'';
+		variables.GSETTINGS_SCHEMA_DIR="${pkgs.gtk3}/share/gsettings-schemas/${pkgs.gtk3.name}/glib-2.0/schemas";
+	};
+
 	# Link relevant configuration files.
 	systemd.user.tmpfiles.users.${config.userName}.rules = lib.concatLists [
 		# Niri's configuration directory.
