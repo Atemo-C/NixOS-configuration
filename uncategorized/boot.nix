@@ -43,12 +43,17 @@
 		plymouth.enable = true;
 	};
 
-	services.displayManager.ly = {
-		# Whether to enable ly as the display manager.
-		enable = true;
+	services = {
+		displayManager.ly = {
+			# Whether to enable ly as the display manager.
+			enable = true;
 
-		# Wether to enable supprt for X11 in ly.
-		x11Support = false;
+			# Wether to enable supprt for X11 in ly.
+			x11Support = false;
+		};
+
+		# Whether to enable kmscon as the virtual console instead of gettys.
+		kmscon.enable = true;
 	};
 
 	# Whether to install efibootmgr, a program that allows manually modifying the EFI boot manager and its entries.
