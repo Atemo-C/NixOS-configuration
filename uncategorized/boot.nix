@@ -52,8 +52,13 @@
 			x11Support = false;
 		};
 
-		# Whether to enable kmscon as the virtual console instead of gettys.
-		kmscon.enable = true;
+		kmscon = {
+			# Whether to enable kmscon as the virtual console instead of gettys.
+			enable = true;
+
+			# Enable mouse support in kmscon.
+			extraConfig = "mouse";
+		};
 	};
 
 	# Whether to install efibootmgr, a program that allows manually modifying the EFI boot manager and its entries.

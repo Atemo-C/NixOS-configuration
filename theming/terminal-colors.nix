@@ -1,77 +1,105 @@
 { ... }: let
 	# Define the list of colors shared across terminals.
-	Background    = "000000";    Foreground = "eeeeee";
-	normalBlack   = "242424";    dimBlack   = "141414";    brightBlack   = "525252";
-	normalBlue    = "006cff";    dimBlue    = "004cb3";    brightBlue    = "66b3ff";
-	normalCyan    = "00d0ff";    dimCyan    = "0092b3";    brightCyan    = "66e3ff";
-	normalGreen   = "00cc00";    dimGreen   = "008000";    brightGreen   = "80ff80";
-	normalMagenta = "d000ff";    dimMagenta = "a247b3";    brightMagenta = "ec80ff";
-	normalRed     = "e60000";    dimRed     = "990000";    brightRed     = "ff6666";
-	normalWhite   = "e6e6e6";    dimWhite   = "999999";    brightWhite   = "ffffff";
-	normalYellow  = "ffc000";    dimYellow  = "b38600";    brightYellow  = "ffe880";
+	background = "000000";    foreground = "eeeeee";
+
+	red     = "e60000";   dim_red     = "990000";   light_red     = "ff6666";
+	green   = "00cc00";   dim_green   = "008000";   light_green   = "80ff80";
+	yellow  = "ffc000";   dim_yellow  = "b38600";   light_yellow  = "ffe880";
+	blue    = "006cff";   dim_blue    = "004cb3";   light_blue    = "66b3ff";
+	magenta = "d000ff";   dim_magenta = "a247b3";   light_magenta = "ec80ff";
+	cyan    = "00d0ff";   dim_cyan    = "0092b3";   light_cyan    = "66e3ff";
+	white   = "e6e6e6";   dim_white   = "999999";   light_white   = "ffffff";
+	black   = "242424";   dim_black   = "141414";   light_black   = "525252";
+
+	rgb_background = "0,0,0";    rgb_foreground = "238,238,238";
+
+	rgb_red     = "230,0,0";      rgb_light_red     = "255,102,102";
+	rgb_green   = "0,204,0";      rgb_light_green   = "128,255,128";
+	rgb_yellow  = "255,192,0";    rgb_light_yellow  = "255,232,128";
+	rgb_blue    = "0,108,255";    rgb_light_blue    = "102,179,255";
+	rgb_magenta = "208,0,255";    rgb_light_magenta = "236,128,255";
+	rgb_cyan    = "0,208,255";    rgb_light_cyan    = "102,227,255";
+	rgb_white   = "230,230,230";  rgb_light_white   = "255,255,255";
+	rgb_black   = "36,36,36";     rgb_light_black   = "82,82,82";
 in {
-	# Linux console (TTY) colors.
 	console = {
-		# The 16 colors palette used by the virtual consoles.
+		# The 16 colors palette used by the virtual consoles (TTY).
 		colors = [
-			Background
-			normalRed
-			normalGreen
-			normalYellow
-			normalBlue
-			normalMagenta
-			normalCyan
-			normalWhite
-			normalBlack
-			brightRed
-			brightGreen
-			brightYellow
-			brightBlue
-			brightMagenta
-			brightCyan
-			brightWhite
+			background
+			red
+			green
+			yellow
+			blue
+			magenta
+			cyan
+			white
+			black
+			light_red
+			light_green
+			light_yellow
+			light_blue
+			light_magenta
+			light_cyan
+			light_white
 		];
 
-		# Enable setting virtual console options (such as colors) as early as possible (in initrd).
+		# Whether to enable setting virtual console options as early as possible (initrd).
+		# This allows settings like colors and fonts to be applied immediately.
 		earlySetup = true;
 	};
 
-	# Colors of the Foot terminal emulator.
+	# Colors for the Foot terminal emulator.
 	programs.foot.settings.colors = {
-		# Foreground color (default text).
-		foreground = Foreground;
+		foreground = foreground;
+		background = background;
 
-		# Background color (its opacity is configured further down).
-		background = Background;
+		regular0 = black;
+		regular1 = red;
+		regular2 = green;
+		regular3 = yellow;
+		regular4 = blue;
+		regular5 = magenta;
+		regular6 = cyan;
+		regular7 = white;
 
-		# Normal colors.
-		regular0 = normalBlack;
-		regular1 = normalRed;
-		regular2 = normalGreen;
-		regular3 = normalYellow;
-		regular4 = normalBlue;
-		regular5 = normalMagenta;
-		regular6 = normalCyan;
-		regular7 = normalWhite;
+		light0 = light_black;
+		light1 = light_red;
+		light2 = light_green;
+		light3 = light_yellow;
+		light4 = light_blue;
+		light5 = light_magenta;
+		light6 = light_cyan;
+		light7 = light_white;
 
-		# Bright colors.
-		bright0 = brightBlack;
-		bright1 = brightRed;
-		bright2 = brightGreen;
-		bright3 = brightYellow;
-		bright4 = brightBlue;
-		bright5 = brightMagenta;
-		bright6 = brightCyan;
-		bright7 = brightWhite;
-
-		# Dim colors.
-		dim0 = dimBlack;
-		dim1 = dimRed;
-		dim2 = dimGreen;
-		dim3 = dimYellow;
-		dim4 = dimBlue;
-		dim5 = dimMagenta;
-		dim6 = dimCyan;
-		dim7 = dimWhite;
+		dim0 = dim_black;
+		dim1 = dim_red;
+		dim2 = dim_green;
+		dim3 = dim_yellow;
+		dim4 = dim_blue;
+		dim5 = dim_magenta;
+		dim6 = dim_cyan;
+		dim7 = dim_white;
 	};
+
+	# Colors for the kmscon console.
+	services.kmscon.extraConfig = ''
+palette=custom
+palette-black=${rgb_black}
+palette-red=${rgb_red}
+palette-green=${rgb_green}
+palette-yellow=${rgb_yellow}
+palette-blue=${rgb_blue}
+palette-magenta=${rgb_magenta}
+palette-cyan=${rgb_cyan}
+palette-light-grey=${rgb_white}
+palette-light-red=${rgb_light_red}
+palette-light-green=${rgb_light_green}
+palette-light-yellow=${rgb_light_yellow}
+palette-light-blue=${rgb_light_blue}
+palette-light-magenta=${rgb_light_magenta}
+palette-light-cyan=${rgb_light_cyan}
+palette-white=${rgb_light_white}
+palette-foreground=${rgb_foreground}
+palette-background=${rgb_background}
+	'';
 }
