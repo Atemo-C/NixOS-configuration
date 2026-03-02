@@ -1,6 +1,6 @@
 { config, lib, pkgs, ... }: {
 	# The path to the user's shell.
-	users.users.${config.userName}.shell = lib.mkIf config.programs.fish.enable pkgs.fish;
+	users.users.${config.userName}.shell = lib.mkIf config.programs.fish.enable "${pkgs.fish}/bin/fish";
 
 	# Disable man pages caching generation for FISH if taking too long on rebuilds.
 	documentation.man.cache.enable = lib.mkIf config.programs.fish.enable false;
