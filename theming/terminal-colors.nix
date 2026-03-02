@@ -12,7 +12,7 @@
 in {
 	# Linux console (TTY) colors.
 	console = {
-		# THe 16 colors palette used by the virtual consoles.
+		# The 16 colors palette used by the virtual consoles.
 		colors = [
 			Background
 			normalRed
