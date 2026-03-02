@@ -62,14 +62,14 @@ in {
 		regular6 = cyan;
 		regular7 = white;
 
-		light0 = light_black;
-		light1 = light_red;
-		light2 = light_green;
-		light3 = light_yellow;
-		light4 = light_blue;
-		light5 = light_magenta;
-		light6 = light_cyan;
-		light7 = light_white;
+		bright0 = light_black;
+		bright1 = light_red;
+		bright2 = light_green;
+		bright3 = light_yellow;
+		bright4 = light_blue;
+		bright5 = light_magenta;
+		bright6 = light_cyan;
+		bright7 = light_white;
 
 		dim0 = dim_black;
 		dim1 = dim_red;
