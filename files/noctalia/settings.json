@@ -118,7 +118,7 @@
                 {
                     "colorizeSystemIcon": "none",
                     "enableColorization": false,
-                    "generalTooltipText": "Random wallpaper / Select wallpaper",
+                    "generalTooltipText": "Select wallpaper / Random wallpaper",
                     "hideMode": "alwaysExpanded",
                     "icon": "wallpaper",
                     "id": "CustomButton",
