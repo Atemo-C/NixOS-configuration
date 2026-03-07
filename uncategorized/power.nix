@@ -22,9 +22,9 @@
 			HandlePowerKey = "ignore";
 
 			# For laptops, what to do with different lid actions.
-			lidSwitch = "ignore";
-			lidSwitchExternalPower = "ignore";
-			lidSwitchDocked = "ignore";
+			HandleLidSwitch = "ignore";
+			HandleLidSwitchExternalPower = "ignore";
+			HandleLidSwitchDocked = "ignore";
 		};
 
 		# Whether to enable the Upower DBus service.
