@@ -43,6 +43,9 @@
 	networking.hostName = "R5-PC";
 
 	services = {
+		# Whether to enable fwupd, a DBus service that allows applicatoins to update firmware.
+		fwupd.enable = true;
+
 		# Whether to enable LACT, a tool for monitoring, configuring, and overclocking GPUs.
 		lact.enable = lib.mkIf (lib.elem "nvidia" config.services.xserver.videoDrivers) true;
 
