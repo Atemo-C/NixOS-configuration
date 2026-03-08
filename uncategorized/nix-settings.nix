@@ -31,5 +31,10 @@
 	# This is for easier editing; Remove if this is a security concern for you.
 	# Note that some scripts and other functionaly of this configuration relies on
 	# this staying as it is; It will be up to you to adapt them.
-	systemd.tmpfiles.rules = [ "Z /etc/nixos 0755 ${config.userName} users - -"];
+	#
+	# Disk encryption keys for optional drives still retain unwritable root access.
+	systemd.tmpfiles.rules = [
+		"Z /etc/nixos 0755 ${config.userName} users - -"
+		"Z /etc/nixos/storage/keys/*.key 0600 root root - -"
+	];
 }

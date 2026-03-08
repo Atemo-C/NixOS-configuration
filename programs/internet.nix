@@ -9,6 +9,9 @@
 		# Graphical Gemini client.
 		lagrange.enable = false;
 
+		# Small 'net top' tool, grouping bandwidth by process.
+		nethogs.install = true;
+
 		# BitTorrent client.
 		qbittorrent.install = true;
 

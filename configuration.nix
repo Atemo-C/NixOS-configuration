@@ -178,6 +178,7 @@
 	./extra-modules/atemo/programs/mpv.nix
 	./extra-modules/atemo/programs/mission-center.nix
 	./extra-modules/atemo/programs/ncdu.nix
+	./extra-modules/atemo/programs/nethogs.nix
 	./extra-modules/atemo/programs/nilfs-utils.nix
 	./extra-modules/atemo/programs/niri.nix
 	./extra-modules/atemo/programs/noctalia-shell.nix

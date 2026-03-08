@@ -9,7 +9,7 @@
 
 		# Skip over zeroing graphics memory buffers at alloc time.
 		# https://github.com/CachyOS/CachyOS-Settings/blob/master/usr/lib/modprobe.d/nvidia.conf#L20
-		"nvidia.NVreg_IntitializeSystemMemoryAllocations=0"
+		"nvidia.NVreg_InitializeSystemMemoryAllocations=0"
 
 		# Make resuming more stable.
 		"nvidia.NVreg_PreserveVideoMemoryAllocations=1"

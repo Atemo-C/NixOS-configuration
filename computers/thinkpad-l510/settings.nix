@@ -45,19 +45,24 @@
 		replaceAll = true;
 	};
 
-	# Keyboard layout settings.
-	# To see a complete list of layouts, variants, and other settings:
-	# • https://gist.github.com/jatcwang/ae3b7019f219b8cdc6798329108c9aee
-	#
-	# To see why this list cannot easily be seen within NixOS:
-	# • https://github.com/NixOS/nixpkgs/issues/254523
-	# • https://github.com/NixOS/nixpkgs/issues/286283
-	services.xserver.xkb = {
-		# Keyboard layout, or multiple keyboard layouts separated by a comma.
-		layout = "fr,us";
+	services = {
+		# Whether to enable fwupd, a DBus service that allows applicatoins to update firmware.
+		fwupd.enable = true;
 
-		# Keyboard layout variant, or multiple keyboard variants separated by a comma.
-		variant = ",intl";
+		# Keyboard layout settings.
+		# To see a complete list of layouts, variants, and other settings:
+		# • https://gist.github.com/jatcwang/ae3b7019f219b8cdc6798329108c9aee
+		#
+		# To see why this list cannot easily be seen within NixOS:
+		# • https://github.com/NixOS/nixpkgs/issues/254523
+		# • https://github.com/NixOS/nixpkgs/issues/286283
+		xserver.xkb = {
+			# Keyboard layout, or multiple keyboard layouts separated by a comma.
+			layout = "fr,us";
+
+			# Keyboard layout variant, or multiple keyboard variants separated by a comma.
+			variant = ",intl";
+		};
 	};
 
 	# Whether to enable the ModemManager service for using cellular data.

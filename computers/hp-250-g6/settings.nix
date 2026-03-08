@@ -3,8 +3,8 @@
 		# Paths of LUKS-encrypted storage devices necessary for the system.
 		# Optional ones (e.g. removable encrypted drives) should not be put here.
 		initrd.luks.devices = {
-			root.device = "/dev/disk/by-uuid/80ef44a6-7ee0-4001-bc09-7b5fcd11b46e";
-			swap.device = "/dev/disk/by-uuid/56c4a6c9-e2d5-4b02-a13d-45ad9302a19e";
+			root.device = "/dev/disk/by-uuid/b686e417-26b4-4e7e-be8c-3407adf96b18";
+			swap.device = "/dev/disk/by-uuid/1c5f7a71-321c-4a57-a60b-955789fa50ed";
 		};
 
 		# Whether the installation process is allowed to modify EFI boot variables.
@@ -34,19 +34,24 @@
 	# Set the computer's name on the network.
 	networking.hostName = "HP-250-G6";
 
-	# Keyboard layout settings.
-	# To see a complete list of layouts, variants, and other settings:
-	# • https://gist.github.com/jatcwang/ae3b7019f219b8cdc6798329108c9aee
-	#
-	# To see why this list cannot easily be seen within NixOS:
-	# • https://github.com/NixOS/nixpkgs/issues/254523
-	# • https://github.com/NixOS/nixpkgs/issues/286283
-	services.xserver.xkb = {
-		# Keyboard layout, or multiple keyboard layouts separated by a comma.
-		layout = "fr,us";
+	services = {
+		# Whether to enable fwupd, a DBus service that allows applicatoins to update firmware.
+		fwupd.enable = true;
 
-		# Keyboard layout variant, or multiple keyboard variants separated by a comma.
-		variant = ",intl";
+		# Keyboard layout settings.
+		# To see a complete list of layouts, variants, and other settings:
+		# • https://gist.github.com/jatcwang/ae3b7019f219b8cdc6798329108c9aee
+		#
+		# To see why this list cannot easily be seen within NixOS:
+		# • https://github.com/NixOS/nixpkgs/issues/254523
+		# • https://github.com/NixOS/nixpkgs/issues/286283
+		xserver.xkb = {
+			# Keyboard layout, or multiple keyboard layouts separated by a comma.
+			layout = "fr,us";
+
+			# Keyboard layout variant, or multiple keyboard variants separated by a comma.
+			variant = ",intl";
+		};
 	};
 
 	# Whether to enable the ModemManager service for using cellular data.
