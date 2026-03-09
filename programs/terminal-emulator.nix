@@ -7,7 +7,7 @@
 		settings = {
 			# Opacity of the window background.
 			# The colorscheme can be edited in the `/etc/nixos/theming/terminal-colors.nix` module.
-			colors.alpha = "0.9";
+			colors-dark.alpha = "0.9";
 
 			# Use the default monospace font with a custom size.
 			# Fonts are handled in the `/etc/nixos/theming/fonts.nix` module.
