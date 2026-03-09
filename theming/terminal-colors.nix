@@ -49,7 +49,7 @@ in {
 	};
 
 	# Colors for the Foot terminal emulator.
-	programs.foot.settings.colors = {
+	programs.foot.settings.colors-dark = {
 		foreground = foreground;
 		background = background;
 
