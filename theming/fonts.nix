@@ -56,4 +56,10 @@
 			size = 11;
 		};
 	};
+
+	# Font configuration for the kmscon virtual console.
+	services.kmscon.fonts = {
+		name = "UbuntuMono Nerd Font";
+		package = pkgs.nerd-fonts.ubuntu-mono;
+	};
 }
