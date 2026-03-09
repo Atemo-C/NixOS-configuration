@@ -5,4 +5,7 @@
 # You can choose to select/unselect one simply by uncommenting/commenting it.
 # Some modules may import their own submodules, outside of here.
 
-{ ... }: { imports = []; }
+{ ... }: { imports = [
+	# The Niri Wayland compositor, and its accompanying utilities.
+	./niri.nix
+]; }
