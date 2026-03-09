@@ -10,6 +10,6 @@ This branch is considered to be a "throwaway" one. Nothing here is expected to:
 - And plenty more.
 
 It is here for me to play around, to throw things at the wall and see what sticks, and the likes.\
-If you are looking for the experimental or main branch instead, you can find them here:\
+If you are looking for the experimental or main branch instead, you can find them here:
 - [Experimental branch](https://github.com/Atemo-C/NixOS-configuration/tree/experimental)
 - [Main branch](https://github.com/Atemo-C/NixOS-configuration)
