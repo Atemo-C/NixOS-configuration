@@ -1,11 +1,6 @@
 { ... }: {
-	programs.niri = {
-		# Whether to enable the Niri Wayland compositor.
-		enable = true;
-
-		# Whether to enable XWayland support with xwayland-satellite.
-		xwayland.enable = true;
-	};
+	# Whether to enable the Niri Wayland compositor.
+	programs.niri.enable = true;
 
 	# Link Niri's configuration directory.
 	systemd.user.tmpfiles.users.${config.user.name}.rules = [
