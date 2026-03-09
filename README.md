@@ -230,6 +230,7 @@ In this example, I will be configuring my HP 250 G6:
 		# Optional ones (e.g. removable encrypted drives) should not be put here.
 		# Your `root` device should be in your `hardware-configuration.nix` module.
 		# If not, put it here as well.
+		# You may also want to add the `allowDiscards` option to it if it is an SSD.
 		initrd.luks.devices.swap.device = "/dev/disk/by-uuid/56c4a6c9-e2d5-4b02-a13d-45ad9302a19e";
 
 		# Whether the installation process is allowed to modify EFI boot variables.

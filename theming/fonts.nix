@@ -58,8 +58,8 @@
 	};
 
 	# Font configuration for the kmscon virtual console.
-	services.kmscon.fonts = {
+	services.kmscon.fonts = [{
 		name = "UbuntuMono Nerd Font";
 		package = pkgs.nerd-fonts.ubuntu-mono;
-	};
+	}];
 }
