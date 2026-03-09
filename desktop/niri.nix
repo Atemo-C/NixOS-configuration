@@ -8,5 +8,8 @@
 	];
 
 	# Import modules that help create a more complete desktop experience.
-	imports = [];
+	imports = [
+		# Log in with a nice TUI interface.
+		./ly.nix
+	];
 }
