@@ -54,7 +54,7 @@
 
 		kmscon = {
 			# Whether to enable kmscon as the virtual console instead of gettys.
-			enable = true;
+			enable = false;
 
 			# Enable mouse support in kmscon.
 			extraConfig = "mouse";

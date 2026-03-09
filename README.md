@@ -228,10 +228,10 @@ In this example, I will be configuring my HP 250 G6:
 	boot = {
 		# Paths of LUKS-encrypted storage devices necessary for the system.
 		# Optional ones (e.g. removable encrypted drives) should not be put here.
-		initrd.luks.devices = {
-			root.device = "/dev/disk/by-uuid/80ef44a6-7ee0-4001-bc09-7b5fcd11b46e";
-			swap.device = "/dev/disk/by-uuid/56c4a6c9-e2d5-4b02-a13d-45ad9302a19e";
-		};
+		# Your `root` device should be in your `hardware-configuration.nix` module.
+		# If not, put it here as well.
+		# You may also want to add the `allowDiscards` option to it if it is an SSD.
+		initrd.luks.devices.swap.device = "/dev/disk/by-uuid/56c4a6c9-e2d5-4b02-a13d-45ad9302a19e";
 
 		# Whether the installation process is allowed to modify EFI boot variables.
 		# Once installed, if after an update, it fails to "install" again,
