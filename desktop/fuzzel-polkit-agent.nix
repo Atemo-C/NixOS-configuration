@@ -40,7 +40,7 @@
 			prepParams() { for i in "$@"; do printf "'%s' " "$i"; done; }
 			parameters="$(prepParams "$@")"
 
-			exec cmd-polkit-agent -s -c "$0 _CALLED_INTERNALLY $parameters*"
+			exec ${pkgs.cmd-polkit}/bin/cmd-polkit-agent -s -c "$0 _CALLED_INTERNALLY $parameters*"
 		else
 			# Remove $1 (_CALLED_INTERNALLY) from the parametery array.
 			shift 1
