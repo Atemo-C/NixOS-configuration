@@ -59,7 +59,7 @@
 					response=$(${pkgs.fuzzel}/bin/fuzzel \
 						--dmenu \
 						--prompt-color=#ff0000ff \
-						--prompt-only="$prompt"
+						--prompt-only="$prompt" \
 						--mesg="$message" \
 						--width=50 \
 						--password "$@"
