@@ -20,6 +20,9 @@
 		# Noctalia desktop shell, providing a bar, notifications, power/program menus, and more.
 		./noctalia-shell.nix
 
+		# Screenshot management for Niri.
+		./screenshot.nix
+
 		# Idle management for security and power saving.
 		./swayidle.nix
 	];
@@ -33,9 +36,6 @@
 		variables.GSETTINGS_SCHEMA_DIR = "${pkgs.gtk3}/share/gsettings-schemas/${pkgs.gtk3.name}/glib-2.0/schemas";
 
 		variables = {
-			# Set the current desktop name.
-			XDG_CURRENT_DESKTOP = "niri";
-
 			# GTK: Use Wayland if available.
 			GDK_BACKEND = "wayland";
 
