@@ -216,14 +216,14 @@ binds {
 	XF86Suspend  allow-when-locked=true { spawn-sh "noctalia-shell ipc call sessionMenu toggle"; }
 
 	// Copying screenshots.
-	Print { spawn-sh "/etc/nixos/desktop/scripts/screenshot.sh --copy area"; }
-	Ctrl+Print { spawn-sh "/etc/nixos/desktop/scripts/screenshot.sh --copy monitor"; }
-	Shift+Print { spawn-sh "/etc/nixos/desktop/scripts/screenshot.sh --copy window"; }
+	Print { spawn-sh "/etc/nixos/desktop/files/scripts/screenshot.sh --copy area"; }
+	Ctrl+Print { spawn-sh "/etc/nixos/desktop/files/scripts/screenshot.sh --copy monitor"; }
+	Shift+Print { spawn-sh "/etc/nixos/desktop/files/scripts/screenshot.sh --copy window"; }
 
 	// Saving screenshots.
-	Super+Print { spawn-sh "/etc/nixos/desktop/scripts/screenshot.sh --save area"; }
-	Super+Ctrl+Print { spawn-sh "/etc/nixos/desktop/scripts/screenshot.sh --save monitor"; }
-	Super+Shift+Print { spawn-sh "/etc/nixos/desktop/scripts/screenshot.sh --save window"; }
+	Super+Print { spawn-sh "/etc/nixos/desktop/files/scripts/screenshot.sh --save area"; }
+	Super+Ctrl+Print { spawn-sh "/etc/nixos/desktop/files/scripts/screenshot.sh --save monitor"; }
+	Super+Shift+Print { spawn-sh "/etc/nixos/desktop/files/scripts/screenshot.sh --save window"; }
 
 	// Open a terminal emulator.
 	Super+Return { spawn "xdg-terminal-exec"; }
@@ -331,7 +331,7 @@ layout {
 	spawn-at-startup "noctalia-shell"
 
 	// Polkit authentification agent.
-	spawn-at-startup "/etc/nixos/desktop/scripts/cmd-polkit.sh"
+	spawn-at-startup "/etc/nixos/desktop/files/scripts/cmd-polkit.sh"
 
 	// Idle management.
 	spawn-sh-at-startup "swayidle -w timeout 300 'noctalia-shell ipc call lockScreen lock' timeout 600 'niri msg action power-off-monitors'"
@@ -353,7 +353,7 @@ prefer-no-csd
 
 // Disable saving screenshots by default.
 // Instead, saving and processing is handled by the following script:
-// 	/etc/nixos/desktop/scripts/screenshot.sh
+// 	/etc/nixos/desktop/files/scripts/screenshot.sh
 
 
 // Window rules.

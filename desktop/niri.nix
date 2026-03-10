@@ -11,7 +11,10 @@
 
 	# Import modules that help create a more complete desktop experience.
 	imports = [
-		# Log in with a nice TUI interface.
+		# Utility to build graphical Polkit password prompts.
+		./cmd-polkit.nix
+
+		# Log in to Niri with a nice TUI interface.
 		./ly.nix
 	];
 }
