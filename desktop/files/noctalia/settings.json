@@ -202,7 +202,7 @@
                 {
                     "colorizeSystemIcon": "none",
                     "enableColorization": false,
-                    "generalTooltipText": "Aera screenshot / Screenshot menu",
+                    "generalTooltipText": "Aera screenshot / Window screenshot / Fullscreen screenshot",
                     "hideMode": "alwaysExpanded",
                     "icon": "screenshot",
                     "id": "CustomButton",
@@ -213,10 +213,10 @@
                         "horizontal": 10,
                         "vertical": 10
                     },
-                    "middleClickExec": "",
-                    "middleClickUpdateText": false,
+                    "middleClickExec": "screenshot --copy fullscreen",
+                    "middleClickUpdateText": true,
                     "parseJson": false,
-                    "rightClickExec": "screenshot --selection",
+                    "rightClickExec": "screenshot --copy window",
                     "rightClickUpdateText": true,
                     "showExecTooltip": false,
                     "showIcon": true,
