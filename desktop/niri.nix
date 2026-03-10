@@ -1,5 +1,7 @@
 { ... }: {
 	# Whether to enable the Niri Wayland compositor.
+	# XWayland support is enabled by default. You can disable it with the following optiop:
+	# programs.niri.xwaylandSupport = false;
 	programs.niri.enable = true;
 
 	# Link Niri's configuration directory.
