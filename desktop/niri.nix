@@ -1,4 +1,4 @@
-{ ... }: {
+{ config, ... }: {
 	# Whether to enable the Niri Wayland compositor.
 	# XWayland support is enabled by default. You can disable it with the following optiop:
 	# programs.niri.xwaylandSupport = false;
@@ -16,5 +16,8 @@
 
 		# Log in to Niri with a nice TUI interface.
 		./ly.nix
+
+		# Noctalia desktop shell, providing a bar, notifications, power/program menus, and more.
+		./noctalia-shell.nix
 	];
 }
