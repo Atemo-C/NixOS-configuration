@@ -331,7 +331,7 @@ layout {
 	spawn-at-startup "noctalia-shell"
 
 	// Polkit authentification agent.
-	spawn-at-startup "/etc/nixos/desktop/files/scripts/cmd-polkit.sh"
+	spawn-at-startup "fuzzel-cmd-polkit"
 
 	// Idle management.
 	spawn-sh-at-startup "swayidle -w timeout 300 'noctalia-shell ipc call lockScreen lock' timeout 600 'niri msg action power-off-monitors'"

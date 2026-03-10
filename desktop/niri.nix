@@ -11,8 +11,8 @@
 
 	# Import modules that help create a more complete desktop experience.
 	imports = [
-		# Utility to build graphical Polkit password prompts.
-		./cmd-polkit.nix
+		# Polkit authentification using Fuzzel as the menu and cmd-polkit as the backend.
+		./fuzzel-polkit-agent.nix
 
 		# Log in to Niri with a nice TUI interface.
 		./ly.nix

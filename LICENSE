@@ -4,3 +4,10 @@ Copyright (©) 2026 by Atemo Cajaku <atemo@matrix.org>
 Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted.
 
 The software is provided "as is", and the author disclaims all warranties in regard to this software, including all implied warranties of merchantability and fitness. In no event shall the author be liable for any special, direct, indirect, or consequential damages or any damages whatsoever resulting from loss of use, data, or profits, whether in an action of contract, negligence, or other tortious action, arising out of or in connection with the use or performance of this software.
+
+---
+
+Some files contained within this configuration may use other licenses.
+Here is a comprehensive list of them:
+• fuzzel-polkit-agent script, MIT License (desktop/fuzzel-cmd-polkit.sh)
+  This is a fork of it with 2 bug fixes, one less option, and integrated directly within NixOS.
