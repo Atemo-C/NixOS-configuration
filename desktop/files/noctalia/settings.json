@@ -234,7 +234,7 @@
                     "wheelUpdateText": false
                 },
                 {
-                    "compactMode": false,
+                    "compactMode": true,
                     "compactShowAlbumArt": true,
                     "compactShowVisualizer": false,
                     "hideMode": "hidden",
