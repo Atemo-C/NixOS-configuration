@@ -1,4 +1,9 @@
-![Ralsei from DELTARUNE waving at you](https://c.tenor.com/PnuoQnKXre4AAAAj/ralsei-waving.gif)
+<p align="center">
+	<img
+		src="https://c.tenor.com/PnuoQnKXre4AAAAj/ralsei-waving.gif"
+		alt="Ralsei from DELTARUNE waving at you"
+	/>
+</p>
 
 # Desktop directory
 This directory contains all the necessary modules and configuration files to build a working desktop \

@@ -1,4 +1,10 @@
-![Ralsei from DELTARUNE waving at you](https://c.tenor.com/PnuoQnKXre4AAAAj/ralsei-waving.gif)
+<p align="center">
+	<img
+		src="https://c.tenor.com/PnuoQnKXre4AAAAj/ralsei-waving.gif"
+		alt="Ralsei from DELTARUNE waving at you"
+	/>
+</p>
+
 
 # "Throwaway" branch
 This branch is considered to be a "throwaway" one. Nothing here is expected to:

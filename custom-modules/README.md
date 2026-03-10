@@ -1,4 +1,9 @@
-![Ralsei from DELTARUNE waving at you](https://c.tenor.com/PnuoQnKXre4AAAAj/ralsei-waving.gif)
+<p align="center">
+	<img
+		src="https://c.tenor.com/PnuoQnKXre4AAAAj/ralsei-waving.gif"
+		alt="Ralsei from DELTARUNE waving at you"
+	/>
+</p>
 
 # Custom modules directory
 This directory contains custom NixOS modules, used for various things throughout the system.
