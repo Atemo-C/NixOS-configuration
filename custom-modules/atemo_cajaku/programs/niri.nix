@@ -7,5 +7,8 @@
 		"support for XWayland with the help of the xwayland-satellite package."
 		{ default = true; };
 
-	config.environment.systemPackages = lib.optional cfg.xwaylandSupport pkgs.xwayland-satellite;
+	config = lib.mkIf cfg.enable; {
+		environment.systemPackages = lib.optional cfg.xwaylandSupport pkgs.xwayland-satellite;
+
+		programs.dconf.enable = true;
 }
