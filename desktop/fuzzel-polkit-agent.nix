@@ -70,7 +70,7 @@
 					if test -z "$response"; then
 						echo '{"action":"cancel"}'
 					else
-						echo '{"action":"authenticate","password":"$response"}'
+						echo "{\"action\":\"authenticate\",\"password\": \"$response\"}"
 					fi
 				fi
 			done
