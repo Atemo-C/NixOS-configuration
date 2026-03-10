@@ -4,7 +4,7 @@
 
 	# Link Niri's configuration directory.
 	systemd.user.tmpfiles.users.${config.user.name}.rules = [
-		"L %h/.config/niri/ - - - - /etc/nixos/files/niri/"
+		"L %h/.config/niri/ - - - - /etc/nixos/desktop/files/niri/"
 	];
 
 	# Import modules that help create a more complete desktop experience.
