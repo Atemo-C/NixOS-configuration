@@ -3,5 +3,5 @@
 	enable = true;
 
 	# Whether to enable support for X11 environments.
-	x11Support = lib.mkIf config.programs.niri.enable false;
+	x11Support = false;
 }; }
