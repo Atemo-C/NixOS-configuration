@@ -27,7 +27,10 @@
 { config, pkgs, ... }: let
 	fuzzel-cmd-polkit = pkgs.writers.writeDashBin "fuzzel-cmd-polkit" ''
 		# Check for any command-line arguments.
-		[ "$#" -eq 0 ] || echo "Command-line arguments are not supported. Ignoring."
+		[ "$#" -eq 0 ] || {
+			echo "Command-line arguments are not supported. Ignoring."
+			set --
+		}
 
 		# Check if the script is running under a Wayland environment.
 		[ "$XDG_SESSION_TYPE" = "wayland" ] || {
