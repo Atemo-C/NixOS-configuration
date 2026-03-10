@@ -3,13 +3,13 @@
 		# Create a function to print out the help message.
 		helpme() {
 			# Text formatting shortcuts for console messages.
-			ARG=$(tput bold; tput setaf 2)
-			SARG=$(tput bold; tput setaf 5)
-			BOL=$(tput bold)
-			CLR=$(tput sgr0)
-			DIM=$(tput dim)
-			CMD=$(tput bold; tput setaf 3)
-			ICO=$(tput bold; tput setaf 6)
+			ARG=$(${pkgs.ncurses}/bin/tput bold; ${pkgs.ncurses}/bin/tput setaf 2)
+			SARG=$(${pkgs.ncurses}/bin/tput bold; ${pkgs.ncurses}/bin/tput setaf 5)
+			BOL=$(${pkgs.ncurses}/bin/tput bold)
+			CLR=$(${pkgs.ncurses}/bin/tput sgr0)
+			DIM=$(${pkgs.ncurses}/bin/tput dim)
+			CMD=$(${pkgs.ncurses}/bin/tput bold; ${pkgs.ncurses}/bin/tput setaf 3)
+			ICO=$(${pkgs.ncurses}/bin/tput bold; ${pkgs.ncurses}/bin/tput setaf 6)
 
 			# Print the help message.
 			printf "\n┌─ %sDescription%s ────────────────────────────────────────────────────────────────┐\n" "$BOL" "$CLR"
@@ -158,7 +158,7 @@
 				}
 
 				# Generous 30 seconds timeout to check if the screenshot has been captured.
-				timeout 30s niri msg event-stream | grep -q "Screenshot captured" &
+				${pkgs.coreutils}/bin/timeout 30s niri msg event-stream | ${pkgs.gnugrep}/bin/grep -q "Screenshot captured" &
 				GREP_PID=$!
 
 				# Run dummy niri actions to update the even stream for grep.
