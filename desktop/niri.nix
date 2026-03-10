@@ -19,5 +19,8 @@
 
 		# Noctalia desktop shell, providing a bar, notifications, power/program menus, and more.
 		./noctalia-shell.nix
+
+		# Idle management for security and power saving.
+		./swayidle.nix
 	];
 }
