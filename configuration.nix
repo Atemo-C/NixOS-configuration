@@ -20,6 +20,6 @@
 
 	# Custom modules used throughout the system. Other modules may rely on them;
 	# As such, it is recommended to simply leave them be.
-	./custom-modules/atemo_cajaku/programs/niri.nix
-	./custom-modules/atemo_cajaku/config/user.nix
+	./extra-modules/atemo_cajaku/programs/niri.nix
+	./extra-modules/atemo_cajaku/config/user.nix
 ]; }
