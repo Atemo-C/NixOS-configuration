@@ -15,6 +15,9 @@
 	# The Docker daemon to manage Linux containers.
 	./virtualisation/docker.nix
 
+	# Container-based approach to boot a full Android system on a regular GNU/Linux system.
+	./virtualisation/waydroid.nix
+
 	# Custom modules used throughout the system. Other modules may rely on them;
 	# As such, it is recommended to simply leave them be.
 	./custom-modules/atemo_cajaku/programs/niri.nix
