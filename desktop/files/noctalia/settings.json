@@ -537,7 +537,7 @@
         "animationDisabled": true,
         "animationSpeed": 2,
         "autoStartAuth": false,
-        "avatarImage": "/home/atemo/Images/Profile pictures/Atemo/Profile.png",
+        "avatarImage": "~/Images/Profile pictures/Atemo/Profile.png",
         "boxRadiusRatio": 1,
         "clockFormat": "dddd dd/MM/yy hh:mm:ss",
         "clockStyle": "custom",
@@ -794,7 +794,7 @@
     },
     "wallpaper": {
         "automationEnabled": false,
-        "directory": "/home/atemo/Images/Backgrounds/Landscape",
+        "directory": "~/Images/Backgrounds/Landscape",
         "enableMultiMonitorDirectories": false,
         "enabled": true,
         "favorites": [
