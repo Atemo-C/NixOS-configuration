@@ -9,6 +9,9 @@
 	# The Niri Wayland compositor, and its accompanying utilities.
 	./desktop/niri.nix
 
+	# The libvirt virtualisation daemon with Virt-Manager to graphically manage virtual machines.
+	./virtualisation/libvirt.nix
+
 	# Custom modules used throughout the system. Other modules may rely on them;
 	# As such, it is recommended to simply leave them be.
 	./custom-modules/atemo_cajaku/programs/niri.nix
