@@ -266,6 +266,12 @@ switch-events {
 	// There will be "tablet" events here whenever I get a touchscreen device of my own.
 }
 
+// Slow down or speed up animations by this factor. Values below 1 speed animations up.
+animations { slowdown 0.6; }
+
+// Include the toggle for animations.
+include "./animation-state.kdl"
+
 // Layout configuration.
 layout {
 	// Always center the active window if it is a single column on the screen.

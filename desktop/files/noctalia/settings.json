@@ -593,9 +593,9 @@
     },
     "hooks": {
         "darkModeChange": "",
-        "enabled": false,
-        "performanceModeDisabled": "",
-        "performanceModeEnabled": "",
+        "enabled": true,
+        "performanceModeDisabled": "sh -c 'echo \"\" > ~/.config/niri/animation-state.kdl'",
+        "performanceModeEnabled": "sh -c 'echo \"animations { off; }\" > ~/.config/niri/animation-state.kdl'",
         "screenLock": "",
         "screenUnlock": "",
         "session": "",
