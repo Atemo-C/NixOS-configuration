@@ -534,7 +534,7 @@
     "general": {
         "allowPanelsOnScreenWithoutBar": true,
         "allowPasswordWithFprintd": false,
-        "animationDisabled": true,
+        "animationDisabled": false,
         "animationSpeed": 2,
         "autoStartAuth": false,
         "avatarImage": "~/Images/Profile pictures/Atemo/Profile.png",
@@ -572,7 +572,7 @@
         },
         "language": "",
         "lockOnSuspend": true,
-        "lockScreenAnimations": false,
+        "lockScreenAnimations": true,
         "lockScreenBlur": 0,
         "lockScreenCountdownDuration": 10000,
         "lockScreenMonitors": [
@@ -599,7 +599,7 @@
         "screenLock": "",
         "screenUnlock": "",
         "session": "",
-        "startup": "",
+        "startup": "sh -c 'echo \"\" > ~/.config/niri/animation-state.kdl'",
         "wallpaperChange": ""
     },
     "location": {
