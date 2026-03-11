@@ -104,18 +104,18 @@
 			};
 
 			"nvidia/nvidia-application-profiles-rc.d/60-librewolf-firefox.json".text = ''
-{
-		"rules": [{
-			"pattern": ".librewolf-wrapped",
-			"profile": "ForceSeparateTrimThread",
+				{
+					"rules": [{
+						"pattern": ".librewolf-wrapped",
+						"profile": "ForceSeparateTrimThread",
 
-			"pattern": ".librewolf-wrapped",
-			"profile": "FA0",
+						"pattern": ".librewolf-wrapped",
+						"profile": "FA0",
 
-			"pattern": ".librewolf-wrapped",
-			"profile": "DedicatedHwStatePerCtx"
-		}]
-}
+						"pattern": ".librewolf-wrapped",
+						"profile": "DedicatedHwStatePerCtx"
+					}]
+				}
 			'';
 		};
 	};
