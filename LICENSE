@@ -9,5 +9,5 @@ The software is provided "as is", and the author disclaims all warranties in reg
 
 Some files contained within this configuration may use other licenses.
 Here is a comprehensive list of them:
-• fuzzel-polkit-agent script, MIT License (desktop/fuzzel-cmd-polkit-agent.nix)
+• fuzzel-cmd-polkit-agent script, MIT License (desktop/fuzzel-cmd-polkit-agent.nix)
   This is a fork of https://codeberg.org/lukeflo/fuzzel-cmd-polkit-agent with 2 bug fixes, one less option, and integrated directly within NixOS.
