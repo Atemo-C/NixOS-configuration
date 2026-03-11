@@ -483,5 +483,13 @@ environment {
 		}
 	}
 
+// Emulate zero (unknown) presentation time returned from DRM.
+// This is a thing on NVIDIA proprietary drivers;
+// So this flag can be used to test that niri doesn't break too hard on those systems.
+//
+// Additionally, as seen in the issue below, this can "fix" issues with the
+// fully open-source NVIDIA driver stack in some cases:
+// https://github.com/niri-wm/niri/issues/3551
+
 // Include Noctalia's Shell configuration for the colorscheme.
 include "./noctalia.kdl"
