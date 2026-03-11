@@ -7,21 +7,14 @@
 
 
 # "Throwaway" branch
-This branch is considered to be a "throwaway" one. Nothing here is expected to:
-- Be functional;
-- Be important;
-- Be of quality;
-- Make sense;
-- Have any use;
-- And plenty more.
-
-It is here for me to play around, to throw things at the wall and see what sticks, and the likes. Though, of course, what sticks will eventually make its way into the main branch. \
+This branch is considered to be a "throwaway" one. Nothing here is expected to be functional, important, of quality, and more.
+It is here for me to play around, to throw things at the wall and see what sticks, and more. Though, of course, and perhaps more importantly, what sticks will eventually make its way into the main branch. \
 If you are looking for the experimental or main branch, you can find them here respectively:
 - [Experimental branch](https://github.com/Atemo-C/NixOS-configuration/tree/experimental)
 - [Main branch](https://github.com/Atemo-C/NixOS-configuration)
 
 What follows will be the text of a "serious" configuration.
-However, and rather obviously, it shall not be taken as factual or accurate.
+However, and rather obviously, it shall not be taken as factual or accurate, as it might not represent the current state of this configuration.
 
 ---
 
