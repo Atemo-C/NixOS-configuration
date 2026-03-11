@@ -111,7 +111,7 @@ in { environment = {
 		vertical-pad=6
 
 		# Use the icon theme set for the user in the `/etc/nixos/theming/icons.nix` module.
-		icon-theme="$USER_ICON_THEME"
+		icon-theme="${config.home-manager.users.${config.user.name}.gtk.iconTheme.name}"
 
 		# Line height in pixels.
 		line-height=20
