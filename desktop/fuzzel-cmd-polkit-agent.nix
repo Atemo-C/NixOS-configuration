@@ -25,7 +25,7 @@
 # SOFTWARE.
 
 { config, pkgs, ... }: let
-	fuzzel-cmd-polkit = pkgs.writers.writeDashBin "fuzzel-cmd-polkit" ''
+	fuzzel-cmd-polkit-agent = pkgs.writers.writeDashBin "fuzzel-cmd-polkit-agent" ''
 		# Check for any command-line arguments.
 		[ "$#" -eq 0 ] || {
 			echo "Command-line arguments are not supported. Ignoring."
@@ -80,7 +80,7 @@
 		fi
 	'';
 in { environment = {
-	systemPackages = [ fuzzel-cmd-polkit ];
+	systemPackages = [ fuzzel-cmd-polkit-agent ];
 
 	etc."fuzzel/fuzzel.ini".text = ''
 		[border]
