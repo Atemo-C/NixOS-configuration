@@ -648,9 +648,9 @@
         "resumeLockCommand": "",
         "resumeScreenOffCommand": "",
         "resumeSuspendCommand": "",
-        "screenOffCommand": "",
+        "screenOffCommand": "niri msg action power-off-monitors",
         "screenOffTimeout": 600,
-        "suspendCommand": "",
+        "suspendCommand": "noctalia-shell ipc call sessionMenu lockAndSuspend",
         "suspendTimeout": 0
     },
     "location": {
