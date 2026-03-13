@@ -9,6 +9,7 @@
 		alt="GIF of Ralsei from DELTARUNE doing a cute pirouette."
 	/>
 </h1>
+
 This branch is considered to be a "throwaway" one. Nothing here is expected to be functional, important, of quality, and more.
 It is here for me to play around, to throw things at the wall and see what sticks, and more. Though, of course, and perhaps more importantly, what sticks will eventually make its way into the main branch. \
 If you are looking for the experimental or main branch, you can find them here respectively:
