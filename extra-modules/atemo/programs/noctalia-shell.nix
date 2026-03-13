@@ -5,5 +5,16 @@
 		Whether to install the Noctalia Shell, a sleek and minimal desktop shell thoughtfully crafted for Wayland, built with Quickshell.
 	'';
 
-	config.environment.systemPackages = lib.optional cfg.install pkgs.noctalia-shell;
+	config = lib.mkIf cfg.install {
+		environment.systemPackages = [ pkgs.noctalia-shell ];
+
+		# Temporarily apply PR.
+		# https://github.com/NixOS/nixpkgs/pull/495434
+		nixpkgs.overlays = [
+			(final: prev: {
+				noctalia-qs = final.callPackage ../../external/pull-requests/noctalia-shell/pkgs/by-name/no/noctalia-qs/package.nix {};
+				noctalia-shell = final.callPackage ../../external/pull-requests/noctalia-shell/pkgs/by-name/no/noctalia-shell/package.nix {};
+			})
+		];
+	};
 }
