@@ -388,7 +388,6 @@ spawn-sh-at-startup "thunar --daemon"
 spawn-sh-at-startup "/etc/nixos/scripts/cmd-polkit-fuzzel.sh"
 spawn-sh-at-startup "foot --server"
 spawn-sh-at-startup "[ -f ly-session.log ] && rm ly-session.log"
-spawn-sh-at-startup "swayidle -w timeout 300 'noctalia-shell ipc call lockScreen lock' timeout 600 'niri msg action power-off-monitors'"
 
 // Disable client-side decorations.
 prefer-no-csd
