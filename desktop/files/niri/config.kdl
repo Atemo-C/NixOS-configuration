@@ -339,10 +339,6 @@ layout {
 	// Polkit authentification agent.
 	spawn-at-startup "fuzzel-cmd-polkit-agent"
 
-	// Idle management.
-	spawn-sh-at-startup "swayidle -w timeout 300 'noctalia-shell ipc call lockScreen lock' timeout 600 'niri msg action power-off-monitors'"
-	spawn-at-startup "sway-audio-idle-inhibit"
-
 	// Terminal emulator server.
 	spawn-at-startup "foot" "--server"
 

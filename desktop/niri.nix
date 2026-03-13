@@ -17,14 +17,12 @@
 		# Log in to Niri with a nice TUI interface.
 		./ly.nix
 
-		# Noctalia desktop shell, providing a bar, notifications, power/program menus, and more.
+		# Noctalia desktop shell, providing:
+		# A bar, notifications, power/program menus, idle management, and more.
 		./noctalia-shell.nix
 
 		# Screenshot management for Niri.
 		./screenshot.nix
-
-		# Idle management for security and power saving.
-		./swayidle.nix
 	];
 
 	# GSettings/dconf workaround for certain programs. Not ideal, but it works.
