@@ -1,12 +1,14 @@
-<p align="center">
+<h1 align="center">
 	<img
-		src="https://c.tenor.com/PnuoQnKXre4AAAAj/ralsei-waving.gif"
-		alt="Ralsei from DELTARUNE waving at you"
+		src="https://deltarune.wiki/images/Ralsei_battle_pirouette.gif"
+		alt="GIF of Ralsei from DELTARUNE doing a cute pirouette."
 	/>
-</p>
-
-
-# "Throwaway" branch
+	"Throwaway" branch
+	<img
+		src="https://deltarune.wiki/images/Ralsei_battle_pirouette.gif"
+		alt="GIF of Ralsei from DELTARUNE doing a cute pirouette."
+	/>
+</h1>
 This branch is considered to be a "throwaway" one. Nothing here is expected to be functional, important, of quality, and more.
 It is here for me to play around, to throw things at the wall and see what sticks, and more. Though, of course, and perhaps more importantly, what sticks will eventually make its way into the main branch. \
 If you are looking for the experimental or main branch, you can find them here respectively:

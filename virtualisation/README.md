@@ -1,10 +1,3 @@
-<p align="center">
-	<img
-		src="https://c.tenor.com/PnuoQnKXre4AAAAj/ralsei-waving.gif"
-		alt="Ralsei from DELTARUNE waving at you"
-	/>
-</p>
-
 # Virtualisation directory
 This directory contains host modules for virtualisation. \
 It contains:
