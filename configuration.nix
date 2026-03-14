@@ -94,7 +94,6 @@
 	./extra-modules/atemo/programs/btop.nix
 	./extra-modules/atemo/programs/bzip3.nix
 	./extra-modules/atemo/programs/calcurse.nix
-	./extra-modules/atemo/programs/cmd-polkit.nix
 	./extra-modules/atemo/programs/cpu-x.nix
 	./extra-modules/atemo/programs/cuda.nix
 	./extra-modules/atemo/programs/dar.nix
