@@ -1,6 +1,7 @@
 { config, pkgs, ... }: {
-	# Sleek and minimal desktop shell thoughtfully crafted for Wayland, built with Quickshell.
-	environment.systemPackages = [ pkgs.noctalia-shell ];
+	# Whether to install the Noctalia shell,
+	# a sleek and minimal desktop shell thoughtfully crafted for Wayland, built with Quickshell.
+	programs.noctalia-shell.install = true;
 
 	# Link Noctalia's configuration directory.
 	systemd.user.tmpfiles.users.${config.user.name}.rules = [
