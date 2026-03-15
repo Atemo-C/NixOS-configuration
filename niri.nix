@@ -11,10 +11,6 @@
 			ozoneWayland.enable = true;
 		};
 
-		# Whether to install cmd-polkit for Polkit authentification used in dmenu-like menus.
-		# Required by `/etc/nixos/scripts/cmd-polkit-fuzzel.sh`.
-		cmd-polkit.install = true;
-
 		# Whether to enable dconf.
 		dconf.enable = true;
 
