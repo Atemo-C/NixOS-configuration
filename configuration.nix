@@ -1,6 +1,5 @@
 # If you have not already, please read this configuration's README.
 #──────────────────────────────────────────────────────────────────
-#
 # This module imports all other relevant modules used by the system.
 # You can choose to select/unselect one simply by uncommenting/commenting it.
 # Some modules may import their own submodules, outside of here.
@@ -12,6 +11,9 @@
 	# Module that makes sure keyboard layout settings are applied globally.
 	# The keyboard layout settings are set in your device's `settings.nix` module.
 	./input/keyboard-layout.nix
+
+	# Use the OpenTabletDriver daemon and drivers instead of built-in ones.
+#	./input/opentabletdriver.nix
 
 	# The libvirt virtualisation daemon with Virt-Manager to graphically manage virtual machines.
 	./virtualisation/libvirt.nix
