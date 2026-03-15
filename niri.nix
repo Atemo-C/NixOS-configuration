@@ -28,9 +28,6 @@
 		# `services.upower.enable`
 		noctalia-shell.install = true;
 
-		# Whether to install Swayidle.
-		swayidle.install = true;
-
 		# Shell abbreviation to start Niri by typing `n`.
 		fish.shellAbbrs.n = "niri-session";
 	};
