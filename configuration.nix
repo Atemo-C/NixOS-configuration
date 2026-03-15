@@ -14,7 +14,7 @@
 	./input/keyboard-layout.nix
 
 	# The libvirt virtualisation daemon with Virt-Manager to graphically manage virtual machines.
-#	./virtualisation/libvirt.nix
+	./virtualisation/libvirt.nix
 
 	# The Docker daemon to manage Linux containers.
 #	./virtualisation/docker.nix
