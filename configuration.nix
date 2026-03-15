@@ -9,14 +9,18 @@
 	# The Niri Wayland compositor, and its accompanying utilities.
 	./desktop/niri.nix
 
+	# Module that makes sure keyboard layout settings are applied globally.
+	# The keyboard layout settings are set in your device's `settings.nix` module.
+	./input/keyboard-layout.nix
+
 	# The libvirt virtualisation daemon with Virt-Manager to graphically manage virtual machines.
-	./virtualisation/libvirt.nix
+#	./virtualisation/libvirt.nix
 
 	# The Docker daemon to manage Linux containers.
-	./virtualisation/docker.nix
+#	./virtualisation/docker.nix
 
 	# Container-based approach to boot a full Android system on a regular GNU/Linux system.
-	./virtualisation/waydroid.nix
+#	./virtualisation/waydroid.nix
 
 	# Custom modules used throughout the system. Other modules may rely on them;
 	# As such, it is recommended to simply leave them be.
