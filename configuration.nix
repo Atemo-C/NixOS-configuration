@@ -19,6 +19,9 @@
 	# Use the OpenTabletDriver daemon and drivers instead of built-in ones.
 #	./input/opentabletdriver.nix
 
+	# Hardware and software support for ZSA's keyboards.
+	./input/zsa.nix
+
 	# The libvirt virtualisation daemon with Virt-Manager to graphically manage virtual machines.
 	./virtualisation/libvirt.nix
 
