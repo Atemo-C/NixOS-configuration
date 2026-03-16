@@ -11,10 +11,6 @@
 			ozoneWayland.enable = true;
 		};
 
-		# Whether to install cmd-polkit for Polkit authentification used in dmenu-like menus.
-		# Required by `/etc/nixos/scripts/cmd-polkit-fuzzel.sh`.
-		cmd-polkit.install = true;
-
 		# Whether to enable dconf.
 		dconf.enable = true;
 
@@ -31,9 +27,6 @@
 		# `services.power-profiles-daemon.enable` OR `services.tuned.enable`
 		# `services.upower.enable`
 		noctalia-shell.install = true;
-
-		# Whether to install Swayidle.
-		swayidle.install = true;
 
 		# Shell abbreviation to start Niri by typing `n`.
 		fish.shellAbbrs.n = "niri-session";
