@@ -8,6 +8,10 @@
 	# The Niri Wayland compositor, and its accompanying utilities.
 	./desktop/niri.nix
 
+	# Configure some basic global options for input devices;
+	# Such as pointer acceleration or keyboard key repeat rate.
+	./input/input-settings.nix
+
 	# Module that makes sure keyboard layout settings are applied globally.
 	# The keyboard layout settings are set in your device's `settings.nix` module.
 	./input/keyboard-layout.nix
