@@ -336,9 +336,6 @@ layout {
 	// Desktop shell.
 	spawn-at-startup "noctalia-shell"
 
-	// Polkit authentification agent.
-	spawn-at-startup "fuzzel-cmd-polkit-agent"
-
 	// Terminal emulator server.
 	spawn-at-startup "foot" "--server"
 
