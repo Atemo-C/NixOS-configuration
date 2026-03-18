@@ -282,7 +282,7 @@ layout {
 	background-color "transparent"
 
 	// Set the default width of new windows.
-	default-column-width { proportion 0.5; }
+	default-column-width { proportion 1.0; }
 
 	// Width of the focus ring in pixels.
 	focus-ring { width 1; }
