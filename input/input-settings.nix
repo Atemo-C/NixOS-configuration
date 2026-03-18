@@ -5,9 +5,14 @@
 		# adaptive | flat | custom
 		mouse.accelProfile = "flat";
 
-		# Set the touchpad pointer acceleration profile to the given one.
-		# adaptive | flat | custom
-		touchpad.accelProfile = "flat";
+		touchpad = {
+			# Set the touchpad pointer acceleration profile to the given one.
+			# adaptive | flat | custom
+			accelProfile = "flat";
+
+			# Whether to enable tap-to-click behavior.
+			tapping = true;
+		};
 	};
 
 	# Delay in milliseconds before a held-down key repeats;
