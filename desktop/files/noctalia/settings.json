@@ -18,13 +18,13 @@
         "pinnedApps": [
         ],
         "position": "center",
-        "screenshotAnnotationTool": "",
+        "screenshotAnnotationTool": "xdg-terminal-exec micro",
         "showCategories": true,
         "showIconBackground": false,
         "sortByMostUsed": false,
-        "terminalCommand": "footclient -e",
+        "terminalCommand": "xdg-terminal-exec",
         "useApp2Unit": false,
-        "viewMode": "grid"
+        "viewMode": "list"
     },
     "audio": {
         "mprisBlacklist": [
@@ -35,16 +35,16 @@
         "volumeFeedback": false,
         "volumeFeedbackSoundFile": "",
         "volumeOverdrive": false,
-        "volumeStep": 2
+        "volumeStep": 1
     },
     "bar": {
         "autoHideDelay": 500,
         "autoShowDelay": 150,
-        "backgroundOpacity": 0.93,
+        "backgroundOpacity": 1,
         "barType": "simple",
         "capsuleColorKey": "none",
         "capsuleOpacity": 1,
-        "contentPadding": 2,
+        "contentPadding": 0,
         "density": "default",
         "displayMode": "always_visible",
         "enableExclusionZoneInset": true,
@@ -73,7 +73,7 @@
         "showCapsule": true,
         "showOnWorkspaceSwitch": true,
         "showOutline": false,
-        "useSeparateOpacity": false,
+        "useSeparateOpacity": true,
         "widgetSpacing": 6,
         "widgets": {
             "center": [
@@ -84,7 +84,7 @@
                     "hideMode": "alwaysExpanded",
                     "icon": "box-multiple",
                     "id": "CustomButton",
-                    "ipcIdentifier": "overview",
+                    "ipcIdentifier": "c_overview",
                     "leftClickExec": "niri msg action toggle-overview",
                     "leftClickUpdateText": false,
                     "maxTextLength": {
@@ -124,7 +124,7 @@
                     "iconScale": 0.8,
                     "id": "Workspace",
                     "labelMode": "index",
-                    "occupiedColor": "secondary",
+                    "occupiedColor": "none",
                     "pillSize": 0.6,
                     "showApplications": true,
                     "showApplicationsHover": true,
@@ -163,7 +163,7 @@
                     "hideMode": "alwaysExpanded",
                     "icon": "folder",
                     "id": "CustomButton",
-                    "ipcIdentifier": "filemanager",
+                    "ipcIdentifier": "c_filemanager",
                     "leftClickExec": "xdg-open \"$HOME\"",
                     "leftClickUpdateText": false,
                     "maxTextLength": {
@@ -193,21 +193,21 @@
                 {
                     "colorizeSystemIcon": "none",
                     "enableColorization": false,
-                    "generalTooltipText": "Area screenshot / Window screenshot / Fullscreen screenshot",
+                    "generalTooltipText": "Area / Window / Fullscreen screenshot",
                     "hideMode": "alwaysExpanded",
                     "icon": "screenshot",
                     "id": "CustomButton",
-                    "ipcIdentifier": "niri-screenshot",
-                    "leftClickExec": "niri-screenshot copy area",
+                    "ipcIdentifier": "c_screenshot",
+                    "leftClickExec": "screenshot copy area",
                     "leftClickUpdateText": false,
                     "maxTextLength": {
                         "horizontal": 10,
                         "vertical": 10
                     },
-                    "middleClickExec": "",
+                    "middleClickExec": "screenshot copy fullscreen",
                     "middleClickUpdateText": false,
                     "parseJson": false,
-                    "rightClickExec": "niri-screehsnot copy window",
+                    "rightClickExec": "screenshot copy window",
                     "rightClickUpdateText": false,
                     "showExecTooltip": false,
                     "showIcon": true,
@@ -231,7 +231,7 @@
                     "id": "MediaMini",
                     "maxWidth": 145,
                     "panelShowAlbumArt": true,
-                    "scrollingMode": "always",
+                    "scrollingMode": "hover",
                     "showAlbumArt": true,
                     "showArtistFirst": true,
                     "showProgressRing": true,
@@ -263,38 +263,8 @@
                     "usePadding": true
                 },
                 {
-                    "colorizeSystemIcon": "none",
-                    "enableColorization": false,
-                    "generalTooltipText": "Power menu",
-                    "hideMode": "alwaysExpanded",
-                    "icon": "power",
-                    "id": "CustomButton",
-                    "ipcIdentifier": "power",
-                    "leftClickExec": "noctalia-shell ipc call sessionMenu toggle",
-                    "leftClickUpdateText": false,
-                    "maxTextLength": {
-                        "horizontal": 10,
-                        "vertical": 10
-                    },
-                    "middleClickExec": "",
-                    "middleClickUpdateText": false,
-                    "parseJson": false,
-                    "rightClickExec": "",
-                    "rightClickUpdateText": false,
-                    "showExecTooltip": false,
-                    "showIcon": true,
-                    "showTextTooltip": false,
-                    "textCollapse": "",
-                    "textCommand": "",
-                    "textIntervalMs": 3000,
-                    "textStream": false,
-                    "wheelDownExec": "",
-                    "wheelDownUpdateText": false,
-                    "wheelExec": "",
-                    "wheelMode": "unified",
-                    "wheelUpExec": "",
-                    "wheelUpUpdateText": false,
-                    "wheelUpdateText": false
+                    "iconColor": "error",
+                    "id": "SessionMenu"
                 }
             ],
             "right": [
@@ -324,6 +294,7 @@
                         "hideInactive": false,
                         "iconSpacing": 4,
                         "inactiveColor": "none",
+                        "micFilterRegex": "",
                         "removeMargins": false
                     },
                     "id": "plugin:privacy-indicator"
@@ -343,15 +314,6 @@
                     "textColor": "none"
                 },
                 {
-                    "deviceNativePath": "__default__",
-                    "displayMode": "icon-always",
-                    "hideIfIdle": false,
-                    "hideIfNotDetected": true,
-                    "id": "Battery",
-                    "showNoctaliaPerformance": true,
-                    "showPowerProfiles": true
-                },
-                {
                     "applyToAllMonitors": false,
                     "displayMode": "alwaysShow",
                     "iconColor": "none",
@@ -359,22 +321,31 @@
                     "textColor": "none"
                 },
                 {
+                    "deviceNativePath": "__default__",
+                    "displayMode": "graphic-clean",
+                    "hideIfIdle": false,
+                    "hideIfNotDetected": true,
+                    "id": "Battery",
+                    "showNoctaliaPerformance": true,
+                    "showPowerProfiles": true
+                },
+                {
                     "clockColor": "none",
                     "customFont": "",
-                    "formatHorizontal": "ddd dd/MM/yy hh:mm",
+                    "formatHorizontal": "ddd dd/mm/yy hh:mm",
                     "formatVertical": "HH mm - dd MM",
                     "id": "Clock",
-                    "tooltipFormat": "HH:mm ddd, MMM dd",
+                    "tooltipFormat": "dddd dd/mm/yy hh:mm:ss",
                     "useCustomFont": false
                 },
                 {
-                    "colorizeSystemIcon": "none",
-                    "enableColorization": false,
-                    "generalTooltipText": "Close / Kill program",
+                    "colorizeSystemIcon": "error",
+                    "enableColorization": true,
+                    "generalTooltipText": "Close/Kill program",
                     "hideMode": "alwaysExpanded",
                     "icon": "skull",
                     "id": "CustomButton",
-                    "ipcIdentifier": "closekill",
+                    "ipcIdentifier": "c_closekill",
                     "leftClickExec": "niri msg action close-window",
                     "leftClickUpdateText": false,
                     "maxTextLength": {
@@ -384,7 +355,7 @@
                     "middleClickExec": "",
                     "middleClickUpdateText": false,
                     "parseJson": false,
-                    "rightClickExec": "kill -9 \"$(niri msg focused-window | sed -n 's/^ PID: //p')\"",
+                    "rightClickExec": "kill -9 \"$(niri msg focused-window | sed -n 's/^  PID: //p')\"",
                     "rightClickUpdateText": false,
                     "showExecTooltip": false,
                     "showIcon": true,
@@ -407,7 +378,7 @@
     "brightness": {
         "backlightDeviceMappings": [
         ],
-        "brightnessStep": 3,
+        "brightnessStep": 1,
         "enableDdcSupport": false,
         "enforceMinimum": true
     },
@@ -512,7 +483,7 @@
         "deadOpacity": 0.6,
         "displayMode": "auto_hide",
         "dockType": "floating",
-        "enabled": true,
+        "enabled": false,
         "floatingRatio": 1,
         "groupApps": false,
         "groupClickAction": "cycle",
@@ -540,11 +511,11 @@
         "allowPanelsOnScreenWithoutBar": true,
         "allowPasswordWithFprintd": false,
         "animationDisabled": false,
-        "animationSpeed": 1.5,
+        "animationSpeed": 1.6,
         "autoStartAuth": false,
         "avatarImage": "~/.face",
         "boxRadiusRatio": 1,
-        "clockFormat": "dddd dd/MM/yy hh:mm",
+        "clockFormat": "dddd dd/mm/yy hh:mm:ss",
         "clockStyle": "custom",
         "compactLockScreen": true,
         "dimmerOpacity": 0,
@@ -581,24 +552,24 @@
         "language": "",
         "lockOnSuspend": true,
         "lockScreenAnimations": false,
-        "lockScreenBlur": 0,
+        "lockScreenBlur": 0.4,
         "lockScreenCountdownDuration": 10000,
         "lockScreenMonitors": [
         ],
-        "lockScreenTint": 0,
+        "lockScreenTint": 0.4,
         "passwordChars": false,
         "radiusRatio": 0.5,
         "reverseScroll": false,
-        "scaleRatio": 0.9,
+        "scaleRatio": 1,
         "screenRadiusRatio": 1,
-        "shadowDirection": "bottom_right",
-        "shadowOffsetX": 2,
-        "shadowOffsetY": 3,
+        "shadowDirection": "center",
+        "shadowOffsetX": 0,
+        "shadowOffsetY": 0,
         "showChangelogOnStartup": true,
-        "showHibernateOnLockScreen": false,
+        "showHibernateOnLockScreen": true,
         "showScreenCorners": false,
         "showSessionButtonsOnLockScreen": true,
-        "telemetryEnabled": false
+        "telemetryEnabled": true
     },
     "hooks": {
         "darkModeChange": "",
@@ -613,17 +584,17 @@
     },
     "idle": {
         "customCommands": "[]",
-        "enabled": false,
+        "enabled": true,
         "fadeDuration": 5,
         "lockCommand": "",
         "lockTimeout": 660,
         "resumeLockCommand": "",
         "resumeScreenOffCommand": "",
         "resumeSuspendCommand": "",
-        "screenOffCommand": "",
+        "screenOffCommand": "niri msg action power-off-monitors",
         "screenOffTimeout": 600,
-        "suspendCommand": "",
-        "suspendTimeout": 1800
+        "suspendCommand": "noctalia-shell ipc call sessionMenu lockAndSuspend",
+        "suspendTimeout": 0
     },
     "location": {
         "analogClockInCalendar": false,
@@ -665,7 +636,7 @@
         "disableWallpaper": false
     },
     "notifications": {
-        "backgroundOpacity": 1,
+        "backgroundOpacity": 0.9,
         "clearDismissed": true,
         "criticalUrgencyDuration": 15,
         "density": "compact",
@@ -698,7 +669,7 @@
     },
     "osd": {
         "autoHideMs": 2000,
-        "backgroundOpacity": 1,
+        "backgroundOpacity": 0.9,
         "enabled": true,
         "enabledTypes": [
             0,
@@ -711,7 +682,7 @@
         "overlayLayer": true
     },
     "plugins": {
-        "autoUpdate": true
+        "autoUpdate": false
     },
     "sessionMenu": {
         "countdownDuration": 10000,
@@ -792,7 +763,7 @@
         "diskCriticalThreshold": 90,
         "diskWarningThreshold": 80,
         "enableDgpuMonitoring": false,
-        "externalMonitor": "xdg-terminal-exec btop",
+        "externalMonitor": "resources || missioncenter || jdsystemmonitor || corestats || system-monitoring-center || gnome-system-monitor || plasma-systemmonitor || mate-system-monitor || ukui-system-monitor || deepin-system-monitor || pantheon-system-monitor",
         "gpuCriticalThreshold": 90,
         "gpuWarningThreshold": 80,
         "memCriticalThreshold": 90,
@@ -815,10 +786,10 @@
     },
     "ui": {
         "boxBorderEnabled": false,
-        "fontDefault": "Sans Serif",
+        "fontDefault": "sans",
         "fontDefaultScale": 1,
         "fontFixed": "monospace",
-        "fontFixedScale": 1,
+        "fontFixedScale": 1.05,
         "panelBackgroundOpacity": 0.93,
         "panelsAttachedToBar": true,
         "scrollbarAlwaysVisible": true,
@@ -829,7 +800,7 @@
     },
     "wallpaper": {
         "automationEnabled": false,
-        "directory": "~/Pictures/Wallpapers",
+        "directory": "~/Images/Backgrounds/Landscape/",
         "enableMultiMonitorDirectories": false,
         "enabled": true,
         "favorites": [

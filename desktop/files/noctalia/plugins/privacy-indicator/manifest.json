@@ -29,7 +29,8 @@
       "removeMargins": false,
       "iconSpacing": 4,
       "activeColor": "primary",
-      "inactiveColor": "none"
+      "inactiveColor": "none",
+      "micFilterRegex": ""
     }
   }
 }
