@@ -84,7 +84,7 @@
 		license = licenses.mit;
 
 		# Maintainer of this module.
-		maintainers = [ bob ];
+		maintainers = [ atemo-c ];
 
 		# Platforms this was built and tested on.
 		# This *should* be able to build on some other platforms, but I have not tried.
