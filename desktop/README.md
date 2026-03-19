@@ -39,6 +39,6 @@ For me, I keep it, if just for that occasional archaic Java application, or the 
 
 ---
 
-## Additional things.
+## Additional things
 A [screenshot script](https://github.com/Atemo-C/NixOS-configuration/blob/Throwaway/desktop/screenshot.nix) is provided. It leverages Niri's built-in screenshot utility, and extends it with others to have a more complete and intuitive screenshot experience. The tools used in the script do not "pollute" the user's environment, and are self-contained to the script. \
 Of course, if you install some of these same utilities on the system, they will not be duplicated; Nix will automatically make it automatically available to both. The joy of symlinks.
