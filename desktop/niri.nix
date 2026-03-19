@@ -1,32 +1,38 @@
-{ config, pkgs, ... }: {
-	# Whether to enable the Niri Wayland compositor.
-	# XWayland support is enabled by default. You can disable it with the following option:
-	# programs.niri.xwaylandSupport = false;
-	programs.niri.enable = true;
+{ config, lib, pkgs, ... }: { programs = rec {
+	niri = {
+		# Install the Niri Wayland compositor.
+		enable = true;
 
-	# Link Niri's configuration directory.
-	systemd.user.tmpfiles.users.${config.user.name}.rules = [
-		"L %h/.config/niri/ - - - - /etc/nixos/desktop/files/niri/"
-	];
+		# [C] Enable support for XWayland with the XWayland Satellite.
+		xwayland.enable = true;
 
-	# Import modules that help create a more complete desktop experience.
-	imports = [
-		# Log in to Niri with a nice TUI interface.
-		./ly.nix
+		# [C] Link Niri's configuration directory,
+		# from `/etc/nixos/desktop/files/niri/` to `~/.config/niri/`.
+		linkConfiguration = true;
 
-		# Noctalia desktop shell, providing:
-		# A bar, notifications, power/program menus, idle management, and more.
-		./noctalia-shell.nix
-
-		# Screenshot management for Niri.
-		./screenshot.nix
-	];
-
-	# GSettings/dconf workaround for certain programs. Not ideal, but it works.
-	# https://github.com/thomX75/nixos-modules/blob/main/Glib-Schemas-Fix/glib-schemas-fix.nix
-	# https://github.com/NixOS/nixpkgs/issues/149812
-	environment = {
-		extraInit = ''export XDG_DATA_DIRS="$XDG_DATA_DIRS:${pkgs.gtk3}/share/gsettings-schemas/${pkgs.gtk3.name}"'';
-		variables.GSETTINGS_SCHEMA_DIR = "${pkgs.gtk3}/share/gsettings-schemas/${pkgs.gtk3.name}/glib-2.0/schemas";
+		# [C] Apply workarounds to gsettings schemas sourcing and configuration.
+		# https://github.com/NixOS/nixpkgs/issues/149812
+		# https://github.com/thomX75/nixos-modules/blob/main/Glib-Schemas-Fix/glib-schemas-fix.nix
+		gsettingsWorkarounds.enable = true;
 	};
-}
+
+	ly = lib.mkIf niri.enable {
+		# Install the ly display manager.
+		enable = true;
+
+		# Disable support for X11 environments.
+		x11Support = false;
+	};
+
+	noctalia-shell = lib.mkIf niri.enable {
+		# [C] Install the Noctalia Shell.
+		enable = true;
+
+		# [C] Link Noctalia's configuration directory,
+		# from `/etc/nixos/desktop/files/noctalia/` to `~/.config/noctalia/`.
+		linkConfiguration = true;
+	};
+
+	# [C] Install a screenshot utility for Niri.
+	niri-screenshot.enable = lib.mkIf niri.enable true;
+}; }

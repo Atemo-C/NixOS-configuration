@@ -1,22 +1,40 @@
 # Original module:
 # https://github.com/NixOS/nixpkgs/blob/nixos-unstable/nixos/modules/programs/wayland/niri.nix
 { config, lib, pkgs, ... }: let cfg = config.programs.niri; in {
-	meta.maintainers = [ lib.maintainers.atemo-c ];
+	meta.maintainers = with lib.maintainers; [
+		getchoo # Original module.
+		sodiboo # Original module.
+		atemo-c
+	];
 
-	options.programs.niri.xwaylandSupport = lib.mkEnableOption
-		"support for XWayland with the help of the xwayland-satellite package."
-		{ default = true; };
+	options.programs.niri = {
+		gsettingsWorkarounds = lib.mkEnableOption "apply workarounds to gsettings schemas sourcing and configuration. See https://github.com/NixOS/nixpkgs/issues/149812 for more details.";
 
-	config = lib.mkIf cfg.enable; {
-		# Install the XWayland satellite for XWayland support.
-		environment.systemPackages = lib.optional cfg.xwaylandSupport pkgs.xwayland-satellite;
+		linkConfiguration = lib.mkOption {
+			type = lib.types.bool;
+			default = false;
+			description = "Whether to link Niri's configuration directory, from /etc/nixos/desktop/files/niri/ to ~/.config/niri/";
+		};
 
-		# Enable Dconf.
+		xwayland = lib.mkEnableOption "support for XWayland by using the XWayland Satellite.";
+	};
+
+	config = lib.mkIf cfg.enable {
 		programs.dconf.enable = true;
 
-		# Enable 3D graphics acceleration for both normal and 32-bit programs.
 		hardware.graphics = {
 			enable = true;
 			enable32Bit = true;
 		};
+
+		environment = {
+			systemPackages = lib.optional cfg.xwayland pkgs.xwayland-satellite;
+
+			extraInit = lib.mkIf cfg.gsettingsWorkarounds ''export XDG_DATA_DIRS="$XDG_DATA_DIRS:${pkgs.gtk3}/share/gsettings-schemas/${pkgs.gtk3.name}"'';
+
+			variables.GSETTINGS_SCHEMA_DIR = lib.mkIf cfg.gsettingsWorkarounds "${pkgs.gtk3}/share/gsettings-schemas/${pkgs.gtk3.name}/glib-2.0/schemas";
+		};
+
+		systemd.user.tmpfiles.users.${config.user.name}.rules = lib.optional cfg.linkConfiguration "L %h/.config/niri/ - - - - /etc/nixos/desktop/files/niri/";
+	};
 }
