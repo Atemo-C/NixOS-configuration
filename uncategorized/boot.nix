@@ -1,10 +1,6 @@
-# This system assumes installation and booting on an EFI system.
-# If booting in BIOS mode instead, you need to add these to your device's `settings.nix` module:
-# • `boot.loader.limine.biosDevice` to the device where Limine is installed (e.g. `/dev/sda`).
-# • `boot.loader.limine.efiSupport` to `false`.
-{ config, lib, pkgs, ... }: let efiSupport = config.boot.loader.limine.efiSupport; in {
+{ config, lib, pkgs, ... }: {
 	boot = rec {
-		# Whether to enable systemd in initrd.
+		# Enable systemd in initrd.
 		# This allows better integration with Plymouth, LUKS password prompt, and more.
 		initrd.systemd.enable = true;
 
@@ -33,7 +29,7 @@
 
 		loader = {
 			limine = {
-				# Whether to enable the Limine bootloader.
+				# Enable the Limine bootloader.
 				enable = true;
 
 				# Maximum number of latest generations to keep in the boot menu.
@@ -47,10 +43,10 @@
 		};
 
 		plymouth = {
-			# Whether to enable the Plymouth boot splash screen.
+			# Enable the Plymouth boot splash screen.
 			enable = true;
 
-			# Plymouth theme to use.
+			# Use the "Deus Ex" Plymouth theme from adi1090x's Plymouth theme packs.
 			theme = "deus_ex";
 			themePackages = with pkgs; [
 				(adi1090x-plymouth-themes.override { selected_themes = [ "deus_ex" ]; })
@@ -63,13 +59,13 @@
 	};
 
 	services.kmscon = {
-		# Whether to enable kmscon as the virtual console instead of gettys.
+		# Enable kmscon as the virtual console instead of gettys.
 		enable = true;
 
 		# Enable mouse support in kmscon.
 		extraConfig = "mouse";
 	};
 
-	# Program that allows manually modifying EFI boot manager entries.
+	# Program that allows manually modifying the EFI boot manager entries.
 	environment.systemPackages = with pkgs; [ efibootmgr ];
 }
