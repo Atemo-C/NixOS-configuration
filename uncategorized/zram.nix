@@ -1,10 +1,10 @@
-{ ... }: {
+{ ... }: rec {
 	zramSwap = {
 		# Enable in-memory compression devices and swap space provided by the zram kernel module.
 		enable = true;
 
 		# Compression algorithm to use.
-		algorithm = "zstd lz4 (type=huge)";
+		algorithm = if programs.lz4.enable then "zstd lz4 (type=huge)" else "zstd (type=huge)";
 
 		# Percentage of memory that can be stored in the zram swap devices.
 		memoryPercent = 100;
