@@ -39,6 +39,9 @@
 
 	# Custom modules used throughout the system. Other modules may rely on them;
 	# As such, it is recommended to simply leave them be.
+	./extra-modules/atemo_cajaku/programs/acpi.nix
+	./extra-modules/atemo_cajaku/programs/brightnessctl.nix
+	./extra-modules/atemo_cajaku/programs/ddcutil.nix
 	./extra-modules/atemo_cajaku/programs/efibootmgr.nix
 	./extra-modules/atemo_cajaku/programs/lz4.nix
 	./extra-modules/atemo_cajaku/programs/niri.nix
