@@ -7,5 +7,10 @@
 
 	config = lib.mkIf cfg.install {
 		environment.systemPackages = [ pkgs.noctalia-shell ];
+		nixpkgs.overlays = [
+			(final: prev: {
+				noctalia-shell = final.callPackage ./noctalia-shell-temp.nix {};
+			})
+		];
 	};
 }
