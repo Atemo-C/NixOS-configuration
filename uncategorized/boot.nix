@@ -66,6 +66,6 @@
 		extraConfig = "mouse";
 	};
 
-	# Program that allows manually modifying the EFI boot manager entries.
-	environment.systemPackages = with pkgs; [ efibootmgr ];
+	# [C] Program that allows manually modifying the EFI boot manager entries.
+	programs.efibootmgr.enable = true;
 }

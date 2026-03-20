@@ -15,6 +15,6 @@
 		priority = 100;
 	};
 
-	# Install lz4 for better zram compression.
+	# [C] Install lz4 for better zram compression.
 	programs.lz4.enable = true;
 }

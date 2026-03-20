@@ -39,8 +39,9 @@
 
 	# Custom modules used throughout the system. Other modules may rely on them;
 	# As such, it is recommended to simply leave them be.
+	./extra-modules/atemo_cajaku/programs/efibootmgr.nix
+	./extra-modules/atemo_cajaku/programs/lz4.nix
 	./extra-modules/atemo_cajaku/programs/niri.nix
 	./extra-modules/atemo_cajaku/programs/noctalia-shell.nix
-	./extra-modules/atemo_cajaku/programs/lz4.nix
 	./extra-modules/atemo_cajaku/config/user.nix
 ]; }
