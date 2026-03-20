@@ -2,7 +2,7 @@
 # This module makes sure that it is applied in as many places on the system as possible.
 { config, ... }: {
 	# Set the keyboard layout settings environment variables.
-	# Some programs rely on these variables for the keyboard layout settings to be applied.
+	# Some graphical programs rely on them for the keyboard layout settings to be applied.
 	environment.variables = {
 		XKB_DEFAULT_LAYOUT = config.services.xserver.xkb.layout;
 		XKB_DEFAULT_MODEL = config.services.xserver.xkb.model;
