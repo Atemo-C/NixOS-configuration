@@ -1,6 +1,6 @@
 { pkgs, ... }: {
 	virtualisation.waydroid = {
-		# Whether to enable the Waydriod Android emulator.
+		# Enable the Waydriod Android emulator.
 		enable = true;
 
 		# Which Waydroid package to use.

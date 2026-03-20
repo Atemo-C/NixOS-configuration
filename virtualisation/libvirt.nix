@@ -1,6 +1,6 @@
 { config, lib, pkgs, ... }: {
 	virtualisation.libvirtd = {
-		# Wheter to enable libvirtd, a daemon that manages virtual machines.
+		# Enable libvirtd, a daemon that manages virtual machines.
 		enable = true;
 
 		qemu = {
@@ -37,6 +37,6 @@
 	# Add the user to the `libvirtd` group.
 	users.users.${config.user.name}.extraGroups = [ "libvirtd" ];
 
-	# Whether to enable virt-manager, a UI for managing virtual machines in libvirt.
+	# Enable virt-manager, a UI for managing virtual machines in libvirt.
 	programs.virt-manager.enable = true;
 }
