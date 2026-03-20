@@ -35,7 +35,7 @@ It is a single-user estup, with minimal use of Home Manager and Flatpaks (both i
 - [https://github.com/nix-community/home-manager](https://github.com/nix-community/home-manager)
 - [https://github.com/nix-community/home-manager](https://github.com/nix-community/home-manager)
 
-Configuration files that are not managed directly by built-in `programs.<name> = {};` options are instead, when possible and convenient, linked by systemd from the NixOS configuartion to the user's relevant directories. This also allows them to be updated automatically whenever changed, without the need for any rebuilding.
+Configuration files that are not managed directly by built-in `programs.<name> = {};` options are instead, when possible and convenient, are instead linked by systemd from the NixOS configuartion to the user's relevant directories. This also allows them to be updated automatically whenever changed, without the need for any rebuilding.
 - [https://search.nixos.org/options?channel=unstable&query=systemd.user.tmpfiles.users.&show=systemd.user.tmpfiles.users.%3Cname%3E.rules](https://search.nixos.org/options?channel=unstable&query=systemd.user.tmpfiles.users.&show=systemd.user.tmpfiles.users.%3Cname%3E.rules)
 
 Most packages here are shipped with their own custom module, to `programs.<name>.enable` them. Some may add additional options for convenience, easy configuration, or the previously mentionned linking of configuration files and directories. When options from these custom modules are used, the comments in the Nix modules will be marked with **`[C]`**. See the following example:
