@@ -36,16 +36,16 @@
 
 		hardware = {
 			nvidia = {
-				# Whether to enable the open-source NVIDIA kernel modules.
-				# Unless you somehow use a driver version below 560, keep this to `true`.
+				# Enable the open-source NVIDIA kernel modules.
+				# Unless you use a driver version below 560, keep this to `true`.
 				open = true;
 
-				# Whether to enable power management through systemd.
+				# Enable power management through systemd.
 				# This can be necessary for stable suspend with the proprietary drivers.
 				powerManagement.enable = true;
 			};
 
-			# Whether to enable dynamic CDI configuration for NVIDIA GPUs.
+			# Enable dynamic CDI configuration for NVIDIA GPUs.
 			nvidia-container-toolkit.enable = false;
 		};
 
@@ -103,6 +103,8 @@
 				];
 			};
 
+			# Note: I am not sure the following works as intended with LibreWolf.
+			# Feedback is appreciated.
 			"nvidia/nvidia-application-profiles-rc.d/60-librewolf-firefox.json".text = ''
 				{
 					"rules": [{
