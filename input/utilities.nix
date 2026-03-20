@@ -22,7 +22,7 @@
 		usbutils
 	];
 
-	# Whether to enable ydotool, a generic Linux command-line automation tool.
+	# Enable ydotool, a generic Linux command-line automation tool.
 	programs.ydotool.enable = true;
 
 	# Add the user to the `ydotool` group.
