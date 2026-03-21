@@ -12,7 +12,6 @@
   # runtime deps
   bluez,
   brightnessctl,
-  cava,
   cliphist,
   ddcutil,
   wlsunset,
@@ -34,7 +33,6 @@
 
   bluetoothSupport ? true,
   brightnessctlSupport ? true,
-  cavaSupport ? false,
   cliphistSupport ? true,
   ddcutilSupport ? true,
   wlsunsetSupport ? true,
@@ -52,7 +50,6 @@ let
   ]
   ++ lib.optional bluetoothSupport bluez
   ++ lib.optional brightnessctlSupport brightnessctl
-  ++ lib.optional cavaSupport cava
   ++ lib.optional cliphistSupport cliphist
   ++ lib.optional ddcutilSupport ddcutil
   ++ lib.optional wlsunsetSupport wlsunset
