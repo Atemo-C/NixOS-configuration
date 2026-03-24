@@ -31,7 +31,7 @@ It uses the **Niri** Wayland compositor as its base with the **Noctalia Shell** 
 - [https://github.com/niri-wm/niri](https://github.com/niri-wm/niri)
 - [https://github.com/noctalia-dev/noctalia-shell](https://github.com/noctalia-dev/noctalia-shell)
 
-It is a single-user estup, with minimal use of Home Manager and Flatpaks (both installed and configured declaratively, rebuilding alongside NixOS). Everything else is standard NixOS, and without the use of Nix Flakes.
+It is a single-user estup, with minimal use of Home Manager (installed and configured declaratively, rebuilding alongside NixOS). Everything else is standard NixOS, and without the use of Nix Flakes.
 - [https://github.com/nix-community/home-manager](https://github.com/nix-community/home-manager)
 - [https://github.com/nix-community/home-manager](https://github.com/nix-community/home-manager)
 
