@@ -421,6 +421,7 @@ environment {
 		match app-id=r#"steam_proton"#
 		match app-id=r#"^fnf.*"# title="^Friday Night Funkin'.*$"
 		match app-id=r#"funkin.exe"#
+		match title="PCSX2 Settings"
 		open-floating true
 	}
 
