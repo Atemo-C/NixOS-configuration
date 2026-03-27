@@ -8,7 +8,9 @@
         "customLaunchPrefixEnabled": false,
         "density": "default",
         "enableClipPreview": true,
+        "enableClipboardChips": true,
         "enableClipboardHistory": true,
+        "enableClipboardSmartIcons": true,
         "enableSessionSearch": true,
         "enableSettingsSearch": true,
         "enableWindowsSearch": false,
@@ -23,7 +25,6 @@
         "showIconBackground": false,
         "sortByMostUsed": false,
         "terminalCommand": "xdg-terminal-exec",
-        "useApp2Unit": false,
         "viewMode": "list"
     },
     "audio": {
@@ -31,6 +32,7 @@
         ],
         "preferredPlayer": "",
         "spectrumFrameRate": 30,
+        "spectrumMirrored": true,
         "visualizerType": "none",
         "volumeFeedback": false,
         "volumeFeedbackSoundFile": "",
@@ -48,7 +50,6 @@
         "density": "default",
         "displayMode": "always_visible",
         "enableExclusionZoneInset": true,
-        "floating": false,
         "fontScale": 1,
         "frameRadius": 12,
         "frameThickness": 8,
@@ -59,6 +60,8 @@
         "middleClickCommand": "",
         "middleClickFollowMouse": false,
         "monitors": [
+            "DP-1",
+            "HDMI-A-1"
         ],
         "mouseWheelAction": "none",
         "mouseWheelWrap": true,
@@ -69,6 +72,12 @@
         "rightClickCommand": "",
         "rightClickFollowMouse": true,
         "screenOverrides": [
+            {
+                "displayMode": "auto_hide",
+                "enabled": true,
+                "name": "HDMI-A-1",
+                "position": "right"
+            }
         ],
         "showCapsule": true,
         "showOnWorkspaceSwitch": true,
@@ -332,7 +341,7 @@
                 {
                     "clockColor": "none",
                     "customFont": "",
-                    "formatHorizontal": "ddd dd/mm/yy hh:mm",
+                    "formatHorizontal": "ddd dd/MM/yy hh:mm",
                     "formatVertical": "HH mm - dd MM",
                     "id": "Clock",
                     "tooltipFormat": "dddd dd/mm/yy hh:mm:ss",
@@ -379,7 +388,7 @@
         "backlightDeviceMappings": [
         ],
         "brightnessStep": 1,
-        "enableDdcSupport": false,
+        "enableDdcSupport": true,
         "enforceMinimum": true
     },
     "calendar": {
@@ -493,8 +502,10 @@
         "indicatorColor": "primary",
         "indicatorOpacity": 0.6,
         "indicatorThickness": 3,
+        "launcherIcon": "",
         "launcherIconColor": "none",
         "launcherPosition": "end",
+        "launcherUseDistroLogo": false,
         "monitors": [
         ],
         "onlySameOutput": true,
@@ -515,7 +526,7 @@
         "autoStartAuth": false,
         "avatarImage": "~/.face",
         "boxRadiusRatio": 1,
-        "clockFormat": "dddd dd/mm/yy hh:mm:ss",
+        "clockFormat": "dddd dd/MM/yy hh:mm:ss",
         "clockStyle": "custom",
         "compactLockScreen": true,
         "dimmerOpacity": 0,
@@ -572,6 +583,7 @@
         "telemetryEnabled": true
     },
     "hooks": {
+        "colorGeneration": "",
         "darkModeChange": "",
         "enabled": true,
         "performanceModeDisabled": "sh -c 'echo \"\" > ~/.config/niri/animation-state.kdl'",
@@ -587,12 +599,12 @@
         "enabled": true,
         "fadeDuration": 5,
         "lockCommand": "",
-        "lockTimeout": 660,
+        "lockTimeout": 300,
         "resumeLockCommand": "",
         "resumeScreenOffCommand": "",
         "resumeSuspendCommand": "",
         "screenOffCommand": "niri msg action power-off-monitors",
-        "screenOffTimeout": 600,
+        "screenOffTimeout": 360,
         "suspendCommand": "noctalia-shell ipc call sessionMenu lockAndSuspend",
         "suspendTimeout": 0
     },
@@ -619,11 +631,10 @@
         "bluetoothRssiPollingEnabled": false,
         "disableDiscoverability": false,
         "networkPanelView": "wifi",
-        "wifiDetailsViewMode": "grid",
-        "wifiEnabled": true
+        "wifiDetailsViewMode": "grid"
     },
     "nightLight": {
-        "autoSchedule": true,
+        "autoSchedule": false,
         "dayTemp": "6500",
         "enabled": false,
         "forced": false,
@@ -682,7 +693,8 @@
         "overlayLayer": true
     },
     "plugins": {
-        "autoUpdate": false
+        "autoUpdate": true,
+        "notifyUpdates": false
     },
     "sessionMenu": {
         "countdownDuration": 10000,
@@ -751,7 +763,7 @@
         "showHeader": true,
         "showKeybinds": true
     },
-    "settingsVersion": 57,
+    "settingsVersion": 59,
     "systemMonitor": {
         "batteryCriticalThreshold": 5,
         "batteryWarningThreshold": 20,
@@ -800,7 +812,7 @@
     },
     "wallpaper": {
         "automationEnabled": false,
-        "directory": "~/Images/Backgrounds/Landscape/",
+        "directory": "~/Images/Backgrounds/",
         "enableMultiMonitorDirectories": false,
         "enabled": true,
         "favorites": [
@@ -809,20 +821,33 @@
         "fillMode": "crop",
         "hideWallpaperFilenames": false,
         "monitorDirectories": [
+            {
+                "directory": "~/Images/Backgrounds/",
+                "name": "DP-1",
+                "wallpaper": ""
+            },
+            {
+                "directory": "~/Images/Backgrounds/",
+                "name": "HDMI-A-1",
+                "wallpaper": ""
+            }
         ],
         "overviewBlur": 0.4,
         "overviewEnabled": true,
         "overviewTint": 0.4,
         "panelPosition": "follow_bar",
         "randomIntervalSec": 300,
-        "setWallpaperOnAllMonitors": true,
+        "setWallpaperOnAllMonitors": false,
         "showHiddenFiles": false,
         "skipStartupTransition": false,
         "solidColor": "#1a1a2e",
-        "sortOrder": "name",
+        "sortOrder": "random",
         "transitionDuration": 1500,
         "transitionEdgeSmoothness": 0.05,
-        "transitionType": "fade",
+        "transitionType": [
+            "fade"
+        ],
+        "useOriginalImages": false,
         "useSolidColor": false,
         "useWallhaven": false,
         "viewMode": "browse",
