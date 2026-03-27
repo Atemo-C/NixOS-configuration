@@ -28,7 +28,7 @@
 		# [C] Install the Noctalia Shell.
 		enable = true;
 
-		# [C] Link Noctalia's configuration directory,
+		# [C] Link the Noctalia shell's configuration directory,
 		# from `/etc/nixos/desktop/files/noctalia/` to `~/.config/noctalia/`.
 		linkConfiguration = true;
 	};
