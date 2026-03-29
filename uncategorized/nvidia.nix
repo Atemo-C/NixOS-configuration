@@ -1,17 +1,22 @@
-# All configuration options here assume an NVIDIA GTX 1630 or above only.
+# All configuration options here assume an NVIDIA GPU from the Turing generation and later only.
+# This includes cards like the GTX 1630 and the RTX 2000, and everything above them.
+#
+# The default configuration boots the system with the proprietary NVIDIA drivers.
+# A specialisation is offered which boots with the fully open-source driver stack;
+# That is, the Nouveau drivers, GSP enabled on the GPUs, and NVK available with the latest Mesa.
 { config, lib, pkgs, ... }: {
 	# Specialisation for booting with the fully open-source driver stack.
-	# The proprietary drivers remain the default option otherwise.
-	specialisation.nvidia_open.config = {
-		# Whether to enable the GPU System Processor (GSP).
+	specialisation.nvidia_free.config = {
+		# Enable the GPU System Processor (GSP).
+		# https://download.nvidia.com/XFree86/Linux-x86_64/595.58.03/README/gsp.html
 		hardware.nvidia.gsp.enable = true;
 
-		# Tag for the specialisation.
-		system.nixos.tags = [ "nvidia_open" ];
+		# Prefix to the default `system.nixos.label`.
+		system.nixos.tags = [ "NVIDIA_free" ];
 	};
 
-	# Apply the following configuration to the normal system.
-	config = lib.mkIf (config.specialisation != {}) {
+	# Configure the proprietary drivers; These options are applied in the normal generation.
+	config = lib.mkIf (! lib.elem "NVIDIA_free" config.system.nixos.tags) {
 		# Use the proprietary NVIDIA drivers.
 		services.xserver.videoDrivers = [ "nvidia" ];
 
