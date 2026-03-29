@@ -54,13 +54,18 @@
 			nvidia-container-toolkit.enable = false;
 		};
 
-		# CUDA packages to install.
-		environment.systemPackages =
-		lib.optionals config.hardware.nvidia-container-toolkit.enable (with pkgs.cudaPackages; [
-			cudnn
-			libcutensor
-			cudatoolkit
-		]);
+		# Install certain cuda packages if desired.
+		programs.cuda = lib.mkIf config.hardware.nvidia-container-toolkit.enable {
+			# GPU-accelerated library of primitives for deep neural networks.
+			cudnn.enable = true;
+
+			# GPU-accelerated tensor linear algebra library for tensor contraction,
+			# reduction, and elementwise operations.
+			libcutensor.enable = true;
+
+			# Wrapper substituting the deprecated runfile-based CUDA installation.
+			cudatoolkit.enable = true;
+		};
 
 		# Apply some extra udev rules from CachyOS.
 		# https://github.com/CachyOS/CachyOS-Settings/blob/master/usr/lib/udev/rules.d/71-nvidia.rules
