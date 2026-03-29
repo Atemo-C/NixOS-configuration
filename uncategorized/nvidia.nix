@@ -56,14 +56,14 @@
 
 		# Install certain cuda packages if desired.
 		programs.cuda = lib.mkIf config.hardware.nvidia-container-toolkit.enable {
-			# GPU-accelerated library of primitives for deep neural networks.
+			# [C] GPU-accelerated library of primitives for deep neural networks.
 			cudnn.enable = true;
 
-			# GPU-accelerated tensor linear algebra library for tensor contraction,
+			# [C] GPU-accelerated tensor linear algebra library for tensor contraction,
 			# reduction, and elementwise operations.
 			libcutensor.enable = true;
 
-			# Wrapper substituting the deprecated runfile-based CUDA installation.
+			# [C] Wrapper substituting the deprecated runfile-based CUDA installation.
 			cudatoolkit.enable = true;
 		};
 
