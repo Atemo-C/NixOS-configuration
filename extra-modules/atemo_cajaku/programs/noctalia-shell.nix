@@ -1,6 +1,4 @@
 { config, lib, pkgs, ... }: let cfg = config.programs.noctalia-shell; in {
-	meta.maintainers = with lib.maintainers; [ atemo-c ];
-
 	options.programs.noctalia-shell = {
 		enable = lib.mkEnableOption "the Noctalia Shell, a beautiful, minimal desktop shell for Wayland that actually gets out of your way.";
 

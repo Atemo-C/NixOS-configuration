@@ -1,12 +1,6 @@
 # Original module:
 # https://github.com/NixOS/nixpkgs/blob/nixos-unstable/nixos/modules/programs/wayland/niri.nix
 { config, lib, pkgs, ... }: let cfg = config.programs.niri; in {
-	meta.maintainers = with lib.maintainers; [
-		getchoo # Original module.
-		sodiboo # Original module.
-		atemo-c
-	];
-
 	options.programs.niri = {
 		gsettingsWorkarounds = lib.mkEnableOption "apply workarounds to gsettings schemas sourcing and configuration. See https://github.com/NixOS/nixpkgs/issues/149812 for more details.";
 
