@@ -1,4 +1,4 @@
-# https://github.com/NixOS/nixpkgs/pull/501377
+# https://github.com/NixOS/nixpkgs/issues/505455
 {
   fetchFromGitHub,
   lib,
@@ -69,13 +69,13 @@ let
 in
 stdenvNoCC.mkDerivation (finalAttrs: {
   pname = "noctalia-shell";
-  version = "4.7.1";
+  version = "4.7.2";
 
   src = fetchFromGitHub {
     owner = "noctalia-dev";
     repo = "noctalia-shell";
     tag = "v${finalAttrs.version}";
-    hash = "sha256-h5jMVGjgrfVPufMG3AMj/HGfU/EqU/4WEK7HCKhMN2E=";
+    hash = "sha256-/UA2l1/aLPd84Hr41a2eGAK6z6v0XciQaO+5jdKhPE4=";
   };
 
   nativeBuildInputs = [
