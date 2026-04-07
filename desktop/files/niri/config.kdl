@@ -315,7 +315,10 @@ layout {
 	// Tab indicator configuration.
 	tab-indicator {
 		// Set the gap between the tab indicator and the window in pixels.
-		gap 0
+		gap 4
+
+		// Set the gap between tabs in pixels.
+		gaps-between-tabs 8
 
 		// Length of the indicator.
 		length total-proportion=1.0
@@ -325,10 +328,10 @@ layout {
 		place-within-column
 
 		// Position of the indicator.
-		position "top"
+		position "bottom"
 
 		// Width of the tab indicator
-		width 10
+		width 8
 	}
 }
 

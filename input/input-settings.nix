@@ -1,22 +1,24 @@
-{ ... }: { services = {
-	libinput = {
-		# Disable pointer acceleration for mices.
-		mouse.accelProfile = "flat";
+{ config, ... }: {
+	console.useXkbConfig = true;
 
-		touchpad = {
-			# Disable pointer acceleration for touchpads.
-			accelProfile = "flat";
+	environment.variables = {
+		XKB_DEFAULT_LAYOUT = config.services.xserver.xkb.layout;
+		XKB_DEFAULT_MODEL = config.services.xserver.xkb.model;
+		XKB_DEFAULT_OPTIONS = config.services.xserver.xkb.options;
+		XKB_DEFAULT_VARIANT = config.services.xserver.xkb.variant;
+	};
 
-			# Enable tap-to-click behavior.
-			tapping = true;
+	services = {
+		kmscon.useXkbConfig = true;
+
+		libinput = {
+			mouse.accelProfile = "flat";
+			touchpad.tapping = true;
+		};
+
+		xserver = {
+			autoRepeatDelay = 224;
+			autoRepeatInterval = 25;
 		};
 	};
-
-	xserver = {
-		# Delay in milliseconds before a held-down key repeats.
-		autoRepeatDelay = 224;
-
-		# Rate in characters per second to repeat when holding down a key.
-		autoRepeatInterval = 25;
-	};
-}; }
+}

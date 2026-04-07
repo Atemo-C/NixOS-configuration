@@ -7,7 +7,7 @@
 
 	description = lib.mkOption {
 		type = lib.types.str;
-		default = "Fancy user name";
-		description = "The description (title, fancier name) of the user.";
+		default = "My fancy username!"
+		description = "The full user name or a short description of the user."
 	};
 }; }

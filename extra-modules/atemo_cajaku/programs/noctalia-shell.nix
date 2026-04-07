@@ -4,13 +4,17 @@
 
 		linkConfiguration = lib.mkOption {
 			type = lib.types.bool;
-			default = false;
 			description = "Whether to link Noctalia Shell's configuration directory, from /etc/nixos/desktop/files/noctalia/ to ~/.config/noctalia/";
 		};
 	};
 
 	config = lib.mkIf cfg.enable {
 		environment.systemPackages = with pkgs; [ noctalia-shell ];
+
+		nixpkgs.overlays = [(final: prev: {
+			noctalia-shell = final.callPackage ../packages/noctalia-shell.nix {};
+			noctalia-qs = final.callPackage ../packages/noctalia-qs {};
+		})];
 
 		systemd.user.tmpfiles.users.${config.user.name}.rules = lib.optional cfg.linkConfiguration "L %h/.config/noctalia/ - - - - /etc/nixos/desktop/files/noctalia/";
 	};
