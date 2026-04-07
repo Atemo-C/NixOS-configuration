@@ -22,8 +22,9 @@ This option is built into NixOs, but here are some additional configurations tha
 ```
 6. Add the following inside the existing **`<video>`** section:
 ```xml
-```
   <driver iommu='on' ats='on' packed='on' />
+```
+
 ---
 
 ## [`waydroid.nix`](./waydroid.nix)
