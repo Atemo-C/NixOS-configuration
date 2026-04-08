@@ -248,7 +248,7 @@ Allow unfree/proprietary packages to be installed declaratively.
 ##
 
 ### [`environment.sessionVariables.NIXPKGS_ALLOW_UNFREE`](./packaging.nix#L3)
-Allow unfree/proprietary pacakges to be installed in nix shells in `nixpkgs.config.allowUnfree` is `true`.
+Allow unfree/proprietary pacakges to be installed in nix shells if `nixpkgs.config.allowUnfree` is `true`.
 
 ---
 
