@@ -12,6 +12,8 @@
 	./input/utilities.nix
 
 	./uncategorized/boot.nix
+	./uncategorized/networking.nix
+	./uncategorized/nix-settings.nix
 	./uncategorized/power.nix
 	./uncategorized/zram.nix
 

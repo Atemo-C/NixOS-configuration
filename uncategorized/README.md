@@ -124,6 +124,54 @@ If something relies on networking as soon as possible during boot, you might wan
 
 ---
 
+## [`nix-settings.nix`](./nix-settings.nix)
+This module is imported in [`configuration.nix`](../configuration.nix).
+
+### [`nix.settings.auto-optimise-store`](./nix-settings.nix#L3)
+Automatically detect files in the store that have identical contents, and replace them with hard links to a single copy; Saving disk space.
+
+##
+
+### [`nix.settings.download-buffer-size`](./nix-settings.nix#L4)
+Increase the download buffer to avoid annoying warnings.
+
+##
+
+### [`nix.settings.experimental-features`](./nix-settings.nix#L5)
+Enable the `nix-command` feature.
+
+##
+
+### [`programs.hydra-check.enable`](./nix-settings.nix#L8)
+• [hydra-check's GitHub repository](https://github.com/nix-community/hydra-check)
+
+Check hydra for the build status of a package.
+
+This option is created by the [`hydra-check.nix`](../extra-modules/atemo_cajaku/programs/hydra-check.nix) programs module.
+
+##
+
+### [`security.sudo.enable`](./nix-settings.nix#L11)
+Whether to enable `sudo`. I use `run0` instead, but if you do not, change it to `true`.
+
+##
+
+### [`security.run0.enableSudoAlias`](./nix-settings.nix#L12)
+Enable aliasing `sudo` to `run0`, if `run0` is enabled and `sudo` is disabled.
+
+##
+
+### [`system.stateVersion`](./nix-settings.nix#L15)
+Which version of NixOS was initially installed on the current system. \
+There is no need to change it after installation, even when upgrading to a newer NixOS version. Only change it if you are fully reinstalling NixOS with a different version.
+
+##
+
+### [`systemd.tmpfiles.rules`](./nix-settings.nix#L16)
+Give read and write access to `/etc/nixos/` to the `root` user and to users in the `wheel` group (which, in this configuration, includes the default user).
+
+---
+
 ## [`nvidia.nix`](./nvidia.nix)
 • [NVIDIA's UNIX page](https://www.nvidia.com/object/unix.html)
 
