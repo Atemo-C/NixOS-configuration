@@ -1,4 +1,4 @@
-{ config, lib, ... }: {
+{ config, lib, pkgs, ... }: {
 	boot = {
 		initrd.systemd.enable = true;
 		kernelPackages = pkgs.linuxPackages_zen;
@@ -33,5 +33,5 @@
 		consoleLogLevel = 3;
 		initrd.verbose = false;
 		kernelParams = [ "quiet" "udev.log_level=3" "systemd.show_status=auto" ];
-	}
+	};
 }
