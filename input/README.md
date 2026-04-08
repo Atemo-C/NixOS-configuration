@@ -55,7 +55,7 @@ This module is imported in [`configuration.nix`](../configuration.nix).
 • [evhz's sourcehut's repository](https://git.sr.ht/~iank/evhz) \
 **`[C]`** Show mouse refresh rate under Linux + evdev.
 
-This option is created by the [`evhz.nix`](../extra-modules/atemo_cajaku/programs/evhz.nix#L2) module.
+This option is created by the [`evhz.nix`](../extra-modules/atemo_cajaku/programs/evhz.nix#L2) programs module.
 
 ##
 
@@ -63,7 +63,7 @@ This option is created by the [`evhz.nix`](../extra-modules/atemo_cajaku/program
 • [evsieve's GitHub repository](https://github.com/KarsMulder/evsieve) \
 **`[C]`** Utility for mapping events from Linux event devices.
 
-This option is created by the [`evsieve.nix`](../extra-modules/atemo_cajaku/programs/evsieve.nix#L2) module.
+This option is created by the [`evsieve.nix`](../extra-modules/atemo_cajaku/programs/evsieve.nix#L2) programs module.
 
 ##
 
@@ -71,7 +71,7 @@ This option is created by the [`evsieve.nix`](../extra-modules/atemo_cajaku/prog
 • [jstest-gtk's GitHub repository](https://github.com/Grumbel/jstest-gtk) \
 **`[C]`** Simple joystick and gamepad tester.
 
-This option is created by the [`jstest-gtk.nix`](../extra-modules/atemo_cajaku/programs/jstest-gtk.nix#L2) module.
+This option is created by the [`jstest-gtk.nix`](../extra-modules/atemo_cajaku/programs/jstest-gtk.nix#L2) programs module.
 
 ##
 
@@ -79,7 +79,7 @@ This option is created by the [`jstest-gtk.nix`](../extra-modules/atemo_cajaku/p
 • [typioca's GitHub repository](https://github.com/bloznelis/typioca) \
 **`[C]`** Cozy typing speed tester in the console.
 
-This option is created by the [`typioca.nix`](../extra-modules/atemo_cajaku/programs/typioca.nix#L2) module.
+This option is created by the [`typioca.nix`](../extra-modules/atemo_cajaku/programs/typioca.nix#L2) programs module.
 
 ##
 
@@ -87,7 +87,7 @@ This option is created by the [`typioca.nix`](../extra-modules/atemo_cajaku/prog
 • [The Linux USB website](http://www.linux-usb.org/) \
 **`[C]`** Utility for mapping events from Linux event devices.
 
-This option is created by the [`usbutils.nix`](../extra-modules/atemo_cajaku/programs/usbutils.nix#L2) module.
+This option is created by the [`usbutils.nix`](../extra-modules/atemo_cajaku/programs/usbutils.nix#L2) programs module.
 
 ##
 
@@ -106,11 +106,11 @@ This module is to be imported in your device's `settings.nix` module, if you wan
 ### [`programs.zsa.keymapp.enable` ](./zsa.nix#L2)
 Graphical utility to interact with and flash ZSA keyboards.
 
-This option is created by the [`zsa.nix`](../extra-modules/atemo_cajaku/programs/zsa.nix#L3) module.
+This option is created by the [`zsa.nix`](../extra-modules/atemo_cajaku/programs/zsa.nix#L3) programs module.
 
 ##
 
 ### [`programs.zsa.wally-cli.enable` ](./zsa.nix#L3)
 CLI utility to flash ZSA keyboards.
 
-This option is created by the [`zsa.nix`](../extra-modules/atemo_cajaku/programs/zsa.nix#L4) module.
+This option is created by the [`zsa.nix`](../extra-modules/atemo_cajaku/programs/zsa.nix#L4) programs module.

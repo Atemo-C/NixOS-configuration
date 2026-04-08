@@ -1,20 +1,10 @@
-{ ... }: rec {
+{ config, lib, ... }: {
 	zramSwap = {
-		# Enable in-memory compression devices and swap space provided by the zram kernel module.
 		enable = true;
-
-		# Compression algorithm to use.
-		algorithm = if programs.lz4.enable then "zstd lz4 (type=huge)" else "zstd (type=huge)";
-
-		# Percentage of memory that can be stored in the zram swap devices.
+		algorithm = if config.programs.lz4.enable then "zstd lz4 (type=huge)" else "zstd";
 		memoryPercent = 100;
-
-		# Priority of the zram swap devices.
-		# It should be a number higher than the priority of your disk-based swap devices,
-		# so that the system will fill the zram swap device before falling back to disk swap.
 		priority = 100;
 	};
 
-	# [C] Install lz4 for better zram compression.
 	programs.lz4.enable = true;
 }
