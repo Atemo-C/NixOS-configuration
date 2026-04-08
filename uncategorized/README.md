@@ -298,6 +298,51 @@ Makes user-selected power profiles handling available over D-Bus.
 
 ---
 
+## [`printing.nix`](./printing.nix)
+This module is to be imported in your device's `settings.nix` module, if you want it.
+
+### [`services.printing.enable`](./printing.nix#L3)
+• [CUPS' GitHub.io repository](https://openprinting.github.io/cups/)
+
+Enable printing support through the CUPS daemon.
+
+##
+
+### [`services.printing.drivers`](./printing.nix#L4)
+Additional printing and scanning drivers to install. \
+A list is already provided in the module, simply uncomment the one(s) you need.
+
+##
+
+### [`services.avahi.enable`](./printing.nix#L22)
+• [Avahi's website](http://avahi.org/)
+
+Run the Avahi daemon for printer and scanner device discovery.
+
+##
+
+### [`services.avahi.nssmdns4`](./printing.nix#L23)
+Enable the mDNS and NSS plug-in for IPv4.
+
+##
+
+### [`services.avahi.openFirewall`](./printing.nix#L24)
+Open the port 5353 in the firewall for remote printers.
+
+##
+
+### [`programs.simple-scan.enable`](./printing.nix#L27)
+• [Simple Scan's GitLab repository](https://gitlab.gnome.org/GNOME/simple-scan)
+
+Simple scanning utility.
+
+##
+
+### [`users.users.${config.user.name}.extraGroups`](./printing.nix#L28)
+Add the user to the printing and scanning groups.
+
+---
+
 ## [`zram.nix`](./zram.nix)
 This module is imported in [`configuration.nix`](../configuration.nix).
 
