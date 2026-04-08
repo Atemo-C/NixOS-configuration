@@ -256,6 +256,8 @@ Allow unfree/proprietary pacakges to be installed in nix shells in `nixpkgs.conf
 This module is imported in [`configuration.nix`](../configuration.nix).
 
 ### [`programs.acpi.enable`](./power.nix#L3)
+• [acpi's SourceForge repository](https://sourceforge.net/projects/acpiclient/)
+
 **`[C]`** Show battery status and other ACPI information.
 
 This option is created by the [`acpi.nix`](../extra-modules/atemo_cajaku/programs/acpi.nix) programs module.
@@ -263,6 +265,8 @@ This option is created by the [`acpi.nix`](../extra-modules/atemo_cajaku/program
 ##
 
 ### [`programs.brightnessctl.enable`](./power.nix#L4)
+• [brightnessctl's GitHub repository](https://github.com/Hummer12007/brightnessctl)
+
 **`[C]`** Read and control device brightness.
 
 This option is created by the [`brightnessctl.nix`](../extra-modules/atemo_cajaku/programs/brightnessctl.nix) programs module.
@@ -270,6 +274,8 @@ This option is created by the [`brightnessctl.nix`](../extra-modules/atemo_cajak
 ##
 
 ### [`programs.ddcutil.enable`](./power.nix#L5)
+• [ddcutil's website](http://www.ddcutil.com/)
+
 **`[C]`** Query and change Linux monitor settings using DDC/CI and USB.
 
 This option is created by the [`ddcutil.nix`](../extra-modules/atemo_cajaku/programs/ddcutil.nix) programs module.
@@ -282,6 +288,7 @@ Ignore power key and laptop lid actions; Instead letting the user control what t
 ##
 
 ### [`services.upower.enable`](./power.nix#L16)
+• [upower's freedesktop page](https://upower.freedesktop.org/)
 D-Bus service for power management.
 
 ##
