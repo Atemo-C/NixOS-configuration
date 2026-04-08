@@ -30,6 +30,7 @@
 	./extra-modules/atemo_cajaku/programs/niri.nix
 	./extra-modules/atemo_cajaku/programs/niri-screenshot.nix
 	./extra-modules/atemo_cajaku/programs/noctalia-shell.nix
+	./extra-modules/atemo_cajaku/programs/packaging.nix
 	./extra-modules/atemo_cajaku/programs/typioca.nix
 	./extra-modules/atemo_cajaku/programs/usbutils.nix
 	./extra-modules/atemo_cajaku/programs/virt-manager.nix

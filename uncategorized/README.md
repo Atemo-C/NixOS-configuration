@@ -239,6 +239,19 @@ See the issue below as an example of what affected programs can behave like when
 
 ---
 
+## [`packaging.nix`](./packaging.nix)
+This module is imported in [`configuration.nix`](../configuration.nix).
+
+### [`nixpkgs.config.allowUnfree`](./packaging.nix#L2)
+Allow unfree/proprietary packages to be installed declaratively.
+
+##
+
+### [`environment.sessionVariables.NIXPKGS_ALLOW_UNFREE`](./packaging.nix#L3)
+Allow unfree/proprietary pacakges to be installed in nix shells in `nixpkgs.config.allowUnfree` is `true`.
+
+---
+
 ## [`power.nix`](./power.nix)
 This module is imported in [`configuration.nix`](../configuration.nix).
 
