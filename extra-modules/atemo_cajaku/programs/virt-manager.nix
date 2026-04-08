@@ -1,6 +1,6 @@
 { config, lib, pkgs, ... }: let
 	cfg = config.programs.virt-manager;
-	nvidia = lib.elem "nvidia" config.services.xserver.videoDrivers
+	nvidia = lib.elem "nvidia" config.services.xserver.videoDrivers;
 in {
 	config = lib.mkIf cfg.enable {
 		qemu = {

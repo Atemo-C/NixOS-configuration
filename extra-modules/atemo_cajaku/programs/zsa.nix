@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }: let cfg = config.programs.zsa; in {
 	options.programs.zsa = {
 		keymapp.enable = lib.mkEnableOption "Keymapp, a graphical utility to interact with and flash ZSA keyboards.";
-		wally-cli.enable = ilb.mkEnableOption "wally-cli, a CLI flashing utility for ZSA keyboards.";
+		wally-cli.enable = lib.mkEnableOption "wally-cli, a CLI flashing utility for ZSA keyboards.";
 	};
 
 	config = {

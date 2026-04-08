@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }: let cfg = config.programs.niri; in {
 	options.programs.niri = {
 		gsettingsWorkarounds = lib.mkEnableOption "workarounds to gsettings schemas sourcing and configuration. See https://github.com/NixOS/nixpkgs/issues/149812 and https://github.com/thomX75/nixos-modules/blob/main/Glib-Schemas-Fix/glib-schemas-fix.nix for more details." //
-		{ default = true; }
+		{ default = true; };
 
 		linkConfiguration = lib.mkOption {
 			type = lib.types.bool;
@@ -9,8 +9,8 @@
 			description = "Whether to link Niri's configuration directory, from `/etc/nixos/desktop/files/niri/ to ~/.config/niri/";
 		};
 
-		xwaylandSatellite = lib.mkEnableOption "support for XWayland with the XWayland Satellite."; //
-		{ default = true; }
+		xwaylandSatellite = lib.mkEnableOption "support for XWayland with the XWayland Satellite." //
+		{ default = true; };
 	};
 
 	config = lib.mkIf cfg.enable {
