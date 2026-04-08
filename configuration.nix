@@ -14,7 +14,9 @@
 	./uncategorized/boot.nix
 	./uncategorized/networking.nix
 	./uncategorized/nix-settings.nix
+	./uncategorized/packaging.nix
 	./uncategorized/power.nix
+	./uncategorized/ssh.nix
 	./uncategorized/zram.nix
 
 	./extra-modules/atemo_cajaku/config/user.nix
@@ -24,13 +26,14 @@
 	./extra-modules/atemo_cajaku/programs/efibootmgr.nix
 	./extra-modules/atemo_cajaku/programs/evhz.nix
 	./extra-modules/atemo_cajaku/programs/evsieve.nix
+	./extra-modules/atemo_cajaku/programs/hydra-check.nix
 	./extra-modules/atemo_cajaku/programs/jstest-gtk.nix
 	./extra-modules/atemo_cajaku/programs/lz4.nix
 	./extra-modules/atemo_cajaku/programs/networkmanager.nix
 	./extra-modules/atemo_cajaku/programs/niri.nix
 	./extra-modules/atemo_cajaku/programs/niri-screenshot.nix
 	./extra-modules/atemo_cajaku/programs/noctalia-shell.nix
-	./extra-modules/atemo_cajaku/programs/packaging.nix
+	./extra-modules/atemo_cajaku/programs/simple-scan.nix
 	./extra-modules/atemo_cajaku/programs/typioca.nix
 	./extra-modules/atemo_cajaku/programs/usbutils.nix
 	./extra-modules/atemo_cajaku/programs/virt-manager.nix

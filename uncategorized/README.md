@@ -343,6 +343,34 @@ Add the user to the printing and scanning groups.
 
 ---
 
+## [`ssh.nix`](./ssh.nix)
+This module is imported in [`configuration.nix`](../configuration.nix).
+
+### [`services.openssh.enable`](./ssh.nix#L2)
+Enable the OpenSSH daemon.
+
+##
+
+### [`services.openssh.ports`](./ssh.nix#L3)
+Which ports the SSH daemon should listen to.
+
+##
+
+### [`services.openssh.settings.AllowUsers`](./ssh.nix#L6)
+Login is allowed only for the listed users. By default in this configuration, only the normal user is allowed.
+
+##
+
+### [`services.openssh.settings.PermitRootLogin`](./ssh.nix#L7)
+Whether the root user can login with SSH. By default in this configuration, this is not allowed.
+
+##
+
+### [`services.openssh.startWhenNeeded`](./ssh.nix#L10)
+Only start an instance for each incoming connection.
+
+---
+
 ## [`zram.nix`](./zram.nix)
 This module is imported in [`configuration.nix`](../configuration.nix).
 
