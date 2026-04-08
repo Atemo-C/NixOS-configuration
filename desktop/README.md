@@ -10,7 +10,7 @@ This module is imported in [`configuration.nix`](../configuration.nix).
 Niri is a scrollable-tiling Wayland compositor. \
 This is the core of the graphical environment. I chose it because I like the scrollable-tiling window management model, and because it runs great on anything ranging from my 2009 ThinkPad L510, to my Ryzen 5-based PC with both integrated Vega 11 graphics and a dedicated GTX 1660 SUPER GPU, and to my Ryzen 7-based PC with an RX 9070 XT.
 
-Note that, if you try to run Niri in a virtual machine or weak device, it currently needs working 3D acceleration of some kind. See this issue for more details:
+Note that, if you try to run Niri in a virtual machine or weak device, it currently needs working 3D acceleration of some kind. See this issue for more details: \
 • [niri-wm/niri/#218 - software renderer](https://github.com/niri-wm/niri/issues/218)
 
 This option is built into NixOS, but here has some additional configurations thanks to the [`niri.nix`](../extra-modules/atemo_cajaku/programs/niri.nix) programs module in this configuration. Notably, it:

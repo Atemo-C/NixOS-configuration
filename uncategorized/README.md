@@ -152,7 +152,7 @@ There can be some edge cases where this is not ideal. Read this NixOS Wiki page 
 
 ### [`environment.etc`](./nvidia.nix#L32)
 Apply VRAM fixes to various programs in the NVIDIA drivers configuration. \
-See the issue below as an example of what affected programs can behave like when this is not applied:
+See the issue below as an example of what affected programs can behave like when this is not applied: \
 • [niri-wm/niri#1962 - Docs: nvidia process profile for adjusting vram allocation behavior](https://github.com/YaLTeR/niri/issues/1962)
 
 ---
