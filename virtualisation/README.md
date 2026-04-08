@@ -7,7 +7,7 @@ This module is to be imported in your device's `settings.nix` module, if you wan
 
 Desktop user interface for managing virtual machines with libvirtd.
 
-This option is built into NixOs, but here are some additional configurations thanks to the [`virt-manager.nix`](../extra-modules/atemo_cajaku/programs/virt-manager.nix) programs module in this configuration. Notably, it:
+This option is built into NixOs, but here are some additional configurations thanks to the [`virt-manager.nix`](../extra-modules/atemo_cajaku/programs/virt-manager.nix) programs module. Notably, it:
 - Adds the user to the `libvirtd` group;
 - Allows 3D acceleration with NVIDIA GPUs by adding the following to your virtual machine's XML file, follownig these steps:
 1. Go to **`Video Virtio`** and enable 3D acceleration;

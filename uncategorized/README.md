@@ -90,6 +90,40 @@ These options are not applied if Plymouth is disabled.
 
 ---
 
+## [`networking.nix`](./networking.nix)
+This module is imported in [`configuration.nix`](../configuration.nix).
+
+### [networking.dhcpcd.wait](./networking.nix#L3)
+Fork the dhcpcd device to the background to improve boot times.
+
+##
+
+### [networking.networkmanager.enable](./networking.nix#L4)
+• [NetworkManager's website](https://networkmanager.dev/)
+
+Enable NetworkManager for easy network management.
+
+This option is built into NixOS, but additionally, the user is automatically added to the `networkmanager` group thanks to the [`networkmanager.nix`](../extra-modules/atemo_cajaku/programs/networkmanager.nix) programs module.
+
+##
+
+### [networking.stevenblack.enable](./networking.nix#L7)
+Enable stevenblack hosts file blocking. \
+It blocks domain names for advertising, tracking, and more.
+
+##
+
+### [networking.stevenblack.block](./networking.nix#L8)
+Additional blocklist extensions to enable.
+
+##
+
+### [systemd.services.NetworkManager-wait-online.enable](./networking.nix#L12)
+Disable NetworkManager's `wait-online` service to improve boot times. \
+If something relies on networking as soon as possible during boot, you might want to set it to `true`.
+
+---
+
 ## [`nvidia.nix`](./nvidia.nix)
 • [NVIDIA's UNIX page](https://www.nvidia.com/object/unix.html)
 

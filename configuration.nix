@@ -24,6 +24,7 @@
 	./extra-modules/atemo_cajaku/programs/evsieve.nix
 	./extra-modules/atemo_cajaku/programs/jstest-gtk.nix
 	./extra-modules/atemo_cajaku/programs/lz4.nix
+	./extra-modules/atemo_cajaku/programs/networkmanager.nix
 	./extra-modules/atemo_cajaku/programs/niri.nix
 	./extra-modules/atemo_cajaku/programs/niri-screenshot.nix
 	./extra-modules/atemo_cajaku/programs/noctalia-shell.nix
