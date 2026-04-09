@@ -195,6 +195,32 @@ These options are not applied if Plymouth is disabled.
 
 ---
 
+## [`locale.nix`](./locale.nix)
+This module is imported in [`configuration.nix`](../configuration.nix).
+
+### [`i18n.defaultLocale`](./locale.nix#L3)
+Default language of the system.
+
+##
+
+### [`i18n.extraLocaleSettings`](./locale.nix#L5)
+Additional locale settings other than the user interface language.
+
+##
+
+### [`time.timeZone`](./locale.nix#L19)
+The time zone used when displaying times and dates. \
+See https://wikipedia.org/wiki/List_of_tz_database_time_zones for this setting. \
+If `null`, the time zone will default to UTC and can beset imperatively using `timedatectl`.
+
+##
+
+### [`time.hardwareClockInLocalTime`](./locale.nix#L20)
+Keep the hardware clock in local time instead of UTC. \
+This is mostly useful if dual-booting with a Windows-based operating system; Though, this setting can also be changed on Windows to fix the issue the other way around.
+
+---
+
 ## [`networking.nix`](./networking.nix)
 This module is imported in [`configuration.nix`](../configuration.nix).
 

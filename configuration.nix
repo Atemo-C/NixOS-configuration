@@ -13,6 +13,7 @@
 
 	./uncategorized/audio.nix
 	./uncategorized/boot.nix
+	./uncategorized/locale.nix
 	./uncategorized/networking.nix
 	./uncategorized/nix-settings.nix
 	./uncategorized/packaging.nix
