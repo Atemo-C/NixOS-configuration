@@ -7,7 +7,7 @@ If desired, this module is to be imported in your device's `settings.nix` module
 ### [`programs.virt-manager.enable`](./virt-manager.nix#L1)
 > [Whether to enable virt-manager, an UI for managing virtual machines in libvirt.](https://search.nixos.org/options?channel=unstable&show=programs.virt-manager.enable)
 
-This option is built into NixOS; The [`virt-manager.nix`](../extra-modules/atemo_cajaku/packages/) module in this configuration applies additional configurations:
+This option is built into NixOS; The [`virt-manager.nix`](../extra-modules/atemo_cajaku/programs/virt-manager.nix) programs module in this configuration applies additional configurations:
 - Enablement of [`libvirtd`](https://libvirt.org/);
 - Support for 3D acceleration when using an NVIDIA GPU with the proprietary drivers;
 - Installation of the [`virtiofsd`](https://gitlab.com/virtio-fs/virtiofsd) package for virtual file system management and file sharing between the host and guests;
