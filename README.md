@@ -415,3 +415,6 @@ A searchable list of available options can be found here: \
 
 A list of available options for Home Manager can be found here: \
 • https://nix-community.github.io/home-manager/options.xhtml
+
+A search utility to browse and install packages of various versions can be found here: \
+• https://history.nix-packages.com/
