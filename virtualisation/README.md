@@ -1,7 +1,7 @@
 # Virtualisation directory
 This directory contains host virtualisation modules. Guest virtualisation additions and utilities are to be configured in your (virtual) device's `settings.nix` module. See the [`libvirt-vm/settings.nix`](../computers/libvirt-vm/settings.nix) module as an example.
 
-## [`virt-manager.nix`](./virt-manager.nix) module
+## [`virt-manager.nix`](./virt-manager.nix)
 If desired, this module is to be imported in your device's `settings.nix` module.
 
 ### [`programs.virt-manager.enable`](./virt-manager.nix#L1)
