@@ -11,6 +11,7 @@
 	./input/input-settings.nix
 	./input/utilities.nix
 
+	./uncategorized/audio.nix
 	./uncategorized/boot.nix
 	./uncategorized/networking.nix
 	./uncategorized/nix-settings.nix
@@ -21,8 +22,12 @@
 
 	./extra-modules/atemo_cajaku/config/user.nix
 	./extra-modules/atemo_cajaku/programs/acpi.nix
+	./extra-modules/atemo_cajaku/programs/alsa-utils.nix
+	./extra-modules/atemo_cajaku/programs/audacious.nix
+	./extra-modules/atemo_cajaku/programs/audacity.nix
 	./extra-modules/atemo_cajaku/programs/brightnessctl.nix
 	./extra-modules/atemo_cajaku/programs/ddcutil.nix
+	./extra-modules/atemo_cajaku/programs/easytag.nix
 	./extra-modules/atemo_cajaku/programs/efibootmgr.nix
 	./extra-modules/atemo_cajaku/programs/evhz.nix
 	./extra-modules/atemo_cajaku/programs/evsieve.nix
@@ -33,7 +38,10 @@
 	./extra-modules/atemo_cajaku/programs/niri.nix
 	./extra-modules/atemo_cajaku/programs/niri-screenshot.nix
 	./extra-modules/atemo_cajaku/programs/noctalia-shell.nix
+	./extra-modules/atemo_cajaku/programs/pwvucontrol.nix
+	./extra-modules/atemo_cajaku/programs/qpwgraph.nix
 	./extra-modules/atemo_cajaku/programs/simple-scan.nix
+	./extra-modules/atemo_cajaku/programs/soundfont.nix
 	./extra-modules/atemo_cajaku/programs/typioca.nix
 	./extra-modules/atemo_cajaku/programs/usbutils.nix
 	./extra-modules/atemo_cajaku/programs/virt-manager.nix

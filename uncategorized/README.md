@@ -1,6 +1,98 @@
 # Uncategorized directory
 This directory contains modules that do not fit in any particular category. This does not make them any less important, as this directory contains settings such as the bootloader, NVIDIA GPU drivers, ZRAM swap compression, and much more.
 
+## [`audio.nix`](./audio.nix)
+This module is imported in [`configuration.nix`](../configuration.nix).
+
+### [`services.pipewire.enable`](./audio.nix#L3)
+• [PipeWire's website](https://pipewire.org/)
+
+Enable the PipeWire multimedia framework. \
+Support for other audio servers emulation is available and enabled by default in this configuration.
+
+##
+
+### [`services.playerctld.enable`](./audio.nix#L13)
+• [playerctld's GitHub repository](https://github.com/acrisci/playerctl)
+
+Enable the daemon for easy multimedia control accross environments.
+
+##
+
+### [`security.rtkit.enable`](./audio.nix#L14)
+• [rtkit's freedesktop.org page](https://gitlab.freedesktop.org/pipewire/rtkit)
+Enable the Realtimekit service to allow programs like PipeWire to acquire realtime priority.
+
+##
+
+### [`programs.alsa-utils.enable`](./audio.nix#L17)
+• [ALSA's website](http://www.alsa-project.org/)
+
+**`[C]`** Various utilities for ALSA.
+
+This option is created by the [`alsa-utils.nix`](../extra-modules/atemo_cajaku/programs/alsa-utils.nix) programs module.
+
+##
+
+### [`programs.audacious.enable`](./audio.nix#L18)
+• [Audacious' website](https://audacious-media-player.org/)
+
+**`[C]`** Lightweight and versatile audio player.
+
+This option is created by the [`audacious.nix`](../extra-modules/atemo_cajaku/programs/audacious.nix) programs module.
+
+##
+
+### [`programs.audacity.enable`](./audio.nix#L19)
+• [Audacity's website](https://www.audacityteam.org/)
+
+**`[C]`** Sound editor with graphical UI.
+
+This option is created by the [`audacity.nix`](../extra-modules/atemo_cajaku/programs/audacity.nix) programs module.
+
+##
+
+### [`programs.easytag.enable`](./audio.nix#L20)
+• [EasyTag's GitLab repository](https://gitlab.gnome.org/GNOME/easytag)
+
+**`[C]`** View and edit tags for various audio files.
+
+This option is created by the [`easytag.nix`](../extra-modules/atemo_cajaku/programs/easytag.nix) programs module.
+
+##
+
+### [`programs.pwvucontrol.enable`](./audio.nix#L21)
+• [pwvucontrol's GitHub repository](https://github.com/saivert/pwvucontrol)
+
+**`[C]`** PipeWire volume control.
+
+This option is created by the [`pwvucontrol.nix`](../extra-modules/atemo_cajaku/programs/pwvucontrol.nix) programs module.
+
+##
+
+### [`programs.qpwgraph.enable`](./audio.nix#L22)
+• [qpwgraph's freedesktop.org page](https://gitlab.freedesktop.org/rncbc/qpwgraph)
+
+**`[C]`** QT graph manager for PipeWire, similar to QjackCtl.
+
+This option is created by the [`qpwgraph.nix`](../extra-modules/atemo_cajaku/programs/qpwgraph.nix) programs module.
+
+##
+
+### [`programs.soundfont.fluid.enable`](./audio.nix#L23)
+• [Hammersound webpage](http://www.hammersound.net/)
+
+**`[C]`** General MIDI-copmliant bank.
+
+This option is created by the [`soundfont.nix`](../extra-modules/atemo_cajaku/programs/soundfont.nix) programs module. \
+When a MIDI soundfont is enabled, the soundfont directories are automatically linked to "/run/current-system/sw/share/soundfonts/" for easier access.
+##
+
+### [`fish.shellAbbrs`](./audio.nix#L26)
+FISH shell abbreviation for listening to various online audio streams with MPV.
+
+---
+
 ## [`boot.nix`](./nix)
 This module is imported in [`configuration.nix`](../configuration.nix).
 
