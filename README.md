@@ -394,10 +394,10 @@ exit
 - Touchscreen support;
 - Remote desktop through RDP or other;
 - Computers with:
-	- A non-x86_64 CPU architecture;
-	- Hybrid GPU setup (e.g. NVIDIA PRIME);
-	- Less than 2 GiB of RAM (swap will be heavily used with less than 6 when building the system);
-	- Less than 32 GiB of storage (some Nix storage optimizations are already enabled).
+	- A non-x86_64 CPU architecture; (not tested)
+	- Hybrid GPU setup (e.g. NVIDIA PRIME); (not tested)
+	- Less than 4 GiB of RAM (Swap may be heavily used with less than 8 when building the system, or doing other Nix things…);
+	- Less than 64 GiB of storage (some Nix storage optimizations are already enabled).
 
 # Some useful NixOS resources
 Help is available in:
