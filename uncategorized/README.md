@@ -93,6 +93,19 @@ FISH shell abbreviation for listening to various online audio streams with MPV.
 
 ---
 
+## [`bluetooth.nix`](./bluetooth.nix)
+This module is to be imported in your device's `settings.nix` module, if you want it.
+
+### [`hardware.bluetooth.enable`](./bluetooth.nix#L2)
+Enable Bluetooth support.
+
+##
+
+### [`services.blueman.enable`](./bluetooth.nix#L3)
+Enable the Blueman Bluetooth service if Bluetooth support is enabled.
+
+---
+
 ## [`boot.nix`](./nix)
 This module is imported in [`configuration.nix`](../configuration.nix).
 
