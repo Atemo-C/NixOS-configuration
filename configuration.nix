@@ -38,6 +38,7 @@
 	./extra-modules/atemo_cajaku/programs/networkmanager.nix
 	./extra-modules/atemo_cajaku/programs/niri.nix
 	./extra-modules/atemo_cajaku/programs/niri-screenshot.nix
+	./extra-modules/atemo_cajaku/programs/nix-output-monitor.nix
 	./extra-modules/atemo_cajaku/programs/noctalia-shell.nix
 	./extra-modules/atemo_cajaku/programs/pwvucontrol.nix
 	./extra-modules/atemo_cajaku/programs/qpwgraph.nix
