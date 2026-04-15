@@ -10,6 +10,7 @@
 		nixpkgs.overlays = [
 			(final: prev: {
 				noctalia-shell = final.callPackage ./noctalia-shell-temp.nix {};
+				noctalia-qs = final.callPackage ./noctalia-qs-temp.nix {};
 			})
 		];
 	};
