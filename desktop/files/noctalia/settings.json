@@ -88,10 +88,11 @@
             "center": [
                 {
                     "colorizeSystemIcon": "none",
-                    "enableColorization": false,
+                    "colorizeSystemText": "none",
                     "generalTooltipText": "Overview",
                     "hideMode": "alwaysExpanded",
                     "icon": "box-multiple",
+                    "iconPosition": "left",
                     "id": "CustomButton",
                     "ipcIdentifier": "c_overview",
                     "leftClickExec": "niri msg action toggle-overview",
@@ -149,6 +150,7 @@
             "left": [
                 {
                     "colorizeSystemIcon": "none",
+                    "colorizeSystemText": "none",
                     "customIconPath": "",
                     "enableColorization": true,
                     "icon": "rocket",
@@ -159,6 +161,7 @@
                 {
                     "colorizeDistroLogo": false,
                     "colorizeSystemIcon": "none",
+                    "colorizeSystemText": "none",
                     "customIconPath": "",
                     "enableColorization": false,
                     "icon": "noctalia",
@@ -167,10 +170,11 @@
                 },
                 {
                     "colorizeSystemIcon": "none",
-                    "enableColorization": false,
+                    "colorizeSystemText": "none",
                     "generalTooltipText": "File manager",
                     "hideMode": "alwaysExpanded",
                     "icon": "folder",
+                    "iconPosition": "left",
                     "id": "CustomButton",
                     "ipcIdentifier": "c_filemanager",
                     "leftClickExec": "xdg-open \"$HOME\"",
@@ -201,10 +205,11 @@
                 },
                 {
                     "colorizeSystemIcon": "none",
-                    "enableColorization": false,
+                    "colorizeSystemText": "none",
                     "generalTooltipText": "Area / Window / Fullscreen screenshot",
                     "hideMode": "alwaysExpanded",
                     "icon": "screenshot",
+                    "iconPosition": "left",
                     "id": "CustomButton",
                     "ipcIdentifier": "c_screenshot",
                     "leftClickExec": "screenshot copy area",
@@ -337,10 +342,11 @@
                 },
                 {
                     "colorizeSystemIcon": "error",
-                    "enableColorization": true,
+                    "colorizeSystemText": "none",
                     "generalTooltipText": "Close/Kill program",
                     "hideMode": "alwaysExpanded",
                     "icon": "skull",
+                    "iconPosition": "left",
                     "id": "CustomButton",
                     "ipcIdentifier": "c_closekill",
                     "leftClickExec": "niri msg action close-window",
