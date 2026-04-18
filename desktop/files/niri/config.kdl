@@ -453,14 +453,18 @@ environment {
 		default-column-width { proportion 1.0; }
 	}
 
-	// Windows affected by variable refresh rate.
+	// Windows affected by variable refresh rate;
+	// And if they should be fullscreen or not.
 	window-rule {
 		match app-id=r#"^Better than Adventure.*$"# title="^Better than Adventure.*$"
 		match app-id=r#"Vintage Story"#
-		match app-id=r#"^steam_app_.*$"#
 		match app-id=r#"nfsw.exe"#
 		variable-refresh-rate true
 		open-fullscreen true
+	}
+	window-rule {
+		match app-id=r#"^steam_app_.*$"#
+		variable-refresh-rate true
 	}
 
 	// Resize certain windows to specific sizes.

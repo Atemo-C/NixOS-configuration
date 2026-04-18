@@ -12,11 +12,7 @@
 			};
 
 			niri-screenshot.enable = true;
-		};
-
-		services.displayManager.ly = {
-			enable = true;
-			x11Support = false;
+			fish.shellAbbrs."n" = "niri-session";
 		};
 	};
 }

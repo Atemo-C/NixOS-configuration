@@ -56,11 +56,5 @@ This option is created by the [`niri-screenshot.nix`](../extra-modules/atemo_caj
 
 ##
 
-### [`services.displayManager.ly.enable`](./niri.nix#L18)
-TUI-based display manager. \
-I may look into switching to a graphical Wayland-only display manager at some point, but, for now, this works well.
-
-##
-
-### [`services.displayManager.ly.x11Support`](./niri.nix#L19)
-Toggle X11 support for Ly. As Niri is the only environment I intend to log into, I set it to `false`; If you decide to log into an X11 session, you may set it back to `true`.
+### [`programs.fish.shellAbbrs."n"`](./niri.nix#L15)
+Type `n` in the TTY to start the Niri Wayland compositor after having logged in.
