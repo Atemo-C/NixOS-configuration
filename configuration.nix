@@ -35,6 +35,7 @@
 	./extra-modules/atemo_cajaku/programs/hydra-check.nix
 	./extra-modules/atemo_cajaku/programs/jstest-gtk.nix
 	./extra-modules/atemo_cajaku/programs/lz4.nix
+	./extra-modules/atemo_cajaku/programs/midiplus-smartpad-rgb-editor.nix
 	./extra-modules/atemo_cajaku/programs/networkmanager.nix
 	./extra-modules/atemo_cajaku/programs/niri.nix
 	./extra-modules/atemo_cajaku/programs/niri-screenshot.nix

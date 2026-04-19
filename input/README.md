@@ -39,6 +39,13 @@ Rate in characters per second to repeat when holding down a key.
 
 ---
 
+## [`midiplusrgb.nix`](./midiplusrgb.nix)
+
+### [`programs.midiplus-smartpad-rgb-editor.enable`](./midiplusrgb.nix#L1)
+RGB editor for the MIDIPLUS SmpartPAD and some other 8×8 MIDI pads.
+
+---
+
 ## [`opentabletdriver.nix`](./opentabletdriver.nix)
 • [OpenTabletDriver's GitHub repository](https://github.com/OpenTabletDriver/OpenTabletDriver) \
 This module is to be imported in your device's `settings.nix` module, if you want it.
