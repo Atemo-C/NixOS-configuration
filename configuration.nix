@@ -11,6 +11,11 @@
 	./input/input-settings.nix
 	./input/utilities.nix
 
+	./theming/fonts.nix
+	./theming/icons.nix
+	./theming/settings.nix
+	./theming/terminal-colors.nix
+
 	./uncategorized/audio.nix
 	./uncategorized/boot.nix
 	./uncategorized/locale.nix
