@@ -385,127 +385,128 @@ environment {
 	_JAVA_AWT_WM_NONREPARENTING "1"
 }
 
-// Window rules.
-	// Configuration of shadows around workspaces in the overview.
-	overview { workspace-shadow {
-		softness 40
-		spread 20
+// Shadows around workspaces in the overview.
+overview { workspace-shadow {
+	softness 40
+	spread 20
+	offset x=0 y=0
+	color "#00000088"
+}; }
+
+// Bigger focus ring and shadows for floating windows.
+window-rule {
+	match is-floating=true
+	shadow {
+		on
+		spread 4
 		offset x=0 y=0
-		color "#00000088"
-	}; }
-
-	// Floating windows have a bigger focus ring and have shadows.
-	window-rule {
-		match is-floating=true
-		shadow {
-			on
-			spread 4
-			offset x=0 y=0
-		}
-		focus-ring { width 2; }
 	}
-
-	// Open certain windows as floating by default.
-	window-rule {
-		match app-id=r#""# title="Song Info"
-		match app-id=r#"dash-calculator.sh"#
-		match app-id=r#"firefox"# title="About Firefox"
-		match app-id=r#"firefox"# title="Picture-in-Picture"
-		match app-id=r#"galculator"#
-		match app-id=r#"gcolor3"#
-		match app-id=r#"librewolf"# title="About LibreWolf"
-		match app-id=r#"librewolf"# title="Picture-in-Picture"
-		match app-id=r#"org.gnome.FileRoller"#
-		match app-id=r#"org.gnome.Nautilus"# title="Select a background image"
-		match app-id=r#"rs.ruffle.Ruffle"#
-		match app-id=r#"thunar"# title="File Operation Progress"
-		match app-id=r#"thunar"# title="^Rename.*$"
-		match app-id=r#"^wine.*"# title="Wine"
-		match app-id=r#"steam_proton"#
-		match app-id=r#"^fnf.*"# title="^Friday Night Funkin'.*$"
-		match app-id=r#"funkin.exe"#
-		match title="PCSX2 Settings"
-		open-floating true
-	}
-
-	// Block out certain programs from screen capture and screncasts.
-	window-rule {
-		match app-id=r#"org\.keepassxc\.KeePassXC"#
-		block-out-from "screen-capture"
-	}
-
-	// Block out certain programs from screencasts.
-	window-rule {
-		match app-id=r#"org\.keepassxc\.KeePassXC"#
-		block-out-from "screencast"
-	}
-
-	// Remove the focus ring of certain windows.
-	window-rule {
-		match app-id=r#"org.vinegarhq.Sober"#
-		focus-ring { width 0; }
-	}
-
-	// Open certain windows in their full size.
-	window-rule {
-		match app-id=r#"gimp"#
-		match app-id=r#"UltiMaker-Cura"#
-		default-column-width { proportion 1.0; }
-	}
-
-	// Windows affected by variable refresh rate;
-	// And if they should be fullscreen or not.
-	window-rule {
-		match app-id=r#"^Better than Adventure.*$"# title="^Better than Adventure.*$"
-		match app-id=r#"Vintage Story"#
-		match app-id=r#"nfsw.exe"#
-		variable-refresh-rate true
-		open-fullscreen true
-	}
-	window-rule {
-		match app-id=r#"^steam_app_.*$"#
-		variable-refresh-rate true
-	}
-
-	// Resize certain windows to specific sizes.
-	window-rule {
-		match app-id=r#".scrcpy-wrapped"# title="SM-A528B"
-		default-column-width { proportion 0.246; }
-	}
-
-// Layer rules.
-	// Place the background within the backdrop.
-	layer-rule {
-		match namespace="^noctalia-overview*"
-		place-within-backdrop true
-	}
-
-	// Add shadows around most layer-based application launchers.
-	layer-rule {
-		match namespace="launcher"
-		shadow {
-			on
-			spread 4
-			offset x=0 y=0
-		}
-	}
-
-debug {
-	// Emulate zero (unknown) presentation time returned from DRM.
-	// This is a thing on NVIDIA proprietary drivers;
-	// So this flag can be used to test that niri doesn't break too hard on those systems.
-	//
-	// Additionally, as seen in the issue below, this can "fix" issues with the
-	// fully open-source NVIDIA driver stack in some cases:
-	// https://github.com/niri-wm/niri/issues/3551
-	emulate-zero-presentation-time
-
-	// Skip cursor-only updates when Variable Refresh Rate is enabled.
-	// This prevents VRR from being flickery in a lot of cases.
-	// However, in places like certain game menus, this may lock the cursor to
-	// whatever refresh rate the game thinks is appropriate.
-	skip-cursor-only-updates-during-vrr
+	focus-ring { width 2; }
 }
 
-// Include Noctalia's Shell configuration for the colorscheme.
+// Open these windows as floating by default.
+window-rule {
+	open-floating true
+
+	// Audacious' "Song Info" popup.
+	match app-id=r#""# title="Song Info"
+
+	// Firefox's and LibreWolf's "About" popup.
+	match app-id=r#"firefox"# title="About Firefox"
+	match app-id=r#"librewolf"# title="About Firefox"
+
+	// Firefox's and LibreWolf's "Picture-in-Picture" windows.
+	match app-id=r#"firefox"# title="Picture-in-Picture"
+	match app-id=r#"librewolf"# title="Picture-in-Picture"
+
+	// Various actions in the Thunar file manager.
+	match app-id=r#"thunar"# title="File Operation Progress"
+	match app-id=r#"thunar"# title="^Rename*"
+
+	// All Windows games and some Wine pop-ups.
+	match app-id=r#"^wine*"# title="^Wine*"
+	match app-id=r#"^steam_proton*"#
+	match app-id=r#"^steam_app_*"#
+	match app-id=r#"^fnf*"# title="^Friday Night Funkin'*"
+	match app-id=r#"funkin.exe"#
+	match app-id=r#"nfsw.exe"#
+
+	// GNOME's File Roller.
+	match app-id=r#"org.gnome.FileRoller"#
+
+	// Gcolor3 color picker.
+	match app-id=r#"gcolor3"#
+
+	// Galculator calculator
+	match app-id=r#"galculator"#
+
+	// PCSX2 settings.
+	match title="PCSX2 Settings"
+
+	// Ruffle Adobe Flash emulator.
+	match app-id=r#"rs.ruffle.Ruffle"#
+}
+
+// Block out certain programs from screen captures.
+window-rule {
+	match app-id=r#"org.keepassxc.KeePassXC"#
+	block-out-from "screen-capture"
+}
+
+// Block out certain programs from screencasts.
+window-rule {
+	match app-id=r#"org.keepassxc.KeePassXC"#
+	block-out-from "screencast"
+}
+
+// Fullscreen windows affected by variable refresh rate when full-screened.
+window-rule {
+	variable-refresh-rate true
+
+	// Vintage Story.
+	match app-id=r#"Vintage Story"#
+
+	// Better Than Adventure Minecraft mod.
+	match app-id=r#"^Better than Adventure*$"# title="^Better than Adventure*$"
+
+	// All windows games.
+	match app-id=r#"nfsw.exe"#
+	match app-id=r#"^steam_proton*"#
+	match app-id=r#"^steam_app_*"#
+	match app-id=r#"^fnf*"# title="^Friday Night Funkin'*"
+	match app-id=r#"funkin.exe"#
+}
+
+// Correct width for the Samsung Galaxy A52s 5G when in portrait mode.
+window-rule {
+	match app-id=r#".scrcpy-wrapped"# title="SM-A528B"
+	default-column-width { proportion 0.246; }
+}
+
+// Place the background within the backdrop.
+layer-rule {
+	match namespace="^noctalia-overview*"
+	place-within-backdrop true
+}
+
+// Add shadows around most layer-based application launchers.
+layer-rule {
+	match namespace="launcher"
+	shadow {
+		on
+		spread 4
+		offset x=0 y=0
+	}
+}
+
+// Skip cursor-only updates when Variable Refresh Rate is enabled.
+// This prevents VRR from being flickery in a lot of cases.
+// However, in places like certain game menus, this may lock the cursor to
+// whatever refresh rate the game thinks is appropriate.
+debug { skip-cursor-only-updates-during-vrr; }
+
+// Include debug option when using the fully open-source NVIDIA driver stack.
+include "./nvidia-open.kdl"
+
+// Include Noctalia Shell's color scheme.
 include "./noctalia.kdl"
