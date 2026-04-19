@@ -25,7 +25,7 @@
         "showIconBackground": false,
         "sortByMostUsed": false,
         "terminalCommand": "xdg-terminal-exec",
-        "viewMode": "list"
+        "viewMode": "grid"
     },
     "audio": {
         "mprisBlacklist": [
