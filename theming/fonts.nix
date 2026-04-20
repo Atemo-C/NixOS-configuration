@@ -14,15 +14,15 @@
 			};
 
 			useEmbeddedBitmaps = true;
-
-			packages = with pkgs; [
-				nerd-fonts.ubuntu
-				nerd-fonts.ubuntu-mono
-				nerd-fonts.ubuntu-sans
-				noto-fonts-cjk-sans
-				noto-fonts
-			];
 		};
+
+		packages = with pkgs; [
+			nerd-fonts.ubuntu
+			nerd-fonts.ubuntu-mono
+			nerd-fonts.ubuntu-sans
+			noto-fonts-cjk-sans
+			noto-fonts
+		];
 	};
 
 	home-manager.users = {
