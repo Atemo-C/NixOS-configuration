@@ -275,7 +275,7 @@ We will write it to `/mnt/etc/nixos/computers/your-comupter-name/settings.nix`; 
 ```shell
 blkid /dev/sda2 >> /mnt/etc/nixos/computers/your-computer-name/settings.nix
 ```
-The root partition should be configured automatically, which is why only the step for the swap partition remains. Perhaps this will be fixed some day.
+The root partition should be configured automatically, which is why only the step for the swap partition remains. However, you might want to also do this with the root partition, if you want to set up additional options, such as discarding for SSDs.
 7. Open this module with your preferred text editor.
 In this live environment, you can install the text editor of your choice with `nix-env -iA nixos.your-text-editor-here`.
 ```shell
@@ -283,6 +283,7 @@ your-editor-here /mnt/etc/nixos/computers/your-computer-name/settings.nix
 ```
 8. In it, the UUIDs for the encrypted swap partition is located on the bottom of the file.
 We need to add them to `boot.initrd.luks.devices` since NixOS does not automatically add it, and set up other settings, such as:
+- Discard for SSDs using `initrd.luks.devices.<name>.allowDiscards = true;`;
 - Your computer's host name;
 - The keyboard layout configuration;
 - Filesystem-specific options (Btrfs compression, etc);
