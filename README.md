@@ -143,8 +143,7 @@ If the drive was not empty at first, fdisk will warn you before continuing. Type
 Note that you can change this size to be smaller or bigger, depending on if you want to be able to hibernate your system, and other things. \
 If the drive was not empty at first, fdisk will warn you before continuing. Type `y` then press `Enter`.
 15. Set the type of the swap partition by typing `t` then press `Enter`.
-16. When asked about the partition type, type `82` then press `Enter`.
-The log may show something like `Linux root verify (s390)`. As far as I understand, this is a relic from the past, and `82` is technically the correct number to use here to set up a swap partition.
+16. When asked about the partition type, type `19` then press `Enter`.
 
 #### Root partition
 17. Create a root partition by typing `n`.
