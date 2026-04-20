@@ -210,7 +210,7 @@ swapon /dev/mapper/swap
 ```
 9. Mount the root volume.
 ```shell
-mount -t btrfs /dev/mapper/root /mnt
+mount -v -t btrfs /dev/mapper/root /mnt
 ```
 10. Create the Btrfs subvolumes.
 Here, they will be `@` (root), `@home`, and `@nix`.
@@ -237,12 +237,12 @@ mkdir -v /mnt/nix
 14. Mount the home and nix Btrfs subvolumes.
 Additionally, I enable zstd compression, and enable `noatime` for the nix subvolume to avoid unnecessary writes.
 ```shell
-mount -o subvol=@home,compress=zstd:3 /dev/mapper/root /mnt/home
-mount -o subvol=@nix,compress=zstd:3,noatime /dev/mapper/root /mnt/nix
+mount -v -o subvol=@home,compress=zstd:3 /dev/mapper/root /mnt/home
+mount -v -o subvol=@nix,compress=zstd:3,noatime /dev/mapper/root /mnt/nix
 ```
 15. Mount the boot partition.
 ```shell
-mount -o umask=077 /dev/sda1 /mnt/boot
+mount -v -o umask=077 /dev/sda1 /mnt/boot
 ```
 
 ## NixOS configuration and installation
