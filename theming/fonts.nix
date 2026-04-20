@@ -3,7 +3,7 @@
 		enableDefaultPackages = true;
 		fontDir.enable = true;
 
-		fontConfig = {
+		fontconfig = {
 			cache32Bit = true;
 
 			defaultFonts = {
