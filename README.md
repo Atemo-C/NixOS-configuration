@@ -44,7 +44,7 @@ Some configuration files that are not handled by built-in NixOS or Home Manager 
 Most packages installed here come with their own NixOS module, allowing them to be 'enabled' with `programs.<name>.enable = true;`. Some of these modules add additional options and configurations for convenience, easy configuration, package tweaks, and more (like the previously mentioned file linking). Additionally, some add these tweaks to existing NixOS modules. \
 When options from these custom modules are used, comments in the READMEs will be marked with **`[C]`**.
 
-### Usage disclaimer.
+### Usage disclaimer
 Since this entire desktop experience is crafted by and for myself, it will likely not fit most other people's needs and desires. You may feel free to take inspiration from this configuration to help improve your own NixOS configuration. You *could* use this configuration fully, but I may offer no support for it. Though, if you have suggestions for improvements, I am open to them.
 
 With this out of the way, we can now proceed to the installation instructions. \
