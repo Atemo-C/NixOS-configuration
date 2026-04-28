@@ -12,31 +12,39 @@ What follows will be the text of a "serious" configuration. However, it shall no
 
 <hr>
 
+![Screenshot of my current desktop](./Desktop.webp)
+Wallpaper by Dzaka. \
+• [Dzaka's webpage](https://www.dzaka.fr/)
+
 # Atemo's NixOS configuration
 ###### An opinionated NixOS configuration that does not piss me off.
 
 ## Introduction
 ### Past configuration
-This is the NixOS configuration I use on my devices. It is a successor to my old (but not first) NixOS configuration, which has long been archived here: \
+This is a successor to my old NixOS configuration, which has long been archived. \
 • [My old NixOS configuration](https://github.com/Atemo-C/OLD-NixOS-Configuration)
 
-### The system's foundation
-The base of this system is NixOS, using either the `nixos-unstable` or `nixos-unstable-small` channel. It uses the Niri Wayland compositor as its desktop base, alongside the Noctalia Shell for its desktop shell, building around them to create a desktop experience I can be satisfied with. \
-• [NixOS' webpage](https://nixos.org/) \
-• [Niri's GitHub repository](https://github.com/niri-wm/niri?tab=readme-ov-file) \
-• [Noctalia Shell's webpage](https://docs.noctalia.dev/)
+This was not my first NixOS configuration, but the first publicly available one. \
+I have since kept working on the current configuration, with many big changes coming and going. This configuration is always changing, and should not be used in any kind of serious environment if you are, well, not me. Of course, you do you.
+
+### Foundations of the system
+The base of this system is NixOS, using either the `nixos-unstable` or `nixos-unstable-small` channel (I use the latter). It uses the Niri Wayland compositor as its desktop base, alongside the Noctalia Shell for the desktop shell; Building on top of them to create a desktop experience I am satisfied with. \
+• [NixOS' website](https://nixos.org)
+• [Niri's GitHub repository](https://github.com/niri-wm/niri)
+• [Noctalia Shell's website](https://docs.noctalia.dev)
 
 ### Configuration tools and linking
-It is a single-user desktop setup for x86_64 CPUs, with minimal use of Home Manager (installed and managed declaratively within NixOS' configuration, and rebuilt alongside it). Everything else is standard NixOS with the addition of custom modules, and Nix Flakes are not used. \
+This is a single-user desktop setup for x86_64 CPUs, with minimal use of Home Manager (managed declaratively within NixOS' configuration). Everything else is standard NixOS, with the addition of many custom modules, some of which may be actually useful.
 • [Home Manager's GitHub repository](https://github.com/nix-community/home-manager)
 
-Some configuration files that are not handled by built-in NixOS options or Home Manager are, when it makes sense to do so, linked automatically to the user's directory. This also allows them to be updated automatically whenever changed, without the need for any system rebuilding. \
+Some configuration files that are not handled by built-in NixOS or Home Manager options are linked from `/etc/nixos/<file-or-directory-here>/` to their relevant configuration path in the user's directory. This is toggleable for the relevant modules that use them.
 • [NixOS option used to link files and directories](https://search.nixos.org/options?channel=unstable&show=systemd.user.tmpfiles.users.%3Cname%3E.rules)
 
-### Custom modules
-Most packages installed here ship with their own module, allowing them to be 'enabled' with `programs.<name>.enable = true;`. Some of these modules add additional options and configurations for convenience, easy configuration, package tweaks, and more (like the previously mentioned file linking). When options from these custom modules are used, comments in the READMEs will be marked with `[C]`.
+### Custom NixOS modules
+Most packages installed here come with their own NixOS module, allowing them to be 'enabled' with `programs.<name>.enable = true;`. Some of these modules add additional options and configurations for convenience, easy configuration, package tweaks, and more (like the previously mentioned file linking). Additionally, some add these tweaks to existing NixOS modules. \
+When options from these custom modules are used, comments in the READMEs will be marked with **`[C]`**.
 
-### Usage disclaimer
+### Usage disclaimer.
 Since this entire desktop experience is crafted by and for myself, it will likely not fit most other people's needs and desires. You may feel free to take inspiration from this configuration to help improve your own NixOS configuration. You *could* use this configuration fully, but I may offer no support for it. Though, if you have suggestions for improvements, I am open to them.
 
 With this out of the way, we can now proceed to the installation instructions. \
