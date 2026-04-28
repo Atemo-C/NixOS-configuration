@@ -30,7 +30,19 @@ If, for some reason, you already have a pre-existing `~/.config/niri/` directory
 
 ##
 
-### [`programs.noctalia-shell.enable`](./niri.nix#L9)
+### [`programs.fish.shellAbbrs."n"`](./niri.nix#L8)
+Type `n` in the TTY to start the Niri Wayland compositor after having logged in.
+
+##
+
+### [`programs.niri-screenshot.enable`](./niri.nix#L9)
+**`[C]`** This is a simple DASH shell script to facilitate taking screenshots in Niri. Use the `screenshot --help` command to see more information.
+
+This option is created by the [`niri-screenshot.nix`](../extra-modules/atemo_cajaku/programs/niri-screenshot.nix#L2) programs module. It installs the follownig package module: [`/etc/nixos/extra-modules/atemo_cajaku/packages/niri-screenshot.nix`](../extra-modules/atemo_cajaku/packages/niri-screenshot.nix).
+
+##
+
+### [`programs.noctalia-shell.enable`](./niri.nix#L12)
 • [Noctalia Shell's website](https://github.com/noctalia-dev/noctalia-shell)
 
 **`[C]`** Noctalia Shell is a sleek and minimal desktop shell thoughtfully crafted for Wayland, built with Quickshell. \
@@ -41,20 +53,8 @@ I try to keep the Noctalia Shell as up-to-date as possible, as it can sometimes 
 
 ##
 
-### [`programs.noctalia-shell.linkConfiguration.enable`](./niri.nix#L10)
+### [`programs.noctalia-shell.linkConfiguration.enable`](./niri.nix#L13)
 **`[C]`** Link Noctalia Shell's configuration directory, from [`/etc/nixos/desktop/files/noctalia-shell/`](./files/noctalia/) to `~/.config/noctalia/`.
 
 This option is created by the [`noctalia-shell.nix`](../extra-modules/atemo_cajaku/programs/noctalia-shell.nix#L5) programs module. \
 If, for some reason, you already have a pre-existing `~/.config/noctalia/` directory that was created before the activation of this module, it needs to be deleted, so that the one in `/etc/nixos/desktop/files/noctalia/` can be successfully linked.
-
-##
-
-### [`programs.niri-screenshot.enable`](./niri.nix#L13)
-**`[C]`** This is a simple DASH shell script to facilitate taking screenshots in Niri. Use the `screenshot --help` command to see more information.
-
-This option is created by the [`niri-screenshot.nix`](../extra-modules/atemo_cajaku/programs/niri-screenshot.nix#L2) programs module. It installs the follownig package module: [`/etc/nixos/extra-modules/atemo_cajaku/packages/niri-screenshot.nix`](../extra-modules/atemo_cajaku/packages/niri-screenshot.nix).
-
-##
-
-### [`programs.fish.shellAbbrs."n"`](./niri.nix#L14)
-Type `n` in the TTY to start the Niri Wayland compositor after having logged in.
