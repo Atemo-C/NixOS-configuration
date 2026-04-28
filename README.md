@@ -14,7 +14,7 @@ What follows will be the text of a "serious" configuration. However, it shall no
 
 ![Screenshot of my current desktop](./Desktop.webp)
 Wallpaper by Dzaka. \
-• [Dzaka's webpage](https://www.dzaka.fr/)
+• [Dzaka's website](https://www.dzaka.fr/)
 
 # Atemo's NixOS configuration
 ###### An opinionated NixOS configuration that does not piss me off.
@@ -29,15 +29,15 @@ I have since kept working on the current configuration, with many big changes co
 
 ### Foundations of the system
 The base of this system is NixOS, using either the `nixos-unstable` or `nixos-unstable-small` channel (I use the latter). It uses the Niri Wayland compositor as its desktop base, alongside the Noctalia Shell for the desktop shell; Building on top of them to create a desktop experience I am satisfied with. \
-• [NixOS' website](https://nixos.org)
-• [Niri's GitHub repository](https://github.com/niri-wm/niri)
+• [NixOS' website](https://nixos.org) \
+• [Niri's GitHub repository](https://github.com/niri-wm/niri) \
 • [Noctalia Shell's website](https://docs.noctalia.dev)
 
 ### Configuration tools and linking
-This is a single-user desktop setup for x86_64 CPUs, with minimal use of Home Manager (managed declaratively within NixOS' configuration). Everything else is standard NixOS, with the addition of many custom modules, some of which may be actually useful.
+This is a single-user desktop setup for x86_64 CPUs, with minimal use of Home Manager (managed declaratively within NixOS' configuration). Everything else is standard NixOS, with the addition of many custom modules, some of which may be actually useful. \
 • [Home Manager's GitHub repository](https://github.com/nix-community/home-manager)
 
-Some configuration files that are not handled by built-in NixOS or Home Manager options are linked from `/etc/nixos/<file-or-directory-here>/` to their relevant configuration path in the user's directory. This is toggleable for the relevant modules that use them.
+Some configuration files that are not handled by built-in NixOS or Home Manager options are linked from `/etc/nixos/<file-or-directory-here>/` to their relevant configuration path in the user's directory. This is toggleable for the relevant modules that use them. \
 • [NixOS option used to link files and directories](https://search.nixos.org/options?channel=unstable&show=systemd.user.tmpfiles.users.%3Cname%3E.rules)
 
 ### Custom NixOS modules
