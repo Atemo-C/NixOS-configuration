@@ -1,3 +1,21 @@
+# Maintenance mode!
+I have recently upgraded hardware (HUGE upgrade except for RAM, please give me back my ram ⚗️), and have been working on a new iteration of this configuration in the Throwaway branch. \
+This branch (and the experimental one) will still see minor updates to fix issues as they come up, though thankfully so far everything has been smooth. \
+The new iteration of this configuration will:
+- Include much cleaner and consistent code and syntax;
+- Have individual and *full* README documentation for each directory instead of being randomly thrown around in random READMEs and in the code;
+- Have many bugs fixed;
+- Have updated configuration for various programs;
+- Rely just a little less on Home Manager, and ideally not anymore on Flatpaks (but support *will* still be here for Flatpaks by default);
+- Be more modular and easily transportable to my other computers (notably, my HP 250 G6 laptop, as my ThinkPad L510 is now really just too old for NixOS, though I will keep modules specific for it here, as they may be useful on other niche hardware);
+- Thanks to that better modularity and portability, versions of packages optimized for certain GPUs should also be installed properly and automatically (e.g. BTOP with ROCM or CUDA);
+- And much, much more.
+
+In the end, though, the functionaly and resulting desktop will be *mostly* the same, I just like to keep improving on what I have.
+With that out of the way, here is the rest of the normal README!
+
+---
+
 ![Screenshot of my current desktop](https://github.com/Atemo-C/NixOS-configuration/blob/main/Desktop.webp)
 Wallpaper by t1na. \
 https://www.deviantart.com/t1na
