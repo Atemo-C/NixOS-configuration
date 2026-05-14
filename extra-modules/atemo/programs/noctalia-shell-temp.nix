@@ -75,7 +75,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     owner = "noctalia-dev";
     repo = "noctalia-shell";
     tag = "v${finalAttrs.version}";
-    hash = "sha256-oGMYWsP0qthxQisirZc/r/vpdGTZrInwkh75AC714AE=";
+    hash = "sha256-QszLpoDPD7JEv8B/w1U2u1ksBw/CYBDmwUTLhJrekF0=";
   };
 
   nativeBuildInputs = [
