@@ -1,5 +1,4 @@
-# https://github.com/NixOS/nixpkgs/issues/505455
-# https://github.com/NixOS/nixpkgs/pull/505468
+# https://github.com/NixOS/nixpkgs/pull/519869
 {
   fetchFromGitHub,
   lib,
@@ -70,7 +69,7 @@ let
 in
 stdenvNoCC.mkDerivation (finalAttrs: {
   pname = "noctalia-shell";
-  version = "4.7.6";
+  version = "4.7.7";
 
   src = fetchFromGitHub {
     owner = "noctalia-dev";
