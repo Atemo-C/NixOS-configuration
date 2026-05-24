@@ -445,6 +445,8 @@ window-rule {
 
 	// Ruffle Adobe Flash emulator.
 	match app-id=r#"rs.ruffle.Ruffle"#
+
+	match app-id=r#"org.prismlauncher.PrismLauncher"# title="^Console window for.*$"
 }
 
 // Block out certain programs from screen captures.

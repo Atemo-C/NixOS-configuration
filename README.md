@@ -177,7 +177,7 @@ Replace `sda2` with the swap partition you previously created.
 2. Set up LUKS encryption for the root partition.
 You may use the same password as the swap partition for convenience and faster boot.
 ```shell
-cryptsetup --verify-passphrase luksFormat --label swap /dev/sda3
+cryptsetup --verify-passphrase luksFormat --label root /dev/sda3
 ```
 Replace `sda3` with the root partition you previously created.
 3. (Optional) Create backup headers to store somewhere safe.
