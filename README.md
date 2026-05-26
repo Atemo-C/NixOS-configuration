@@ -291,7 +291,7 @@ your-editor-here /mnt/etc/nixos/computers/your-computer-name/settings.nix
 ```
 8. In it, the UUIDs for the encrypted swap partition is located on the bottom of the file.
 We need to add them to `boot.initrd.luks.devices` since NixOS does not automatically add it, and set up other settings, such as:
-- Discard for SSDs using `initrd.luks.devices.<name>.allowDiscards = true;`;
+- Discard for SSDs using `boot.initrd.luks.devices.<name>.allowDiscards = true;`;
 - Your computer's host name;
 - The keyboard layout configuration;
 - Filesystem-specific options (Btrfs compression, etc);
