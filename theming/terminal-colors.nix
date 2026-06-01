@@ -82,7 +82,7 @@ in {
 	};
 
 	# Colors for the kmscon console.
-	services.kmscon.extraConfig = ''
+	services.kmscon.config = ''
 palette=custom
 palette-black=${rgb_black}
 palette-red=${rgb_red}
