@@ -5,8 +5,6 @@
 	./desktop/niri.nix
 
 	./input/keyboard-layout.nix
-	./input/opentabletdriver.nix
-	./input/zsa.nix
 	./input/utilities.nix
 
 	./programs/3d.nix
@@ -33,7 +31,6 @@
 	./system/locale.nix
 	./system/audio.nix
 	./system/ssh.nix
-	./system/bluetooth.nix
 	./system/printing.nix
 
 	./theming/fonts.nix
