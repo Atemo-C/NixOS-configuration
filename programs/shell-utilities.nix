@@ -12,6 +12,9 @@
 		# Lightweight and flexible command-line JSON processor.
 		jq
 
+		# Official formatter for Nix code.
+		nixfmt
+
 		# Shell tool for executing jobs in parallel.
 		parallel
 
