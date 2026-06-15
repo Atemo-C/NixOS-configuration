@@ -16,6 +16,9 @@ in {
 		# Fast system information tool like Neofetch.
 		fastfetch
 
+		# OpenGL and Vulkan Benchmark and Stress Test.
+		furmark
+
 		# Toolsf or reading hardware sensors.
 		lm_sensors
 
