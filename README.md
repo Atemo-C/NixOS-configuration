@@ -44,9 +44,9 @@ This NixOS configuration is the configuration I use on my main system, with the 
 https://github.com/Atemo-C/OLD-NixOS-Configuration
 
 ## Main components
-It is a single-user setup, using Niri as the Wayland compositor, Noctalia as the desktop shell, and NixOS Unstable at its very core (NixOS stable is NOT supported by this configuration).
-https://github.com/YaLTeR/niri
-https://github.com/noctalia-dev/noctalia-shell
+It is a single-user setup, using Niri as the Wayland compositor, Noctalia as the desktop shell, and NixOS Unstable at its very core (NixOS stable is NOT supported by this configuration). \
+• https://github.com/YaLTeR/niri \
+• https://github.com/noctalia-dev/noctalia-shell
 
 ## Externel dependencies
 It does not rely nor use Home Manager, Nix Flakes, Flatpaks, or any of the likes. However, you may find that installing Flatpaks could give a better experience with some programs that are often broken in nixpkgs. This configuration will keep up with broken packages, and actively list them at the very top of the configuration.
