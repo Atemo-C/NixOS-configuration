@@ -1,44 +1,29 @@
-{ config, pkgs, ... }: {
-	fonts = {
-		enableDefaultPackages = true;
-		fontDir.enable = true;
+{ pkgs, ... }: { fonts = {
+	# Enable a basic set of fonts providing a reasonable coverage of Unicode.
+	enableDefaultPackages = true;
 
-		fontconfig = {
-			cache32Bit = true;
+	# Whether to link all fonts in `/run/current-system/sw/share/X11/fonts`.
+	fontDir.enable = true;
 
-			defaultFonts = {
-				emoji = [ "Noto Color Emoji" ];
-				monospace = [ "UbuntuMono Nerd Font" "Noto Color Emoji" ];
-				sansSerif = [ "UbuntuSans Nerd Font" "Noto Color Emoji" ];
-				serif = [ "Ubuntu Nerd Font" "Noto Color Emoji" ];
-			};
+	fontconfig = {
+		# Whether to generate system fonts cache for 32-bit applications.
+		cache32Bit = true;
 
-			useEmbeddedBitmaps = true;
-		};
-
-		packages = with pkgs; [
-			nerd-fonts.ubuntu
-			nerd-fonts.ubuntu-mono
-			nerd-fonts.ubuntu-sans
-			noto-fonts-cjk-sans
-			noto-fonts
-		];
-	};
-
-	home-manager.users = {
-		${config.user.name}.gtk.font = {
-			name = "sans";
-			size = 11;
-		};
-
-		root.gtk.font = {
-			name = "sans";
-			size = 11;
+		# System-wide fonts to use.
+		defaultFonts = {
+			emoji = [ "Noto Color Emoji" ];
+			monospace = [ "UbuntuMono Nerd Font" "Noto Color Emoji" ];
+			sansSerif = [ "Ubuntu Nerd Font" "Noto Color Emoji" ];
+			serif = [ "Ubuntu Nerd Font" "Noto Color Emoji" ];
 		};
 	};
 
-	services.kmscon.fonts = [{
-		name = "UbuntuMono Nerd Font";
-		package = pkgs.nerd-fonts.ubuntu-mono;
-	}]
-}
+	# List of primary font packages to install.
+	packages = with pkgs; [
+		nerd-fonts.ubuntu
+		nerd-fonts.ubuntu-mono
+		nerd-fonts.ubuntu-sans
+		noto-fonts-cjk-sans
+		noto-fonts
+	];
+}; }

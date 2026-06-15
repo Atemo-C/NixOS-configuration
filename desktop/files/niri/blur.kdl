@@ -1,0 +1,15 @@
+// Blur configuration.
+blur {
+	passes 2
+	offset 3.0
+	noise 0
+	saturation 1.0
+}
+
+// Which programs should have blur applied to them.
+window-rule {
+	match app-id="footclient"
+	background-effect {
+		blur true
+	}
+}

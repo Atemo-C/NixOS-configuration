@@ -1,0 +1,4 @@
+// Programs to automatically start with Niri.
+spawn-at-startup "noctalia-shell"
+spawn-sh-at-startup "foot --server"
+// spawn-at-startup "midiplus-smartpad-macropad"

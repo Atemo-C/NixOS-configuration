@@ -1,56 +1,64 @@
-This branch is considered to be a "throwaway" one. Nothing here is expected to be entirely functional or of quality. \
-It is here for me to play around with ideas, concepts, and see what sticks. What does stick will end up in the main configuration at some point.
-
-If you are looking for the experimental or main branch, you can find them here respectively: \
-• [Experimental branch](https://github.com/Atemo-C/NixOS-configuration/tree/experiemntal) \
-• [Main branch](https://github.com/Atemo-C/NixOS-configuration)
-
-What follows will be the text of a "serious" configuration. However, it shall not be taken as entirely factual or accurate, for it may not represent the current state of this configuration, but a past, future, or theoretical one.
-
-<p align="center">Thank you for your attention to this matter. Please have this wonderful pirouetting Ralsei.</p>
-<p align="center"><img src="https://deltarune.wiki/images/Ralsei_battle_pirouette.gif" alt="GIF of Ralsei from DELTARUNE doing a cute pirouette."></p>
-
-<hr>
-
 ![Screenshot of my current desktop](./Desktop.webp)
-Wallpaper by Dzaka. \
-• [Dzaka's website](https://www.dzaka.fr/)
+Wallpaper by Mikael Gustafsson.
 
-# Atemo's NixOS configuration
-###### An opinionated NixOS configuration that does not piss me off.
+---
 
-## Introduction
-### Past configuration
-This is a successor to my old NixOS configuration, which has long been archived. \
-• [My old NixOS configuration](https://github.com/Atemo-C/OLD-NixOS-Configuration)
+## Broken packages: 1 (see below)
+### RPCS3
+- Status: **Disabled** in [**`./programs/gaming.nix`**](./programs/gaming.nix#L20)
+- Waiting on:
+	- [x] Issue creation [https://github.com/NixOS/nixpkgs/issues/529700]
+	- [x] Pull request creation [https://github.com/NixOS/nixpkgs/pull/530692]
+	- [ ] Pull request merge
+	- [ ] Integration into NixOS unstable
 
-This was not my first NixOS configuration, but the first publicly available one. \
-I have since kept working on the current configuration, with many big changes coming and going. This configuration is always changing, and should not be used in any kind of serious environment if you are, well, not me. Of course, you do you.
+## Changelog (16/06/2026):
+Complete cleanup of the NixOS configuration. It was about time. There are too many changes to list all there, so here are a few:
+- GDM is now the Display Manager for logging into Niri
+- Home Manager has been removed, only NixOS options are now used
+- Flatpak has been removed, only native packages are now used (I can smell the pain arriving)
+- Both of the above mean that this is now a 100% "pure" NixOS configuration!
+- All "useless" extra custom modules have been removed
+- Proprietary NVIDIA GPU driver support is no longer here, as I no longer have an NVIDIA GPU; The previous tweaks to make things work better with them are still here, visible in the past (thanks Git!) [right here](https://github.com/Atemo-C/NixOS-configuration/tree/12789dd5374bc36811a509c3ad37903b5fe22ec8)
+- Setup-specific modules are now handled/imported in each computer's `settings.nix` module, instead of polluting the main `configuration.nix` import list
+- FISH abbreviations have been overhauled to use full package paths, so that they may not just disappear when certain packages are not included in `environment.systemPackages = [];`
+- Some programs have been replaced, such as `lximage-qt` having been replaced with `pix`, or `xreader` having been replaced with GNOME's `papers`
+- Theming is now more consistent, as everything basically has a Libadwaita look but with nice Bibata cursors, Ubuntu fonts, and Flat Remix icons; Be it for GTK or QT programs
+- The `lofi` list of abbreviation have been updated, more chill and nixing :3
+- The system has slightly more branding and visual niceties in a few random places
+- `nix-output-monitor` is now used to make a lot of Nix command outputs look a whole lot better
+- Samba file sharing now works straight out of the box in Thunar
+- And more…
 
-### Foundations of the system
-The base of this system is NixOS, using either the `nixos-unstable` or `nixos-unstable-small` channel (I use the latter). It uses the Niri Wayland compositor as its desktop base, alongside the Noctalia Shell for the desktop shell; Building on top of them to create a desktop experience I am satisfied with. \
-• [NixOS' website](https://nixos.org) \
-• [Niri's GitHub repository](https://github.com/niri-wm/niri) \
-• [Noctalia Shell's website](https://docs.noctalia.dev)
+---
 
-### Configuration tools and linking
-This is a single-user desktop setup for x86_64 CPUs, with minimal use of Home Manager (managed declaratively within NixOS' configuration). Everything else is standard NixOS, with the addition of many custom modules, some of which may be actually useful. \
-• [Home Manager's GitHub repository](https://github.com/nix-community/home-manager)
+<h1 align="center">Atemo's NixOS configuration</h1>
+<p align="center"><img src="https://deltarune.wiki/images/Ralsei_battle_pirouette.gif" alt="GIF of Ralsei from DELTARUNE doing a cute pirouette."></p>
+<h4 align="center">An opinionated NixOS configuration that does not piss me off</h4>
 
-Some configuration files that are not handled by built-in NixOS or Home Manager options are linked from `/etc/nixos/<file-or-directory-here>/` to their relevant configuration path in the user's directory. This is toggleable for the relevant modules that use them. \
-• [NixOS option used to link files and directories](https://search.nixos.org/options?channel=unstable&show=systemd.user.tmpfiles.users.%3Cname%3E.rules)
+---
 
-### Custom NixOS modules
-Most packages installed here come with their own NixOS module, allowing them to be 'enabled' with `programs.<name>.enable = true;`. Some of these modules add additional options and configurations for convenience, easy configuration, package tweaks, and more (like the previously mentioned file linking). Additionally, some add these tweaks to existing NixOS modules. \
-When options from these custom modules are used, comments in the READMEs will be marked with **`[C]`**.
+# General information
+## Origin
+This NixOS configuration is the configuration I use on my main system, with the only thing changing with my other systems being which computer is uncommented in [**`configuration.nix`**](./configuration.nix)'s imports. It is a successor to my old NixOS configuration, which has long been archived.
+https://github.com/Atemo-C/OLD-NixOS-Configuration
 
-### Usage disclaimer
-Since this entire desktop experience is crafted by and for myself, it will likely not fit most other people's needs and desires. You may feel free to take inspiration from this configuration to help improve your own NixOS configuration. You *could* use this configuration fully, but I may offer no support for it. Though, if you have suggestions for improvements, I am open to them.
+## Main components
+It is a single-user setup, using Niri as the Wayland compositor, Noctalia as the desktop shell, and NixOS Unstable at its very core (NixOS stable is NOT supported by this configuration).
+https://github.com/YaLTeR/niri
+https://github.com/noctalia-dev/noctalia-shell
+
+## Externel dependencies
+It does not rely nor use Home Manager, Nix Flakes, Flatpaks, or any of the likes. However, you may find that installing Flatpaks could give a better experience with some programs that are often broken in nixpkgs. This configuration will keep up with broken packages, and actively list them at the very top of the configuration.
+
+## Usage disclaimer
+Finally, since this entire desktop experience is crafted by and for myself, it will likely not fit most other people's needs and desires. You may feel free to take inspiration from this configuration to help improve your own NixOS configuration. You *could* use this configuration fully, but I may offer no support for it. Though, if you have suggestions for improvements, I am open to them.
 
 With this out of the way, we can now proceed to the installation instructions. \
 These are the steps I take when I install NixOS on my devices; It may not work for you, nor be what you want. Again, feel free to take inspiration from it, and adapt them to your liking and needs.
 
----
+# Installation and usage
+I have a pretty consistent way of setting up my computers when I install NixOS. Below are the steps I take to install NixOS on my devices, though this can easily be converted in a small shell script if you want. I have integrated one in my own NixOS ISOs; However, it is not complete, hence it is not yet here.
 
 ## Assumptions
 It is assumed, for these installations instructions, that you:
@@ -64,9 +72,9 @@ It is assumed, for these installations instructions, that you:
 ## Pre-installation
 
 ### Downloading NixOS
-Since the base of this system is NixOS unstable, I recommend downloading the unstable ISO image, too. Graphical or not, it matters not here, for all installation steps can be done through the command-line. Though, a graphical environment can still be convenient. I build my own NixOS ISOs, but NixOS does ship unstable ISOs; Here they are (direct downloads): \
-• [Graphical NixOS unstable ISO](https://channels.nixos.org/nixos-unstable/latest-nixos-graphical-x86_64-linux.iso) \
-• [Minimal NixOS unstable ISO](https://channels.nixos.org/nixos-unstable/latest-nixos-minimal-x86_64-linux.iso)
+Since this configuration is based on NixOS unstable, it is highly recommended to download the latest NixOS unstable ISO image. Graphical or not, it matters not, but if you need or want to use a graphical environment during the installation, go with graphical.
+- [ Graphical ISO ](https://channels.nixos.org/nixos-unstable/latest-nixos-graphical-x86_64-linux.iso)
+- [ Minimal ISO ](https://channels.nixos.org/nixos-unstable/latest-nixos-minimal-x86_64-linux.iso)
 
 ### Creating a bootable NixOS medium
 The NixOS ISO is too big to fit on a CD or smaller. As such, a DVD or any removable and bootable storage medium with above 4 GB of storage space is necessary. I will be using a USB flash drive here, and it is assumed that the current environment is already Linux-based. \
@@ -297,52 +305,91 @@ We need to add them to `boot.initrd.luks.devices` since NixOS does not automatic
 - Filesystem-specific options (Btrfs compression, etc);
 - Import modules that you may want to use on certain devices but not others (e.g. host virtualisation, gaming, etc);
 - Any other device-specific configuration that you may want.
-In this example, I will be configuring my HP 250 G6. If you need any help or inspiration, please take a look at the existing hardware configuration files in this repository, to see how certain things are done.
+In this example, I will be configuring my libvirt virtual machine. If you need any help or inspiration, please take a look at the existing hardware configuration files in this repository, to see how certain things are done.
 ```nix
-{ pkgs, ... }: {
+{ config, lib, pkgs, ... }: {
 	boot = {
-		# Paths of LUKS-encrypted storage devices necessary for the system to work.
-		# Optional ones (e.g. removable encrypted drives) should not be put here.
-		# Your `root` device should be in your `hardware-configuration.nix` module.
-		# If not, put it here as well.
-		# If you use an SSD, you may also want to add the `allowDiscards` option to it.
-		initrd.luks.devices = {
-			swap.device = "/dev/disk/by-uuid/1c5f7a71-321c-4a57-a60b-955789fa50ed";
+		initrd = {
+			# Enable USB storage support during the boot process.
+			kernelModules = [ "usb_storage" ];
+
+			# Additional device encryption settings.
+			#
+			# [Tip] Here is how to create a dedicated USB flash drive for
+			# unlocking your LUKS-encrypted system (secure it away!):
+			# 1. Generate a random key with `dd`, like so:
+			#    • dd if=/dev/random of=disk-key.key bs=4096 count=1
+			#
+			# 2. Add the key to your encrypted storage partition(s) that use the same password:
+			#    • run0 cryptsetup luksAddKey /dev/your-encrypted-partition-here ./disk-key.key
+			#    (repeat if you have multiple encrypted partitions)
+			#
+			# 3. Write the key file to the USB flash drive (ALL data on it will be erased):
+			#    • run0 dd if=disk-key.key of=/dev/your-usb-flash-drive-here
+			luks.devices = {
+				swap = {
+					# Add the swap LUKS device, as `nixos-generate-config` does not.
+					device = "/dev/disk/by-uuid/5384a495-fcd5-4791-9b19-620b954a1156";
+
+					# If on an SSD with discard support, enable it.
+					allowDiscards = true;
+
+					# Hardware key encryption keys, with manual password fallback.
+					keyFileSize = 4096;
+					keyFile = "/dev/disk/by-id/usb-Generic_Flash_Disk_94A5D05A-0:0";
+					keyFileTimeout = 3;
+				};
+				root = {
+					# If on an SSD with discard support, enable it.
+					allowDiscards = true;
+
+					# Hardware key encryption keys, with manual password fallback.
+					keyFileSize = 4096;
+					keyFile = "/dev/disk/by-id/usb-Generic_Flash_Disk_94A5D05A-0:0";
+					keyFileTimeout = 3;
+				};
+			};
 		};
 
 		# Whether the installation process is allowed to modify EFI boot variables.
-		# Once the system is installed, if it fails to "install" again after an update,
-		# it sould be entirely safe to turn this option off.
-		# This is a bug with certain devices' firmware.
+		# Once installed and working, if after an update, it fails to "install" again,
+		# it should be safe to turn this option off, even if not ideal.
 		loader.efi.canTouchEfiVariables = true;
 	};
 
-	# Filesystem options.
+	# ZSTD compression and no-access-time configuration for the main volumes.
 	fileSystems = {
-		# ZSTD compression for the root `/` and `/home/` volumes.
 		"/".options = [ "compress=zstd:3" ];
 		"/home".options = [ "compress=zstd:3" ];
-
-		# ZSTD compression and no access time updae for the `/nix/` volume.
 		"/nix".options = [ "compress=zstd:3" "noatime" ];
 	};
 
-	hardware = {
-		# Whether to enable support for Bluetooth.
-		bluetooth.enable = true;
+	# Name of the computer over the network.
+	networking.hostName = "libvirt";
 
-		# Intel Media Driver for VAAPI for Broadwell (7th Gen) and above Intel iGPUs.
-		graphics.extraPackages = [ pkgs.intel-media-driver ];
+	systemd = {
+		# Whether to enable Modem Manager, to handle cellular data.
+		services.ModemManager.enable = false;
+
+		# User service to properly start the spice vdagent.
+		user.services.spice-vdagent = lib.mkIf config.services.spice-vdagentd.enable {
+			description = "spice-vdagent user daemon";
+			after = [ "spice-vdagentd.service" "graphical-session.target" ];
+			requires = [ "graphical-session.target" ];
+			wantedBy = [ "graphical-session.target" ];
+			serviceConfig.ExecStart = "${pkgs.spice-vdagent}/bin/spice-vdagent -x";
+			unitConfig.ConditionPathExists = "/run/spice-vdagentd/spice-vdagent-sock";
+		};
 	};
 
-	# Set the computer's name on the network.
-	networking.hostName = "HP-250-G6";
-
 	services = {
-		# Whether to enable fwupd, a DBus service that allows applicatoins to update firmware.
-		fwupd.enable = true;
+		# Whether to enable the spice-vdagentd daemon.
+		spice-vdagentd.enable = true;
 
-		# Keyboard layout settings.
+		# Whether to enable QEMU guest additions.
+		qemuGuest.enable = true;
+
+		# Keyboard layout configuration on this system.
 		# To see a complete list of layouts, variants, and other settings:
 		# • https://gist.github.com/jatcwang/ae3b7019f219b8cdc6798329108c9aee
 		#
@@ -350,17 +397,15 @@ In this example, I will be configuring my HP 250 G6. If you need any help or ins
 		# • https://github.com/NixOS/nixpkgs/issues/254523
 		# • https://github.com/NixOS/nixpkgs/issues/286283
 		xserver.xkb = {
-			# Keyboard layout, or multiple keyboard layouts separated by a comma.
-			layout = "fr,us";
-
-			# Keyboard layout variant, or multiple keyboard variants separated by a comma.
-			variant = ",intl";
+			layout = "us,fr";
+			variant = "intl,";
 		};
 	};
 
-	# Whether to enable the ModemManager service for using cellular data.
-	# You can disable this if you do not use it.
-	systemd.services.ModemManager.enable = false;
+	imports = [
+		# Utility to convert a MiDiPLUS SmartPAD into a full macro pad.
+		../../extra-modules/scripts/midiplus-smartpad-macropad.nix
+	];
 }
 ```
 9. Add the following lines to your `configuration.nix` in the `imports` list, making sure other devices are commented out with `#`:
@@ -404,6 +449,7 @@ exit
 - Computers with:
 	- A non-x86_64 CPU architecture; (not tested)
 	- Hybrid GPU setup (e.g. NVIDIA PRIME); (not tested)
+	- NVIDIA GPUs (latest state of working NVIDIA driver configurations and tweaks can be found [here](https://github.com/Atemo-C/NixOS-configuration/tree/12789dd5374bc36811a509c3ad37903b5fe22ec8))
 	- Less than 4 GiB of RAM (Swap may be heavily used with less than 8 when building the system, or doing other Nix things…);
 	- Less than 64 GiB of storage (some Nix storage optimizations are already enabled).
 
@@ -420,9 +466,3 @@ A searchable list of available packages can be found here: \
 
 A searchable list of available options can be found here: \
 • https://search.nixos.org/options?channel=unstable
-
-A list of available options for Home Manager can be found here: \
-• https://nix-community.github.io/home-manager/options.xhtml
-
-A search utility to browse and install packages of various versions can be found here: \
-• https://history.nix-packages.com/

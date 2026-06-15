@@ -1,1 +1,0 @@
-{ ... }: { programs.midiplus-smartpad-rgb-editor.enable = true; }

@@ -13,18 +13,19 @@
         "enableClipboardSmartIcons": true,
         "enableSessionSearch": true,
         "enableSettingsSearch": true,
-        "enableWindowsSearch": false,
+        "enableWindowsSearch": true,
         "iconMode": "tabler",
         "ignoreMouseInput": false,
         "overviewLayer": true,
         "pinnedApps": [
+            "io.gitlab.adhami3310.Impression"
         ],
         "position": "center",
-        "screenshotAnnotationTool": "xdg-terminal-exec micro",
+        "screenshotAnnotationTool": "",
         "showCategories": true,
         "showIconBackground": false,
-        "sortByMostUsed": false,
-        "terminalCommand": "xdg-terminal-exec",
+        "sortByMostUsed": true,
+        "terminalCommand": "xdg-terminal",
         "viewMode": "grid"
     },
     "audio": {
@@ -33,7 +34,7 @@
         "preferredPlayer": "",
         "spectrumFrameRate": 30,
         "spectrumMirrored": true,
-        "visualizerType": "none",
+        "visualizerType": "linear",
         "volumeFeedback": false,
         "volumeFeedbackSoundFile": "",
         "volumeOverdrive": false,
@@ -42,10 +43,10 @@
     "bar": {
         "autoHideDelay": 500,
         "autoShowDelay": 150,
-        "backgroundOpacity": 1,
+        "backgroundOpacity": 0.93,
         "barType": "simple",
         "capsuleColorKey": "none",
-        "capsuleOpacity": 1,
+        "capsuleOpacity": 0.5,
         "contentPadding": 0,
         "density": "default",
         "displayMode": "always_visible",
@@ -60,8 +61,6 @@
         "middleClickCommand": "",
         "middleClickFollowMouse": false,
         "monitors": [
-            "DP-1",
-            "HDMI-A-1"
         ],
         "mouseWheelAction": "none",
         "mouseWheelWrap": true,
@@ -72,17 +71,11 @@
         "rightClickCommand": "",
         "rightClickFollowMouse": true,
         "screenOverrides": [
-            {
-                "displayMode": "auto_hide",
-                "enabled": true,
-                "name": "HDMI-A-1",
-                "position": "right"
-            }
         ],
         "showCapsule": true,
         "showOnWorkspaceSwitch": true,
         "showOutline": false,
-        "useSeparateOpacity": true,
+        "useSeparateOpacity": false,
         "widgetSpacing": 6,
         "widgets": {
             "center": [
@@ -94,7 +87,7 @@
                     "icon": "box-multiple",
                     "iconPosition": "left",
                     "id": "CustomButton",
-                    "ipcIdentifier": "c_overview",
+                    "ipcIdentifier": "",
                     "leftClickExec": "niri msg action toggle-overview",
                     "leftClickUpdateText": false,
                     "maxTextLength": {
@@ -134,12 +127,12 @@
                     "iconScale": 0.8,
                     "id": "Workspace",
                     "labelMode": "index",
-                    "occupiedColor": "none",
+                    "occupiedColor": "secondary",
                     "pillSize": 0.6,
-                    "showApplications": true,
-                    "showApplicationsHover": true,
+                    "showApplications": false,
+                    "showApplicationsHover": false,
                     "showBadge": true,
-                    "showLabelsOnlyWhenOccupied": false,
+                    "showLabelsOnlyWhenOccupied": true,
                     "unfocusedIconsOpacity": 1
                 },
                 {
@@ -149,7 +142,7 @@
             ],
             "left": [
                 {
-                    "colorizeSystemIcon": "none",
+                    "colorizeSystemIcon": "primary",
                     "colorizeSystemText": "none",
                     "customIconPath": "",
                     "enableColorization": true,
@@ -163,7 +156,7 @@
                     "colorizeSystemIcon": "none",
                     "colorizeSystemText": "none",
                     "customIconPath": "",
-                    "enableColorization": false,
+                    "enableColorization": true,
                     "icon": "noctalia",
                     "id": "ControlCenter",
                     "useDistroLogo": false
@@ -176,7 +169,7 @@
                     "icon": "folder",
                     "iconPosition": "left",
                     "id": "CustomButton",
-                    "ipcIdentifier": "c_filemanager",
+                    "ipcIdentifier": "",
                     "leftClickExec": "xdg-open \"$HOME\"",
                     "leftClickUpdateText": false,
                     "maxTextLength": {
@@ -206,22 +199,22 @@
                 {
                     "colorizeSystemIcon": "none",
                     "colorizeSystemText": "none",
-                    "generalTooltipText": "Area / Window / Fullscreen screenshot",
+                    "generalTooltipText": "Area / Window / Fullscreen screenshot (copy to clipboard)",
                     "hideMode": "alwaysExpanded",
                     "icon": "screenshot",
                     "iconPosition": "left",
                     "id": "CustomButton",
-                    "ipcIdentifier": "c_screenshot",
-                    "leftClickExec": "screenshot copy area",
+                    "ipcIdentifier": "",
+                    "leftClickExec": "screenshot --copy area",
                     "leftClickUpdateText": false,
                     "maxTextLength": {
                         "horizontal": 10,
                         "vertical": 10
                     },
-                    "middleClickExec": "screenshot copy fullscreen",
+                    "middleClickExec": "screenshot --copy fullscreen",
                     "middleClickUpdateText": false,
                     "parseJson": false,
-                    "rightClickExec": "screenshot copy window",
+                    "rightClickExec": "screenshot --copy window",
                     "rightClickUpdateText": false,
                     "showExecTooltip": false,
                     "showIcon": true,
@@ -239,6 +232,13 @@
                     "wheelUpdateText": false
                 },
                 {
+                    "defaultSettings": {
+                        "precision": 8,
+                        "showBarValue": true
+                    },
+                    "id": "plugin:noctalia-calculator"
+                },
+                {
                     "compactMode": true,
                     "hideMode": "hidden",
                     "hideWhenIdle": false,
@@ -251,7 +251,7 @@
                     "showProgressRing": true,
                     "showVisualizer": false,
                     "textColor": "none",
-                    "useFixedWidth": true,
+                    "useFixedWidth": false,
                     "visualizerType": "linear"
                 },
                 {
@@ -274,7 +274,7 @@
                     "showSwapUsage": true,
                     "textColor": "none",
                     "useMonospaceFont": true,
-                    "usePadding": true
+                    "usePadding": false
                 },
                 {
                     "iconColor": "error",
@@ -294,12 +294,47 @@
                     ]
                 },
                 {
-                    "hideWhenZero": true,
+                    "hideWhenZero": false,
                     "hideWhenZeroUnread": false,
                     "iconColor": "none",
                     "id": "NotificationHistory",
                     "showUnreadBadge": true,
                     "unreadBadgeColor": "primary"
+                },
+                {
+                    "colorizeSystemIcon": "none",
+                    "colorizeSystemText": "none",
+                    "generalTooltipText": "Start or restart the MiDiPLUS SmartPAD RGB+Macro program",
+                    "hideMode": "alwaysExpanded",
+                    "icon": "color-filter",
+                    "iconPosition": "left",
+                    "id": "CustomButton",
+                    "ipcIdentifier": "",
+                    "leftClickExec": "midiplus-smartpad-macropad",
+                    "leftClickUpdateText": false,
+                    "maxTextLength": {
+                        "horizontal": 10,
+                        "vertical": 10
+                    },
+                    "middleClickExec": "",
+                    "middleClickUpdateText": false,
+                    "parseJson": false,
+                    "rightClickExec": "",
+                    "rightClickUpdateText": false,
+                    "showExecTooltip": false,
+                    "showIcon": true,
+                    "showTextTooltip": false,
+                    "textCollapse": "",
+                    "textCommand": "",
+                    "textIntervalMs": 3000,
+                    "textStream": false,
+                    "wheelDownExec": "",
+                    "wheelDownUpdateText": false,
+                    "wheelExec": "",
+                    "wheelMode": "unified",
+                    "wheelUpExec": "",
+                    "wheelUpUpdateText": false,
+                    "wheelUpdateText": false
                 },
                 {
                     "displayMode": "alwaysShow",
@@ -323,15 +358,6 @@
                     "textColor": "none"
                 },
                 {
-                    "deviceNativePath": "__default__",
-                    "displayMode": "graphic-clean",
-                    "hideIfIdle": false,
-                    "hideIfNotDetected": true,
-                    "id": "Battery",
-                    "showNoctaliaPerformance": true,
-                    "showPowerProfiles": true
-                },
-                {
                     "clockColor": "none",
                     "customFont": "",
                     "formatHorizontal": "ddd dd/MM/yy hh:mm",
@@ -341,14 +367,18 @@
                     "useCustomFont": false
                 },
                 {
+                    "id": "Spacer",
+                    "width": 1
+                },
+                {
                     "colorizeSystemIcon": "error",
                     "colorizeSystemText": "none",
-                    "generalTooltipText": "Close/Kill program",
+                    "generalTooltipText": "Close / Kill active window",
                     "hideMode": "alwaysExpanded",
                     "icon": "skull",
                     "iconPosition": "left",
                     "id": "CustomButton",
-                    "ipcIdentifier": "c_closekill",
+                    "ipcIdentifier": "",
                     "leftClickExec": "niri msg action close-window",
                     "leftClickUpdateText": false,
                     "maxTextLength": {
@@ -382,7 +412,7 @@
         "backlightDeviceMappings": [
         ],
         "brightnessStep": 1,
-        "enableDdcSupport": true,
+        "enableDdcSupport": false,
         "enforceMinimum": true
     },
     "calendar": {
@@ -407,7 +437,7 @@
         "manualSunrise": "06:30",
         "manualSunset": "18:30",
         "monitorForColors": "",
-        "predefinedScheme": "Noctalia (default)",
+        "predefinedScheme": "ADW",
         "schedulingMode": "off",
         "syncGsettings": true,
         "useWallpaperColors": true
@@ -517,20 +547,20 @@
         "allowPanelsOnScreenWithoutBar": true,
         "allowPasswordWithFprintd": false,
         "animationDisabled": false,
-        "animationSpeed": 1.6,
+        "animationSpeed": 1.5,
         "autoStartAuth": false,
         "avatarImage": "~/.face",
         "boxRadiusRatio": 1,
-        "clockFormat": "dddd dd/MM/yy hh:mm:ss",
+        "clockFormat": "hh\\nmm",
         "clockStyle": "custom",
-        "compactLockScreen": true,
+        "compactLockScreen": false,
         "dimmerOpacity": 0,
-        "enableBlurBehind": false,
+        "enableBlurBehind": true,
         "enableLockScreenCountdown": true,
-        "enableLockScreenMediaControls": false,
-        "enableShadows": false,
+        "enableLockScreenMediaControls": true,
+        "enableShadows": true,
         "forceBlackScreenCorners": false,
-        "iRadiusRatio": 0.25,
+        "iRadiusRatio": 0.5,
         "keybinds": {
             "keyDown": [
                 "Down"
@@ -557,67 +587,67 @@
         },
         "language": "",
         "lockOnSuspend": true,
-        "lockScreenAnimations": false,
-        "lockScreenBlur": 0.4,
+        "lockScreenAnimations": true,
+        "lockScreenBlur": 0,
         "lockScreenCountdownDuration": 10000,
         "lockScreenMonitors": [
         ],
-        "lockScreenTint": 0.4,
+        "lockScreenTint": 0,
         "passwordChars": false,
-        "radiusRatio": 0.25,
+        "radiusRatio": 0.5,
         "reverseScroll": false,
         "scaleRatio": 1,
-        "screenRadiusRatio": 1,
+        "screenRadiusRatio": 0,
         "shadowDirection": "center",
         "shadowOffsetX": 0,
         "shadowOffsetY": 0,
         "showChangelogOnStartup": true,
-        "showHibernateOnLockScreen": true,
+        "showHibernateOnLockScreen": false,
         "showScreenCorners": false,
         "showSessionButtonsOnLockScreen": true,
         "smoothScrollEnabled": true,
-        "telemetryEnabled": true
+        "telemetryEnabled": false
     },
     "hooks": {
         "colorGeneration": "",
         "darkModeChange": "",
         "enabled": true,
-        "performanceModeDisabled": "sh -c 'echo \"\" > ~/.config/niri/animation-state.kdl'",
-        "performanceModeEnabled": "sh -c 'echo \"animations { off; }\" > ~/.config/niri/animation-state.kdl'",
+        "performanceModeDisabled": "cp ~/.config/niri/presets/animations-on.kdl ~/.config/niri/animations.kdl && cp ~/.config/niri/presets/blur-on.kdl ~/.config/niri/blur.kdl",
+        "performanceModeEnabled": "cp ~/.config/niri/presets/animations-off.kdl ~/.config/niri/animations.kdl && cp ~/.config/niri/presets/blur-off.kdl ~/.config/niri/blur.kdl",
         "screenLock": "",
         "screenUnlock": "",
         "session": "",
-        "startup": "sh -c 'echo \"\" > ~/.config/niri/animation-state.kdl'",
+        "startup": "cp ~/.config/niri/presets/animations-on.kdl ~/.config/niri/animations.kdl && cp ~/.config/niri/presets/blur-on.kdl ~/config.niri/blur.kdl",
         "wallpaperChange": ""
     },
     "idle": {
         "customCommands": "[]",
-        "enabled": true,
+        "enabled": false,
         "fadeDuration": 5,
         "lockCommand": "",
-        "lockTimeout": 300,
+        "lockTimeout": 660,
         "resumeLockCommand": "",
         "resumeScreenOffCommand": "",
         "resumeSuspendCommand": "",
-        "screenOffCommand": "niri msg action power-off-monitors",
-        "screenOffTimeout": 360,
-        "suspendCommand": "noctalia-shell ipc call sessionMenu lockAndSuspend",
-        "suspendTimeout": 0
+        "screenOffCommand": "",
+        "screenOffTimeout": 600,
+        "suspendCommand": "",
+        "suspendTimeout": 1800
     },
     "location": {
         "analogClockInCalendar": false,
         "autoLocate": false,
-        "firstDayOfWeek": 1,
+        "firstDayOfWeek": -1,
         "hideWeatherCityName": false,
         "hideWeatherTimezone": false,
         "name": "",
         "showCalendarEvents": true,
         "showCalendarWeather": true,
-        "showWeekNumberInCalendar": false,
+        "showWeekNumberInCalendar": true,
         "use12hourFormat": false,
         "useFahrenheit": false,
         "weatherEnabled": false,
-        "weatherShowEffects": false,
+        "weatherShowEffects": true,
         "weatherTaliaMascotAlways": false
     },
     "network": {
@@ -631,7 +661,7 @@
         "wifiDetailsViewMode": "grid"
     },
     "nightLight": {
-        "autoSchedule": false,
+        "autoSchedule": true,
         "dayTemp": "6500",
         "enabled": false,
         "forced": false,
@@ -644,7 +674,7 @@
         "disableWallpaper": false
     },
     "notifications": {
-        "backgroundOpacity": 0.9,
+        "backgroundOpacity": 1,
         "clearDismissed": true,
         "criticalUrgencyDuration": 15,
         "density": "compact",
@@ -677,7 +707,7 @@
     },
     "osd": {
         "autoHideMs": 2000,
-        "backgroundOpacity": 0.9,
+        "backgroundOpacity": 1,
         "enabled": true,
         "enabledTypes": [
             0,
@@ -722,39 +752,39 @@
                 "keybind": "3"
             },
             {
-                "action": "reboot",
+                "action": "userspaceReboot",
                 "command": "",
                 "countdownEnabled": true,
                 "enabled": true,
                 "keybind": "4"
             },
             {
-                "action": "rebootToUefi",
+                "action": "reboot",
                 "command": "",
                 "countdownEnabled": true,
                 "enabled": true,
                 "keybind": "5"
             },
             {
-                "action": "logout",
+                "action": "rebootToUefi",
                 "command": "",
                 "countdownEnabled": true,
                 "enabled": true,
                 "keybind": "6"
             },
             {
-                "action": "shutdown",
+                "action": "logout",
                 "command": "",
                 "countdownEnabled": true,
                 "enabled": true,
                 "keybind": "7"
             },
             {
-                "action": "userspaceReboot",
+                "action": "shutdown",
                 "command": "",
                 "countdownEnabled": true,
-                "enabled": false,
-                "keybind": ""
+                "enabled": true,
+                "keybind": "8"
             }
         ],
         "showHeader": true,
@@ -762,27 +792,27 @@
     },
     "settingsVersion": 59,
     "systemMonitor": {
-        "batteryCriticalThreshold": 5,
-        "batteryWarningThreshold": 20,
+        "batteryCriticalThreshold": 20,
+        "batteryWarningThreshold": 35,
         "cpuCriticalThreshold": 90,
-        "cpuWarningThreshold": 80,
-        "criticalColor": "",
+        "cpuWarningThreshold": 75,
+        "criticalColor": "#ffb4ab",
         "diskAvailCriticalThreshold": 10,
-        "diskAvailWarningThreshold": 20,
+        "diskAvailWarningThreshold": 25,
         "diskCriticalThreshold": 90,
-        "diskWarningThreshold": 80,
+        "diskWarningThreshold": 75,
         "enableDgpuMonitoring": false,
         "externalMonitor": "resources || missioncenter || jdsystemmonitor || corestats || system-monitoring-center || gnome-system-monitor || plasma-systemmonitor || mate-system-monitor || ukui-system-monitor || deepin-system-monitor || pantheon-system-monitor",
         "gpuCriticalThreshold": 90,
         "gpuWarningThreshold": 80,
         "memCriticalThreshold": 90,
-        "memWarningThreshold": 80,
-        "swapCriticalThreshold": 90,
-        "swapWarningThreshold": 80,
-        "tempCriticalThreshold": 90,
-        "tempWarningThreshold": 80,
+        "memWarningThreshold": 75,
+        "swapCriticalThreshold": 75,
+        "swapWarningThreshold": 50,
+        "tempCriticalThreshold": 85,
+        "tempWarningThreshold": 75,
         "useCustomColors": false,
-        "warningColor": ""
+        "warningColor": "#e7b9d6"
     },
     "templates": {
         "activeTemplates": [
@@ -794,12 +824,12 @@
         "enableUserTheming": false
     },
     "ui": {
-        "boxBorderEnabled": false,
-        "fontDefault": "sans",
+        "boxBorderEnabled": true,
+        "fontDefault": "Ubuntu Nerd Font",
         "fontDefaultScale": 1,
         "fontFixed": "monospace",
         "fontFixedScale": 1.05,
-        "panelBackgroundOpacity": 0.93,
+        "panelBackgroundOpacity": 0.8,
         "panelsAttachedToBar": true,
         "scrollbarAlwaysVisible": true,
         "settingsPanelMode": "attached",
@@ -809,8 +839,8 @@
     },
     "wallpaper": {
         "automationEnabled": false,
-        "directory": "~/Images/Backgrounds/",
-        "enableMultiMonitorDirectories": true,
+        "directory": "~/Images/Wallpapers/Landscape",
+        "enableMultiMonitorDirectories": false,
         "enabled": true,
         "favorites": [
         ],
@@ -819,27 +849,17 @@
         "hideWallpaperFilenames": false,
         "linkLightAndDarkWallpapers": true,
         "monitorDirectories": [
-            {
-                "directory": "~/Images/Backgrounds/Landscape/",
-                "name": "DP-1",
-                "wallpaper": ""
-            },
-            {
-                "directory": "~/Images/Backgrounds/Portrait/",
-                "name": "HDMI-A-1",
-                "wallpaper": ""
-            }
         ],
-        "overviewBlur": 0.4,
+        "overviewBlur": 0.65,
         "overviewEnabled": true,
-        "overviewTint": 0.4,
+        "overviewTint": 0.35000000000000003,
         "panelPosition": "follow_bar",
         "randomIntervalSec": 300,
-        "setWallpaperOnAllMonitors": false,
+        "setWallpaperOnAllMonitors": true,
         "showHiddenFiles": false,
         "skipStartupTransition": false,
         "solidColor": "#1a1a2e",
-        "sortOrder": "random",
+        "sortOrder": "date_desc",
         "transitionDuration": 1500,
         "transitionEdgeSmoothness": 0.05,
         "transitionType": [
