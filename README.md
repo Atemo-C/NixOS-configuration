@@ -3,7 +3,15 @@ Wallpaper by Mikael Gustafsson.
 
 ---
 
-## Broken packages: 1 (see below)
+## Broken packages: 2 (see below)
+### GIMP
+- Status: **Disabled** in [**`./programs/multimedia.nix`**](./programs/multimedia.nix#L31)
+- Waiting on:
+  - [x] Issue creation [https://github.com/NixOS/nixpkgs/issues/531558]
+  - [x] Pull request creation [https://github.com/NixOS/nixpkgs/pull/531581]
+  - [x] Pull request merge
+  - [ ] Integration into NixOS unstable [https://nixpk.gs/pr-tracker.html?pr=531581]
+
 ### RPCS3
 - Status: **Disabled** in [**`./programs/gaming.nix`**](./programs/gaming.nix#L20)
 - Waiting on:
