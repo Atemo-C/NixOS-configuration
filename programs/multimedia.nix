@@ -145,8 +145,12 @@
 		};
 	};
 
-	# Link MPV's configuration file to the user's home directory.
-	systemd.user.tmpfiles.users.${config.user.name}.rules = lib.optional
-	(lib.any (pkg: lib.hasPrefix "mpv" pkg.name) config.environment.systemPackages)
-	"L %h/.config/mpv/mpv.conf - - - - /etc/nixos/programs/files/mpv.conf";
+	# Link MPV and yt-dlp's configuration files to the user's home directory.
+	systemd.user.tmpfiles.users.${config.user.name}.rules = lib.concatLists [
+		(lib.optional (lib.any (pkg: lib.hasPrefix "mpv" pkg.name) config.environment.systemPackages)
+		"L %h/.config/mpv/mpv.conf - - - - /etc/nixos/programs/files/mpv.conf")
+
+		(lib.optional (lib.elem pkgs.yt-dlp config.environment.systemPackages)
+		"L %h/.config/yt-dlp/config - - - - /etc/nixos/programs/files/yt-dlp.conf")
+	];
 }
