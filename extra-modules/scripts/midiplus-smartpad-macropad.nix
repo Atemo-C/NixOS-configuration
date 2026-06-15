@@ -254,5 +254,5 @@
 in {
 	environment.systemPackages = [ midiplus-smartpad-macropad ];
 	programs.ydotool.enable = true;
-	users.users.atemo.extraGroups = [ "ydotool" ];
+	users.users.${config.user.name}.extraGroups = [ "ydotool" ];
 }
