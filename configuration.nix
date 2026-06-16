@@ -1,33 +1,12 @@
 { ... }: { imports = [
-	# Niri Wayland compositor and essential utilities.
-	./niri.nix
+	./computers/libvirt/hardware-configuration.nix
+	./computers/libvirt/settings.nix
 
-	# HP 250 G6 laptop.
-#	./computers/hp-250-g6/hardware-configuration.nix
-#	./computers/hp-250-g6/settings.nix
+	./desktop/niri.nix
 
-	# QEMU/KVM virtual machine.
-#	./computers/qemu-kvm/hardware-configuration.nix
-#	./computers/qemu-kvm/settings.nix
-
-	# R5 desktop PC.
-#	./computers/r5-pc/hardware-configuration.nix
-#	./computers/r5-pc/settings.nix
-
-	# ThinkPad L510 laptop.
-#	./computers/thinkpad-l510/hardware-configuration.nix
-#	./computers/thinkpad-l510/settings.nix
-
-	# 3D accelaretd graphics.
-	./gpu/shared.nix
-
-	# Input configuration and utilities.
 	./input/keyboard-layout.nix
-	./input/opentabletdriver.nix
 	./input/utilities.nix
-	./input/zsa.nix
 
-	# Various programs.
 	./programs/3d.nix
 	./programs/accessories.nix
 	./programs/android.nix
@@ -40,36 +19,28 @@
 	./programs/terminal-emulator.nix
 	./programs/text.nix
 
-	# Storage configuration and utilities.
 	./storage/file-management.nix
-	./storage/file-utilities.nix
-	./storage/filesystems.nix
 	./storage/mounts.nix
 
-	# Theming modules.
+	./system/zram.nix
+	./system/boot.nix
+	./system/security.nix
+	./system/power.nix
+	./system/networking.nix
+	./system/nix-settings.nix
+	./system/locale.nix
+	./system/audio.nix
+	./system/ssh.nix
+	./system/printing.nix
+
 	./theming/fonts.nix
-	./theming/icons.nix
-	./theming/settings.nix
+	./theming/programs.nix
 	./theming/terminal-colors.nix
 
-	# Other modules (but still as important!).
-	./uncategorized/audio.nix
-	./uncategorized/bluetooth.nix
-	./uncategorized/boot.nix
-	./uncategorized/locale.nix
-	./uncategorized/networking.nix
-	./uncategorized/nix-settings.nix
-	./uncategorized/packaging.nix
-	./uncategorized/power.nix
-	./uncategorized/printing.nix
-	./uncategorized/ssh.nix
-	./uncategorized/zram.nix
-
-	# User modules.
-	./user/name.nix
 	./user/settings.nix
 	./user/shell.nix
 
+<<<<<<< HEAD
 	# Virtualisation modules.
 #	./virtualisation/docker.nix
 #	./virtualisation/virt-manager.nix
@@ -230,4 +201,8 @@
 
 	./extra-modules/external/home-manager.nix
 	./extra-modules/external/nix-flatpak.nix
+=======
+	./virtualisation/virt-manager.nix
+	./virtualisation/waydroid.nix
+>>>>>>> origin/Throwaway
 ]; }

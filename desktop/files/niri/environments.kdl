@@ -1,0 +1,19 @@
+environment {
+	// GTK: Use the Wayland backend if available.
+	GDK_BACKEND "wayland"
+
+	// Qt: Use the Wayland backend if available.
+	QT_QPA_PLATFORM "wayland"
+
+	// Qt: Enable automatic scaling based on the monitor's pixel density.
+	QT_AUTO_SCREEN_SCALE_FACTOR "1"
+
+	// SLD2: Use the Wayland backend if available.
+	SDL_VIDEODRIVER "wayland"
+
+	// Clutter: Use the Wayland backend if available.
+	CLUTTER_BACKEND "wayland"
+
+	// Fix certain Java programs running under XWayland.
+	_JAVA_AWT_WM_NONREPARENTING "1"
+}

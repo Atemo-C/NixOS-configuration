@@ -1,40 +1,119 @@
-{ config, lib, pkgs, ... }: rec {
+{ config, lib, pkgs, ... }: {
+	environment.systemPackages = with pkgs; [
+		# Simple, fast and user-friendly alternative to find.
+		fd
+
+		# Tool to get/set ATA/SATA drive parameters under Linux.
+		hdparm
+
+		# UDisks2 graphical front-end.
+		gnome-disk-utility
+
+		# Next-gen `ls` command.
+		lsd
+
+		# Disk usage analyzer with an ncurses interface.
+		ncdu
+
+		# Disc burner and project creator for Xfce.
+		xfburn
+
+		# Archiving-only formats support and utilities.
+		binutils   # ar
+		libarchive # libarchive
+
+		# Compression-only formats support and utilities.
+		bzip3 # bzip3
+		lz4   # LZ4
+		lzip  # lzip
+		lzop  # lzop
+
+		# Archiving and compression formats support and utilities.
+		p7zip # gzip bzip2 LZMA xz zstd ZIP RAR 7z CAB
+		dar   # DAR
+		tarlz # tarlz
+		unar  # unarchiver
+		lhasa # LHa
+		unzip # zip
+
+		# General archiving utilities.
+		dtrx        # Do The Right Extraction: A tool for taking the hassle out of extracting archives.
+		file-roller # Archive manager for GNOME.
+
+		# Thumbnailing utilities and media and font formats support.
+		ffmpegthumbnailer         # General video files thumbnailing
+		freetype                  # Font files
+		gnome-epub-thumbnailer    # .epub .mobi
+		icoextract                # Windows .ico files
+		kdePackages.kimageformats # Various image formats
+		kdePackages.qtsvg         # .svg
+		libgsf                    # .odf
+		nufraw-thumbnailer        # .raw
+		poppler                   # .pdf
+		webp-pixbuf-loader        # .webp
+
+		# Packages providing support and tools for additional filesystems.
+		e2fsprogs
+		exfatprogs
+		f2fs-tools
+		hfsprogs
+		jfsutils
+		nilfs-utils
+		udftools
+		xfsdump
+		xfsprogs
+
+		# Thumbnailing for Krita within Thunar.
+		# https://github.com/NixOS/nixpkgs/issues/287003
+		(pkgs.writeTextFile {
+			name = "krita-thumbnails";
+			text = ''
+				[Thumbnailer Entry]
+				TryExec=unzip
+				Exec=sh -c "${pkgs.unzip}/bin/unzip -p %i preview.png > %o"
+				MimeType=application/x-krita;
+			'';
+			destination = "/share/thumbnailers/kra.thumbnailer";
+	})
+
+		# Thumbnailing for audio files within Thunar.
+		(pkgs.writeTextFile {
+			name = "audio-thumbnails";
+			text = ''
+				[Thumbnailer Entry]
+				TryExec=ffmpeg
+				Exec=sh -c "${pkgs.ffmpeg-full}/bin/ffmpeg -y -i %i %o -fs %s"
+				MimeType=audio/mpeg
+			'';
+			destination = "/share/thumbnailers/ffmpegaudio.thumbnailer";
+		})
+	];
+
 	programs = {
-		# Alternative to the `find` command.
-		fd.install = true;
-
-		# Alternative to `rm` and `trash-cli`.
-		trashy.install = true;
-
-		# Next generation ls command.
-		lsd.install = true;
-
 		thunar = {
 			# Whether to enable the Thunar file manager.
 			enable = true;
 
-			# List of Thunar plugins to install.
+			# Thunar plugins to install.
 			plugins = with pkgs; [
-				# Plugin providing file context menus for archives.
-				thunar-archive-plugin
-
-				# Plugin providing support for Subversion and Git.
+				# Thunar plugin providing support for Subversion and Git.
 				thunar-vcs-plugin
 
-				# Extension for automatic management of removable drive and media.
-				thunar-volman
+				# Thunar plugin providing file context menus for archives.
+				thunar-archive-plugin
 
-				# Plugin providing tagging and renaming features for media files.
+				# Thunar plugin providing quick folder sharing using Samba without requiring root access.
+				thunar-shares-plugin
+
+				# Thunar plugin providing tagging and renaming features for media files.
 				thunar-media-tags-plugin
 			];
 		};
 
-		# Whether to enable Xfconf, the Xfce configuratioon system.
-		# Thunar likes to have it around.
-		xfconf.enable = lib.mkIf programs.thunar.enable true;
+		# Whether to enable Xfconf, the Xfce configuration storage system.
+		xfconf.enable = lib.mkIf config.programs.thunar.enable true;
 
-		# Shell abbreviations for `lsd`.
-		fish.shellAbbrs = lib.mkIf programs.lsd.install rec {
+		fish.shellAbbrs = lib.mkIf (lib.elem pkgs.lsd config.environment.systemPackages) rec {
 			# List.
 			l = "lsd --group-dirs first";
 			list = l;
@@ -115,21 +194,66 @@
 		};
 	};
 
-	# Link file management, Thunar, and other related files.
-	systemd.user.tmpfiles.users.${config.userName}.rules = lib.concatLists [
+	services = lib.mkIf config.programs.thunar.enable {
+		# Whether to enable periodic scrubbing on BTRFS.
+		btrfs.autoScrub.enable = true;
+
+		# Whether to enable periodic SSD TRIM.
+		# This may not be necessary on filesystems with a similar function enabled.
+		fstrim.enable = true;
+
+		# Whether to enable the GVfs userspace virtual filesystem.
+		gvfs.enable = true;
+
+		samba = {
+			# Whether to enable Samba, the SMB/CIFS protocol.
+			enable = true;
+
+			# Which Samba package to use.
+			package = pkgs.samba4Full;
+
+			# Whether to enable user-configurable Samba shares.
+			usershares.enable = true;
+
+			# Whether to enable opening the default ports in the firewall for Samba.
+			openFirewall = true;
+		};
+
+		samba-wsdd = {
+			# Whether to enable Web Services Dynamic Discovery host daemon.
+			# This enables (Samba) hosts, like your local NAS device,
+			# to be found by Web Service Discovery Clients like Windows.
+			enable = true;
+
+			# Whether to open the required firewall ports in the firewall.
+			openFirewall = true;
+		};
+
+		# Whether to enable the smartd daemon from the smartmontools package.
+		smartd.enable = true;
+
+		# Whether to enable Tumbler, A D-Bus thumbnailer service.
+		tumbler.enable = true;
+
+		# Whether to enable the udisks2 DBus service,
+		# allowing programs to query and manipulate storage devices.
+		udisks2.enable = true;
+	};
+
+	# Add the user to the `samba` group.
+	users.users.${config.user.name}.extraGroups = lib.optional config.services.samba.enable "samba";
+
+	# Link file management and other related files to the user's home directory.
+	systemd.user.tmpfiles.users.${config.user.name}.rules = lib.concatLists [
 		# Default programs to start when opening a file.
-		[ "L %h/.config/mimeapps.list - - - - /etc/nixos/files/mimeapps.list" ]
+		[ "L %h/.config/mimeapps.list - - - - /etc/nixos/storage/files/mimeapps.list" ]
 
 		# LSD configuration file.
-		(lib.optional programs.lsd.install
-		"L %h/.config/lsd/config.yaml - - - - /etc/nixos/files/lsd.yaml")
+		(lib.optional (lib.elem pkgs.lsd config.environment.systemPackages)
+		"L %h/.config/lsd/config.yaml - - - - /etc/nixos/storage/files/lsd.yaml")
 
 		# Custom actions for Thunar.
-		(lib.optional programs.thunar.enable
-		"L %h/.config/Thunar/uca.xml - - - - /etc/nixos/files/thunar-custom-actions.xml")
-
-		# XFCE4 helpers configuration file for Thunar.
-		(lib.optional programs.thunar.enable
-		"L %h/.config/xfce4/helpers.rc - - - - /etc/nixos/files/xfce4-helpers.rc")
+		(lib.optional config.programs.thunar.enable
+		"L %h/.config/Thunar/uca.xml - - - - /etc/nixos/storage/files/thunar-custom-actions.xml")
 	];
 }

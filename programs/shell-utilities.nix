@@ -1,40 +1,44 @@
-{ ... }: { programs = {
-	# GNU software calculator.
-	bc.install = true;
+{ pkgs, ... }: {
+	environment.systemPackages = with pkgs; [
+		# A calendar and scheduling application for the command-line.
+		calcurse
 
-	# A calendar and scheduling application for the command line.
-	calcurse.install = true;
+		# A POSIX-compliant implementation of `/bin/sh` that aims to be as small as possible.
+		dash
 
-	# A POSIX-compliant implementation of `/bin/sh` that aims to be as small as possible.
-	dash.install = true;
+		# GitHub CLI tool.
+		gh
 
-	# GitHub CLI tool.
-	gh.install = true;
+		# Lightweight and flexible command-line JSON processor.
+		jq
 
-	# Lightweight and flexible command-line JSON processor.
-	jq.install = true;
+		# Official formatter for Nix code.
+		nixfmt
 
-	# Whether to enable parallel, a hell toll for executing jobs in parallel.
-	parallel.enable = true;
+		# Shell tool for executing jobs in parallel.
+		parallel
 
-	# Readline wrapper for console programs.
-	rlwrap.install = true;
+		# Readline wrapper for console programs.
+		rlwrap
 
-	# Whether to enable shellcheck, a hell script analysis tool.
-	shellcheck.enable = true;
+		# Shell script analysis tool.
+		shellcheck
 
-	# Simplified and community-driven man pages, written in Rust.
-	tlrc.install = true;
+		# Simplified and community-driven man pages.
+		tlrc
 
-	# Tool for retrieving files using HTTP, HTTPS, and FTP.
-	wget.install = true;
+		# Tool for retrieving files using HTTP, HTTPS, and FTP.
+		wget
+	];
 
-	# Whether to enable bat, a `cat (1)` clone with syntax highlighting and Git integration.
-	bat.enable = true;
+	programs = {
+		# Whether to enable bat, a `cat (1)` clone with syntax highlighting and Git integration.
+		bat.enable = true;
 
-	# Whether interactive shells should show which Nix package (if any) provides a missing command.
-	command-not-found.enable = true;
+		# Whether interactive shells should show which Nix package (if any) provides the missing command.
+		command-not-found.enable = true;
 
-	# Whether to enable git, a distributed version control system.
-	git.enable = true;
-}; }
+		# Whether to enable git, a distributed version control system.
+		git.enable = true;
+	};
+}

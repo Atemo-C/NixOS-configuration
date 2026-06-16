@@ -1,87 +1,68 @@
-{ lib, pkgs, ... }: {
-	services.flatpak.packages = [
-		# Easy-to-use wineprefix manager.
-		"com.usebottles.bottles"
+{ config, lib, pkgs, ... }: {
+	environment.systemPackages = with pkgs; [
+		# Nintendo DS emulator.
+		desmume
 
-		# Open source gaming platform for GNU/Linux.
-		"net.lutris.Lutris"
-	];
+		# Fast and multi-source CLI program for managing Minecraft mods and modpacks,
+		# from sources like Modrinth, CurseForge, and GitHub Releases.
+		ferium
 
-	programs = rec {
-		# Nintendo DS(i) emulator.
-		desmume.install = true;
-
-		# CLI program for managing Minecraft mods and modpacks from various sources.
-		ferium.install = true;
-
-		# Native GOG, Epic, and Amaon Games launcher.
-		heroic.install = false;
+		# Native GOG, Epic, and Amazon Games Launcher.
+#		heroic
 
 		# Modern GBA emulator with a focus on accuracy.
-		mgba.install = true;
+		mgba
 
 		# PlayStation 2 emulator.
-		pcsx2.install = true;
-
-		# Full-featured Minecraft launcher.
-		prismlauncher.install = true;
+		pcsx2
 
 		# PlayStation 3 emulator.
-		rpcs3.enable = true;
+#		rpcs3
 
-		# XBOX emulator.
-		xemu.install = true;
+		# Original Xbox emulator.
+		xemu
 
-		vintagestory = {
-			# Whether to install Vintage Story, and indie sandbox game about innovation and exploration.
-			enable = true;
+		# In-development indie sandbox game about innovation and exploration.
+		vintagestory
+	];
 
-			openFirewall = {
-				# Whether to open ports in the firewall for local game discovery.
-				lan = true;
+	programs.steam = {
+		# Whether to perpetuate the cycle of the modern PC gamer.
+		enable = true;
 
-				# Whether to open ports in the firewall for global game discovery and UDNPD device discovery.
-				global = true;
-			};
-		};
+		# Whether to load the extest library into Steam,
+		# to translate X11 input events to uinput events
+		# (e.g. for using Steam Input on Wayland).
+		extest.enable = true;
 
-		gamemode = {
-			# Whether to enale GameMode to optimize system performances on demand when gaming.
-			enable = true;
+		# Whether to open pors in the firewall for Steam Local Network Game Transfers.
+		localNetworkGameTransfers.openFirewall = true;
 
-			# Disable any screen saver when using gamemode.
-			settings.general.inhibit_screensaver = 0;
-		};
-
-		gamescope = {
-			# Whether to enable the Gamescope compositor and session.
-			enable = true;
-
-			# Whether to add `cap_sys_nice` capablilities to GameScope, so that it may renice itself.
-			capSysNice = true;
-		};
-
-		steam = {
-			# Whether to perpetuate the cycle of the PC gamer.
-			enable = true;
-
-			# Whether to enable loading the extest library into Steam.
-			# This is to translate X11 input events to uinput events,
-			# e.g. for using Steam Input on Wayland.
-			extest.enable = true;
-
-			# Extra packages to be used as compatibility tools for Steam on Linux.
-			extraCompatPackages = [ pkgs.proton-ge-bin ];
-
-			# Additional packages to add to the Steam environment.
-			extraPackages = lib.optional gamescope.enable pkgs.gamescope
-			++ lib.optional gamemode.enable pkgs.gamemode;
-
-			# Whether to enale the GameScope session for Steam.
-			gamescopeSession.enable = lib.mkIf gamescope.enable true;
-
-			# Whether to open ports in the firewall for Steam Remote Play.
-			remotePlay.openFirewall = true;
-		};
+		# Whether to open ports in the firewall for Steam Remote Play.
+		remotePlay.openFirewall = true;
 	};
+
+	networking.firewall = lib.mkIf (lib.elem pkgs.vintagestory config.environment.systemPackages) {
+		# Open ports in the firewall for local and remote game discovery in Vintage Story.
+		# • LAN only = 42420 TCP/UDP
+		# • Lan + Global = 42420 TCP/UDP + 1900 UDP
+		allowedTCPPorts = [ 42420 ];
+		allowedUDPPorts = [ 42420 1900 ];
+	};
+
+	# Unlock certain limits to make RPCS3 work properly.
+	security.pam.loginLimits = lib.mkIf (lib.elem pkgs.rpcs3 config.environment.systemPackages) [
+		{
+			domain = "*";
+			type = "hard";
+			item = "memlock";
+			value = "unlimited";
+		}
+		{
+			domain = "*";
+			type = "soft";
+			item = "memlock";
+			value = "unlimited";
+		}
+	];
 }

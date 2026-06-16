@@ -1,44 +1,74 @@
-{ pkgs, ... }: {
+{ config, lib, pkgs, ... }: {
 	boot = {
-		# Paths of LUKS-encrypted storage devices necessary for the system.
-		# Optional ones (e.g. removable encrypted drives) should not be put here.
-		initrd.luks.devices = {
-			root.device = "/dev/disk/by-uuid/b686e417-26b4-4e7e-be8c-3407adf96b18";
-			swap.device = "/dev/disk/by-uuid/1c5f7a71-321c-4a57-a60b-955789fa50ed";
+		initrd = {
+			# Enable USB storage support during the boot process.
+			kernelModules = [ "usb_storage" ];
+
+			# Additional device encryption settings.
+			#
+			# [Tip] Here is how to create a dedicated USB flash drive for
+			# unlocking your LUKS-encrypted system (secure it away!):
+			# 1. Generate a random key with `dd`, like so:
+			#    • dd if=/dev/random of=disk-key.key bs=4096 count=1
+			#
+			# 2. Add the key to your encrypted storage partition(s) that use the same password:
+			#    • run0 cryptsetup luksAddKey /dev/your-encrypted-partition-here ./disk-key.key
+			#    (repeat if you have multiple encrypted partitions)
+			#
+			# 3. Write the key file to the USB flash drive (ALL data on it will be erased):
+			#    • run0 dd if=disk-key.key of=/dev/your-usb-flash-drive-here
+			luks.devices = {
+				swap = {
+					# Add the swap LUKS device, as `nixos-generate-config` does not.
+					device = "/dev/disk/by-uuid/---------------------";
+
+					# If on an SSD with discard support, enable it.
+					allowDiscards = true;
+
+					# Hardware key encryption keys, with manual password fallback.
+					keyFileSize = 4096;
+					keyFile = "/dev/disk/by-id/usb-Generic_Flash_Disk_94A5D05A-0:0";
+					keyFileTimeout = 10;
+				};
+
+				root = {
+					# If on an SSD with discard support, enable it.
+					allowDiscards = true;
+
+					# Hardware key encryption keys, with manual password fallback.
+					keyFileSize = 4096;
+					keyFile = "/dev/disk/by-id/usb-Generic_Flash_Disk_94A5D05A-0:0";
+					keyFileTimeout = 10;
+				};
+			};
 		};
 
 		# Whether the installation process is allowed to modify EFI boot variables.
-		# Once installed, if after an update, it fails to "install" again,
-		# it should be entirey safe to turn this option off.
-		loader.efi.canTouchEfiVariables = false;
+		# Once installed and working, if after an update, it fails to "install" again,
+		# it should be safe to turn this option off, even if not ideal.
+		loader.efi.canTouchEfiVariables = true;
 	};
 
-	# Filesystem options.
+	# ZSTD compression and no-access-time configuration for the main volumes.
 	fileSystems = {
-		# ZSTD compression for the root `/` and `/home/` volumes.
 		"/".options = [ "compress=zstd:3" ];
 		"/home".options = [ "compress=zstd:3" ];
-
-		# ZSTD compression and no access time updae for the `/nix/` volume.
 		"/nix".options = [ "compress=zstd:3" "noatime" ];
 	};
 
-	hardware = {
-		# Whether to enable support for Bluetooth.
-		bluetooth.enable = true;
-
-		# Intel Media Driver for VAAPI for Broadwell (7th Gen) and above Intel iGPUs.
-		graphics.extraPackages = [ pkgs.intel-media-driver ];
-	};
-
-	# Set the computer's name on the network.
+	# Name of the computer over the network.
 	networking.hostName = "HP-250-G6";
+
+	systemd = {
+		# Whether to enable Modem Manager, to handle cellular data.
+		services.ModemManager.enable = false;
+	};
 
 	services = {
 		# Whether to enable fwupd, a DBus service that allows applicatoins to update firmware.
 		fwupd.enable = true;
 
-		# Keyboard layout settings.
+		# Keyboard layout configuration on this system.
 		# To see a complete list of layouts, variants, and other settings:
 		# • https://gist.github.com/jatcwang/ae3b7019f219b8cdc6798329108c9aee
 		#
@@ -46,15 +76,19 @@
 		# • https://github.com/NixOS/nixpkgs/issues/254523
 		# • https://github.com/NixOS/nixpkgs/issues/286283
 		xserver.xkb = {
-			# Keyboard layout, or multiple keyboard layouts separated by a comma.
-			layout = "fr,us";
-
-			# Keyboard layout variant, or multiple keyboard variants separated by a comma.
-			variant = ",intl";
+			layout = "us,fr";
+			variant = "intl,";
 		};
 	};
 
-	# Whether to enable the ModemManager service for using cellular data.
-	# Disable this if you do not use it, to improve boot times.
-	systemd.services.ModemManager.enable = false;
+	imports = [
+		# ZSA keyboard support.
+		../../input/zsa.nix
+
+		# Bluetooth support.
+		../../system/bluetooth.nix
+
+		# Utility to convert a MiDiPLUS SmartPAD into a full macro pad.
+		../../extra-modules/scripts/midiplus-smartpad-macropad.nix
+	];
 }

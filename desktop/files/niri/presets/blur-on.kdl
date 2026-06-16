@@ -1,0 +1,12 @@
+blur {
+	passes 2
+	offset 3.0
+	noise 0
+	saturation 1.0
+}
+window-rule {
+	match app-id="footclient"
+	background-effect {
+		blur true
+	}
+}

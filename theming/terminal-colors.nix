@@ -10,17 +10,6 @@
 	cyan    = "00d0ff";   dim_cyan    = "0092b3";   light_cyan    = "66e3ff";
 	white   = "e6e6e6";   dim_white   = "999999";   light_white   = "ffffff";
 	black   = "242424";   dim_black   = "141414";   light_black   = "525252";
-
-	rgb_background = "0,0,0";    rgb_foreground = "238,238,238";
-
-	rgb_red     = "230,0,0";      rgb_light_red     = "255,102,102";
-	rgb_green   = "0,204,0";      rgb_light_green   = "128,255,128";
-	rgb_yellow  = "255,192,0";    rgb_light_yellow  = "255,232,128";
-	rgb_blue    = "0,108,255";    rgb_light_blue    = "102,179,255";
-	rgb_magenta = "208,0,255";    rgb_light_magenta = "236,128,255";
-	rgb_cyan    = "0,208,255";    rgb_light_cyan    = "102,227,255";
-	rgb_white   = "230,230,230";  rgb_light_white   = "255,255,255";
-	rgb_black   = "36,36,36";     rgb_light_black   = "82,82,82";
 in {
 	console = {
 		# The 16 colors palette used by the virtual consoles (TTY).
@@ -50,6 +39,8 @@ in {
 
 	# Colors for the Foot terminal emulator.
 	programs.foot.settings.colors-dark = {
+		alpha = "0.8";
+
 		foreground = foreground;
 		background = background;
 
@@ -80,6 +71,7 @@ in {
 		dim6 = dim_cyan;
 		dim7 = dim_white;
 	};
+<<<<<<< HEAD
 
 	# Colors for the kmscon console.
 	services.kmscon.config = ''
@@ -102,4 +94,6 @@ palette-white=${rgb_light_white}
 palette-foreground=${rgb_foreground}
 palette-background=${rgb_background}
 	'';
+=======
+>>>>>>> origin/Throwaway
 }

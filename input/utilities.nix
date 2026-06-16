@@ -1,33 +1,25 @@
-{ config, lib, ... }: {
-	programs = {
+{ config, lib, pkgs, ... }: {
+	environment.systemPackages = with pkgs; [
 		# Show mouse refresh rate under Linux + evdev.
-		evhz.install = true;
+		evhz
 
 		# Utility for mapping events from Linux event devices.
-		evsieve.install = true;
+		evsieve
 
-		# Simple joystick tester based on Gtk+.
-		jstest-gtk.install = true;
+		# Simple GTK joystic tester.
+		jstest-gtk
 
-		# Typing speed test and practice.
-		keypunch.install = false;
-
-		# RGB editor for the MiDiPlus SmartPad.
-		midiplus-smartpad-rgb-editor.install = true;
-
-		# User-mode driver and GUI for Steam Controller and other controllers.
-		sc-controller.install = true;
-
-		# Console-based typing speed test and practice.
-		typioca.install = true;
+		# Cozy typing speed tester in the terminal.
+		typioca
 
 		# Tools for working with USB devices, such as `lsusb`.
-		usbutils.install = true;
+		usbutils
+	];
 
-		# Generic Linux command-line automation tool.
-		ydotool.enable = true;
-	};
+	# Whether to enable the ydotool system service,
+	# a generic Linux command-line automation tool.
+	programs.ydotool.enable = true;
 
 	# Add the user to the `ydotool` group.
-	users.users.${config.userName}.extraGroups = lib.optional config.programs.ydotool.enable "ydotool";
+	users.users.${config.user.name}.extraGroups = lib.optional config.programs.ydotool.enable "ydotool";
 }

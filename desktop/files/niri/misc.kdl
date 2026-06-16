@@ -1,0 +1,8 @@
+// Disable the hotkey overlay when starting Niri.
+hotkey-overlay { skip-at-startup; }
+
+// Disable client-side window decorations.
+prefer-no-csd
+
+// Disable saving screenshots, letting my screenshot script handle them instead.
+screenshot-path null
