@@ -7,10 +7,10 @@ Wallpaper by Mikael Gustafsson.
 ### GIMP
 - Status: **Disabled** in [**`./programs/multimedia.nix`**](./programs/multimedia.nix#L31)
 - Waiting on:
-  - [x] Issue creation [https://github.com/NixOS/nixpkgs/issues/531558]
-  - [x] Pull request creation [https://github.com/NixOS/nixpkgs/pull/531581]
-  - [x] Pull request merge
-  - [ ] Integration into NixOS unstable [https://nixpk.gs/pr-tracker.html?pr=531581]
+	- [x] Issue creation [https://github.com/NixOS/nixpkgs/issues/531558]
+	- [x] Pull request creation [https://github.com/NixOS/nixpkgs/pull/531581]
+	- [x] Pull request merge
+	- [ ] Integration into `nixos-unstable` [https://nixpk.gs/pr-tracker.html?pr=531581]
 
 ### RPCS3
 - Status: **Disabled** in [**`./programs/gaming.nix`**](./programs/gaming.nix#L20)
@@ -451,14 +451,14 @@ exit
 - This entire configuration is for me, it may not work well for you.
 
 ## Not yet implemented or thoroughly tested, including but not limited to:
-- Accessibility features;
-- Touchscreen support;
-- Remote desktop through RDP or other;
+- Accessibility features
+- Touchscreen support
+- Remote desktop through RDP or other
 - Computers with:
-	- A non-x86_64 CPU architecture; (not tested)
-	- Hybrid GPU setup (e.g. NVIDIA PRIME); (not tested)
+	- A non-x86_64 CPU architecture (not tested)
+	- Hybrid GPU setup (e.g. NVIDIA PRIME) (not tested)
 	- NVIDIA GPUs (latest state of working NVIDIA driver configurations and tweaks can be found [here](https://github.com/Atemo-C/NixOS-configuration/tree/12789dd5374bc36811a509c3ad37903b5fe22ec8))
-	- Less than 4 GIB of RAM (Swap may be heavily used with less than 8 when building the system, or doing other Nix things…);
+	- Less than 4 GIB of RAM (Swap may be heavily used with less than 8 when building the system, or doing other Nix things… If you have very little RAM, I hope on your soul that you at least have a capable SSD to let the swapping happen; Otherwise, may Xenia the Linux Fox have mercy on your soul)
 	- Less than 64 GIB of storage (some Nix storage optimizations are already enabled).
 
 # Some useful NixOS resources
