@@ -30,6 +30,7 @@
 					keyFile = "/dev/disk/by-id/usb-Generic_Flash_Disk_94A5D05A-0:0";
 					keyFileTimeout = 3;
 				};
+
 				root = {
 					# If on an SSD with discard support, enable it.
 					allowDiscards = true;

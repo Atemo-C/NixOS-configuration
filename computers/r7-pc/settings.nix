@@ -2,7 +2,7 @@
 	boot = {
 		initrd = {
 			# Enable USB storage support during the boot process.
-			kernelModules = [ "usb_storage" ];
+			#kernelModules = [ "usb_storage" ];
 
 			# Additional device encryption settings.
 			#
@@ -18,9 +18,9 @@
 			# 3. Write the key file to the USB flash drive (ALL data on it will be erased):
 			#    • run0 dd if=disk-key.key of=/dev/your-usb-flash-drive-here
 			luks.devices = {
-				swap = {
+				"2tb-swap" = {
 					# Add the swap LUKS device, as `nixos-generate-config` does not.
-					device = "/dev/disk/by-uuid/---------------------";
+					device = "/dev/disk/by-uuid/2f1d31cb-8168-43ab-aa78-3e421e0fb89b";
 
 					# If on an SSD with discard support, enable it.
 					allowDiscards = true;
@@ -30,7 +30,8 @@
 					keyFile = "/dev/disk/by-id/usb-Generic_Flash_Disk_94A5D05A-0:0";
 					keyFileTimeout = 3;
 				};
-				root = {
+
+				"2tb-root" = {
 					# If on an SSD with discard support, enable it.
 					allowDiscards = true;
 
