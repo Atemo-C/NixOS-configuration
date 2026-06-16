@@ -276,7 +276,7 @@ Now that the storage device is set up, we can now set up the NixOS configuration
 ```shell
 nixos-generate-config --root /mnt
 ```
-2. Temporarily the hardware configuration file
+2. Temporarily move the hardware configuration file
 ```shell
 rsync -ah --progress /mnt/etc/nixos/hardware-configuration.nix ~/
 ```
