@@ -28,7 +28,7 @@
 					# Hardware key encryption keys, with manual password fallback.
 					keyFileSize = 4096;
 					keyFile = "/dev/disk/by-id/usb-Generic_Flash_Disk_94A5D05A-0:0";
-					keyFileTimeout = 3;
+					keyFileTimeout = 10;
 				};
 
 				"2tb-root" = {
@@ -38,7 +38,7 @@
 					# Hardware key encryption keys, with manual password fallback.
 					keyFileSize = 4096;
 					keyFile = "/dev/disk/by-id/usb-Generic_Flash_Disk_94A5D05A-0:0";
-					keyFileTimeout = 3;
+					keyFileTimeout = 10;
 				};
 			};
 		};
