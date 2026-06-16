@@ -412,7 +412,7 @@
         "backlightDeviceMappings": [
         ],
         "brightnessStep": 1,
-        "enableDdcSupport": false,
+        "enableDdcSupport": true,
         "enforceMinimum": true
     },
     "calendar": {
@@ -606,7 +606,7 @@
         "showScreenCorners": false,
         "showSessionButtonsOnLockScreen": true,
         "smoothScrollEnabled": true,
-        "telemetryEnabled": false
+        "telemetryEnabled": true
     },
     "hooks": {
         "colorGeneration": "",
@@ -839,7 +839,7 @@
     },
     "wallpaper": {
         "automationEnabled": false,
-        "directory": "~/Images/Wallpapers/Landscape",
+        "directory": "~/Images/Wallpapers/Landscape/",
         "enableMultiMonitorDirectories": false,
         "enabled": true,
         "favorites": [
