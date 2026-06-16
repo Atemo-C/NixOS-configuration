@@ -129,8 +129,8 @@
 			opti-gif-recursive = "${pkgs.gifsicle}/bin/gifsicle -b 05 **/*.gif";
 
 			# Downlad multimedia files from various online sources.
-			imgdl = "${pkgs.gallery-dl}/bin/gallery-dl";
-			imgdl-tor = "${pkgs.gallery-dl}/bin/gallery-dl --proxy socks5://localhost:9050";
+			imgdl = "${pkgs.gallery-dl}/bin/gallery-dl -D ./";
+			imgdl-tor = "${pkgs.gallery-dl}/bin/gallery-dl --proxy socks5://localhost:9050 -D ./";
 
 			# Download videos from various online sources.
 			yt = "${pkgs.yt-dlp}/bin/yt-dlp -t sleep";
