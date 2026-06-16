@@ -89,7 +89,7 @@
 	systemd.user.tmpfiles.users.${config.user.name}.rules = [
 		"L %h/.gtkrc-2.0 - - - - /etc/nixos/theming/files/gtkrc-2.0"
 		"L %h/.config/gtk-3.0/settings.ini - - - - /etc/nixos/theming/files/gtk-3.0/settings.ini"
-		"L %h/.config/gtk-4.0/settings.ini - - - - /etc/nixos/theming/files/gtk-4.0/settings.ini"
+		"L %h/.config/gtk-4.0/ - - - - /etc/nixos/theming/files/gtk-4.0/"
 
 		"L %h/.config/Kvantum/ - - - - /etc/nixos/theming/files/Kvantum/"
 		"L %h/.config/qt5ct/ - - - - /etc/nixos/theming/files/qt5ct/"
