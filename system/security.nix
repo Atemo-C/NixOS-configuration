@@ -2,6 +2,11 @@
 	# Whether to enable sudo.
 	sudo.enable = false;
 
-	# Whether to alias `sudo` to `run0`.
-	run0.enableSudoAlias = true;
+	run0 = {
+		# Whether to enable `run0`.
+#		enable = true;
+
+		# Whether to alias `sudo` to `run0`.
+		enableSudoAlias = true;
+	};
 }; }
