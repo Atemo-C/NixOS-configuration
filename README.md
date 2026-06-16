@@ -3,22 +3,14 @@ Wallpaper by Mikael Gustafsson.
 
 ---
 
-## Broken packages: 2 (see below)
-### GIMP
-- Status: **Disabled** in [**`./programs/multimedia.nix`**](./programs/multimedia.nix#L31)
-- Waiting on:
-	- [x] Issue creation [https://github.com/NixOS/nixpkgs/issues/531558]
-	- [x] Pull request creation [https://github.com/NixOS/nixpkgs/pull/531581]
-	- [x] Pull request merge
-	- [ ] Integration into `nixos-unstable` [https://nixpk.gs/pr-tracker.html?pr=531581]
-
+## Broken package: 1 (see below)
 ### RPCS3
 - Status: **Disabled** in [**`./programs/gaming.nix`**](./programs/gaming.nix#L20)
 - Waiting on:
 	- [x] Issue creation [https://github.com/NixOS/nixpkgs/issues/529700]
 	- [x] Pull request creation [https://github.com/NixOS/nixpkgs/pull/530692]
 	- [ ] Pull request merge
-	- [ ] Integration into NixOS unstable
+	- [ ] Integration into `nixos-unstable`
 
 ## Changelog (16/06/2026):
 Complete clean-up of the NixOS configuration. It was about time. There are too many changes to list all there, so here are a few:

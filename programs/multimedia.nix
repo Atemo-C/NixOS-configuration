@@ -28,7 +28,7 @@
 		gifski
 
 		# GNU Image Manipulation Program.
-#		gimp
+		gimp
 
 		# Software suite to create, edit, compose, or convert bitmap images.
 		imagemagick
