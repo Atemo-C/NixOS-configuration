@@ -21,7 +21,7 @@ Wallpaper by Mikael Gustafsson.
 	- [ ] Integration into NixOS unstable
 
 ## Changelog (16/06/2026):
-Complete cleanup of the NixOS configuration. It was about time. There are too many changes to list all there, so here are a few:
+Complete clean-up of the NixOS configuration. It was about time. There are too many changes to list all there, so here are a few:
 - GDM is now the Display Manager for logging into Niri
 - Home Manager has been removed, only NixOS options are now used
 - Flatpak has been removed, only native packages are now used (I can smell the pain arriving)
@@ -34,8 +34,8 @@ Complete cleanup of the NixOS configuration. It was about time. There are too ma
 - Theming is now more consistent, as everything basically has a Libadwaita look but with nice Bibata cursors, Ubuntu fonts, and Flat Remix icons; Be it for GTK or QT programs
 - The `lofi` list of abbreviation have been updated, more chill and nixing :3
 - The system has slightly more branding and visual niceties in a few random places
-- `nix-output-monitor` is now used to make a lot of Nix command outputs look a whole lot better
-- Samba file sharing now works straight out of the box in Thunar
+- `nix-output-monitor` is now used to make a lot of Nix command outputs look a lot better
+- Samba file sharing now works straight out-of-the-box in Thunar
 - And more…
 
 ---
@@ -56,8 +56,8 @@ It is a single-user setup, using Niri as the Wayland compositor, Noctalia as the
 • https://github.com/YaLTeR/niri \
 • https://github.com/noctalia-dev/noctalia-shell
 
-## Externel dependencies
-It does not rely nor use Home Manager, Nix Flakes, Flatpaks, or any of the likes. However, you may find that installing Flatpaks could give a better experience with some programs that are often broken in nixpkgs. This configuration will keep up with broken packages, and actively list them at the very top of the configuration.
+## External dependencies
+It does not rely on nor use Home Manager, Nix Flakes, Flatpaks, or any of the likes. However, you may find that installing Flatpaks could give a better experience with some programs that are often broken in nixpkgs. This configuration will keep up with broken packages, and actively list them at the very top of the configuration.
 
 ## Usage disclaimer
 Finally, since this entire desktop experience is crafted by and for myself, it will likely not fit most other people's needs and desires. You may feel free to take inspiration from this configuration to help improve your own NixOS configuration. You *could* use this configuration fully, but I may offer no support for it. Though, if you have suggestions for improvements, I am open to them.
@@ -117,7 +117,7 @@ Once this is done, the installation medium is now ready to be used. \
 However, in my case, there is an extra thing I like to do. As I have used a large USB flash drive, there is now an empty partition of about 20 GB left on it. If you want (and this is what I sometimes do), you can manually format it to store some data on it, such as wallpapers, documentation, totally not questionable content, or whatever floats your elephant. This is just a bonus step, and not necessary in the slightest.
 
 ## Installation
-Note that all of the following command-line steps assume a privileged environment (`sudo -i`).
+Note that all the following command-line steps assume a privileged environment (`sudo -i`).
 
 ### Booting into NixOS
 Insert the installation medium into the target computer, and start it. If your computer does not automatically boot to the installation medium, or do not know which key to press to open the boot menu, refer to your BIOS' settings and your motherboard manufacturer's documentation. \
@@ -289,13 +289,13 @@ rm -v /mnt/etc/nixos/configuration.nix
 git clone https://github.com/Atemo-C/NixOS-configuration /mnt/etc/nixos/
 ```
 5. Move the hardware configuration file to `/mnt/etc/nixos/computers/your-comutper-name`.
-Replace `your-comuputer-name` with the name of your computer.
+Replace `your-computer-name` with the name of your computer.
 ```shell
 mkdir -v /mnt/etc/nixos/computers/your-computer-name
 rsync -ah --progress ~/hardware-configuration.nix /mnt/etc/nixos/computers/your-computer-name/
 ```
 6. Get the UUID of your swap partition.
-We will write it to `/mnt/etc/nixos/computers/your-comupter-name/settings.nix`; It will be at the bottom of the module.
+We will write it to `/mnt/etc/nixos/computers/your-computer-name/settings.nix`; It will be at the bottom of the module.
 ```shell
 blkid /dev/sda2 >> /mnt/etc/nixos/computers/your-computer-name/settings.nix
 ```
@@ -311,9 +311,9 @@ We need to add them to `boot.initrd.luks.devices` since NixOS does not automatic
 - Your computer's host name;
 - The keyboard layout configuration;
 - Filesystem-specific options (Btrfs compression, etc);
-- Import modules that you may want to use on certain devices but not others (e.g. host virtualisation, gaming, etc);
+- Import modules that you may want to use on certain devices but not others (e.g. host virtualization, gaming, etc);
 - Any other device-specific configuration that you may want.
-In this example, I will be configuring my libvirt virtual machine. If you need any help or inspiration, please take a look at the existing hardware configuration files in this repository, to see how certain things are done.
+In this example, I will be configuring my libvirt virtual machine. If you need any help or inspiration, please have a look at the existing hardware configuration files in this repository, to see how certain things are done.
 ```nix
 { config, lib, pkgs, ... }: {
 	boot = {
@@ -419,14 +419,14 @@ In this example, I will be configuring my libvirt virtual machine. If you need a
 9. Add the following lines to your `configuration.nix` in the `imports` list, making sure other devices are commented out with `#`:
 ```nix
 	./computers/your-computer-name/hardware-configuration.nix
-	./computers/your-comupter-name/settings.nix
+	./computers/your-computer-name/settings.nix
 ```
 
 10. Modify the rest of the NixOS configuration to fit your needs.
 This includes things such as:
 - The user's name and title;
 - Enabling proprietary drivers for Turing and above NVIDIA GPUs;
-- Localisation settings, spell checking, timezone;
+- Localization settings, spell checking, timezone;
 - Various other settings, programs, etc.
 
 ### Installing NixOS
@@ -451,15 +451,15 @@ exit
 - This entire configuration is for me, it may not work well for you.
 
 ## Not yet implemented or thoroughly tested, including but not limited to:
-- Accessiblity features;
+- Accessibility features;
 - Touchscreen support;
 - Remote desktop through RDP or other;
 - Computers with:
 	- A non-x86_64 CPU architecture; (not tested)
 	- Hybrid GPU setup (e.g. NVIDIA PRIME); (not tested)
 	- NVIDIA GPUs (latest state of working NVIDIA driver configurations and tweaks can be found [here](https://github.com/Atemo-C/NixOS-configuration/tree/12789dd5374bc36811a509c3ad37903b5fe22ec8))
-	- Less than 4 GiB of RAM (Swap may be heavily used with less than 8 when building the system, or doing other Nix things…);
-	- Less than 64 GiB of storage (some Nix storage optimizations are already enabled).
+	- Less than 4 GIB of RAM (Swap may be heavily used with less than 8 when building the system, or doing other Nix things…);
+	- Less than 64 GIB of storage (some Nix storage optimizations are already enabled).
 
 # Some useful NixOS resources
 Help is available in:
