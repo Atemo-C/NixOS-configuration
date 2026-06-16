@@ -8,7 +8,7 @@
 		ferium
 
 		# Native GOG, Epic, and Amazon Games Launcher.
-		heroic
+#		heroic
 
 		# Modern GBA emulator with a focus on accuracy.
 		mgba
