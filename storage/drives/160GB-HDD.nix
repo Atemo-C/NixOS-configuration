@@ -20,7 +20,7 @@
 
 	# Non-essential encrypted drive (boot will not fail if these are not present).
 	environment.etc.crypttab.text = ''
-		160GB-HDD UUID=9574ec1c-2e52-4fc4-bdfd-60335c3a8ae5 ${config.users.users.${config.user.name}.home}/Mounts/160gb-hdd.key luks,nofail
+		160GB-HDD UUID=9574ec1c-2e52-4fc4-bdfd-60335c3a8ae5 ${config.users.users.${config.user.name}.home}/Other/Mounts/160gb-hdd.key luks,nofail
 	'';
 
 	# Udev rules to unlock the encrypted drive when detected.

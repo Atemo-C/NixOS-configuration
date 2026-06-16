@@ -3,7 +3,7 @@
 	imports = [
 		./drives/160GB-HDD.nix
 		./drives/PS4-HDD.nix
-		./drives/2TB-SSD.nix
+#		./drives/2TB-SSD.nix
 	];
 
 	# Set the correct permissions for local encryption keys,

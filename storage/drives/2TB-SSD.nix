@@ -19,7 +19,7 @@
 
 	# Non-essential encrypted drive (boot will not fail if these are not present).
 	environment.etc.crypttab.text = ''
-		2TB-SSD UUID=7c69b946-b6e2-4b97-8416-6a86d66dfb60 ${config.users.users.${config.user.name}.home}/Mounts/2TB-SSD.key luks,nofail
+		2TB-SSD UUID=7c69b946-b6e2-4b97-8416-6a86d66dfb60 ${config.users.users.${config.user.name}.home}/Other/Mounts/2TB-SSD.key luks,nofail
 	'';
 
 	# Udev rules to unlock the encrypted drive when detected.

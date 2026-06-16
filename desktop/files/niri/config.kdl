@@ -1,5 +1,5 @@
 include "./input.kdl"
-include "./output.kdl"
+include optional=true "./output.kdl"
 include "./cursor.kdl"
 include "./layout.kdl"
 include "./startup.kdl"

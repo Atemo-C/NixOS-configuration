@@ -20,7 +20,7 @@
 
 	# Non-essential encrypted drive (boot will not fail if these are not present).
 	environment.etc.crypttab.text = ''
-		PS4-HDD UUID=303f0216-92b5-4a30-9a4b-e1128e9352dd ${config.users.users.${config.user.name}.home}/Mounts/PS4-hdd.key luks,nofail
+		PS4-HDD UUID=303f0216-92b5-4a30-9a4b-e1128e9352dd ${config.users.users.${config.user.name}.home}/Other/Mounts/PS4-hdd.key luks,nofail
 	'';
 
 	# Udev rules to unlock the encrypted drive when detected.
