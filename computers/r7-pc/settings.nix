@@ -97,4 +97,9 @@
 		# Utility to convert a MiDiPLUS SmartPAD into a full macro pad.
 		../../extra-modules/scripts/midiplus-smartpad-macropad.nix
 	];
+
+	# Use the correct display configuration in Niri.
+	systemd.user.tmpfiles.users.${config.user.name}.rules =
+	lib.optional (config.programs.niri.enable)
+	"L %h/.config/niri/output.kdl - - - - /etc/nixos/computers/r7-pc/files/output.kdl";
 }

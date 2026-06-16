@@ -1,0 +1,16 @@
+output "Acer Technologies XV242Y TL1EE0018521" {
+	// resolution and refresh rate.
+	mode "1920x1080@119.982"
+
+	// Scaling.
+	scale 1
+
+	// Rotation.
+	//transform "0"
+
+	// Variable refresh rate.
+	//variable-refresh-rate
+
+	// Focus this monitor on startup.
+	focus-at-startup
+}
