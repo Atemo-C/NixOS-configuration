@@ -24,7 +24,6 @@
 	./programs/text.nix
 
 	./storage/file-management.nix
-	./storage/mounts.nix
 
 	./system/zram.nix
 	./system/boot.nix
