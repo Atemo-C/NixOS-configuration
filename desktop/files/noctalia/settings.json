@@ -25,7 +25,7 @@
         "showCategories": true,
         "showIconBackground": false,
         "sortByMostUsed": true,
-        "terminalCommand": "xdg-terminal",
+        "terminalCommand": "xdg-terminal-exec",
         "viewMode": "grid"
     },
     "audio": {
