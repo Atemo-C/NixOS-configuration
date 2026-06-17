@@ -1,0 +1,37 @@
+// Float the following windows.
+window-rule {
+	match app-id=r#"thunar"# title="Rename*"
+	match app-id=r#"thunar"# title="File Operation Progress"
+	open-floating true
+}
+
+// Apply a bigger border and shadows to floating windows.
+window-rule {
+	match is-floating=true
+	shadow {
+		on
+		spread 4
+		offset x=0 y=0
+	}
+	border { width 2; }
+}
+
+// Block these programs from appearing on screen captures.
+window-rule {
+	match app-id=r#"org\.keepassxc\.KeePassXC"#
+	block-out-from "screen-capture"
+}
+
+// Block these programs from appearing in screenshots.
+window-rule {
+	match app-id=r#"org\.keepassxc\.KeePassXC"#
+	block-out-from "screencast"
+}
+
+// Clip these programs to geometry, fixing some issues.
+window-rule {
+	match app-id=r#"librewolf"#
+	match app-id=r#"firefox"#
+	match app-id=r#"thunderbird"#
+	clip-to-geometry true
+}

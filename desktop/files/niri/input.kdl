@@ -1,0 +1,29 @@
+input {
+	keyboard {
+		// Delay in milliseconds before a held-down key repeats.
+		repeat-delay 225
+
+		// Rate in characters per second to repeat when holding down a key.
+		repeat-rate 30
+
+		// ACtivate the keyboard's numlock at startup.
+		numlock
+	}
+
+	// Enable tap-to-click on touchpads.
+	touchpad { tap; }
+
+	// Acceleration profile for the mouse.
+	mouse { accel-profile "flat"; }
+
+	// Disable Niri handling the power button directly.
+	// The power button will instead summon Noctalia's power menu.
+	disable-power-key-handling
+
+	// Focus windows and outputs automatically when moving the mouse over them.
+	// Setting `max-scroll-amount="0%"` makes it work only on windows already fully on screen.
+	focus-follows-mouse max-scroll-amount="90%"
+
+	// Switching to the same workspace twice will switch back-and-forth between the current and last one.
+	workspace-auto-back-and-forth
+}

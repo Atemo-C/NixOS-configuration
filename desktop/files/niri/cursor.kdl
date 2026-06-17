@@ -1,0 +1,2 @@
+// Which cursor theme to use.
+cursor { xcursor-theme "Bibata-Modern-Ice"; }

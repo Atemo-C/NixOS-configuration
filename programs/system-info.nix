@@ -1,49 +1,56 @@
-{ config, lib, pkgs, ... }: {
-	programs = {
-		btop = {
-			# Whethre to enable BTOP, a monitor of resources.
-			enable = true;
+{ config, lib, pkgs, ... }: let
+	btopPkgs = [
+		pkgs.btop
+		pkgs.btop-rocm
+		pkgs.btom-cuda
+	];
 
-			# Variant to install, depending on the GPU.
-			package = if lib.elem "nvidia" config.services.xserver.videoDrivers then pkgs.btop-cuda
-			else pkgs.btop;
-		};
+	btopPkg =
+		if config.hardware.activeGpu == "amd" then pkgs.btop-rocm
+		else if config.hardware.activeGpu == "nvidia-proprietary" then pkgs.btop-cuda
+		else pkgs.btop;
 
-		# See information on CPU, motherboard and more.
-		cpu-x.install = true;
+	bto = lib.any (pkg: lib.elem pkg config.environment.systemPackages) btopPkgs;
+in {
+	environment.systemPackages = with pkgs; [
+		# Resource monitor.
+		btopPkg
+
+		# See informatoin on the CPU, motherboard, and more.
+		cpu-x
 
 		# Fast system information tool like Neofetch.
-		fastfetch.install = true;
+		fastfetch
 
-		# Tools for reading hardware sensors.
-		lm_sensors.install = true;
+		# OpenGL and Vulkan Benchmark and Stress Test.
+		furmark
 
-		# Monitor your CPU, Memory, Disk, Network, and GPU usage graphically.
-		mission-center.install = true;
+		# Toolsf or reading hardware sensors.
+		lm_sensors
 
 		# Tools for monitoring the health of hard drives.
-		smartmontools.install = true;
+		smartmontools
 
 		# Mersenne prime search / System stability tester (torture).
-		mprime.install = true;
+		mprime
 
-		# Provide detailed information on the hardware configuration of the machine.
-		lshw.install = true;
+		# Provide detailed informatoin on the hardware configuration of the machine.
+		lshw
 
 		# Vulkan tools and utilities.
-		vulkan-tools.install = true;
+		vulkan-tools
 
 		# Collection of demos and test programs for OpenGL and Mesa.
-		mesa-demos.install = true;
+		mesa-demos
+	];
 
-		# Shell abbreviations for BTOP and Fastfetch.
-		fish.shellAbbrs = {
-			b = lib.mkIf config.programs.btop.enable "btop";
-			f = lib.mkIf config.programs.fastfetch.install "fastfetch";
-		};
+	# Small shell abbreviations to launch programs.
+	programs.fish.shellAbbrs = {
+		b = "${pkgs.btop}/bin/btop";
+		f = "${pkgs.fastfetch}/bin/fastfetch";
 	};
 
-	# Link Fastfetch's configuration file.
-	systemd.user.tmpfiles.users.${config.userName}.rules = lib.optional config.programs.fastfetch.install
-	"L %h/.config/fastfetch/config.jsonc - - - - /etc/nixos/files/fastfetch.jsonc";
+	# Link btop's configuration file to the user's home directory.
+	systemd.user.tmpfiles.users.${config.user.name}.rules = lib.optional bto
+	"L %h/.config/btop/ - - - - /etc/nixos/programs/files/btop/";
 }

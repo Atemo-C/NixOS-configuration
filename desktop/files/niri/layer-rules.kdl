@@ -1,0 +1,5 @@
+// Show the wallpaper configured in Noctalia in the overview as well.
+layer-rule {
+	match namespace="noctalia-overview"
+	place-within-backdrop true
+}

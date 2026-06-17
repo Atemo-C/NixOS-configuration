@@ -1,0 +1,2 @@
+// When closing the laptop lid, lock the session and suspend the device.
+switch-events { lid-close { spawn "noctalia-shell" "ipc" "call" "sessionMenu" "lockAndSuspend"; }; }

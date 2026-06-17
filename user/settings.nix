@@ -1,27 +1,28 @@
 { config, ... }: {
-	users.users.${config.userName} = {
-		# Extra groups to add the user to.
-		extraGroups = [ "disk" "input" "plugdev" "render" "storage" "video" "wheel" ];
+	# Import the module to set the user's name and title globally.
+	imports = [ ../extra-modules/config/username.nix ];
 
-		# Set the user as a normal user.
-		isNormalUser = true;
+	user = {
+		# The username of the user. [a-Z] [0-9] [-]
+		name = "atemo";
+
+		# Description/Title of the user.
+		title = "Atemo Cajaku";
 	};
 
-	home-manager.users.${config.userName}.xdg.userDirs = {
-		# Whether to manage `$XDG_CONFIG_HOME/user-dirs.dirs`.
-		enable = true;
+	users.users.${config.user.name} = {
+		# Extra groups to add the user to.
+		extraGroups = [
+			"disk"
+			"input"
+			"plugdev"
+			"render"
+			"storage"
+			"video"
+			"wheel"
+		];
 
-		# Whether to enable automatic creation of the XDG user directories.
-		createDirectories = true;
-
-		# Directories to configure.
-		desktop     = "${config.users.users.${config.userName}.home}/Other/Desktop";
-		documents   = "${config.users.users.${config.userName}.home}/Documents";
-		download    = "${config.users.users.${config.userName}.home}/Downloads";
-		music       = "${config.users.users.${config.userName}.home}/Audio/Music";
-		pictures    = "${config.users.users.${config.userName}.home}/Images";
-		publicShare = "${config.users.users.${config.userName}.home}/Other/Public";
-		templates   = "${config.users.users.${config.userName}.home}/Other/Templates";
-		videos      = "${config.users.users.${config.userName}.home}/Videos";
+		# Whether the user should be considered a normal user.
+		isNormalUser = true;
 	};
 }

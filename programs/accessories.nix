@@ -1,17 +1,11 @@
-{ config, lib, ... }: {
-	programs = {
-		# Mind-mapping utility.
-		minder.install = false;
+{ pkgs, ... }: { environment.systemPackages = with pkgs; [
+	# Offline password manager.
+	keepassxc
 
-		# Offline password manager.
-		keepassxc.install = true;
-	};
+	# Tool to write image files to portable media.
+	# (e.g. ISO -> Bootable USB flash drive)
+	mediawriter
 
-	# Mind-mapping utilitiy (Flatpak install if the native package does not work properly).
-	services.flatpak.packages = lib.optional (!config.programs.minder.install) "com.github.phase1geo.minder";
-
-	# Link the calculator's .desktop file.
-	systemd.user.tmpfiles.users.${config.userName}.rules = [
-		"L %h/.local/share/applications/atemo-calculator.desktop - - - - /etc/nixos/files/atemo-calculator.desktop"
-	];
-}
+	# Tool to write Windows ISO files to USB flash drives.
+	woeusb
+]; }
