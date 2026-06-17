@@ -1,6 +1,8 @@
 { ... }: { imports = [
-	./computers/libvirt/hardware-configuration.nix
-	./computers/libvirt/settings.nix
+#	./computers/libvirt/hardware-configuration.nix
+#	./computers/libvirt/settings.nix
+	./computers/r7-pc/hardware-configuration.nix
+	./computers/r7-pc/settings.nix
 
 	./desktop/niri.nix
 

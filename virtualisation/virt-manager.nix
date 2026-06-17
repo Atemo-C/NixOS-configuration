@@ -15,8 +15,7 @@
 	# BE CAREFUL! Change `enp16s0` to YOUR primary network interface.
 	# You can see it with `ip a`.
 	networking = lib.mkIf virt {
-#		bridges."br0".interfaces = [ "enp16s0" ];
-		bridges."br0".interfaces = [ "enp1s0" ];
+		bridges."br0".interfaces = [ "enp16s0" ];
 
 		interfaces = {
 			enp16s0.useDHCP = true;

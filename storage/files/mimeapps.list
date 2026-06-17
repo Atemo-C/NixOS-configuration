@@ -31,4 +31,4 @@ application/pdf=draw.desktop;xreader.desktop;
 audio/x-opus+ogg=audacity.desktop;
 audio/mpeg=mpv.desktop;audacity.desktop;
 image/jpeg=gimp.desktop;
-image/png=gimp.desktop;
+image/png=pix.desktop;gimp.desktop;
