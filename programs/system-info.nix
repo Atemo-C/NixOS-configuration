@@ -4,11 +4,17 @@
 		pkgs.btop-rocm
 		pkgs.btom-cuda
 	];
+
+	btopPkg =
+		if config.hardware.activeGpu == "amd" then pkgs.btop-rocm
+		else if config.hardware.activeGpu == "nvidia-proprietary" then pkgs.btop-cuda
+		else pkgs.btop;
+
 	bto = lib.any (pkg: lib.elem pkg config.environment.systemPackages) btopPkgs;
 in {
 	environment.systemPackages = with pkgs; [
 		# Resource monitor.
-		btop
+		btopPkg
 
 		# See informatoin on the CPU, motherboard, and more.
 		cpu-x

@@ -20,6 +20,9 @@
 	# Adobe Flash Player emulator.
 	ruffle
 
+	# Desktop application for SimpleX Chat.
+	simplex-chat-desktop
+
 	# Graphical librespeed client.
 	speedtest
 

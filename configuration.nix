@@ -4,6 +4,8 @@
 	./computers/r7-pc/hardware-configuration.nix
 	./computers/r7-pc/settings.nix
 
+	./extra-modules/config/gpu-check.nix
+
 	./desktop/niri.nix
 
 	./input/keyboard-layout.nix

@@ -84,8 +84,14 @@
 		};
 	};
 
-	# Whether to enable `amdgpu` overdrive mode for overclocking.
-	hardware.amdgpu.overdrive.enable = lib.mkIf config.services.lact.enable true;
+	hardware = {
+		# Whether to enable `amdgpu` overdrive mode for overclocking.
+		amdgpu.overdrive.enable = lib.mkIf config.services.lact.enable true;
+
+		# Which main GPU is used.
+		# This is used to guide which variant of packages should be installed.
+		activeGpu = "amd";
+	};
 
 	imports = [
 		# OpenTabletDriver.
