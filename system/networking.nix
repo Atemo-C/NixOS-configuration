@@ -21,7 +21,7 @@
 
 		settings = {
 			# DNS port for Blocky to use.
-			ports.dns = 53;
+			ports.dns = "127.0.0.1:53";
 
 			# Use Cloudflare's DNS over HTTPS (DoH) server to resolve queries.
 			upstreams.groups.default = [ "https://one.one.one.one/dns-query" ];
