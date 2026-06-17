@@ -2,7 +2,7 @@
 # https://github.com/NixOS/nixpkgs/issues/74281
 # Thank you!
 { config, ... }: {
-	# Mount for encrypted PS4 HDD.
+	# Mount for PS4-HDD.
 	fileSystems."/run/media/${config.user.name}/PS4-HDD" = {
 		device = "/dev/disk/by-uuid/75d66153-2f9b-4269-84c6-c97e63a36754";
 		fsType = "btrfs";
@@ -20,7 +20,7 @@
 
 	# Non-essential encrypted drive (boot will not fail if these are not present).
 	environment.etc.crypttab.text = ''
-		PS4-HDD UUID=303f0216-92b5-4a30-9a4b-e1128e9352dd ${config.users.users.${config.user.name}.home}/Other/Mounts/PS4-hdd.key luks,nofail
+		PS4-HDD UUID=303f0216-92b5-4a30-9a4b-e1128e9352dd /dev/disk/by-id/usb-Generic_Flash_Disk_94A5D05A-0:0 luks,nofail,keyfile-size=4096
 	'';
 
 	# Udev rules to unlock the encrypted drive when detected.
