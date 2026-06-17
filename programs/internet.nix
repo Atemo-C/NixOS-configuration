@@ -1,37 +1,44 @@
-{ pkgs, ... }: { environment.systemPackages = with pkgs; [
-	# CLI Gemini client.
-	amfora
+{ config, lib, pkgs, ... }: {
+	environment.systemPackages = with pkgs; [
+		# CLI Gemini client.
+		amfora
 
-	# Matrix client.
-	element-desktop
+		# Matrix client.
+		element-desktop
 
-	# Graphical Gemini client.
-	lagrange
+		# Graphical Gemini client.
+		lagrange
 
-	# Small 'net top' tool, grouping bandwidth by process.
-	nethogs
+		# Small 'net top' tool, grouping bandwidth by process.
+		nethogs
 
-	# BitTorrent client.
-	qbittorrent
+		# BitTorrent client.
+		qbittorrent
 
-	# Qt Tox client.
-	qtox
+		# Qt Tox client.
+		qtox
 
-	# Adobe Flash Player emulator.
-	ruffle
+		# Adobe Flash Player emulator.
+		ruffle
 
-	# Desktop application for SimpleX Chat.
-	simplex-chat-desktop
+		# Desktop application for SimpleX Chat.
+		simplex-chat-desktop
 
-	# Graphical librespeed client.
-	speedtest
+		# Graphical librespeed client.
+		speedtest
 
-	# Anonymizing overlay network.
-	tor
+		# Anonymizing overlay network.
+		tor
 
-	# Privacy-focused, Firefox-based browser routing traffic through the Tor network.
-	tor-browser
+		# Privacy-focused, Firefox-based browser routing traffic through the Tor network.
+		tor-browser
 
-	# Fork of Firefox, focused on privacy, security and freedom
-	librewolf
-]; }
+		# Fork of Firefox, focused on privacy, security and freedom
+		librewolf
+	];
+
+	# TCP network port to open for local Simplex cross-device talk.
+	networking.firewall.allowedTCPPorts = lib.optional
+	(lib.elem pkgs.simplex-chat-desktop config.environment.systemPackages)
+	11110;
+}
