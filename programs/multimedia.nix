@@ -1,4 +1,8 @@
-{ config, lib, pkgs, ... }: {
+{ config, lib, pkgs, ... }: let
+	obsPkg =
+		if config.hardware.activeGpu == "nvidia-proprietary" then pkgs.obs-studio.override { cudaSupport = true; }
+		else pkgs.obs-studio;
+in {
 	# Video4Linux2 Kernel module.
 	boot = {
 		extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
@@ -94,6 +98,9 @@
 		obs-studio = {
 			# Whether to enable OBS for video recording and live streaming.
 			enable = true;
+
+			# OBS package to use.
+			package = obsPkg;
 
 			# OBS plugins to install.
 			plugins = with pkgs.obs-studio-plugins; [

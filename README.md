@@ -10,16 +10,16 @@ Wallpaper by Mikael Gustafsson.
 	- [x] Issue creation [https://github.com/NixOS/nixpkgs/issues/529700]
 	- [x] Pull request creation [https://github.com/NixOS/nixpkgs/pull/530692]
 	- [ ] Pull request merge
-	- [ ] Integration into `nixos-unstable`
+	- [ ] Integration into `nixos-unstable-small`
 
-## Changelog (16/06/2026):
+## Changelog (16-17/06/2026):
 Complete clean-up of the NixOS configuration. It was about time. There are too many changes to list all there, so here are a few:
 - GDM is now the Display Manager for logging into Niri
 - Home Manager has been removed, only NixOS options are now used
 - Flatpak has been removed, only native packages are now used (I can smell the pain arriving)
 - Both of the above mean that this is now a 100% "pure" NixOS configuration!
 - All "useless" extra custom modules have been removed
-- Proprietary NVIDIA GPU driver support is no longer here, as I no longer have an NVIDIA GPU; The previous tweaks to make things work better with them are still here, visible in the past (thanks Git!) [right here](https://github.com/Atemo-C/NixOS-configuration/tree/12789dd5374bc36811a509c3ad37903b5fe22ec8)
+- Proprietary NVIDIA GPU driver support is no longer **officially** there, as I no longer have an NVIDIA GPU. The previous tweaks to make things work better with them are still here; However, they are fully untested and may be completely broken.
 - Setup-specific modules are now handled/imported in each computer's `settings.nix` module, instead of polluting the main `configuration.nix` import list
 - FISH abbreviations have been overhauled to use full package paths, so that they may not just disappear when certain packages are not included in `environment.systemPackages = [];`
 - Some programs have been replaced, such as `lximage-qt` having been replaced with `pix`, or `xreader` having been replaced with GNOME's `papers`
@@ -449,7 +449,7 @@ exit
 - Computers with:
 	- A non-x86_64 CPU architecture (not tested)
 	- Hybrid GPU setup (e.g. NVIDIA PRIME) (not tested)
-	- NVIDIA GPUs (latest state of working NVIDIA driver configurations and tweaks can be found [here](https://github.com/Atemo-C/NixOS-configuration/tree/12789dd5374bc36811a509c3ad37903b5fe22ec8))
+	- NVIDIA GPUs (I no longer have an NVIDIA GPU to test things with, so what is in this configuration is a best-effort attempt at making things work)
 	- Less than 4 GIB of RAM (Swap may be heavily used with less than 8 when building the system, or doing other Nix things… If you have very little RAM, I hope on your soul that you at least have a capable SSD to let the swapping happen; Otherwise, may Xenia the Linux Fox have mercy on your soul)
 	- Less than 64 GIB of storage (some Nix storage optimizations are already enabled).
 
