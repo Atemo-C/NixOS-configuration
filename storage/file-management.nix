@@ -248,6 +248,9 @@
 		# Default programs to start when opening a file.
 		[ "L %h/.config/mimeapps.list - - - - /etc/nixos/storage/files/mimeapps.list" ]
 
+		# Default user directories.
+		[ "L %h/.config/user-dirs.dirs - - - - /etc/nixos/storage/files/user-dirs.dirs" ]
+
 		# LSD configuration file.
 		(lib.optional (lib.elem pkgs.lsd config.environment.systemPackages)
 		"L %h/.config/lsd/config.yaml - - - - /etc/nixos/storage/files/lsd.yaml")
