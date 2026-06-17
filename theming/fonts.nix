@@ -17,9 +17,6 @@
 			serif = [ "Ubuntu Nerd Font" "Noto Color Emoji" ];
 		};
 	};
-<<<<<<< HEAD
-}
-=======
 
 	# List of primary font packages to install.
 	packages = with pkgs; [
@@ -30,4 +27,3 @@
 		noto-fonts
 	];
 }; }
->>>>>>> origin/Throwaway

@@ -33,12 +33,8 @@
         ],
         "preferredPlayer": "",
         "spectrumFrameRate": 30,
-<<<<<<< HEAD:files/noctalia/settings.json
-        "visualizerType": "none",
-=======
         "spectrumMirrored": true,
         "visualizerType": "linear",
->>>>>>> origin/Throwaway:desktop/files/noctalia/settings.json
         "volumeFeedback": false,
         "volumeFeedbackSoundFile": "",
         "volumeOverdrive": false,
@@ -50,19 +46,11 @@
         "backgroundOpacity": 0.93,
         "barType": "simple",
         "capsuleColorKey": "none",
-<<<<<<< HEAD:files/noctalia/settings.json
-        "capsuleOpacity": 1,
-=======
         "capsuleOpacity": 0.5,
->>>>>>> origin/Throwaway:desktop/files/noctalia/settings.json
         "contentPadding": 0,
         "density": "default",
         "displayMode": "always_visible",
         "enableExclusionZoneInset": true,
-<<<<<<< HEAD:files/noctalia/settings.json
-        "floating": true,
-=======
->>>>>>> origin/Throwaway:desktop/files/noctalia/settings.json
         "fontScale": 1,
         "frameRadius": 12,
         "frameThickness": 8,
@@ -87,11 +75,7 @@
         "showCapsule": true,
         "showOnWorkspaceSwitch": true,
         "showOutline": false,
-<<<<<<< HEAD:files/noctalia/settings.json
-        "useSeparateOpacity": true,
-=======
         "useSeparateOpacity": false,
->>>>>>> origin/Throwaway:desktop/files/noctalia/settings.json
         "widgetSpacing": 6,
         "widgets": {
             "center": [
@@ -158,12 +142,8 @@
             ],
             "left": [
                 {
-<<<<<<< HEAD:files/noctalia/settings.json
-                    "colorizeSystemIcon": "none",
-=======
                     "colorizeSystemIcon": "primary",
                     "colorizeSystemText": "none",
->>>>>>> origin/Throwaway:desktop/files/noctalia/settings.json
                     "customIconPath": "",
                     "enableColorization": true,
                     "icon": "rocket",
@@ -252,8 +232,6 @@
                     "wheelUpdateText": false
                 },
                 {
-<<<<<<< HEAD:files/noctalia/settings.json
-=======
                     "defaultSettings": {
                         "precision": 8,
                         "showBarValue": true
@@ -261,7 +239,6 @@
                     "id": "plugin:noctalia-calculator"
                 },
                 {
->>>>>>> origin/Throwaway:desktop/files/noctalia/settings.json
                     "compactMode": true,
                     "hideMode": "hidden",
                     "hideWhenIdle": false,
@@ -317,7 +294,7 @@
                     ]
                 },
                 {
-                    "hideWhenZero": true,
+                    "hideWhenZero": false,
                     "hideWhenZeroUnread": false,
                     "iconColor": "none",
                     "id": "NotificationHistory",
@@ -434,13 +411,8 @@
     "brightness": {
         "backlightDeviceMappings": [
         ],
-<<<<<<< HEAD:files/noctalia/settings.json
-        "brightnessStep": 2,
-        "enableDdcSupport": false,
-=======
         "brightnessStep": 1,
         "enableDdcSupport": true,
->>>>>>> origin/Throwaway:desktop/files/noctalia/settings.json
         "enforceMinimum": true
     },
     "calendar": {
@@ -555,26 +527,17 @@
         "indicatorColor": "primary",
         "indicatorOpacity": 0.6,
         "indicatorThickness": 3,
-<<<<<<< HEAD:files/noctalia/settings.json
-        "launcherIconColor": "none",
-        "launcherPosition": "end",
-=======
         "launcherIcon": "",
         "launcherIconColor": "none",
         "launcherPosition": "end",
         "launcherUseDistroLogo": false,
->>>>>>> origin/Throwaway:desktop/files/noctalia/settings.json
         "monitors": [
         ],
         "onlySameOutput": true,
         "pinnedApps": [
         ],
         "pinnedStatic": false,
-<<<<<<< HEAD:files/noctalia/settings.json
-        "position": "left",
-=======
         "position": "bottom",
->>>>>>> origin/Throwaway:desktop/files/noctalia/settings.json
         "showDockIndicator": false,
         "showLauncherIcon": false,
         "sitOnFrame": false,
@@ -584,29 +547,17 @@
         "allowPanelsOnScreenWithoutBar": true,
         "allowPasswordWithFprintd": false,
         "animationDisabled": false,
-<<<<<<< HEAD:files/noctalia/settings.json
-        "animationSpeed": 2,
-        "autoStartAuth": false,
-        "avatarImage": "~/Images/Profile pictures/Atemo/Profile.png",
-=======
         "animationSpeed": 1.5,
         "autoStartAuth": false,
         "avatarImage": "~/.face",
->>>>>>> origin/Throwaway:desktop/files/noctalia/settings.json
         "boxRadiusRatio": 1,
         "clockFormat": "hh\\nmm",
         "clockStyle": "custom",
-        "compactLockScreen": true,
+        "compactLockScreen": false,
         "dimmerOpacity": 0,
-<<<<<<< HEAD:files/noctalia/settings.json
-        "enableBlurBehind": false,
-        "enableLockScreenCountdown": true,
-        "enableLockScreenMediaControls": false,
-=======
         "enableBlurBehind": true,
         "enableLockScreenCountdown": true,
         "enableLockScreenMediaControls": true,
->>>>>>> origin/Throwaway:desktop/files/noctalia/settings.json
         "enableShadows": true,
         "forceBlackScreenCorners": false,
         "iRadiusRatio": 0.5,
@@ -643,11 +594,7 @@
         ],
         "lockScreenTint": 0,
         "passwordChars": false,
-<<<<<<< HEAD:files/noctalia/settings.json
-        "radiusRatio": 0,
-=======
         "radiusRatio": 0.5,
->>>>>>> origin/Throwaway:desktop/files/noctalia/settings.json
         "reverseScroll": false,
         "scaleRatio": 1,
         "screenRadiusRatio": 0,
@@ -665,38 +612,16 @@
         "colorGeneration": "",
         "darkModeChange": "",
         "enabled": true,
-<<<<<<< HEAD:files/noctalia/settings.json
-        "performanceModeDisabled": "sh -c 'echo \"\" > ~/.config/niri/animation-state.kdl'",
-        "performanceModeEnabled": "sh -c 'echo \"animations { off; }\" > ~/.config/niri/animation-state.kdl'",
-        "screenLock": "",
-        "screenUnlock": "",
-        "session": "",
-        "startup": "sh -c 'echo \"\" > ~/.config/niri/animation-state.kdl'",
-=======
         "performanceModeDisabled": "cp ~/.config/niri/presets/animations-on.kdl ~/.config/niri/animations.kdl && cp ~/.config/niri/presets/blur-on.kdl ~/.config/niri/blur.kdl",
         "performanceModeEnabled": "cp ~/.config/niri/presets/animations-off.kdl ~/.config/niri/animations.kdl && cp ~/.config/niri/presets/blur-off.kdl ~/.config/niri/blur.kdl",
         "screenLock": "",
         "screenUnlock": "",
         "session": "",
         "startup": "cp ~/.config/niri/presets/animations-on.kdl ~/.config/niri/animations.kdl && cp ~/.config/niri/presets/blur-on.kdl ~/config.niri/blur.kdl",
->>>>>>> origin/Throwaway:desktop/files/noctalia/settings.json
         "wallpaperChange": ""
     },
     "idle": {
         "customCommands": "[]",
-<<<<<<< HEAD:files/noctalia/settings.json
-        "enabled": true,
-        "fadeDuration": 5,
-        "lockCommand": "",
-        "lockTimeout": 300,
-        "resumeLockCommand": "",
-        "resumeScreenOffCommand": "",
-        "resumeSuspendCommand": "",
-        "screenOffCommand": "niri msg action power-off-monitors",
-        "screenOffTimeout": 600,
-        "suspendCommand": "noctalia-shell ipc call sessionMenu lockAndSuspend",
-        "suspendTimeout": 0
-=======
         "enabled": false,
         "fadeDuration": 5,
         "lockCommand": "",
@@ -708,7 +633,6 @@
         "screenOffTimeout": 600,
         "suspendCommand": "",
         "suspendTimeout": 1800
->>>>>>> origin/Throwaway:desktop/files/noctalia/settings.json
     },
     "location": {
         "analogClockInCalendar": false,
@@ -723,17 +647,10 @@
         "use12hourFormat": false,
         "useFahrenheit": false,
         "weatherEnabled": false,
-<<<<<<< HEAD:files/noctalia/settings.json
-        "weatherShowEffects": false
-    },
-    "network": {
-        "airplaneModeEnabled": false,
-=======
         "weatherShowEffects": true,
         "weatherTaliaMascotAlways": false
     },
     "network": {
->>>>>>> origin/Throwaway:desktop/files/noctalia/settings.json
         "bluetoothAutoConnect": true,
         "bluetoothDetailsViewMode": "grid",
         "bluetoothHideUnnamedDevices": false,
@@ -741,12 +658,7 @@
         "bluetoothRssiPollingEnabled": false,
         "disableDiscoverability": false,
         "networkPanelView": "wifi",
-<<<<<<< HEAD:files/noctalia/settings.json
-        "wifiDetailsViewMode": "grid",
-        "wifiEnabled": true
-=======
         "wifiDetailsViewMode": "grid"
->>>>>>> origin/Throwaway:desktop/files/noctalia/settings.json
     },
     "nightLight": {
         "autoSchedule": true,
@@ -764,11 +676,7 @@
     "notifications": {
         "backgroundOpacity": 1,
         "clearDismissed": true,
-<<<<<<< HEAD:files/noctalia/settings.json
-        "criticalUrgencyDuration": 30,
-=======
         "criticalUrgencyDuration": 15,
->>>>>>> origin/Throwaway:desktop/files/noctalia/settings.json
         "density": "compact",
         "enableBatteryToast": true,
         "enableKeyboardLayoutToast": true,
@@ -812,12 +720,8 @@
         "overlayLayer": true
     },
     "plugins": {
-<<<<<<< HEAD:files/noctalia/settings.json
-        "autoUpdate": true
-=======
         "autoUpdate": true,
         "notifyUpdates": false
->>>>>>> origin/Throwaway:desktop/files/noctalia/settings.json
     },
     "sessionMenu": {
         "countdownDuration": 10000,
@@ -876,29 +780,17 @@
                 "keybind": "7"
             },
             {
-<<<<<<< HEAD:files/noctalia/settings.json
-                "action": "userspaceReboot",
-                "command": "",
-                "countdownEnabled": true,
-                "enabled": false,
-                "keybind": ""
-=======
                 "action": "shutdown",
                 "command": "",
                 "countdownEnabled": true,
                 "enabled": true,
                 "keybind": "8"
->>>>>>> origin/Throwaway:desktop/files/noctalia/settings.json
             }
         ],
         "showHeader": true,
         "showKeybinds": true
     },
-<<<<<<< HEAD:files/noctalia/settings.json
-    "settingsVersion": 57,
-=======
     "settingsVersion": 59,
->>>>>>> origin/Throwaway:desktop/files/noctalia/settings.json
     "systemMonitor": {
         "batteryCriticalThreshold": 20,
         "batteryWarningThreshold": 35,
@@ -932,21 +824,12 @@
         "enableUserTheming": false
     },
     "ui": {
-<<<<<<< HEAD:files/noctalia/settings.json
-        "boxBorderEnabled": false,
-        "fontDefault": "Ubuntu Nerd Font",
-        "fontDefaultScale": 1,
-        "fontFixed": "UbuntuMono Nerd Font",
-        "fontFixedScale": 1.04,
-        "panelBackgroundOpacity": 0.9,
-=======
         "boxBorderEnabled": true,
         "fontDefault": "Ubuntu Nerd Font",
         "fontDefaultScale": 1,
         "fontFixed": "monospace",
         "fontFixedScale": 1.05,
         "panelBackgroundOpacity": 0.8,
->>>>>>> origin/Throwaway:desktop/files/noctalia/settings.json
         "panelsAttachedToBar": true,
         "scrollbarAlwaysVisible": true,
         "settingsPanelMode": "attached",
@@ -956,11 +839,7 @@
     },
     "wallpaper": {
         "automationEnabled": false,
-<<<<<<< HEAD:files/noctalia/settings.json
-        "directory": "~/Images/Backgrounds/Landscape",
-=======
         "directory": "~/Images/Wallpapers/Landscape/",
->>>>>>> origin/Throwaway:desktop/files/noctalia/settings.json
         "enableMultiMonitorDirectories": false,
         "enabled": true,
         "favorites": [

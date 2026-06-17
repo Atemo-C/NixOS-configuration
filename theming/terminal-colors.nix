@@ -71,29 +71,4 @@ in {
 		dim6 = dim_cyan;
 		dim7 = dim_white;
 	};
-<<<<<<< HEAD
-
-	# Colors for the kmscon console.
-	services.kmscon.config = ''
-palette=custom
-palette-black=${rgb_black}
-palette-red=${rgb_red}
-palette-green=${rgb_green}
-palette-yellow=${rgb_yellow}
-palette-blue=${rgb_blue}
-palette-magenta=${rgb_magenta}
-palette-cyan=${rgb_cyan}
-palette-light-grey=${rgb_white}
-palette-light-red=${rgb_light_red}
-palette-light-green=${rgb_light_green}
-palette-light-yellow=${rgb_light_yellow}
-palette-light-blue=${rgb_light_blue}
-palette-light-magenta=${rgb_light_magenta}
-palette-light-cyan=${rgb_light_cyan}
-palette-white=${rgb_light_white}
-palette-foreground=${rgb_foreground}
-palette-background=${rgb_background}
-	'';
-=======
->>>>>>> origin/Throwaway
 }
