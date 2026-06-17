@@ -4,7 +4,7 @@
 { config, ... }: {
 	# Mount for 1TB-SSD.
 	fileSystems."/run/media/${config.user.name}/1TB-SSD" = {
-		device = "/dev/disk/by-uuid/303f0216-92b5-4a30-9a4b-e1128e9352dd";
+		device = "/dev/disk/by-uuid/7a25b8b8-2421-4c31-8944-4ca844ec5c6a";
 		fsType = "btrfs";
 		options = [
 			"defaults"
@@ -19,7 +19,7 @@
 
 	# Passwordless decryption via USB key, with password fallback.
 	environment.etc.crypttab.text = ''
-		2TB-SSD UUID=303f0216-92b5-4a30-9a4b-e1128e9352dd /dev/disk/by-id/usb-Generic_Flash_Disk_94A5D05A-0:0
+		1TB-SSD UUID=25d692f5-7e7c-47a2-b7c6-1f32b8b7fe39 /dev/disk/by-id/usb-Generic_Flash_Disk_94A5D05A-0:0 luks,nofail,keyfile-size=4096
 	'';
 
 	# Udev rule to unlock the encrypted drive when detected.
