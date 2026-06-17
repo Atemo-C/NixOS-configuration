@@ -3,12 +3,20 @@ Wallpaper by Mikael Gustafsson.
 
 ---
 
-## Broken package: 1 (see below)
-### RPCS3
+## Broken package: 2 (see below)
+### `gnome-control-center` (important)
+- Status: **Needed**, but **cannot build**.
+- Waiting on:
+	- [x] [Issue creation](https://github.com/NixOS/nixpkgs/issues/532819)
+	- [ ] Pull request creation
+	- [ ] Pull request merge
+	- [ ] Integration into `nixos-unstable-small`
+
+### `rpcs3` (not important)
 - Status: **Disabled** in [**`./programs/gaming.nix`**](./programs/gaming.nix#L20)
 - Waiting on:
-	- [x] Issue creation [https://github.com/NixOS/nixpkgs/issues/529700]
-	- [x] Pull request creation [https://github.com/NixOS/nixpkgs/pull/530692]
+	- [x] [Issue creation](https://github.com/NixOS/nixpkgs/issues/529700)
+	- [x] [Pull request creation](https://github.com/NixOS/nixpkgs/pull/530692)
 	- [ ] Pull request merge
 	- [ ] Integration into `nixos-unstable-small`
 
