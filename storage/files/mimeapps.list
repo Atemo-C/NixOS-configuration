@@ -1,6 +1,6 @@
 [Default Applications]
 application/json=micro.desktop
-applications/pdf=xreader.desktop
+applications/pdf=org.gnome.Papers.desktop
 application/vnd.adobe.flash.movie=rs.ruffle.Ruffle.desktop
 application/xml=micro.desktop
 application/x-modrinth-modpack+zip=org.prismlauncher.PrismLauncher.desktop
@@ -10,13 +10,13 @@ audio/mpeg=audacious.desktop
 audio/vnd.wave=audacious.desktop
 audio/x-opus+ogg=audacious.desktop
 audio/x-vorbis+ogg=audacious.desktop
-image/gif=lximage-qt.desktop
-image/jpeg=lximage-qt.desktop
-image/jxl=lximage-qt.desktop
-image/png=lximage-qt.desktop
-image/svg+xml=lximage-qt.desktop
-image/webp=lximage-qt.desktop
-image/x-panasonic-rw2=lximage-qt.desktop
+image/gif=pix.desktop
+image/jpeg=pix.desktop
+image/jxl=pix.desktop
+image/png=pix.desktop
+image/svg+xml=pix.desktop
+image/webp=pix.desktop
+image/x-panasonic-rw2=pix.desktop
 inode/directory=thunar.desktop
 text/css=micro.desktop
 text/html=micro.desktop
@@ -24,11 +24,3 @@ text/plain=micro.desktop
 video/webm=mpv.desktop
 x-scheme-handler/http=librewolf.desktop
 x-scheme-handler/https=librewolf.desktop
-x-scheme-handler/discord=vesktop.desktop
-
-[Added Associations]
-application/pdf=draw.desktop;xreader.desktop;
-audio/x-opus+ogg=audacity.desktop;
-audio/mpeg=mpv.desktop;audacity.desktop;
-image/jpeg=gimp.desktop;
-image/png=pix.desktop;gimp.desktop;

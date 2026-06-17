@@ -96,10 +96,14 @@
 
 		# Utility to convert a MiDiPLUS SmartPAD into a full macro pad.
 		../../extra-modules/scripts/midiplus-smartpad-macropad.nix
+
+		# Disk mounts.
+		../../storage/drives/160GB-HDD.nix
+		../../storage/drives/PS4-HDD.nix
 	];
 
 	# Use the correct display configuration in Niri.
 	systemd.user.tmpfiles.users.${config.user.name}.rules =
 	lib.optional (config.programs.niri.enable)
-	"L %h/.config/niri/output.kdl - - - - /etc/nixos/computers/r7-pc/files/output.kdl";
+	"L /etc/nixos/desktop/files/niri/output.kdl - - - - /etc/nixos/computers/r7-pc/files/output.kdl";
 }
