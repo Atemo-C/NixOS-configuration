@@ -19,7 +19,7 @@ Complete clean-up of the NixOS configuration. It was about time. There are too m
 - Flatpak has been removed, only native packages are now used (I can smell the pain arriving)
 - Both of the above mean that this is now a 100% "pure" NixOS configuration!
 - All "useless" extra custom modules have been removed
-- Proprietary NVIDIA GPU driver support is no longer **officially** there, as I no longer have an NVIDIA GPU. The previous tweaks to make things work better with them are still here; However, they are fully untested and may be completely broken.
+- Proprietary NVIDIA GPU driver support is no longer **officially** there, as I no longer have an NVIDIA GPU. The previous tweaks to make things work better with them are still here; However, they are fully untested and may be completely broken
 - Setup-specific modules are now handled/imported in each computer's `settings.nix` module, instead of polluting the main `configuration.nix` import list
 - FISH abbreviations have been overhauled to use full package paths, so that they may not just disappear when certain packages are not included in `environment.systemPackages = [];`
 - Some programs have been replaced, such as `lximage-qt` having been replaced with `pix`, or `xreader` having been replaced with GNOME's `papers`
