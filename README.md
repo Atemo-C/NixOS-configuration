@@ -1,7 +1,9 @@
 # Maintenance mode soon ending!
 I am entirely done with the full rewrite/update/cleanup/ whatever-you-want-to-call-it of my NixOS configuration. It takes a little bit of a different direction than I initially thought, but it is a saner one, I think. \
-Testing is currently ongoing onto a libvirt virtual machine and onto my HP 250 G6. As always, when it comes to major rewrites, I thoroughly test on real hardware before then installing on my main computer, and only then pushing to GitHub. \
-Expect the coming update within the coming days or weeks at most! A clean install is recommended.
+Testing is currently ongoing onto my main PC! As always, when it comes to major rewrites, I thoroughly test on real hardware before then installing on my main computer, and only then pushing to GitHub. \
+Expect the coming update within the coming days at most! A clean install is recommended.
+
+You can check it out in the other branches for now.
 
 With that out of the way, here is the rest of the normal README (it too will change with the update):
 
