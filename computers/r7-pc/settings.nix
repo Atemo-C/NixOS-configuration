@@ -104,8 +104,9 @@
 		../../extra-modules/scripts/midiplus-smartpad-macropad.nix
 
 		# Disk mounts.
-		../../storage/drives/160GB-HDD.nix
+		../../storage/drives/1TB-SSD.nix
 		../../storage/drives/PS4-HDD.nix
+		../../storage/drives/160GB-HDD.nix
 	];
 
 	# Use the correct display configuration in Niri.
