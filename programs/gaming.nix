@@ -17,7 +17,7 @@
 		pcsx2
 
 		# PlayStation 3 emulator.
-#		rpcs3
+		rpcs3
 
 		# Original Xbox emulator.
 		xemu
@@ -65,4 +65,9 @@
 			value = "unlimited";
 		}
 	];
+
+	# Apply https://github.com/NixOS/nixpkgs/pull/530692
+	nixpkgs.overlays = [(final: prev: {
+		rpcs3 = final.callPackage ./rpcs3/package.nix {};
+	})];
 }
