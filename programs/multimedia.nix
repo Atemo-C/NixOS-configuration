@@ -19,6 +19,9 @@ in {
 		# Tool to read, write, and edit EXIF meta information.
 		exiftool
 
+		# Complete, cross-platform solution to record, convert and stream audio and video.
+		ffmpeg-full
+
 		# Command-line program to download image-galleries and collections from several image hosting sites.
 		gallery-dl
 
@@ -148,7 +151,7 @@ in {
 			ytmp3-tor = "${pkgs.yt-dlp}/bin/yt-dlp -t sleep -x --audio-format mp3 --audio-quality 0 --proxy socks5://localhost:9050";
 
 			# Hide the default banner when using ffmpeg.
-			ffmpeg = "ffmpeg -hide_banner";
+			ffmpeg = "${pkgs.ffmpeg-full}/bin/ffmpeg -hide_banner";
 		};
 	};
 
