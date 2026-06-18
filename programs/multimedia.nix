@@ -123,7 +123,7 @@ in {
 
 		fish.shellAbbrs = {
 			# JPEG image optimization (replaces existing files).
-			opti-jpg = "${pkgs.jpegoptim}/bin/jpegoptim -s *.jp{,e}g[i]";
+			opti-jpg = "${pkgs.jpegoptim}/bin/jpegoptim -s *.jp{,e}g";
 			opti-jpg-recursive = "${pkgs.jpegoptim}/bin/jpegoptim -s **/*.jp{,e}g";
 
 			# PNG image optimization (replaces existing files).
