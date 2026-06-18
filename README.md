@@ -5,7 +5,8 @@ Wallpaper by Mikael Gustafsson.
 
 ## Broken package: 2 (see below)
 ### `gnome-control-center` (important)
-- Status: **Needed**, but **cannot build**.
+- Status: **Disabled** in [**`./desktop/niri.nix`**](./desktop/niri.nix#L43)
+	- Start with `niri-session` in the TTY instead.
 - Waiting on:
 	- [x] [Issue creation](https://github.com/NixOS/nixpkgs/issues/532819)
 	- [ ] Pull request creation
