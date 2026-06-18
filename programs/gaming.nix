@@ -19,6 +19,9 @@
 		# PlayStation 3 emulator.
 		rpcs3
 
+		# Rosalie's Mupen GUI (Nintendo64 emulator).
+		rmg-wayland
+
 		# Original Xbox emulator.
 		xemu
 
