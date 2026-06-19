@@ -13,6 +13,9 @@
 		# Modern GBA emulator with a focus on accuracy.
 		mgba
 
+		# Free, open source launcher for Minecraft.
+		prismlauncher
+
 		# PlayStation 2 emulator.
 		pcsx2
 
