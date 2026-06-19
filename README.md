@@ -3,16 +3,7 @@ Wallpaper by Mikael Gustafsson.
 
 ---
 
-## Broken package: 2 (see below)
-### `gnome-control-center`
-- Status: **Disabled** in [**`./desktop/niri.nix`**](./desktop/niri.nix#L43)
-	- Start with `niri-session` in the TTY instead.
-- Waiting on:
-	- [x] [Issue creation](https://github.com/NixOS/nixpkgs/issues/532819)
-	- [ ] Pull request creation
-	- [ ] Pull request merge
-	- [ ] Integration into `nixos-unstable-small`
-
+## Broken package: 1 (see below)
 ### `rpcs3`
 - Status: **Temporarily fixed** in [**`./programs/gaming.nix`**](./programs/gaming.nix#L69)
 - Waiting on:

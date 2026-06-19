@@ -40,7 +40,7 @@ in {
 	services.displayManager = lib.mkIf nir {
 		gdm = {
 			# Whether to enable GDM.
-			enable = false;
+			enable = true;
 
 			# Whether to enable auto-suspend on GDM.
 			autoSuspend = false;
