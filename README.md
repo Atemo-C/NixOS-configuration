@@ -19,6 +19,7 @@ Wallpaper by Mikael Gustafsson.
 - LibreWolf's security rule has been removed since it has been updated
 - Polished the README
 - PrismLauncher has been added to [`./programs/gaming.nix`](./programs/gaming.nix#L17)
+- Added basic output settings to yt-dlp's configuration
 
 ---
 
