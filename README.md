@@ -14,12 +14,8 @@ Wallpaper by Mikael Gustafsson.
 
 ---
 
-## Changelog (19/06/2026)
-- GDM has been reactivated
-- LibreWolf's security rule has been removed since it has been updated
-- Polished the README
-- PrismLauncher has been added to [`./programs/gaming.nix`](./programs/gaming.nix#L17)
-- Added basic output settings to yt-dlp's configuration
+## Changelog (20/06/2026)
+- Added various JPEG XL shell abbreviations in [**`./programs/multimedia.nix`**](./programs/multimedia.nix#L141)
 
 ---
 
