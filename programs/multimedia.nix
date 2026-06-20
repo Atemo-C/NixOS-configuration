@@ -138,6 +138,26 @@ in {
 			opti-gif = "${pkgs.gifsicle}/bin/gifsicle -b -O5 *.gif";
 			opti-gif-recursive = "${pkgs.gifsicle}/bin/gifsicle -b 05 **/*.gif";
 
+			# Losslessly convert all JPEG images to JPEG XL ones in the current directory.
+			# The original files are kept.
+			jpg-jxl = "${pkgs.libjxl}/bin/cjxl -q 100 -e 9 '{}' '{.}'.jxl ::: *.jp{,e}g";
+			jpg-jxl-recursive = "${pkgs.libjxl}/bin/cjxl -q 100 -e 9 '{}' '{.}'.jxl ::: **/*.jp{,e}g";
+
+			# Losslessly convert all PNG images to JPEG XL ones in the current directory.
+			# The original files are kept.
+			png-jxl = "${pkgs.libjxl}/bin/cjxl -q 100 -e 9 '{}' '{.}'.jxl ::: *.png";
+			png-jxl-recursive = "${pkgs.libjxl}/bin/cjxl -q 100 -e 9 '{}' '{.}'.jxl ::: **/*.png";
+
+			# Losslessly convert JPEG XL images to PNG ones in the current directory.
+			# The original files are kept.
+			jxl-png = "${pkgs.libjxl}/bin/djxl '{}' '{.}'.png ::: *.jxl";
+			jxl-png-recursive = "${pkgs.libjxl}/bin/djxl '{}' '{.}'.png ::: **/*.jxl";
+
+			# Losslessly convert JPEG XL images to JPEG ones in the current directory.
+			# The original files are kept.
+			jxl-jpg = "${pkgs.libjxl}/bin/djxl '{}' '{.}'.jpg ::: *.jxl";
+			jxl-jpg-recursive = "${pkgs.libjxl}/bin/djxl '{}' '{.}'.jpg ::: **/*.jxl";
+
 			# Downlad multimedia files from various online sources.
 			imgdl = "${pkgs.gallery-dl}/bin/gallery-dl -D ./";
 			imgdl-tor = "${pkgs.gallery-dl}/bin/gallery-dl --proxy socks5://localhost:9050 -D ./";
