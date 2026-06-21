@@ -5,6 +5,12 @@ window-rule {
 	open-floating true
 }
 
+// Fullscreen the following windows.
+window-rule {
+	match app-id="Minecraft*" title="Minecraft*"
+	open-fullscreen true
+}
+
 // Apply a bigger border and shadows to floating windows.
 window-rule {
 	match is-floating=true
