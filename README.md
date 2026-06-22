@@ -14,8 +14,8 @@ Wallpaper by Mikael Gustafsson.
 
 ---
 
-## Changelog (21/06/2026)
-- Minecraft (Java) launches in fullscreen by default ([**`./desktop/files/niri/window-rules.kdl`**](./desktop/files/niri/window-rules.kdl#L8))
+## Changelog (22/06/2026)
+- Fixed GIF optimization abbreviations ([**`./programs/multimedia.nix`**](./programs/multimedia.nix#L137))
 
 ---
 

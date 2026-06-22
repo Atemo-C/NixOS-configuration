@@ -135,8 +135,8 @@ in {
 			opti-png-a-recursive = "${pkgs.oxipng}/bin/oxipng -s --opt 5 **/*.png";
 
 			# GIF image optimization (replaces existing files).
-			opti-gif = "${pkgs.gifsicle}/bin/gifsicle -b -O5 *.gif";
-			opti-gif-recursive = "${pkgs.gifsicle}/bin/gifsicle -b 05 **/*.gif";
+			opti-gif = "${pkgs.gifsicle}/bin/gifsicle -O5 -b *.gif";
+			opti-gif-recursive = "${pkgs.gifsicle}/bin/gifsicle -O5 -b **/*.gif";
 
 			# Losslessly convert all JPEG images to JPEG XL ones in the current directory.
 			# The original files are kept.
