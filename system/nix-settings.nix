@@ -46,7 +46,7 @@
 		nix-clean = "run0 nix-collect-garbage -d --log-format bar-with-logs";
 		nix-clean-user = "nix-collect-garbage -d --log-format bar-with-logs";
 		nix-test = ''set -x CURRENTDIR $(pwd) && cd /tmp/ && run0 nixos-rebuild test --log-format bar-with-logs; cd "$CURRENTDIR"'';
-		nix-build-iso = "nix-build '<nixpkgs/nixos>' -A config.system.build.isoImage -I nixos-config=configuration.nix --log-format bar-with-logs && cp -v -i result/iso/*.iso ./ && run0 nix-store --delete --ignore-liveness $(readlink -f result/)";
+		nix-build-iso = "nix-build '<nixpkgs/nixos>' -A config.system.build.isoImage -I nixos-config=configuration.nix --log-format bar-with-logs && cp -v -i result/iso/*.iso ./ && run0 nix-store --delete --ignore-liveness $(readlink -f result/) && rm -v result";
 	});
 
 	# Version of NixOS initially installed on the device.
