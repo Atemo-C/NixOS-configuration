@@ -91,6 +91,9 @@
 		# Which main GPU is used.
 		# This is used to guide which variant of packages should be installed.
 		activeGpu = "amd";
+
+		# Enable OpenCL support.
+		graphics.extraPackages = [ pkgs.rocmPackages.clr ];
 	};
 
 	imports = [
