@@ -17,6 +17,7 @@ Wallpaper by Mikael Gustafsson.
 ## Changelog (22/06/2026)
 - Fixed GIF optimization abbreviations ([**`./programs/multimedia.nix`**](./programs/multimedia.nix#L137))
 - Set MPV as the default media player for MP4 files ([**`./storage/files/mimeapps.list`**](./storage/files/mimeapps.list#L25))
+- Tweaked the command to build NixOS ISOs locally to remove the leftover `result` empty symlink ([**`./system/nix-settings.nix`**](./system/nix-settings.nix#L49))
 
 ---
 
