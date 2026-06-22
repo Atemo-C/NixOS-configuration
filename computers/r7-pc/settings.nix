@@ -85,15 +85,16 @@
 	};
 
 	hardware = {
-		# Whether to enable `amdgpu` overdrive mode for overclocking.
-		amdgpu.overdrive.enable = lib.mkIf config.services.lact.enable true;
+		amdgpu = {
+			# Whether to enable `amdgpu` overdrive mode for overclocking.
+			overdrive.enable = lib.mkIf config.services.lact.enable true;
+
+			# Whether to enable OpenCL support using ROCM runtime library.
+			opencl.enable = true;
 
 		# Which main GPU is used.
 		# This is used to guide which variant of packages should be installed.
 		activeGpu = "amd";
-
-		# Enable OpenCL support.
-		graphics.extraPackages = [ pkgs.rocmPackages.clr ];
 	};
 
 	imports = [
