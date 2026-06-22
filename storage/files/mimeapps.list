@@ -22,5 +22,6 @@ text/css=micro.desktop
 text/html=micro.desktop
 text/plain=micro.desktop
 video/webm=mpv.desktop
+video/mp4=mpv.desktop
 x-scheme-handler/http=librewolf.desktop
 x-scheme-handler/https=librewolf.desktop
