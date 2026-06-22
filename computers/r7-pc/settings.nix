@@ -91,6 +91,7 @@
 
 			# Whether to enable OpenCL support using ROCM runtime library.
 			opencl.enable = true;
+		};
 
 		# Which main GPU is used.
 		# This is used to guide which variant of packages should be installed.
