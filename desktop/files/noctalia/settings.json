@@ -12,8 +12,8 @@
         "enableClipboardHistory": true,
         "enableClipboardSmartIcons": true,
         "enableSessionSearch": true,
-        "enableSettingsSearch": true,
-        "enableWindowsSearch": true,
+        "enableSettingsSearch": false,
+        "enableWindowsSearch": false,
         "iconMode": "tabler",
         "ignoreMouseInput": false,
         "overviewLayer": true,
@@ -24,7 +24,7 @@
         "screenshotAnnotationTool": "",
         "showCategories": true,
         "showIconBackground": false,
-        "sortByMostUsed": true,
+        "sortByMostUsed": false,
         "terminalCommand": "xdg-terminal-exec",
         "viewMode": "grid"
     },
@@ -617,7 +617,7 @@
         "screenLock": "",
         "screenUnlock": "",
         "session": "",
-        "startup": "cp ~/.config/niri/presets/animations-on.kdl ~/.config/niri/animations.kdl && cp ~/.config/niri/presets/blur-on.kdl ~/config.niri/blur.kdl",
+        "startup": "cp ~/.config/niri/presets/animations-on.kdl ~/.config/niri/animations.kdl && cp ~/.config/niri/presets/blur-on.kdl ~/.config/niri/blur.kdl",
         "wallpaperChange": ""
     },
     "idle": {
