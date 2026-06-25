@@ -14,8 +14,8 @@ Wallpaper by Mikael Gustafsson.
 
 ---
 
-## Changelog (23/06/2026)
-- Added OpenCL support for `R7-PC` ([**`./computers/r7-pc/settings.nix`**](./computers/r7-pc/settings.nix#L95))
+## Changelog (25/06/2026)
+- Added missing `parallel` to JPEG-XL command abbreviations ([**`./programs/multimedia.nix`**](./multimedia.nix#L141))
 
 ---
 
