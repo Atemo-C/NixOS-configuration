@@ -16,6 +16,7 @@ Wallpaper by Mikael Gustafsson.
 
 ## Changelog (25/06/2026)
 - Added missing `parallel` to JPEG-XL command abbreviations ([**`./programs/multimedia.nix`**](./multimedia.nix#L141))
+- Configured the maximum number of cores and jobs used when building the NixOS configuration on my Ryzen-7 based PC, and updated the README to reflect this change ([**`./computers/r7-pc/settings.nix`**](./computers/r7-pc/settings.nix#L122))
 
 ---
 
@@ -379,8 +380,13 @@ In this example, I will be configuring my main computer. If you need any help or
 	};
 
 	hardware = {
-		# Whether to enable `amdgpu` overdrive mode for overclocking.
-		amdgpu.overdrive.enable = lib.mkIf config.services.lact.enable true;
+		amdgpu = {
+			# Whether to enable `amdgpu` overdrive mode for overclocking.
+			overdrive.enable = lib.mkIf config.services.lact.enable true;
+
+			# Whether to enable OpenCL support using ROCM runtime library.
+			opencl.enable = true;
+		};
 
 		# Which main GPU is used.
 		# This is used to guide which variant of packages should be installed.
@@ -407,6 +413,22 @@ In this example, I will be configuring my main computer. If you need any help or
 	systemd.user.tmpfiles.users.${config.user.name}.rules =
 	lib.optional (config.programs.niri.enable)
 	"L /etc/nixos/desktop/files/niri/output.kdl - - - - /etc/nixos/computers/r7-pc/files/output.kdl";
+
+	# • Limit the amount of cores used when building the NixOS configuration
+	# • Limit the numbers of maximum jobs running when building the NixOS configuration
+	# This mostly helps me avoid running out of memory.
+	# Please Sam give me back my RAM :(
+	#
+	# As a note, my CPU (Ryzen 7 9850X3D) has 8 cores and 16 threads.
+	# I currently have 2×16 GB of RAM.
+	# I thus limit the maximum number of cores per job used to 8,
+	# and limit the maximum number of jobs to 2.
+	# This generally limits the RAM usage to just shy-or-above 16 GB,
+	# and lets my system still feel relatively snappy under load.
+	nix.settings = {
+		cores = 8;
+		max-jobs = 2;
+	};
 }
 ```
 9. Add the following lines to your `configuration.nix` in the `imports` list, making sure other devices are commented out with `#`:
