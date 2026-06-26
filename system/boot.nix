@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }: { boot = {
 	# Linux Kernel package to use.
-	kernelPackages = pkgs.linuxPackages_zen;
+#	kernelPackages = pkgs.linuxPackages_zen;
+	kernelPackages = pkgs.linuxPackages_latest;
 
 	loader = {
 		limine = {
