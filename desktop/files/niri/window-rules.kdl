@@ -2,6 +2,7 @@
 window-rule {
 	match app-id=r#"thunar"# title="Rename*"
 	match app-id=r#"thunar"# title="File Operation Progress"
+	match app-id=r#"gcolor3"#
 	open-floating true
 }
 

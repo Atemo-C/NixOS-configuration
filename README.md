@@ -14,10 +14,8 @@ Wallpaper by Mikael Gustafsson.
 
 ---
 
-## Changelog (25/06/2026)
-- Added missing `parallel` to JPEG-XL command abbreviations ([**`./programs/multimedia.nix`**](./programs/multimedia.nix#L141))
-- Configured the maximum number of cores and jobs used when building the NixOS configuration on my Ryzen-7 based PC, and updated the README to reflect this change ([**`./computers/r7-pc/settings.nix`**](./computers/r7-pc/settings.nix#L122))
-- Updated Noctalia Shell's configuration to fix a wrong hook command on startup, and to tweak a few settings.
+## Changelog (26/06/2026)
+- Added `gcolor3` to the list of floating windows by default ([**`./desktop/files/niri/window-rules.kdl`**](./desktop/files/niri/window-rules.kdl#L5))
 
 ---
 
