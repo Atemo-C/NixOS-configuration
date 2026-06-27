@@ -41,6 +41,9 @@
 		# (e.g. for using Steam Input on Wayland).
 		extest.enable = true;
 
+		# Add ProtonGE to Steam.
+		extraCompatPackages = [ pkgs.proton-ge-bin ];
+
 		# Whether to open pors in the firewall for Steam Local Network Game Transfers.
 		localNetworkGameTransfers.openFirewall = true;
 
