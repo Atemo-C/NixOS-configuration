@@ -17,6 +17,7 @@ Wallpaper by Mikael Gustafsson.
 ## Changelog (27/06/2026)
 - Switched to the latest kernel as we wait for Zen to be fixed. Though, maybe I might stay on it, for now. Will see! [**`./system/boot.nix`**](./system/boot.nix#L3)
 - xemu is now floating by default ([**`./desktop/files/niri/window-rules.kdl`**](./desktop/files/niri/window-rules.kdl#L6))
+- Added ProtonGE to Steam ([**`./programs/gaming.nix`**](./programs/gaming.nix#L44))
 
 ---
 
