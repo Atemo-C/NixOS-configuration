@@ -9,15 +9,13 @@ Wallpaper by Mikael Gustafsson.
 - Waiting on
 	- [x] [Issue creation](https://github.com/NixOS/nixpkgs/issues/529700)
 	- [x] [Pull request creation](https://github.com/NixOS/nixpkgs/pull/530692)
-	- [ ] Pull request merge
+	- [x] [Pull request merge](https://github.com/NixOS/nixpkgs/pull/530692#event-27335245212)
 	- [ ] Integration into `nixos-unstable-small`
 
 ---
 
-## Changelog (27/06/2026)
-- Switched to the latest kernel as we wait for Zen to be fixed. Though, maybe I might stay on it, for now. Will see! [**`./system/boot.nix`**](./system/boot.nix#L3)
-- xemu is now floating by default ([**`./desktop/files/niri/window-rules.kdl`**](./desktop/files/niri/window-rules.kdl#L6))
-- Added ProtonGE to Steam ([**`./programs/gaming.nix`**](./programs/gaming.nix#L44))
+## Changelog (29/06/2026)
+- Updated the REAMDE for `rpcs3`, which will soon be fixed upstream in `nixos-unstable-small`.
 
 ---
 
