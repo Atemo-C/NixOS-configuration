@@ -74,9 +74,4 @@
 			value = "unlimited";
 		}
 	];
-
-	# Apply https://github.com/NixOS/nixpkgs/pull/530692
-	nixpkgs.overlays = [(final: prev: {
-		rpcs3 = final.callPackage ./rpcs3/package.nix {};
-	})];
 }
