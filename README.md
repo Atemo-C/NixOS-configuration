@@ -3,19 +3,12 @@ Wallpaper by Mikael Gustafsson.
 
 ---
 
-## Broken packages: 1
-### `rpcs3`
-- Status: **Temporarily fixed** in [**`./programs/gaming.nix`**](https://github.com/Atemo-C/NixOS-configuration/blob/main/programs/gaming.nix#L75)
-- Waiting on
-	- [x] [Issue creation](https://github.com/NixOS/nixpkgs/issues/529700)
-	- [x] [Pull request creation](https://github.com/NixOS/nixpkgs/pull/530692)
-	- [x] [Pull request merge](https://github.com/NixOS/nixpkgs/pull/530692#event-27335245212)
-	- [ ] Integration into `nixos-unstable-small`
+## Broken packages: None (yay)
 
 ---
 
-## Changelog (29/06/2026)
-- Updated the REAMDE for `rpcs3`, which will soon be fixed upstream in `nixos-unstable-small`.
+## Changelog (30/06/2026)
+- Removed now unnecessary temporary RPCS3 fix.
 
 ---
 
