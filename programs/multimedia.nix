@@ -94,7 +94,7 @@ in {
 		gst_all_1.gst-plugins-good
 		gst_all_1.gst-plugins-rs
 		gst_all_1.gst-plugins-ugly
-		gst_all_1.gst-vaapi
+#		gst_all_1.gst-vaapi (Removed in GStreamer 1.28, "replaced" by plugins-bad)
 	];
 
 	programs = {

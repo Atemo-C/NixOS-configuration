@@ -7,8 +7,8 @@ Wallpaper by Mikael Gustafsson.
 
 ---
 
-## Changelog (30/06/2026)
-- Removed now unnecessary temporary RPCS3 fix.
+## Changelog (09/07/2026)
+- `gst_all_1.gst-vaapi` has been commented out, as it has been removed in GStreamer 1.28 ([**`./programs/multimedia.nix`**](./programs/multimedia.nix#L97))
 
 ---
 
