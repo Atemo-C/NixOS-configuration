@@ -5,6 +5,9 @@ binds {
 	// Show a list of important key bindings.
 	Super+H { show-hotkey-overlay; }
 
+	// Toggle hidding Noctalia's bar.
+	Super+B { spawn-sh "noctalia-shell ipc call bar toggle"; }
+
 	// Focus workspaces (numerical unshifted).
 	Super+Ampersand { focus-workspace 1; }
 	Super+Eacute { focus-workspace 2; }

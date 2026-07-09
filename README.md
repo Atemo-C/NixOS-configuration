@@ -9,6 +9,7 @@ Wallpaper by Mikael Gustafsson.
 
 ## Changelog (09/07/2026)
 - `gst_all_1.gst-vaapi` has been commented out, as it has been removed in GStreamer 1.28 ([**`./programs/multimedia.nix`**](./programs/multimedia.nix#L97))
+- Added a key binding to toggle the visibility of Noctalia's bar ([**`./desktop/files/niri/bindings.kdl`**](./desktop/files/niri/bindings.kdl#L8))
 
 ---
 
