@@ -3,14 +3,14 @@ Wallpaper by Mikael Gustafsson.
 
 ---
 
-## Broken packages: None (yay)
+## Broken packages: 1
+### `pdal`
+`pdal` needs an update, and has an open pull request at https://github.com/NixOS/nixpkgs/pull/541146. It has been temporarily applied in [**`./programs/3d.nix`**](./programs/3d.nix#L11).
 
 ---
 
-## Changelog (09/07/2026)
-- `gst_all_1.gst-vaapi` has been commented out, as it has been removed in GStreamer 1.28 ([**`./programs/multimedia.nix`**](./programs/multimedia.nix#L97))
-- Added a key binding to toggle the visibility of Noctalia's bar ([**`./desktop/files/niri/bindings.kdl`**](./desktop/files/niri/bindings.kdl#L8))
-- Picture-in-Picture windows from Firefox-based browsers now float by default ([**`./desktop/files/niri/window-rules.kdl`**](./desktop/files/niri/window-rules.kdl#L7))
+## Changelog (14/07/2026)
+- Temporarily applied https://github.com/NixOS/nixpkgs/pull/541146 as I wait for it to be merged, updating and fixing the `pdal` package that `vtk` and `f3d` rely upon in this configuration ([**`./programs/3d.nix`**](./programs/3d.nix#L11))
 
 ---
 
