@@ -103,7 +103,7 @@
 				thunar-archive-plugin
 
 				# Thunar plugin providing quick folder sharing using Samba without requiring root access.
-				thunar-shares-plugin
+#				thunar-shares-plugin
 
 				# Thunar plugin providing tagging and renaming features for media files.
 				thunar-media-tags-plugin
@@ -207,26 +207,26 @@
 
 		samba = {
 			# Whether to enable Samba, the SMB/CIFS protocol.
-			enable = true;
+			enable = false;
 
 			# Which Samba package to use.
 			package = pkgs.samba4Full;
 
 			# Whether to enable user-configurable Samba shares.
-			usershares.enable = true;
+			usershares.enable = false;
 
 			# Whether to enable opening the default ports in the firewall for Samba.
-			openFirewall = true;
+			openFirewall = false;
 		};
 
 		samba-wsdd = {
 			# Whether to enable Web Services Dynamic Discovery host daemon.
 			# This enables (Samba) hosts, like your local NAS device,
 			# to be found by Web Service Discovery Clients like Windows.
-			enable = true;
+			enable = false;
 
 			# Whether to open the required firewall ports in the firewall.
-			openFirewall = true;
+			openFirewall = false;
 		};
 
 		# Whether to enable the smartd daemon from the smartmontools package.
