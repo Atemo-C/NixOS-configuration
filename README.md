@@ -3,14 +3,17 @@ Wallpaper by Mikael Gustafsson.
 
 ---
 
-## Broken packages: 1
+## Broken packages: 2
 ### `pdal`
 `pdal` needs an update, and has an open pull request at https://github.com/NixOS/nixpkgs/pull/541146. It has been temporarily applied in [**`./programs/3d.nix`**](./programs/3d.nix#L11).
+### `vtk`
+Currently, this means that `f3d` cannot be installed, as it is the only software on this configuration that relies on `vtk-9.5.2`. This is not the first time it happens, unfortunately, so it may be a good idea to look further into it at a later point in time.
 
 ---
 
 ## Changelog (14/07/2026)
 - Temporarily applied https://github.com/NixOS/nixpkgs/pull/541146 as I wait for it to be merged, updating and fixing the `pdal` package that `vtk` and `f3d` rely upon in this configuration ([**`./programs/3d.nix`**](./programs/3d.nix#L11))
+- Disabled Samba by default as I currently do not use it, but it can be re-enabled by simply commenting out the relevant parts in [**`./storage/file-management.nix`**](./storage/file-management.nix).
 
 ---
 
