@@ -10,6 +10,7 @@ Wallpaper by Mikael Gustafsson.
 ## Changelog (17/07/2026)
 - The `nix-build-iso` abbreviation now automatically cleans up the resulting empty `result` symlink. ([**`./system/nix-settings.nix`**](./system/nix-settings.nix#L38))
 - Fixed the [**`./system/printing.nix`**](./system/printing.nix) module.
+- Added `/emote` shortcuts for Vintage Story in my macropad script. ([**`./extra-modules/scripts/midiplus-smartpad-macropad.nix`**](./extra-modules/scripts/midiplus-smartpad-macropad.nix#L33))
 
 ---
 
