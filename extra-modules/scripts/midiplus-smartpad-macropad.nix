@@ -34,12 +34,23 @@
 	# Key matrix:             │ Current RGB layout:
 	# 00 01 02 03 04 05 06 07 │ - - - - - - - -
 	# 10 11 12 13 14 15 16 17 │ - - - - - - - -
-	# 20 21 22 23 24 25 26 27 │ - - - - - - - -
-	# 30 31 32 33 34 35 36 37 │ - - - - - - - -
+	# 20 21 22 23 24 25 26 27 │ M M M W W W R R
+	# 30 31 32 33 34 35 36 37 │ B - - - - - - -
 	# 40 41 42 43 44 45 46 47 │ Y C C G R B B M
 	# 50 51 52 53 54 55 56 57 │ - - - - - - - -
 	# 60 61 62 63 64 65 66 67 │ W W W - - C G M
 	# 70 71 72 73 74 75 76 77 │ G Y R - - C G M
+	${pkgs.alsa-utils}/bin/amidi -p "$port" -S "90 20 $magenta"
+	${pkgs.alsa-utils}/bin/amidi -p "$port" -S "90 21 $magenta"
+	${pkgs.alsa-utils}/bin/amidi -p "$port" -S "90 22 $magenta"
+	${pkgs.alsa-utils}/bin/amidi -p "$port" -S "90 23 $white"
+	${pkgs.alsa-utils}/bin/amidi -p "$port" -S "90 24 $white"
+	${pkgs.alsa-utils}/bin/amidi -p "$port" -S "90 25 $white"
+	${pkgs.alsa-utils}/bin/amidi -p "$port" -S "90 26 $red"
+	${pkgs.alsa-utils}/bin/amidi -p "$port" -S "90 27 $red"
+
+	${pkgs.alsa-utils}/bin/amidi -p "$port" -S "90 30 $blue"
+
 	${pkgs.alsa-utils}/bin/amidi -p "$port" -S "90 40 $yellow"
 	${pkgs.alsa-utils}/bin/amidi -p "$port" -S "90 41 $cyan"
 	${pkgs.alsa-utils}/bin/amidi -p "$port" -S "90 42 $cyan"
@@ -93,8 +104,34 @@
 		# And to see a list of available input event codes:
 		# https://github.com/torvalds/linux/blob/master/include/uapi/linux/input-event-codes.h
 		case "$ev1 $ev2 $data1" in
+			# Wave emote (Vintage Story)
+			"Note on 32") ${pkgs.ydotool}/bin/ydotool key 20:1 20:0 53:1 53:0 18:1 18:0 50:1 50:0 24:1 24:0 20:1 20:0 18:1 18:0 57:1 57:0 17:1 17:0 30:1 30:0 47:1 47:0 18:1 18:0 28:1 28:0 ;;
+
+			# Cheer emote (Vintage Story)
+			"Note on 33") ${pkgs.ydotool}/bin/ydotool key 20:1 20:0 53:1 53:0 18:1 18:0 50:1 50:0 24:1 24:0 20:1 20:0 18:1 18:0 57:1 57:0 46:1 46:0 35:1 35:0 18:1 18:0 18:1 18:0 19:1 19:0 28:1 28:0 ;;
+
+			# Laugh emote (Vintage Story)
+			"Note on 34") ${pkgs.ydotool}/bin/ydotool key 20:1 20:0 53:1 53:0 18:1 18:0 50:1 50:0 24:1 24:0 20:1 20:0 18:1 18:0 57:1 57:0 38:1 38:0 30:1 30:0 22:1 22:0 34:1 34:0 35:1 35:0 28:1 28:0 ;;
+
+			# Nod emote (Vintage Story)
+			"Note on 35") ${pkgs.ydotool}/bin/ydotool key 20:1 20:0 53:1 53:0 18:1 18:0 50:1 50:0 24:1 24:0 20:1 20:0 18:1 18:0 57:1 57:0 49:1 49:0 24:1 24:0 32:1 32:0 28:1 28:0 ;;
+
+			# Bow emote (Vintage Story)
+			"Note on 36") ${pkgs.ydotool}/bin/ydotool key 20:1 20:0 53:1 53:0 18:1 18:0 50:1 50:0 24:1 24:0 20:1 20:0 18:1 18:0 57:1 57:0 48:1 48:0 24:1 24:0 17:1 17:0 28:1 28:0 ;;
+
+			# Shrug emote (Vintage Story)
+			"Note on 37") ${pkgs.ydotool}/bin/ydotool key 20:1 20:0 53:1 53:0 18:1 18:0 50:1 50:0 24:1 24:0 20:1 20:0 18:1 18:0 57:1 57:0 31:1 31:0 35:1 35:0 19:1 19:0 22:1 22:0 34:1 34:0 28:1 28:0 ;;
+
+			# Facepalm emote (Vintage Story)
+			"Note on 38") ${pkgs.ydotool}/bin/ydotool key 20:1 20:0 53:1 53:0 18:1 18:0 50:1 50:0 24:1 24:0 20:1 20:0 18:1 18:0 57:1 57:0 33:1 33:0 30:1 30:0 46:1 46:0 18:1 18:0 25:1 25:0 30:1 30:0 38:1 38:0 50:1 50:0 28:1 28:0 ;;
+
+			# Rage emote (Vintage Story)
+			"Note on 39") ${pkgs.ydotool}/bin/ydotool key 20:1 20:0 53:1 53:0 18:1 18:0 50:1 50:0 24:1 24:0 20:1 20:0 18:1 18:0 57:1 57:0 19:1 19:0 30:1 30:0 34:1 34:0 18:1 18:0 28:1 28:0 ;;
+
+			# Cry emote (Vintage Story)
+			"Note on 48") ${pkgs.ydotool}/bin/ydotool key 20:1 20:0 53:1 53:0 18:1 18:0 50:1 50:0 24:1 24:0 20:1 20:0 18:1 18:0 57:1 57:0 46:1 46:0 19:1 19:0 21:1 21:0 28:1 28:0 ;;
+
 			# Open / Close CD tray.
-			"Note on 0" ) ${pkgs.ydotool}/bin/ydotool key 161:1 161:0 ;;
 			"Note on 64" ) ${pkgs.ydotool}/bin/ydotool key 161:1 161:0 ;;
 
 			# Rewind media.
