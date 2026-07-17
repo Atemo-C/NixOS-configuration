@@ -7,8 +7,8 @@ Wallpaper by Mikael Gustafsson.
 
 ---
 
-## Changelog (16/07/2026)
-Removed temporary fixes.
+## Changelog (17/07/2026)
+The `nix-build-iso` abbreviation now automatically cleans up the resulting empty `result` symlink. ([**`./system/nix-settings.nix`**](./system/nix-settings.nix#L38))
 
 ---
 

@@ -35,7 +35,7 @@
 		nix-clean = "run0 nix-collect-garbage -d --log-format internal-json 2>&1 | nom --json";
 		nix-clean-user = "nix-collect-garbage -d --log-format internal-json 2>&1 | nom --json";
 		nix-test = ''set -x CURRENTDIR $(pwd) && cd /tmp/ && run0 nixos-rebuild test --log-format internal-json 2>&1 | nom --json; cd "$CURRENTDIR"'';
-		nix-build-iso = "nix-build '<nixpkgs/nixos>' -A config.system.build.isoImage -I nixos-config=configuration.nix --log-format internal-json 2>&1 | nom --json && cp -v -i result/iso/*.iso ./ && run0 nix-store --delete --ignore-liveness $(readlink -f result/)";
+		nix-build-iso = "nix-build '<nixpkgs/nixos>' -A config.system.build.isoImage -I nixos-config=configuration.nix --log-format internal-json 2>&1 | nom --json && cp -v -i result/iso/*.iso ./ && run0 nix-store --delete --ignore-liveness $(readlink -f result/) && rm -v result";
 	} else {
 		nix-update-now = "run0 nixos-rebuild switch --log-format bar-with-logs";
 		nix-update-boot = "run0 nixos-rebuild boot --log-format bar-with-logs";
