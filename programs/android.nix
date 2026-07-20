@@ -10,7 +10,8 @@
 		heimdall
 
 		# FUSE filesystem for MTP devices like Android phones.
-		jmtpfs
+		# (Now no longer maintained.)
+#		jmtpfs
 
 		# Implementation of Microsoft's Media Transfer Protocol.
 		libmtp
