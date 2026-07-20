@@ -12,6 +12,7 @@ Wallpaper by Mikael Gustafsson.
 - `jmtpfs` has been removed upstream as it is unmaintained, so it has been commented out in this configuration. ([**`./programs/android.nix`**](./programs/android.nix#L12))
 - Fixed a typo for `nix-rollback-` shell abbreviations. ([**`./system/nix-settings.nix`**](./system/nix-settings.nix#L34))
 - Removed duplicate `yt-dlp` configuration file.
+- Adjusted various delays for `ydotool` in [**`./extra-modules/scripts/midiplus-smartpad-macropad.nix`**](./extra-modules/scripts/midiplus-smartpad-macropad.nix).
 
 ---
 
