@@ -10,6 +10,8 @@ Wallpaper by Mikael Gustafsson.
 ## Changelog (20/07/2026)
 - Manually applied a workaround to `mediawriter` to allow it to launch when QT theming through NixOS is enabled. I am unsure if this is the best way to do it, but it works. ([**`./programs/accessories.nix`**](./programs/accessories.nix#L17))
 - `jmtpfs` has been removed upstream as it is unmaintained, so it has been commented out in this configuration. ([**`./programs/android.nix`**](./programs/android.nix#L12))
+- Fixed a typo for `nix-rollback-` shell abbreviations. ([**`./system/nix-settings.nix`**](./system/nix-settings.nix#L34))
+- Removed duplicate `yt-dlp` configuration file.
 
 ---
 
