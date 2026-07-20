@@ -105,31 +105,31 @@
 		# https://github.com/torvalds/linux/blob/master/include/uapi/linux/input-event-codes.h
 		case "$ev1 $ev2 $data1" in
 			# Wave emote (Vintage Story)
-			"Note on 32") ${pkgs.ydotool}/bin/ydotool key 20:1 20:0 53:1 53:0 18:1 18:0 50:1 50:0 24:1 24:0 20:1 20:0 18:1 18:0 57:1 57:0 17:1 17:0 30:1 30:0 47:1 47:0 18:1 18:0 28:1 28:0 ;;
+			"Note on 32") ${pkgs.ydotool}/bin/ydotool key -d 2 20:1 20:0 53:1 53:0 18:1 18:0 50:1 50:0 24:1 24:0 20:1 20:0 18:1 18:0 57:1 57:0 17:1 17:0 30:1 30:0 47:1 47:0 18:1 18:0 28:1 28:0 ;;
 
 			# Cheer emote (Vintage Story)
-			"Note on 33") ${pkgs.ydotool}/bin/ydotool key 20:1 20:0 53:1 53:0 18:1 18:0 50:1 50:0 24:1 24:0 20:1 20:0 18:1 18:0 57:1 57:0 46:1 46:0 35:1 35:0 18:1 18:0 18:1 18:0 19:1 19:0 28:1 28:0 ;;
+			"Note on 33") ${pkgs.ydotool}/bin/ydotool key -d 2 20:1 20:0 53:1 53:0 18:1 18:0 50:1 50:0 24:1 24:0 20:1 20:0 18:1 18:0 57:1 57:0 46:1 46:0 35:1 35:0 18:1 18:0 18:1 18:0 19:1 19:0 28:1 28:0 ;;
 
 			# Laugh emote (Vintage Story)
-			"Note on 34") ${pkgs.ydotool}/bin/ydotool key 20:1 20:0 53:1 53:0 18:1 18:0 50:1 50:0 24:1 24:0 20:1 20:0 18:1 18:0 57:1 57:0 38:1 38:0 30:1 30:0 22:1 22:0 34:1 34:0 35:1 35:0 28:1 28:0 ;;
+			"Note on 34") ${pkgs.ydotool}/bin/ydotool key -d 2 20:1 20:0 53:1 53:0 18:1 18:0 50:1 50:0 24:1 24:0 20:1 20:0 18:1 18:0 57:1 57:0 38:1 38:0 30:1 30:0 22:1 22:0 34:1 34:0 35:1 35:0 28:1 28:0 ;;
 
 			# Nod emote (Vintage Story)
-			"Note on 35") ${pkgs.ydotool}/bin/ydotool key 20:1 20:0 53:1 53:0 18:1 18:0 50:1 50:0 24:1 24:0 20:1 20:0 18:1 18:0 57:1 57:0 49:1 49:0 24:1 24:0 32:1 32:0 28:1 28:0 ;;
+			"Note on 35") ${pkgs.ydotool}/bin/ydotool key -d 2 20:1 20:0 53:1 53:0 18:1 18:0 50:1 50:0 24:1 24:0 20:1 20:0 18:1 18:0 57:1 57:0 49:1 49:0 24:1 24:0 32:1 32:0 28:1 28:0 ;;
 
 			# Bow emote (Vintage Story)
-			"Note on 36") ${pkgs.ydotool}/bin/ydotool key 20:1 20:0 53:1 53:0 18:1 18:0 50:1 50:0 24:1 24:0 20:1 20:0 18:1 18:0 57:1 57:0 48:1 48:0 24:1 24:0 17:1 17:0 28:1 28:0 ;;
+			"Note on 36") ${pkgs.ydotool}/bin/ydotool key -d 2 20:1 20:0 53:1 53:0 18:1 18:0 50:1 50:0 24:1 24:0 20:1 20:0 18:1 18:0 57:1 57:0 48:1 48:0 24:1 24:0 17:1 17:0 28:1 28:0 ;;
 
 			# Shrug emote (Vintage Story)
-			"Note on 37") ${pkgs.ydotool}/bin/ydotool key 20:1 20:0 53:1 53:0 18:1 18:0 50:1 50:0 24:1 24:0 20:1 20:0 18:1 18:0 57:1 57:0 31:1 31:0 35:1 35:0 19:1 19:0 22:1 22:0 34:1 34:0 28:1 28:0 ;;
+			"Note on 37") ${pkgs.ydotool}/bin/ydotool key -d 2 20:1 20:0 53:1 53:0 18:1 18:0 50:1 50:0 24:1 24:0 20:1 20:0 18:1 18:0 57:1 57:0 31:1 31:0 35:1 35:0 19:1 19:0 22:1 22:0 34:1 34:0 28:1 28:0 ;;
 
 			# Facepalm emote (Vintage Story)
-			"Note on 38") ${pkgs.ydotool}/bin/ydotool key 20:1 20:0 53:1 53:0 18:1 18:0 50:1 50:0 24:1 24:0 20:1 20:0 18:1 18:0 57:1 57:0 33:1 33:0 30:1 30:0 46:1 46:0 18:1 18:0 25:1 25:0 30:1 30:0 38:1 38:0 50:1 50:0 28:1 28:0 ;;
+			"Note on 38") ${pkgs.ydotool}/bin/ydotool key -d 2 20:1 20:0 53:1 53:0 18:1 18:0 50:1 50:0 24:1 24:0 20:1 20:0 18:1 18:0 57:1 57:0 33:1 33:0 30:1 30:0 46:1 46:0 18:1 18:0 25:1 25:0 30:1 30:0 38:1 38:0 50:1 50:0 28:1 28:0 ;;
 
 			# Rage emote (Vintage Story)
-			"Note on 39") ${pkgs.ydotool}/bin/ydotool key 20:1 20:0 53:1 53:0 18:1 18:0 50:1 50:0 24:1 24:0 20:1 20:0 18:1 18:0 57:1 57:0 19:1 19:0 30:1 30:0 34:1 34:0 18:1 18:0 28:1 28:0 ;;
+			"Note on 39") ${pkgs.ydotool}/bin/ydotool key -d 2 20:1 20:0 53:1 53:0 18:1 18:0 50:1 50:0 24:1 24:0 20:1 20:0 18:1 18:0 57:1 57:0 19:1 19:0 30:1 30:0 34:1 34:0 18:1 18:0 28:1 28:0 ;;
 
 			# Cry emote (Vintage Story)
-			"Note on 48") ${pkgs.ydotool}/bin/ydotool key 20:1 20:0 53:1 53:0 18:1 18:0 50:1 50:0 24:1 24:0 20:1 20:0 18:1 18:0 57:1 57:0 46:1 46:0 19:1 19:0 21:1 21:0 28:1 28:0 ;;
+			"Note on 48") ${pkgs.ydotool}/bin/ydotool key -d 2 20:1 20:0 53:1 53:0 18:1 18:0 50:1 50:0 24:1 24:0 20:1 20:0 18:1 18:0 57:1 57:0 46:1 46:0 19:1 19:0 21:1 21:0 28:1 28:0 ;;
 
 			# Open / Close CD tray.
 			"Note on 64" ) ${pkgs.ydotool}/bin/ydotool key 161:1 161:0 ;;
@@ -191,17 +191,17 @@
 			new_value="$data2"
 			{ [ "$prev_0" -eq -1 ] || {
 				# Volume up.
-				[ "$new_value" -gt "$prev_0" ] && { ${pkgs.ydotool}/bin/ydotool key 115:1 115:0; }
+				[ "$new_value" -gt "$prev_0" ] && { ${pkgs.ydotool}/bin/ydotool key -d 2 115:1 115:0; }
 
 				# Volume down.
-				[ "$new_value" -lt "$prev_0" ] && { ${pkgs.ydotool}/bin/ydotool key 114:1 114:0; }
+				[ "$new_value" -lt "$prev_0" ] && { ${pkgs.ydotool}/bin/ydotool key -d 2 114:1 114:0; }
 				[ "$new_value" -eq "$prev_0" ] && {
 
 					# Volume up on repeated.
-					[ "$new_value" -eq 127 ] && { ${pkgs.ydotool}/bin/ydotool key 115:1 115:0; }
+					[ "$new_value" -eq 127 ] && { ${pkgs.ydotool}/bin/ydotool key -d 2 115:1 115:0; }
 
 					# Volume down on repeated.
-					[ "$new_value" -eq 0 ] && { ${pkgs.ydotool}/bin/ydotool key 114:1 114:0; }
+					[ "$new_value" -eq 0 ] && { ${pkgs.ydotool}/bin/ydotool key -d 2 114:1 114:0; }
 				}
 			}; prev_0="$new_value"; }
 			;;
@@ -211,17 +211,17 @@
 			new_value="$data2"
 			{ [ "$prev_1" -eq -1 ] || {
 				# Volume up.
-				[ "$new_value" -gt "$prev_1" ] && { ${pkgs.ydotool}/bin/ydotool key 42:1 115:1 115:0 42:0; }
+				[ "$new_value" -gt "$prev_1" ] && { ${pkgs.ydotool}/bin/ydotool key -d 2 42:1 115:1 115:0 42:0; }
 
 				# Volume down.
-				[ "$new_value" -lt "$prev_1" ] && { ${pkgs.ydotool}/bin/ydotool key 42:1 114:1 114:0 42:0; }
+				[ "$new_value" -lt "$prev_1" ] && { ${pkgs.ydotool}/bin/ydotool key -d 2 42:1 114:1 114:0 42:0; }
 				[ "$new_value" -eq "$prev_1" ] && {
 
 					# Volume up on repeated.
-					[ "$new_value" -eq 127 ] && { ${pkgs.ydotool}/bin/ydotool key 42:1 115:1 115:0 42:0; }
+					[ "$new_value" -eq 127 ] && { ${pkgs.ydotool}/bin/ydotool key -d 2 42:1 115:1 115:0 42:0; }
 
 					# Volume down on repeated.
-					[ "$new_value" -eq 0 ] && { ${pkgs.ydotool}/bin/ydotool key 42:1 114:1 114:0 42:0; }
+					[ "$new_value" -eq 0 ] && { ${pkgs.ydotool}/bin/ydotool key -d 2 42:1 114:1 114:0 42:0; }
 				}
 			}; prev_1="$new_value"; }
 			;;
@@ -231,17 +231,17 @@
 			new_value="$data2"
 			{ [ "$prev_2" -eq -1 ] || {
 				# Volume up.
-				[ "$new_value" -gt "$prev_2" ] && { ${pkgs.ydotool}/bin/ydotool key 125:1 115:1 115:0 125:0; }
+				[ "$new_value" -gt "$prev_2" ] && { ${pkgs.ydotool}/bin/ydotool key -d 2 125:1 115:1 115:0 125:0; }
 
 				# Volume down.
-				[ "$new_value" -lt "$prev_2" ] && { ${pkgs.ydotool}/bin/ydotool key 125:1 114:1 114:0 125:0; }
+				[ "$new_value" -lt "$prev_2" ] && { ${pkgs.ydotool}/bin/ydotool key -d 2 125:1 114:1 114:0 125:0; }
 				[ "$new_value" -eq "$prev_2" ] && {
 
 					# Volume up on repeated.
-					[ "$new_value" -eq 127 ] && { ${pkgs.ydotool}/bin/ydotool key 125:1 115:1 115:0 125:0; }
+					[ "$new_value" -eq 127 ] && { ${pkgs.ydotool}/bin/ydotool key -d 2 125:1 115:1 115:0 125:0; }
 
 					# Volume down on repeated.
-					[ "$new_value" -eq 0 ] && { ${pkgs.ydotool}/bin/ydotool key 125:1 114:1 114:0 125:0; }
+					[ "$new_value" -eq 0 ] && { ${pkgs.ydotool}/bin/ydotool key -d 2 125:1 114:1 114:0 125:0; }
 				}
 			}; prev_2="$new_value"; }
 			;;
@@ -251,17 +251,17 @@
 			new_value="$data2"
 			{ [ "$prev_6" -eq -1 ] || {
 				# Brightness up.
-				[ "$new_value" -gt "$prev_6" ] && { ${pkgs.ydotool}/bin/ydotool key 42:1 225:1 225:0 42:0; }
+				[ "$new_value" -gt "$prev_6" ] && { ${pkgs.ydotool}/bin/ydotool key -d 24 42:1 225:1 225:0 42:0; }
 
 				# Brightness down.
-				[ "$new_value" -lt "$prev_6" ] && { ${pkgs.ydotool}/bin/ydotool key 42:1 224:1 224:0 42:0; }
+				[ "$new_value" -lt "$prev_6" ] && { ${pkgs.ydotool}/bin/ydotool key -d 24 42:1 224:1 224:0 42:0; }
 				[ "$new_value" -eq "$prev_6" ] && {
 
 					# Brightness up on repeated.
-					[ "$new_value" -eq 127 ] && { ${pkgs.ydotool}/bin/ydotool key 42:1 225:1 225:0 42:0; }
+					[ "$new_value" -eq 127 ] && { ${pkgs.ydotool}/bin/ydotool key -d 24 42:1 225:1 225:0 42:0; }
 
 					# Brightness down on repeated.
-					[ "$new_value" -eq 0 ] && { ${pkgs.ydotool}/bin/ydotool key 42:1 224:1 224:0 42:0; }
+					[ "$new_value" -eq 0 ] && { ${pkgs.ydotool}/bin/ydotool key -d 24 42:1 224:1 224:0 42:0; }
 				}
 			}; prev_6="$new_value"; }
 			;;
