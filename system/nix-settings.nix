@@ -31,7 +31,7 @@
 		nix-upgrade-now = "run0 nixos-rebuild switch --upgrade --log-format internal-json 2>&1 | nom --json";
 		nix-upgrade-boot = "run0 nixos-rebuild boot --upgrade --log-format internal-json 2>&1 | nom --json";
 		nix-rollback-now = "run0 nixos-rebuild switch --rollback --log-format internal-json 2>&1 | nom --json";
-		nix-rollbcak-boot = "run0 nixos-rebuild boot --rollbcak --log-format internal-json 2>&1 | nom --json";
+		nix-rollback-boot = "run0 nixos-rebuild boot --rollbcak --log-format internal-json 2>&1 | nom --json";
 		nix-clean = "run0 nix-collect-garbage -d --log-format internal-json 2>&1 | nom --json";
 		nix-clean-user = "nix-collect-garbage -d --log-format internal-json 2>&1 | nom --json";
 		nix-test = ''set -x CURRENTDIR $(pwd) && cd /tmp/ && run0 nixos-rebuild test --log-format internal-json 2>&1 | nom --json; cd "$CURRENTDIR"'';
@@ -42,7 +42,7 @@
 		nix-upgrade-now = "run0 nixos-rebuild switch --upgrade --log-format bar-with-logs";
 		nix-upgrade-boot = "run0 nixos-rebuild boot --upgrade --log-format bar-with-logs";
 		nix-rollback-now = "run0 nixos-rebuild switch --rollback --log-format bar-with-logs";
-		nix-rollbcak-boot = "run0 nixos-rebuild boot --rollbcak --log-format bar-with-logs";
+		nix-rollback-boot = "run0 nixos-rebuild boot --rollbcak --log-format bar-with-logs";
 		nix-clean = "run0 nix-collect-garbage -d --log-format bar-with-logs";
 		nix-clean-user = "nix-collect-garbage -d --log-format bar-with-logs";
 		nix-test = ''set -x CURRENTDIR $(pwd) && cd /tmp/ && run0 nixos-rebuild test --log-format bar-with-logs; cd "$CURRENTDIR"'';
