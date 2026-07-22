@@ -8,6 +8,7 @@ Wallpaper by Mikael Gustafsson.
 My reasons for this change are that, whilst bugs and compilation problems are indeed merged way later and are annoying to deal with when *not* using the `small` channel, the breaking changes and bizarre bugs I have encountered with `nixos-unstable-small` as well as the compile times are not something I want to deal with any longer. As such, the switch to `nixos-unstable` seems like the natural thing to do, and I will simply apply workarounds for packages that already have fixes for `nixos-unstable-small`.
 - Temporarily commented `f3d` out until https://github.com/NixOS/nixpkgs/pull/537721 is merged into the `nixos-unstable` channel. ([**`./programs/3d.nix`**](./programs/3d.nix#L7))
 - Fixed one spacing issue in the README.
+- Manually upgraded `vintagestory` from `1.22.4` to `1.22.5` until https://github.com/NixOS/nixpkgs/pull/544306 is merged into the `nixos-unstable` channel.
 
 ---
 
