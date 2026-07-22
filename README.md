@@ -3,16 +3,11 @@ Wallpaper by Mikael Gustafsson.
 
 ---
 
-## Broken packages: 0
-
----
-
-## Changelog (20/07/2026)
-- Manually applied a workaround to `mediawriter` to allow it to launch when QT theming through NixOS is enabled. I am unsure if this is the best way to do it, but it works. ([**`./programs/accessories.nix`**](./programs/accessories.nix#L17))
-- `jmtpfs` has been removed upstream as it is unmaintained, so it has been commented out in this configuration. ([**`./programs/android.nix`**](./programs/android.nix#L12))
-- Fixed a typo for `nix-rollback-` shell abbreviations. ([**`./system/nix-settings.nix`**](./system/nix-settings.nix#L34))
-- Removed duplicate `yt-dlp` configuration file.
-- Adjusted various delays for `ydotool` in [**`./extra-modules/scripts/midiplus-smartpad-macropad.nix`**](./extra-modules/scripts/midiplus-smartpad-macropad.nix).
+## Changelog (22/07/2026)
+- The used channel is now `nixos-unstable` instead of `nixos-unstable-small`.
+My reasons for this change are that, whilst bugs and compilation problems are indeed merged way later and are annoying to deal with when *not* using the `small` channel, the breaking changes and bizarre bugs I have encountered with `nixos-unstable-small` as well as the compile times are not something I want to deal with any longer. As such, the switch to `nixos-unstable` seems like the natural thing to do, and I will simply apply workarounds for packages that already have fixes for `nixos-unstable-small`.
+- Temporarily commented `f3d` out until https://github.com/NixOS/nixpkgs/pull/537721 is merged into the `nixos-unstable` channel. ([**`./programs/3d.nix`**](./programs/3d.nix#L7))
+- Fixed one spacing issue in the README.
 
 ---
 
@@ -24,7 +19,7 @@ Wallpaper by Mikael Gustafsson.
 
 ## Main components
 ## Package and configuration base
-This configuration is entirely NixOS, more specifically, based on the `nixos-unstable-small` channel. It makes no use of Nix Flakes, Home Manager, or Flatpaks. I have nothing against them, I simply find the idea of a "pure" NixOS configuration rather attractive. This may make some things harder or not possible, but it is (so far) fine with me.
+This configuration is entirely NixOS, more specifically, based on the `nixos-unstable` channel. It makes no use of Nix Flakes, Home Manager, or Flatpaks. I have nothing against them, I simply find the idea of a "pure" NixOS configuration rather attractive. This may make some things harder or not possible, but it is (so far) fine with me.
 
 ## Display Manager
 The Display Manager is GDM. Whilst this may seem like an odd choice (it is), it is the one I have found to work the best with Niri, short of typing `niri-session` from the console.
@@ -60,6 +55,7 @@ It is assumed, for these installations instructions, that you:
 Since this configuration is based on NixOS unstable (small), it is highly recommended to download the latest NixOS unstable ISO image.
 - [Graphical ISO](https://channels.nixos.org/nixos-unstable/latest-nixos-graphical-x86_64-linux.iso)
 - [Minimal ISO](https://channels.nixos.org/nixos-unstable/latest-nixos-minimal-x86_64-linux.iso)
+
 I use my own graphical ISO; It is not ready for public use yet, but I might upload it here if it ever becomes ready.
 
 ### Writing the ISO file
