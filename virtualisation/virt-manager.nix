@@ -41,7 +41,7 @@
 		bridges."br0".interfaces = [ "enp16s0" ];
 
 		interfaces = {
-			enp16s0.useDHCP = true;
+			enp16s0.useDHCP = false;
 			br0.useDHCP = true;
 		};
 	};
