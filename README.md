@@ -8,6 +8,8 @@ Wallpaper by Mikael Gustafsson.
 - Updated the changelog format in the README.
 - Changelogs are now stored monthly in the README, instead of only the latest day of changes being shown.
 - Updated a comment for Blocky in the [**`./system/networking.nix`**](./system/networking.nix#L19) module.
+- When using `virt-manager`, let the network bridge use DHCP configuration, no real use in letting the main interface having its own in this case. ([**`./virtualisation/virt-manager.nix`**](./virtualisation/virt-manager.nix#L46))
+- When the network bridge for `virt-manager` is active, let configuration be done through `br0` instead of through the default network interface.
 
 ### 22/07/2026
 This configuration now uses the `nixos-unstable` channel, instead of `nixos-unstable-small`. My reasons for this change are that, whilst bugs and updates are indeed merged earlier when using `nixos-unstable-small`, the amount of problems it has caused me and the compillation times are not worth it for me. If needs be, I will simply apply temporary workarounds for packages that already have fixes in `nixos-unstable-small`.
