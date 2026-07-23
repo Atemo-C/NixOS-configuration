@@ -23,4 +23,16 @@
 	<patterns>*</patterns>
 	<directories/>
 </action>
+<action>
+	<icon>emblem-symbolic-link</icon>
+	<name>Create symlink</name>
+	<submenu></submenu>
+	<unique-id>1784823680769756-1</unique-id>
+	<command>ln -Ts %f %n&quot; (symlink)&quot;</command>
+	<description>Create a symlink of a file or directory</description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<directories/>
+	<other-files/>
+</action>
 </actions>
