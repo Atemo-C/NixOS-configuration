@@ -3,10 +3,15 @@ Wallpaper by Mikael Gustafsson.
 
 ---
 
-## Changelog (22/07/2026)
-- The used channel is now `nixos-unstable` instead of `nixos-unstable-small`.
-My reasons for this change are that, whilst bugs and compilation problems are indeed merged way later and are annoying to deal with when *not* using the `small` channel, the breaking changes and bizarre bugs I have encountered with `nixos-unstable-small` as well as the compile times are not something I want to deal with any longer. As such, the switch to `nixos-unstable` seems like the natural thing to do, and I will simply apply workarounds for packages that already have fixes for `nixos-unstable-small`.
-- Temporarily commented `f3d` out until https://github.com/NixOS/nixpkgs/pull/537721 is merged into the `nixos-unstable` channel. ([**`./programs/3d.nix`**](./programs/3d.nix#L7))
+## Changelog
+### 23/07/2026
+- Updated the changelog format in the README.
+- Changelogs are now stored monthly in the README, instead of only the latest day of changes being shown.
+- Updated a comment for Blocky in the [**`./system/networking.nix`**](./system/networking.nix#L19) module.
+
+### 22/07/2026
+This configuration now uses the `nixos-unstable` channel, instead of `nixos-unstable-small`. My reasons for this change are that, whilst bugs and updates are indeed merged earlier when using `nixos-unstable-small`, the amount of problems it has caused me and the compillation times are not worth it for me. If needs be, I will simply apply temporary workarounds for packages that already have fixes in `nixos-unstable-small`.
+- Temporarily disabled `f3d` until https://github.com/NixOS/nixpkgs/pull/537721 is merged into the `nixos-unstable` channel. ([**`./programs/3d.nix`**](./programs/3d.nix#L7))
 - Fixed one spacing issue in the README.
 - Manually upgraded `vintagestory` from `1.22.4` to `1.22.5` until https://github.com/NixOS/nixpkgs/pull/544306 is merged into the `nixos-unstable` channel.
 

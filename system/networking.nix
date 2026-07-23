@@ -17,6 +17,8 @@
 
 	services.blocky = {
 		# Whether to enable the Blocky DNS proxy as ad blocker and more.
+		# If you already have something like a Pi-Hole configured, no need for it.
+		# However, it may be wise to enable it when connecting to other networks.
 		enable = true;
 
 		settings = {
