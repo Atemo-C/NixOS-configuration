@@ -29,9 +29,7 @@
 		xemu
 
 		# In-development indie sandbox game about innovation and exploration.
-		# Manually upgraded to 1.22.5.
-		# https://github.com/NixOS/nixpkgs/pull/544306
-		(callPackage ../extra-modules/packages/vintagestory.nix {})
+		vintagestory
 	];
 
 	programs.steam = {

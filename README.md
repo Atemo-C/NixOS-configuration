@@ -4,6 +4,10 @@ Wallpaper by Mikael Gustafsson.
 ---
 
 ## Changelog
+## 25/07/2026
+- Re-enabled `f3d` as https://github.com/NixOS/nixpkgs/pull/537721 has been merged into the `nixos-unstable` channel.
+- Removed version override for `vintagestory` as https://github.com/NixOS/nixpkgs/pull/544306 has been merged into the `nixos-unstable` channel.
+
 ### 23/07/2026
 - Updated the changelog format in the README.
 - Changelogs are now stored monthly in the README, instead of only the latest day of changes being shown.
