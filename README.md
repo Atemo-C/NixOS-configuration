@@ -3,7 +3,11 @@ Wallpaper by Mikael Gustafsson.
 
 ---
 
-## Changelog
+## Monthly changelog
+
+## 28/07/2026
+- Enabled variable refresh rate on demand for my main monitor and for two programs for now. This may be extended later.
+
 ## 25/07/2026
 - Re-enabled `f3d` as https://github.com/NixOS/nixpkgs/pull/537721 has been merged into the `nixos-unstable` channel.
 - Removed version override for `vintagestory` as https://github.com/NixOS/nixpkgs/pull/544306 has been merged into the `nixos-unstable` channel.

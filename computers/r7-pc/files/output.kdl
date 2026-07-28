@@ -8,8 +8,8 @@ output "Acer Technologies XV242Y TL1EE0018521" {
 	// Rotation.
 	//transform "0"
 
-	// Variable refresh rate.
-	//variable-refresh-rate
+	// Variable refresh rate on demand.
+	variable-refresh-rate on-demand=true
 
 	// Focus this monitor on startup.
 	focus-at-startup
