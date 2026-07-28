@@ -14,6 +14,13 @@ window-rule {
 	open-fullscreen true
 }
 
+// Apply VRR to the following windows.
+window-rule {
+	match app-id="Minecraft*" title="Minecraft*"
+	match app-id=r#"Vintage Story"#
+	variable-refresh-rate true
+}
+
 // Apply a bigger border and shadows to floating windows.
 window-rule {
 	match is-floating=true
