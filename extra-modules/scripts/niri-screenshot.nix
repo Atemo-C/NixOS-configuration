@@ -4,13 +4,13 @@
 		# Create a function to print out the help message.
 		helpme() {
 			# Text formatting shortcuts for console messages.
-			ARG=$(${pkgs.ncurses}/bin/tput bold; ${pkgs.ncurses}/bin/tput setaf 2)
-			SARG=$(${pkgs.ncurses}/bin/tput bold; ${pkgs.ncurses}/bin/tput setaf 5)
-			BOL=$(${pkgs.ncurses}/bin/tput bold)
-			CLR=$(${pkgs.ncurses}/bin/tput sgr0)
-			DIM=$(${pkgs.ncurses}/bin/tput dim)
-			CMD=$(${pkgs.ncurses}/bin/tput bold; ${pkgs.ncurses}/bin/tput setaf 3)
-			ICO=$(${pkgs.ncurses}/bin/tput bold; ${pkgs.ncurses}/bin/tput setaf 6)
+			ARG=$(${pkgs.lib.getBin pkgs.ncurses}/bin/tput bold; ${pkgs.lib.getBin pkgs.ncurses}/bin/tput setaf 2)
+			SARG=$(${pkgs.lib.getBin pkgs.ncurses}/bin/tput bold; ${pkgs.lib.getBin pkgs.ncurses}/bin/tput setaf 5)
+			BOL=$(${pkgs.lib.getBin pkgs.ncurses}/bin/tput bold)
+			CLR=$(${pkgs.lib.getBin pkgs.ncurses}/bin/tput sgr0)
+			DIM=$(${pkgs.lib.getBin pkgs.ncurses}/bin/tput dim)
+			CMD=$(${pkgs.lib.getBin pkgs.ncurses}/bin/tput bold; ${pkgs.lib.getBin pkgs.ncurses}/bin/tput setaf 3)
+			ICO=$(${pkgs.lib.getBin pkgs.ncurses}/bin/tput bold; ${pkgs.lib.getBin pkgs.ncurses}/bin/tput setaf 6)
 
 			# Print the help message.
 			printf "\n┌─ %sDescription%s ────────────────────────────────────────────────────────────────┐\n" "$BOL" "$CLR"
@@ -159,7 +159,7 @@
 				}
 
 				# Generous 30 seconds timeout to check if the screenshot has been captured.
-				${pkgs.coreutils}/bin/timeout 30s niri msg event-stream | ${pkgs.gnugrep}/bin/grep -q "Screenshot captured" &
+				${pkgs.lib.getBin pkgs.coreutils}/bin/timeout 30s niri msg event-stream | ${pkgs.lib.getBin pkgs.gnugrep}/bin/grep -q "Screenshot captured" &
 				GREP_PID=$!
 
 				# Run dummy niri actions to update the even stream for grep.
@@ -195,17 +195,17 @@
 					image=$(date +'Screenshot_%d-%m-%Y_%H-%M-%S')
 
 					# Paste the image into a PNG file.
-					${pkgs.wl-clipboard}/bin/wl-paste > "$image".png || {
+					${pkgs.lib.getBin pkgs.wl-clipboard}/bin/wl-paste > "$image".png || {
 						echo "[ !! ]Could not save the image to a PNG file; Exiting."
 						exit 1
 					}
 
 					# Optimize the image with Oxipng.
-					${pkgs.oxipng}/bin/oxipng --strip all "$image".png >/dev/null 2>&1 \
+					${pkgs.lib.getBin pkgs.oxipng}/bin/oxipng --strip all "$image".png >/dev/null 2>&1 \
 					|| echo "[ -- ] Could not optimize the PNG file; Ignoring."
 
 					# Convert the image to WebP, and delete the PNG file.
-					if ${pkgs.libwebp}/bin/cwebp "$image".png -lossless -o "$image".webp >/dev/null 2>&1;
+					if ${pkgs.lib.getBin pkgs.libwebp}/bin/cwebp "$image".png -lossless -o "$image".webp >/dev/null 2>&1;
 					then
 						rm "$image".png
 						exit 0

@@ -8,6 +8,9 @@ Wallpaper by Mikael Gustafsson.
 ## 29/07/2026
 - Added the `oniri` program; It uses the GPL-3.0 license, and thus the license is also shipped within the corresponding part of the configuration.
 This tool allows automatically maximizing a window in Niri when it is the only window present. This is one of the only things I really missed from Hyprland, so it is fantastic to have it here.
+- Minor tweaks to various executable paths by using `pkgs.lib.getBin`, fixing some shell abbreviations as well.
+- Updated Noctalia Shell colors for Niri.
+- The version of `blender` installed now depends on the GPU defined in the `hardware.activeGpu` option (that can be one of `default`, `amd`, or `nvidia-proprietary`).
 
 ## 28/07/2026
 - Enabled variable refresh rate on demand for my main monitor and for two programs for now. This may be extended later.

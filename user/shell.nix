@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }: {
 	# The path to the user's default shell.
 	# The default system shell remains unchanged.
-	users.users.${config.user.name}.shell = lib.mkIf config.programs.fish.enable "${pkgs.fish}/bin/fish";
+	users.users.${config.user.name}.shell = lib.mkIf config.programs.fish.enable "${pkgs.lib.getBin pkgs.fish}/bin/fish";
 
 	programs.fish = {
 		# Whether to enable the FISH shell.
@@ -68,7 +68,7 @@
 
 			# Toggling recent files history.
 			enable-recent-files = "run0 rm -v -i ~/.local/share/recently-used.xbel";
-			disable-recent-files = "run0 rm -v -i ~/.local/share/recently-used.xbel; touch ~/.local/share/recently-used.xbel && run0 ${pkgs.e2fsprogs}/bin/chattr -V +i ~/.local/share/recently-used.xbel";
+			disable-recent-files = "run0 rm -v -i ~/.local/share/recently-used.xbel; touch ~/.local/share/recently-used.xbel && run0 ${pkgs.lib.getBin pkgs.e2fsprogs}/bin/chattr -V +i ~/.local/share/recently-used.xbel";
 
 			# Create a `.iso` file from a physical disc media.
 			mkiso = "dd if=/dev/cdrom of=./CDROM.iso status=progress";

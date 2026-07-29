@@ -18,8 +18,8 @@
 				description = "System suspend with pm-suspend";
 				serviceConfig = {
 					Type = "oneshot";
-					Environment = "PATH=${pkgs.pmutils}/bin";
-					ExecStart = [ "" "${pkgs.pmutils}/bin/pm-suspend" ];
+					Environment = "PATH=${pkgs.lib.getBin pkgs.pmutils}/bin";
+					ExecStart = [ "" "${pkgs.lib.getBin pkgs.pmutils}/bin/pm-suspend" ];
 				};
 			};
 		};
@@ -28,8 +28,8 @@
 			description = "System hibernation with pm-hibernate";
 			serviceConfig = {
 				Type = "oneshot";
-				Environment = "PATH=${pkgs.pmutils}/bin";
-				ExecStart = [ "" "${pkgs.pmutils}/bin/pm-hibernate" ];
+				Environment = "PATH=${pkgs.lib.getBin pkgs.pmutils}/bin";
+				ExecStart = [ "" "${pkgs.lib.getBin pkgs.pmutils}/bin/pm-hibernate" ];
 			};
 		};
 
@@ -37,8 +37,8 @@
 			description = "System hybrid suspend with pm-suspend-hybrid";
 			serviceConfig = {
 				Type = "oneshot";
-				Environment = "PATH=${pkgs.pmutils}/bin";
-				ExecStart = [ "" "${pkgs.pmutils}/bin/pm-suspend-hybrid" ];
+				Environment = "PATH=${pkgs.lib.getBin pkgs.pmutils}/bin";
+				ExecStart = [ "" "${pkgs.lib.getBin pkgs.pmutils}/bin/pm-suspend-hybrid" ];
 			};
 		};
 	};
