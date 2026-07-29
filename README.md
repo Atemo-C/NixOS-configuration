@@ -11,6 +11,7 @@ This tool allows automatically maximizing a window in Niri when it is the only w
 - Minor tweaks to various executable paths by using `pkgs.lib.getBin`, fixing some shell abbreviations as well.
 - Updated Noctalia Shell colors for Niri.
 - The version of `blender` installed now depends on the GPU defined in the `hardware.activeGpu` option (that can be one of `default`, `amd`, or `nvidia-proprietary`).
+- `fractal` has been replaced back with `element-desktop`, as for as long as it has been installed, it has not once worked, and Element has been fixed since.
 
 ## 28/07/2026
 - Enabled variable refresh rate on demand for my main monitor and for two programs for now. This may be extended later.
