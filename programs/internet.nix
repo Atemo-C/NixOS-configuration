@@ -4,7 +4,7 @@
 		amfora
 
 		# Matrix client.
-		fractal
+		element-desktop
 
 		# Graphical Gemini client.
 		lagrange
