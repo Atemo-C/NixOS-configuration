@@ -1,7 +1,9 @@
 { config, lib, pkgs, ... }: let
-	obsPkg =
-		if config.hardware.activeGpu == "nvidia-proprietary" then pkgs.obs-studio.override { cudaSupport = true; }
+	# Define which OBS Studio package to install, depending on GPU drivers.
+	obsPkg = if config.hardware.activeGpu == "nvidia-proprietary"
+		then pkgs.obs-studio.override { cudaSupport = true; }
 		else pkgs.obs-studio;
+
 in {
 	# Video4Linux2 Kernel module.
 	boot = {
@@ -123,55 +125,55 @@ in {
 
 		fish.shellAbbrs = {
 			# JPEG image optimization (replaces existing files).
-			opti-jpg = "${pkgs.jpegoptim}/bin/jpegoptim -s *.jp{,e}g";
-			opti-jpg-recursive = "${pkgs.jpegoptim}/bin/jpegoptim -s **/*.jp{,e}g";
+			opti-jpg = "${pkgs.lib.getBin pkgs.lib.getBin pkgs.jpegoptim}/bin/jpegoptim -s *.jp{,e}g";
+			opti-jpg-recursive = "${pkgs.lib.getBin pkgs.lib.getBin pkgs.jpegoptim}/bin/jpegoptim -s **/*.jp{,e}g";
 
 			# PNG image optimization (replaces existing files).
-			opti-png = "${pkgs.oxipng}/bin/oxipng --strip all --opt 5 *.png";
-			opti-png-recursive = "${pkgs.oxipng}/bin/oxipng --strip all --opt 5 **/*.png";
+			opti-png = "${pkgs.lib.getBin pkgs.lib.getBin pkgs.oxipng}/bin/oxipng --strip all --opt 5 *.png";
+			opti-png-recursive = "${pkgs.lib.getBin pkgs.lib.getBin pkgs.oxipng}/bin/oxipng --strip all --opt 5 **/*.png";
 
 			# PNG image optimization, without touching APNG files (replaces existing files).
-			opti-png-a = "${pkgs.oxipng}/bin/oxipng -s --opt 5 *.png";
-			opti-png-a-recursive = "${pkgs.oxipng}/bin/oxipng -s --opt 5 **/*.png";
+			opti-png-a = "${pkgs.lib.getBin pkgs.lib.getBin pkgs.oxipng}/bin/oxipng -s --opt 5 *.png";
+			opti-png-a-recursive = "${pkgs.lib.getBin pkgs.lib.getBin pkgs.oxipng}/bin/oxipng -s --opt 5 **/*.png";
 
 			# GIF image optimization (replaces existing files).
-			opti-gif = "${pkgs.gifsicle}/bin/gifsicle -O5 -b *.gif";
-			opti-gif-recursive = "${pkgs.gifsicle}/bin/gifsicle -O5 -b **/*.gif";
+			opti-gif = "${pkgs.lib.getBin pkgs.lib.getBin pkgs.gifsicle}/bin/gifsicle -O5 -b *.gif";
+			opti-gif-recursive = "${pkgs.lib.getBin pkgs.lib.getBin pkgs.gifsicle}/bin/gifsicle -O5 -b **/*.gif";
 
 			# Losslessly convert all JPEG images to JPEG XL ones in the current directory.
 			# The original files are kept.
-			jpg-jxl = "${pkgs.parallel}/bin/parallel ${pkgs.libjxl}/bin/cjxl -q 100 -e 9 '{}' '{.}'.jxl ::: *.jp{,e}g";
-			jpg-jxl-recursive = "${pkgs.parallel}/bin/parallel ${pkgs.libjxl}/bin/cjxl -q 100 -e 9 '{}' '{.}'.jxl ::: **/*.jp{,e}g";
+			jpg-jxl = "${pkgs.lib.getBin pkgs.lib.getBin pkgs.parallel}/bin/parallel ${pkgs.lib.getBin pkgs.lib.getBin pkgs.libjxl}/bin/cjxl -q 100 -e 9 '{}' '{.}'.jxl ::: *.jp{,e}g";
+			jpg-jxl-recursive = "${pkgs.lib.getBin pkgs.lib.getBin pkgs.parallel}/bin/parallel ${pkgs.lib.getBin pkgs.lib.getBin pkgs.libjxl}/bin/cjxl -q 100 -e 9 '{}' '{.}'.jxl ::: **/*.jp{,e}g";
 
 			# Losslessly convert all PNG images to JPEG XL ones in the current directory.
 			# The original files are kept.
-			png-jxl = "${pkgs.parallel}/bin/parallel ${pkgs.libjxl}/bin/cjxl -q 100 -e 9 '{}' '{.}'.jxl ::: *.png";
-			png-jxl-recursive = "${pkgs.parallel}/bin/parallel ${pkgs.libjxl}/bin/cjxl -q 100 -e 9 '{}' '{.}'.jxl ::: **/*.png";
+			png-jxl = "${pkgs.lib.getBin pkgs.lib.getBin pkgs.parallel}/bin/parallel ${pkgs.lib.getBin pkgs.lib.getBin pkgs.libjxl}/bin/cjxl -q 100 -e 9 '{}' '{.}'.jxl ::: *.png";
+			png-jxl-recursive = "${pkgs.lib.getBin pkgs.lib.getBin pkgs.parallel}/bin/parallel ${pkgs.lib.getBin pkgs.lib.getBin pkgs.libjxl}/bin/cjxl -q 100 -e 9 '{}' '{.}'.jxl ::: **/*.png";
 
 			# Losslessly convert JPEG XL images to PNG ones in the current directory.
 			# The original files are kept.
-			jxl-png = "${pkgs.parallel}/bin/parallel ${pkgs.libjxl}/bin/djxl '{}' '{.}'.png ::: *.jxl";
-			jxl-png-recursive = "${pkgs.parallel}/bin/parallel ${pkgs.libjxl}/bin/djxl '{}' '{.}'.png ::: **/*.jxl";
+			jxl-png = "${pkgs.lib.getBin pkgs.lib.getBin pkgs.parallel}/bin/parallel ${pkgs.lib.getBin pkgs.lib.getBin pkgs.libjxl}/bin/djxl '{}' '{.}'.png ::: *.jxl";
+			jxl-png-recursive = "${pkgs.lib.getBin pkgs.lib.getBin pkgs.parallel}/bin/parallel ${pkgs.lib.getBin pkgs.lib.getBin pkgs.libjxl}/bin/djxl '{}' '{.}'.png ::: **/*.jxl";
 
 			# Losslessly convert JPEG XL images to JPEG ones in the current directory.
 			# The original files are kept.
-			jxl-jpg = "${pkgs.parallel}/bin/parallel ${pkgs.libjxl}/bin/djxl '{}' '{.}'.jpg ::: *.jxl";
-			jxl-jpg-recursive = "${pkgs.parallel}/bin/parallel ${pkgs.libjxl}/bin/djxl '{}' '{.}'.jpg ::: **/*.jxl";
+			jxl-jpg = "${pkgs.lib.getBin pkgs.lib.getBin pkgs.parallel}/bin/parallel ${pkgs.lib.getBin pkgs.lib.getBin pkgs.libjxl}/bin/djxl '{}' '{.}'.jpg ::: *.jxl";
+			jxl-jpg-recursive = "${pkgs.lib.getBin pkgs.lib.getBin pkgs.parallel}/bin/parallel ${pkgs.lib.getBin pkgs.lib.getBin pkgs.libjxl}/bin/djxl '{}' '{.}'.jpg ::: **/*.jxl";
 
 			# Downlad multimedia files from various online sources.
-			imgdl = "${pkgs.gallery-dl}/bin/gallery-dl -D ./";
-			imgdl-tor = "${pkgs.gallery-dl}/bin/gallery-dl --proxy socks5://localhost:9050 -D ./";
+			imgdl = "${pkgs.lib.getBin pkgs.lib.getBin pkgs.gallery-dl}/bin/gallery-dl -D ./";
+			imgdl-tor = "${pkgs.lib.getBin pkgs.lib.getBin pkgs.gallery-dl}/bin/gallery-dl --proxy socks5://localhost:9050 -D ./";
 
 			# Download videos from various online sources.
-			yt = "${pkgs.yt-dlp}/bin/yt-dlp -t sleep";
-			yt-tor = "${pkgs.yt-dlp}/bin/yt-dlp -t sleep --proxy socks5://localhost:9050";
+			yt = "${pkgs.lib.getBin pkgs.lib.getBin pkgs.yt-dlp}/bin/yt-dlp -t sleep";
+			yt-tor = "${pkgs.lib.getBin pkgs.lib.getBin pkgs.yt-dlp}/bin/yt-dlp -t sleep --proxy socks5://localhost:9050";
 
 			# Download audio from various online sources.
-			ytmp3 = "${pkgs.yt-dlp}/bin/yt-dlp -t sleep -x --audio-format mp3 --audio-quality 0";
-			ytmp3-tor = "${pkgs.yt-dlp}/bin/yt-dlp -t sleep -x --audio-format mp3 --audio-quality 0 --proxy socks5://localhost:9050";
+			ytmp3 = "${pkgs.lib.getBin pkgs.lib.getBin pkgs.yt-dlp}/bin/yt-dlp -t sleep -x --audio-format mp3 --audio-quality 0";
+			ytmp3-tor = "${pkgs.lib.getBin pkgs.lib.getBin pkgs.yt-dlp}/bin/yt-dlp -t sleep -x --audio-format mp3 --audio-quality 0 --proxy socks5://localhost:9050";
 
 			# Hide the default banner when using ffmpeg.
-			ffmpeg = "${pkgs.ffmpeg-full}/bin/ffmpeg -hide_banner";
+			ffmpeg = "${pkgs.lib.getBin pkgs.lib.getBin pkgs.ffmpeg-full}/bin/ffmpeg -hide_banner";
 		};
 	};
 

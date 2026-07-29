@@ -69,7 +69,7 @@
 			after = [ "spice-vdagentd.service" "graphical-session.target" ];
 			requires = [ "graphical-session.target" ];
 			wantedBy = [ "graphical-session.target" ];
-			serviceConfig.ExecStart = "${pkgs.spice-vdagent}/bin/spice-vdagent -x";
+			serviceConfig.ExecStart = "${pkgs.lib.getBin pkgs.spice-vdagent}/bin/spice-vdagent -x";
 			unitConfig.ConditionPathExists = "/run/spice-vdagentd/spice-vdagent-sock";
 		};
 	};

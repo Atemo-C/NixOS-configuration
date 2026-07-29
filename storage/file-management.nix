@@ -70,7 +70,7 @@
 			text = ''
 				[Thumbnailer Entry]
 				TryExec=unzip
-				Exec=sh -c "${pkgs.unzip}/bin/unzip -p %i preview.png > %o"
+				Exec=sh -c "${pkgs.lib.getBin pkgs.unzip}/bin/unzip -p %i preview.png > %o"
 				MimeType=application/x-krita;
 			'';
 			destination = "/share/thumbnailers/kra.thumbnailer";
@@ -82,7 +82,7 @@
 			text = ''
 				[Thumbnailer Entry]
 				TryExec=ffmpeg
-				Exec=sh -c "${pkgs.ffmpeg-full}/bin/ffmpeg -y -i %i %o -fs %s"
+				Exec=sh -c "${pkgs.lib.getBin pkgs.ffmpeg-full}/bin/ffmpeg -y -i %i %o -fs %s"
 				MimeType=audio/mpeg
 			'';
 			destination = "/share/thumbnailers/ffmpegaudio.thumbnailer";

@@ -46,8 +46,8 @@ in {
 
 	# Small shell abbreviations to launch programs.
 	programs.fish.shellAbbrs = {
-		b = "${pkgs.btop}/bin/btop";
-		f = "${pkgs.fastfetch}/bin/fastfetch";
+		b = "${pkgs.lib.getBin pkgs.lib.getBin pkgs.btop}/bin/btop";
+		f = "${pkgs.lib.getBin pkgs.lib.getBin pkgs.fastfetch}/bin/fastfetch";
 	};
 
 	# Link btop's configuration file to the user's home directory.
