@@ -18,6 +18,7 @@ window-rule {
 window-rule {
 	match app-id="Minecraft*" title="Minecraft*"
 	match app-id=r#"Vintage Story"#
+	match app-id=r#"luanti"#
 	variable-refresh-rate true
 }
 
