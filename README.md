@@ -5,6 +5,9 @@ Wallpaper by Mikael Gustafsson.
 
 ## Monthly changelog
 
+## 30/07/2026
+Default ZRAM percentage has been decreased slightly, to 75%. (**`[./system/zram.nix`**](./system/zram.nix#L9))
+
 ## 29/07/2026
 - Added the `oniri` program; It uses the GPL-3.0 license, and thus the license is also shipped within the corresponding part of the configuration.
 This tool allows automatically maximizing a window in Niri when it is the only window present. This is one of the only things I really missed from Hyprland, so it is fantastic to have it here.
