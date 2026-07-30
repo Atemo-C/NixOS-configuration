@@ -6,7 +6,7 @@
 	algorithm = "zstd lz4 (type=huge)";
 
 	# Maximum total amount of memory that can be stored in the zram swap devices.
-	memoryPercent = 100;
+	memoryPercent = 75;
 
 	# Priority of the zram swap devices.
 	# It should be a number higher than the priority of disk-based swap devices.
