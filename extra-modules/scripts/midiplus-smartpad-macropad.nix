@@ -10,9 +10,19 @@
 	green="5f"
 	red="6f"
 
-	# Port shortcut.
+	# [Deprecated] Manual port shortcut. The automated method is preferred.
+	# But, you can still use it if you want.
 	# The correct port can be determined by running `amidi -l`.
-	port="hw:3,0,0"
+	# port="hw:3,0,0"
+
+	# Automated port detection and shortcut.
+	port=$(amidi -l | grep -i "smartpad\|midiplus" | head -1 | awk '{print $2}' | sed 's/://')
+
+	# Exit if no port has been detected.
+	[ -z "$port" ] && {
+		printf "ERROR: No device has been detected. Exiting.\n"
+		exit 1
+	}
 
 	# Clear all of the pad's lights.
 	row=0

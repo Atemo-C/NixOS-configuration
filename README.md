@@ -6,7 +6,8 @@ Wallpaper by Mikael Gustafsson.
 ## Monthly changelog
 
 ## 30/07/2026
-Default ZRAM percentage has been decreased slightly, to 75%. (**`[./system/zram.nix`**](./system/zram.nix#L9))
+- Default ZRAM percentage has been decreased slightly, to 75%. [**`./system/zram.nix`**](./system/zram.nix#L9))
+- The script/Nix module for transforming the MiDiPLUS SmartPAD into a working macro pad has been updated to automatically detect the proper hardware device port. [**`./extra-modules/scripts/midiplus-smartpad-macropad.nix`**](./extra-modules/scripts/midiplus-smartpad-macropad.nix#L18)
 
 ## 29/07/2026
 - Added the `oniri` program; It uses the GPL-3.0 license, and thus the license is also shipped within the corresponding part of the configuration.
