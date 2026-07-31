@@ -4,6 +4,8 @@ Wallpaper by Mikael Gustafsson.
 ---
 
 ## Monthly changelog
+## 31/07/2026
+- Upgraded `vintagestory` from `1.22.5` to `1.22.6` until https://github.com/NixOS/nixpkgs/pull/547815 is merged into `nixos-unstable`.
 
 ## 30/07/2026
 - Default ZRAM percentage has been decreased slightly, to 75%. ([**`./system/zram.nix`**](./system/zram.nix#L9))
