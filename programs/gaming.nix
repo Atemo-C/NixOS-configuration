@@ -29,7 +29,8 @@
 		xemu
 
 		# In-development indie sandbox game about innovation and exploration.
-		vintagestory
+		# Manually upgraded to 1.22.6.
+		(callPackage ../extra-modules/packages/vintagestory.nix {})
 	];
 
 	programs.steam = {
