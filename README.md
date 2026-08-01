@@ -29,7 +29,7 @@ Wallpaper by Mikael Gustafsson.
 
 ## Main components
 ## Package and configuration base
-This configuration is entirely NixOS, more specifically, based on the `nixos-unstable` channel. It makes no use of Nix Flakes, Home Manager, or Flatpaks. I have nothing against them, I simply find the idea of a "pure" NixOS configuration rather attractive. This may make some things harder or not possible, but it is (so far) fine with me.
+This configuration is entirely NixOS, more specifically, based on the `nixos-unstable-small` channel. It makes no use of Nix Flakes, Home Manager, or Flatpaks. I have nothing against them, I simply find the idea of a "pure" NixOS configuration rather attractive. This may make some things harder or not possible, but it is (so far) fine with me.
 
 ## Display Manager
 The Display Manager is GDM. Whilst this may seem like an odd choice (it is), it is the one I have found to work the best with Niri, short of typing `niri-session` from the console.
