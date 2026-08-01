@@ -91,4 +91,16 @@
 		# Utility to convert a MiDiPLUS SmartPAD into a full macro pad.
 		../../extra-modules/scripts/midiplus-smartpad-macropad.nix
 	];
+
+	# • Limit the amount of cores used when building the NixOS configuration.
+	# This is done to give some responsiveness and RAM back,
+	# allowing the use of the system relatively normally when Nix is doing Nix things.
+	#
+	# • Limit the number of maximum jobs running when building the NixOS configuration.
+	# This is mostly so that the output is neater, and I like to see
+	# programs compile one by one cleanly as well. Not optimal for faster rebuilds.
+	nix.settings = {
+		cores = 2;
+		max-jobs = 1;
+	};
 }
