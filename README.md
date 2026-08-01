@@ -3,43 +3,21 @@ Wallpaper by Mikael Gustafsson.
 
 ---
 
-## Monthly changelog
-## 31/07/2026
-- Upgraded `vintagestory` from `1.22.5` to `1.22.6` until https://github.com/NixOS/nixpkgs/pull/547815 is merged into `nixos-unstable`.
-
-## 30/07/2026
-- Default ZRAM percentage has been decreased slightly, to 75%. ([**`./system/zram.nix`**](./system/zram.nix#L9))
-- The script/Nix module for transforming the MiDiPLUS SmartPAD into a working macro pad has been updated to automatically detect the proper hardware device port. ([**`./extra-modules/scripts/midiplus-smartpad-macropad.nix`**](./extra-modules/scripts/midiplus-smartpad-macropad.nix#L18))
-- Added `luanti` to the list of programs where VRR should be enabled. ([**`./desktop/files/niri/window-rules.kdl`**](./desktop/files/niri/window-rules.kdl#L21))
-
-## 29/07/2026
-- Added the `oniri` program; It uses the GPL-3.0 license, and thus the license is also shipped within the corresponding part of the configuration.
-This tool allows automatically maximizing a window in Niri when it is the only window present. This is one of the only things I really missed from Hyprland, so it is fantastic to have it here.
-- Minor tweaks to various executable paths by using `pkgs.lib.getBin`, fixing some shell abbreviations as well.
-- Updated Noctalia Shell colors for Niri.
-- The version of `blender` installed now depends on the GPU defined in the `hardware.activeGpu` option (that can be one of `default`, `amd`, or `nvidia-proprietary`).
-- `fractal` has been replaced back with `element-desktop`, as for as long as it has been installed, it has not once worked, and Element has been fixed since.
-
-## 28/07/2026
-- Enabled variable refresh rate on demand for my main monitor and for two programs for now. This may be extended later.
-
-## 25/07/2026
-- Re-enabled `f3d` as https://github.com/NixOS/nixpkgs/pull/537721 has been merged into the `nixos-unstable` channel.
-- Removed version override for `vintagestory` as https://github.com/NixOS/nixpkgs/pull/544306 has been merged into the `nixos-unstable` channel.
-
-### 23/07/2026
-- Updated the changelog format in the README.
-- Changelogs are now stored monthly in the README, instead of only the latest day of changes being shown.
-- Updated a comment for Blocky in the [**`./system/networking.nix`**](./system/networking.nix#L19) module.
-- When using `virt-manager`, let the network bridge use DHCP configuration, no real use in letting the main interface having its own in this case. ([**`./virtualisation/virt-manager.nix`**](./virtualisation/virt-manager.nix#L46))
-- When the network bridge for `virt-manager` is active, let configuration be done through `br0` instead of through the default network interface.
-- An action to create symlinks has been added to Thunar. ([**`./storage/files/thunar-custom-actions.xml`**](./storage/files/thunar-custom-actions.xml#L26))
-
-### 22/07/2026
-This configuration now uses the `nixos-unstable` channel, instead of `nixos-unstable-small`. My reasons for this change are that, whilst bugs and updates are indeed merged earlier when using `nixos-unstable-small`, the amount of problems it has caused me and the compillation times are not worth it for me. If needs be, I will simply apply temporary workarounds for packages that already have fixes in `nixos-unstable-small`.
-- Temporarily disabled `f3d` until https://github.com/NixOS/nixpkgs/pull/537721 is merged into the `nixos-unstable` channel. ([**`./programs/3d.nix`**](./programs/3d.nix#L7))
-- Fixed one spacing issue in the README.
-- Manually upgraded `vintagestory` from `1.22.4` to `1.22.5` until https://github.com/NixOS/nixpkgs/pull/544306 is merged into the `nixos-unstable` channel.
+## Monthly changelog (DD/MM/YYYY)
+### 01/08/2026
+- This README now uses a slightly different and cleaner changelog format.
+- Changed the number of cores used when building the NixOS configuration for `R7-PC`. \
+[**`./computers/r7-pc/settings.nix`**](./computers/r7-pc/settings.nix#L130)
+	- Changed the number of cores used when building the NixOS configuration for `HP-250-G6`. \
+[**`./computers/hp-250-g6/settings.nix`**](./computers/hp-250-g6/settings.nix#L103)
+	- Changed the number of maximum jobs allowed when building the NixOS configuration for `R7-PC`. \
+[**`./computers/r7-pc/settings.nix`**](./computers/r7-pc/settings.nix#L131)
+	- Changed the number of maximum jobs allowed when building the NixOS configuration for `HP-250-G6`. \
+[**`./computers/hp-250-g6/settings.nix`**](./computers/hp-250-g6/settings.nix#L104)
+- Switched back to the `nixos-unstable-small` channel. I changed my updating/upgrading/cleaning habit in NixOS for this to (again) become the more practical choice for me.
+- Applied https://github.com/NixOS/nixpkgs/pull/546530 manually until it is merged into the `nixos-unstable-small` channel. \
+	- [**`./programs/3d.nix`**](./programs/3d.nix#L18)
+	- [**`./extra-modules/packages/openshadinglanguage/`**](./extra-modules/packages/openshadinglanguage/)
 
 ---
 

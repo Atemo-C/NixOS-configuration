@@ -119,19 +119,15 @@
 	lib.optional (config.programs.niri.enable)
 	"L /etc/nixos/desktop/files/niri/output.kdl - - - - /etc/nixos/computers/r7-pc/files/output.kdl";
 
-	# • Limit the amount of cores used when building the NixOS configuration
-	# • Limit the numbers of maximum jobs running when building the NixOS configuration
-	# This mostly helps me avoid running out of memory.
-	# Please Sam give me back my RAM :(
+	# • Limit the amount of cores used when building the NixOS configuration.
+	# This is done to give some responsiveness and RAM back,
+	# allowing the use of the system relatively normally when Nix is doing Nix things.
 	#
-	# As a note, my CPU (Ryzen 7 9850X3D) has 8 cores and 16 threads.
-	# I currently have 2×16 GB of RAM.
-	# I thus limit the maximum number of cores per job used to 8,
-	# and limit the maximum number of jobs to 2.
-	# This generally limits the RAM usage to just shy-or-above 16 GB,
-	# and lets my system still feel relatively snappy under load.
+	# • Limit the number of maximum jobs running when building the NixOS configuration.
+	# This is mostly so that the output is neater, and I like to see
+	# programs compile one by one cleanly as well. Not optimal for faster rebuilds.
 	nix.settings = {
-		cores = 8;
-		max-jobs = 2;
+		cores = 14;
+		max-jobs = 1;
 	};
 }
