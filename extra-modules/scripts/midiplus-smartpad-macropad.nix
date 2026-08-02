@@ -16,7 +16,7 @@
 	# port="hw:3,0,0"
 
 	# Automated port detection and shortcut.
-	port=$(${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -l | grep -i "smartpad\|midiplus" | head -1 | awk '{print $2}' | sed 's/://')
+	port=$(${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -l | grep -i "smartpad\|midiplus" | head -1 | awk '{sub(/^hw:/, "hw:", $2); print $2}')
 
 	# Exit if no port has been detected.
 	[ -z "$port" ] && {
