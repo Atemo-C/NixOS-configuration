@@ -1,6 +1,41 @@
 { config, pkgs, ... }: let
 	midiplus-smartpad-macropad = pkgs.writers.writeDashBin "midiplus-smartpad-macropad"
 ''
+	# If other instances are running, terminate them.
+	pkill -2 -f "aseqdump -p SmartPAD"
+
+	# Shortcut to clear the pad's lights.
+	clearlights() {
+		row=0
+		while [ "$row" -lt 8 ]; do
+			col=0
+			while [ "$col" -lt 8 ]; do
+				key=$((row * 16 + col))
+				hex=$(printf "%02X" "$key")
+				${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "80 $hex 00" || {
+					echo "[ !! ] No MiDiPLUS SmartPAD has been detected. Exiting."
+					exit 1
+				}
+				col=$((col + 1))
+			done
+			row=$((row + 1))
+		done
+	}
+
+	# Termination handling.
+	cleanup() {
+		trap \'\' INT TERM HUP EXIT
+
+		# Clear the pad's lights.
+		clearlights
+
+		# Kill the processes.
+		pkill -2 -f "aseqdump -p SmartPAD"
+		kill 0
+		wait
+	}
+	trap cleanup INT TERM HUP EXIT
+
 	# Human-readable colour shortcuts.
 	white="0f"
 	yellow="1f"
@@ -10,46 +45,42 @@
 	green="5f"
 	red="6f"
 
-	# [Deprecated] Manual port shortcut. The automated method is preferred.
-	# But, you can still use it if you want.
-	# The correct port can be determined by running `amidi -l`.
-	# port="hw:3,0,0"
-
-	# Automated port detection and shortcut.
-	port=$(${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -l | grep -i "smartpad\|midiplus" | head -1 | awk '{sub(/^hw:/, "hw:", $2); print $2}')
+	# Automatic port detection.
+	port=$(${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -l | awk '/SmartPAD/ {print $2}')
 
 	# Exit if no port has been detected.
 	[ -z "$port" ] && {
-		printf "ERROR: No device has been detected. Exiting.\n"
+		echo "[ !! ] No MiDiPLUS SmartPAD has been detected. Exiting."
 		exit 1
 	}
 
-	# Clear all of the pad's lights.
-	row=0
-	while [ "$row" -lt 8 ]; do
-		col=0
-		while [ "$col" -lt 8 ]; do
-			key=$((row * 16 + col))
-			hex=$(printf "%02X" "$key")
-			${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "80 $hex 00" || {
-				echo "Device not detected. Exiting."
-				exit 1
+	# Exit if the device is unplugged (10s check).
+	unplug() {
+		while :; do
+			${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -l | grep -q 'SmartPAD' || {
+				echo "[ !! ] MiDiPLUS SmartPAD has been unplugged. Exiting."
+				pkill -2 -f "aseqdump -p SmartPAD"
 			}
-			col=$((col + 1))
+			sleep 10
 		done
-		row=$((row + 1))
-	done
+	}
+	unplug &
 
-	# Apply the desired colors.
-	# Key matrix:             │ Current RGB layout:
+	# Clear the pad's lights.
+	clearlights
+
+	# Set the desired colors across the matrix.
+	#
+	# Key matrix:             │ Lights layout:
 	# 00 01 02 03 04 05 06 07 │ - - - - - - - -
 	# 10 11 12 13 14 15 16 17 │ - - - - - - - -
 	# 20 21 22 23 24 25 26 27 │ M M M W W W R R
 	# 30 31 32 33 34 35 36 37 │ B - - - - - - -
 	# 40 41 42 43 44 45 46 47 │ Y C C G R B B M
 	# 50 51 52 53 54 55 56 57 │ - - - - - - - -
-	# 60 61 62 63 64 65 66 67 │ W W W - - C G M
+	# 60 61 62 63 64 65 66 67 │ - - - - - C G M
 	# 70 71 72 73 74 75 76 77 │ G Y R - - C G M
+	# Row 3
 	${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "90 20 $magenta"
 	${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "90 21 $magenta"
 	${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "90 22 $magenta"
@@ -59,8 +90,10 @@
 	${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "90 26 $red"
 	${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "90 27 $red"
 
+	# Row 4
 	${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "90 30 $blue"
 
+	# Row 5
 	${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "90 40 $yellow"
 	${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "90 41 $cyan"
 	${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "90 42 $cyan"
@@ -70,47 +103,30 @@
 	${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "90 46 $blue"
 	${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "90 47 $magenta"
 
-	${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "90 60 $white"
-	${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "90 61 $white"
-	${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "90 62 $white"
-
+	# Row 7
 	${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "90 65 $cyan"
 	${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "90 66 $green"
 	${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "90 67 $magenta"
 
+	# Row 8
 	${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "90 70 $green"
 	${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "90 71 $yellow"
 	${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "90 72 $red"
-
 	${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "90 75 $cyan"
 	${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "90 76 $green"
 	${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "90 77 $magenta"
 
-	# Set the file path for the PID file.
-	PID_FILE="/tmp/midiplus.pid"
-
-	# Check if a previous instance of this script is running.
-	# If so, terminate it.
-	[ -f "$PID_FILE" ] && {
-		OLD_PID=$(cat "$PID_FILE")
-		kill -0 "$OLD_PID" 2>/dev/null && kill "$OLD_PID"
-		pkill -9 -f "aseqdump -p SmartPAD" 2>/dev/null || true
-	}
-
-	# Print the new PID to the PID file.
-	echo "$$" > "$PID_FILE"
-
-	# Start the ydotool daemon if not already started.
-	nohup ydotoold >/dev/null 2>&1 &
+	# Launch ydotool if it is not already.
+	! pgrep -x "ydotoold" >/dev/null 2>&1 && ${pkgs.lib.getBin pkgs.ydotool}/bin/ydotoold 2>&1
 
 	# Set the initial values to -1 per knob to avoid action on the first event.
 	prev_0=-1 prev_1=-1 prev_2=-1 prev_3=-1 prev_4=-1 prev_5=-1 prev_6=-1 prev_7=-1
 
-	# Display outputs from the desired Midi controller.
+	# Take desired outputs from the MiDi controller.
 	${pkgs.lib.getBin pkgs.alsa-utils}/bin/aseqdump -p "SmartPAD" | \
 	while IFS=" ," read -r src ev1 ev2 ch label1 data1 label2 data2 rest; do
-		# Read relevant outputs.
-		# To see which one is pressed, you can run `aseqdump -p "SmartPAD"`.
+		# Read relevant outputs and execute the desired macro.
+		# To see which one is pressed, you can run `aseqdump -p "SmartPAD"` separately.
 		# And to see a list of available input event codes:
 		# https://github.com/torvalds/linux/blob/master/include/uapi/linux/input-event-codes.h
 		case "$ev1 $ev2 $data1" in
@@ -163,11 +179,7 @@
 			"Note on 70" ) ${pkgs.lib.getBin pkgs.ydotool}/bin/ydotool key 163:1 163:0 ;;
 
 			# Soft loop media (stop then play).
-			"Note on 71" ) ${pkgs.lib.getBin pkgs.ydotool}/bin/ydotool key 166:1 166:0 164:1 164:0 ;;
-
-			# Start livestreaming (not implemented yet because not yet used).
-			# Pause livestremaing (not implemented yet because not yet used).
-			# Stop livestreaming (not implemented yet because not yet used).
+			"Note on 71" ) ${pkgs.lib.getBin pkgs.ydotool}/bin/ydotool key -d 32 166:1 166:0 164:1 164:0 ;;
 
 			# Start OBS recording.
 			"Note on 112" ) ${pkgs.lib.getBin pkgs.ydotool}/bin/ydotool key 56:1 125:1 19:1 19:0 125:0 56:0 ;;
@@ -297,9 +309,16 @@
 			;;
 		esac
 	done
+
+	exit
 '';
 in {
+	# Add the script as a global package.
 	environment.systemPackages = [ midiplus-smartpad-macropad ];
+
+	# Enable ydotool, necessary for the macro actions.
 	programs.ydotool.enable = true;
+
+	# Add the user to the ydotool group.
 	users.users.${config.user.name}.extraGroups = [ "ydotool" ];
 }
