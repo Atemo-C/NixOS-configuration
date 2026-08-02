@@ -74,7 +74,7 @@
 			mkiso = "dd if=/dev/cdrom of=./CDROM.iso status=progress";
 
 			# Creating a `.iso` file from a file or directory.
-			mkisofromfile = "mkisofs -lJR -o output.iso";
+			mkisofromfile = "${pkgs.lib.getBin pkgs.cdrtools}/bin/mkisofs -lJR -o output.iso";
 		};
 	};
 }
