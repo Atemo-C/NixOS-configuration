@@ -6,18 +6,22 @@ Wallpaper by Mikael Gustafsson.
 ## Monthly changelog (DD/MM/YYYY)
 ### 01/08/2026
 - This README now uses a slightly different and cleaner changelog format.
-- Changed the number of cores used when building the NixOS configuration for `R7-PC`. \
-[**`./computers/r7-pc/settings.nix`**](./computers/r7-pc/settings.nix#L130)
-	- Changed the number of cores used when building the NixOS configuration for `HP-250-G6`. \
-[**`./computers/hp-250-g6/settings.nix`**](./computers/hp-250-g6/settings.nix#L103)
-	- Changed the number of maximum jobs allowed when building the NixOS configuration for `R7-PC`. \
-[**`./computers/r7-pc/settings.nix`**](./computers/r7-pc/settings.nix#L131)
-	- Changed the number of maximum jobs allowed when building the NixOS configuration for `HP-250-G6`. \
-[**`./computers/hp-250-g6/settings.nix`**](./computers/hp-250-g6/settings.nix#L104)
+- Changed the number of cores used when building the NixOS configuration for `R7-PC`.
+	- [**`./computers/r7-pc/settings.nix`**](./computers/r7-pc/settings.nix#L130)
+- Changed the number of cores used when building the NixOS configuration for `HP-250-G6`.
+	- [**`./computers/hp-250-g6/settings.nix`**](./computers/hp-250-g6/settings.nix#L103)
+- Changed the number of maximum jobs allowed when building the NixOS configuration for `R7-PC`.
+	- [**`./computers/r7-pc/settings.nix`**](./computers/r7-pc/settings.nix#L131)
+- Changed the number of maximum jobs allowed when building the NixOS configuration for `HP-250-G6`.
+	- [**`./computers/hp-250-g6/settings.nix`**](./computers/hp-250-g6/settings.nix#L104)
 - Switched back to the `nixos-unstable-small` channel. I changed my updating/upgrading/cleaning habit in NixOS for this to (again) become the more practical choice for me.
-- Applied https://github.com/NixOS/nixpkgs/pull/546530 manually until it is merged into the `nixos-unstable-small` channel. \
+- Applied https://github.com/NixOS/nixpkgs/pull/546530 manually until it is merged into the `nixos-unstable-small` channel.
 	- [**`./programs/3d.nix`**](./programs/3d.nix#L18)
 	- [**`./extra-modules/packages/openshadinglanguage/`**](./extra-modules/packages/openshadinglanguage/)
+
+### 02/08/2026
+- `mkisofs` is now properly invoked by the `mkisofromfile` shell abbreviation.
+	- [**`./user/shell.nix`**](./user/shell.nix#L77)
 
 ---
 
