@@ -4,6 +4,15 @@ Wallpaper by Mikael Gustafsson.
 ---
 
 ## Monthly changelog (DD/MM/YYYY)
+### 03/08/2026
+- Fixed https://github.com/Atemo-C/NixOS-configuration/issues/89
+	- [**`./extra-modules/scripts/midiplus-smartpad-macropad.nix`**](./extra-modules/scripts/midiplus-smartpad-macropad.nix)
+### 02/08/2026
+- `mkisofs` is now properly invoked by the `mkisofromfile` shell abbreviation.
+	- [**`./user/shell.nix`**](./user/shell.nix#L77)
+- Set the correct path for `amidi` in the `$port` variable detection in the MiDiPLUS SmartPAD macropad script.
+	- [**`./extra-modules/scripts/midiplus-smartpad-macropad.nix`**](./extra-modules/scripts/midiplus-smartpad-macropad.nix#L19)
+
 ### 01/08/2026
 - This README now uses a slightly different and cleaner changelog format.
 - Changed the number of cores used when building the NixOS configuration for `R7-PC`.
@@ -18,12 +27,6 @@ Wallpaper by Mikael Gustafsson.
 - Applied https://github.com/NixOS/nixpkgs/pull/546530 manually until it is merged into the `nixos-unstable-small` channel.
 	- [**`./programs/3d.nix`**](./programs/3d.nix#L18)
 	- [**`./extra-modules/packages/openshadinglanguage/`**](./extra-modules/packages/openshadinglanguage/)
-
-### 02/08/2026
-- `mkisofs` is now properly invoked by the `mkisofromfile` shell abbreviation.
-	- [**`./user/shell.nix`**](./user/shell.nix#L77)
-- Set the correct path for `amidi` in the `$port` variable detection in the MiDiPLUS SmartPAD macropad script.
-	- [**`./extra-modules/scripts/midiplus-smartpad-macropad.nix`**](./extra-modules/scripts/midiplus-smartpad-macropad.nix#L19)
 
 ---
 
