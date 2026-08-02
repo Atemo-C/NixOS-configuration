@@ -22,6 +22,8 @@ Wallpaper by Mikael Gustafsson.
 ### 02/08/2026
 - `mkisofs` is now properly invoked by the `mkisofromfile` shell abbreviation.
 	- [**`./user/shell.nix`**](./user/shell.nix#L77)
+- Set the correct path for `amidi` in the `$port` variable detection in the MiDiPLUS SmartPAD macropad script.
+	- [**`./extra-modules/scripts/midiplus-smartpad-macropad.nix`**](./extra-modules/scripts/midiplus-smartpad-macropad.nix#L19)
 
 ---
 
