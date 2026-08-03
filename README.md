@@ -4,6 +4,9 @@ Wallpaper by Mikael Gustafsson.
 ---
 
 ## Monthly changelog (DD/MM/YYYY)
+### 04/08/2026
+- https://github.com/NixOS/nixpkgs/pull/546530/changes has been merged into the `nixos-unstable-small` channel. The manual upgrade has been removed.
+
 ### 03/08/2026
 - Fixed https://github.com/Atemo-C/NixOS-configuration/issues/89
 	- [**`./extra-modules/scripts/midiplus-smartpad-macropad.nix`**](./extra-modules/scripts/midiplus-smartpad-macropad.nix)
