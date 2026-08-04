@@ -7,10 +7,12 @@ Wallpaper by Mikael Gustafsson.
 ### 04/08/2026
 - https://github.com/NixOS/nixpkgs/pull/546530/changes has been merged into the `nixos-unstable-small` channel. The manual upgrade has been removed.
 - Removed duplicate `libclang-no-shared.patch` file (I honestly have no clue how I even put it here in the first place).
-- The button in the Noctalia Shell's bar to start/restart the `midiplus-smartpad-macropad` script has been modified to first kill any instance (if running) before starting a new one.
-	- [**`./desktop/files/noctalia/settings.json`**](./desktop/files/noctalia/settings.json#L369)
+- ~~The button in the Noctalia Shell's bar to start/restart the `midiplus-smartpad-macropad` script has been modified to first kill any instance (if running) before starting a new one.~~
+	- *(This is no longer needed as per the latest update of the script, and thus the change has been reversed.)*
 - The opacity of notifications have been changed to `0.8`.
 	- [**`./desktop/files/noctalia/settings.json`**](./desktop/files/noctalia/settings.json#L733)
+- Overhauled how the `midiplus-smartpad-macropad` script handles dying.
+	- [**`./extra-modules/scripts/midiplus-smartpad-macropad.nix`**](./extra-modules/scripts/midiplus-smartpad-macropad.nix)
 
 ### 03/08/2026
 - Fixed https://github.com/Atemo-C/NixOS-configuration/issues/89

@@ -366,7 +366,7 @@
                     "iconPosition": "left",
                     "id": "CustomButton",
                     "ipcIdentifier": "",
-                    "leftClickExec": "pkill -2 -f \"aseqdump -p SmartPAD\"; midiplus-smartpad-macropad",
+                    "leftClickExec": "midiplus-smartpad-macropad",
                     "leftClickUpdateText": false,
                     "maxTextLength": {
                         "horizontal": 10,
