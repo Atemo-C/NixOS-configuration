@@ -11,6 +11,8 @@ Wallpaper by Mikael Gustafsson.
 	- [**`./desktop/files/noctalia/settings.json`**](./desktop/files/noctalia/settings.json#L369)
 - The opacity of notifications have been changed to `0.8`.
 	- [**`./desktop/files/noctalia/settings.json`**](./desktop/files/noctalia/settings.json#L733)
+- Overhauled how the `midiplus-smartpad-macropad` script handles dying.
+	- [**`./extra-modules/scripts/midiplus-smartpad-macropad.nix`**](./extra-modules/scripts/midiplus-smartpad-macropad.nix)
 
 ### 03/08/2026
 - Fixed https://github.com/Atemo-C/NixOS-configuration/issues/89

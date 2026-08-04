@@ -1,8 +1,14 @@
 { config, pkgs, ... }: let
 	midiplus-smartpad-macropad = pkgs.writers.writeDashBin "midiplus-smartpad-macropad"
 ''
-	# If other instances are running, terminate them.
-	pkill -2 -f "aseqdump -p SmartPAD"
+	# Automatic port detection.
+	port=$(${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -l | awk '/SmartPAD/ {print $2}')
+
+	# Exit if no port has been detected.
+	[ -z "$port" ] && {
+		echo "[ ! ] No MiDiPLUS SmartPAD has been detected. Exiting."
+		exit 1
+	}
 
 	# Shortcut to clear the pad's lights.
 	clearlights() {
@@ -13,7 +19,7 @@
 				key=$((row * 16 + col))
 				hex=$(printf "%02X" "$key")
 				${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "80 $hex 00" || {
-					echo "[ !! ] No MiDiPLUS SmartPAD has been detected. Exiting."
+					echo "[ ! ] No MiDiPLUS SmartPAD has been detected. Exiting."
 					exit 1
 				}
 				col=$((col + 1))
@@ -22,19 +28,35 @@
 		done
 	}
 
-	# Termination handling.
-	cleanup() {
-		trap \'\' INT TERM HUP EXIT
+	# Set the PID file path for the script.
+	smartpad_pid="/tmp/smartpad.pid"
 
-		# Clear the pad's lights.
-		clearlights
-
-		# Kill the processes.
-		pkill -2 -f "aseqdump -p SmartPAD"
-		kill 0
-		wait
+	# Single instance check and cleanup.
+	[ -f "$smartpad_pid" ] && {
+		old_pid=$(cat "$smartpad_pid")
+		[ -n "$old_pid" ] && kill -0 "$old_pid" 2>/dev/null && {
+			echo "[ I ] Stopping the previous instance (PID: $old_pid)…"
+			clearlights
+			kill -TERM "$old_pid" 2>/dev/null
+			pkill -P "$old_pid" 2>/dev/null
+			pkill -f "aseqdump -p SmartPAD"
+			sleep 1
+		}
 	}
-	trap cleanup INT TERM HUP EXIT
+
+	# Write the current PID file for the script.
+	echo "$$" > "$smartpad_pid"
+
+	# Cleanup on exits.
+	trap 'rm -f "$smartpad_pid"; pkill -f "aseqdump -p SmartPAD"; exit' EXIT INT TERM HUP
+	cleanup() {
+		clearlights
+		pkill -P "$$" 2>/dev/null
+		pkill -f "aseqdump -p SmartPAD"
+		rm -f "$PIDFILE"
+		exit
+	}
+	trap cleanup EXIT INT TERM HUP
 
 	# Human-readable colour shortcuts.
 	white="0f"
@@ -45,21 +67,15 @@
 	green="5f"
 	red="6f"
 
-	# Automatic port detection.
-	port=$(${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -l | awk '/SmartPAD/ {print $2}')
-
-	# Exit if no port has been detected.
-	[ -z "$port" ] && {
-		echo "[ !! ] No MiDiPLUS SmartPAD has been detected. Exiting."
-		exit 1
-	}
-
 	# Exit if the device is unplugged (10s check).
 	unplug() {
 		while :; do
 			${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -l | grep -q 'SmartPAD' || {
-				echo "[ !! ] MiDiPLUS SmartPAD has been unplugged. Exiting."
-				pkill -2 -f "aseqdump -p SmartPAD"
+				echo "[ ! ] MiDiPLUS SmartPAD has been unplugged. Exiting."
+				pkill -P "$$" 2>/dev/null
+				pkill -f "aseqdump -p SmartPAD"
+				rm -f "$PIDFILE"
+				exit
 			}
 			sleep 10
 		done
