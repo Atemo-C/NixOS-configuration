@@ -53,7 +53,7 @@
 		clearlights
 		pkill -P "$$" 2>/dev/null
 		pkill -f "aseqdump -p SmartPAD"
-		rm -f "$PIDFILE"
+		rm -f "$smartpad_pid"
 		exit
 	}
 	trap cleanup EXIT INT TERM HUP
@@ -74,7 +74,7 @@
 				echo "[ ! ] MiDiPLUS SmartPAD has been unplugged. Exiting."
 				pkill -P "$$" 2>/dev/null
 				pkill -f "aseqdump -p SmartPAD"
-				rm -f "$PIDFILE"
+				rm -f "$smartpad_pid"
 				exit
 			}
 			sleep 10

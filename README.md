@@ -4,6 +4,10 @@ Wallpaper by Mikael Gustafsson.
 ---
 
 ## Monthly changelog (DD/MM/YYYY)
+### 06/08/2026
+- Fixed wrong name for PID file in the `midiplus-smartpad-macropad` script.
+	- [**`./extra-modules/scripts/midiplus-smartpad-macropad.nix`**](./extra-modules/scripts/midiplus-smartpad-macropad.nix)
+
 ### 04/08/2026
 - https://github.com/NixOS/nixpkgs/pull/546530/changes has been merged into the `nixos-unstable-small` channel. The manual upgrade has been removed.
 - Removed duplicate `libclang-no-shared.patch` file (I honestly have no clue how I even put it here in the first place).
