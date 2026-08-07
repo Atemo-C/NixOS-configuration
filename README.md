@@ -4,6 +4,10 @@ Wallpaper by Mikael Gustafsson.
 ---
 
 ## Monthly changelog (DD/MM/YYYY)
+### 07/08/2026
+- Removed the `addwater` and `adwsteamgtk` packages. It turns out, these programs are more stable when not themed externally. Too bad, they looked really nice.
+	- [**`./theming/programs.nix`**](./theming/programs.nix#L4)
+
 ### 06/08/2026
 - Fixed wrong name for PID file in the `midiplus-smartpad-macropad` script.
 	- [**`./extra-modules/scripts/midiplus-smartpad-macropad.nix`**](./extra-modules/scripts/midiplus-smartpad-macropad.nix)

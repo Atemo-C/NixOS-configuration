@@ -1,12 +1,6 @@
 { config, lib, pkgs, ... }: {
 	environment = {
 		systemPackages = with pkgs; [
-			# Installer for the GNOME for Firefox theme.
-			addwater
-
-			# Installer for Adwaita-for-Steam.
-			adwsteamgtk
-
 			# Unofficial GTK 3 port of libadwaita.
 			adw-gtk3
 
