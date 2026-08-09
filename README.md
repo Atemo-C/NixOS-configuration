@@ -4,6 +4,10 @@ Wallpaper by Mikael Gustafsson.
 ---
 
 ## Monthly changelog (DD/MM/YYYY)
+### 09/08/2026
+- Removed the `nufraw` thumbnailer as it is no longer supported in `nixos-unstable` (depends on GTK2).
+	- [**`./storage/file-management.nix`**](./storage/file-management.nix#L50)
+
 ### 07/08/2026
 - Removed the `addwater` and `adwsteamgtk` packages. It turns out, these programs are more stable when not themed externally. Too bad, they looked really nice.
 	- [**`./theming/programs.nix`**](./theming/programs.nix#L4)

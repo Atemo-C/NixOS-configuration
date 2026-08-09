@@ -48,7 +48,6 @@
 		kdePackages.kimageformats # Various image formats
 		kdePackages.qtsvg         # .svg
 		libgsf                    # .odf
-		nufraw-thumbnailer        # .raw
 		poppler                   # .pdf
 		webp-pixbuf-loader        # .webp
 
