@@ -4,6 +4,12 @@ Wallpaper by Mikael Gustafsson.
 ---
 
 ## Monthly changelog (DD/MM/YYYY)
+### 11/08/2026
+- Updated `oniri` to `1.3.2`.
+	- [**`./desktop/files/niri/oniri/`**](./desktop/files/niri/oniri/)
+	- [**`./desktop/files/niri/startup.kdl`**](./desktop/files/niri/startup.kdl#L6)
+	- https://github.com/Antiz96/oniri/releases/tag/v1.3.2
+
 ### 10/08/2026
 - Make the `blender` package variant installation logic more, well, logical.
 	- [**`./programs/3d.nix`**](./programs/3d.nix#L5)
