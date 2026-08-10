@@ -7,6 +7,7 @@ Wallpaper by Mikael Gustafsson.
 ### 10/08/2026
 - Make the `blender` package variant installation logic more, well, logical.
 	- [**`./programs/3d.nix`**](./programs/3d.nix#L5)
+- Added additional mention/credit to the Oniri project in the README.
 
 ### 09/08/2026
 - Removed the `nufraw` thumbnailer as it is no longer supported in `nixos-unstable` (depends on GTK2).
@@ -72,6 +73,9 @@ The Display Manager is GDM. Whilst this may seem like an odd choice (it is), it 
 ## Wayland compositor
 Niri is the Wayland compositor used. It supports more hardware than Hyprland does (which is what I used to use), runs faster on my systems, and the scrollable-tilling model is too good to live without. \
 https://github.com/YaLTeR/niri
+
+I also use the Oniri program, to automatically maximize a window when it is the only one present on a workspace. \
+https://github.com/Antiz96/oniri
 
 ## Desktop shell
 Noctalia Shell is the desktop shell. Even if not quite as lightweight as I would like, it is very full-featured, and has done an excellent job at replacing every little other components, scripts, and programs I used to use to replicate a fraction of its functionlaities. The trade-off was almost a no-brainer for me: I would much rather have Noctalia Shell than the combination of random stuff I had before. \
