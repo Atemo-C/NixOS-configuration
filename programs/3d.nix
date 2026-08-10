@@ -2,7 +2,10 @@
 	# Define which Blender package to install, depending on GPU drivers.
 	blenderPkg = if config.hardware.activeGpu == "nvidia-proprietary"
 		then pkgs.blender.override { cudaSupport = true; }
-		else if config.hardware.activeGpu == "amd" then pkgs.pkgsRocm.blender
+		else if config.hardware.activeGpu == "amd" then pkgs.blender.override { config = {
+			cudaSupport = false;
+			rocmSupport = true;
+		}; }
 		else pkgs.blender;
 
 in { environment.systemPackages = with pkgs; [
