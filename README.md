@@ -4,6 +4,10 @@ Wallpaper by Mikael Gustafsson.
 ---
 
 ## Monthly changelog (DD/MM/YYYY)
+### 16/08/2026
+- Manually upgraded `niri` to `1.22.7`.
+	- [**`./extra-modules/packages/vintagestory.nix`**](./extra-modules/packages/vintagestory.nix)
+
 ### 11/08/2026
 - Updated `oniri` to `1.3.2`.
 	- [**`./desktop/files/niri/oniri/`**](./desktop/files/niri/oniri/)

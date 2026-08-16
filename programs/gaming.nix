@@ -29,7 +29,7 @@
 		xemu
 
 		# In-development indie sandbox game about innovation and exploration.
-		# Manually upgraded to 1.22.6.
+		# Manually upgraded to 1.22.7.
 		(callPackage ../extra-modules/packages/vintagestory.nix {})
 	];
 
