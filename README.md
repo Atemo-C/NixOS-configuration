@@ -4,8 +4,11 @@ Wallpaper by Mikael Gustafsson.
 ---
 
 ## Monthly changelog (DD/MM/YYYY)
+### 17/08/26
+- Fixed a silly mistake in the README. (How did I confuse `vintagestory` for `niri`???)
+
 ### 16/08/2026
-- Manually upgraded `niri` to `1.22.7`.
+- Manually upgraded `vintagestory` to `1.22.7`.
 	- [**`./extra-modules/packages/vintagestory.nix`**](./extra-modules/packages/vintagestory.nix)
 
 ### 11/08/2026
