@@ -4,6 +4,12 @@ Wallpaper by Mikael Gustafsson.
 ---
 
 ## Monthly changelog (DD/MM/YYYY)
+### 18/08/26
+- Updated `oniri` to `1.3.3`.
+	- [**`./desktop/files/niri/oniri/`**](./desktop/files/niri/oniri/)
+	- [**`./desktop/files/niri/startup.kdl`**](./desktop/files/niri/startup.kdl#L6)
+	- https://github.com/Antiz96/oniri/releases/tag/v1.3.3
+
 ### 17/08/26
 - Fixed a silly mistake in the README. (How did I confuse `vintagestory` for `niri`???)
 
