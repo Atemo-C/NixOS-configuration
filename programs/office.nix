@@ -1,6 +1,6 @@
 { pkgs, ... }: { environment.systemPackages = with pkgs; [
 	# Office suite.
-	libreoffice-fresh
+	libreoffice
 
 	# Document viewer.
 	papers
