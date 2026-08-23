@@ -4,19 +4,23 @@ Wallpaper by Mikael Gustafsson.
 ---
 
 ## Monthly changelog (DD/MM/YYYY)
-### 19/08/26
+### 24/08/2026
+- Changed LibreOffice's package from `libreoffice-fresh` to `libreoffice`, to reflect recent package naming changes.
+	- [**`./programs/office.nix`**](./programs/office.nix#L3)
+
+### 19/08/2026
 - Updated `oniri` to `1.3.4`.
 	- [**`./desktop/files/niri/oniri/`**](./desktop/files/niri/oniri/)
 	- [**`./desktop/files/niri/startup.kdl`**](./desktop/files/niri/startup.kdl#L6)
 	- https://github.com/Antiz96/oniri/releases/tag/v1.3.4
 
-### 18/08/26
+### 18/08/2026
 - Updated `oniri` to `1.3.3`.
 	- [**`./desktop/files/niri/oniri/`**](./desktop/files/niri/oniri/)
 	- [**`./desktop/files/niri/startup.kdl`**](./desktop/files/niri/startup.kdl#L6)
 	- https://github.com/Antiz96/oniri/releases/tag/v1.3.3
 
-### 17/08/26
+### 17/08/2026
 - Fixed a silly mistake in the README. (How did I confuse `vintagestory` for `niri`???)
 
 ### 16/08/2026
