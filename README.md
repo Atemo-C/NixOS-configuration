@@ -4,6 +4,9 @@ Wallpaper by Mikael Gustafsson.
 ---
 
 ## Monthly changelog (DD/MM/YYYY)
+### 28/08/2026
+- Removed unused package override that was in the wrong directory anyway.
+
 ### 24/08/2026
 - Changed LibreOffice's package from `libreoffice-fresh` to `libreoffice`, to reflect recent package naming changes.
 	- [**`./programs/office.nix`**](./programs/office.nix#L3)
