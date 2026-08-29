@@ -8,6 +8,9 @@ Wallpaper by Mikael Gustafsson.
 - Addad the `nix-upgrade-count` shell abbreviation, which updates the NixOS channel and tells how many updates are available.
 	- [**`./system/nix-settings.nix`**](./system/nix-settings.nix#L26)
 
+- Applied https://github.com/micro-editor/micro/discussions/3853#discussioncomment-17554687 to Micro's configuration for Nix files syntaxing.
+	- [**`./programs/files/micro/syntax/nix.yaml`**](./programs/files/micro/syntax/nix.yaml#L36)
+
 ### 28/08/2026
 - Removed unused package override that was in the wrong directory anyway.
 
