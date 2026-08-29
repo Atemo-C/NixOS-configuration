@@ -23,6 +23,7 @@
 	# If nix-output-monitor is installed, it is used to make output better.
 	programs.fish.shellAbbrs = {
 		nix-list-generations = "run0 nixos-rebuild list -generations";
+		nix-upgrade-count = "run0 nixos-rebuild --upgrade dry-run 2>&1 | wc -l";
 		download-nixos = ''wget -v https://channels.nixos.org/nixos-unstable/latest-nixos-graphical-x86_64-linux.iso'';
 		download-mininixos = ''wget -v https://channels.nixos.org/nixos-unstable/latest-nixos-minimal-x86_64-linux.iso'';
 	} // (if (lib.elem pkgs.nix-output-monitor config.environment.systemPackages) then {

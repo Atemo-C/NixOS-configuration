@@ -4,6 +4,10 @@ Wallpaper by Mikael Gustafsson.
 ---
 
 ## Monthly changelog (DD/MM/YYYY)
+### 29/08/2026
+- Addad the `nix-upgrade-count` shell abbreviation, which updates the NixOS channel and tells how many updates are available.
+	- [**`./system/nix-settings.nix`**](./system/nix-settings.nix#L26)
+
 ### 28/08/2026
 - Removed unused package override that was in the wrong directory anyway.
 
