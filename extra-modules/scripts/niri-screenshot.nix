@@ -1,5 +1,4 @@
-{ config, lib, pkgs, ... }: let
-	cfg = config.programs.niri-screenshot;
+{ config, pkgs, ... }: let
 	screenshot = pkgs.writers.writeDashBin "screenshot" ''
 		# Create a function to print out the help message.
 		helpme() {
@@ -231,4 +230,4 @@
 			;;
 		esac
 	'';
-in { config.environment.systemPackages = lib.optional cfg.enable screenshot; }
+in { config.environment.systemPackages = [ screenshot ]; }
