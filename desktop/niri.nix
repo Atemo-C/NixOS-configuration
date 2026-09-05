@@ -29,6 +29,9 @@ in {
 		(lib.optional noc-s pkgs.cliphist)
 	];
 
+	# Screenshot script for Niri.
+	imports = [ ../extra-modules/scripts/niri-screenshot.nix ];
+
 	services.displayManager.noctalia-greeter = {
 		# Whether to enable the Noctalia Greeter.
 		enable = true;
