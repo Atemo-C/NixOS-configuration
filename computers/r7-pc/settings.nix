@@ -109,7 +109,8 @@
 		../../extra-modules/scripts/midiplus-smartpad-macropad.nix
 
 		# Disk mounts.
-		../../storage/drives/1TB-SSD.nix
+#		../../storage/drives/1TB-SSD.nix # ( Currently used in another PC)
+#		../../storage/drives/1TB-HDD.nix # ( Will soon be in this PC)
 		../../storage/drives/PS4-HDD.nix
 		../../storage/drives/160GB-HDD.nix
 	];

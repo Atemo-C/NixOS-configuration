@@ -4,101 +4,15 @@ Wallpaper by Mikael Gustafsson.
 ---
 
 ## Monthly changelog (DD/MM/YYYY)
-### 30/08/2026
-- Updated `oniri` to `1.3.5`.
-	- [**`./desktop/files/niri/oniri/`**](./desktop/files/niri/oniri/)
-	- [**`./desktop/files/niri/startup.kdl`**](./desktop/files/niri/startup.kdl#L6)
-	- https://github.com/Antiz96/oniri/releases/tag/v1.3.5
-
-### 29/08/2026
-- Addad the `nix-upgrade-count` shell abbreviation, which updates the NixOS channel and tells how many updates are available.
-	- [**`./system/nix-settings.nix`**](./system/nix-settings.nix#L26)
-
-- Applied https://github.com/micro-editor/micro/discussions/3853#discussioncomment-17554687 to Micro's configuration for Nix files syntaxing.
-	- [**`./programs/files/micro/syntax/nix.yaml`**](./programs/files/micro/syntax/nix.yaml#L36)
-
-### 28/08/2026
-- Removed unused package override that was in the wrong directory anyway.
-
-### 24/08/2026
-- Changed LibreOffice's package from `libreoffice-fresh` to `libreoffice`, to reflect recent package naming changes.
-	- [**`./programs/office.nix`**](./programs/office.nix#L3)
-
-### 19/08/2026
-- Updated `oniri` to `1.3.4`.
-	- [**`./desktop/files/niri/oniri/`**](./desktop/files/niri/oniri/)
-	- [**`./desktop/files/niri/startup.kdl`**](./desktop/files/niri/startup.kdl#L6)
-	- https://github.com/Antiz96/oniri/releases/tag/v1.3.4
-
-### 18/08/2026
-- Updated `oniri` to `1.3.3`.
-	- [**`./desktop/files/niri/oniri/`**](./desktop/files/niri/oniri/)
-	- [**`./desktop/files/niri/startup.kdl`**](./desktop/files/niri/startup.kdl#L6)
-	- https://github.com/Antiz96/oniri/releases/tag/v1.3.3
-
-### 17/08/2026
-- Fixed a silly mistake in the README. (How did I confuse `vintagestory` for `niri`???)
-
-### 16/08/2026
-- Manually upgraded `vintagestory` to `1.22.7`.
-	- [**`./extra-modules/packages/vintagestory.nix`**](./extra-modules/packages/vintagestory.nix)
-
-### 11/08/2026
-- Updated `oniri` to `1.3.2`.
-	- [**`./desktop/files/niri/oniri/`**](./desktop/files/niri/oniri/)
-	- [**`./desktop/files/niri/startup.kdl`**](./desktop/files/niri/startup.kdl#L6)
-	- https://github.com/Antiz96/oniri/releases/tag/v1.3.2
-
-### 10/08/2026
-- Make the `blender` package variant installation logic more, well, logical.
-	- [**`./programs/3d.nix`**](./programs/3d.nix#L5)
-- Added additional mention/credit to the Oniri project in the README.
-
-### 09/08/2026
-- Removed the `nufraw` thumbnailer as it is no longer supported in `nixos-unstable` (depends on GTK2).
-	- [**`./storage/file-management.nix`**](./storage/file-management.nix#L50)
-
-### 07/08/2026
-- Removed the `addwater` and `adwsteamgtk` packages. It turns out, these programs are more stable when not themed externally. Too bad, they looked really nice.
-	- [**`./theming/programs.nix`**](./theming/programs.nix#L4)
-
-### 06/08/2026
-- Fixed wrong name for PID file in the `midiplus-smartpad-macropad` script.
-	- [**`./extra-modules/scripts/midiplus-smartpad-macropad.nix`**](./extra-modules/scripts/midiplus-smartpad-macropad.nix)
-
-### 04/08/2026
-- https://github.com/NixOS/nixpkgs/pull/546530/changes has been merged into the `nixos-unstable-small` channel. The manual upgrade has been removed.
-- Removed duplicate `libclang-no-shared.patch` file (I honestly have no clue how I even put it here in the first place).
-- ~~The button in the Noctalia Shell's bar to start/restart the `midiplus-smartpad-macropad` script has been modified to first kill any instance (if running) before starting a new one.~~
-	- *(This is no longer needed as per the latest update of the script, and thus the change has been reversed.)*
-- The opacity of notifications have been changed to `0.8`.
-	- [**`./desktop/files/noctalia/settings.json`**](./desktop/files/noctalia/settings.json#L733)
-- Overhauled how the `midiplus-smartpad-macropad` script handles dying.
-	- [**`./extra-modules/scripts/midiplus-smartpad-macropad.nix`**](./extra-modules/scripts/midiplus-smartpad-macropad.nix)
-
-### 03/08/2026
-- Fixed https://github.com/Atemo-C/NixOS-configuration/issues/89
-	- [**`./extra-modules/scripts/midiplus-smartpad-macropad.nix`**](./extra-modules/scripts/midiplus-smartpad-macropad.nix)
-### 02/08/2026
-- `mkisofs` is now properly invoked by the `mkisofromfile` shell abbreviation.
-	- [**`./user/shell.nix`**](./user/shell.nix#L77)
-- Set the correct path for `amidi` in the `$port` variable detection in the MiDiPLUS SmartPAD macropad script.
-	- [**`./extra-modules/scripts/midiplus-smartpad-macropad.nix`**](./extra-modules/scripts/midiplus-smartpad-macropad.nix#L19)
-
-### 01/08/2026
-- This README now uses a slightly different and cleaner changelog format.
-- Changed the number of cores used when building the NixOS configuration for `R7-PC`.
-	- [**`./computers/r7-pc/settings.nix`**](./computers/r7-pc/settings.nix#L130)
-- Changed the number of cores used when building the NixOS configuration for `HP-250-G6`.
-	- [**`./computers/hp-250-g6/settings.nix`**](./computers/hp-250-g6/settings.nix#L103)
-- Changed the number of maximum jobs allowed when building the NixOS configuration for `R7-PC`.
-	- [**`./computers/r7-pc/settings.nix`**](./computers/r7-pc/settings.nix#L131)
-- Changed the number of maximum jobs allowed when building the NixOS configuration for `HP-250-G6`.
-	- [**`./computers/hp-250-g6/settings.nix`**](./computers/hp-250-g6/settings.nix#L104)
-- Switched back to the `nixos-unstable-small` channel. I changed my updating/upgrading/cleaning habit in NixOS for this to (again) become the more practical choice for me.
-- Applied https://github.com/NixOS/nixpkgs/pull/546530 manually until it is merged into the `nixos-unstable-small` channel.
-	- [**`./programs/3d.nix`**](./programs/3d.nix#L18)
-	- [**`./extra-modules/packages/openshadinglanguage/`**](./extra-modules/packages/openshadinglanguage/)
+### 09/05/2026
+- Transitionned from Noctalia Shell 4.X to Noctalia 5.X, as it is now considered stable.
+This is an upgrade in certain ways, downgrades in others, but it is snappier and lighterweight across the board. There may be some minor missing configurations; They will be added here gradually when discovered.
+- Fixed duplicate `pkgs.lib.getBin` in `./programs/system-info.nix`.
+- Btop has higher privileges to have access to more hardware sensors without the need to run it with `run0`.
+- Switched from GDM to the Noctalia Greeter.
+- Theming now has its own `config` module to more easily share theming configuration across modules.
+- Switched to the Zen Kernel, left the option for the latest too just in case.
+- Other little changes here and there.
 
 ---
 
@@ -113,7 +27,7 @@ Wallpaper by Mikael Gustafsson.
 This configuration is entirely NixOS, more specifically, based on the `nixos-unstable-small` channel. It makes no use of Nix Flakes, Home Manager, or Flatpaks. I have nothing against them, I simply find the idea of a "pure" NixOS configuration rather attractive. This may make some things harder or not possible, but it is (so far) fine with me.
 
 ## Display Manager
-The Display Manager is GDM. Whilst this may seem like an odd choice (it is), it is the one I have found to work the best with Niri, short of typing `niri-session` from the console.
+The Display Manager is the Noctalia Greeter. It replaces GDM, and feels like a more natural and logical choice here.
 
 ## Wayland compositor
 Niri is the Wayland compositor used. It supports more hardware than Hyprland does (which is what I used to use), runs faster on my systems, and the scrollable-tilling model is too good to live without. \
@@ -123,7 +37,7 @@ I also use the Oniri program, to automatically maximize a window when it is the 
 https://github.com/Antiz96/oniri
 
 ## Desktop shell
-Noctalia Shell is the desktop shell. Even if not quite as lightweight as I would like, it is very full-featured, and has done an excellent job at replacing every little other components, scripts, and programs I used to use to replicate a fraction of its functionlaities. The trade-off was almost a no-brainer for me: I would much rather have Noctalia Shell than the combination of random stuff I had before. \
+Noctalia Shell is the desktop shell. It has done an excellent job at replacing every little other components, scripts, and programs I used to use to replicate a fraction of its functionlaities. \
 https://github.com/noctalia-dev/noctalia-shell
 
 # Installation

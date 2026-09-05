@@ -1,0 +1,356 @@
+config_version = 14
+
+[backdrop]
+enabled = true
+tint_intensity = 0.0
+
+[bar.default]
+background_opacity = 0.79999998211860657
+capsule = true
+center = [ "Overview", "workspaces", "wallpaper" ]
+concave_edge_corners = false
+end = [
+    "notifications",
+    "MiDiPLUS_Macropad",
+    "output_volume",
+    "input_volume",
+    "battery",
+    "brightness",
+    "date",
+    "spacer_2",
+    "Close_Kill"
+]
+font_family = "UbuntuMono Nerd Font"
+margin_ends = 0
+padding = 0
+panel_overlap = 0
+radius = 0
+radius_top_left = 0
+radius_top_right = 0
+shadow = false
+start = [
+    "launcher",
+    "control-center",
+    "clipboard",
+    "File_manager",
+    "Screenshot",
+    "media",
+    "group:g1",
+    "ram",
+    "sysmon",
+    "Power"
+]
+thickness = 28
+widget_spacing = 3
+
+    [[bar.default.capsule_group]]
+    accordion = false
+    accordion_direction = "end"
+    enabled = true
+    fill = "surface_variant"
+    id = "g1"
+    members = [ "cpu", "temp" ]
+    opacity = 1.0
+    padding = 6.0
+
+[brightness]
+enable_ddcutil = true
+
+[control_center]
+hidden_tabs = [ "weather" ]
+
+[desktop_widgets]
+enabled = false
+
+[lockscreen_widgets]
+enabled = false
+schema_version = 2
+widget_order = [ "lockscreen-login-box@DP-1" ]
+
+    [lockscreen_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@DP-1"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 960.0
+    cy = 898.0
+    output = "DP-1"
+    placement_height = 1080.0
+    placement_width = 1920.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@DP-1".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+[notification]
+background_opacity = 0.79999998211860657
+
+[osd.kinds]
+media = false
+
+[shell]
+clipboard_auto_paste = "ctrl_v"
+clipboard_confirm_clear_history = false
+corner_radius_scale = 0.5000000074505806
+niri_overview_type_to_launch_enabled = true
+polkit_agent = true
+telemetry_enabled = true
+
+    [shell.animation]
+    speed = 1.5000000223517418
+
+    [shell.greeter_sync]
+    auto_sync = true
+
+    [shell.launcher]
+    app_grid = true
+    fetch_exchange_rates = false
+    pinned = [
+        "audacious",
+        "audacity",
+        "blender",
+        "btop",
+        "gucharmap",
+        "nl.hjdskes.gcolor3",
+        "io.github.thetumultuousunicornofdarkness.cpu-x",
+        "org.desmume.DeSmuME",
+        "org.gnome.DiskUtility",
+        "org.gnome.SimpleScan",
+        "app.drey.EarTag",
+        "com.github.wwmm.easyeffects",
+        "element-desktop",
+        "org.fedoraproject.MediaWriter",
+        "foot",
+        "footclient",
+        "FurMark",
+        "gimp",
+        "org.inkscape.Inkscape",
+        "jstest-gtk",
+        "org.kde.kdenlive",
+        "org.keepassxc.KeePassXC",
+        "keymapp",
+        "org.kde.krita",
+        "io.github.ilya_zlobintsev.LACT",
+        "fi.skyjake.Lagrange",
+        "startcenter",
+        "librewolf",
+        "cups",
+        "io.mgba.mGBA",
+        "nixos-manual",
+        "com.obsproject.Studio",
+        "OpenTabletDriver",
+        "PCSX2",
+        "pix",
+        "org.prismlauncher.PrismLauncher",
+        "com.saivert.pwvucontrol",
+        "org.qbittorrent.qBittorrent",
+        "org.rncbc.qpwgraph",
+        "io.github.qtox.qTox",
+        "org.remmina.Remmina",
+        "com.github.Rosalie241.RMG",
+        "rpcs3",
+        "rs.ruffle.Ruffle",
+        "chat.simplex.app",
+        "xyz.ketok.Speedtest",
+        "steam",
+        "thunar",
+        "tor-browser",
+        "vintagestory",
+        "virt-manager",
+        "Waydroid",
+        "com.jaoushingan.WaydroidHelper",
+        "xemu",
+        "xfburn"
+    ]
+    show_app_actions = true
+    sort_by_usage = false
+
+        [shell.launcher.providers.session]
+        global = true
+
+    [shell.panel]
+    open_near_click_control_center = true
+    transparency_mode = "soft"
+
+    [shell.screenshot]
+    save_to_file = false
+
+    [[shell.session.actions]]
+    action = "lock"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "1"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "command"
+    command = "sleep 1 && niri msg dpms off"
+    countdown_seconds = 0.0
+    enabled = true
+    glyph = "screen-share-off"
+    label = "Turn screen off"
+    shortcut = "2"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "logout"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "3"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "lock_and_suspend"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "4"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "reboot"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "5"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "command"
+    command = "systemctl reboot --firmware-setup"
+    countdown_seconds = 0.0
+    enabled = true
+    glyph = "reboot"
+    label = "Reboot to EFI"
+    shortcut = "6"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "shutdown"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "7"
+    variant = "destructive"
+
+    [shell.shadow]
+    direction = "center"
+
+[theme]
+pure_black_dark = true
+source = "wallpaper"
+
+    [theme.templates]
+    builtin_ids = [ "niri" ]
+    enable_community_templates = false
+
+[wallpaper]
+directory = "~/Images/Wallpapers/Landscape"
+transition = [ "fade" ]
+transition_on_startup = true
+
+    [wallpaper.default]
+    path = "~/Images/Wallpapers/Landscape/Mikael Gustafsson/Among Trees.jxl"
+
+    [wallpaper.last]
+    path = "~/Images/Wallpapers/Landscape/Mikael Gustafsson/Among Trees.jxl"
+
+    [wallpaper.monitors.DP-1]
+    path = "~/Images/Wallpapers/Landscape/Mikael Gustafsson/Among Trees.jxl"
+
+[weather]
+enabled = false
+
+[widget.Close_Kill]
+glyph = "skull"
+icon_color = "error"
+tooltip = "Close or Kill the active window"
+type = "custom_button"
+
+    [widget.Close_Kill.actions]
+    left = "exec niri msg action close-window"
+    right = "exec kill -9 \"$(niri msg focused-window | sed -n 's/^  PID: //p')\""
+
+[widget.File_manager]
+glyph = "folder"
+tooltip = "Open the file manager"
+type = "custom_button"
+
+    [widget.File_manager.actions]
+    left = "exec xdg-open \"$HOME\""
+
+[widget.MiDiPLUS_Macropad]
+glyph = "color-filter"
+tooltip = "(Re)Start the MiDiPLUS SmartPad RGB+Macro script"
+type = "custom_button"
+
+    [widget.MiDiPLUS_Macropad.actions]
+    left = "exec midiplus-smartpad-macropad"
+
+[widget.Overview]
+glyph = "box-multiple"
+tooltip = "Toggle the overview"
+type = "custom_button"
+
+    [widget.Overview.actions]
+    left = "exec niri msg action toggle-overview"
+
+[widget.Power]
+glyph = "power"
+icon_color = "error"
+type = "custom_button"
+
+    [widget.Power.actions]
+    left = "panel-toggle session"
+    right = "power-cycle"
+
+[widget.Screenshot]
+glyph = "screenshot"
+tooltip = "Copy a screenshot (Area, Window, Fullscreen)"
+type = "custom_button"
+
+    [widget.Screenshot.actions]
+    left = "exec screenshot --copy area"
+    middle = "exec screenshot --copy area"
+    right = "exec screenshot --copy fullscreen"
+
+[widget.date]
+format = "%a %D %R"
+tooltip_format = "%A %D %T"
+
+[widget.launcher]
+icon_color = "primary"
+
+[widget.media]
+hide_when_no_media = true
+max_length = 145
+show_progress = true
+title_scroll = "on_hover"
+
+[widget.spacer_2]
+type = "spacer"
+
+[widget.sysmon]
+stat = "swap_pct"
+visualization = "none"
+
+[widget.temp]
+show_glyph = false
+
+[widget.workspaces]
+active_pill_size = 2.0
+anchor = true

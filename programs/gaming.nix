@@ -16,10 +16,10 @@
 		# Free, open source launcher for Minecraft.
 		prismlauncher
 
-		# PlayStation 2 emulator.
+		# PlayStation 2 emulator. (build failure)
 		pcsx2
 
-		# PlayStation 3 emulator.
+		# PlayStation 3 emulator. (build failure)
 		rpcs3
 
 		# Rosalie's Mupen GUI (Nintendo64 emulator).

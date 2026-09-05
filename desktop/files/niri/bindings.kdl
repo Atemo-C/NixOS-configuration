@@ -6,7 +6,7 @@ binds {
 	Super+H { show-hotkey-overlay; }
 
 	// Toggle hidding Noctalia's bar.
-	Super+B { spawn-sh "noctalia-shell ipc call bar toggle"; }
+	Super+B { spawn-sh "noctalia msg bar-toggle"; }
 
 	// Focus workspaces (numerical unshifted).
 	Super+Ampersand { focus-workspace 1; }
@@ -155,11 +155,11 @@ binds {
 	// https://github.com/rockowitz/ddcutil/issues/110
 	Shift+XF86MonBrightnessUp allow-when-locked=true {
 //		spawn-sh "ddcutil --bus 11 --disable-dynamic-sleep --noverify --skip-ddc-checks --sleep-multiplier 0 setvcp 10 + 2"
-		spawn-sh "noctalia-shell ipc call brightness increase"
+		spawn-sh "noctalia msg brightness-up"
 	}
 	Shift+XF86MonBrightnessDown allow-when-locked=true {
 //		spawn-sh "ddcutil --bus 11 --disable-dynamic-sleep --noverify --skip-ddc-checks --sleep-multiplier 0 setvcp 10 - 2";
-		spawn-sh "noctalia-shell ipc call brightness decrease"
+		spawn-sh "noctalia msg brightness-down"
 	}
 
 	// Media control.
@@ -194,9 +194,9 @@ binds {
 	Alt+Super+S { spawn-sh "obs-cmd --websocket obsws://localhost:3621 recording stop"; }
 
 	// Power menu.
-	XF86PowerOff allow-when-locked=true { spawn-sh "noctalia-shell ipc call sessionMenu toggle"; }
-	XF86Sleep allow-when-locked=true { spawn-sh "noctalia-shell ipc call sessionMenu toggle"; }
-	XF86Suspend  allow-when-locked=true { spawn-sh "noctalia-shell ipc call sessionMenu toggle"; }
+	XF86PowerOff allow-when-locked=true { spawn-sh "noctalia msg panel-toggle session"; }
+	XF86Sleep allow-when-locked=true { spawn-sh "noctalia msg panel-toggle session"; }
+	XF86Suspend  allow-when-locked=true { spawn-sh "noctalia msg panel-toggle session"; }
 
 	// Copying screenshots.
 	Print { spawn-sh "screenshot --copy area"; }
@@ -212,19 +212,16 @@ binds {
 	Super+Return { spawn "xdg-terminal-exec"; }
 
 	// Open a program launcher.
-	Alt+Return { spawn-sh "noctalia-shell ipc call launcher toggle"; }
+	Alt+Return { spawn-sh "noctalia msg panel-toggle launcher"; }
 
-	// Open Noctalia Shell's control center.
-	Alt+Shift+Return { spawn-sh "noctalia-shell ipc call controlCenter toggle"; }
-
-	// Open a run launcher.
-	Shift+Ctrl+Return { spawn "fuzzel"; }
+	// Open Noctalia's control center.
+	Alt+Shift+Return { spawn-sh "noctalia msg panel-toggle control-center"; }
 
 	// Open an emoji picker.
-	Alt+Shift+E { spawn-sh "noctalia-shell ipc call launcher emoji"; }
+	Alt+Shift+E { spawn-sh "noctalia msg panel-toggle launcher /emo"; }
 
 	// Select from the clipboard.
-	Super+Shift+V { spawn-sh "noctalia-shell ipc call launcher clipboard'"; }
+	Super+Shift+V { spawn-sh "noctalia msg panel-toggle clipboard"; }
 
 	// Opan a permanent "clipboard" file.
 	Alt+Shift+V { spawn-sh "xdg-terminal-exec $EDITOR $HOME/Documents/Clipboard.txt"; }

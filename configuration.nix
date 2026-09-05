@@ -5,6 +5,7 @@
 	./computers/r7-pc/settings.nix
 
 	./extra-modules/config/gpu-check.nix
+	./extra-modules/config/theming.nix
 
 	./desktop/niri.nix
 

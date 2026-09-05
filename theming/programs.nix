@@ -1,11 +1,22 @@
 { config, lib, pkgs, ... }: {
+	cursor = {
+		# Package that provides the cursor theme(s).
+		package = pkgs.bibata-cursors;
+
+		# The name of the cursor theme.
+		name = "Bibata-Modern-Ice";
+
+		# The size of the cursor.
+		size = 24;
+	};
+
 	environment = {
 		systemPackages = with pkgs; [
 			# Unofficial GTK 3 port of libadwaita.
 			adw-gtk3
 
 			# Material-based cursor theme.
-			bibata-cursors
+			config.cursor.package
 
 			# Icon theme inspired by material design.
 			flat-remix-icon-theme
@@ -34,10 +45,10 @@
 				color-scheme = "prefer-dark";
 
 				# Cursor theme to use.
-				cursor-theme = "Bibata-Modern-Ice";
+				cursor-theme = "${config.cursor.name}";
 
 				# Cursor size to use.
-				cursor-size = lib.gvariant.mkInt32 24;
+				cursor-size = lib.gvariant.mkInt32 config.cursor.size;
 
 				# Font to use.
 				font-name = "sans";
