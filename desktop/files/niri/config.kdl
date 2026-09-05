@@ -1,5 +1,6 @@
 include "./input.kdl"
 include optional=true "./output.kdl"
+include optional=true "./xwayland-satellite"
 include "./cursor.kdl"
 include "./layout.kdl"
 include "./startup.kdl"
@@ -11,5 +12,4 @@ include "./bindings.kdl"
 include "./environments.kdl"
 include "./blur.kdl"
 include "./switch-events.kdl"
-include "./noctalia.kdl"
-
+include "noctalia.kdl"

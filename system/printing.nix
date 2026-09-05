@@ -10,7 +10,7 @@
 		drivers = with pkgs; [
 #			gutenprint                   # Drivers for many different printers from many different vendors.
 #			gutenprintBin                # Additional, binary-only drivers for some printers.
-#			hplip                        # Drivers for HP printers.
+			hplip                        # Drivers for HP printers.
 #			hplipWithPlugin              # Drivers for HP printers, with the proprietary plugin.
 #			postscript-lexmark           # Postscript drivers for Lexmark.
 #			samsung-unified-linux-driver # Proprietary Samsung Drivers.

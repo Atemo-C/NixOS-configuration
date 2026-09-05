@@ -46,11 +46,26 @@ in {
 
 	# Small shell abbreviations to launch programs.
 	programs.fish.shellAbbrs = {
-		b = "${pkgs.lib.getBin pkgs.lib.getBin pkgs.btop}/bin/btop";
-		f = "${pkgs.lib.getBin pkgs.lib.getBin pkgs.fastfetch}/bin/fastfetch";
+		b = "${pkgs.lib.getBin pkgs.btop}/bin/btop";
+		f = "${pkgs.lib.getBin pkgs.fastfetch}/bin/fastfetch";
 	};
 
 	# Link btop's configuration file to the user's home directory.
 	systemd.user.tmpfiles.users.${config.user.name}.rules = lib.optional bto
 	"L %h/.config/btop/ - - - - /etc/nixos/programs/files/btop/";
+
+	# Allow btop higher privilege access to better show hardware sensors;
+	# And also modify the permission of certain files for it.
+	# This mostly eliminates the need to run it with `run0`.
+	# https://github.com/aristocratos/btop/issues/1040#issuecomment-3025307221
+	# https://github.com/aristocratos/btop/issues/1283#issuecomment-3725082807
+	security.wrappers.btop = {
+		enable = true;
+		owner = "root";
+		group = "root";
+		source = "${pkgs.lib.getBin btopPkg}/bin/btop";
+		capabilities = "cap_perfmon=ep";
+	};
+
+	systemd.tmpfiles.rules = [ "Z /sys/class/powercap/intel-rapl:0/energy_uj 0444 root root - -" ];
 }

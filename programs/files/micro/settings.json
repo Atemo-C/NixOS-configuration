@@ -28,6 +28,7 @@
     "ruler": false,
     "savehistory": false,
     "softwrap": true,
+    "statusline": false,
     "tabsize": 3,
     "wordwrap": true
 }
