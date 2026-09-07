@@ -102,8 +102,11 @@ widget_order = [ "lockscreen-login-box@DP-1" ]
 [notification]
 background_opacity = 0.79999998211860657
 
-[osd.kinds]
-media = false
+[osd]
+orientation = "horizontal"
+
+    [osd.kinds]
+    media = false
 
 [shell]
 clipboard_auto_paste = "ctrl_v"
@@ -329,8 +332,8 @@ type = "custom_button"
     right = "exec screenshot --copy fullscreen"
 
 [widget.date]
-format = "%a %D %R"
-tooltip_format = "%A %D %T"
+format = "%a %d/%m/%y %R"
+tooltip_format = "%A %d/%m/%y %T"
 
 [widget.launcher]
 icon_color = "primary"
