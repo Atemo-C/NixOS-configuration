@@ -59,6 +59,9 @@ enable_ddcutil = true
 [control_center]
 hidden_tabs = [ "weather" ]
 
+    [control_center.calendar]
+    show_events_card = true
+
 [desktop_widgets]
 enabled = false
 
@@ -186,7 +189,7 @@ telemetry_enabled = true
     sort_by_usage = false
 
         [shell.launcher.providers.session]
-        global = true
+        global = false
 
     [shell.panel]
     open_near_click_control_center = true
