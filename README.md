@@ -4,7 +4,11 @@ Wallpaper by Mikael Gustafsson.
 ---
 
 ## Monthly changelog (DD/MM/YYYY)
-### 09/05/2026
+### 09/09/2026
+- Power actions are no longer enabled by default without a prefix in the program launcher (accidental reboots begone).
+- Added `corefonts` and `vista-fonts` for additional compatibility when reading and editing documents from Windows computers.
+
+### 05/09/2026
 - Transitionned from Noctalia Shell 4.X to Noctalia 5.X, as it is now considered stable.
 This is an upgrade in certain ways, downgrades in others, but it is snappier and lighterweight across the board. There may be some minor missing configurations; They will be added here gradually when discovered.
 - Fixed duplicate `pkgs.lib.getBin` in `./programs/system-info.nix`.

@@ -20,10 +20,17 @@
 
 	# List of primary font packages to install.
 	packages = with pkgs; [
+		# Nerd fonts (text, icons).
 		nerd-fonts.ubuntu
 		nerd-fonts.ubuntu-mono
 		nerd-fonts.ubuntu-sans
+
+		# Noto fonts (symbols, emojis, support).
 		noto-fonts-cjk-sans
 		noto-fonts
+
+		# Microsoft fonts (document sharing).
+		corefonts
+		vista-fonts
 	];
 }; }
