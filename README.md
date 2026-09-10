@@ -4,6 +4,9 @@ Wallpaper by Mikael Gustafsson.
 ---
 
 ## Monthly changelog (DD/MM/YYYY)
+### 10/09/2026
+- Overhauled the power actions in Noctalia.
+
 ### 09/09/2026
 - Power actions are no longer enabled by default without a prefix in the program launcher (accidental reboots begone).
 - Added `corefonts` and `vista-fonts` for additional compatibility when reading and editing documents from Windows computers.
