@@ -206,32 +206,33 @@ telemetry_enabled = true
     variant = "default"
 
     [[shell.session.actions]]
-    action = "command"
-    command = "sleep 1 && niri msg dpms off"
-    countdown_seconds = 0.0
-    enabled = true
-    glyph = "screen-share-off"
-    label = "Turn screen off"
-    shortcut = "2"
-    variant = "default"
-
-    [[shell.session.actions]]
     action = "logout"
     countdown_seconds = 0.0
     enabled = true
-    shortcut = "3"
+    shortcut = "2"
     variant = "default"
 
     [[shell.session.actions]]
     action = "lock_and_suspend"
     countdown_seconds = 0.0
     enabled = true
+    label = "Suspend"
+    shortcut = "3"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "command"
+    command = "noctalia msg session lock && systemctl hibernate'"
+    countdown_seconds = 10.0
+    enabled = true
+    glyph = "hibernate"
+    label = "Hibernate"
     shortcut = "4"
     variant = "default"
 
     [[shell.session.actions]]
     action = "reboot"
-    countdown_seconds = 0.0
+    countdown_seconds = 15.0
     enabled = true
     shortcut = "5"
     variant = "default"
@@ -239,16 +240,16 @@ telemetry_enabled = true
     [[shell.session.actions]]
     action = "command"
     command = "systemctl reboot --firmware-setup"
-    countdown_seconds = 0.0
+    countdown_seconds = 15.0
     enabled = true
-    glyph = "reboot"
+    glyph = "cpu-2"
     label = "Reboot to EFI"
     shortcut = "6"
     variant = "default"
 
     [[shell.session.actions]]
     action = "shutdown"
-    countdown_seconds = 0.0
+    countdown_seconds = 15.0
     enabled = true
     shortcut = "7"
     variant = "destructive"
