@@ -222,7 +222,7 @@ telemetry_enabled = true
 
     [[shell.session.actions]]
     action = "command"
-    command = "noctalia msg session lock && systemctl hibernate'"
+    command = "noctalia msg session lock && systemctl hibernate"
     countdown_seconds = 10.0
     enabled = true
     glyph = "hibernate"
