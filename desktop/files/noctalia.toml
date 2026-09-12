@@ -323,7 +323,7 @@ type = "custom_button"
 
     [widget.Power.actions]
     left = "panel-toggle session"
-    right = "power-cycle"
+    right = "exec noctalia msg panel-toggle control-center power"
 
 [widget.Screenshot]
 glyph = "screenshot"
