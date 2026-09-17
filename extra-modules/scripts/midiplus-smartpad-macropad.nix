@@ -1,16 +1,17 @@
-{ config, pkgs, ... }: let
-	midiplus-smartpad-macropad = pkgs.writers.writeDashBin "midiplus-smartpad-macropad"
+{ config, pkgs, ... }: let midiplus-smartpad-macropad = pkgs.writers.writeDashBin "midiplus-smartpad-macropad"
 ''
-	# Automatic port detection.
-	port=$(${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -l | awk '/SmartPAD/ {print $2}')
+	# Try to automatically detect the correct port.
+	# If two identical pads are connected, the first one is selected.
+	port=$(${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -l | ${pkgs.lib.getBin pkgs.gawk}/bin/awk '/SmartPAD/ {print $2}')
 
 	# Exit if no port has been detected.
+	# This should usually never happen in normal cases, but if the pad is detected by udev yet cannot communicate properly, this may be useful to have.
 	[ -z "$port" ] && {
-		echo "[ ! ] No MiDiPLUS SmartPAD has been detected. Exiting."
+		echo "[ERR] No MiDiPLUS SmartPAD has been detected. Exiting."
 		exit 1
 	}
 
-	# Shortcut to clear the pad's lights.
+	# Function to clear the pad's lights.
 	clearlights() {
 		row=0
 		while [ "$row" -lt 8 ]; do
@@ -19,7 +20,7 @@
 				key=$((row * 16 + col))
 				hex=$(printf "%02X" "$key")
 				${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "80 $hex 00" || {
-					echo "[ ! ] No MiDiPLUS SmartPAD has been detected. Exiting."
+					echo "[ERR] No MiDiPLUS SmartPAD has been detected. Exiting."
 					exit 1
 				}
 				col=$((col + 1))
@@ -28,37 +29,10 @@
 		done
 	}
 
-	# Set the PID file path for the script.
-	smartpad_pid="/tmp/smartpad.pid"
+	# Clear the pad's lights.
+	clearlights
 
-	# Single instance check and cleanup.
-	[ -f "$smartpad_pid" ] && {
-		old_pid=$(cat "$smartpad_pid")
-		[ -n "$old_pid" ] && kill -0 "$old_pid" 2>/dev/null && {
-			echo "[ I ] Stopping the previous instance (PID: $old_pid)…"
-			clearlights
-			kill -TERM "$old_pid" 2>/dev/null
-			pkill -P "$old_pid" 2>/dev/null
-			pkill -f "aseqdump -p SmartPAD"
-			sleep 1
-		}
-	}
-
-	# Write the current PID file for the script.
-	echo "$$" > "$smartpad_pid"
-
-	# Cleanup on exits.
-	trap 'rm -f "$smartpad_pid"; pkill -f "aseqdump -p SmartPAD"; exit' EXIT INT TERM HUP
-	cleanup() {
-		clearlights
-		pkill -P "$$" 2>/dev/null
-		pkill -f "aseqdump -p SmartPAD"
-		rm -f "$smartpad_pid"
-		exit
-	}
-	trap cleanup EXIT INT TERM HUP
-
-	# Human-readable colour shortcuts.
+	# Human-readable color names for the pad's lights.
 	white="0f"
 	yellow="1f"
 	cyan="2f"
@@ -66,24 +40,6 @@
 	blue="4f"
 	green="5f"
 	red="6f"
-
-	# Exit if the device is unplugged (10s check).
-	unplug() {
-		while :; do
-			${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -l | grep -q 'SmartPAD' || {
-				echo "[ ! ] MiDiPLUS SmartPAD has been unplugged. Exiting."
-				pkill -P "$$" 2>/dev/null
-				pkill -f "aseqdump -p SmartPAD"
-				rm -f "$smartpad_pid"
-				exit
-			}
-			sleep 10
-		done
-	}
-	unplug &
-
-	# Clear the pad's lights.
-	clearlights
 
 	# Set the desired colors across the matrix.
 	#
@@ -132,9 +88,6 @@
 	${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "90 76 $green"
 	${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "90 77 $magenta"
 
-	# Launch ydotool if it is not already.
-	! pgrep -x "ydotoold" >/dev/null 2>&1 && ${pkgs.lib.getBin pkgs.ydotool}/bin/ydotoold 2>&1
-
 	# Set the initial values to -1 per knob to avoid action on the first event.
 	prev_0=-1 prev_1=-1 prev_2=-1 prev_3=-1 prev_4=-1 prev_5=-1 prev_6=-1 prev_7=-1
 
@@ -147,82 +100,212 @@
 		# https://github.com/torvalds/linux/blob/master/include/uapi/linux/input-event-codes.h
 		case "$ev1 $ev2 $data1" in
 			# Wave emote (Vintage Story)
-			"Note on 32") ${pkgs.lib.getBin pkgs.ydotool}/bin/ydotool key -d 2 20:1 20:0 53:1 53:0 18:1 18:0 50:1 50:0 24:1 24:0 20:1 20:0 18:1 18:0 57:1 57:0 17:1 17:0 30:1 30:0 47:1 47:0 18:1 18:0 28:1 28:0 ;;
+			"Note on 32")
+				${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "80 20 00"
+				${pkgs.lib.getBin pkgs.ydotool}/bin/ydotool key -d 2 20:1 20:0 53:1 53:0 18:1 18:0 50:1 50:0 24:1 24:0 20:1 20:0 18:1 18:0 57:1 57:0 17:1 17:0 30:1 30:0 47:1 47:0 18:1 18:0 28:1 28:0
+				sleep 0.1
+				${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "90 20 $magenta"
+			;;
 
 			# Cheer emote (Vintage Story)
-			"Note on 33") ${pkgs.lib.getBin pkgs.ydotool}/bin/ydotool key -d 2 20:1 20:0 53:1 53:0 18:1 18:0 50:1 50:0 24:1 24:0 20:1 20:0 18:1 18:0 57:1 57:0 46:1 46:0 35:1 35:0 18:1 18:0 18:1 18:0 19:1 19:0 28:1 28:0 ;;
+			"Note on 33")
+				${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "80 21 00"
+				${pkgs.lib.getBin pkgs.ydotool}/bin/ydotool key -d 2 20:1 20:0 53:1 53:0 18:1 18:0 50:1 50:0 24:1 24:0 20:1 20:0 18:1 18:0 57:1 57:0 46:1 46:0 35:1 35:0 18:1 18:0 18:1 18:0 19:1 19:0 28:1 28:0
+				sleep 0.1
+				${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "90 21 $magenta"
+			;;
 
 			# Laugh emote (Vintage Story)
-			"Note on 34") ${pkgs.lib.getBin pkgs.ydotool}/bin/ydotool key -d 2 20:1 20:0 53:1 53:0 18:1 18:0 50:1 50:0 24:1 24:0 20:1 20:0 18:1 18:0 57:1 57:0 38:1 38:0 30:1 30:0 22:1 22:0 34:1 34:0 35:1 35:0 28:1 28:0 ;;
+			"Note on 34")
+				${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "80 22 00"
+				${pkgs.lib.getBin pkgs.ydotool}/bin/ydotool key -d 2 20:1 20:0 53:1 53:0 18:1 18:0 50:1 50:0 24:1 24:0 20:1 20:0 18:1 18:0 57:1 57:0 38:1 38:0 30:1 30:0 22:1 22:0 34:1 34:0 35:1 35:0 28:1 28:0
+				sleep 0.1
+				${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "90 22 $magenta"
+			;;
 
 			# Nod emote (Vintage Story)
-			"Note on 35") ${pkgs.lib.getBin pkgs.ydotool}/bin/ydotool key -d 2 20:1 20:0 53:1 53:0 18:1 18:0 50:1 50:0 24:1 24:0 20:1 20:0 18:1 18:0 57:1 57:0 49:1 49:0 24:1 24:0 32:1 32:0 28:1 28:0 ;;
+			"Note on 35")
+				${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "80 23 00"
+				${pkgs.lib.getBin pkgs.ydotool}/bin/ydotool key -d 2 20:1 20:0 53:1 53:0 18:1 18:0 50:1 50:0 24:1 24:0 20:1 20:0 18:1 18:0 57:1 57:0 49:1 49:0 24:1 24:0 32:1 32:0 28:1 28:0
+				sleep 0.1
+				${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "90 23 $white"
+			;;
 
 			# Bow emote (Vintage Story)
-			"Note on 36") ${pkgs.lib.getBin pkgs.ydotool}/bin/ydotool key -d 2 20:1 20:0 53:1 53:0 18:1 18:0 50:1 50:0 24:1 24:0 20:1 20:0 18:1 18:0 57:1 57:0 48:1 48:0 24:1 24:0 17:1 17:0 28:1 28:0 ;;
+			"Note on 36")
+				${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "80 24 00"
+				${pkgs.lib.getBin pkgs.ydotool}/bin/ydotool key -d 2 20:1 20:0 53:1 53:0 18:1 18:0 50:1 50:0 24:1 24:0 20:1 20:0 18:1 18:0 57:1 57:0 48:1 48:0 24:1 24:0 17:1 17:0 28:1 28:0
+				sleep 0.1
+				${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "90 24 $white"
+			;;
 
 			# Shrug emote (Vintage Story)
-			"Note on 37") ${pkgs.lib.getBin pkgs.ydotool}/bin/ydotool key -d 2 20:1 20:0 53:1 53:0 18:1 18:0 50:1 50:0 24:1 24:0 20:1 20:0 18:1 18:0 57:1 57:0 31:1 31:0 35:1 35:0 19:1 19:0 22:1 22:0 34:1 34:0 28:1 28:0 ;;
+			"Note on 37")
+				${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "80 25 00"
+				${pkgs.lib.getBin pkgs.ydotool}/bin/ydotool key -d 2 20:1 20:0 53:1 53:0 18:1 18:0 50:1 50:0 24:1 24:0 20:1 20:0 18:1 18:0 57:1 57:0 31:1 31:0 35:1 35:0 19:1 19:0 22:1 22:0 34:1 34:0 28:1 28:0
+				sleep 0.1
+				${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "90 25 $white"
+			;;
 
 			# Facepalm emote (Vintage Story)
-			"Note on 38") ${pkgs.lib.getBin pkgs.ydotool}/bin/ydotool key -d 2 20:1 20:0 53:1 53:0 18:1 18:0 50:1 50:0 24:1 24:0 20:1 20:0 18:1 18:0 57:1 57:0 33:1 33:0 30:1 30:0 46:1 46:0 18:1 18:0 25:1 25:0 30:1 30:0 38:1 38:0 50:1 50:0 28:1 28:0 ;;
+			"Note on 38")
+				${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "80 26 00"
+				${pkgs.lib.getBin pkgs.ydotool}/bin/ydotool key -d 2 20:1 20:0 53:1 53:0 18:1 18:0 50:1 50:0 24:1 24:0 20:1 20:0 18:1 18:0 57:1 57:0 33:1 33:0 30:1 30:0 46:1 46:0 18:1 18:0 25:1 25:0 30:1 30:0 38:1 38:0 50:1 50:0 28:1 28:0
+				sleep 0.1
+				${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "90 26 $red"
+			;;
 
 			# Rage emote (Vintage Story)
-			"Note on 39") ${pkgs.lib.getBin pkgs.ydotool}/bin/ydotool key -d 2 20:1 20:0 53:1 53:0 18:1 18:0 50:1 50:0 24:1 24:0 20:1 20:0 18:1 18:0 57:1 57:0 19:1 19:0 30:1 30:0 34:1 34:0 18:1 18:0 28:1 28:0 ;;
+			"Note on 39")
+				${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "80 27 00"
+				${pkgs.lib.getBin pkgs.ydotool}/bin/ydotool key -d 2 20:1 20:0 53:1 53:0 18:1 18:0 50:1 50:0 24:1 24:0 20:1 20:0 18:1 18:0 57:1 57:0 19:1 19:0 30:1 30:0 34:1 34:0 18:1 18:0 28:1 28:0
+				sleep 0.1
+				${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "90 27 $red"
+			;;
 
 			# Cry emote (Vintage Story)
-			"Note on 48") ${pkgs.lib.getBin pkgs.ydotool}/bin/ydotool key -d 2 20:1 20:0 53:1 53:0 18:1 18:0 50:1 50:0 24:1 24:0 20:1 20:0 18:1 18:0 57:1 57:0 46:1 46:0 19:1 19:0 21:1 21:0 28:1 28:0 ;;
+			"Note on 48")
+				${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "80 30 00"
+				${pkgs.lib.getBin pkgs.ydotool}/bin/ydotool key -d 2 20:1 20:0 53:1 53:0 18:1 18:0 50:1 50:0 24:1 24:0 20:1 20:0 18:1 18:0 57:1 57:0 46:1 46:0 19:1 19:0 21:1 21:0 28:1 28:0
+				sleep 0.1
+				${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "90 30 $blue"
+			;;
 
 			# Open / Close CD tray.
-			"Note on 64" ) ${pkgs.lib.getBin pkgs.ydotool}/bin/ydotool key 161:1 161:0 ;;
+			"Note on 64" )
+				${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "80 40 00"
+				${pkgs.lib.getBin pkgs.ydotool}/bin/ydotool key 161:1 161:0
+				sleep 0.1
+				${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "90 40 $yellow"
+			;;
 
 			# Rewind media.
-			"Note on 65" ) ${pkgs.lib.getBin pkgs.ydotool}/bin/ydotool key 168:1 168:0 ;;
+			"Note on 65" )
+				${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "80 41 00"
+				${pkgs.lib.getBin pkgs.ydotool}/bin/ydotool key 168:1 168:0
+				sleep 0.1
+				${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "90 41 $cyan"
+			;;
 
 			# Forward media.
-			"Note on 66" ) ${pkgs.lib.getBin pkgs.ydotool}/bin/ydotool key 208:1 208:0 ;;
+			"Note on 66" )
+				${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "80 42 00"
+				${pkgs.lib.getBin pkgs.ydotool}/bin/ydotool key 208:1 208:0
+				sleep 0.1
+				${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "90 42 $cyan"
+			;;
 
 			# Play / Pause media.
-			"Note on 67" ) ${pkgs.lib.getBin pkgs.ydotool}/bin/ydotool key 164:1 164:0 ;;
+			"Note on 67" )
+				${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "80 43 00"
+				${pkgs.lib.getBin pkgs.ydotool}/bin/ydotool key 164:1 164:0
+				sleep 0.1
+				${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "90 43 $green"
+			;;
 
 			# Stop media.
-			"Note on 68" ) ${pkgs.lib.getBin pkgs.ydotool}/bin/ydotool key 166:1 166:0 ;;
+			"Note on 68" )
+				${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "80 44 00"
+				${pkgs.lib.getBin pkgs.ydotool}/bin/ydotool key 166:1 166:0
+				sleep 0.1
+				${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "90 44 $red"
+			;;
 
 			# Previous media.
-			"Note on 69" ) ${pkgs.lib.getBin pkgs.ydotool}/bin/ydotool key 165:1 165:0 ;;
+			"Note on 69" )
+				${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "80 45 00"
+				${pkgs.lib.getBin pkgs.ydotool}/bin/ydotool key 165:1 165:0
+				sleep 0.1
+				${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "90 45 $blue"
+			;;
 
 			# Next media.
-			"Note on 70" ) ${pkgs.lib.getBin pkgs.ydotool}/bin/ydotool key 163:1 163:0 ;;
+			"Note on 70" )
+				${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "80 46 00"
+				${pkgs.lib.getBin pkgs.ydotool}/bin/ydotool key 163:1 163:0
+				sleep 0.1
+				${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "90 46 $blue"
+			;;
 
 			# Soft loop media (stop then play).
-			"Note on 71" ) ${pkgs.lib.getBin pkgs.ydotool}/bin/ydotool key -d 32 166:1 166:0 164:1 164:0 ;;
+			"Note on 71" )
+				${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "80 47 00"
+				${pkgs.lib.getBin pkgs.ydotool}/bin/ydotool key -d 32 166:1 166:0 164:1 164:0
+				sleep 0.1
+				${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "90 47 $magenta"
+			;;
 
 			# Start OBS recording.
-			"Note on 112" ) ${pkgs.lib.getBin pkgs.ydotool}/bin/ydotool key 56:1 125:1 19:1 19:0 125:0 56:0 ;;
+			"Note on 112" )
+				${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "80 70 00"
+				${pkgs.lib.getBin pkgs.ydotool}/bin/ydotool key 56:1 125:1 19:1 19:0 125:0 56:0
+				sleep 0.1
+				${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "90 70 $green"
+			;;
 
 			# Pause / Resume OBS recording.
-			"Note on 113" ) ${pkgs.lib.getBin pkgs.ydotool}/bin/ydotool key 56:1 125:1 25:1 25:0 125:0 56:0 ;;
+			"Note on 113" )
+				${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "80 71 00"
+				${pkgs.lib.getBin pkgs.ydotool}/bin/ydotool key 56:1 125:1 25:1 25:0 125:0 56:0
+				sleep 0.1
+				${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "90 71 $yellow"
+			;;
 
 			# Stop OBS recording.
-			"Note on 114" ) ${pkgs.lib.getBin pkgs.ydotool}/bin/ydotool key 56:1 125:1 31:1 31:0 125:0 56:0 ;;
+			"Note on 114" )
+				${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "80 72 00"
+				${pkgs.lib.getBin pkgs.ydotool}/bin/ydotool key 56:1 125:1 31:1 31:0 125:0 56:0
+				sleep 0.1
+				${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "90 72 $red"
+			;;
 
 			# Copy area screenshot.
-			"Note on 117" ) ${pkgs.lib.getBin pkgs.ydotool}/bin/ydotool key 210:1 210:0 ;;
+			"Note on 117" )
+				${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "80 75 00"
+				${pkgs.lib.getBin pkgs.ydotool}/bin/ydotool key 210:1 210:0
+				sleep 0.1
+				${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "90 75 $cyan"
+			;;
 
 			# Copy window screenshot.
-			"Note on 118" ) ${pkgs.lib.getBin pkgs.ydotool}/bin/ydotool key 42:1 210:1 210:0 42:0 ;;
+			"Note on 118" )
+				${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "80 76 00"
+				${pkgs.lib.getBin pkgs.ydotool}/bin/ydotool key 42:1 210:1 210:0 42:0
+				sleep 0.1
+				${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "90 76 $green"
+			;;
 
 			# Copy fullscreen screenshot.
-			"Note on 119" ) ${pkgs.lib.getBin pkgs.ydotool}/bin/ydotool key 29:1 210:1 210:0 29:0 ;;
+			"Note on 119" )
+				${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "80 77 00"
+				${pkgs.lib.getBin pkgs.ydotool}/bin/ydotool key 29:1 210:1 210:0 29:0
+				sleep 0.1
+				${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "90 77 $magenta"
+			;;
 
 			# Save area screenshot.
-			"Note on 101" ) ${pkgs.lib.getBin pkgs.ydotool}/bin/ydotool key 125:1 210:1 210:0 125:0 ;;
+			"Note on 101" )
+				${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "80 65 00"
+				${pkgs.lib.getBin pkgs.ydotool}/bin/ydotool key 125:1 210:1 210:0 125:0
+				sleep 0.1
+				${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "90 65 $cyan"
+			;;
 
 			# Save window screenshot.
-			"Note on 102" ) ${pkgs.lib.getBin pkgs.ydotool}/bin/ydotool key 125:1 42:1 210:1 210:0 42:0 125:0 ;;
+			"Note on 102" )
+				${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "80 66 00"
+				${pkgs.lib.getBin pkgs.ydotool}/bin/ydotool key 125:1 42:1 210:1 210:0 42:0 125:0
+				sleep 0.1
+				${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "90 66 $green"
+			;;
 
 			# Save fullscreen screenshot.
-			"Note on 103" ) ${pkgs.lib.getBin pkgs.ydotool}/bin/ydotool key 125:1 29:1 210:1 210:0 29:0 125:0 ;;
+			"Note on 103" )
+				${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "80 67 00"
+				${pkgs.lib.getBin pkgs.ydotool}/bin/ydotool key 125:1 29:1 210:1 210:0 29:0 125:0
+				sleep 0.1
+				${pkgs.lib.getBin pkgs.alsa-utils}/bin/amidi -p "$port" -S "90 67 $magenta"
+			;;
 
 			# Output volume up and down (•) 1.
 			"Control change 0" )
@@ -329,12 +412,35 @@
 	exit
 '';
 in {
-	# Add the script as a global package.
+	# Add the script as a global executable.
 	environment.systemPackages = [ midiplus-smartpad-macropad ];
 
-	# Enable ydotool, necessary for the macro actions.
+	# Enable ydotool, which is necessary for the macro actions.
 	programs.ydotool.enable = true;
 
-	# Add the user to the ydotool group.
-	users.users.${config.user.name}.extraGroups = [ "ydotool" ];
+	# Add the user to the `ydotool` and `input` groups.
+	users.users.${config.user.name}.extraGroups = [ "ydotool" "input" ];
+
+	# Make this a systemd service. Is this necessary?
+	# Technically, no, but it sure is a lot more convenient.
+	systemd.services.midiplus-smartpad-macropad = {
+		description = "MiDiPLUS SmartPAD macropad";
+		serviceConfig = {
+			Type = "simple";
+			Environment = [ "YDOTOOL_SOCKET=/run/ydotoold/socket" ];
+			ExecStartPre = "${pkgs.lib.getBin pkgs.coreutils}/bin/sleep 2";
+			ExecStart = "${midiplus-smartpad-macropad}/bin/midiplus-smartpad-macropad";
+			KillMode = "control-group";
+		};
+	};
+
+	# Automatically start when the device is connected.
+	services.udev.extraRules = ''
+		ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="1acc", ATTR{idProduct}=="3801", \
+			TAG+="systemd", \
+			RUN+="${pkgs.lib.getBin pkgs.systemd}/bin/systemctl restart midiplus-smartpad-macropad.service"
+
+		ACTION=="remove", SUBSYSTEM=="usb", ENV{PRODUCT}=="1acc/3801/*", \
+			RUN+="${pkgs.lib.getBin pkgs.systemd}/bin/systemctl stop midiplus-smartpad-macropad.service"
+	'';
 }

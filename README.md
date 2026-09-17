@@ -4,8 +4,12 @@ Wallpaper by Mikael Gustafsson.
 ---
 
 ## Monthly changelog (DD/MM/YYYY)
+### 17/09/2026
+- Overhauled the MiDiPLUS SmartPAD macropad script.
+- Updated some Noctalia settings.
+
 ### 12/09/2026
-Right-clicking on the power button now shows power profile options when available.
+- Right-clicking on the power button now shows power profile options when available.
 
 ### 10/09/2026
 - Overhauled the power actions in Noctalia.
