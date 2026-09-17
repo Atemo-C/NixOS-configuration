@@ -428,6 +428,10 @@ in {
 		serviceConfig = {
 			Type = "simple";
 			Environment = [ "YDOTOOL_SOCKET=/run/ydotoold/socket" ];
+			# Note for the curious ones:
+			# The MiDiPLUS SmartPAD has a mandatory startup animation that lasts slightly less than 2 seconds,
+			# and only after that is it able to communicate with the computer.
+			# So, the timing here is not coincidental and is not fragile.
 			ExecStartPre = "${pkgs.lib.getBin pkgs.coreutils}/bin/sleep 2";
 			ExecStart = "${midiplus-smartpad-macropad}/bin/midiplus-smartpad-macropad";
 			KillMode = "control-group";
