@@ -6,6 +6,7 @@ Wallpaper by Mikael Gustafsson.
 ## Monthly changelog (DD/MM/YYYY)
 ### 17/09/2026
 - Overhauled the MiDiPLUS SmartPAD macropad script.
+- Since said script now starts as a systemd service, its startup command in Niri has been removed.
 - Updated some Noctalia settings.
 
 ### 12/09/2026
