@@ -10,6 +10,7 @@ Wallpaper by Mikael Gustafsson.
 - `configuration.nix` has gained some comments.
 - Other minor changes for modularity and cleanliness.
 - Removed `(build failure)` comments on packages that, in fact, do build properly. I was still using an old manual tagging system when packages failed back then, and had forgotten to remove them.
+- The shared `config.user.name` string is now checked for characters and length. I hope I did that correctly.
 ---
 - The computers (hosts) are now automatically selected by their `networking.hostName` name when rebuilding the system. The hostname and the file path where the device's `/etc/nixos/computers/<your-pc>/settings.nix` resides in must match. \
 For example, the hostname of my Ryzen 7-based computer is `r7-pc`, and its `settings.nix` module resides in `/etc/nixos/computers/r7-pc/settings.nix`. \
