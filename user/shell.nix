@@ -23,7 +23,7 @@
 			cp = "cp -v -i";
 			copy = cp;
 
-			# Safter directory copying.
+			# Safer directory copying.
 			cpdir = "cp -r -v -i";
 			copy-directory = cpdir;
 
