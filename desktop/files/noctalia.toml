@@ -9,17 +9,7 @@ background_opacity = 0.79999998211860657
 capsule = true
 center = [ "Overview", "workspaces", "wallpaper" ]
 concave_edge_corners = false
-end = [
-    "notifications",
-    "MiDiPLUS_Macropad",
-    "output_volume",
-    "input_volume",
-    "battery",
-    "brightness",
-    "date",
-    "spacer_2",
-    "Close_Kill"
-]
+end = [ "notifications", "output_volume", "input_volume", "battery", "brightness", "date", "spacer_2", "Close_Kill" ]
 font_family = "UbuntuMono Nerd Font"
 margin_ends = 0
 padding = 0
@@ -59,13 +49,35 @@ enable_ddcutil = true
 [control_center]
 hidden_tabs = [ "weather" ]
 
+    [control_center.calendar]
+    show_events_card = false
+
 [desktop_widgets]
 enabled = false
+
+[idle]
+behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
+pre_action_fade_seconds = 10
+
+    [idle.behavior.lock]
+    action = "lock"
+    enabled = true
+    timeout = 600.0
+
+    [idle.behavior.lock-and-suspend]
+    action = "lock_and_suspend"
+    enabled = true
+    timeout = 3600.0
+
+    [idle.behavior.screen-off]
+    action = "screen_off"
+    enabled = true
+    timeout = 660.0
 
 [lockscreen_widgets]
 enabled = false
 schema_version = 2
-widget_order = [ "lockscreen-login-box@DP-1" ]
+widget_order = [ "lockscreen-login-box@DP-2", "lockscreen-login-box@DP-1" ]
 
     [lockscreen_widgets.grid]
     cell_size = 16
@@ -84,6 +96,33 @@ widget_order = [ "lockscreen-login-box@DP-1" ]
     type = "login_box"
 
         [lockscreen_widgets.widget."lockscreen-login-box@DP-1".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@DP-2"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 960.0
+    cy = 898.0
+    output = "DP-2"
+    placement_height = 1080.0
+    placement_width = 1920.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@DP-2".settings]
         background_color = "surface_variant"
         background_opacity = 0.88
         background_radius = 12.0
@@ -124,6 +163,7 @@ telemetry_enabled = true
 
     [shell.launcher]
     app_grid = true
+    auto_paste = "auto"
     fetch_exchange_rates = false
     pinned = [
         "audacious",
@@ -186,7 +226,7 @@ telemetry_enabled = true
     sort_by_usage = false
 
         [shell.launcher.providers.session]
-        global = true
+        global = false
 
     [shell.panel]
     open_near_click_control_center = true
@@ -203,32 +243,33 @@ telemetry_enabled = true
     variant = "default"
 
     [[shell.session.actions]]
-    action = "command"
-    command = "sleep 1 && niri msg dpms off"
-    countdown_seconds = 0.0
-    enabled = true
-    glyph = "screen-share-off"
-    label = "Turn screen off"
-    shortcut = "2"
-    variant = "default"
-
-    [[shell.session.actions]]
     action = "logout"
     countdown_seconds = 0.0
     enabled = true
-    shortcut = "3"
+    shortcut = "2"
     variant = "default"
 
     [[shell.session.actions]]
     action = "lock_and_suspend"
     countdown_seconds = 0.0
     enabled = true
+    label = "Suspend"
+    shortcut = "3"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "command"
+    command = "noctalia msg session lock && systemctl hibernate"
+    countdown_seconds = 10.0
+    enabled = true
+    glyph = "hibernate"
+    label = "Hibernate"
     shortcut = "4"
     variant = "default"
 
     [[shell.session.actions]]
     action = "reboot"
-    countdown_seconds = 0.0
+    countdown_seconds = 15.0
     enabled = true
     shortcut = "5"
     variant = "default"
@@ -236,16 +277,16 @@ telemetry_enabled = true
     [[shell.session.actions]]
     action = "command"
     command = "systemctl reboot --firmware-setup"
-    countdown_seconds = 0.0
+    countdown_seconds = 15.0
     enabled = true
-    glyph = "reboot"
+    glyph = "cpu-2"
     label = "Reboot to EFI"
     shortcut = "6"
     variant = "default"
 
     [[shell.session.actions]]
     action = "shutdown"
-    countdown_seconds = 0.0
+    countdown_seconds = 15.0
     enabled = true
     shortcut = "7"
     variant = "destructive"
@@ -296,14 +337,6 @@ type = "custom_button"
     [widget.File_manager.actions]
     left = "exec xdg-open \"$HOME\""
 
-[widget.MiDiPLUS_Macropad]
-glyph = "color-filter"
-tooltip = "(Re)Start the MiDiPLUS SmartPad RGB+Macro script"
-type = "custom_button"
-
-    [widget.MiDiPLUS_Macropad.actions]
-    left = "exec midiplus-smartpad-macropad"
-
 [widget.Overview]
 glyph = "box-multiple"
 tooltip = "Toggle the overview"
@@ -319,7 +352,7 @@ type = "custom_button"
 
     [widget.Power.actions]
     left = "panel-toggle session"
-    right = "power-cycle"
+    right = "exec noctalia msg panel-toggle control-center power"
 
 [widget.Screenshot]
 glyph = "screenshot"
