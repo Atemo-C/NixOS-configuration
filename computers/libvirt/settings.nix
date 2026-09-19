@@ -14,6 +14,9 @@
 		# Storage configuration.
 		./storage.nix
 
+		# GPU configuration and utilities.
+		./gpu.nix
+
 		# Libvirt guest utilities.
 		../../virtualiastion/guest/libvirt.nix
 	];
