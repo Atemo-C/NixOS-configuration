@@ -63,7 +63,7 @@ I also use the Oniri program, to automatically maximize a window when it is the 
 https://github.com/Antiz96/oniri
 
 ## Desktop shell
-Noctalia Shell is the desktop shell. It has done an excellent job at replacing every little other components, scripts, and programs I used to use to replicate a fraction of its functionlaities. \
+Noctalia Shell is the desktop shell. It has done an excellent job at replacing every little other components, scripts, and programs I used to use to replicate a fraction of its functionalities. \
 https://github.com/noctalia-dev/noctalia-shell
 
 # Installation
