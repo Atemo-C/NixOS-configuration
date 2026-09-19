@@ -13,7 +13,7 @@
 		./gpu.nix
 
 		# Virtualisation software.
-		../../virtualsation/virt-manager.nix
+		../../virtualisation/virt-manager.nix
 	];
 
 	# Whether the installation process is allowed to modify EFI boot variables.

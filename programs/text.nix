@@ -31,11 +31,11 @@ in {
 
 	# Link Micro's configuration files to the user's home directory.
 	systemd.user.tmpfiles.users.${config.user.name}.rules = lib.optionals mic [
-		"L %h/.config/micro/colorschemes/ - - - - /etc/nixos/programs/files/micro/colorschemes/";
-		"L %h/.config/micro/plug/ - - - - /etc/nixos/programs/files/micro/plug/";
-		"L %h/.config/micro/syntax/ - - - - /etc/nixos/programs/files/micro/syntax/";
-		"L %h/.config/micro/bindings.json - - - - /etc/nixos/programs/files/micro/bindings.json";
-		"L %h/.config/micro/init.lua - - - - /etc/nixos/programs/files/micro/init.lua";
-		"L %h/.config/micro/settings.json - - - - /etc/nixos/programs/files/micro/settings.json";
+		"L %h/.config/micro/colorschemes/ - - - - /etc/nixos/programs/files/micro/colorschemes/"
+		"L %h/.config/micro/plug/ - - - - /etc/nixos/programs/files/micro/plug/"
+		"L %h/.config/micro/syntax/ - - - - /etc/nixos/programs/files/micro/syntax/"
+		"L %h/.config/micro/bindings.json - - - - /etc/nixos/programs/files/micro/bindings.json"
+		"L %h/.config/micro/init.lua - - - - /etc/nixos/programs/files/micro/init.lua"
+		"L %h/.config/micro/settings.json - - - - /etc/nixos/programs/files/micro/settings.json"
 	];
 }
