@@ -4,6 +4,12 @@ Wallpaper by Mikael Gustafsson.
 ---
 
 ## Monthly changelog (DD/MM/YYYY)
+### 19/09/2026
+- Computer settings are now more modular and located in a more sensible place.
+- Micro's included files are shorter.
+- `configuration.nix` has gained some comments.
+- Other minor changes for modularity and cleanliness.
+
 ### 17/09/2026
 - Overhauled the MiDiPLUS SmartPAD macropad script.
 - Since said script now starts as a systemd service, its startup command in Niri has been removed.

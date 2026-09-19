@@ -1,9 +1,10 @@
 { ... }: { imports = [
-#	./computers/libvirt/hardware-configuration.nix
-#	./computers/libvirt/settings.nix
+	# This is the device currently in use.
+	# Change it to the one desired.
 	./computers/r7-pc/hardware-configuration.nix
 	./computers/r7-pc/settings.nix
 
+	# Below is a list of modules that apply across all systems.
 	./extra-modules/config/gpu-check.nix
 	./extra-modules/config/theming.nix
 
@@ -44,6 +45,38 @@
 	./user/settings.nix
 	./user/shell.nix
 
+/*
+	Below is a list of modules that do not apply across all systems by default.
+	They must be imported in your device's `settings.nix` module,
+	if you want them.
+
+	# Proprietary NVIDIA GPU support (1650 and higher).
+	./extra-modules/nvidia.nix
+
+	# Replace standard suspend commands with pmutils commands.
+	# This can be useful on older, buggier firmwares (e.g. ThinkPad L510).
+	./programs/pmutils.nix
+
+	# Convert the MiDiPLUS SmartPAD into a full macro pad.
+	# The hardware identifiers must be changed to your own's.
+	./scripts/midiplus-smartpad-macropad.nix
+
+	# Use the OpenTabletDriver to manage graphical tablets.
+	./input/opentabletdriver.nix
+
+	# Full support for ZSA keyboards.
+	./input/zsa.nix
+
+	# Bluetooth support.
+	./system/bluetooth.nix
+
+	# Virt-Manager support (host).
 	./virtualisation/virt-manager.nix
+
+	# Waydroid support (host).
 	./virtualisation/waydroid.nix
+
+	# Libvirt additions (guest).
+	./virtualisation/guest/libvirt.nix
+*/
 ]; }

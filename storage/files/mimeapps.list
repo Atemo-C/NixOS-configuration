@@ -26,3 +26,6 @@ video/mp4=mpv.desktop
 x-scheme-handler/http=librewolf.desktop
 x-scheme-handler/https=librewolf.desktop
 x-scheme-handler/discord=vesktop.desktop
+
+[Added Associations]
+application/pdf=org.gnome.Papers.desktop;org.inkscape.Inkscape.desktop;draw.desktop;
