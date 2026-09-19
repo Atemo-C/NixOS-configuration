@@ -9,7 +9,10 @@ Wallpaper by Mikael Gustafsson.
 - Micro's included files are shorter.
 - `configuration.nix` has gained some comments.
 - Other minor changes for modularity and cleanliness.
-- Tweaked parts of the README slightly.
+---
+- The computers (hosts) are now automatically selected by their `networking.hostName` name when rebuilding the system. The hostname and the file path where the device's `/etc/nixos/computres/<your-pc>/settings.nix` resides in must match.
+For example, the hostname of my Ryzen 7-based computer is `r7-pc`, and its `settings.nix` module resides in `/etc/nixos/computers/r7-pc/settings.nix`.
+You can treat it like a flake's `--host` option, except without flakes, and automatic.
 
 ### 17/09/2026
 - Overhauled the MiDiPLUS SmartPAD macropad script.
@@ -317,6 +320,14 @@ In this example, I will be configuring my main computer. If you need any help or
 ```nix
 { ... }: {
 	imports = [
+		# The main system configuration.
+		# Not importing it results in, well, no system.
+		../../configuration.nix
+
+		# The automatically-generated hardware configuration file.
+		# Not importing it results in, again, no system.
+		./hardware-configuration.nix
+
 		# Display configuration.
 		./display.nix
 
@@ -340,7 +351,8 @@ In this example, I will be configuring my main computer. If you need any help or
 	boot.loader.efi.canTouchEfiVariables = true;
 
 	# Name of the computer over the network.
-	networking.hostName = "R7-PC";
+	# For this NixOS configuration, it must be lower-case.
+	networking.hostName = "r7-pc";
 
 	nix.settings = {
 		# Limit the amount of cores used when building NixOS.
@@ -378,10 +390,13 @@ This includes things such as:
 - Various other settings, programs, etc.
 
 ### Installing NixOS
-1. Install NixOS with the following command. You can add the `--no-root-password` option if you wish to not be able to log into the `root` account directly.
+1. **Read all the following steps carefully before running the commands!**
+Install NixOS with the following command. You can add the `--no-root-password` option if you wish to not be able to log into the `root` account directly.
 ```shell
-nixos-install
+nixos-install -I nixos-config=/etc/nixos/computers/<your-computer>/settings.nix
 ```
+- Replace `your-computer` with the computer name you have selected.
+- Make sure your device's `networking.hostName` is the same as the name of the directory your computer's `settings.nix` resides in.
 2. Once NixOS is installed, set your user's password.
 ```shell
 nixos-enter --root /mnt

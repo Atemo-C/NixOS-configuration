@@ -1,4 +1,8 @@
-{ config, lib, pkgs, ... }: {
+{ config, lib, pkgs, ... }: let
+	# Shortcut to the name of the desired computer.
+	# Your hostname should be defined in your device's `settings.nix` module.
+	hostConfig = "/etc/nixos/computers/${config.networking.hostName}/settings.nix";
+in {
 	# Whether Nix should automatically replace files in store that have
 	# identical content with hard links to a single copy, saving disk space.
 	nix.settings.auto-optimise-store = true;
@@ -23,30 +27,30 @@
 	# If nix-output-monitor is installed, it is used to make output better.
 	programs.fish.shellAbbrs = {
 		nix-list-generations = "run0 nixos-rebuild list -generations";
-		nix-upgrade-count = "run0 nixos-rebuild --upgrade dry-run 2>&1 | wc -l";
+		nix-upgrade-count = "run0 nixos-rebuild -I nixos-config=${hostConfig} --upgrade dry-run 2>&1 | wc -l";
 		download-nixos = ''wget -v https://channels.nixos.org/nixos-unstable/latest-nixos-graphical-x86_64-linux.iso'';
 		download-mininixos = ''wget -v https://channels.nixos.org/nixos-unstable/latest-nixos-minimal-x86_64-linux.iso'';
 	} // (if (lib.elem pkgs.nix-output-monitor config.environment.systemPackages) then {
-		nix-update-now = "run0 nixos-rebuild switch --log-format internal-json 2>&1 | nom --json";
-		nix-update-boot = "run0 nixos-rebuild boot --log-format internal-json 2>&1 | nom --json";
-		nix-upgrade-now = "run0 nixos-rebuild switch --upgrade --log-format internal-json 2>&1 | nom --json";
-		nix-upgrade-boot = "run0 nixos-rebuild boot --upgrade --log-format internal-json 2>&1 | nom --json";
-		nix-rollback-now = "run0 nixos-rebuild switch --rollback --log-format internal-json 2>&1 | nom --json";
-		nix-rollback-boot = "run0 nixos-rebuild boot --rollbcak --log-format internal-json 2>&1 | nom --json";
+		nix-update-now = "run0 nixos-rebuild switch -I nixos-config=${hostConfig} --log-format internal-json 2>&1 | nom --json";
+		nix-update-boot = "run0 nixos-rebuild boot -I nixos-config=${hostConfig} --log-format internal-json 2>&1 | nom --json";
+		nix-upgrade-now = "run0 nixos-rebuild switch -I nixos-config=${hostConfig} --upgrade --log-format internal-json 2>&1 | nom --json";
+		nix-upgrade-boot = "run0 nixos-rebuild boot -I nixos-config=${hostConfig} --upgrade --log-format internal-json 2>&1 | nom --json";
+		nix-rollback-now = "run0 nixos-rebuild switch -I nixos-config=${hostConfig} --rollback --log-format internal-json 2>&1 | nom --json";
+		nix-rollback-boot = "run0 nixos-rebuild boot -I nixos-config=${hostConfig} --rollback --log-format internal-json 2>&1 | nom --json";
 		nix-clean = "run0 nix-collect-garbage -d --log-format internal-json 2>&1 | nom --json";
 		nix-clean-user = "nix-collect-garbage -d --log-format internal-json 2>&1 | nom --json";
-		nix-test = ''set -x CURRENTDIR $(pwd) && cd /tmp/ && run0 nixos-rebuild test --log-format internal-json 2>&1 | nom --json; cd "$CURRENTDIR"'';
+		nix-test = ''set -x CURRENTDIR $(pwd) && cd /tmp/ && run0 nixos-rebuild test -I nixos-config=${hostConfig} --log-format internal-json 2>&1 | nom --json; cd "$CURRENTDIR"'';
 		nix-build-iso = "nix-build '<nixpkgs/nixos>' -A config.system.build.isoImage -I nixos-config=configuration.nix --log-format internal-json 2>&1 | nom --json && cp -v -i result/iso/*.iso ./ && run0 nix-store --delete --ignore-liveness $(readlink -f result/) && rm -v result";
 	} else {
-		nix-update-now = "run0 nixos-rebuild switch --log-format bar-with-logs";
-		nix-update-boot = "run0 nixos-rebuild boot --log-format bar-with-logs";
-		nix-upgrade-now = "run0 nixos-rebuild switch --upgrade --log-format bar-with-logs";
-		nix-upgrade-boot = "run0 nixos-rebuild boot --upgrade --log-format bar-with-logs";
-		nix-rollback-now = "run0 nixos-rebuild switch --rollback --log-format bar-with-logs";
-		nix-rollback-boot = "run0 nixos-rebuild boot --rollbcak --log-format bar-with-logs";
+		nix-update-now = "run0 nixos-rebuild switch -I nixos-config=${hostConfig} --log-format bar-with-logs";
+		nix-update-boot = "run0 nixos-rebuild boot -I nixos-config=${hostConfig} --log-format bar-with-logs";
+		nix-upgrade-now = "run0 nixos-rebuild switch -I nixos-config=${hostConfig} --upgrade --log-format bar-with-logs";
+		nix-upgrade-boot = "run0 nixos-rebuild boot -I nixos-config=${hostConfig} --upgrade --log-format bar-with-logs";
+		nix-rollback-now = "run0 nixos-rebuild switch -I nixos-config=${hostConfig} --rollback --log-format bar-with-logs";
+		nix-rollback-boot = "run0 nixos-rebuild boot -I nixos-config=${hostConfig} --rollback --log-format bar-with-logs";
 		nix-clean = "run0 nix-collect-garbage -d --log-format bar-with-logs";
 		nix-clean-user = "nix-collect-garbage -d --log-format bar-with-logs";
-		nix-test = ''set -x CURRENTDIR $(pwd) && cd /tmp/ && run0 nixos-rebuild test --log-format bar-with-logs; cd "$CURRENTDIR"'';
+		nix-test = ''set -x CURRENTDIR $(pwd) && cd /tmp/ && run0 nixos-rebuild test -I nixos-config=${hostConfig} --log-format bar-with-logs; cd "$CURRENTDIR"'';
 		nix-build-iso = "nix-build '<nixpkgs/nixos>' -A config.system.build.isoImage -I nixos-config=configuration.nix --log-format bar-with-logs && cp -v -i result/iso/*.iso ./ && run0 nix-store --delete --ignore-liveness $(readlink -f result/) && rm -v result";
 	});
 
