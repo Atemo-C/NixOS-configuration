@@ -19,7 +19,7 @@
 
 	# This module applies your keyboard layout settings globally.
 	# Your keyboard layout should be set in your device's `input.nix` module,
-	# at `/etc/nixos/computers/<your-comupter>/input.nix`, and the `input.nix` module
+	# at `/etc/nixos/computers/<your-computer>/input.nix`, and the `input.nix` module
 	# should be imported in your device's `settings.nix` module.
 	./input/keyboard-layout.nix
 
