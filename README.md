@@ -9,6 +9,7 @@ Wallpaper by Mikael Gustafsson.
 - Micro's included files are shorter.
 - `configuration.nix` has gained some comments.
 - Other minor changes for modularity and cleanliness.
+- Tweaked parts of the README slightly.
 
 ### 17/09/2026
 - Overhauled the MiDiPLUS SmartPAD macropad script.
@@ -314,144 +315,55 @@ We need to add them to `boot.initrd.luks.devices` since NixOS does not automatic
 - Any other device-specific configuration that you may want.
 In this example, I will be configuring my main computer. If you need any help or inspiration, please have a look at the existing hardware configuration files in this repository, to see how certain things are done.
 ```nix
-{ config, lib, pkgs, ... }: {
-	boot = {
-		initrd = {
-			# Enable USB storage support during the boot process.
-			#kernelModules = [ "usb_storage" ];
+{ ... }: {
+	imports = [
+		# Display configuration.
+		./display.nix
 
-			# Additional device encryption settings.
-			#
-			# [Tip] Here is how to create a dedicated USB flash drive for
-			# unlocking your LUKS-encrypted system (secure it away!):
-			# 1. Generate a random key with `dd`, like so:
-			#    • dd if=/dev/random of=disk-key.key bs=4096 count=1
-			#
-			# 2. Add the key to your encrypted storage partition(s) that use the same password:
-			#    • run0 cryptsetup luksAddKey /dev/your-encrypted-partition-here ./disk-key.key
-			#    (repeat if you have multiple encrypted partitions)
-			#
-			# 3. Write the key file to the USB flash drive (ALL data on it will be erased):
-			#    • run0 dd if=disk-key.key of=/dev/your-usb-flash-drive-here
-			luks.devices = {
-				"2tb-swap" = {
-					# Add the swap LUKS device, as `nixos-generate-config` does not.
-					device = "/dev/disk/by-uuid/2f1d31cb-8168-43ab-aa78-3e421e0fb89b";
+		# Input devices and keyboard layout.
+		./input.nix
 
-					# If on an SSD with discard support, enable it.
-					allowDiscards = true;
+		# Storage configuration.
+		./storage.nix
 
-					# Hardware key encryption keys, with manual password fallback.
-					keyFileSize = 4096;
-					keyFile = "/dev/disk/by-id/usb-Generic_Flash_Disk_94A5D05A-0:0";
-					keyFileTimeout = 10;
-				};
+		# GPU configuration and utilities.
+		./gpu.nix
 
-				"2tb-root" = {
-					# If on an SSD with discard support, enable it.
-					allowDiscards = true;
+		# Virtualisation software.
+		../../virtualisation/virt-manager.nix
+	];
 
-					# Hardware key encryption keys, with manual password fallback.
-					keyFileSize = 4096;
-					keyFile = "/dev/disk/by-id/usb-Generic_Flash_Disk_94A5D05A-0:0";
-					keyFileTimeout = 10;
-				};
-			};
-		};
-
-		# Whether the installation process is allowed to modify EFI boot variables.
-		# Once installed and working, if after an update, it fails to "install" again,
-		# it should be safe to turn this option off, even if not ideal.
-		loader.efi.canTouchEfiVariables = true;
-	};
-
-	# ZSTD compression and no-access-time configuration for the main volumes.
-	fileSystems = {
-		"/".options = [ "compress=zstd:3" ];
-		"/home".options = [ "compress=zstd:3" ];
-		"/nix".options = [ "compress=zstd:3" "noatime" ];
-	};
+	# Whether the installation process is allowed to modify EFI boot variables.
+	# Once installed and working, if after an update, it fails to "install" again,
+	# it should be safe to turn this option off, even if it is not ideal.
+	# We love firmware bugs.
+	boot.loader.efi.canTouchEfiVariables = true;
 
 	# Name of the computer over the network.
 	networking.hostName = "R7-PC";
 
-	systemd = {
-		# Whether to enable Modem Manager, to handle cellular data.
-		services.ModemManager.enable = false;
-	};
-
-	services = {
-		# Whether to enable fwupd, a DBus service that allows applicatoins to update firmware.
-		fwupd.enable = true;
-
-		# Whether to enable LACT, a tool for monitoring, configuring, and overclocking GPUs.
-		lact.enable = true;
-
-		# Keyboard layout configuration on this system.
-		# To see a complete list of layouts, variants, and other settings:
-		# • https://gist.github.com/jatcwang/ae3b7019f219b8cdc6798329108c9aee
-		#
-		# To see why this list cannot easily be seen within NixOS:
-		# • https://github.com/NixOS/nixpkgs/issues/254523
-		# • https://github.com/NixOS/nixpkgs/issues/286283
-		xserver.xkb = {
-			layout = "us,fr";
-			variant = "intl,";
-		};
-	};
-
-	hardware = {
-		amdgpu = {
-			# Whether to enable `amdgpu` overdrive mode for overclocking.
-			overdrive.enable = lib.mkIf config.services.lact.enable true;
-
-			# Whether to enable OpenCL support using ROCM runtime library.
-			opencl.enable = true;
-		};
-
-		# Which main GPU is used.
-		# This is used to guide which variant of packages should be installed.
-		activeGpu = "amd";
-	};
-
-	imports = [
-		# OpenTabletDriver.
-		../../input/opentabletdriver.nix
-
-		# ZSA keyboard support.
-		../../input/zsa.nix
-
-		# Utility to convert a MiDiPLUS SmartPAD into a full macro pad.
-		../../extra-modules/scripts/midiplus-smartpad-macropad.nix
-
-		# Disk mounts.
-		../../storage/drives/1TB-SSD.nix
-		../../storage/drives/PS4-HDD.nix
-		../../storage/drives/160GB-HDD.nix
-	];
-
-	# Use the correct display configuration in Niri.
-	systemd.user.tmpfiles.users.${config.user.name}.rules =
-	lib.optional (config.programs.niri.enable)
-	"L /etc/nixos/desktop/files/niri/output.kdl - - - - /etc/nixos/computers/r7-pc/files/output.kdl";
-
-	# • Limit the amount of cores used when building the NixOS configuration
-	# • Limit the numbers of maximum jobs running when building the NixOS configuration
-	# This mostly helps me avoid running out of memory.
-	# Please Sam give me back my RAM :(
-	#
-	# As a note, my CPU (Ryzen 7 9850X3D) has 8 cores and 16 threads.
-	# I currently have 2×16 GB of RAM.
-	# I thus limit the maximum number of cores per job used to 8,
-	# and limit the maximum number of jobs to 2.
-	# This generally limits the RAM usage to just shy-or-above 16 GB,
-	# and lets my system still feel relatively snappy under load.
 	nix.settings = {
-		cores = 8;
-		max-jobs = 2;
+		# Limit the amount of cores used when building NixOS.
+		# This is done to give some responsiveness and RAM back,
+		# allowing the use of the system relatively normally when building.
+		cores = 14;
+
+		# Limit the number of maximum jobs running when building NixOS.
+		# This is mostly so that the output is neater, and I like to see
+		# programs compile one by one cleanly as well.
+		# Not optimal for faster rebuilds.
+		max-jobs = 1;
 	};
+
+	# Whether to enable fwupd, a DBus service allowing applications to update firmware.
+	services.fwupd.enable = true;
+
+	# Whether to enable Modem Mangaer, to handle cellular data.
+	systemd.services.ModemManager.enable = false;
 }
 ```
+As you can see, the device's `settings.nix` module can also import other modules. This modularity allows for cleaner and more reusable parts across the systems, and more personalisations without having a single huge `settings.nix` file.
+
 9. Add the following lines to your `configuration.nix` in the `imports` list, making sure other devices are commented out with `#`:
 ```nix
 	./computers/your-computer-name/hardware-configuration.nix
