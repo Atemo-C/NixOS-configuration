@@ -1,9 +1,8 @@
-{ ... }: { imports = [
-	# This is the device currently in use.
-	# Change it to the one desired.
-	./computers/r7-pc/hardware-configuration.nix
-	./computers/r7-pc/settings.nix
+# This module must be imported in your device's `settings.nix` module.
+# `/etc/nixos/computers/<your-computer>/settings.nix`.
+# Otherwise, no system!
 
+{ ... }: { imports = [
 	# Below is a list of modules that apply across all systems.
 
 	# This module allows defining which GPU your system is using.

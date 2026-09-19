@@ -1,5 +1,13 @@
 { ... }: {
 	imports = [
+		# The main system configuration.
+		# Not importing it results in, well, no system.
+		../../configuration.nix
+
+		# The automatically-generated hardware configuration file.
+		# Not importing it results in, again, no system.
+#		./hardware-configuration.nix
+
 		# Input devices and keyboard layout.
 		./input.nix
 
@@ -17,7 +25,8 @@
 	boot.loader.efi.canTouchEfiVariables = true;
 
 	# Name of the computer over the network.
-	networking.hostName = "LIBVIRT-VM";
+	# For this NixOS configuration, it must be lower-case.
+	networking.hostName = "libvirt-vm";
 
 	nix.settings = {
 		# Limit the amount of cores used when building NixOS.

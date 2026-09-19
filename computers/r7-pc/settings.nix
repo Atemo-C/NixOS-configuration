@@ -1,5 +1,13 @@
 { ... }: {
 	imports = [
+		# The main system configuration.
+		# Not importing it results in, well, no system.
+		../../configuration.nix
+
+		# The automatically-generated hardware configuration file.
+		# Not importing it results in, again, no system.
+		./hardware-configuration.nix
+
 		# Display configuration.
 		./display.nix
 
@@ -23,7 +31,8 @@
 	boot.loader.efi.canTouchEfiVariables = true;
 
 	# Name of the computer over the network.
-	networking.hostName = "R7-PC";
+	# For this NixOS configuration, it must be lower-case.
+	networking.hostName = "r7-pc";
 
 	nix.settings = {
 		# Limit the amount of cores used when building NixOS.
