@@ -11,7 +11,7 @@ Wallpaper by Mikael Gustafsson.
 - Other minor changes for modularity and cleanliness.
 - Removed `(build failure)` comments on packages that, in fact, do build properly. I was still using an old manual tagging system when packages failed back then, and had forgotten to remove them.
 ---
-- The computers (hosts) are now automatically selected by their `networking.hostName` name when rebuilding the system. The hostname and the file path where the device's `/etc/nixos/computres/<your-pc>/settings.nix` resides in must match. \
+- The computers (hosts) are now automatically selected by their `networking.hostName` name when rebuilding the system. The hostname and the file path where the device's `/etc/nixos/computers/<your-pc>/settings.nix` resides in must match. \
 For example, the hostname of my Ryzen 7-based computer is `r7-pc`, and its `settings.nix` module resides in `/etc/nixos/computers/r7-pc/settings.nix`. \
 You can treat it like a flake's `--host` option, except without flakes, and automatic.
 
@@ -63,7 +63,7 @@ I also use the Oniri program, to automatically maximize a window when it is the 
 https://github.com/Antiz96/oniri
 
 ## Desktop shell
-Noctalia Shell is the desktop shell. It has done an excellent job at replacing every little other components, scripts, and programs I used to use to replicate a fraction of its functionlaities. \
+Noctalia Shell is the desktop shell. It has done an excellent job at replacing every little other components, scripts, and programs I used to use to replicate a fraction of its functionalities. \
 https://github.com/noctalia-dev/noctalia-shell
 
 # Installation

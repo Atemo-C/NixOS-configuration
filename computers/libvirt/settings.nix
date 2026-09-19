@@ -44,9 +44,6 @@
 		max-jobs = 1;
 	};
 
-	# Whether to enable fwupd, a DBus service allowing applications to update firmware.
-	services.fwupd.enable = true;
-
-	# Whether to enable Modem Mangaer, to handle cellular data.
+	# Whether to enable Modem Manager, to handle cellular data.
 	systemd.services.ModemManager.enable = false;
 }

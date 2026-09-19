@@ -5,7 +5,7 @@
 
 	loader = {
 		limine = {
-			# whether to enable te Limine bootloader.
+			# whether to enable the Limine bootloader.
 			enable = true;
 
 			# Maximum number of latest generations to keep in the boot menu.
