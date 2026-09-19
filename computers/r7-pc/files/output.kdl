@@ -1,5 +1,8 @@
+// This file is for the R7-PC in this configuration.
+// Linked from: /etc/nixos/computers/r7-pc/files/output.kdl
+
 output "Acer Technologies XV242Y TL1EE0018521" {
-	// resolution and refresh rate.
+	// Resolution and refresh rate.
 	mode "1920x1080@119.982"
 
 	// Scaling.
