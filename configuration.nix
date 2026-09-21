@@ -7,7 +7,7 @@
 
 	# This module allows defining which GPU your system is using.
 	# `hardware.activeGpu` should be set in your device's `gpu.nix` module,
-	# at `/etc/nixos/computers/<your-computer/gpu.nix`, and the `gpu.nix` module
+	# at `/etc/nixos/computers/<your-computer>/gpu.nix`, and the `gpu.nix` module
 	# should be imported in your device's `settings.nix` module.
 	./extra-modules/config/gpu-check.nix
 
