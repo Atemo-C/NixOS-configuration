@@ -3,7 +3,9 @@ Wallpaper by Mikael Gustafsson.
 
 ---
 
-## Monthly changelog (DD/MM/YYYY)
+<details>
+<summary><h3>Monthly changelog (DD/MM/YYYY)</h3></summary>
+
 ### 21/09/2026
 - The README has been overhauled.
 - Fixed spacing in two computers' `gpu.nix` modules.
@@ -38,6 +40,7 @@ Wallpaper by Mikael Gustafsson.
 - Switched from GDM to the Noctalia Greeter.
 - Theming now has its own `config` module to more easily share theming configurations across modules.
 - The Zen kernel is now the default kernel in use, with the commented option to use the latest kernel still there.
+</details>
 
 ---
 
@@ -49,13 +52,13 @@ Wallpaper by Mikael Gustafsson.
 
 # Introduction
 ## What is this?
-This is my personal NixOS configuration. It is the one I use on my personal computers, and it is not meant to simply be used by everyone else. I share it for everyone to take inspiration from, but I cannot guarantee or support such an installation on your own computers.
+This is **my personal NixOS configuration**. It is the one I use on my personal computers, and it is **not** meant to simply be used by everyone else. I share it for everyone to take inspiration from, but I cannot guarantee or support such an installation on your own computers.
 
 It is also a successor of my old NixOS configuration, which has long been archived and is here for historical purposes. It makes for a great comparison of how things evolved. If you enjoy reading terrible Nix code, and bash your head against a wall at silly beginner mistakes, you may feel free to go look and cringe at it. \
 https://github.com/Atemo-C/OLD-NixOS-Configuration
 
 ## NixOS components
-This configuration is made to be run with the `nixos-unstable-small` channel. As such, it is not viable for use on weaker hardware, where compilation times may be too great. This can be alleviated by building the NixOS configuration from another device, but you may also be able to replace most of the software with Flatpaks or the likes, if you want.
+This configuration is made to be run with the `nixos-unstable-small` channel. As such, it is not viable for use on weaker hardware, where compilation times may be too great. This can be alleviated by building the NixOS configuration from another computer, but you may also be able to replace most of the software with Flatpaks or the likes, if you want.
 
 Flakes, Home Manager, Flatpaks, AppImages, and the likes are not used in this configuration. I have nothing against them:
 - Flakes make the system a lot more cleanly reproducible, and many projects now only include a Flake as the way to use them
@@ -84,6 +87,43 @@ https://github.com/Antiz96/oniri
 The desktop shell is Noctalia. Do you need a bar, a notification daemon, a graphical polkit agent, launcher, clipboard manager, wallpaper utility, and basically everything under the sun for under 200mb of RAM usage? Noctalia is here for that. \
 https://noctalia.dev/
 
+## Configuration structure
+Most things are obvious by name alone, but it cannot hurt to give a short description to each major directory of this configuration.
+
+### `configuration.nix`
+Really, this should be named something like `index.nix`, but I have decided to keep it named that way for now. What it does is import everything that is not computer-specific, such as most of the programs I use, shared system configuration, and more. \
+It is then imported into each computer's `settings.nix` module, meaning that each computer is the head of the entire NixOS configuration, rather than `configuration.nix` filling that role.
+
+### `computers/`
+This directory holds the profiles for the computers I use. Be it my main desktop, random laptops or virtual machines, they will end up here. Most other NixOS configurations call the `hosts` instead, which is entirely if not more valid, but I prefer using `computers`.
+
+### `desktop/`
+This directory holds everything that configures the graphical desktop experience together. It configures the Niri Wayland compositor, Noctalia Greeter and desktop shell, as well as their respective configuration files.
+
+### `extra-modules/`
+When standard NixOS modules are not enough, I add my own. Most are very simple ones, such as the `username.nix` module that allows me to set the username and title once in `users/settings.nix` and for them to be usable everywhere with `${config.user.name}` and `${config.user.title}`. Some others are creations that are frankly a little absurd, such as the `midiplus-smartpad-macropad` NixOS module/DASH script fusion, transforming my MiDiPLUS SmartPAD into a macropad.
+
+### `input/`
+Most input-related modules ends up here, either used globally or imported in your computer's `settings.nix` module.
+
+### `programs/`
+Programs I want to install and sometimes configure on my system. This alongside the `desktop/` directory already gives a very complete desktop experience for me.
+
+### `storage/`
+Every file management and storage-related modules and settings. It used to hold more modules before they were moved to the specific computer directories they now belong to, but it is important enough for me to keep the directory here rather than merge it into something like the `system/` directory. Speaking of…
+
+### `system/`
+Audio, bluetooth, booting, language, networking, everything that (to me) screams "system component" ends up here. I can understand how something like `ssh.nix` can be considered questionable as a "system" component, but to me, it just feels that way, so it is here.
+
+### `theming/`
+The mess that is Linux desktop theming goes here. I hate touching this. Theming is so much more fragile than it used to be…
+
+### `user/`
+The user's settings and shell settings live here. If you fancy, you could reasonably put things like your user's profile picture or wallpapers there as well, but I prefer keeping this in my `$HOME` directory.
+
+### `virtualisation/`
+I debated putting the modules in the `programs/` directory instead, but opted against it, for the simple reason that this not only contains host virtualisation tools, but guest additions as well. It just makes sense to have it be separate.
+
 # Use cases, hardware requirements, etc
 ## Targeted use-case
 - Single-user system
@@ -93,33 +133,39 @@ https://noctalia.dev/
 
 ## Hardware requirements
 ### Minimal
-Anything with over 1 GB of RAM and a few GB of storage. You **will** suffer, your system **will** constantly crash trying to build the system, you **will** want to initiate an immediate defenestration of yourself, your loved ones, and your device; But at this point, it is on you.
+Anything with over 1 GB of RAM and a few GB of storage. You **will** suffer, your system **will** constantly crash trying to build the system, you **will** want to initiate an immediate and painful defenestration of yourself, your loved ones, and your computer; But at this point, it is on you. Though, I wish this software could be light enough where this would not be a problem…
 
 ### Recommended
 Anything with over 8 GB of RAM, over 100 GB of decently snappy solid-state storage, and a somewhat modern Vulkan-capable GPU with actively maintained drivers.
 
 ### My own hardware
 My main workstation has this hardware:
-- CPU: AMD Ryzen 7 9850X3D
-- GPU: AMD RX 9070XT
-- RAM: 2×16 GB 6000MHz
-- Storage: 2 TB NVMe SSD and random HDDs
-- Motherboard: MSI X870E GAMING MAX WIFI
+| Components  | Details                       |
+|-------------|-------------------------------|
+| CPU         | AMD Ryzen 7 9850X3D           |
+| GPU         | AMD RX 9070 XT                |
+| RAM         | 2×16 GB @6000MHz              |
+| Storage     | 2 TB NVMe SSD<br> Random HDDs |
+| Motherboard | MSI X870E GAMING MAX WIFI     |
 
 ## Features not yet implemented or thoroughly tested
 Including but not limited to:
 - Accessibility features (I have no one with accessibility problems to tweaks things with)
-- Touchscreen support (I have no touchscreen device that I can plug into my computer)
+- Touchscreen support (I have no touchscreen-capable device)
 - Remote desktop (I mean, you *could* probably-maybe use Steam?)
 - NVIDIA GPUs (I no longer have an NVIDIA GPU, the existing NVIDIA configuration is 'old' and best-effort)
 
-# Installation
-## Disclaimer
-Again, I must remind you that this installation is purely what I use, and you would most likely be better off taking inspiration of this configuration rather than just clone and use it.
+---
 
-The following installations instructions are what I want most of my systems to be configured like. They are more of a reminder for me than a guide for you.
+> [!Warning]
+> I must remind you that this installation is purely what I use, and you would most likely be better off taking inspiration of this configuration rather than just clone and use it.
+>
+> The following installations instructions are what I want most of my systems to be configured like. They are more of a reminder for me than a guide for you.
+>
+> To stay as reasonably dependency-free and universal as possible, all installation steps will use standard utilities through the command-line. You may adapt them to whichever tool fits your installation workflow best.
 
-To stay as reasonably dependency-free and universal as possible, all installation steps will use standard utilities through the command-line. You may adapt them to whichever tool fits your installation workflow best.
+<details>
+<summary><h1>Installation</h1></summary>
 
 ## Assumptions
 It is assumed, for these installations instructions, that you:
@@ -127,7 +173,7 @@ It is assumed, for these installations instructions, that you:
 - Are comfortable working in the command-line
 - Are currently already running a Linux distribution of some kind
 - Have a stable power source and networking
-- Have configured your device's firmware to boot and install NixOS properly
+- Have configured your computer's firmware to boot and install NixOS properly
 - Have read and acknowledge everything this README has to offer
 - Have read over and personalized the installation instructions below **before** proceeding with the installation.
 
@@ -144,7 +190,8 @@ Always verify your ISOs with the provided 256-bit hash.
 I use my own ISO which uses the `nixos-unstable-small` channel directly instead of `nixos-unstable`, but if you are using one of the ISOs above, you can change that channel when installing NixOS later on. I may post more information on said ISO once I have a polished experience with it.
 
 ### Writing the ISO
-The NixOS ISO is too big to fit on a CD or smaller. As such, a DVD or any removable and bootable storage device with above 4 GB of storage is necessary. For this installation's instructions, I will be using a USB flash drive. All data on this device will be erased.
+The NixOS ISO is too big to fit on a CD or smaller. As such, a DVD or any removable and bootable storage device with above 4 GB of storage is necessary. For this installation's instructions, I will be using a USB flash drive. \
+**All data on this device will be erased!**
 
 1. Plug the USB flash drive into your current Linux computer.
 2. Run the `lsblk` command to identify your the desired drive to write the ISO onto.
@@ -194,7 +241,8 @@ sda                       8:112  1  28,7G  0 disk
 nvme0n1                 259:0    0 931,5G  0 disk
 …
 ```
-Here, `nvme0n1` is the NVMe SSD I want to install NixOS onto, replace it with your own. All data on this device will be erased.
+Here, `nvme0n1` is the NVMe SSD I want to install NixOS onto, replace it with your own. \
+**All data on this device will be erased!**
 3. Format the drive to GPT:
 ```shell
 parted /dev/nvme0n1 mklabel gpt
@@ -569,6 +617,8 @@ nixos-enter --root /mnt --command 'passwd your-user-here'
 - You can report any bugs and suggest features you may want, but I will most likely not offer support otherwise.
 - If you have a metered network connection, this is not for you. If you have a weak computer, this is not for you. If you are not me, this is probably not for you either.
 - Enjoy!
+
+</details>
 
 # Some helpful NixOS resources
 Help is available in:
