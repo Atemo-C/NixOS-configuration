@@ -15,7 +15,7 @@
 	boot.initrd.luks.devices = {
 		"swap" = {
 			# Add the swap LUKS device, as `nixos-generate-config` does not.
-			device = "/dev/disk/by-uuid/00000000-0000-0000-0000-000000000000";
+			device = "/dev/disk/by-uuid/8ede86b8-0b1d-4d60-826a-facf8a3ed6c4";
 
 			# If on an SSD with discard support, enable it.
 			allowDiscards = true;
