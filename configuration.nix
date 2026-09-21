@@ -83,7 +83,7 @@
 	# Graphical program theming.
 	./theming/programs.nix
 
-	# Colors in the terminal emulatr of choice and in the TTY.
+	# Colors in the terminal emulator of choice and in the TTY.
 	./theming/terminal-colors.nix
 
 	# User settings.
