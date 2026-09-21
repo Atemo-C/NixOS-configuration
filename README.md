@@ -324,7 +324,7 @@ git clone https://github.com/Atemo-C/NixOS-configuration /mnt/etc/nixos
 ```
 5. Choose a name for your computer, all in lowercase and with no special characters. This will be the named used by your computer on the network, and also the name of the directory its own modules will reside in. \
 For this guide, I will call it `testing-pc`.
-6. Create the directory `/mnt/etc/nixos/computres/testing-pc`, replacing `testing-pc` by the desired name:
+6. Create the directory `/mnt/etc/nixos/computers/testing-pc`, replacing `testing-pc` by the desired name:
 ```shell
 mkdir -v /mnt/etc/nixos/computers/testing-pc
 ```
