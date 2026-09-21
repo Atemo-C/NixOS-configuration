@@ -275,7 +275,7 @@ mount -v -t btrfs /dev/mapper/root /mnt
 Here, they are `@` (root), `@home`, and `@nix`.
 ```shell
 btrfs subvolume create /mnt/@
-btrfs subvolume cretae /mnt/@home
+btrfs subvolume create /mnt/@home
 btrfs subvolume create /mnt/@nix
 ```
 4. Unmount the root volume.
