@@ -18,5 +18,5 @@
 	};
 
 	# Whether to enable LACT, a tool for monitoring, configuring, and overclocking GPUs.
-	services.lact.enable = true;
+	services.lact.enable = lib.mkIf (config.hardware.activeGpu == "amd") true;
 }

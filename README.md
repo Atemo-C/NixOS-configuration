@@ -9,6 +9,7 @@ Wallpaper by Mikael Gustafsson.
 - Fixed spacing in two computers' `gpu.nix` modules.
 - Completed the `libvirt` computer's modules.
 - Moved the `nvidia.nix` module from `/etc/nixos/extra-modules/config/nvidia.nix` to `/etc/nixos/system/nvidia.nix`.
+- LACT is now conditionally activated for R7-PC only if the `activeGpu` option is set to `amd`.
 
 ### 19/09/2026
 - `micro`'s files are included more selectively than before.
