@@ -1,6 +1,6 @@
 { ... }: {
 	security = {
-		# Whether to enable sudo.
+		# Whether to enable `sudo`.
 		sudo.enable = false;
 
 		run0 = {

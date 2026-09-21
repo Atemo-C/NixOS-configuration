@@ -9,10 +9,6 @@
 		# Tool suite used to flash firmware onto Samsung Galaxy devices.
 		heimdall
 
-		# FUSE filesystem for MTP devices like Android phones.
-		# (Now no longer maintained.)
-#		jmtpfs
-
 		# Implementation of Microsoft's Media Transfer Protocol.
 		libmtp
 

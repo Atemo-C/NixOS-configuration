@@ -8,7 +8,7 @@
 
 		# Additional drivers to install.
 		drivers = with pkgs; [
-#			gutenprint                   # Drivers for many different printers from many different vendors.
+#			gutenprint                   # Drivers for many printers from many vendors.
 #			gutenprintBin                # Additional, binary-only drivers for some printers.
 			hplip                        # Drivers for HP printers.
 #			hplipWithPlugin              # Drivers for HP printers, with the proprietary plugin.
