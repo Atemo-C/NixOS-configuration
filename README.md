@@ -1,46 +1,42 @@
-![Screenshot of my desktop running this NixOS configuration](./Desktop.webp)
+![Screenshot of my desktop running this NixOS configuration](./desktop.webp)
 Wallpaper by Mikael Gustafsson.
 
 ---
 
 ## Monthly changelog (DD/MM/YYYY)
+### 21/09/2026
+- The README has been overhauled.
+- Fixed spacing in two computers' `gpu.nix` modules.
+- Completed the `libvirt` computer's modules.
+- Moved the `nvidia.nix` module from `/etc/nixos/extra-modules/config/nvidia.nix` to `/etc/nixos/system/nvidia.nix`.
+
 ### 19/09/2026
-- Computer settings are now more modular and located in a more sensible place.
-- Micro's included files are shorter.
-- `configuration.nix` has gained some comments.
-- Other minor changes for modularity and cleanliness.
-- Removed `(build failure)` comments on packages that, in fact, do build properly. I was still using an old manual tagging system when packages failed back then, and had forgotten to remove them.
-- The shared `config.user.name` string is now checked for characters and length. I hope I did that correctly.
-- Updated the README's screenshot.
----
-- The computers (hosts) are now automatically selected by their `networking.hostName` name when rebuilding the system. The hostname and the file path where the device's `/etc/nixos/computers/<your-pc>/settings.nix` resides in must match. \
-For example, the hostname of my Ryzen 7-based computer is `r7-pc`, and its `settings.nix` module resides in `/etc/nixos/computers/r7-pc/settings.nix`. \
-You can treat it like a flake's `--host` option, except without flakes, and automatic.
+- `micro`'s files are included more selectively than before.
+- Updated comments in various places.
+- The custom `config.user.name` option now checks for valid characters and length.
+- The computers/hosts are now automatically selected by their `networking.hostName` option when rebuilding the system with the `nix-update-*`, `nix-upgrade-*`, and other relevant FISH shell abbreviations when run with the normal user.
 
 ### 17/09/2026
-- Overhauled the MiDiPLUS SmartPAD macropad script.
-- Since said script now starts as a systemd service, its startup command in Niri has been removed.
-- Updated some Noctalia settings.
+- Overhauled the MiDiPLUS SmartPAD macro pad script.
+- Updated miscellaneous Noctalia settings.
 
 ### 12/09/2026
-- Right-clicking on the power button now shows power profile options when available.
+- Right-clicking on the power button in the bar now shows the power profile switching widget.
 
 ### 10/09/2026
 - Overhauled the power actions in Noctalia.
 
 ### 09/09/2026
-- Power actions are no longer enabled by default without a prefix in the program launcher (accidental reboots begone).
+- Power actions are no longer visible by default without a prefix in the program launcher.
 - Added `corefonts` and `vista-fonts` for additional compatibility when reading and editing documents from Windows computers.
 
 ### 05/09/2026
-- Transitionned from Noctalia Shell 4.X to Noctalia 5.X, as it is now considered stable.
-This is an upgrade in certain ways, downgrades in others, but it is snappier and lighterweight across the board. There may be some minor missing configurations; They will be added here gradually when discovered.
+- Transitioned from Noctalia Shell 4.X to Noctalia 5.X.
 - Fixed duplicate `pkgs.lib.getBin` in `./programs/system-info.nix`.
-- Btop has higher privileges to have access to more hardware sensors without the need to run it with `run0`.
+- `btop` has higher privileges and better access to more hardware sensors.
 - Switched from GDM to the Noctalia Greeter.
-- Theming now has its own `config` module to more easily share theming configuration across modules.
-- Switched to the Zen Kernel, left the option for the latest too just in case.
-- Other little changes here and there.
+- Theming now has its own `config` module to more easily share theming configurations across modules.
+- The Zen kernel is now the default kernel in use, with the commented option to use the latest kernel still there.
 
 ---
 
@@ -50,276 +46,459 @@ This is an upgrade in certain ways, downgrades in others, but it is snappier and
 
 ---
 
-## Main components
-## Package and configuration base
-This configuration is entirely NixOS, more specifically, based on the `nixos-unstable-small` channel. It makes no use of Nix Flakes, Home Manager, or Flatpaks. I have nothing against them, I simply find the idea of a "pure" NixOS configuration rather attractive. This may make some things harder or not possible, but it is (so far) fine with me.
+# Introduction
+## What is this?
+This is my personal NixOS configuration. It is the one I use on my personal computers, and it is not meant to simply be used by everyone else. I share it for everyone to take inspiration from, but I cannot guarantee or support such an installation on your own computers.
 
-## Display Manager
-The Display Manager is the Noctalia Greeter. It replaces GDM, and feels like a more natural and logical choice here.
+It is also a successor of my old NixOS configuration, which has long been archived and is here for historical purposes. It makes for a great comparison of how things evolved. If you enjoy reading terrible Nix code, and bash your head against a wall at silly beginner mistakes, you may feel free to go look and cringe at it. \
+https://github.com/Atemo-C/OLD-NixOS-Configuration
 
-## Wayland compositor
-Niri is the Wayland compositor used. It supports more hardware than Hyprland does (which is what I used to use), runs faster on my systems, and the scrollable-tilling model is too good to live without. \
-https://github.com/YaLTeR/niri
+## NixOS components
+This configuration is made to be run with the `nixos-unstable-small` channel. As such, it is not viable for use on weaker hardware, where compilation times may be too great. This can be alleviated by building the NixOS configuration from another device, but you may also be able to replace most of the software with Flatpaks or the likes, if you want.
 
-I also use the Oniri program, to automatically maximize a window when it is the only one present on a workspace. \
+Flakes, Home Manager, Flatpaks, AppImages, and the likes are not used in this configuration. I have nothing against them:
+- Flakes make the system a lot more cleanly reproducible, and many projects now only include a Flake as the way to use them
+- Home Manager can declaratively manage your dotfiles in a Nix way that is very satisfying and convenient
+- Flatpaks always have your back when (not "if") Nix packages fall apart
+- AppImages are, uh, a thing that works?
+Etc…
+
+But, I find the idea of a more 'pure' (whatever that may mean) NixOS configuration rather attractive, if saying such a thing makes sense. I have my own ways of handling things that are otherwise handled there, but, so far, it has not caused me many headaches. You may not find many other configurations like this online, most will at least use Flakes or Home Manager, so be careful if you want to take inspiration from it.
+
+## Desktop components
+### Boot loader
+The bootloader is Limine. It is the nicest bootloader I have come across on the Linux world, short of letting the EFI handle booting on its own. With it comes Plymouth, for a nicer graphical boot screen. \
+https://limine-bootloader.org/
+
+### Display manager
+The display manager is the Noctalia Greeter. It integrates very well with Noctalia, the desktop shell, and is thus a natural choice. \
+https://github.com/noctalia-dev/noctalia-greeter
+
+### Wayland compositor
+The Wayland compositor is Niri. Lightweight, snappy, easy, scrollable-tilling, it just has everything I want and some more. With it, I also use the Oniri program, which automatically maximizes a window when it is the only one present. \
+https://github.com/niri-wm/niri
 https://github.com/Antiz96/oniri
 
-## Desktop shell
-Noctalia Shell is the desktop shell. It has done an excellent job at replacing every little other components, scripts, and programs I used to use to replicate a fraction of its functionalities. \
-https://github.com/noctalia-dev/noctalia-shell
+### Desktop shell
+The desktop shell is Noctalia. Do you need a bar, a notification daemon, a graphical polkit agent, launcher, clipboard manager, wallpaper utility, and basically everything under the sun for under 200mb of RAM usage? Noctalia is here for that. \
+https://noctalia.dev/
+
+# Use cases, hardware requirements, etc
+## Targeted use-case
+- Single-user system
+- Personal computing and everything that goes along with it
+- x86_64 support
+- This entire configuration is for **me**; It may not work well for you
+
+## Hardware requirements
+### Minimal
+Anything with over 1 GB of RAM and a few GB of storage. You **will** suffer, your system **will** constantly crash trying to build the system, you **will** want to initiate an immediate defenestration of yourself, your loved ones, and your device; But at this point, it is on you.
+
+### Recommended
+Anything with over 8 GB of RAM, over 100 GB of decently snappy solid-state storage, and a somewhat modern Vulkan-capable GPU with actively maintained drivers.
+
+### My own hardware
+My main workstation has this hardware:
+- CPU: AMD Ryzen 7 9850X3D
+- GPU: AMD RX 9070XT
+- RAM: 2×16 GB 6000MHz
+- Storage: 2 TB NVMe SSD and random HDDs
+- Motherboard: MSI X870E GAMING MAX WIFI
+
+## Features not yet implemented or thoroughly tested
+Including but not limited to:
+- Accessibility features (I have no one with accessibility problems to tweaks things with)
+- Touchscreen support (I have no touchscreen device that I can plug into my computer)
+- Remote desktop (I mean, you *could* probably-maybe use Steam?)
+- NVIDIA GPUs (I no longer have an NVIDIA GPU, the existing NVIDIA configuration is 'old' and best-effort)
 
 # Installation
-## Usage disclaimer
-This entire desktop experience is crafted by and for myself only. It will likely not fit most other people's needs and desires. However, you may feel free to take inspiration from this configuration; I have uploaded it publicly for this reason as well.
+## Disclaimer
+Again, I must remind you that this installation is purely what I use, and you would most likely be better off taking inspiration of this configuration rather than just clone and use it.
 
-With this out of the way, we can now proceed to the installation instructions. These are the steps I take to install this NixOS configuration onto my devices; They may not be exactly what you want out of such a configuration, so, feel free to adapt them to your needs.
+The following installations instructions are what I want most of my systems to be configured like. They are more of a reminder for me than a guide for you.
+
+To stay as reasonably dependency-free and universal as possible, all installation steps will use standard utilities through the command-line. You may adapt them to whichever tool fits your installation workflow best.
 
 ## Assumptions
 It is assumed, for these installations instructions, that you:
-- Are familiar with Linux
-- Are familiar with NixOS, or have at least used it once
-- Are comfortable working within the command-line
-- Are currently using a Linux distribution
+- Are familiar with Linux and NixOS, or have at least used the latter once
+- Are comfortable working in the command-line
+- Are currently already running a Linux distribution of some kind
 - Have a stable power source and networking
-- Have your device's firmware set up to boot and install NixOS properly
-- Have read and acknowledge untested hardware and use-cases at the bottom of this README
-
+- Have configured your device's firmware to boot and install NixOS properly
+- Have read and acknowledge everything this README has to offer
+- Have read over and personalized the installation instructions below **before** proceeding with the installation.
 
 ## Creating a bootable NixOS medium.
 
-### Downloading NixOS
-Since this configuration is based on NixOS unstable (small), it is highly recommended to download the latest NixOS unstable ISO image.
+### Acquiring NixOS
+Since this configuration is based on the `nixos-unstable-small` channel, it is highly recommended to download the latest `nixos-unstable` ISO image.
 - [Graphical ISO](https://channels.nixos.org/nixos-unstable/latest-nixos-graphical-x86_64-linux.iso)
+- [Graphical ISO's SHA-256](https://channels.nixos.org/nixos-unstable/latest-nixos-graphical-x86_64-linux.iso.sha256)
 - [Minimal ISO](https://channels.nixos.org/nixos-unstable/latest-nixos-minimal-x86_64-linux.iso)
+- [Minimal ISO's SHA-256](https://channels.nixos.org/nixos-unstable/latest-nixos-minimal-x86_64-linux.iso.sha256)
+Always verify your ISOs with the provided 256-bit hash.
 
-I use my own graphical ISO; It is not ready for public use yet, but I might upload it here if it ever becomes ready.
+I use my own ISO which uses the `nixos-unstable-small` channel directly instead of `nixos-unstable`, but if you are using one of the ISOs above, you can change that channel when installing NixOS later on. I may post more information on said ISO once I have a polished experience with it.
 
-### Writing the ISO file
-The NixOS ISO is too big to fit on a CD or smaller. As such, a DVD or any removable and bootable storage medium with above 4 GB of storage space is necessary. I will be using a USB flash drive here and the instructions will assume as much, and it is also assumed that the current environment is already Linux-based.
+### Writing the ISO
+The NixOS ISO is too big to fit on a CD or smaller. As such, a DVD or any removable and bootable storage device with above 4 GB of storage is necessary. For this installation's instructions, I will be using a USB flash drive. All data on this device will be erased.
 
-To stay as dependency-free as possible, I will use `dd` to flash the downloaded ISO file to the flash drive, but you may use any other utility. Graphically, I like Fedora's Media Writer, or Linux Mint's mintstick utility.
-
-First, we need to identify which drive we want to write the ISO file onto. We can do so with `lsblk`:
+1. Plug the USB flash drive into your current Linux computer.
+2. Run the `lsblk` command to identify your the desired drive to write the ISO onto.
 ```
 NAME                    MAJ:MIN RM   SIZE RO TYPE  MOUNTPOINTS
 sda                       8:112  1  28,7G  0 disk
 └─sda1                    8:113  1  28,7G  0 part
-zram0                   253:0    0  31,3G  0 disk  [SWAP]
 nvme0n1                 259:0    0 931,5G  0 disk
-├─nvme0n1p1             259:1    0     1G  0 part  /boot
-├─nvme0n1p2             259:2    0    10G  0 part
-│ └─swap                254:0    0    10G  0 crypt [SWAP]
-└─nvme0n1p3             259:3    0 920,5G  0 part
-  └─root                254:1    0 920,5G  0 crypt /home
-                                                   /nix/store
-                                                   /nix
-                                                   /
+…
 ```
-Here, `sda` is the ~30 GB USB flash drive I want to use. All data on it will be erased once the ISO writing process begins.
-
-We can now write the ISO file to the USB flash drive, with the following command with superuser privileges:
-```shel
-dd bs=4M if=latest-nixos-graphical-x86_64-linux.iso of=/dev/sda conv=fsync oflag=direct status=progress
+Here, `sda` is the flash drive I want.
+3. Write the ISO file to the desired drive with the following command as a superuser:
+```shell
+dd bs=4M conv=fsync oflag=direct status=progress if=latest-nixos-graphical-x86_64-linux.iso of=/dev/sda
 ```
-Notes:
-- Replace `latest-nixos-graphical-x86_64-linux.iso` with the appropriate path and file name
-- Replace `/dev/sda` with the appropriate device to write the ISO file to
+- Replace `latest-nixos-graphical-x86_64-linux.iso` with the appropriate file name
+- Replace `sda` with the appropriate device
+4. Once done, unplug the flash drive from this computer, and plug it in the computer you want to install NixOS onto. If it is the same computer, leave it plugged in.
 
-## Booting
-Insert the installation medium into the target computer, and start it. If your computer does not automatically boot to the installation medium, or do not know which key to press to open the boot menu, refer to your BIOS' settings and your motherboard manufacturer's documentation. \
-Once you have booted, make sure to configure your keyboard layout and networking if necessary. The default NixOS ISO lets you configure the key map in the TTY with the `loadkeys` command as a privileged user, and you can connect to a network using `nmtui`. Graphical environments come with their own utilities for this.
+## Pre-installation
+### Booting
+1. If not already done, insert the newly created installation media into your computer, and start it. If your computer does not automatically boot to it, refer to your BIOS' settings and your motherboard or laptop manufacturer's documentation on how to access it or the boot device list.
 
-## Partitioning
-In my installation, I typically use an encrypted, single-drive setup, on an EFI system. You can easily adapt the following steps for a multi-drive setup and a BIOS-only system, though I will not document BIOS installations here until I can install NixOS on a BIOS-only system that is not as slow as my ThinkPad L510… \
-As before, command-line utilities will be used for maximum compatibility and minimum dependencies, but a lot of these steps can be done using graphical tools.
+2. Once booted, the first thing you want to ensure is that your keyboard layout is the correct one. If you have booted with a graphical ISO, go to the graphical settings to configure it. If you have booted in a TTY, you can use the `loadkeys` command to select the desired keyboard layout, e.g. with `loadkey us-intl` or `loadkeys fr-latin9`.
 
-1. Enter a shell as root with `sudo -i`.
-2. List the current storage devices with `lsblk`, and identify the one you want to use. \
-In the case of this example, I will select `/dev/sda`, which is an empty 1 TB hard disk drive. Obviously, any data on it will be lost in the next few steps.
+3. The only remaining thing to do is to have a stable network. In a graphical ISO, you can go into the settings to configure your WiFi. In a TTY, you can use the `nmtui` utility to connect to a WiFi network. You can also share your phone's network via USB, though it is most reliable on Android devices. If you have Ethernet, you should generally not have to worry about any of that, for it should be configured automatically.
+
+### Partitioning
+Before we actually start with partitioning, here is how I usually set up my system's partitions:
+- 1 GB EFI partition (for booting and storing NixOS generations)
+- XGB Swap (usually the size of my RAM, a little less if I have a lot of RAM)
+- The rest is all Btrfs storage on the root partition
+- Both the swap and root partitions are encrypted with LUKS2
+- The root volume has the following subvolumes:
+	- @ (root), with zstd compression
+	- @home, with zstd compression
+	- @nix, with zstd compression and no access time updates (noatime).
+
+If you have different needs or desires, or use a legacy BIOS-only system, you will need to adapt the following steps to your own needs, which is the case for basically everything in this installation self-guide.
+
+1. Enter a shell as root with `sudo -i`. **All** actions, for this and all other instructions, are to be done within this root environment.
+2. Run the `lsblk` command to identify the storage drive you want to install NixOS onto:
 ```
 NAME                    MAJ:MIN RM   SIZE RO TYPE  MOUNTPOINTS
-sda                       8:0    0 931,6G  0 disk
-sdb                       8:112  1  28,7G  0 disk
-└─sdb1                    8:113  1  28,7G  0 part
+sda                       8:112  1  28,7G  0 disk
+└─sda1                    8:113  1  28,7G  0 part
+nvme0n1                 259:0    0 931,5G  0 disk
+…
 ```
-3. Open the desired storage device with fdisk.
+Here, `nvme0n1` is the NVMe SSD I want to install NixOS onto, replace it with your own. All data on this device will be erased.
+3. Format the drive to GPT:
 ```shell
-fdisk /dev/sda
+parted /dev/nvme0n1 mklabel gpt
 ```
-You should see an output similar to this:
-```
-Welcome to fdisk (util-linux <version>).
-Changes will remain in memory only, until you decide to write them.
-Be careful before using the write command.
-
-Command (m for help):
-```
-### Boot partition
-4. Create a GPT partition table by typing `g` then pressing `Enter`.
-5. Create a boot partition by typing `n`.
-6. When asked about the partition number, type `1` then press `Enter`.
-7. When asked about the **first** sector, it should be left unchanged, simply press `Enter`.
-8. When asked about the **last** sector, type `+1G` then press `Enter`.
-Note that you can change this size to be smaller or bigger, depending on the number of Linux Kernels you plan on keeping, especially if you keep lots of NixOS generations around. \
-If the drive was not empty at first, fdisk will warn you before continuing. Type `y` then press `Enter`.
-9. Set the type of the boot partition by typing `t` then press `Enter`.
-10. When asked about the partition type, type `1` then press `Enter`.
-
-### Swap partition
-11. Create a swap partition by typing `n`.
-12. When asked about the partition number, it should be `2`.
-13. When asked about the **first** sector, it should be left unchanged.
-14. When asked about the **last** sector, type `+8G` then press `Enter`.
-Note that you can change this size to be smaller or bigger, depending on if you want to be able to hibernate your system, and other things. \
-If the drive was not empty at first, fdisk will warn you before continuing. Type `y` then press `Enter`.
-15. Set the type of the swap partition by typing `t` then press `Enter`.
-16. When asked about the partition type, type `19` then press `Enter`.
-
-### Root partition
-17. Create a root partition by typing `n`.
-18. When asked about the first **and** the last sector, they should be left unchanged.
-If the drive was not empty at first, fdisk will warn you before continuing. Type `y` then press `Enter`.
-
-### Verifying the changes
-Until you execute a `write`, no changes are made to the disk, and you can safely exit at any time, so do not worry if you made mistakes. But to verify if you indeed did things properly, you can type `p` then press `Enter` to see what the final result will look like. \
-If something is off, you can type `q` then press `Enter`, and restart the process from step **3**.
-
-### Writing the changes
-If everything is looking good, you can write the changes to disk (this WILL erase all data on it) by typing `w` then pressing `Enter`.
-
-## Formatting and mounting
-I use LUKS disk encryption. If you do not, you may skip the relevant encryption steps and adapt the steps for your setup.
-
-### Configuring LUKS
-1. Set up LUKS encryption for the swap partition.
+4. Create the boot partition:
 ```shell
-cryptsetup --verify-passphrase luksFormat --label swap /dev/sda2
+parted /dev/nvme0n1 mkpart ESP fat32 1mb 1gb
 ```
-Replace `sda2` with the swap partition you previously created.
-2. Set up LUKS encryption for the root partition.
-You may use the same password as the swap partition for convenience and faster boot.
+5. Set the `boot` flag `on` for the boot partition:
 ```shell
-cryptsetup --verify-passphrase luksFormat --label root /dev/sda3
+parted /dev/nvme0n1 set 1 esp on
 ```
-Replace `sda3` with the root partition you previously created.
-3. (Optional) Create backup headers to store somewhere safe.
-This is useful in case they ever get corrupted, somehow. Keep them in a safe, external storage device after creating them.
+6. Create the swap partition, the size of your liking (here, an 8 GB swap):
 ```shell
-cryptsetup luksHeaderBackup /dev/sda2 -header-backup-file luks-header-backup-swap.bin
-cryptsetup luksHeaderBackup /dev/sda3 -header-backup-file luks-header-backup-root.bin
+parted /dev/nvme0n1 mkpart swap linux-swap 1gb 9gb
 ```
-4. Open the encrypted partitions.
-If you use an SSD, add the `--allow-discards` command-line argument after `cryptsetup open`.
+7. Create the root partition, taking the rest of the disk:
 ```shell
-cryptsetup open /dev/sda2 swap
-cryptsetup open /dev/sda3 root
+parted /dev/nvme0n1 mkpart root btrfs 9gb 100%
 ```
 
-### Formatting the partitions and volumes.
-5. Format the swap volume.
+### LUKS encryption
+I use LUKS disk encryption for the swap and root partitions. Note that you may need more than 1 GB of RAM at boot to ensure proper decryption; At least, this is my experience.
+1. Run the `lsblk` command to identify the newly partitioned drive:
+```
+NAME                    MAJ:MIN RM   SIZE RO TYPE  MOUNTPOINTS
+sda                       8:112  1  28,7G  0 disk
+└─sda1                    8:113  1  28,7G  0 part
+nvme0n1       259:0    0 931,5G  0 disk
+├─nvme0n1p1   259:1    0     1G  0 part
+├─nvme0n1p2   259:2    0     8G  0 part
+└─nvme0n1p3   259:3    0 922,5G  0 part
+```
+
+2. Set up LUKS encryption for the swap partition:
+```shell
+cryptsetup --verify-passphrase luksFormat --label swap /dev/nvme0n1p2
+```
+3. Set up LUKS encryption for the root partition:
+```shell
+cryptsetup --verify-passphrase luksFormat --label root /dev/nvme0n1p3
+```
+4. (Optional) Create backup headers and store them in a safe, preferably itself encrypted storage device. This is useful in case they ever get corrupted.
+```shell
+cryptsetup luksHeaderBackup /dev/nvme0n1p2 -header-backup-file luks-header-backup-swap.bin
+cryptsetup luksHeaderBackup /dev/nvme0n1p3 -header-backup-file luks-header-backup-root.bin
+```
+5. Open the encrypted partitions.
+If you use an SSD, use the `--allow-discards` option after `cryptsetup open`. If you install on an HDD, do not.
+```shell
+cryptsetup open --allow-discards /dev/nvme0n1p2 swap
+cryptsetup open --allow-discards /dev/nvme0n1p3 root
+```
+
+### Formatting
+1. Format the boot partition:
+```shell
+mkfs.fat -F 32 -n BOOT /dev/nvme0n1p1
+```
+2. Format the swap volume:
 ```shell
 mkswap -L Swap /dev/mapper/swap
 ```
-6. Format the storage volume.
-I use Btrfs, but you may use whichever filesystem makes you feel superior.
-If you do not use Btrfs, skip or change the steps related to Btrfs subvolumes and options.
+3. Format the storage volume:
 ```shell
 mkfs.btrfs -L Storage /dev/mapper/root
 ```
-7. Format the boot partition.
-```shell
-mkfs.fat -F 32 -n BOOT /dev/sda1
-```
-Replace `sda1` with the boot partition you previously created.
 
-### Mounting and activating filesystems
-8. Turn the swap on.
+### Mounting
+1. Turn the swap on:
 ```shell
 swapon /dev/mapper/swap
 ```
-9. Mount the root volume.
+2. Mount the root volume:
 ```shell
 mount -v -t btrfs /dev/mapper/root /mnt
 ```
-10. Create the Btrfs subvolumes.
-Here, they will be `@` (root), `@home`, and `@nix`.
+3. Create the Btrfs subvolumes.
+Here, they are `@` (root), `@home`, and `@nix`.
 ```shell
 btrfs subvolume create /mnt/@
-btrfs subvolume create /mnt/@home
+btrfs subvolume cretae /mnt/@home
 btrfs subvolume create /mnt/@nix
 ```
-11. Unmount the root volume.
+4. Unmount the root volume.
 ```shell
 umount -v /mnt
 ```
-12. Mount the root volume with the proper Btrfs subvolume.
-Additionally, I enable zstd compression.
+5. Remount the root volume, but now with the proper Btrfs subvolume.
+Additionally, I enable ZSTD compression.
 ```shell
 mount -v -o subvol=@,compress=zstd:3 /dev/mapper/root /mnt
 ```
-13. Create the mount points for the boot, home, and nix volumes.
+6. Create the mount points for the `boot`, `home`, and `nix` subvolumes.
 ```shell
 mkdir -v /mnt/boot
 mkdir -v /mnt/home
 mkdir -v /mnt/nix
 ```
-14. Mount the home and nix Btrfs subvolumes.
-Additionally, I enable zstd compression, and enable `noatime` for the nix subvolume to avoid unnecessary writes.
+7. Mount the `home` and `nix` subvolumes.
+Additionally, I enable ZSTD compression for both and enable `noatime` for `@nix`.
 ```shell
 mount -v -o subvol=@home,compress=zstd:3 /dev/mapper/root /mnt/home
 mount -v -o subvol=@nix,compress=zstd:3,noatime /dev/mapper/root /mnt/nix
 ```
-15. Mount the boot partition.
+8. Mount the boot partition:
 ```shell
-mount -v -o umask=077 /dev/sda1 /mnt/boot
+mount -v -o umask=077 /dev/nvme0n1p1 /mnt/boot
 ```
 
-## NixOS configuration and installation
-Now that the storage device is set up, we can now set up the NixOS configuration and install the final system.
-
-### Creating and configuring the NixOS configuration
-1. Generate the default NixOS configuration and automatically-generated hardware configuration file.
+## NixOS configuration
+### Generating and cloning
+1. Generate the default NixOS configuration and automatically-generated hardware configuration file:
 ```shell
 nixos-generate-config --root /mnt
 ```
-2. Temporarily move the hardware configuration file
+2. Copy the hardware configuration file away:
 ```shell
 rsync -ah --progress /mnt/etc/nixos/hardware-configuration.nix ~/
 ```
-3. Remove the default `configuration.nix` module, since it will not be used.
+3. Remove all files in the `/mnt/etc/nixos/` directory, since they will not be used:
 ```shell
-rm -v /mnt/etc/nixos/configuration.nix
+rm -v /mnt/etc/nixos/*
 ```
-4. Clone this repository to `/mnt/etc/nixos/`.
+4. Clone this repository to `/mnt/etc/nixos/`:
 ```shell
-git clone https://github.com/Atemo-C/NixOS-configuration /mnt/etc/nixos/
+git clone https://github.com/Atemo-C/NixOS-configuration /mnt/etc/nixos
 ```
-5. Move the hardware configuration file to `/mnt/etc/nixos/computers/your-comutper-name`.
-Replace `your-computer-name` with the name of your computer.
+5. Choose a name for your computer, all in lowercase and with no special characters. This will be the named used by your computer on the network, and also the name of the directory its own modules will reside in. \
+For this guide, I will call it `testing-pc`.
+6. Create the directory `/mnt/etc/nixos/computres/testing-pc`, replacing `testing-pc` by the desired name:
 ```shell
-mkdir -v /mnt/etc/nixos/computers/your-computer-name
-rsync -ah --progress ~/hardware-configuration.nix /mnt/etc/nixos/computers/your-computer-name/
+mkdir -v /mnt/etc/nixos/computers/testing-pc
 ```
-6. Get the UUID of your swap partition.
-We will write it to `/mnt/etc/nixos/computers/your-computer-name/settings.nix`; It will be at the bottom of the module.
+7. Copy the previously moved hardware configuration file to your computer's directory:
 ```shell
-blkid /dev/sda2 >> /mnt/etc/nixos/computers/your-computer-name/settings.nix
+rsync -ah --progress ~/hardware-configuration.nix /mnt/etc/nixos/computers/testing-pc/
 ```
-The root partition should be configured automatically, which is why only the step for the swap partition remains. However, you might want to also do this with the root partition, if you want to set up additional options, such as discarding for SSDs.
-7. Open this module with your preferred text editor.
+
+### `storage.nix` module
+1. Get the UUID of your swap partition.
+We will write it to `/mnt/etc/nixos/computers/testing-pc/storage.nix`; It will be at the bottom of the module, ready to be used when we configure storage later.
+```shell
+blkid /dev/nvme0n1p2 >> /mnt/etc/nixos/computers/testing-pc/storage.nix
+```
+2. Open this module with your preferred text editor.
 In this live environment, you can install the text editor of your choice with `nix-env -iA nixos.your-text-editor-here`.
 ```shell
-your-editor-here /mnt/etc/nixos/computers/your-computer-name/settings.nix
+<editor> /mnt/etc/nixos/computers/testing-pc/storage.nix
 ```
-8. In it, the UUIDs for the encrypted swap partition is located on the bottom of the file.
-We need to add them to `boot.initrd.luks.devices` since NixOS does not automatically add it, and set up other settings, such as:
-- Discard for SSDs using `boot.initrd.luks.devices.<name>.allowDiscards = true;`;
-- Your computer's host name;
-- The keyboard layout configuration;
-- Filesystem-specific options (Btrfs compression, etc);
-- Import modules that you may want to use on certain devices but not others (e.g. host virtualization, gaming, etc);
-- Any other device-specific configuration that you may want.
-In this example, I will be configuring my main computer. If you need any help or inspiration, please have a look at the existing hardware configuration files in this repository, to see how certain things are done.
+3. Keep the UUID.
+You will now see the single line containing the Swap partition's information.
+```nix
+/dev/nvme0n1p2: UUID="00000000-0000-0000-0000000000" LABEL="swap" TYPE="crypto_LUKS" PARTLABEL="swap" PARTUUID="11111111-1111-1111-1111-111111111111"
+```
+What we care about here is the UUID.
+```nix
+UUID="00000000-0000-0000-000000000000"
+```
+4. Configure the storage.
+In this module, write the following:
+```nix
+{ ... }: {
+	boot.initrd.luks.devices = {
+		"swap" = {
+			device = "/dev/disk/by-uuid/00000000-0000-0000-000000000000";
+			allowDiscards = true;
+		};
+		"root".allowDiscards = true;
+	};
+
+	fileSystems = {
+		"/".options = [ "compress=zstd:3" ];
+		"/home".options = [ "compress=zstd:3" ];
+		"/nix".options = [ "compress=zstd:3" "noatime" ];
+	};
+}
+```
+In it, modify the following:
+- Replace the UUID by the one you have just kept
+- If on an HDD, remove `allowDiscards = true;`
+- If you use different filesystem options, edit them appropriately
+- Add comments if you want.
+
+I usually also add a physical encryption USB flash drive to automatically unlock them when it is safe to do so, with password fallback after 10 seconds, but this is optional. Still, in the following segment is the result of how I do it:
+```nix
+{ ... }: {
+	# Additional device encryption settings.
+	#
+	# Here is how to create a dedicated USB flash drive for
+	# unlocking your LUKS-encrypted system (secure it away!):
+	# 1. Generate a random key with `dd`, lqke so:
+	#    • dd if=/dev/random of=disk-key.key bs=4096 count=1
+	#
+	# 2. Add the key to your encrypted storage partition(s) that use the same password:
+	#    • run0 cryptsetup luksAddKey /dev/your-encrypted-partition-here ./disk-key.key
+	#    (Repeat this step if you have multiple encrypted partitions.)
+	#
+	# 3. Write the key file to the USB flash drive.
+	#    ALL data on it will be erased. Use a tiny, throwaway USB flash drive.
+	#    • run0 dd if=disk-key.key of=/dev/your-usb-flash-drive-here
+	boot.initrd.luks.devices = {
+		"swap" = {
+			# Add the swap LUKS device, as `nixos-generate-config` does not.
+			device = "/dev/disk/by-uuid/8ede86b8-0b1d-4d60-82a-facf8a3ed6c4";
+
+			# If on an SSD with discard support, enable it.
+			allowDiscards = true;
+
+			# Hardware key encrpytion keys, with manual password fallback.
+			keyFileSize = 4096;
+			keyFile = "/dev/disk/by-id/usb-Generic_Flash_Disk_94A5D05A-0:0";
+			keyFileTimeout = 10;
+		};
+
+		"root" = {
+			# If on an SSD with discard support, enable it.
+			allowDiscards = true;
+
+			# Hardware key encryption keys, with manual password fallback.
+			keyFileSize = 4096;
+			keyFile = "/dev/disk/by-id/usb-Generic_Flash_Disk_94A5D05A-0:0";
+			keyFileTimeout = 10;
+		};
+	};
+
+	fileSystems = {
+		# ZSTD compression for the root (@) subvolume.
+		"/".options = [ "compress=zstd:3" ];
+
+		# ZSTD compression for the @home subvolume.
+		"/home".options = [ "compress=zstd:3" ];
+
+		# ZSTD compression + no-access-time for the @nix subvolume.
+		"/nix".options = [ "compress=zstd:3" "noatime" ];
+	};
+}
+```
+5. Save the file and exit it.
+
+### `gpu.nix` module
+1. Create the `/mnt/etc/nixos/computers/testing-pc/gpu.nix` module and open it with your text editor.
+```shell
+<editor> /mnt/etc/nixos/computers/testing-pc/gpu.nix
+```
+2. In this file, define what GPU you are using with the `hardware.activeGpu` option. It can be one of `default` (Intel/AMD/etc), `amd` (for ROCM support and more on modern AMD GPUs), or `nvidia-proprietary` (for NVIDIA GPUs, from the 1630 and above). You may additionally want to set additional GPU options if you want, like support for overclocking, or other GPU-related tools. \
+Note that for these NVIDIA GPUs, you will need to import the `nvidia.nix` module as well.
+Here, it will simply be `default`:
+```nix
+# Which of the major GPU brands is used.
+# This is used to guide which variant of packages should be installed.
+# Can be one of `default` (intel & co), `amd`, or `nvidia-proprietary`.
+{ ... }: { hardware.activeGpu = "default"; }
+```
+But if you have an NVIDIA GPU that fits the previous criteria, it would be:
+```nix
+{ ... }: {
+	# Which of the major GPU brands is used.
+	# This is used to guide which variant of packages should be installed.
+	# Can be one of `default` (intel & co), `amd`, or `nvidia-proprietary`.
+	hardware.activeGpu = "default";
+
+	# Import the proprietary NVIDIA GPU drivers (1630 and above only).
+	imports = [ ../../system/nvidia.nix ];
+}
+```
+3. Save the file and exit it.
+
+### `input.nix` module
+1. Create the `/mnt/etc/nixos/computers/testing-pc/gpu.nix` module and open it with your text editor.
+```shell
+<editor> /mnt/etc/nixos/computers/testing-pc/input.nix
+```
+2. In this file, you can set your keyboard layout configuration with `services.xserver.xkb = {};`; These settings will be applied to other environments (TTY/Wayland/etc) as well. \
+Here, I will be using a US international layout (with dead keys) as a main layout, with a normal French layout as a secondary.
+```shell
+# Keyboard layout configuration on this system.
+# To see a complete list of layouts, variants, and other settings:
+# • https://gist.github.com/jatcwang/ae3b7019f219b8cdc6798329108c9aee
+#
+# To see why this list cannot easily be seen within NixOS:
+# • https://github.com/NixOS/nixpkgs/issues/254523
+# • https://github.com/NixOS/nixpkgs/issues/286283
+{ ... }: { services.xserver.xkb = {
+	layout = "us,fr";
+	variant = "intl,";
+}; }
+```
+3. Save the file and exit it.
+
+### The main `settings.nix` module
+This is the file where other miscellaneous settings are set, and where the previously-written modules are imported into. It also imports the main `configuration.nix` module, which itself imports the rest of the system.
+
+1. Create the `/mnt/etc/nixos/computers/testing-pc/settings`.nix module and open it with your text editor.
+```shell
+<editor> /mnt/etc/nixos/computers/testing-pc/input.nix
+```
+2. In this file:
+	- Import the previously created `input.nix` and `gpu.nix` modules
+	- Import the automatically-generated `hardware-configuration.nix` module
+	- Import the main `configuration.nix`
+	- Let the EFI boot variable be editable by the bootloader
+	- Set your computer's hostname as previously mentioned
+	- Add any other computer-specific configuration or module imports you may wish to have.
+Note that you can see optional imports at the bottom of the `configuration.nix` module, which you can import there as well. Here is the result for in my case:
 ```nix
 { ... }: {
 	imports = [
@@ -331,20 +510,11 @@ In this example, I will be configuring my main computer. If you need any help or
 		# Not importing it results in, again, no system.
 		./hardware-configuration.nix
 
-		# Display configuration.
-		./display.nix
-
 		# Input devices and keyboard layout.
 		./input.nix
 
-		# Storage configuration.
-		./storage.nix
-
 		# GPU configuration and utilities.
 		./gpu.nix
-
-		# Virtualisation software.
-		../../virtualisation/virt-manager.nix
 	];
 
 	# Whether the installation process is allowed to modify EFI boot variables.
@@ -355,79 +525,51 @@ In this example, I will be configuring my main computer. If you need any help or
 
 	# Name of the computer over the network.
 	# For this NixOS configuration, it must be lower-case.
-	networking.hostName = "r7-pc";
-
-	nix.settings = {
-		# Limit the amount of cores used when building NixOS.
-		# This is done to give some responsiveness and RAM back,
-		# allowing the use of the system relatively normally when building.
-		cores = 14;
-
-		# Limit the number of maximum jobs running when building NixOS.
-		# This is mostly so that the output is neater, and I like to see
-		# programs compile one by one cleanly as well.
-		# Not optimal for faster rebuilds.
-		max-jobs = 1;
-	};
-
-	# Whether to enable fwupd, a DBus service allowing applications to update firmware.
-	services.fwupd.enable = true;
-
-	# Whether to enable Modem Mangaer, to handle cellular data.
-	systemd.services.ModemManager.enable = false;
+	networking.hostName = "testing-pc";
 }
 ```
-As you can see, the device's `settings.nix` module can also import other modules. This modularity allows for cleaner and more reusable parts across the systems, and more personalisations without having a single huge `settings.nix` file.
 
-9. Add the following lines to your `configuration.nix` in the `imports` list, making sure other devices are commented out with `#`:
-```nix
-	./computers/your-computer-name/hardware-configuration.nix
-	./computers/your-computer-name/settings.nix
-```
-
-10. Modify the rest of the NixOS configuration to fit your needs.
-This includes things such as:
-- The user's name and title;
-- Enabling proprietary drivers for Turing and above NVIDIA GPUs;
-- Localization settings, spell checking, timezone;
-- Various other settings, programs, etc.
-
-### Installing NixOS
-1. **Read all the following steps carefully before running the commands!**
-Install NixOS with the following command. You can add the `--no-root-password` option if you wish to not be able to log into the `root` account directly.
+### User name and title
+1. Open the `/mnt/etc/nixos/user/settings.nix` module with your text editor.
 ```shell
-nixos-install -I nixos-config=/etc/nixos/computers/<your-computer>/settings.nix
+<editor> /mnt/etc/nixos/user/settings.nix
 ```
-- Replace `your-computer` with the computer name you have selected.
-- Make sure your device's `networking.hostName` is the same as the name of the directory your computer's `settings.nix` resides in.
-2. Once NixOS is installed, set your user's password.
+2. Change the default username and title (here, `atemo` and `Atemo Cajaku` respectively) to your own. You may also wish to edit which additional groups your user is added to, change your user's `$HOME` directory, or whatever user-specific changes you want.
+3. Save the file and exit it.
+
+## Installation
+1. Verify your changes. Verify everything. Read over everything added, changed, or deleted at least twice. Re-read this entire thing if you need to.
+2. Check the basic syntax of all modules with the following commands:
 ```shell
-nixos-enter --root /mnt
-passwd your-user-here
-exit
+find /mnt/etc/nixos -type -f -name '*.nix' -exec nix-instantiate --parse-only {} +
 ```
-3. You can now safely power off the system, remove the installation medium, and boot into the full NixOS installation.
+Fix any syntax errors if they exist.
+3. Ensure your network is still connected and working, and that your computer has a stable power source.
+4. Change the NixOS channel to `nixos-unstable-small` and update it:
+```shell
+nix-channel --add https://channels.nixos.org/nixos-unstable-small nixos
+nix-channel --update
+```
+5. Install the system with the following command, replacing `testing-pc` with the computer name you have previously chosen. If you have low RAM, use an HDD, or have a slow CPU, this installation will take a while. Since we are using the `nixos-unstable-small` channel, expect it to take longer than a standard NixOS installation due to the high likelyhood of your system having to compile certain packages from source.
+```shell
+nixos-install -I nixos-config=/mnt/etc/nixos/computers/testing-pc/settings.nix
+```
+If it fails to build due to errors in the configuration, fix them, and try again. If the installation fails due to a package that fails to build, you may comment said package out until it is fixed in nixpkgs and try again.
+6. Once NixOS is installed, set your user's password, replacing `your-user-here` with the username you previously set.
+```shell
+nixos-enter --root /mnt --command 'passwd your-user-here'
+```
+7. You can now safely power off the system, remove the drive used for installating NixOS, and boot into the full NixOS installation.
 
-# Use cases and feature implementation
-## Targeted use-case
-- Single user;
-- Personal computing;
-- x86_64 desktop and laptops;
-- The default **user** shell is the FISH shell;
-- This entire configuration is for me, it may not work well for you.
+## Post-installation notes
+- You will need to bring your own user's files (or start fresh), and might need to set some settings in some parts of the system (e.g. Noctalia's wallpaper settings, etc). I have my own on a backup, which allows me to easily transfer over everything and have the same system on every computer I own.
+- When updating/upgrading/etc nixos, you will not have to manually type the full path to your device's configuration. Instead, if your default user shell stays FISH, you can simply use the provided shell abbreviations like `nix-update-now`, `nix-upgrade-boot` etc, and it will automatically point to the correct file on the computer, assuming your computer's name (hostname), directory its `settings.nix` module resides in, are all named the same and located in the correct place.
+- You may be very confused about some things within the desktop, this is almost to be expected, since you would be using **my** configuration tailored specifically towards **my** needs and desires. Again, this whole guide is more for me to remember and for you to take inspiration from, rather than a copy-paste commands 'guide'.
+- You can report any bugs and suggest features you may want, but I will most likely not offer support otherwise.
+- If you have a metered network connection, this is not for you. If you have a weak computer, this is not for you. If you are not me, this is probably not for you either.
+- Enjoy!
 
-## Not yet implemented or thoroughly tested, including but not limited to:
-- Accessibility features
-- Touchscreen support
-- Remote desktop through RDP or other
-- Computers with:
-	- A non-x86_64 CPU architecture (not tested)
-	- Hybrid GPU setup (e.g. NVIDIA PRIME) (not tested)
-	- NVIDIA GPUs (I no longer have an NVIDIA GPU to test things with, so what is in this configuration is a best-effort attempt at making things work)
-	- Less than 4 GIB of RAM (Swap may be heavily used with less than 8 when building the system, or doing other Nix things… If you have very little RAM, I hope on your soul that you at least have a capable SSD to let the swapping happen; Otherwise, may Xenia the Linux Fox have mercy on your soul)
-	- Less than 64 GIB of storage (some Nix storage optimizations are already enabled).
-
-# Some useful NixOS resources
+# Some helpful NixOS resources
 Help is available in:
 - The configuration.nix(5) man page
 - The on-device manual by running `nixos-help`
@@ -436,7 +578,16 @@ Help is available in:
 - The Nix.dev documentation for the nix ecosystem at https://nix.dev
 
 A searchable list of available packages can be found here: \
-• https://search.nixos.org/packages?channel=unstable
+https://search.nixos.org/packages?channel=unstable
 
 A searchable list of available options can be found here: \
-• https://search.nixos.org/options?channel=unstable
+https://search.nixos.org/options?channel=unstable
+
+Niri's documentation can be found here: \
+https://niri-wm.github.io/niri/index.html
+
+Noctalia's documentation can be found here: \
+https://docs.noctalia.dev/noctalia/
+
+Noctalia Greeter's documentation can be found here: \
+https://docs.noctalia.dev/greeter/

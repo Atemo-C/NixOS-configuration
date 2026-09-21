@@ -6,7 +6,7 @@
 
 		# The automatically-generated hardware configuration file.
 		# Not importing it results in, again, no system.
-#		./hardware-configuration.nix
+		./hardware-configuration.nix
 
 		# Input devices and keyboard layout.
 		./input.nix
@@ -18,7 +18,7 @@
 		./gpu.nix
 
 		# Libvirt guest utilities.
-		../../virtualiastion/guest/libvirt.nix
+		../../virtualisation/guest/libvirt.nix
 	];
 
 	# Whether the installation process is allowed to modify EFI boot variables.
