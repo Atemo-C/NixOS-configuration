@@ -95,9 +95,10 @@
 /*
 	Below is a list of modules that do not apply across all systems by default.
 	They must be imported in your device's `settings.nix` module,
-	if you want them.
+	or other relevant computer modules, if you want them.
 
-	# Proprietary NVIDIA GPU support (1650 and higher).
+	# Proprietary NVIDIA GPU support (1630 and higher).
+	# This one should be in your device's `gpu.nix` module.
 	./extra-modules/nvidia.nix
 
 	# Replace standard suspend commands with pmutils commands.
