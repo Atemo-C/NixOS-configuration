@@ -542,7 +542,7 @@ Note that you can see optional imports at the bottom of the `configuration.nix` 
 1. Verify your changes. Verify everything. Read over everything added, changed, or deleted at least twice. Re-read this entire thing if you need to.
 2. Check the basic syntax of all modules with the following commands:
 ```shell
-find /mnt/etc/nixos -type -f -name '*.nix' -exec nix-instantiate --parse-only {} +
+find /mnt/etc/nixos -type f -name '*.nix' -exec nix-instantiate --parse-only {} +
 ```
 Fix any syntax errors if they exist.
 3. Ensure your network is still connected and working, and that your computer has a stable power source.
