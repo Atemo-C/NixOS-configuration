@@ -1,7 +1,7 @@
 # All configurations here assume a GTX 1650 or above GPU only.
 { config, lib, ... }: {
 	# Specialisation to boot with the fully open-source NVIDIA GPU driver stack.
-	# By default, when this module is imported, the system boots with propietary drivers.
+	# By default, when this module is imported, the system boots with proprietary drivers.
 	specialisation.nvidia_free.config = {
 		hardware.nvidia.gsp.enable = true;
 		system.nixos.tags = [ "NVIDIA_free" ];

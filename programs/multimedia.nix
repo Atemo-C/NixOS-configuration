@@ -78,7 +78,7 @@ in {
 		# Generic image viewer from Linux Mint.
 		pix
 
-		# Multithreaded lossles PNG compressor optimizer.
+		# Multithreaded lossless PNG compressor optimizer.
 		oxipng
 
 		# Feature-rich command-line audio/video downloader.
@@ -101,7 +101,7 @@ in {
 
 	programs = {
 		obs-studio = {
-			# Whether to enable OBS for video recording and live streaming.
+			# Whether to enable OBS for video recording and livestreaming.
 			enable = true;
 
 			# OBS package to use.

@@ -6,7 +6,7 @@
 		# Utility for mapping events from Linux event devices.
 		evsieve
 
-		# Simple GTK joystic tester.
+		# Simple GTK joystick tester.
 		jstest-gtk
 
 		# Cozy typing speed tester in the terminal.

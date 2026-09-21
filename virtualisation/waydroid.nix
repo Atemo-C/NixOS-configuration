@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }: {
 	virtualisation.waydroid = {
 		# Whether to enable the Waydroid Android emulator.
-		enable = false;
+		enable = true;
 
 		# Which Waydroid package to use.
 		package = pkgs.waydroid-nftables;

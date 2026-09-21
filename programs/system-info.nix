@@ -34,7 +34,7 @@ in {
 		# Mersenne prime search / System stability tester (torture).
 		mprime
 
-		# Provide detailed informatoin on the hardware configuration of the machine.
+		# Provide detailed information on the hardware configuration of the machine.
 		lshw
 
 		# Vulkan tools and utilities.
