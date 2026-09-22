@@ -6,6 +6,9 @@ Wallpaper by Mikael Gustafsson.
 <details>
 <summary><h3>Monthly changelog (DD/MM/YYYY)</h3></summary>
 
+### 22/09/2026
+- Tweaked/corrected wording in the README.
+
 ### 21/09/2026
 - The README has been overhauled.
 - Fixed spacing in two computers' `gpu.nix` modules.
@@ -158,7 +161,7 @@ Including but not limited to:
 ---
 
 > [!Warning]
-> I must remind you that this installation is purely what I use, and you would most likely be better off taking inspiration of this configuration rather than just clone and use it.
+> I must remind you that this installation is purely what I use, and you would most likely be better off taking inspiration from this configuration rather than just clone and use it.
 >
 > The following installations instructions are what I want most of my systems to be configured like. They are more of a reminder for me than a guide for you.
 >
