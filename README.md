@@ -541,7 +541,7 @@ This is the file where other miscellaneous settings are set, and where the previ
 
 1. Create the `/mnt/etc/nixos/computers/testing-pc/settings`.nix module and open it with your text editor.
 ```shell
-<editor> /mnt/etc/nixos/computers/testing-pc/input.nix
+<editor> /mnt/etc/nixos/computers/testing-pc/settings.nix
 ```
 2. In this file:
 	- Import the previously created `input.nix` and `gpu.nix` modules
