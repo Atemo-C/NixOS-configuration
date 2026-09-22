@@ -8,6 +8,7 @@ Wallpaper by Mikael Gustafsson.
 
 ### 22/09/2026
 - Tweaked/corrected wording in the README.
+- Updated requirements when using the `nvidia.nix` module.
 
 ### 21/09/2026
 - The README has been overhauled.
