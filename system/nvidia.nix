@@ -1,4 +1,4 @@
-# All configurations here assume a GTX 1650 or above GPU only.
+# All configurations here assume a GTX 1630 or above GPU only (Turing).
 { config, lib, ... }: {
 	# Specialisation to boot with the fully open-source NVIDIA GPU driver stack.
 	# By default, when this module is imported, the system boots with proprietary drivers.
