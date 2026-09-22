@@ -6,6 +6,9 @@ Wallpaper by Mikael Gustafsson.
 <details>
 <summary><h3>Monthly changelog (DD/MM/YYYY)</h3></summary>
 
+### 22/09/2026
+- Tweaked/corrected wording in the README.
+
 ### 21/09/2026
 - The README has been overhauled.
 - Fixed spacing in two computers' `gpu.nix` modules.
