@@ -9,7 +9,17 @@ background_opacity = 0.79999998211860657
 capsule = true
 center = [ "Overview", "workspaces", "wallpaper" ]
 concave_edge_corners = false
-end = [ "notifications", "output_volume", "input_volume", "battery", "brightness", "date", "spacer_2", "Close_Kill" ]
+end = [
+    "tray",
+    "notifications",
+    "output_volume",
+    "input_volume",
+    "battery",
+    "brightness",
+    "date",
+    "spacer_2",
+    "Close_Kill"
+]
 font_family = "UbuntuMono Nerd Font"
 margin_ends = 0
 padding = 0
