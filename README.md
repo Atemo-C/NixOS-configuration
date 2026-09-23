@@ -6,6 +6,9 @@ Wallpaper by Mikael Gustafsson.
 <details>
 <summary><h3>Monthly changelog (DD/MM/YYYY)</h3></summary>
 
+### 23/09/2026
+Added a system tray in the top bar of Noctalia.
+
 ### 22/09/2026
 - Tweaked/corrected wording in the README.
 - Updated requirements when using the `nvidia.nix` module.
