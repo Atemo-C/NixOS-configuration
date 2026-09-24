@@ -101,4 +101,7 @@
 		"L %h/.config/qt5ct/ - - - - /etc/nixos/theming/files/qt5ct/"
 		"L %h/.config/qt6ct/ - - - - /etc/nixos/theming/files/qt6ct/"
 	];
+
+	# Set the fallback cursor theme.
+	xdg.icons.fallbackCursorThemes = [ "${config.cursor.name}" ];
 }
