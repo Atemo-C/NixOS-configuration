@@ -14,7 +14,24 @@
 	};
 
 	# Display configuration for the Niri Wayland compositor.
-	systemd.user.tmpfiles.users.${config.user.name}.rules =
-	lib.optional (config.programs.niri.enable)
-	"L /etc/nixos/desktop/files/niri/output.kdl - - - - /etc/nixos/computers/r7-pc/files/output.kdl";
+	environment.etc."nixos/desktop/files/niri/output.kdl".text = ''
+// This file is for the r7-pc in this configuration.
+// /etc/nixos/computers/r7-pc/display.nix
+output "Acer Technologies XV242Y TL1EE0018521" {
+	// Resolution and refresh rate.
+		mode "1920x1080@119.982"
+
+	// Scaling.
+	scale 1
+
+	// Rotation.
+	//transform "0"
+
+	// Variable refresh rate on demand.
+	variable-refresh-rate on-demand=true
+
+	// Focus this monitor on startup.
+	focus-at-startup
+	}
+	'';
 }
