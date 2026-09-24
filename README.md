@@ -15,6 +15,7 @@ Wallpaper by Mikael Gustafsson.
 - Set XDG's fallback cursor theme to the one set in `config.cursor.name`.
 - The display configuration in Niri is now written directly within the computers' `display.nix` module if present.
 - Minor tweaks to Noctalia + Added a tiny link to this repository.
+- The user's default XDG directories is now properly dynamic and sensibly set in `storage/file-management.nix`.
 
 ### 23/09/2026
 - Added a system tray in the top bar of Noctalia.
