@@ -242,6 +242,19 @@
 	# Add the user to the `samba` group.
 	users.users.${config.user.name}.extraGroups = lib.optional config.services.samba.enable "samba";
 
+	# Configure the user's default directories.
+	environment.etc."nixos/storage/files/user-dirs.dirs".text = ''
+XDG_DESKTOP_DIR="${config.users.users.${config.user.name}.home}/Other/Desktop"
+XDG_DOCUMENTS_DIR="${config.users.users.${config.user.name}.home}/Documents"
+XDG_DOWNLOAD_DIR="${config.users.users.${config.user.name}.home}/Downloads"
+XDG_MUSIC_DIR="${config.users.users.${config.user.name}.home}/Music"
+XDG_PICTURES_DIR="${config.users.users.${config.user.name}.home}/Images"
+XDG_PROJECTS_DIR="${config.users.users.${config.user.name}.home}/Projects"
+XDG_PUBLICSARE_DIR="${config.users.users.${config.user.name}.home}/Other/Public"
+XDG_TEMPLATES_DIR="${config.users.users.${config.user.name}.home}/Other/Templates"
+XDG_VIDEOS_DIR="${config.users.users.${config.user.name}.home}/Videos"
+'';
+
 	# Link file management and other related files to the user's home directory.
 	systemd.user.tmpfiles.users.${config.user.name}.rules = lib.concatLists [
 		# Default programs to start when opening a file.

@@ -33,5 +33,5 @@ output "Acer Technologies XV242Y TL1EE0018521" {
 	// Focus this monitor on startup.
 	focus-at-startup
 	}
-	'';
+'';
 }
