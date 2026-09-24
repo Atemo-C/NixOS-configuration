@@ -63,7 +63,33 @@ hidden_tabs = [ "weather" ]
     show_events_card = false
 
 [desktop_widgets]
-enabled = false
+schema_version = 2
+widget_order = [ "desktop-widget-0000000000000001" ]
+
+    [desktop_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [desktop_widgets.widget.desktop-widget-0000000000000001]
+    box_height = 32.0
+    box_width = 336.0
+    cx = 1752.0
+    cy = 1064.0
+    output = "DP-1"
+    placement_height = 1080.0
+    placement_width = 1920.0
+    rotation = 0.0
+    type = "label"
+
+        [desktop_widgets.widget.desktop-widget-0000000000000001.settings]
+        background = false
+        background_opacity = 0.20000000000000001
+        description = "https://github.com/Atemo-C/NixOS-Configuration"
+        font_family = "UbuntuMono Nerd Font"
+        opacity = 0.23999999999999999
+        shadow = true
+        title = ""
 
 [idle]
 behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
@@ -230,7 +256,8 @@ telemetry_enabled = true
         "Waydroid",
         "com.jaoushingan.WaydroidHelper",
         "xemu",
-        "xfburn"
+        "xfburn",
+        "io.github.radiolamp.mangojuice"
     ]
     show_app_actions = true
     sort_by_usage = false

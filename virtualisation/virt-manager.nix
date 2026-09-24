@@ -1,5 +1,4 @@
 { config, lib, pkgs, ... }: let virt = config.programs.virt-manager.enable; in {
-
 	# Whether to enable the virt-manager UI for managing libvirt virtual machines.
 	programs.virt-manager.enable = true;
 
