@@ -60,18 +60,12 @@
 			# See what process systemd had to kill after the default timeout.
 			killed = "journalctl -b-1 | grep killed";
 
-			# Backup user files. Change the backup directory as needed.
-			backup = ''rsync -av --progress -h --delete --delete-excluded --exclude-from="${config.users.users.${config.user.name}.home}/.exclude.txt" ${config.users.users.${config.user.name}.home}/ /run/media/${config.user.name}/HOME-BACKUP/'';
-
-			# Pulling files from a backup after a clean install.
-			reverse-backup = ''rsync -av --progress -h /run/media/${config.user.name}/HOME-BACKUP/ ${config.users.users.${config.user.name}.home}/'';
-
 			# Toggling recent files history.
 			enable-recent-files = "run0 rm -v -i ~/.local/share/recently-used.xbel";
 			disable-recent-files = "run0 rm -v -i ~/.local/share/recently-used.xbel; touch ~/.local/share/recently-used.xbel && run0 ${pkgs.lib.getBin pkgs.e2fsprogs}/bin/chattr -V +i ~/.local/share/recently-used.xbel";
 
 			# Create a `.iso` file from a physical disc media.
-			mkiso = "dd if=/dev/cdrom of=./CDROM.iso status=progress";
+			mkisofromdisc = "dd if=/dev/cdrom of=./CDROM.iso status=progress";
 
 			# Creating a `.iso` file from a file or directory.
 			mkisofromfile = "${pkgs.lib.getBin pkgs.cdrtools}/bin/mkisofs -lJR -o output.iso";

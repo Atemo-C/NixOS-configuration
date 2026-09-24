@@ -1,7 +1,7 @@
 # https://blog.pankajraghav.com/2024/09/17/AUTOMOUNT.html
 # https://github.com/NixOS/nixpkgs/issues/74281
 # Thank you!
-{ config, ... }: {
+{ config, lib, pkgs, ... }: {
 	# Mount for 160GB-HDD.
 	fileSystems."/run/media/${config.user.name}/160GB-HDD" = {
 		device = "/dev/disk/by-uuid/b8f90684-4d55-4166-865b-dec7c50c775f";
@@ -28,4 +28,11 @@
 		SUBSYSTEM=="block" ENV{ID_WWN}=="0x50014ee204651c65",\
 		ENV{SYSTEMD_WANTS}="systemd-cryptsetup@160GB-HDD.service"
 	'';
+
+	# FISH shell abbreviations to backup to and from this disk.
+	programs.fish.shellAbbrs = {
+		backup = ''${pkgs.lib.getBin pkgs.rsync}/bin/rsync -av --progress -h --delete --delete-excluded --exclude-from="${config.users.users.${config.user.name}.home}/.exclude.txt" ${config.users.users.${config.user.name}.home}/ /run/media/${config.user.name}/160GB-HDD/Backup/'';
+
+		reverse-backup = ''${pkgs.lib.getBin pkgs.rsync}/bin/rsync -av --progress -h /run/media/${config.user.name}/160GB-HDD/Backup/ ${config.users.users.${config.user.name}.home}/'';
+	};
 }

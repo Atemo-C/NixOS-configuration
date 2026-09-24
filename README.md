@@ -10,6 +10,8 @@ Wallpaper by Mikael Gustafsson.
 - Added `mangohud` and `mangojuice` to the `programs/gaming.nix` module.
 - Enabled the Steam GameScope session.
 - Made the Steam GameScope session behave more like 'proper' SteamOS, with a `steamos-session-select` binary that also simply exists steam, making "Return to desktop" return to the Noctalia Greeter.
+- Home backup shell abbreviation now belong in a computer's relevant `drives/` directory.
+- The `mkiso` shell abbreviation has been renamed to `mkisofromdisc`, as to not conflict with the actual `mkiso` binary.
 
 ### 23/09/2026
 - Added a system tray in the top bar of Noctalia.
