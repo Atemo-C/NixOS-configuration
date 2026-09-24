@@ -12,6 +12,7 @@ Wallpaper by Mikael Gustafsson.
 - Made the Steam GameScope session behave more like 'proper' SteamOS, with a `steamos-session-select` binary that also simply exists steam, making "Return to desktop" return to the Noctalia Greeter.
 - Home backup shell abbreviation now belong in a computer's relevant `drives/` directory.
 - The `mkiso` shell abbreviation has been renamed to `mkisofromdisc`, as to not conflict with the actual `mkiso` binary.
+- Set XDG's fallback cursor theme to the one set in `config.cursor.name`.
 
 ### 23/09/2026
 - Added a system tray in the top bar of Noctalia.
