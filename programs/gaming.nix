@@ -10,6 +10,12 @@
 		# Native GOG, Epic, and Amazon Games Launcher.
 #		heroic
 
+		# Vulkan and OpenGL overlay for monitor FPS and more.
+		mangohud
+
+		# Convenient alternative to GOverlay for setting up MangoHud.
+		mangojuice
+
 		# Modern GBA emulator with a focus on accuracy.
 		mgba
 
@@ -44,6 +50,9 @@
 
 		# Add ProtonGE to Steam.
 		extraCompatPackages = [ pkgs.proton-ge-bin ];
+
+		# Whether to enable the GameScope session.
+		gamescopeSession.enable = true;
 
 		# Whether to open pors in the firewall for Steam Local Network Game Transfers.
 		localNetworkGameTransfers.openFirewall = true;

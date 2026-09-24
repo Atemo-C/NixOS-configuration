@@ -2,6 +2,9 @@
 	# Display configuration for the TTY.
 	boot.kernelParams = [ "video=DP-1:1920x1080@120" ];
 
+	# Display configuration for the dedicated GameScope session.
+	programs.steam.gamescopeSession.args = [ "-r" "120" "-O" "DP-1" ];
+
 	# Display configuration for the Noctalia Greeter.
 	services.displayManager.noctalia-greeter.settings.output = {
 		name = "Acer Technologies XV242Y TL1EE0018521";
