@@ -8,7 +8,8 @@ Wallpaper by Mikael Gustafsson.
 
 ### 24/09/2026
 - Added `mangohud` and `mangojuice` to the `programs/gaming.nix` module.
-- Enabled the Steam gamescope session.
+- Enabled the Steam GameScope session.
+- Made the Steam GameScope session behave more like 'proper' SteamOS, with a `steamos-session-select` binary that also simply exists steam, making "Return to desktop" return to the Noctalia Greeter.
 
 ### 23/09/2026
 - Added a system tray in the top bar of Noctalia.

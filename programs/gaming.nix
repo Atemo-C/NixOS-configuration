@@ -37,6 +37,12 @@
 		# In-development indie sandbox game about innovation and exploration.
 		# Manually upgraded to 1.22.7.
 		(callPackage ../extra-modules/packages/vintagestory.nix {})
+
+		# Make Steam's "Switch to desktop" option log out of the GameScope session,
+		# allowing you to log in to Niri.
+		(pkgs.writers.writeDashBin "steamos-session-select" ''
+			exec ${pkgs.lib.getBin config.programs.steam.package}/bin/steam -shutdown
+		'')
 	];
 
 	programs.steam = {
@@ -51,8 +57,13 @@
 		# Add ProtonGE to Steam.
 		extraCompatPackages = [ pkgs.proton-ge-bin ];
 
-		# Whether to enable the GameScope session.
-		gamescopeSession.enable = true;
+		gamescopeSession = {
+			# Whether to enable the GameScope session.
+			enable = true;
+
+			# Launch Steam in the GameScope session in its SteamOS mode.
+			steamArgs = [ "-gamepadui" "-steamos3" "-steampal" "-steamdeck" ];
+		};
 
 		# Whether to open pors in the firewall for Steam Local Network Game Transfers.
 		localNetworkGameTransfers.openFirewall = true;
