@@ -15,6 +15,7 @@
 			# Short abbreviations.
 			c = "clear";
 			x = "exit";
+			o = "open";
 
 			# Finding text within files in a directory.
 			fdtext = "grep -Rn -e";
