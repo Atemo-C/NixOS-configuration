@@ -8,6 +8,7 @@ Wallpaper by Mikael Gustafsson.
 
 ### 25/09/2026
 - Added `gamescope` to the list of windows affected by VRR.
+- The Steam package now includes `mangohud` and `obs_vkcapture`.
 
 ### 24/09/2026
 - Added `mangohud` and `mangojuice` to the `programs/gaming.nix` module.

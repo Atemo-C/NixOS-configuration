@@ -68,6 +68,15 @@
 		# Whether to open pors in the firewall for Steam Local Network Game Transfers.
 		localNetworkGameTransfers.openFirewall = true;
 
+		# Modify the Steam package to add a few tools.
+		package = pkgs.steam.override { extraEnv = {
+			# Access to MangoHud.
+			MANGOHUD = true;
+
+			# OBS Vulkan capture.
+			OBS_VKCAPTURE = true;
+		}; };
+
 		# Whether to open ports in the firewall for Steam Remote Play.
 		remotePlay.openFirewall = true;
 	};
