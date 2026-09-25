@@ -27,6 +27,7 @@ window-rule {
 	match app-id="Minecraft*" title="Minecraft*"
 	match app-id=r#"Vintage Story"#
 	match app-id=r#"luanti"#
+	match app-id=r#"gamescope"#
 	variable-refresh-rate true
 }
 

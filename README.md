@@ -6,6 +6,9 @@ Wallpaper by Mikael Gustafsson.
 <details>
 <summary><h3>Monthly changelog (DD/MM/YYYY)</h3></summary>
 
+### 25/09/2026
+- Added `gamescope` to the list of windows affected by VRR.
+
 ### 24/09/2026
 - Added `mangohud` and `mangojuice` to the `programs/gaming.nix` module.
 - Enabled the Steam GameScope session.
