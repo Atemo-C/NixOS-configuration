@@ -22,6 +22,9 @@
 
 		# Virtualisation software.
 		../../virtualisation/virt-manager.nix
+
+		# Bridged networking for Virt-manager.
+		./libvirt-bridge.nix
 	];
 
 	# Whether the installation process is allowed to modify EFI boot variables.

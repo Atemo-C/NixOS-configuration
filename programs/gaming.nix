@@ -70,7 +70,7 @@
 
 		# Modify the Steam package to add a few tools.
 		package = pkgs.steam.override { extraEnv = {
-			# Access to MangoHud.
+			# Enable the system's MangoHud, regardless of Steam settings.
 #			MANGOHUD = true;
 
 			# OBS Vulkan capture.
