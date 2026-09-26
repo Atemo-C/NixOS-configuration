@@ -33,23 +33,6 @@
 		SUBSYSTEM=="drm", KERNEL=="renderD*", GROUP="render", MODE="0666"
 	'';
 
-	# Bridged networking setup.
-	# BE CAREFUL! Change `enp16s0` to YOUR primary network interface.
-	# You can see it with `ip a`.
-	networking = lib.mkIf virt rec {
-		# Enable the `br0` network bridge over the default network interface.
-		bridges."br0".interfaces = [ "enp16s0" ];
-
-		# Let DHCP configuration be used on the network bridge.
-		interfaces = {
-			enp16s0.useDHCP = lib.mkIf interfaces.br0.useDHCP false;
-			br0.useDHCP = true;
-		};
-
-		# Unmanage the default network interface when the network bridge is used.
-		networkmanager.unmanaged = lib.optional interfaces.br0.useDHCP "enp16s0";
-	};
-
 	# Add the user to the `libvirtd` group.
 	users.users.${config.user.name}.extraGroups = lib.optional virt "libvirtd";
 }

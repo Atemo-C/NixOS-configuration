@@ -6,6 +6,9 @@ Wallpaper by Mikael Gustafsson.
 <details>
 <summary><h3>Monthly changelog (DD/MM/YYYY)</h3></summary>
 
+### 26/09/2026
+- The network bridge for Virt-Manager/libvirt is now configured per-computer (if used).
+
 ### 25/09/2026
 - Added `gamescope` to the list of windows affected by VRR.
 - The Steam package now includes `mangohud` and `obs_vkcapture`.
