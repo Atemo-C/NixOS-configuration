@@ -56,10 +56,8 @@ in {
 
 	# Display configuration for the Noctalia Greeter.
 	services.displayManager.noctalia-greeter.settings.output = {
-		name = acer-xv242y.name;
-		width = acer-xv242y.width;
-		height = acer-xv242y.height;
-		refresh_rate = acer-xv242y.refreshRate.normal;
+		layout = "${acer-xv242y.name}:0,0; ${dell-e207wfp.name}:${toString acer-xv242y.width},54";
+		refresh_rate = "${acer-xv242y.name}:${toString acer-xv242y.refreshRate.normal}; ${dell-e207wfp.name}:${toString dell-e207wfp.refreshRate.normal}";
 	};
 
 	# Display configuration for the Niri Wayland compositor.

@@ -16,6 +16,7 @@ Wallpaper by **Mikael Gustafsson**.
 - Added `nwg-look` to the `./theming/programs.nix` module, in case the GTK theme is not propely applied after installation.
 - Avahi configuration is now in the `system/networking.nix` module.
 - SponsorBlock is now used within the default `yt-dlp` shell abbreviations.
+- The Noctalia Greeter's display configuration has been updated for `r7-pc`.
 
 ### 26/09/2026
 - The network bridge for Virt-Manager/libvirt is now configured per-computer (if used).
