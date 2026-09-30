@@ -47,13 +47,4 @@
 		# ZSTD compression + no-access-time for the @nix subvolume.
 		"/nix".options = [ "compress=zstd:3" "noatime" ];
 	};
-
-	# Other storage devices used in this computer.
-	imports = [
-		# PlayStation 4 HDD, used to store ISOs, OBS recordings, and more.
-		./drives/PS4-HDD.nix
-
-		# ThinkPad L510 HDD, used to store home backups.
-		./drives/160GB-HDD.nix
-	];
 }

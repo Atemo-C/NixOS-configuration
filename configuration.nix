@@ -5,6 +5,9 @@
 { ... }: { imports = [
 	# Below is a list of modules that apply across all systems.
 
+	# Disko for fully declarative disk configuration.
+#	"${builtins.fetchTarball "https://github.com/nix-community/disko/archive/master.tar.gz"}/module.nix"
+
 	# This module allows defining which GPU your system is using.
 	# `hardware.activeGpu` should be set in your device's `gpu.nix` module,
 	# at `/etc/nixos/computers/<your-computer>/gpu.nix`, and the `gpu.nix` module

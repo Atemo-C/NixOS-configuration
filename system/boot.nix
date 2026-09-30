@@ -8,6 +8,11 @@
 			# whether to enable the Limine bootloader.
 			enable = true;
 
+			# Enable BIOS and UEFI support, and set the correct partition index.
+#			biosSupport = true;
+#			efiSupport = true;
+#			parititionIndex = 1;
+
 			# Maximum number of latest generations to keep in the boot menu.
 			maxGenerations = 64;
 

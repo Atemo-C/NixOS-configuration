@@ -23,10 +23,35 @@
 			exact = 119.982;
 		};
 	};
+
+	dell-e207wfp = {
+		# Full name of the monitor.
+		name = "Dell Inc. DELL E207WFP CK62776BCE1L";
+
+		# Physical connector of the monitor.
+		# This may not be stable between reboots on multi-monitor or multi-GPU setups.
+		# But it is a limitation we have to work with.
+		connector = "DP-2";
+
+		# Width (in pixels) of the monitor.
+		width = 1680;
+
+		# Height (in pixels) of the monitor.
+		height = 1050;
+
+		refreshRate = {
+			# Refresh rate of the monitor.
+			normal = 60;
+
+			# Exact refresh rate of the monitor, required by Niri.
+			exact = 59.883;
+		};
+	};
 in {
 	# Display configuration for the TTY.
 	boot.kernelParams = [
 		"video=${acer-xv242y.connector}:${toString acer-xv242y.width}x${toString acer-xv242y.height}@${toString acer-xv242y.refreshRate.normal}"
+		"video=${dell-e207wfp.connector}:${toString dell-e207wfp.width}x${toString dell-e207wfp.height}@${toString dell-e207wfp.refreshRate.normal}"
 	];
 
 	# Display configuration for the Noctalia Greeter.
@@ -56,10 +81,28 @@ output "${acer-xv242y.name}" {
 
 	// Focus this monitor on startup.
 	focus-at-startup
+
+	// Position of the monitor.
+	position x=0 y=0
+}
+
+output "${dell-e207wfp.name}" {
+	// Resolution and refresh rate.
+	mode "${toString dell-e207wfp.width}x${toString dell-e207wfp.height}@${toString dell-e207wfp.refreshRate.exact}"
+
+	// Scaling.
+	scale 1
+
+	// Rotation.
+	// transform "0"
+
+	// Position of the monitor.
+	position x=${toString acer-xv242y.width} y=54
 }
 '';
 
 	# Display configuration for the dedicated GameScope session.
+	# Here, the single main monitor is preferred.
 	programs.steam.gamescopeSession.args = [
 		"-r" "${toString acer-xv242y.refreshRate.normal}"
 		"-O" "${acer-xv242y.connector}"

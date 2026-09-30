@@ -1,6 +1,6 @@
 { config, lib, pkgs, ... }: let
 	# Define which OBS Studio package to install, depending on GPU drivers.
-	obsPkg = if config.hardware.activeGpu == "nvidia-proprietary"
+	obsPkg = if config.hardware.activeGpu == "nvidia"
 		then pkgs.obs-studio.override { cudaSupport = true; }
 		else pkgs.obs-studio;
 
@@ -165,12 +165,12 @@ in {
 			imgdl-tor = "${pkgs.lib.getBin pkgs.lib.getBin pkgs.gallery-dl}/bin/gallery-dl --proxy socks5://localhost:9050 -D ./";
 
 			# Download videos from various online sources.
-			yt = "${pkgs.lib.getBin pkgs.lib.getBin pkgs.yt-dlp}/bin/yt-dlp -t sleep";
-			yt-tor = "${pkgs.lib.getBin pkgs.lib.getBin pkgs.yt-dlp}/bin/yt-dlp -t sleep --proxy socks5://localhost:9050";
+			yt = "${pkgs.lib.getBin pkgs.lib.getBin pkgs.yt-dlp}/bin/yt-dlp";
+			yt-tor = "${pkgs.lib.getBin pkgs.lib.getBin pkgs.yt-dlp}/bin/yt-dlp --proxy socks5://localhost:9050";
 
 			# Download audio from various online sources.
-			ytmp3 = "${pkgs.lib.getBin pkgs.lib.getBin pkgs.yt-dlp}/bin/yt-dlp -t sleep -x --audio-format mp3 --audio-quality 0";
-			ytmp3-tor = "${pkgs.lib.getBin pkgs.lib.getBin pkgs.yt-dlp}/bin/yt-dlp -t sleep -x --audio-format mp3 --audio-quality 0 --proxy socks5://localhost:9050";
+			ytmp3 = "${pkgs.lib.getBin pkgs.lib.getBin pkgs.yt-dlp}/bin/yt-dlp -x --audio-format mp3 --audio-quality 0";
+			ytmp3-tor = "${pkgs.lib.getBin pkgs.lib.getBin pkgs.yt-dlp}/bin/yt-dlp -x --audio-format mp3 --audio-quality 0 --proxy socks5://localhost:9050";
 
 			# Hide the default banner when using ffmpeg.
 			ffmpeg = "${pkgs.lib.getBin pkgs.lib.getBin pkgs.ffmpeg-full}/bin/ffmpeg -hide_banner";

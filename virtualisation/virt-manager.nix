@@ -12,7 +12,7 @@
 
 			# When using an NVIDIA GPU, enable access to the EGL render node.
 			# https://github.com/virt-manager/virt-manager/issues/938#issuecomment-3009548239
-			verbatimConfig = lib.mkIf (config.hardware.activeGpu == "nvidia-proprietary") ''
+			verbatimConfig = lib.mkIf (config.hardware.activeGpu == "nvidia") ''
 				namespaces = []
 
 				cgroup_device_acl = [

@@ -150,11 +150,11 @@ widget_order = [ "lockscreen-login-box@DP-2", "lockscreen-login-box@DP-1" ]
     [lockscreen_widgets.widget."lockscreen-login-box@DP-2"]
     box_height = 196.0
     box_width = 810.0
-    cx = 960.0
-    cy = 898.0
+    cx = 840.0
+    cy = 873.0555419921875
     output = "DP-2"
-    placement_height = 1080.0
-    placement_width = 1920.0
+    placement_height = 1050.0
+    placement_width = 1680.0
     rotation = 0.0
     type = "login_box"
 
@@ -345,13 +345,13 @@ transition = [ "fade" ]
 transition_on_startup = true
 
     [wallpaper.default]
-    path = "~/Images/Wallpapers/Landscape/Mikael Gustafsson/Among Trees.jxl"
+    path = "/home/atemo/Images/Wallpapers/Landscape/byrotek/Fabulous Refuge.jxl"
 
     [wallpaper.last]
-    path = "~/Images/Wallpapers/Landscape/Mikael Gustafsson/Among Trees.jxl"
+    path = "/home/atemo/Images/Wallpapers/Landscape/byrotek/Fabulous Refuge.jxl"
 
     [wallpaper.monitors.DP-1]
-    path = "~/Images/Wallpapers/Landscape/Mikael Gustafsson/Among Trees.jxl"
+    path = "/home/atemo/Images/Wallpapers/Landscape/byrotek/Fabulous Refuge.jxl"
 
 [weather]
 enabled = false

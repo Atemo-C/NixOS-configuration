@@ -6,16 +6,14 @@
 
 		# The automatically-generated hardware configuration file.
 		# Not importing it results in, again, no system.
-		./hardware-configuration.nix
+#		./hardware-configuration.nix
+
+		# Disk partitioning with Disko.
+		# Not importing it results in, still, no system.
+		./disko.nix
 
 		# Input devices and keyboard layout.
 		./input.nix
-
-		# Storage configuration.
-		./storage.nix
-
-		# GPU configuration and utilities.
-		./gpu.nix
 
 		# Libvirt guest utilities.
 		../../virtualisation/guest/libvirt.nix
@@ -29,7 +27,7 @@
 
 	# Name of the computer over the network.
 	# For this NixOS configuration, it must be lower-case.
-	networking.hostName = "libvirt-vm";
+	networking.hostName = "libvirt";
 
 	nix.settings = {
 		# Limit the amount of cores used when building NixOS.

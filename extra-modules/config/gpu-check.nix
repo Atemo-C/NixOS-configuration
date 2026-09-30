@@ -1,5 +1,15 @@
-{ lib, ... }: { options.hardware.activeGpu = lib.mkOption {
-	type = lib.types.enum [ "default" "amd" "nvidia-proprietary" ];
-	default = "default";
-	description = "Select the active GPU driver/configuration for the system. `default` includes all open-source drivers, and should be used when using Intel graphics or fully open-source NVIDIA GPU drivers.";
-}; }
+{ config, lib, ... }: {
+	options.hardware.activeGpu = lib.mkOption {
+		type = lib.types.enum [
+			"default"
+			"amd"
+			"nvidia"
+		];
+
+		default = "default";
+
+		description = "Select the actve GPU driver/configuration for the system. `default` includes all open-source drivers. `amd` includes AMD-optimized package variants and some support for ROMC. `nvidia` includes support for NVIDIA GPUs, from the 1630 and onward.";
+	};
+
+	imports = [ ../../system/nvidia.nix ];
+}

@@ -8,6 +8,10 @@
 		# Not importing it results in, again, no system.
 		./hardware-configuration.nix
 
+		# Disk partitioning with Disko.
+		# Not importing it results in, still, no system.
+#		./disko.nix
+
 		# Display configuration.
 		./display.nix
 
@@ -25,6 +29,10 @@
 
 		# Bridged networking for Virt-manager.
 		./libvirt-bridge.nix
+
+		# Other drives in the system.
+		./drives/160GB-HDD.nix
+		./drives/PS4-HDD.nix
 	];
 
 	# Whether the installation process is allowed to modify EFI boot variables.
