@@ -15,6 +15,28 @@
 	# Whether to wait for the networking to be online during the boot process.
 	systemd.services.NetworkManager-wait-online.enable = false;
 
+	services.avahi = {
+		# Whether to enable the Avahi daemon.
+		enable = true;
+
+		# Whether to enable the mDNS NSS plug-in for IPv4.
+		nssmdns4 = true;
+
+		# Whether to open the firewall for UDP port 5353.
+		openFirewall = true;
+
+		publish = {
+			# Whether to allow publishing in general.
+			enable = true;
+
+			# Whether to register mDNS address records for all local IP addresses.
+			addresses = true;
+
+			# Whether to register a service of type "_workstation_tcp" on the local LAN.
+			workstation = true;
+		};
+	};
+
 	services.blocky = {
 		# Whether to enable the Blocky DNS proxy as ad blocker and more.
 		# If you already have something like a Pi-Hole configured, you can disable it.
