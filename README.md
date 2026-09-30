@@ -15,6 +15,7 @@ Wallpaper by **Mikael Gustafsson**.
 - `-t sleep` has been removed from `yt-dlp` abbreviations by default.
 - Added `nwg-look` to the `./theming/programs.nix` module, in case the GTK theme is not propely applied after installation.
 - Avahi configuration is now in the `system/networking.nix` module.
+- SponsorBlock is now used within the default `yt-dlp` shell abbreviations.
 
 ### 26/09/2026
 - The network bridge for Virt-Manager/libvirt is now configured per-computer (if used).

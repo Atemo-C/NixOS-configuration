@@ -165,12 +165,12 @@ in {
 			imgdl-tor = "${pkgs.lib.getBin pkgs.lib.getBin pkgs.gallery-dl}/bin/gallery-dl --proxy socks5://localhost:9050 -D ./";
 
 			# Download videos from various online sources.
-			yt = "${pkgs.lib.getBin pkgs.lib.getBin pkgs.yt-dlp}/bin/yt-dlp";
-			yt-tor = "${pkgs.lib.getBin pkgs.lib.getBin pkgs.yt-dlp}/bin/yt-dlp --proxy socks5://localhost:9050";
+			yt = "${pkgs.lib.getBin pkgs.lib.getBin pkgs.yt-dlp}/bin/yt-dlp --sponsorblock-remove sponsor,selfpromo,interaction";
+			yt-tor = "${pkgs.lib.getBin pkgs.lib.getBin pkgs.yt-dlp}/bin/yt-dlp --sponsorblock-remove sponsor,selfpromo,interaction --proxy socks5://localhost:9050";
 
 			# Download audio from various online sources.
-			ytmp3 = "${pkgs.lib.getBin pkgs.lib.getBin pkgs.yt-dlp}/bin/yt-dlp -x --audio-format mp3 --audio-quality 0";
-			ytmp3-tor = "${pkgs.lib.getBin pkgs.lib.getBin pkgs.yt-dlp}/bin/yt-dlp -x --audio-format mp3 --audio-quality 0 --proxy socks5://localhost:9050";
+			ytmp3 = "${pkgs.lib.getBin pkgs.lib.getBin pkgs.yt-dlp}/bin/yt-dlp -x --audio-format mp3 --audio-quality 0 --sponsorblock-remove default";
+			ytmp3-tor = "${pkgs.lib.getBin pkgs.lib.getBin pkgs.yt-dlp}/bin/yt-dlp -x --audio-format mp3 --audio-quality 0 --sponsorblock-remove default --proxy socks5://localhost:9050";
 
 			# Hide the default banner when using ffmpeg.
 			ffmpeg = "${pkgs.lib.getBin pkgs.lib.getBin pkgs.ffmpeg-full}/bin/ffmpeg -hide_banner";
