@@ -5,6 +5,7 @@ Wallpaper by **Mikael Gustafsson**.
 
 <details>
 <summary><h3>Click here to see the monthly changelog (DD/MM/YYYY)</h3></summary>
+
 ### 30/09/2026
 - The README has been cleaned, tweaked, and adapted to the latest changes in the configuration.
 - `disko` is now used for declarative storage configuration. `r7-pc` will switch to using this when a clean installation is done, which may be the case in the not too distant future.
