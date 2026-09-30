@@ -182,6 +182,7 @@ Included but not limited to:
 
 <details>
 <summary><h1>Click here to see the installation instructions</h1></summary>
+
 ## Assumptions
 It is assumed, for these installation instructions, that you:
 - Are familiar with Linux and NixOS, or have at least used the latter once.
