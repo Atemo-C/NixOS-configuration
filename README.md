@@ -12,6 +12,7 @@ Wallpaper by **Mikael Gustafsson**.
 - The `bluetooth.nix` module is now even simpler.
 - The profile for the `r7-pc` has been updated.
 - Updated the file tree in the README.
+- Same fade animation for the wallpaper and lockscreen.
 
 </details>
 
