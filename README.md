@@ -10,6 +10,7 @@ Wallpaper by **Mikael Gustafsson**.
 - The user is now added to the `networkmanager` group.
 - The profile for the `hp-250-g6` has been completed.
 - The `bluetooth.nix` module is now even simpler.
+- The profile for the `r7-pc` has been updated.
 
 </details>
 

@@ -10,16 +10,13 @@
 
 		# Disk partitioning with Disko.
 		# Not importing it results in, still, no system.
-#		./disko.nix
+		./disko.nix
 
 		# Display configuration.
 		./display.nix
 
 		# Input devices and keyboard layout.
 		./input.nix
-
-		# Storage configuration.
-		./storage.nix
 
 		# GPU configuration and utilities.
 		./gpu.nix

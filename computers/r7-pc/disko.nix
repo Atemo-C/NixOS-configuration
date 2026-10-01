@@ -29,9 +29,9 @@
 				};
 			};
 
-			# 8 GB encrypted swap volume.
+			# 24 GB encrypted swap volume.
 			swap = {
-				size = "8G";
+				size = "24G";
 				content = {
 					type = "luks";
 					name = "swap";
