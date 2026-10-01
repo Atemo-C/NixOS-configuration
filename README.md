@@ -11,6 +11,7 @@ Wallpaper by **Mikael Gustafsson**.
 - The profile for the `hp-250-g6` has been completed.
 - The `bluetooth.nix` module is now even simpler.
 - The profile for the `r7-pc` has been updated.
+- Updated the file tree in the README.
 
 </details>
 
@@ -550,27 +551,24 @@ Here is the file tree of the configuration. Again, depending on the version of t
 ├── computers
 │   ├── hp-250-g6
 │   │   ├── disko.nix
-│   │   ├── input.nix
-│   │   ├── settings.nix
-│   │   └── storage.nix
-│   ├── libvirt
-│   │   ├── disko.nix
 │   │   ├── hardware-configuration.nix
 │   │   ├── input.nix
-│   │   ├── settings.nix
-│   │   └── storage.nix
+│   │   └── settings.nix
+│   ├── libvirt
+│   │   ├── disko.nix
+│   │   ├── input.nix
+│   │   └── settings.nix
 │   └── r7-pc
-│       ├── disko.nix
 │       ├── drives
 │       │   ├── 160GB-HDD.nix
 │       │   └── PS4-HDD.nix
+│       ├── disko.nix
 │       ├── display.nix
 │       ├── gpu.nix
 │       ├── hardware-configuration.nix
 │       ├── input.nix
 │       ├── libvirt-bridge.nix
-│       ├── settings.nix
-│       └── storage.nix
+│       └── settings.nix
 ├── desktop
 │   ├── files
 │   │   ├── niri
@@ -618,8 +616,6 @@ Here is the file tree of the configuration. Again, depending on the version of t
 │   │   │   ├── themes
 │   │   │   └── btop.conf
 │   │   ├── micro
-│   │   │   ├── backups
-│   │   │   ├── buffers
 │   │   │   ├── colorschemes
 │   │   │   │   └── atemo-colors.micro
 │   │   │   ├── plug
