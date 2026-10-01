@@ -12,6 +12,9 @@
 		nameservers = lib.optional config.services.blocky.enable "127.0.0.1";
 	};
 
+	# Add the user to the `networkmanager` group.
+	users.users.${config.user.name}.extraGroups = [ "networkmanager" ];
+
 	# Whether to wait for the networking to be online during the boot process.
 	systemd.services.NetworkManager-wait-online.enable = false;
 

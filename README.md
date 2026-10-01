@@ -6,82 +6,8 @@ Wallpaper by **Mikael Gustafsson**.
 <details>
 <summary><h3>Click here to see the monthly changelog (DD/MM/YYYY)</h3></summary>
 
-### 30/09/2026
-- The README has been cleaned, tweaked, and adapted to the latest changes in the configuration.
-- `disko` is now used for declarative storage configuration. `r7-pc` will switch to using this when a clean installation is done, which may be the case in the not too distant future.
-- There should no longer be a need to manually import the `nvidia.nix` module.
-- A second monitor has been added to `r7-pc`.
-- A few fixes have been applied to the `libvirt` device.
-- `-t sleep` has been removed from `yt-dlp` abbreviations by default.
-- Added `nwg-look` to the `./theming/programs.nix` module, in case the GTK theme is not propely applied after installation.
-- Avahi configuration is now in the `system/networking.nix` module.
-- SponsorBlock is now used within the default `yt-dlp` shell abbreviations.
-- The Noctalia Greeter's display configuration has been updated for `r7-pc`.
-- Unpinned apps in the Noctalia shell's launcher.
-
-### 26/09/2026
-- The network bridge for Virt-Manager/libvirt is now configured per-computer (if used).
-
-### 25/09/2026
-- Added `gamescope` to the list of windows affected by VRR.
-- The Steam package now includes `mangohud` and `obs_vkcapture`.
-- Abbreviated the `open` command to `o`.
-
-### 24/09/2026
-- Added `mangohud` and `mangojuice` to the `programs/gaming.nix` module.
-- Enabled the Steam GameScope session.
-- Made the Steam GameScope session behave more like 'proper' SteamOS, with a `steamos-session-select` binary that also simply exists steam, making "Return to desktop" return to the Noctalia Greeter.
-- Home backup shell abbreviation now belong in a computer's relevant `drives/` directory.
-- The `mkiso` shell abbreviation has been renamed to `mkisofromdisc`, as to not conflict with the actual `mkiso` binary.
-- Set XDG's fallback cursor theme to the one set in `config.cursor.name`.
-- The display configuration in Niri is now written directly within the computers' `display.nix` module if present.
-- Minor tweaks to Noctalia + Added a tiny link to this repository.
-- The user's default XDG directories is now properly dynamic and sensibly set in `storage/file-management.nix`.
-
-### 23/09/2026
-- Added a system tray in the top bar of Noctalia.
-
-### 22/09/2026
-- Tweaked/corrected wording in the README.
-- Updated requirements when using the `nvidia.nix` module.
-- Added a message to the README for AI crawlers.
-
-### 21/09/2026
-- The README has been overhauled.
-- Fixed spacing in two computers' `gpu.nix` modules.
-- Completed the `libvirt` computer's modules.
-- Moved the `nvidia.nix` module from `/etc/nixos/extra-modules/config/nvidia.nix` to `/etc/nixos/system/nvidia.nix`.
-- LACT is now conditionally activated for R7-PC only if the `activeGpu` option is set to `amd`.
-
-### 19/09/2026
-- `micro`'s files are included more selectively than before.
-- Updated comments in various places.
-- The custom `config.user.name` option now checks for valid characters and length.
-- The computers/hosts are now automatically selected by their `networking.hostName` option when rebuilding the system with the `nix-update-*`, `nix-upgrade-*`, and other relevant FISH shell abbreviations when run with the normal user.
-
-### 17/09/2026
-- Overhauled the MiDiPLUS SmartPAD macro pad script.
-- Updated miscellaneous Noctalia settings.
-
-### 12/09/2026
-- Right-clicking on the power button in the bar now shows the power profile switching widget.
-
-### 10/09/2026
-- Overhauled the power actions in Noctalia.
-
-### 09/09/2026
-- Power actions are no longer visible by default without a prefix in the program launcher.
-- Added `corefonts` and `vista-fonts` for additional compatibility when reading and editing documents from Windows computers.
-
-### 05/09/2026
-- Transitioned from Noctalia Shell 4.X to Noctalia 5.X.
-- Fixed duplicate `pkgs.lib.getBin` in `./programs/system-info.nix`.
-- `btop` has higher privileges and better access to more hardware sensors.
-- Switched from GDM to the Noctalia Greeter.
-- Theming now has its own `config` module to more easily share theming configurations across modules.
-- The Zen kernel is now the default kernel in use, with the commented option to use the latest kernel still there.
-</details>
-
+### 01/10/2026
+- The user is now added to the `networkmanager` group.
 
 </details>
 
