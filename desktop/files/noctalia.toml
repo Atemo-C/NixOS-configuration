@@ -1,5 +1,8 @@
 config_version = 14
 
+[audio]
+enable_sounds = false
+
 [backdrop]
 enabled = true
 tint_intensity = 0.0
