@@ -7,7 +7,7 @@
 
 	btopPkg =
 		if config.hardware.activeGpu == "amd" then pkgs.btop-rocm
-		else if config.hardware.activeGpu == "nvidia-proprietary" then pkgs.btop-cuda
+		else if config.hardware.activeGpu == "nvidia" then pkgs.btop-cuda
 		else pkgs.btop;
 
 	bto = lib.any (pkg: lib.elem pkg config.environment.systemPackages) btopPkgs;

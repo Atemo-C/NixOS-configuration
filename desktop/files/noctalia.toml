@@ -150,11 +150,11 @@ widget_order = [ "lockscreen-login-box@DP-2", "lockscreen-login-box@DP-1" ]
     [lockscreen_widgets.widget."lockscreen-login-box@DP-2"]
     box_height = 196.0
     box_width = 810.0
-    cx = 960.0
-    cy = 898.0
+    cx = 840.0
+    cy = 873.0555419921875
     output = "DP-2"
-    placement_height = 1080.0
-    placement_width = 1920.0
+    placement_height = 1050.0
+    placement_width = 1680.0
     rotation = 0.0
     type = "login_box"
 
@@ -201,65 +201,6 @@ telemetry_enabled = true
     app_grid = true
     auto_paste = "auto"
     fetch_exchange_rates = false
-    pinned = [
-        "audacious",
-        "audacity",
-        "blender",
-        "btop",
-        "gucharmap",
-        "nl.hjdskes.gcolor3",
-        "io.github.thetumultuousunicornofdarkness.cpu-x",
-        "org.desmume.DeSmuME",
-        "org.gnome.DiskUtility",
-        "org.gnome.SimpleScan",
-        "app.drey.EarTag",
-        "com.github.wwmm.easyeffects",
-        "element-desktop",
-        "org.fedoraproject.MediaWriter",
-        "foot",
-        "footclient",
-        "FurMark",
-        "gimp",
-        "org.inkscape.Inkscape",
-        "jstest-gtk",
-        "org.kde.kdenlive",
-        "org.keepassxc.KeePassXC",
-        "keymapp",
-        "org.kde.krita",
-        "io.github.ilya_zlobintsev.LACT",
-        "fi.skyjake.Lagrange",
-        "startcenter",
-        "librewolf",
-        "cups",
-        "io.mgba.mGBA",
-        "nixos-manual",
-        "com.obsproject.Studio",
-        "OpenTabletDriver",
-        "PCSX2",
-        "pix",
-        "org.prismlauncher.PrismLauncher",
-        "com.saivert.pwvucontrol",
-        "org.qbittorrent.qBittorrent",
-        "org.rncbc.qpwgraph",
-        "io.github.qtox.qTox",
-        "org.remmina.Remmina",
-        "com.github.Rosalie241.RMG",
-        "rpcs3",
-        "rs.ruffle.Ruffle",
-        "chat.simplex.app",
-        "xyz.ketok.Speedtest",
-        "steam",
-        "thunar",
-        "tor-browser",
-        "vintagestory",
-        "virt-manager",
-        "Waydroid",
-        "com.jaoushingan.WaydroidHelper",
-        "xemu",
-        "xfburn",
-        "io.github.radiolamp.mangojuice"
-    ]
-    show_app_actions = true
     sort_by_usage = false
 
         [shell.launcher.providers.session]
@@ -345,13 +286,13 @@ transition = [ "fade" ]
 transition_on_startup = true
 
     [wallpaper.default]
-    path = "~/Images/Wallpapers/Landscape/Mikael Gustafsson/Among Trees.jxl"
+    path = "/home/atemo/Images/Wallpapers/Landscape/byrotek/Fabulous Refuge.jxl"
 
     [wallpaper.last]
-    path = "~/Images/Wallpapers/Landscape/Mikael Gustafsson/Among Trees.jxl"
+    path = "/home/atemo/Images/Wallpapers/Landscape/byrotek/Fabulous Refuge.jxl"
 
     [wallpaper.monitors.DP-1]
-    path = "~/Images/Wallpapers/Landscape/Mikael Gustafsson/Among Trees.jxl"
+    path = "/home/atemo/Images/Wallpapers/Landscape/byrotek/Fabulous Refuge.jxl"
 
 [weather]
 enabled = false

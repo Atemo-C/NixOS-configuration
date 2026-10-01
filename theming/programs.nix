@@ -20,6 +20,9 @@
 
 			# Icon theme inspired by material design.
 			flat-remix-icon-theme
+
+			# GTK theming utility.
+			nwg-look
 		];
 
 		sessionVariables = {

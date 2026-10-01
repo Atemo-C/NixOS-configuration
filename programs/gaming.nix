@@ -26,7 +26,7 @@
 		pcsx2
 
 		# PlayStation 3 emulator.
-		rpcs3
+#		rpcs3
 
 		# Rosalie's Mupen GUI (Nintendo64 emulator).
 		rmg-wayland
@@ -70,7 +70,7 @@
 
 		# Modify the Steam package to add a few tools.
 		package = pkgs.steam.override { extraEnv = {
-			# Enable the system's MangoHud, regardless of Steam settings.
+			# Access to MangoHud.
 #			MANGOHUD = true;
 
 			# OBS Vulkan capture.

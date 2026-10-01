@@ -23,13 +23,6 @@
 		];
 	};
 
-	# Whether to run the Avahi daemon to allow for network printer discovery.
-	services.avahi = lib.mkIf prt {
-		enable = true;
-		nssmdns4 = true;
-		openFirewall = true;
-	};
-
 	# Add the user to the `lp` and `scanner` groups.
 	users.users.${config.user.name}.extraGroups = lib.optionals prt [ "lp" "scanner" ];
 }

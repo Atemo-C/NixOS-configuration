@@ -1,6 +1,6 @@
 { config, pkgs, ... }: let
 	# Define which Blender package to install, depending on GPU drivers.
-	blenderPkg = if config.hardware.activeGpu == "nvidia-proprietary"
+	blenderPkg = if config.hardware.activeGpu == "nvidia"
 		then pkgs.blender.override { cudaSupport = true; }
 		else if config.hardware.activeGpu == "amd" then pkgs.blender.override { config = {
 			cudaSupport = false;
