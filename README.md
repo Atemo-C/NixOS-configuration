@@ -8,6 +8,7 @@ Wallpaper by **Mikael Gustafsson**.
 
 ### 01/10/2026
 - The user is now added to the `networkmanager` group.
+- The profile for the `hp-250-g6` has been completed.
 
 </details>
 
