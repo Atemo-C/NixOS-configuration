@@ -6,6 +6,9 @@ Wallpaper by **Mikael Gustafsson**.
 <details>
 <summary><h3>Click here to see the monthly changelog (DD/MM/YYYY)</h3></summary>
 
+### 02/10/2026
+- Passwordless synchronization between the Noctalia shell and the Noctalia Greeter has been updated to use the new NixOS option.
+
 ### 01/10/2026
 - The user is now added to the `networkmanager` group.
 - The profile for the `hp-250-g6` has been completed.
