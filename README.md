@@ -17,6 +17,7 @@ Wallpaper by **Mikael Gustafsson**.
 - Updated the file tree in the README.
 - Same fade animation for the wallpaper and lockscreen.
 - Disabled event sounds in the Noctalia shell.
+- Tweaked system requirements.
 
 </details>
 
@@ -89,20 +90,34 @@ This configuration is made to be a single-user system for general personal compu
 
 ## Hardware requirements
 ### Sane minimum
+These are minimum specifications that actually will let you have a usable experience. I use this configuration on my HP 250 G6, which has worse specifications (1x4 GB of RAM, 5400 RPM HDD…), but having more RAM and an SSD would make things much better.
 | Components | Details |
 |------------|---------|
-| CPU        | 64-bit dual-core and above |
-| GPU        | Over 1 GB of VRAM and modern driver support<br>Preferably with full OpenGL support and some basic Vulkan support |
-| RAM        | Over 4 GB of RAM<br>Swap will be needed and heavily used when compilling software |
-| Storage    | 100 GB of storage |
+| CPU        | 64-bit dual-core CPU<br>With hyperthreading |
+| GPU        | Modern-enough iGPU with modern API support<br>Or dGPU with >2 GB of VRAM and modern API support |
+| RAM        | Over 4 GB of RAM<br>Swap will be needed, and it will be heavily used with less than 4 |
+| Storage    | 128 GB of solid-state storage |
+| Display    | 1366x768 screen resolution<br>Not yet tested at lower resolutions |
 
 ### Recommended
+These are specifications that should make the experience great for everyday usage and some more advanced use-cases.
 | Components | Details |
 |------------|---------|
-| CPU        | 64-bit quad-core with decent cache |
-| GPU        | 4 GB of VRAM with full Vulkan and modern driver support |
-| RAM        | Over 8 GB of RAM |
-| Storage    | 200 GB of fast solid-state storage |
+| CPU        | 64-bit quad-core CPU |
+| GPU        | Modern iGPU with dual-channel or more memory<br>Or dGPU with >4 GB of VRAM and modern APU support |
+| RAM        | Over 8 GB of RAM<br>Swap may be needed when compilling software from source |
+| Storage    | 256 GB of fast solid-state storage |
+| Display    | 1600x900 or 1680x1050 screen resolution<br>(At normal scaling)
+
+### Comfortable
+You should almost never have to worry about resources with such system specifications.
+| Components | Details |
+|------------|---------|
+| CPU        | 64-bat quad-core CPU<br>With hyper-threading |
+| GPU        | Modern iGPU with dual-channel or more memory<br>Or dGPU with >6 GB of VRAM and modern APU support |
+| RAM        | Over 16 GB or RAM |
+| Storage    | 512 GB modern NVMe SSD |
+| Display    | 1920x1080 screen resolution and above<br>Not yet tested at higher resolution |
 
 ## Features not yet implemented or thoroughly tested
 Included but not limited to:
