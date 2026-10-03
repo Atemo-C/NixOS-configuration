@@ -6,6 +6,9 @@ Wallpaper by **Mikael Gustafsson**.
 <details>
 <summary><h3>Click here to see the monthly changelog (DD/MM/YYYY)</h3></summary>
 
+### 03/10/2026
+- Fixed some spelling mistakes in the README.
+
 ### 02/10/2026
 - Passwordless synchronization between the Noctalia shell and the Noctalia Greeter has been updated to use the new NixOS option.
 
@@ -113,11 +116,11 @@ These are specifications that should make the experience great for everyday usag
 You should almost never have to worry about resources with such system specifications.
 | Components | Details |
 |------------|---------|
-| CPU        | 64-bat quad-core CPU<br>With hyper-threading |
+| CPU        | 64-bit quad-core CPU<br>With hyper-threading |
 | GPU        | Modern iGPU with dual-channel or more memory<br>Or dGPU with >6 GB of VRAM and modern APU support |
 | RAM        | Over 16 GB or RAM |
 | Storage    | 512 GB modern NVMe SSD |
-| Display    | 1920x1080 screen resolution and above<br>Not yet tested at higher resolution |
+| Display    | 1920x1080 screen resolution and above<br>Not yet tested at higher resolutions |
 
 ## Features not yet implemented or thoroughly tested
 Included but not limited to:
