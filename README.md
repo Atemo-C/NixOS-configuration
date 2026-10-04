@@ -6,6 +6,9 @@ Wallpaper by **Mikael Gustafsson**.
 <details>
 <summary><h3>Click here to see the monthly changelog (DD/MM/YYYY)</h3></summary>
 
+### 04/10/2026
+Tweaked the NixOS channel section slightly.
+
 ### 03/10/2026
 - Fixed some spelling mistakes in the README.
 
@@ -43,10 +46,12 @@ https://github.com/Atemo-C/OLD-NixOS-Configuration
 ### NixOS channel
 This configuration is made to be run with the `nixos-unstable-small` channel, though it can be used with the `nixos-unstable` channel as well, but often not without minor tweaks.
 
-The usage of the `nixos-unstable-small` channel makes this configuration unsuitable for weaker hardware, notably, towards computers with weak CPUs and less thae 8 GB of RAM. This can be somewhat alleviated by:
+The usage of the `nixos-unstable-small` channel makes this configuration unsuitable for weaker hardware, notably, towards computers with weak CPUs and less than 6 GB of RAM. This can be somewhat alleviated by:
 - Using the `nixos-unstable` channel instead to avoid more software compilation.
 - Replacing most graphical programs with Flatpaks.
 - Building the NixOS configuration from a more powerful remote builder.
+- Having a large and fast swap space available.
+I use this configuration on weaker hardware than this, so, it is possible.
 
 ### Disko
 Since NixOS does not yet have a built-in way to declaratively partition and format the storage device where NixOS is installed, Disko is used. Manual partitioning is of course still available and works fine. \
