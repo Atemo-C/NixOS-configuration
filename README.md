@@ -9,6 +9,8 @@ Wallpaper by **Mikael Gustafsson**.
 ### 14/10/2026
 - Updated `oniri` to `1.3.6`.
 - `mpv` now uses the `ffmpeg-full` package.
+- Fixed some duplicate `pkgs.lib.getBin`.
+- Added the `-hide_banner` command-line option to `ffplay` and `ffprobe` by default with FISH shell abbreviations.
 
 ### 04/10/2026
 - Tweaked the NixOS channel section slightly.
