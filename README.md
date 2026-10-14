@@ -8,6 +8,7 @@ Wallpaper by **Mikael Gustafsson**.
 
 ### 14/10/2026
 - Updated `oniri` to `1.3.6`.
+- `mpv` now uses the `ffmpeg-full` package.
 
 ### 04/10/2026
 - Tweaked the NixOS channel section slightly.
