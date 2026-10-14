@@ -64,13 +64,18 @@ in {
 		libwebp
 
 		# General-purpose media player, fork of MPlayer and mplayer2.
-		(mpv.override {scripts = with pkgs.mpvScripts; [
-			# MPRIS plugin for mpv.
-			mpris
+		(mpv.override {
+			scripts = with pkgs.mpvScripts; [
+				# MPRIS plugin for mpv.
+				mpris
 
-			# Script for mpv to skip sponsored segments of YouTube videos.
-			sponsorblock
-		]; })
+				# Script for mpv to skip sponsored segments of YouTube videos.
+				sponsorblock
+			];
+
+			# Provide MPV with the full ffmpeg package.
+			mpv-unwrapped = pkgs.mpv-unwrapped.override { ffmpeg = pkgs.ffmpeg-full; };
+		})
 
 		# Minimal CLI to control OBS Studio via obs-websocket.
 		obs-cmd
