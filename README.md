@@ -6,8 +6,11 @@ Wallpaper by **Mikael Gustafsson**.
 <details>
 <summary><h3>Click here to see the monthly changelog (DD/MM/YYYY)</h3></summary>
 
+### 14/10/2026
+- Updated `oniri` to `1.3.6`.
+
 ### 04/10/2026
-Tweaked the NixOS channel section slightly.
+- Tweaked the NixOS channel section slightly.
 
 ### 03/10/2026
 - Fixed some spelling mistakes in the README.
