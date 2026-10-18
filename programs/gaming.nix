@@ -26,7 +26,7 @@
 		pcsx2
 
 		# PlayStation 3 emulator.
-#		rpcs3
+		rpcs3
 
 		# Rosalie's Mupen GUI (Nintendo64 emulator).
 		rmg-wayland
@@ -75,6 +75,9 @@
 
 			# OBS Vulkan capture.
 			OBS_VKCAPTURE = true;
+
+			# Workaround for https://github.com/ValveSoftware/steam-for-linux/issues/9966
+			DBUS_SYSTEM_BUS_ADDRESS = "";
 		}; };
 
 		# Whether to open ports in the firewall for Steam Remote Play.
