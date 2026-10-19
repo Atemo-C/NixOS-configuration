@@ -1,4 +1,4 @@
-config_version = 14
+config_version = 15
 
 [audio]
 enable_sounds = false
@@ -66,33 +66,16 @@ hidden_tabs = [ "weather" ]
     show_events_card = false
 
 [desktop_widgets]
+enabled = false
 schema_version = 2
-widget_order = [ "desktop-widget-0000000000000001" ]
+widget_order = []
 
     [desktop_widgets.grid]
     cell_size = 16
     major_interval = 4
     visible = true
 
-    [desktop_widgets.widget.desktop-widget-0000000000000001]
-    box_height = 32.0
-    box_width = 336.0
-    cx = 1752.0
-    cy = 1064.0
-    output = "DP-1"
-    placement_height = 1080.0
-    placement_width = 1920.0
-    rotation = 0.0
-    type = "label"
-
-        [desktop_widgets.widget.desktop-widget-0000000000000001.settings]
-        background = false
-        background_opacity = 0.20000000000000001
-        description = "https://github.com/Atemo-C/NixOS-Configuration"
-        font_family = "UbuntuMono Nerd Font"
-        opacity = 0.23999999999999999
-        shadow = true
-        title = ""
+    [desktop_widgets.widget]
 
 [idle]
 behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
@@ -206,8 +189,11 @@ telemetry_enabled = true
     [shell.launcher]
     app_grid = true
     auto_paste = "auto"
+    default_view = "all"
     fetch_exchange_rates = false
+    search_position = "top"
     sort_by_usage = false
+    track_usage = false
 
         [shell.launcher.providers.session]
         global = false
@@ -292,13 +278,16 @@ transition = [ "fade" ]
 transition_on_startup = true
 
     [wallpaper.default]
-    path = "~/Images/Wallpapers/Landscape/byrotek/Fabulous Refuge.jxl"
+    path = "~/Images/Wallpapers/Landscape/Mikael Gustafsson/Among Trees.jxl"
 
     [wallpaper.last]
-    path = "~/Images/Wallpapers/Landscape/byrotek/Fabulous Refuge.jxl"
+    path = "~/Images/Wallpapers/Landscape/Mikael Gustafsson/Among Trees.jxl"
 
     [wallpaper.monitors.DP-1]
-    path = "~/Images/Wallpapers/Landscape/byrotek/Fabulous Refuge.jxl"
+    path = "~/Images/Wallpapers/Landscape/Mikael Gustafsson/Among Trees.jxl"
+
+    [wallpaper.monitors.DP-2]
+    path = "~/Images/Wallpapers/Landscape/Mikael Gustafsson/Among Trees.jxl"
 
 [weather]
 enabled = false

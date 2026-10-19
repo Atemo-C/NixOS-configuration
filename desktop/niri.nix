@@ -42,6 +42,20 @@ in {
 			package = config.cursor.package;
 		};
 
+		# Manually updated the Noctalia Greeter to 1.7.0.
+		# https://github.com/NixOS/nixpkgs/pull/575952
+		package = pkgs.noctalia-greeter.overrideAttrs (old: {
+			version = "1.7.0";
+			src = pkgs.fetchFromGitHub {
+				owner = "noctalia-dev";
+				repo = "noctalia-greeter";
+				tag = "v1.7.0";
+				hash = "sha256-ILFIjvpGFxwt6y9GDESlNcVm2t0Q2Ku108vWiqCsWfM=";
+			};
+
+			buildInputs = old.buildInputs ++ [ pkgs.libjxl ];
+		});
+
 		# Passwordless synching between the Noctalia shell Greeter.
 		passwordlessSyncUsers = [ "${config.user.name}" ];
 

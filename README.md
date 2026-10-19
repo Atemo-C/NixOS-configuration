@@ -10,6 +10,8 @@ Wallpaper by **Mikael Gustafsson**.
 - `rpcs3` is enabled again.
 - `steam` now launches much more rapidly with a workaround found [in this issue](https://github.com/ValveSoftware/steam-for-linux/issues/9966).
 - Updated `oniri` to `1.3.8`.
+- Updated `noctalia-greeter` to `1.7.0` until it gets merged into `nixos-unstable-small`.
+- Updated `noctalia` shell's configuration file.
 
 ### 16/10/2026
 - Updated `oniri` to `1.3.7`.
