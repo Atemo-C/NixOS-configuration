@@ -6,6 +6,9 @@ Wallpaper by **Mikael Gustafsson**.
 <details>
 <summary><h3>Click here to see the monthly changelog (DD/MM/YYYY)</h3></summary>
 
+### 21/10/2026
+- `noctalia` has been updated in `nixos-unstable-small`.
+
 ### 19/10/2026
 - `rpcs3` is enabled again.
 - `steam` now launches much more rapidly with a workaround found [in this issue](https://github.com/ValveSoftware/steam-for-linux/issues/9966).
