@@ -35,8 +35,7 @@
 		xemu
 
 		# In-development indie sandbox game about innovation and exploration.
-		# Manually upgraded to 1.22.7.
-		(callPackage ../extra-modules/packages/vintagestory.nix {})
+		vintagestory
 
 		# Make Steam's "Switch to desktop" option log out of the GameScope session,
 		# allowing you to log in to Niri.
