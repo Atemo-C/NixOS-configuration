@@ -9,6 +9,7 @@ Wallpaper by **Mikael Gustafsson**.
 ### 25/10/2026
 - Updated `oniri` to `1.3.10`.
 - `oniri` is now packaged as a standard Nix package [here](./extra-modules/packages/oniri.nix).
+- `boot.initrd.verbsoe` no longer has an effect, and has been removed.
 
 ### 22/10/2026
 - Updated various avahi options to fit the new names.

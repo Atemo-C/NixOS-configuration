@@ -50,9 +50,6 @@
 	#consoleLogLevel = 3;
 	consoleLogLevel = 0;
 
-	# Whether the initrd should be verbose.
-	initrd.verbose = false;
-
 	kernelParams = [
 		# Make booting less verbose/more quiet.
 		"quiet"
