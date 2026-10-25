@@ -6,6 +6,14 @@ Wallpaper by **Mikael Gustafsson**.
 <details>
 <summary><h3>Click here to see the monthly changelog (DD/MM/YYYY)</h3></summary>
 
+### 25/10/2026
+- Updated `oniri` to `1.3.10`.
+- `oniri` is now packaged as a standard Nix package [here](./extra-modules/packages/oniri.nix).
+
+### 22/10/2026
+- Updated various avahi options to fit the new names.
+(Waiting for an upcoming NixOS update to apply these)
+
 ### 21/10/2026
 - `noctalia` has been updated in `nixos-unstable-small`.
 
@@ -619,9 +627,6 @@ Here is the file tree of the configuration. Again, depending on the version of t
 ├── desktop
 │   ├── files
 │   │   ├── niri
-│   │   │   ├── oniri
-│   │   │   │   ├── LICENSE
-│   │   │   │   └── oniri-1.3.5-x86_64
 │   │   │   ├── animations.kdl
 │   │   │   ├── bindings.kdl
 │   │   │   ├── blur.kdl
@@ -646,6 +651,7 @@ Here is the file tree of the configuration. Again, depending on the version of t
 │   │   ├── theming.nix
 │   │   └── username.nix
 │   ├── packages
+│   │   ├── oniri.nix
 │   │   └── vintagestory.nix
 │   ├── programs
 │   │   └── pmutils.nix
