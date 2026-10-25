@@ -29,14 +29,14 @@
 		openFirewall = true;
 
 		publish = {
-			# Whether to disallow publishing in general.
-			disable-publishing = false;
+			# Whether to allow publishing in general.
+			enable = true;
 
 			# Whether to register mDNS address records for all local IP addresses.
-			publish-addresses = true;
+			addresses = true;
 
 			# Whether to register a service of type "_workstation_tcp" on the local LAN.
-			publish-workstation = true;
+			workstation = true;
 		};
 	};
 

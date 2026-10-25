@@ -12,6 +12,7 @@ Wallpaper by **Mikael Gustafsson**.
 
 ### 22/10/2026
 - Updated various avahi options to fit the new names.
+(Waiting for an upcoming NixOS update to apply these)
 
 ### 21/10/2026
 - `noctalia` has been updated in `nixos-unstable-small`.
