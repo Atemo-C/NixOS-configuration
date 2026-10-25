@@ -10,6 +10,7 @@ Wallpaper by **Mikael Gustafsson**.
 - Updated `oniri` to `1.3.10`.
 - `oniri` is now packaged as a standard Nix package [here](./extra-modules/packages/oniri.nix).
 - `boot.initrd.verbsoe` no longer has an effect, and has been removed.
+- Removed the `vintagestory` package override.
 
 ### 22/10/2026
 - Updated various avahi options to fit the new names.
@@ -652,8 +653,7 @@ Here is the file tree of the configuration. Again, depending on the version of t
 │   │   ├── theming.nix
 │   │   └── username.nix
 │   ├── packages
-│   │   ├── oniri.nix
-│   │   └── vintagestory.nix
+│   │   └── oniri.nix
 │   ├── programs
 │   │   └── pmutils.nix
 │   └── scripts
